@@ -99,6 +99,9 @@
     <Compile Include="View\sectionData\vendors\uc_vendorsData.xaml.cs">
       <DependentUpon>uc_vendorsData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\sectionData\vendors\uc_vendorsGroups.xaml.cs">
+      <DependentUpon>uc_vendorsGroups.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +124,10 @@
     <Page Include="View\sectionData\vendors\uc_vendorsData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\sectionData\vendors\uc_vendorsGroups.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
