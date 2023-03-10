@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using POSCA.Classes;
+using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,11 +51,9 @@ namespace POSCA.View.sectionData.vendors
             }
         }
 
-        //string basicsPermission = "vendors_basics";
-        Vendor vendor = new Vendor();
-        IEnumerable<Vendor> vendorsQuery;
-        IEnumerable<Vendor> vendors;
-        byte tgl_vendorState;
+        SupplierGroup supplierGroup = new SupplierGroup();
+        IEnumerable<SupplierGroup> supplierGroupsQuery;
+        IEnumerable<SupplierGroup> supplierGroups;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -68,25 +67,25 @@ namespace POSCA.View.sectionData.vendors
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "name", "mobile" };
-                if (AppSettings.lang.Equals("en"))
-                {
-                    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                }
-                else
-                {
+                requiredControlList = new List<string> { "Name" };
+                //if (AppSettings.lang.Equals("en"))
+                //{
+                //    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                //}
+                //else
+                //{
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
-                }
+                //}
                 translate();
 
 
                 //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
-                Keyboard.Focus(tb_name);
+                Keyboard.Focus(tb_Name);
                 /*
-                if (FillCombo.vendorsListAll is null)
+                if (FillCombo.supplierGroupsListAll is null)
                     await RefreshCustomersList();
                 else
-                    vendors = FillCombo.vendorsListAll.ToList();
+                    supplierGroups = FillCombo.supplierGroupsListAll.ToList();
                 */
                 await Search();
                 Clear();
@@ -109,33 +108,19 @@ namespace POSCA.View.sectionData.vendors
             //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
             //   );
 
-            //txt_title.Text = AppSettings.resourcemanager.GetString("trVendor");
+            //txt_title.Text = AppSettings.resourcemanager.GetString("trSupplierGroup");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_name, AppSettings.resourcemanager.GetString("trNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_company, AppSettings.resourcemanager.GetString("trCompanyHint"));
-            txt_contactInformation.Text = AppSettings.resourcemanager.GetString("trContactInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_mobile, AppSettings.resourcemanager.GetString("trMobileHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_phone, AppSettings.resourcemanager.GetString("trPhoneHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_email, AppSettings.resourcemanager.GetString("trEmailHint"));
-            txt_contentInformatin.Text = AppSettings.resourcemanager.GetString("trMoreInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_fax, AppSettings.resourcemanager.GetString("trFaxHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
-            tt_add_Button.Content = AppSettings.resourcemanager.GetString("trAdd");
-            tt_update_Button.Content = AppSettings.resourcemanager.GetString("trUpdate");
-            tt_delete_Button.Content = AppSettings.resourcemanager.GetString("trDelete");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_payType, AppSettings.resourcemanager.GetString("trDefaultPayType"));
 
-            dg_vendor.Columns[0].Header = AppSettings.resourcemanager.GetString("trCode");
-            dg_vendor.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_vendor.Columns[2].Header = AppSettings.resourcemanager.GetString("trCompany");
-            dg_vendor.Columns[3].Header = AppSettings.resourcemanager.GetString("trMobile");
+            dg_supplierGroup.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
+            dg_supplierGroup.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -145,7 +130,7 @@ namespace POSCA.View.sectionData.vendors
             //tt_excel.Content = AppSettings.resourcemanager.GetString("trExcel");
             //tt_preview.Content = AppSettings.resourcemanager.GetString("trPreview");
             //tt_pieChart.Content = AppSettings.resourcemanager.GetString("trPieChart");
-            //tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
+            tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
 
             //txt_active.Text = AppSettings.resourcemanager.GetString("trActive_");
         }
@@ -159,7 +144,7 @@ namespace POSCA.View.sectionData.vendors
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    vendor = new Vendor();
+                    supplierGroup = new SupplierGroup();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         //payType
@@ -167,28 +152,28 @@ namespace POSCA.View.sectionData.vendors
                         if (cb_payType.SelectedIndex != -1)
                             payType = cb_payType.SelectedValue.ToString();
 
-                        //tb_code.Text = await vendor.generateCodeNumber("v");
-                        vendor.code = await vendor.generateCodeNumber("v");
-                        vendor.name = tb_name.Text;
-                        vendor.company = tb_company.Text;
-                        vendor.address = tb_address.Text;
-                        vendor.email = tb_email.Text;
-                        vendor.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
+                        //tb_code.Text = await supplierGroup.generateCodeNumber("v");
+                        supplierGroup.code = await supplierGroup.generateCodeNumber("v");
+                        supplierGroup.name = tb_name.Text;
+                        supplierGroup.company = tb_company.Text;
+                        supplierGroup.address = tb_address.Text;
+                        supplierGroup.email = tb_email.Text;
+                        supplierGroup.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
                         if (!tb_phone.Text.Equals(""))
-                            vendor.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
+                            supplierGroup.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
                         if (!tb_fax.Text.Equals(""))
-                            vendor.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                        vendor.type = "v";
-                        vendor.accType = "";
-                        vendor.balance = 0;
-                        vendor.balanceType = 0;
-                        vendor.payType = payType;
-                        vendor.createUserId = MainWindow.userLogin.userId;
-                        vendor.updateUserId = MainWindow.userLogin.userId;
-                        vendor.notes = tb_notes.Text;
-                        vendor.isActive = 1;
+                            supplierGroup.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
+                        supplierGroup.type = "v";
+                        supplierGroup.accType = "";
+                        supplierGroup.balance = 0;
+                        supplierGroup.balanceType = 0;
+                        supplierGroup.payType = payType;
+                        supplierGroup.createUserId = MainWindow.userLogin.userId;
+                        supplierGroup.updateUserId = MainWindow.userLogin.userId;
+                        supplierGroup.notes = tb_notes.Text;
+                        supplierGroup.isActive = 1;
 
-                        var s = await vendor.save(vendor);
+                        var s = await supplierGroup.save(supplierGroup);
                         if (s <= 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -197,16 +182,16 @@ namespace POSCA.View.sectionData.vendors
 
                             if (openFileDialog.FileName != "")
                             {
-                                var vendorId = s;
-                                string b = await vendor.uploadImage(imgFileName,
-                                    Md5Encription.MD5Hash("Inc-m" + vendorId.ToString()), vendorId);
-                                vendor.image = b;
+                                var supplierGroupId = s;
+                                string b = await supplierGroup.uploadImage(imgFileName,
+                                    Md5Encription.MD5Hash("Inc-m" + supplierGroupId.ToString()), supplierGroupId);
+                                supplierGroup.image = b;
                             }
 
                             Clear();
                             await RefreshCustomersList();
                             await Search();
-                            FillCombo.vendorsList = vendors.ToList();
+                            FillCombo.supplierGroupsList = supplierGroups.ToList();
                         }
                     }
                     HelpClass.EndAwait(grid_main);
@@ -230,7 +215,7 @@ namespace POSCA.View.sectionData.vendors
                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (vendor.vendorId > 0)
+                    if (supplierGroup.supplierGroupId > 0)
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
@@ -239,20 +224,20 @@ namespace POSCA.View.sectionData.vendors
                             if (cb_payType.SelectedIndex != -1)
                                 payType = cb_payType.SelectedValue.ToString();
 
-                            vendor.name = tb_name.Text;
-                            vendor.company = tb_company.Text;
-                            vendor.email = tb_email.Text;
-                            vendor.address = tb_address.Text;
-                            vendor.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
+                            supplierGroup.name = tb_name.Text;
+                            supplierGroup.company = tb_company.Text;
+                            supplierGroup.email = tb_email.Text;
+                            supplierGroup.address = tb_address.Text;
+                            supplierGroup.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
                             if (!tb_phone.Text.Equals(""))
-                                vendor.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
+                                supplierGroup.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
                             if (!tb_fax.Text.Equals(""))
-                                vendor.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                            vendor.payType = payType;
-                            vendor.updateUserId = MainWindow.userLogin.userId;
-                            vendor.notes = tb_notes.Text;
+                                supplierGroup.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
+                            supplierGroup.payType = payType;
+                            supplierGroup.updateUserId = MainWindow.userLogin.userId;
+                            supplierGroup.notes = tb_notes.Text;
 
-                            var s = await vendor.save(vendor);
+                            var s = await supplierGroup.save(supplierGroup);
                             if (s <= 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -260,12 +245,12 @@ namespace POSCA.View.sectionData.vendors
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
                                 await RefreshCustomersList();
                                 await Search();
-                                FillCombo.vendorsList = vendors.ToList();
+                                FillCombo.supplierGroupsList = supplierGroups.ToList();
                                 if (openFileDialog.FileName != "")
                                 {
-                                    var vendorId = s;
-                                    string b = await vendor.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + vendorId.ToString()), vendorId);
-                                    vendor.image = b;
+                                    var supplierGroupId = s;
+                                    string b = await supplierGroup.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + supplierGroupId.ToString()), supplierGroupId);
+                                    supplierGroup.image = b;
                                     //isImgPressed = false;
                                     if (!b.Equals(""))
                                     {
@@ -302,9 +287,9 @@ namespace POSCA.View.sectionData.vendors
                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (vendor.vendorId != 0)
+                    if (supplierGroup.supplierGroupId != 0)
                     {
-                        if ((!vendor.canDelete) && (vendor.isActive == 0))
+                        if ((!supplierGroup.canDelete) && (supplierGroup.isActive == 0))
                         {
                             #region
                             Window.GetWindow(this).Opacity = 0.2;
@@ -322,9 +307,9 @@ namespace POSCA.View.sectionData.vendors
                             #region
                             Window.GetWindow(this).Opacity = 0.2;
                             wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            if (vendor.canDelete)
+                            if (supplierGroup.canDelete)
                                 w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-                            if (!vendor.canDelete)
+                            if (!supplierGroup.canDelete)
                                 w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDeactivate");
                             w.ShowDialog();
                             Window.GetWindow(this).Opacity = 1;
@@ -333,21 +318,21 @@ namespace POSCA.View.sectionData.vendors
                             if (w.isOk)
                             {
                                 string popupContent = "";
-                                if (vendor.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
-                                if ((!vendor.canDelete) && (vendor.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
+                                if (supplierGroup.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
+                                if ((!supplierGroup.canDelete) && (supplierGroup.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
 
-                                var s = await vendor.delete(vendor.vendorId, MainWindow.userLogin.userId, vendor.canDelete);
+                                var s = await supplierGroup.delete(supplierGroup.supplierGroupId, MainWindow.userLogin.userId, supplierGroup.canDelete);
                                 if (s < 0)
                                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                                 else
                                 {
-                                    vendor.vendorId = 0;
+                                    supplierGroup.supplierGroupId = 0;
                                     Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                     await RefreshCustomersList();
                                     await Search();
                                     Clear();
-                                    FillCombo.vendorsList = vendors.ToList();
+                                    FillCombo.supplierGroupsList = supplierGroups.ToList();
                                 }
                             }
                         }
@@ -365,19 +350,7 @@ namespace POSCA.View.sectionData.vendors
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        //private async Task activate()
-        //{//activate
-        //    vendor.isActive = 1;
-        //    var s = await vendor.save(vendor);
-        //    if (s <= 0)
-        //        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-        //    else
-        //    {
-        //        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopActive"), animation: ToasterAnimation.FadeIn);
-        //        await RefreshCustomersList();
-        //        await Search();
-        //    }
-        //}
+      
         #endregion
         #region events
         private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
@@ -394,46 +367,7 @@ namespace POSCA.View.sectionData.vendors
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        /*
-        private async void Tgl_isActive_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-
-                if (FillCombo.vendorsListAll != null)
-                    vendors = FillCombo.vendorsListAll.ToList();
-                if (vendors is null)
-                    await RefreshCustomersList();
-                tgl_vendorState = 1;
-                await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Tgl_isActive_Unchecked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (vendors is null)
-                    await RefreshCustomersList();
-                tgl_vendorState = 0;
-                await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        */
+        
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -449,41 +383,41 @@ namespace POSCA.View.sectionData.vendors
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Dg_vendor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Dg_supplierGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
                 //selection
                 /*
-                if (dg_vendor.SelectedIndex != -1)
+                if (dg_supplierGroup.SelectedIndex != -1)
                 {
-                    vendor = dg_vendor.SelectedItem as Vendor;
-                    this.DataContext = vendor;
-                    if (vendor != null)
+                    supplierGroup = dg_supplierGroup.SelectedItem as SupplierGroup;
+                    this.DataContext = supplierGroup;
+                    if (supplierGroup != null)
                     {
                         #region image
-                        bool isModified = HelpClass.chkImgChng(vendor.image, (DateTime)vendor.updateDate, Global.TMPVendorsFolder);
+                        bool isModified = HelpClass.chkImgChng(supplierGroup.image, (DateTime)supplierGroup.updateDate, Global.TMPSupplierGroupsFolder);
                         if (isModified)
                             getImg();
                         else
-                            HelpClass.getLocalImg("Vendor", vendor.image, btn_image);
+                            HelpClass.getLocalImg("SupplierGroup", supplierGroup.image, btn_image);
                         #endregion
                         //getImg();
                         #region delete
-                        if (vendor.canDelete)
+                        if (supplierGroup.canDelete)
                             btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
                         else
                         {
-                            if (vendor.isActive == 0)
+                            if (supplierGroup.isActive == 0)
                                 btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
                             else
                                 btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
                         }
                         #endregion
-                        HelpClass.getMobile(vendor.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(vendor.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(vendor.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
+                        HelpClass.getMobile(supplierGroup.mobile, cb_areaMobile, tb_mobile);
+                        HelpClass.getPhone(supplierGroup.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
+                        HelpClass.getPhone(supplierGroup.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
                     }
                 }
                 HelpClass.clearValidate(requiredControlList, this);
@@ -522,59 +456,36 @@ namespace POSCA.View.sectionData.vendors
         async Task Search()
         {
             //search
-            if (vendors is null)
+            if (supplierGroups is null)
                 await RefreshCustomersList();
             searchText = tb_search.Text.ToLower();
-            vendorsQuery = vendors.Where(s => (s.code.ToLower().Contains(searchText) ||
-            s.name.ToLower().Contains(searchText) ||
-            s.mobile.ToLower().Contains(searchText)
-            ) && s.isActive == tgl_vendorState);
+            supplierGroupsQuery = supplierGroups.Where(s =>
+            s.Name.ToLower().Contains(searchText) 
+            );
             RefreshCustomersView();
         }
-        async Task<IEnumerable<Vendor>> RefreshCustomersList()
+        async Task<IEnumerable<SupplierGroup>> RefreshCustomersList()
         {
             /*
-            await FillCombo.RefreshVendorsAll();
-            vendors = FillCombo.vendorsListAll.ToList();
+            await FillCombo.RefreshSupplierGroupsAll();
+            supplierGroups = FillCombo.supplierGroupsListAll.ToList();
             */
-            return vendors;
+            return supplierGroups;
         }
         void RefreshCustomersView()
         {
-            dg_vendor.ItemsSource = vendorsQuery;
-            txt_count.Text = vendorsQuery.Count().ToString();
+            dg_supplierGroup.ItemsSource = supplierGroupsQuery;
+            txt_count.Text = supplierGroupsQuery.Count().ToString();
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
         {
-            this.DataContext = new Vendor();
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            /*
-            #region mobile-Phone-fax-email
-            brd_areaPhoneLocal.Visibility =
-                brd_areaFaxLocal.Visibility = Visibility.Collapsed;
-            cb_areaMobile.SelectedIndex = -1;
-            cb_areaPhone.SelectedIndex = -1;
-            cb_areaFax.SelectedIndex = -1;
-            cb_areaPhoneLocal.SelectedIndex = -1;
-            cb_areaFaxLocal.SelectedIndex = -1;
-            tb_mobile.Clear();
-            tb_phone.Clear();
-            tb_fax.Clear();
-            tb_email.Clear();
-            #endregion
-            */
-            #region image
-            HelpClass.clearImg(btn_image);
-            openFileDialog.FileName = "";
-            #endregion
+            this.DataContext = new SupplierGroup();
 
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
-            p_error_email.Visibility = Visibility.Collapsed;
         }
         string input;
         decimal _decimal = 0;
@@ -654,128 +565,7 @@ namespace POSCA.View.sectionData.vendors
         }
 
         #endregion
-        /*
-        #region Phone
-        int? countryid;
-        private async void Cb_areaPhone_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (cb_areaPhone.SelectedValue != null)
-                {
-                    if (cb_areaPhone.SelectedIndex >= 0)
-                    {
-                        countryid = int.Parse(cb_areaPhone.SelectedValue.ToString());
-                        await FillCombo.fillCountriesLocal(cb_areaPhoneLocal, (long)countryid, brd_areaPhoneLocal);
-                    }
-                }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Cb_areaFax_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (cb_areaFax.SelectedValue != null)
-                {
-                    if (cb_areaFax.SelectedIndex >= 0)
-                    {
-                        countryid = int.Parse(cb_areaFax.SelectedValue.ToString());
-                        await FillCombo.fillCountriesLocal(cb_areaFaxLocal, (long)countryid, brd_areaFaxLocal);
-                    }
-                }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        #endregion
-        */
-        #region Image
-        string imgFileName = "pic/no-image-icon-125x125.png";
-        bool isImgPressed = false;
-        OpenFileDialog openFileDialog = new OpenFileDialog();
-        SaveFileDialog saveFileDialog = new SaveFileDialog();
-        private void Btn_image_Click(object sender, RoutedEventArgs e)
-        {
-            //select image
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                isImgPressed = true;
-                openFileDialog.Filter = "Images|*.png;*.jpg;*.bmp;*.jpeg;*.jfif";
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    HelpClass.imageBrush = new ImageBrush();
-                    HelpClass.imageBrush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
-                    btn_image.Background = HelpClass.imageBrush;
-                    imgFileName = openFileDialog.FileName;
-                }
-                else
-                { }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        /*
-        private async Task getImg()
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_image, "forImage");
-                if (string.IsNullOrEmpty(vendor.image))
-                {
-                    HelpClass.clearImg(btn_image);
-                }
-                else
-                {
-                    byte[] imageBuffer = await vendor.downloadImage(vendor.image); // read this as BLOB from your DB
-
-                    var bitmapImage = new BitmapImage();
-                    if (imageBuffer != null)
-                    {
-                        using (var memoryStream = new MemoryStream(imageBuffer))
-                        {
-                            bitmapImage.BeginInit();
-                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                            bitmapImage.StreamSource = memoryStream;
-                            bitmapImage.EndInit();
-                        }
-
-                        btn_image.Background = new ImageBrush(bitmapImage);
-                        // configure trmporary path
-                        string dir = Directory.GetCurrentDirectory();
-                        string tmpPath = System.IO.Path.Combine(dir, Global.TMPVendorsFolder, vendor.image);
-                        openFileDialog.FileName = tmpPath;
-                    }
-                    else
-                        HelpClass.clearImg(btn_image);
-                }
-                HelpClass.EndAwait(grid_image, "forImage");
-            }
-            catch
-            {
-                HelpClass.EndAwait(grid_image, "forImage");
-            }
-        }
-        */
-
-        #endregion
+      
 
 
 
