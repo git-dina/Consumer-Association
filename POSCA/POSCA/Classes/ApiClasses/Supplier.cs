@@ -19,48 +19,38 @@ using System.Windows;
 
 namespace POSCA.Classes
 {
-    public class Vendor
+    public class Supplier
     {
-        public long vendorId { get; set; }
-        public Nullable<long> pointId { get; set; }
-        public string name { get; set; }
-        public string code { get; set; }
-        public string company { get; set; }
-        public string address { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string mobile { get; set; }
-        public string image { get; set; }
-        public string type { get; set; }
-        public string accType { get; set; }
-        public decimal balance { get; set; }
-        public byte balanceType { get; set; }
-        public Nullable<System.DateTime> createDate { get; set; }
-        public Nullable<System.DateTime> updateDate { get; set; }
-        public Nullable<long> createUserId { get; set; }
-        public Nullable<long> updateUserId { get; set; }
-        public string notes { get; set; }
-        public byte isActive { get; set; }
-        public string fax { get; set; }
-        public decimal maxDeserve { get; set; }
-        public bool isLimited { get; set; }
-        public string payType { get; set; }
-        public bool canReserve { get; set; }
-        public string disallowReason { get; set; }
-        public Nullable<long> residentSecId { get; set; }
-        public string GPSAddress { get; set; }
-
-        public Boolean canDelete { get; set; }
-
-        //
-
-        public long vendorMembershipsId { get; set; }
-        public Nullable<long> subscriptionFeesId { get; set; }
-        public Nullable<long> cashTransId { get; set; }
-        public Nullable<long> membershipId { get; set; }
-
-        public Nullable<System.DateTime> startDate { get; set; }
-        public Nullable<System.DateTime> EndDate { get; set; }
+        public long SupId { get; set; }
+        public string SupRef { get; set; }
+        public string Name { get; set; }
+        public string ShortName { get; set; }
+        public string Address { get; set; }
+        public int SupplierTypeId { get; set; }
+        public int SupplierGroupId { get; set; }
+        public Nullable<long> AssistantSupId { get; set; }
+        public Nullable<decimal> AssistantAccountNumber { get; set; }
+        public string AssistantAccountName { get; set; }
+        public Nullable<System.DateTime> AssistantStartDate { get; set; }
+        public int DiscountPercentage { get; set; }
+        public int FreePercentag { get; set; }
+        public Nullable<int> BankId { get; set; }
+        public string BankAccount { get; set; }
+        public Nullable<int> SupNODays { get; set; }
+        public int AccountCode { get; set; }
+        public string Email { get; set; }
+        public string BOX { get; set; }
+        public bool IsBlocked { get; set; }
+        public string LicenseId { get; set; }
+        public Nullable<System.DateTime> LicenseDate { get; set; }
+        public string Notes { get; set; }
+        public string PurchaseOrderNotes { get; set; }
+        public string Image { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<long> CreateUserId { get; set; }
+        public Nullable<long> UpdateUserId { get; set; }
 
 
 
