@@ -1,6 +1,7 @@
 ﻿using POSCA.Classes;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
+//using POSCA.View.sectionData.vendors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,9 +48,9 @@ namespace POSCA
         void windowFlowDirection()
         {
             #region translate
-            if (AppSettings.lang.Equals("en"))
-                grid_mainWindow.FlowDirection = FlowDirection.LeftToRight;
-            else
+            //if (AppSettings.lang.Equals("en"))
+            //    grid_mainWindow.FlowDirection = FlowDirection.LeftToRight;
+            //else
                 grid_mainWindow.FlowDirection = FlowDirection.RightToLeft;
             #endregion
         }
@@ -187,7 +188,7 @@ namespace POSCA
                 #endregion
 
                 grid_main.Children.Clear();
-                grid_main.Children.Add(uc_vendorsData.Instance);
+                grid_main.Children.Add(uc_vendorsGroups.Instance);
 
                 //SelectAllText
                 EventManager.RegisterClassHandler(typeof(System.Windows.Controls.TextBox), System.Windows.Controls.TextBox.GotKeyboardFocusEvent, new RoutedEventHandler(SelectAllText));
@@ -459,6 +460,11 @@ namespace POSCA
         }
 
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_vendorsGroups_Click(object sender, RoutedEventArgs e)
         {
 
         }

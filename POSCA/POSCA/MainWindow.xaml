@@ -285,7 +285,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                                 </Grid>
                             </Expander.Header>
-                            <Grid>
+                            <StackPanel>
                                 <Button   Height="50"
                                   Grid.Row="1"
                            Tag="vendorsData" 
@@ -306,8 +306,28 @@
                               Grid.Column="1"      Margin="50,0,0,0"/>
                                     </Grid>
                                 </Button>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="vendorsGroups" 
+                          x:Name="btn_vendorsGroups"  Click="Btn_vendorsGroups_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                    <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                        <Grid.ColumnDefinitions>
+                                            <!--<ColumnDefinition Width="50"/>-->
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!--<Path Fill="White" x:Name="path_iconVendors" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                              Data="{StaticResource vendor}"/>-->
+                                        <TextBlock Text="vendorsGroups" Foreground="White" x:Name="txt_vendorsGroups"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="50,0,0,0"/>
+                                    </Grid>
+                                </Button>
 
-                            </Grid>
+                            </StackPanel>
                         </Expander>
 
                     </Expander>
