@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:POSCA"
         mc:Ignorable="d"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Increase" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Consumer Association" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         d:DesignHeight="768" d:DesignWidth="1024"
         WindowStartupLocation="CenterScreen"  WindowStyle="None"
         WindowState="Maximized"  Loaded="Window_Loaded" Unloaded="Window_Unloaded">
@@ -192,13 +192,13 @@
                 <Separator Margin="5 5 5 0" Background="{StaticResource veryLightGrey}" VerticalAlignment="Top" Width="auto" />
                 <StackPanel Orientation="Horizontal" Margin="10 5"
                            HorizontalAlignment="Left" VerticalAlignment="Bottom">
-                    <TextBlock Text="Increase POS - " Foreground="{StaticResource Grey}"   />
-                    <TextBlock Text="POSCA" Foreground="{StaticResource MainColor}"   />
-                    <TextBlock Text="Version: " Name="tb_versionTitle"
+                    <!--<TextBlock Text="Increase POS - " Foreground="{StaticResource Grey}"   />
+                    <TextBlock Text="POSCA" Foreground="{StaticResource MainColor}"   />-->
+                    <!--<TextBlock Text="Version: " Name="tb_versionTitle"
                                Margin="25 0 5 0"
-                               Foreground="{StaticResource Grey}"/>
-                    <TextBlock Text="" Name="tb_version"
-                               Foreground="{StaticResource Grey}"   />
+                               Foreground="{StaticResource Grey}"/>-->
+                    <!--<TextBlock Text="" Name="tb_version"
+                               Foreground="{StaticResource Grey}"   />-->
                 </StackPanel>
                 <TextBlock Grid.Row="7" Grid.Column="0"  FontSize="12" Grid.ColumnSpan="6" 
                    FontWeight="Normal" Foreground="#9B9B9B"
@@ -224,15 +224,14 @@
                 <StackPanel   HorizontalAlignment="Left" >
 
                     <!--Height="40" Width="40"-->
-                   
-
                     <Grid>
-                        <Button   Height="50" Grid.Row="1"
-                           Tag="home"
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="home" 
                           x:Name="btn_home"  Click="Btn_home_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}"   
                     Padding="0" >
-                            <Grid  Height="50" >
+                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="75"/>
                                     <ColumnDefinition Width="*"/>
@@ -248,265 +247,70 @@
                         </Button>
                       
                     </Grid>
-
-                    <!--<Grid>
-                        <Button  Width="200" Height="50" Grid.Row="2" Tag="catalog"
-                         HorizontalAlignment="Left" x:Name="btn_catalog"
-                        
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" Click="Btn_catalog_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Catalog"  Visibility="Visible" x:Name="tt_catalog"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
+                    <!--#region  sectionData-->
+                    <Expander  x:Name="exp_sectionData" Tag="sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid  Height="50"   >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconCatalog" Stretch="Fill"   
+                                <Path Fill="White" x:Name="path_iconSectionData" Stretch="Fill"  
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource catalog}"/>
-                                <TextBlock Text="Catalog"  Foreground="#FEDFB7" x:Name="txt_catalog"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openCatalog" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="4" 
-                        HorizontalAlignment="Left" x:Name="btn_purchase"  Tag="purchase"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" Click="Btn_purchase_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Purchases"  Visibility="Visible" x:Name="tt_purchase"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconPurchases" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"   FlowDirection="LeftToRight"
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource purchases}"/>
-                                <TextBlock Text="Purchases"  Foreground="#FEDFB7" x:Name="txt_purchases"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openPurchases" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="3"  Tag="storage"
-                         HorizontalAlignment="Left" x:Name="btn_storage"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" Click="Btn_storage_Click"  >
-                            <Button.ToolTip>
-                                <ToolTip Content="Storage"  Visibility="Visible" x:Name="tt_storage"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50"  >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconStorage" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource storage}"/>
-                                <TextBlock Text="Storage"  Foreground="#FEDFB7" x:Name="txt_storage"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openStorage" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="4" 
-                        HorizontalAlignment="Left" x:Name="btn_kitchen"  Tag="kitchen"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" Click="Btn_kitchen_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Kitchen"  Visibility="Visible" x:Name="tt_kitchen"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconKitchen" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"   FlowDirection="LeftToRight"
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource kitchen}"/>
-                                <TextBlock Text="Kitchen"  Foreground="#FEDFB7" x:Name="txt_kitchen"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openKitchen" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="5"  Tag="sales"
-                       HorizontalAlignment="Left" x:Name="btn_sales"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" Click="Btn_sales_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Sales"  Visibility="Visible" x:Name="tt_sales"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconSales" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20" FlowDirection="LeftToRight"
-                              Data="{StaticResource sales}"/>
-                                <TextBlock Text="Sales"  Foreground="#FEDFB7" x:Name="txt_sales"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openSales" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="6" HorizontalAlignment="Left"
-                    Background="{x:Null}" BorderBrush="{x:Null}"    Tag="delivery"
-                    Padding="0"  x:Name="btn_delivery" Click="Btn_delivery_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Delivery"  Visibility="Visible" x:Name="tt_delivery"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconDelivery" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"    
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource delivery}"/>
-                                <TextBlock Text="Delivery" Foreground="#FEDFB7" x:Name="txt_delivery"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openDelivery" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="6" HorizontalAlignment="Left"
-                    Background="{x:Null}" BorderBrush="{x:Null}"    Tag="accounts"
-                    Padding="0"  x:Name="btn_accounts" Click="Btn_accounts_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Accounts"  Visibility="Visible" x:Name="tt_accounts"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconAccounts" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"   FlowDirection="LeftToRight"
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource accounts}"/>
-
-                                <TextBlock Text="Accounting" Foreground="#FEDFB7" x:Name="txt_accounts"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openAccounts" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="7" HorizontalAlignment="Left"
-                    Background="{x:Null}" BorderBrush="{x:Null}"     Tag="reports"
-                    Padding="0"  x:Name="btn_reports" Click="Btn_reports_Click"   >
-                            <Button.ToolTip>
-                                <ToolTip Content="Reports"  Visibility="Visible" x:Name="tt_reports"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconReports" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource reports}"/>
-                                <TextBlock Text="Reports" Foreground="#FEDFB7" x:Name="txt_reports"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="10,0,0,0"/>
-                            </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openReports" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="8" HorizontalAlignment="Left"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   Tag="sectionData"
-                    Padding="0" x:Name="btn_sectionData" Click="Btn_SectionData_Click" >
-                            <Button.ToolTip>
-                                <ToolTip Content="Section Data"  Visibility="Visible" x:Name="tt_sectionData"/>
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconSectionData" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
                               Data="{StaticResource data}"/>
-                                <TextBlock Text="Section Data" Foreground="#FEDFB7" x:Name="txt_sectiondata"
+                                <TextBlock Text="sectionData" Foreground="White" x:Name="txt_sectionData"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openSectionData" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>
-                    <Grid>
-                        <Button  Width="200" Height="50" Grid.Row="9" HorizontalAlignment="Left"
-                    Background="{x:Null}" BorderBrush="{x:Null}"    Tag="settings"
-                    Padding="0" x:Name="btn_settings" Click="Btn_settings_Click">
-                            <Button.ToolTip>
-                                <ToolTip Content="Settings" x:Name="tt_settings" Visibility="Visible" />
-                            </Button.ToolTip>
-                            <Grid Width="200" Height="50" >
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="75"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Path Fill="#FEDFB7" x:Name="path_iconSettings" Stretch="Fill"  
+                        </Expander.Header>
+                        <!--#region  vendors-->
+                        <Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                            <Expander.Header>
+                                <Grid Margin=" 0 0 0 0" Height="50"   >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Path Fill="White" x:Name="path_iconVendors" Stretch="Fill"  
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
-                              Data="{StaticResource settings}"/>
-
-                                <TextBlock Text="Settings" Foreground="#FEDFB7" x:Name="txt_settings"
+                                      Margin="5 10"
+                              Data="{StaticResource data}"/>-->
+                                    <TextBlock Text="vendors" Foreground="White" x:Name="txt_vendors"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
                               Grid.Column="1"      Margin="10,0,0,0"/>
+                                </Grid>
+                            </Expander.Header>
+                            <Grid>
+                                <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="vendorsData" 
+                          x:Name="btn_vendorsData"  Click="Btn_vendorsData_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                    <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                        <Grid.ColumnDefinitions>
+                                            <!--<ColumnDefinition Width="50"/>-->
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <!--<Path Fill="White" x:Name="path_iconVendors" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                              Data="{StaticResource vendor}"/>-->
+                                        <TextBlock Text="vendorsData" Foreground="White" x:Name="txt_vendorsData"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="50,0,0,0"/>
+                                    </Grid>
+                                </Button>
+
                             </Grid>
-                        </Button>
-                        <Rectangle Fill="White"  Grid.Row="1" Stretch="Fill"  
-                                x:Name="path_openSettings" Visibility="Collapsed" HorizontalAlignment="Left"
-                         VerticalAlignment="Center" Width="5"  Height="40"   Margin="0" />
-                    </Grid>-->
+                        </Expander>
+
+                    </Expander>
                 </StackPanel>
             </Grid>
             <Grid  Grid.Row="3" Grid.Column="0"   Grid.ColumnSpan="2"
@@ -614,6 +418,8 @@
             </Border>-->
             <!--</Canvas>-->
 
+            
         </Grid>
+        <!--<mah:ProgressRing />-->
     </Grid>
 </Window>

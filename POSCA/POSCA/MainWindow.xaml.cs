@@ -1,5 +1,6 @@
 ﻿using POSCA.Classes;
 using POSCA.View.sectionData;
+using POSCA.View.sectionData.vendors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,7 +57,7 @@ namespace POSCA
         {//load
             try
             {
-                //HelpClass.StartAwait(grid_mainWindow, "mainWindow_loaded");
+                HelpClass.StartAwait(grid_mainWindow, "mainWindow_loaded");
                 timer = new DispatcherTimer();
                 timer.Interval = TimeSpan.FromSeconds(1);
                 timer.Tick += timer_Tick;
@@ -186,7 +187,7 @@ namespace POSCA
                 #endregion
 
                 grid_main.Children.Clear();
-                grid_main.Children.Add(uc_vendors.Instance);
+                grid_main.Children.Add(uc_vendorsData.Instance);
 
                 //SelectAllText
                 EventManager.RegisterClassHandler(typeof(System.Windows.Controls.TextBox), System.Windows.Controls.TextBox.GotKeyboardFocusEvent, new RoutedEventHandler(SelectAllText));
@@ -385,6 +386,14 @@ namespace POSCA
         {
             try
             {
+                foreach (var control in FindControls.FindVisualChildren<Expander>(this))
+                {
+
+                    var expander = control as Expander;
+                    if (expander.Tag != null )
+                            expander.IsExpanded = false;
+                }
+
                 /*
                 colorTextRefreash(txt_home);
                 FN_pathVisible(path_openHome);
@@ -423,6 +432,33 @@ namespace POSCA
         }
 
         private void Btn_message_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var Sender = sender as Expander;
+
+                //foreach (var control in FindControls.FindVisualChildren<Expander>(this))
+                //{
+
+                //    var expander = control as Expander;
+                //    if (expander.Tag != null && Sender.Tag != null)
+                //        if (expander.Tag.ToString() != Sender.Tag.ToString())
+                //            expander.IsExpanded = false;
+                //}
+               
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
 
         }

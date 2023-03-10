@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\job with Dina\ConsumerAssociation\POSCA\POSCA\POSCA\obj\Debug\
+E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\obj\Debug\
 POSCA
 none
 false
 DEBUG;TRACE
-E:\job with Dina\ConsumerAssociation\POSCA\POSCA\POSCA\App.xaml
-21580234983
+E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\App.xaml
+31808866477
 
-19-1297718958
-20632350969
-MainWindow.xaml;View\sectionData\uc_vendors.xaml;
+1959467709
+27410356127
+MainWindow.xaml;View\sectionData\vendors\uc_vendorsData.xaml;View\sectionData\vendors\uc_vendorsGroups.xaml;
 
-True
+False
 
