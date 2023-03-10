@@ -56,11 +56,11 @@ namespace POSCA.View.sectionData
             }
         }
 
-        //string basicsPermission = "vendors_basics";
-        Vendor vendor = new Vendor();
-        IEnumerable<Vendor> vendorsQuery;
-        IEnumerable<Vendor> vendors;
-        byte tgl_vendorState;
+        //string basicsPermission = "suppliers_basics";
+        Supplier supplier = new Supplier();
+        IEnumerable<Supplier> suppliersQuery;
+        IEnumerable<Supplier> suppliers;
+        byte tgl_supplierState;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -89,10 +89,10 @@ namespace POSCA.View.sectionData
                 //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
                 Keyboard.Focus(tb_name);
                 /*
-                if (FillCombo.vendorsListAll is null)
+                if (FillCombo.suppliersListAll is null)
                     await RefreshCustomersList();
                 else
-                    vendors = FillCombo.vendorsListAll.ToList();
+                    suppliers = FillCombo.suppliersListAll.ToList();
                 */
                 await Search();
                 Clear();
@@ -115,7 +115,7 @@ namespace POSCA.View.sectionData
             //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
             //   );
 
-            //txt_title.Text = AppSettings.resourcemanager.GetString("trVendor");
+            //txt_title.Text = AppSettings.resourcemanager.GetString("trSupplier");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -138,10 +138,10 @@ namespace POSCA.View.sectionData
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_payType, AppSettings.resourcemanager.GetString("trDefaultPayType"));
 
-            dg_vendor.Columns[0].Header = AppSettings.resourcemanager.GetString("trCode");
-            dg_vendor.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_vendor.Columns[2].Header = AppSettings.resourcemanager.GetString("trCompany");
-            dg_vendor.Columns[3].Header = AppSettings.resourcemanager.GetString("trMobile");
+            dg_supplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trCode");
+            dg_supplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
+            dg_supplier.Columns[2].Header = AppSettings.resourcemanager.GetString("trCompany");
+            dg_supplier.Columns[3].Header = AppSettings.resourcemanager.GetString("trMobile");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -165,7 +165,7 @@ namespace POSCA.View.sectionData
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    vendor = new Vendor();
+                    supplier = new Supplier();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         //payType
@@ -173,28 +173,28 @@ namespace POSCA.View.sectionData
                         if (cb_payType.SelectedIndex != -1)
                             payType = cb_payType.SelectedValue.ToString();
 
-                        //tb_code.Text = await vendor.generateCodeNumber("v");
-                        vendor.code = await vendor.generateCodeNumber("v");
-                        vendor.name = tb_name.Text;
-                        vendor.company = tb_company.Text;
-                        vendor.address = tb_address.Text;
-                        vendor.email = tb_email.Text;
-                        vendor.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
+                        //tb_code.Text = await supplier.generateCodeNumber("v");
+                        supplier.code = await supplier.generateCodeNumber("v");
+                        supplier.name = tb_name.Text;
+                        supplier.company = tb_company.Text;
+                        supplier.address = tb_address.Text;
+                        supplier.email = tb_email.Text;
+                        supplier.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
                         if (!tb_phone.Text.Equals(""))
-                            vendor.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
+                            supplier.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
                         if (!tb_fax.Text.Equals(""))
-                            vendor.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                        vendor.type = "v";
-                        vendor.accType = "";
-                        vendor.balance = 0;
-                        vendor.balanceType = 0;
-                        vendor.payType = payType;
-                        vendor.createUserId = MainWindow.userLogin.userId;
-                        vendor.updateUserId = MainWindow.userLogin.userId;
-                        vendor.notes = tb_notes.Text;
-                        vendor.isActive = 1;
+                            supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
+                        supplier.type = "v";
+                        supplier.accType = "";
+                        supplier.balance = 0;
+                        supplier.balanceType = 0;
+                        supplier.payType = payType;
+                        supplier.createUserId = MainWindow.userLogin.userId;
+                        supplier.updateUserId = MainWindow.userLogin.userId;
+                        supplier.notes = tb_notes.Text;
+                        supplier.isActive = 1;
 
-                        var s = await vendor.save(vendor);
+                        var s = await supplier.save(supplier);
                         if (s <= 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -203,16 +203,16 @@ namespace POSCA.View.sectionData
 
                             if (openFileDialog.FileName != "")
                             {
-                                var vendorId = s;
-                                string b = await vendor.uploadImage(imgFileName,
-                                    Md5Encription.MD5Hash("Inc-m" + vendorId.ToString()), vendorId);
-                                vendor.image = b;
+                                var supplierId = s;
+                                string b = await supplier.uploadImage(imgFileName,
+                                    Md5Encription.MD5Hash("Inc-m" + supplierId.ToString()), supplierId);
+                                supplier.image = b;
                             }
 
                             Clear();
                             await RefreshCustomersList();
                             await Search();
-                            FillCombo.vendorsList = vendors.ToList();
+                            FillCombo.suppliersList = suppliers.ToList();
                         }
                     }
                     HelpClass.EndAwait(grid_main);
@@ -236,7 +236,7 @@ namespace POSCA.View.sectionData
                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (vendor.vendorId > 0)
+                    if (supplier.supplierId > 0)
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
@@ -245,20 +245,20 @@ namespace POSCA.View.sectionData
                             if (cb_payType.SelectedIndex != -1)
                                 payType = cb_payType.SelectedValue.ToString();
 
-                            vendor.name = tb_name.Text;
-                            vendor.company = tb_company.Text;
-                            vendor.email = tb_email.Text;
-                            vendor.address = tb_address.Text;
-                            vendor.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
+                            supplier.name = tb_name.Text;
+                            supplier.company = tb_company.Text;
+                            supplier.email = tb_email.Text;
+                            supplier.address = tb_address.Text;
+                            supplier.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
                             if (!tb_phone.Text.Equals(""))
-                                vendor.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
+                                supplier.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
                             if (!tb_fax.Text.Equals(""))
-                                vendor.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                            vendor.payType = payType;
-                            vendor.updateUserId = MainWindow.userLogin.userId;
-                            vendor.notes = tb_notes.Text;
+                                supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
+                            supplier.payType = payType;
+                            supplier.updateUserId = MainWindow.userLogin.userId;
+                            supplier.notes = tb_notes.Text;
 
-                            var s = await vendor.save(vendor);
+                            var s = await supplier.save(supplier);
                             if (s <= 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -266,12 +266,12 @@ namespace POSCA.View.sectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
                                 await RefreshCustomersList();
                                 await Search();
-                                FillCombo.vendorsList = vendors.ToList();
+                                FillCombo.suppliersList = suppliers.ToList();
                                 if (openFileDialog.FileName != "")
                                 {
-                                    var vendorId = s;
-                                    string b = await vendor.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + vendorId.ToString()), vendorId);
-                                    vendor.image = b;
+                                    var supplierId = s;
+                                    string b = await supplier.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + supplierId.ToString()), supplierId);
+                                    supplier.image = b;
                                     //isImgPressed = false;
                                     if (!b.Equals(""))
                                     {
@@ -308,9 +308,9 @@ namespace POSCA.View.sectionData
                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (vendor.vendorId != 0)
+                    if (supplier.supplierId != 0)
                     {
-                        if ((!vendor.canDelete) && (vendor.isActive == 0))
+                        if ((!supplier.canDelete) && (supplier.isActive == 0))
                         {
                             #region
                             Window.GetWindow(this).Opacity = 0.2;
@@ -328,9 +328,9 @@ namespace POSCA.View.sectionData
                             #region
                             Window.GetWindow(this).Opacity = 0.2;
                             wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            if (vendor.canDelete)
+                            if (supplier.canDelete)
                                 w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-                            if (!vendor.canDelete)
+                            if (!supplier.canDelete)
                                 w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDeactivate");
                             w.ShowDialog();
                             Window.GetWindow(this).Opacity = 1;
@@ -339,21 +339,21 @@ namespace POSCA.View.sectionData
                             if (w.isOk)
                             {
                                 string popupContent = "";
-                                if (vendor.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
-                                if ((!vendor.canDelete) && (vendor.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
+                                if (supplier.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
+                                if ((!supplier.canDelete) && (supplier.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
 
-                                var s = await vendor.delete(vendor.vendorId, MainWindow.userLogin.userId, vendor.canDelete);
+                                var s = await supplier.delete(supplier.supplierId, MainWindow.userLogin.userId, supplier.canDelete);
                                 if (s < 0)
                                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                                 else
                                 {
-                                    vendor.vendorId = 0;
+                                    supplier.supplierId = 0;
                                     Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                     await RefreshCustomersList();
                                     await Search();
                                     Clear();
-                                    FillCombo.vendorsList = vendors.ToList();
+                                    FillCombo.suppliersList = suppliers.ToList();
                                 }
                             }
                         }
@@ -373,8 +373,8 @@ namespace POSCA.View.sectionData
         }
         //private async Task activate()
         //{//activate
-        //    vendor.isActive = 1;
-        //    var s = await vendor.save(vendor);
+        //    supplier.isActive = 1;
+        //    var s = await supplier.save(supplier);
         //    if (s <= 0)
         //        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
         //    else
@@ -407,11 +407,11 @@ namespace POSCA.View.sectionData
             {
                 HelpClass.StartAwait(grid_main);
 
-                if (FillCombo.vendorsListAll != null)
-                    vendors = FillCombo.vendorsListAll.ToList();
-                if (vendors is null)
+                if (FillCombo.suppliersListAll != null)
+                    suppliers = FillCombo.suppliersListAll.ToList();
+                if (suppliers is null)
                     await RefreshCustomersList();
-                tgl_vendorState = 1;
+                tgl_supplierState = 1;
                 await Search();
                 HelpClass.EndAwait(grid_main);
             }
@@ -426,9 +426,9 @@ namespace POSCA.View.sectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                if (vendors is null)
+                if (suppliers is null)
                     await RefreshCustomersList();
-                tgl_vendorState = 0;
+                tgl_supplierState = 0;
                 await Search();
                 HelpClass.EndAwait(grid_main);
             }
@@ -455,41 +455,41 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Dg_vendor_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Dg_supplier_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
                 //selection
                 /*
-                if (dg_vendor.SelectedIndex != -1)
+                if (dg_supplier.SelectedIndex != -1)
                 {
-                    vendor = dg_vendor.SelectedItem as Vendor;
-                    this.DataContext = vendor;
-                    if (vendor != null)
+                    supplier = dg_supplier.SelectedItem as Supplier;
+                    this.DataContext = supplier;
+                    if (supplier != null)
                     {
                         #region image
-                        bool isModified = HelpClass.chkImgChng(vendor.image, (DateTime)vendor.updateDate, Global.TMPVendorsFolder);
+                        bool isModified = HelpClass.chkImgChng(supplier.image, (DateTime)supplier.updateDate, Global.TMPSuppliersFolder);
                         if (isModified)
                             getImg();
                         else
-                            HelpClass.getLocalImg("Vendor", vendor.image, btn_image);
+                            HelpClass.getLocalImg("Supplier", supplier.image, btn_image);
                         #endregion
                         //getImg();
                         #region delete
-                        if (vendor.canDelete)
+                        if (supplier.canDelete)
                             btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
                         else
                         {
-                            if (vendor.isActive == 0)
+                            if (supplier.isActive == 0)
                                 btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
                             else
                                 btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
                         }
                         #endregion
-                        HelpClass.getMobile(vendor.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(vendor.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(vendor.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
+                        HelpClass.getMobile(supplier.mobile, cb_areaMobile, tb_mobile);
+                        HelpClass.getPhone(supplier.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
+                        HelpClass.getPhone(supplier.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
                     }
                 }
                 HelpClass.clearValidate(requiredControlList, this);
@@ -528,33 +528,34 @@ namespace POSCA.View.sectionData
         async Task Search()
         {
             //search
-            if (vendors is null)
+            if (suppliers is null)
                 await RefreshCustomersList();
             searchText = tb_search.Text.ToLower();
-            vendorsQuery = vendors.Where(s => (s.code.ToLower().Contains(searchText) ||
-            s.name.ToLower().Contains(searchText) ||
-            s.mobile.ToLower().Contains(searchText)
-            ) && s.isActive == tgl_vendorState);
+            suppliersQuery = suppliers.Where(s =>
+            //s.AccountCode.ToLower().Contains(searchText) ||
+            s.Name.ToLower().Contains(searchText)
+            //  || s.mobile.ToLower().Contains(searchText)
+            );
             RefreshCustomersView();
         }
-        async Task<IEnumerable<Vendor>> RefreshCustomersList()
+        async Task<IEnumerable<Supplier>> RefreshCustomersList()
         {
             /*
-            await FillCombo.RefreshVendorsAll();
-            vendors = FillCombo.vendorsListAll.ToList();
+            await FillCombo.RefreshSuppliersAll();
+            suppliers = FillCombo.suppliersListAll.ToList();
             */
-            return vendors;
+            return suppliers;
         }
         void RefreshCustomersView()
         {
-            dg_vendor.ItemsSource = vendorsQuery;
-            txt_count.Text = vendorsQuery.Count().ToString();
+            dg_supplier.ItemsSource = suppliersQuery;
+            txt_count.Text = suppliersQuery.Count().ToString();
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
         {
-            this.DataContext = new Vendor();
+            this.DataContext = new Supplier();
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             /*
@@ -744,13 +745,13 @@ namespace POSCA.View.sectionData
             try
             {
                 HelpClass.StartAwait(grid_image, "forImage");
-                if (string.IsNullOrEmpty(vendor.image))
+                if (string.IsNullOrEmpty(supplier.image))
                 {
                     HelpClass.clearImg(btn_image);
                 }
                 else
                 {
-                    byte[] imageBuffer = await vendor.downloadImage(vendor.image); // read this as BLOB from your DB
+                    byte[] imageBuffer = await supplier.downloadImage(supplier.image); // read this as BLOB from your DB
 
                     var bitmapImage = new BitmapImage();
                     if (imageBuffer != null)
@@ -766,7 +767,7 @@ namespace POSCA.View.sectionData
                         btn_image.Background = new ImageBrush(bitmapImage);
                         // configure trmporary path
                         string dir = Directory.GetCurrentDirectory();
-                        string tmpPath = System.IO.Path.Combine(dir, Global.TMPVendorsFolder, vendor.image);
+                        string tmpPath = System.IO.Path.Combine(dir, Global.TMPSuppliersFolder, supplier.image);
                         openFileDialog.FileName = tmpPath;
                     }
                     else
@@ -801,11 +802,11 @@ namespace POSCA.View.sectionData
             bool isArabic = ReportCls.checkLang();
             if (isArabic)
             {
-                addpath = @"\Reports\SectionData\persons\Ar\ArVendors.rdlc";
+                addpath = @"\Reports\SectionData\persons\Ar\ArSuppliers.rdlc";
             }
             else
             {
-                addpath = @"\Reports\SectionData\persons\En\EnVendors.rdlc";
+                addpath = @"\Reports\SectionData\persons\En\EnSuppliers.rdlc";
             }
             string searchval = "";
             string stateval = "";
@@ -820,7 +821,7 @@ namespace POSCA.View.sectionData
             //end filter
             string reppath = reportclass.PathUp(Directory.GetCurrentDirectory(), 2, addpath);
 
-            clsReports.VendorReport(vendorsQuery, rep, reppath, paramarr);
+            clsReports.SupplierReport(suppliersQuery, rep, reppath, paramarr);
             clsReports.setReportLanguage(paramarr);
             clsReports.Header(paramarr);
 
@@ -985,7 +986,7 @@ namespace POSCA.View.sectionData
                 {
                     #region
                     Window.GetWindow(this).Opacity = 0.2;
-                    win_lvc win = new win_lvc(vendorsQuery, 1, false);
+                    win_lvc win = new win_lvc(suppliersQuery, 1, false);
                     win.ShowDialog();
                     Window.GetWindow(this).Opacity = 1;
                     #endregion
