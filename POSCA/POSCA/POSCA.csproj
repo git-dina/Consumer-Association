@@ -81,7 +81,7 @@
     <Compile Include="Classes\ApiClasses\Branch.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
-    <Compile Include="Classes\ApiClasses\Vendor.cs" />
+    <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="View\sectionData\uc_vendors.xaml.cs">
       <DependentUpon>uc_vendors.xaml</DependentUpon>
     </Compile>
