@@ -187,8 +187,7 @@ namespace POSCA
                 permission();
                 #endregion
 
-                grid_main.Children.Clear();
-                grid_main.Children.Add(uc_vendorsGroups.Instance);
+               
 
                 //SelectAllText
                 EventManager.RegisterClassHandler(typeof(System.Windows.Controls.TextBox), System.Windows.Controls.TextBox.GotKeyboardFocusEvent, new RoutedEventHandler(SelectAllText));
@@ -461,12 +460,20 @@ namespace POSCA
 
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
-
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_vendorsData.Instance);
         }
 
         private void Btn_vendorsGroups_Click(object sender, RoutedEventArgs e)
         {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_vendorsGroups.Instance);
+        }
 
+        private void Btn_vendorsType_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_vendorsType.Instance);
         }
     }
 }
