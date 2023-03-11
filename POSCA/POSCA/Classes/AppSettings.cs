@@ -16,6 +16,12 @@ namespace POSCA.Classes
         public static ResourceManager resourcemanagerreport;
         public static ResourceManager resourcemanagerAr;
 
+       
+        public static string APIUri = "http://145.239.195.166:44370/api/";
+
+        #region folders Paths
+        public const string TMPFolder = "Thumb";
+        #endregion
         // app version
         //static public string CurrentVersion
         //{
