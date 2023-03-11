@@ -69,6 +69,17 @@ namespace POSCA.Classes
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
     }
+    public class SupNotAllowedTrans
+    {
+        public long Id { get; set; }
+        public long SupId { get; set; }
+        public int SubTransId { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<long> CreateUserId { get; set; }
+        public Nullable<long> UpdateUserId { get; set; }
+    }
     public class Supplier
     {
         #region Attributes
@@ -105,6 +116,8 @@ namespace POSCA.Classes
 
         public List<SupplierPhone> SupplierPhones { get; set; }
         public List<SupplierSector> SupplierSectors { get; set; }
+        public List<SupNotAllowedTrans> SupNotAllowedTrans { get; set; }
+
         #endregion
 
         /*
