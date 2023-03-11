@@ -95,6 +95,7 @@
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
+    <Compile Include="Classes\ApiClasses\SupplierType.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
     <Compile Include="View\sectionData\vendors\uc_vendorsData.xaml.cs">
       <DependentUpon>uc_vendorsData.xaml</DependentUpon>
