@@ -332,6 +332,21 @@
                               Grid.Column="1"      Margin="50,0,0,0"/>
                                     </Grid>
                                 </Button>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="supportVendors" 
+                          x:Name="btn_supportVendors"  Click="Btn_supportVendors_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                    <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                        <Grid.ColumnDefinitions>
+                                             <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="- supportVendors" Foreground="White" x:Name="txt_supportVendors"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="50,0,0,0"/>
+                                    </Grid>
+                                </Button>
 
                             </StackPanel>
                         </Expander>

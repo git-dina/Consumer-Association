@@ -475,5 +475,11 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_vendorsType.Instance);
         }
+
+        private void Btn_supportVendors_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_supportVendors.Instance);
+        }
     }
 }
