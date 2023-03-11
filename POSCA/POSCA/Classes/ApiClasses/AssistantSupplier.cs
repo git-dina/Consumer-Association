@@ -17,5 +17,20 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        internal Task<List<AssistantSupplier>> get(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<AssistantSupplier>> save(AssistantSupplier assistantSupplier)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<AssistantSupplier>> delete(long assistantSupId, long userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

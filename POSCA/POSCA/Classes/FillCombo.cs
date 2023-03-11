@@ -28,6 +28,17 @@ namespace POSCA.Classes
             return supplierGroupList;
         }
         #endregion
+        #region Assistant Supplier
+        static public AssistantSupplier assistantSupplier = new AssistantSupplier();
+        static public List<AssistantSupplier> assistantSupplierList ;
+
+        static public async Task<IEnumerable<AssistantSupplier>> RefreshAssistantSuppliers()
+        {
+            assistantSupplierList = await assistantSupplier.get(true);
+
+            return assistantSupplierList;
+        }
+        #endregion
 
         #region supplier types
         static public SupplierType supplierType = new SupplierType();
