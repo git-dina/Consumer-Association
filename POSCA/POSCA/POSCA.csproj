@@ -138,6 +138,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\ApiClasses\APIResult.cs" />
+    <Compile Include="Classes\ApiClasses\AssistantSupplier.cs" />
     <Compile Include="Classes\ApiClasses\Branch.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
