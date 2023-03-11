@@ -21,6 +21,9 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
 
+        public bool HasSuppliers { get; set; }
+
+
         #endregion
 
         #region Methods
@@ -58,6 +61,25 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<SupplierGroup>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<List<SupplierGroup>> delete(long supGroupId, long userId)
+        {
+            var result = new List<SupplierGroup>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("itemId", supGroupId.ToString());
+            parameters.Add("userId", userId.ToString());
+            string method = "SupplierGroup/delete";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add( JsonConvert.DeserializeObject<SupplierGroup>(c.Value));
                 }
             }
             return result;

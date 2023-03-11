@@ -5069,4 +5069,13 @@
   <data name="printer" xml:space="preserve">
     <value>طابعة</value>
   </data>
+  <data name="HasSuppliers" xml:space="preserve">
+    <value>تحتوي على موردين</value>
+  </data>
+  <data name="IsBlocked" xml:space="preserve">
+    <value>موقوف</value>
+  </data>
+  <data name="SupplierGroups" xml:space="preserve">
+    <value>مجموعات الموردين</value>
+  </data>
 </root>

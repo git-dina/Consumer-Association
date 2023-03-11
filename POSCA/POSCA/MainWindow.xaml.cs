@@ -25,7 +25,7 @@ namespace POSCA
     /// </summary>
     public partial class MainWindow : Window
     {
-        internal static User userLogin;
+        internal static User userLogin = new User();
         internal static Pos posLogin;
         internal static Branch branchLogin;
 
