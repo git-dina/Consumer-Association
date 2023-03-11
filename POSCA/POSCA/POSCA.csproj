@@ -153,6 +153,9 @@
     <Compile Include="View\sectionData\vendors\uc_vendorsType.xaml.cs">
       <DependentUpon>uc_vendorsType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_acceptCancelPopup.xaml.cs">
+      <DependentUpon>wd_acceptCancelPopup.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -181,6 +184,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\sectionData\vendors\uc_vendorsType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\windows\wd_acceptCancelPopup.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -231,7 +238,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="converters\" />
-    <Folder Include="View\windows\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
