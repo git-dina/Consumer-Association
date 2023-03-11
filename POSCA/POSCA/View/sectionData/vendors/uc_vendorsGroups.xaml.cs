@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
@@ -53,7 +54,6 @@ namespace POSCA.View.sectionData.vendors
 
         SupplierGroup supplierGroup = new SupplierGroup();
         IEnumerable<SupplierGroup> supplierGroupsQuery;
-        IEnumerable<SupplierGroup> supplierGroups;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -139,66 +139,37 @@ namespace POSCA.View.sectionData.vendors
         {//add
             try
             {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
-                {
+           
+                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
+                //{
                     HelpClass.StartAwait(grid_main);
 
                     supplierGroup = new SupplierGroup();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                        //payType
-                        string payType = "";
-                        if (cb_payType.SelectedIndex != -1)
-                            payType = cb_payType.SelectedValue.ToString();
+                        supplierGroup.Name = tb_Name.Text;
+                        if (tgl_IsBlocked.IsChecked == true)
+                            supplierGroup.IsBlocked = true;
+                        else
+                            supplierGroup.IsBlocked = false;
 
-                        //tb_code.Text = await supplierGroup.generateCodeNumber("v");
-                        supplierGroup.code = await supplierGroup.generateCodeNumber("v");
-                        supplierGroup.name = tb_name.Text;
-                        supplierGroup.company = tb_company.Text;
-                        supplierGroup.address = tb_address.Text;
-                        supplierGroup.email = tb_email.Text;
-                        supplierGroup.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
-                        if (!tb_phone.Text.Equals(""))
-                            supplierGroup.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
-                        if (!tb_fax.Text.Equals(""))
-                            supplierGroup.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                        supplierGroup.type = "v";
-                        supplierGroup.accType = "";
-                        supplierGroup.balance = 0;
-                        supplierGroup.balanceType = 0;
-                        supplierGroup.payType = payType;
-                        supplierGroup.createUserId = MainWindow.userLogin.userId;
-                        supplierGroup.updateUserId = MainWindow.userLogin.userId;
-                        supplierGroup.notes = tb_notes.Text;
-                        supplierGroup.isActive = 1;
+                        supplierGroup.Notes = tb_Notes.Text;
 
-                        var s = await supplierGroup.save(supplierGroup);
-                        if (s <= 0)
+                        FillCombo.supplierGroupList = await supplierGroup.save(supplierGroup);
+                        if (FillCombo.supplierGroupList != null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                            if (openFileDialog.FileName != "")
-                            {
-                                var supplierGroupId = s;
-                                string b = await supplierGroup.uploadImage(imgFileName,
-                                    Md5Encription.MD5Hash("Inc-m" + supplierGroupId.ToString()), supplierGroupId);
-                                supplierGroup.image = b;
-                            }
-
                             Clear();
-                            await RefreshCustomersList();
                             await Search();
-                            FillCombo.supplierGroupsList = supplierGroups.ToList();
                         }
                     }
                     HelpClass.EndAwait(grid_main);
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                    */
+                //}
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                 
             }
             catch (Exception ex)
             {
@@ -439,7 +410,7 @@ namespace POSCA.View.sectionData.vendors
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshCustomersList();
+                await RefreshGroupsList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -456,23 +427,23 @@ namespace POSCA.View.sectionData.vendors
         async Task Search()
         {
             //search
-            if (supplierGroups is null)
-                await RefreshCustomersList();
+            if (FillCombo.supplierGroupList is null)
+                await RefreshGroupsList();
             searchText = tb_search.Text.ToLower();
-            supplierGroupsQuery = supplierGroups.Where(s =>
+            supplierGroupsQuery = FillCombo.supplierGroupList.Where(s =>
             s.Name.ToLower().Contains(searchText) 
-            );
-            RefreshCustomersView();
+            ).ToList();
+            RefreshGroupsView();
         }
-        async Task<IEnumerable<SupplierGroup>> RefreshCustomersList()
+        async Task<IEnumerable<SupplierGroup>> RefreshGroupsList()
         {
-            /*
+            if(FillCombo.supplierGroupList is null)
             await FillCombo.RefreshSupplierGroupsAll();
-            supplierGroups = FillCombo.supplierGroupsListAll.ToList();
-            */
-            return supplierGroups;
+            //supplierGroups = FillCombo.supplierGroupsListAll.ToList();
+          
+            return FillCombo.supplierGroupList;
         }
-        void RefreshCustomersView()
+        void RefreshGroupsView()
         {
             dg_supplierGroup.ItemsSource = supplierGroupsQuery;
             txt_count.Text = supplierGroupsQuery.Count().ToString();
