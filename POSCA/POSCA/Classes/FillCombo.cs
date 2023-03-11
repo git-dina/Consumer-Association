@@ -21,11 +21,23 @@ namespace POSCA.Classes
         static public SupplierGroup supplierGroup = new SupplierGroup();
         static public List<SupplierGroup> supplierGroupList ;
 
-        static public async Task<IEnumerable<SupplierGroup>> RefreshSupplierGroupsAll()
+        static public async Task<IEnumerable<SupplierGroup>> RefreshSupplierGroups()
         {
             supplierGroupList = await supplierGroup.get(true);
 
             return supplierGroupList;
+        }
+        #endregion
+
+        #region supplier types
+        static public SupplierType supplierType = new SupplierType();
+        static public List<SupplierType> supplierTypeList;
+
+        static public async Task<IEnumerable<SupplierType>> RefreshSupplierTypes()
+        {
+            supplierTypeList = await supplierType.get(true);
+
+            return supplierTypeList;
         }
         #endregion
     }

@@ -367,7 +367,7 @@ namespace POSCA.View.sectionData.vendors
         async Task<IEnumerable<SupplierGroup>> RefreshGroupsList()
         {
             if(FillCombo.supplierGroupList is null)
-            await FillCombo.RefreshSupplierGroupsAll();
+            await FillCombo.RefreshSupplierGroups();
             //supplierGroups = FillCombo.supplierGroupsListAll.ToList();
           
             return FillCombo.supplierGroupList;

@@ -5078,4 +5078,7 @@
   <data name="SupplierGroups" xml:space="preserve">
     <value>مجموعات الموردين</value>
   </data>
+  <data name="SupplierTypes" xml:space="preserve">
+    <value>أنواع الموردين</value>
+  </data>
 </root>

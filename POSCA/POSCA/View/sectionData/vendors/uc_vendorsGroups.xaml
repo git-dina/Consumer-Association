@@ -55,7 +55,8 @@
                                          Padding="10,0,5,0"   BorderThickness="0" 
                                          materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="#4E4E4E"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" Height="40" 
-                                       />
+                                        TextChanged="Tb_search_TextChanged"
+                                     />
                         </Grid>
                     </Border>
                     <!--<TextBlock    x:Name="txt_active" Grid.Column="3"
