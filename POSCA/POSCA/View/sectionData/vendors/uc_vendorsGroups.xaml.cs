@@ -156,7 +156,7 @@ namespace POSCA.View.sectionData.vendors
                         supplierGroup.Notes = tb_Notes.Text;
 
                         FillCombo.supplierGroupList = await supplierGroup.save(supplierGroup);
-                        if (FillCombo.supplierGroupList != null)
+                        if (FillCombo.supplierGroupList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
@@ -182,56 +182,32 @@ namespace POSCA.View.sectionData.vendors
         {//update
             try
             {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
+
+                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (supplierGroup.supplierGroupId > 0)
+                    if (supplierGroup.SupplierGroupId > 0)
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-                            //payType
-                            string payType = "";
-                            if (cb_payType.SelectedIndex != -1)
-                                payType = cb_payType.SelectedValue.ToString();
 
-                            supplierGroup.name = tb_name.Text;
-                            supplierGroup.company = tb_company.Text;
-                            supplierGroup.email = tb_email.Text;
-                            supplierGroup.address = tb_address.Text;
-                            supplierGroup.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
-                            if (!tb_phone.Text.Equals(""))
-                                supplierGroup.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
-                            if (!tb_fax.Text.Equals(""))
-                                supplierGroup.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                            supplierGroup.payType = payType;
-                            supplierGroup.updateUserId = MainWindow.userLogin.userId;
-                            supplierGroup.notes = tb_notes.Text;
+                            supplierGroup.Name = tb_Name.Text;
+                            if (tgl_IsBlocked.IsChecked == true)
+                                supplierGroup.IsBlocked = true;
+                            else
+                                supplierGroup.IsBlocked = false;
 
-                            var s = await supplierGroup.save(supplierGroup);
-                            if (s <= 0)
+                            supplierGroup.Notes = tb_Notes.Text;
+
+                            FillCombo.supplierGroupList = await supplierGroup.save(supplierGroup);
+                            if (FillCombo.supplierGroupList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await RefreshCustomersList();
+
                                 await Search();
-                                FillCombo.supplierGroupsList = supplierGroups.ToList();
-                                if (openFileDialog.FileName != "")
-                                {
-                                    var supplierGroupId = s;
-                                    string b = await supplierGroup.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + supplierGroupId.ToString()), supplierGroupId);
-                                    supplierGroup.image = b;
-                                    //isImgPressed = false;
-                                    if (!b.Equals(""))
-                                    {
-                                        await getImg();
-                                    }
-                                    else
-                                    {
-                                        HelpClass.clearImg(btn_image);
-                                    }
-                                }
+                              
                             }
                         }
                     }
@@ -240,9 +216,9 @@ namespace POSCA.View.sectionData.vendors
 
                     HelpClass.EndAwait(grid_main);
                 }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+      
             }
             catch (Exception ex)
             {
@@ -360,39 +336,15 @@ namespace POSCA.View.sectionData.vendors
             {
                 HelpClass.StartAwait(grid_main);
                 //selection
-                /*
+
                 if (dg_supplierGroup.SelectedIndex != -1)
                 {
                     supplierGroup = dg_supplierGroup.SelectedItem as SupplierGroup;
                     this.DataContext = supplierGroup;
-                    if (supplierGroup != null)
-                    {
-                        #region image
-                        bool isModified = HelpClass.chkImgChng(supplierGroup.image, (DateTime)supplierGroup.updateDate, Global.TMPSupplierGroupsFolder);
-                        if (isModified)
-                            getImg();
-                        else
-                            HelpClass.getLocalImg("SupplierGroup", supplierGroup.image, btn_image);
-                        #endregion
-                        //getImg();
-                        #region delete
-                        if (supplierGroup.canDelete)
-                            btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
-                        else
-                        {
-                            if (supplierGroup.isActive == 0)
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
-                            else
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
-                        }
-                        #endregion
-                        HelpClass.getMobile(supplierGroup.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(supplierGroup.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(supplierGroup.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
-                    }
+
                 }
                 HelpClass.clearValidate(requiredControlList, this);
-                */
+             
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

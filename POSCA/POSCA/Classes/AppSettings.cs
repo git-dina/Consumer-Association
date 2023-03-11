@@ -12,12 +12,13 @@ namespace POSCA.Classes
     public class AppSettings
     {
 
-        public static ResourceManager resourcemanager;
+        public static ResourceManager resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
         public static ResourceManager resourcemanagerreport;
         public static ResourceManager resourcemanagerAr;
 
        
-        public static string APIUri = "http://145.239.195.166:44370/api/";
+        public static string APIUri = "http://localhost:7473/api/";
+
 
         #region folders Paths
         public const string TMPFolder = "Thumb";
