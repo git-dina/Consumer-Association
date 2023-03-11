@@ -145,6 +145,9 @@
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
+    <Compile Include="View\sectionData\vendors\uc_supportVendors.xaml.cs">
+      <DependentUpon>uc_supportVendors.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\sectionData\vendors\uc_vendorsData.xaml.cs">
       <DependentUpon>uc_vendorsData.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\sectionData\vendors\uc_supportVendors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\sectionData\vendors\uc_vendorsData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
