@@ -112,6 +112,7 @@ namespace POSCA.Classes
         public bool IsAllowedReceipt { get; set; }
         public bool IsAllowedDirectReturn { get; set; }
         public bool IsAllowedReturnDiscount { get; set; }
+        public bool IsAllowCashingChecks { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
