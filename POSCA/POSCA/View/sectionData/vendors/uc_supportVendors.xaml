@@ -125,6 +125,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
+                                <DataGridTextColumn Width="*"  Header="Number" Binding="{Binding Path=AssistantSupId}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
                                 <DataGridTextColumn Width="*"  Header="Notes" Binding="{Binding Path=Notes}"/>
                             </DataGrid.Columns>
@@ -308,6 +309,19 @@
                             <TextBlock x:Name="txt_baseInformation" Text="Base Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator  Background="{StaticResource LightGrey}" VerticalAlignment="Center" Width="auto"  />
                         </DockPanel>
+                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_Number"  Text="{Binding AssistantSupId, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Number..."  
+                                     Foreground="#4E4E4E"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     IsEnabled="False" />
+                            
+                            </Grid>
+                        </Border> 
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox x:Name="tb_Name"  Text="{Binding Name, Mode=OneWay}" Padding="10,0,5,0" 

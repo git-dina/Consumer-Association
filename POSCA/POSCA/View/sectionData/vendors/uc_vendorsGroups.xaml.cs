@@ -366,10 +366,8 @@ namespace POSCA.View.sectionData.vendors
         }
         async Task<IEnumerable<SupplierGroup>> RefreshGroupsList()
         {
-            if(FillCombo.supplierGroupList is null)
             await FillCombo.RefreshSupplierGroups();
-            //supplierGroups = FillCombo.supplierGroupsListAll.ToList();
-          
+
             return FillCombo.supplierGroupList;
         }
         void RefreshGroupsView()
@@ -382,7 +380,7 @@ namespace POSCA.View.sectionData.vendors
         void Clear()
         {
             this.DataContext = new SupplierGroup();
-
+            dg_supplierGroup.SelectedIndex = -1;
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);

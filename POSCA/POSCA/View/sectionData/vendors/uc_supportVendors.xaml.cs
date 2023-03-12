@@ -120,8 +120,9 @@ namespace POSCA.View.sectionData.vendors
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_assistantSupplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_assistantSupplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_assistantSupplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_assistantSupplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
+            dg_assistantSupplier.Columns[2].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -338,7 +339,7 @@ namespace POSCA.View.sectionData.vendors
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshGroupsList();
+                await RefreshAssistantList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -356,18 +357,17 @@ namespace POSCA.View.sectionData.vendors
         {
             //search
             if (FillCombo.assistantSupplierList is null)
-                await RefreshGroupsList();
+                await RefreshAssistantList();
             searchText = tb_search.Text.ToLower();
             assistantSuppliersQuery = FillCombo.assistantSupplierList.Where(s =>
             s.Name.ToLower().Contains(searchText)
-            ).ToList();
+           || s.AssistantSupId.ToString().Contains(searchText)
+           ).ToList();
             RefreshGroupsView();
         }
-        async Task<IEnumerable<AssistantSupplier>> RefreshGroupsList()
+        async Task<IEnumerable<AssistantSupplier>> RefreshAssistantList()
         {
-            if (FillCombo.assistantSupplierList is null)
-                await FillCombo.RefreshAssistantSuppliers();
-            //assistantSuppliers = FillCombo.assistantSuppliersListAll.ToList();
+            await FillCombo.RefreshAssistantSuppliers();
 
             return FillCombo.assistantSupplierList;
         }
@@ -382,7 +382,7 @@ namespace POSCA.View.sectionData.vendors
         {
             this.DataContext = new AssistantSupplier();
 
-
+            dg_assistantSupplier.SelectedIndex = -1;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

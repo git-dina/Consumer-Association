@@ -357,8 +357,7 @@ namespace POSCA.View.sectionData.vendors
         }
         async Task<IEnumerable<SupplierType>> RefreshTypesList()
         {
-            if (FillCombo.supplierTypeList is null)
-                await FillCombo.RefreshSupplierTypes();
+            await FillCombo.RefreshSupplierTypes();
 
             return FillCombo.supplierTypeList;
         }
@@ -372,7 +371,7 @@ namespace POSCA.View.sectionData.vendors
         void Clear()
         {
             this.DataContext = new SupplierType();
-
+            dg_supplierType.SelectedIndex = -1;
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
