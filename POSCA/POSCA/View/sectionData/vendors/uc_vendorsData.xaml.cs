@@ -75,19 +75,19 @@ namespace POSCA.View.sectionData
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "name", "mobile" };
-                if (AppSettings.lang.Equals("en"))
-                {
-                    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                }
-                else
-                {
-                    grid_main.FlowDirection = FlowDirection.RightToLeft;
-                }
+                //if (AppSettings.lang.Equals("en"))
+                //{
+                //grid_main.FlowDirection = FlowDirection.LeftToRight;
+                //}
+                //else
+                //{
+                grid_main.FlowDirection = FlowDirection.RightToLeft;
+                //}
                 translate();
 
                
                 //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
-                Keyboard.Focus(tb_name);
+                Keyboard.Focus(tb_Name);
                 /*
                 if (FillCombo.suppliersListAll is null)
                     await RefreshCustomersList();
@@ -120,23 +120,13 @@ namespace POSCA.View.sectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_company, AppSettings.resourcemanager.GetString("trCompanyHint"));
-            txt_contactInformation.Text = AppSettings.resourcemanager.GetString("trContactInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_mobile, AppSettings.resourcemanager.GetString("trMobileHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_phone, AppSettings.resourcemanager.GetString("trPhoneHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_email, AppSettings.resourcemanager.GetString("trEmailHint"));
-            txt_contentInformatin.Text = AppSettings.resourcemanager.GetString("trMoreInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_fax, AppSettings.resourcemanager.GetString("trFaxHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
-            tt_add_Button.Content = AppSettings.resourcemanager.GetString("trAdd");
-            tt_update_Button.Content = AppSettings.resourcemanager.GetString("trUpdate");
-            tt_delete_Button.Content = AppSettings.resourcemanager.GetString("trDelete");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_payType, AppSettings.resourcemanager.GetString("trDefaultPayType"));
 
             dg_supplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trCode");
             dg_supplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
@@ -581,7 +571,7 @@ namespace POSCA.View.sectionData
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
-            p_error_email.Visibility = Visibility.Collapsed;
+            p_error_Email.Visibility = Visibility.Collapsed;
         }
         string input;
         decimal _decimal = 0;
@@ -739,273 +729,293 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        private void Btn_saveAllowedOperations_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_supplierSector_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_documents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         /*
-        private async Task getImg()
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_image, "forImage");
-                if (string.IsNullOrEmpty(supplier.image))
-                {
-                    HelpClass.clearImg(btn_image);
-                }
-                else
-                {
-                    byte[] imageBuffer = await supplier.downloadImage(supplier.image); // read this as BLOB from your DB
+private async Task getImg()
+{
+try
+{
+HelpClass.StartAwait(grid_image, "forImage");
+if (string.IsNullOrEmpty(supplier.image))
+{
+HelpClass.clearImg(btn_image);
+}
+else
+{
+byte[] imageBuffer = await supplier.downloadImage(supplier.image); // read this as BLOB from your DB
 
-                    var bitmapImage = new BitmapImage();
-                    if (imageBuffer != null)
-                    {
-                        using (var memoryStream = new MemoryStream(imageBuffer))
-                        {
-                            bitmapImage.BeginInit();
-                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                            bitmapImage.StreamSource = memoryStream;
-                            bitmapImage.EndInit();
-                        }
+var bitmapImage = new BitmapImage();
+if (imageBuffer != null)
+{
+using (var memoryStream = new MemoryStream(imageBuffer))
+{
+bitmapImage.BeginInit();
+bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+bitmapImage.StreamSource = memoryStream;
+bitmapImage.EndInit();
+}
 
-                        btn_image.Background = new ImageBrush(bitmapImage);
-                        // configure trmporary path
-                        string dir = Directory.GetCurrentDirectory();
-                        string tmpPath = System.IO.Path.Combine(dir, Global.TMPSuppliersFolder, supplier.image);
-                        openFileDialog.FileName = tmpPath;
-                    }
-                    else
-                        HelpClass.clearImg(btn_image);
-                }
-                HelpClass.EndAwait(grid_image, "forImage");
-            }
-            catch
-            {
-                HelpClass.EndAwait(grid_image, "forImage");
-            }
-        }
-        */
+btn_image.Background = new ImageBrush(bitmapImage);
+// configure trmporary path
+string dir = Directory.GetCurrentDirectory();
+string tmpPath = System.IO.Path.Combine(dir, Global.TMPSuppliersFolder, supplier.image);
+openFileDialog.FileName = tmpPath;
+}
+else
+HelpClass.clearImg(btn_image);
+}
+HelpClass.EndAwait(grid_image, "forImage");
+}
+catch
+{
+HelpClass.EndAwait(grid_image, "forImage");
+}
+}
+*/
 
         #endregion
 
 
-       /*
-        #region report
-        //report  parameters
-        ReportCls reportclass = new ReportCls();
-        LocalReport rep = new LocalReport();
-        //  SaveFileDialog saveFileDialog = new SaveFileDialog();
+        /*
+         #region report
+         //report  parameters
+         ReportCls reportclass = new ReportCls();
+         LocalReport rep = new LocalReport();
+         //  SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-        // end report parameters
-        public void BuildReport()
-        {
+         // end report parameters
+         public void BuildReport()
+         {
 
-            List<ReportParameter> paramarr = new List<ReportParameter>();
+             List<ReportParameter> paramarr = new List<ReportParameter>();
 
-            string addpath;
-            bool isArabic = ReportCls.checkLang();
-            if (isArabic)
-            {
-                addpath = @"\Reports\SectionData\persons\Ar\ArSuppliers.rdlc";
-            }
-            else
-            {
-                addpath = @"\Reports\SectionData\persons\En\EnSuppliers.rdlc";
-            }
-            string searchval = "";
-            string stateval = "";
-            //filter   
-            stateval = tgl_isActive.IsChecked == true ? AppSettings.resourcemanagerreport.GetString("trActive_")
-              : AppSettings.resourcemanagerreport.GetString("trNotActive");
-            paramarr.Add(new ReportParameter("stateval", stateval));
-            paramarr.Add(new ReportParameter("trActiveState", AppSettings.resourcemanagerreport.GetString("trState")));
-            paramarr.Add(new ReportParameter("trSearch", AppSettings.resourcemanagerreport.GetString("trSearch")));
-            searchval = tb_search.Text;
-            paramarr.Add(new ReportParameter("searchVal", searchval));
-            //end filter
-            string reppath = reportclass.PathUp(Directory.GetCurrentDirectory(), 2, addpath);
+             string addpath;
+             bool isArabic = ReportCls.checkLang();
+             if (isArabic)
+             {
+                 addpath = @"\Reports\SectionData\persons\Ar\ArSuppliers.rdlc";
+             }
+             else
+             {
+                 addpath = @"\Reports\SectionData\persons\En\EnSuppliers.rdlc";
+             }
+             string searchval = "";
+             string stateval = "";
+             //filter   
+             stateval = tgl_isActive.IsChecked == true ? AppSettings.resourcemanagerreport.GetString("trActive_")
+               : AppSettings.resourcemanagerreport.GetString("trNotActive");
+             paramarr.Add(new ReportParameter("stateval", stateval));
+             paramarr.Add(new ReportParameter("trActiveState", AppSettings.resourcemanagerreport.GetString("trState")));
+             paramarr.Add(new ReportParameter("trSearch", AppSettings.resourcemanagerreport.GetString("trSearch")));
+             searchval = tb_search.Text;
+             paramarr.Add(new ReportParameter("searchVal", searchval));
+             //end filter
+             string reppath = reportclass.PathUp(Directory.GetCurrentDirectory(), 2, addpath);
 
-            clsReports.SupplierReport(suppliersQuery, rep, reppath, paramarr);
-            clsReports.setReportLanguage(paramarr);
-            clsReports.Header(paramarr);
+             clsReports.SupplierReport(suppliersQuery, rep, reppath, paramarr);
+             clsReports.setReportLanguage(paramarr);
+             clsReports.Header(paramarr);
 
-            rep.SetParameters(paramarr);
+             rep.SetParameters(paramarr);
 
-            rep.Refresh();
+             rep.Refresh();
 
-        }
-        private void Btn_pdf_Click(object sender, RoutedEventArgs e)
-        {//pdf
-            try
-            {
+         }
+         private void Btn_pdf_Click(object sender, RoutedEventArgs e)
+         {//pdf
+             try
+             {
 
-                HelpClass.StartAwait(grid_main);
+                 HelpClass.StartAwait(grid_main);
 
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
-                {
-                    #region
-                    BuildReport();
+                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
+                 {
+                     #region
+                     BuildReport();
 
-                    saveFileDialog.Filter = "PDF|*.pdf;";
+                     saveFileDialog.Filter = "PDF|*.pdf;";
 
-                    if (saveFileDialog.ShowDialog() == true)
-                    {
-                        string filepath = saveFileDialog.FileName;
-                        LocalReportExtensions.ExportToPDF(rep, filepath);
-                    }
-                    #endregion
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                     if (saveFileDialog.ShowDialog() == true)
+                     {
+                         string filepath = saveFileDialog.FileName;
+                         LocalReportExtensions.ExportToPDF(rep, filepath);
+                     }
+                     #endregion
+                 }
+                 else
+                     Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+                 HelpClass.EndAwait(grid_main);
+             }
+             catch (Exception ex)
+             {
 
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+                 HelpClass.EndAwait(grid_main);
+                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             }
+         }
 
-        private void Btn_print_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+         private void Btn_print_Click(object sender, RoutedEventArgs e)
+         {
+             try
+             {
 
-                HelpClass.StartAwait(grid_main);
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
-                {
+                 HelpClass.StartAwait(grid_main);
+                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
+                 {
 
-                    #region
-                    BuildReport();
-                    LocalReportExtensions.PrintToPrinterbyNameAndCopy(rep, AppSettings.rep_printer_name, AppSettings.rep_print_count == null ? short.Parse("1") : short.Parse(AppSettings.rep_print_count));
-                    #endregion
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-
-        }
-
-        private void Btn_exportToExcel_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-                HelpClass.StartAwait(grid_main);
-
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
-                {
-                    #region
-                    BuildReport();
-                    this.Dispatcher.Invoke(() =>
-                    {
-                        saveFileDialog.Filter = "EXCEL|*.xls;";
-                        if (saveFileDialog.ShowDialog() == true)
-                        {
-                            string filepath = saveFileDialog.FileName;
-                            LocalReportExtensions.ExportToExcel(rep, filepath);
-                        }
-                    });
-                    #endregion
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                     #region
+                     BuildReport();
+                     LocalReportExtensions.PrintToPrinterbyNameAndCopy(rep, AppSettings.rep_printer_name, AppSettings.rep_print_count == null ? short.Parse("1") : short.Parse(AppSettings.rep_print_count));
+                     #endregion
+                 }
+                 else
+                     Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
 
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+                 HelpClass.EndAwait(grid_main);
+             }
+             catch (Exception ex)
+             {
 
-                HelpClass.EndAwait(grid_main);
+                 HelpClass.EndAwait(grid_main);
+                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             }
 
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+         }
 
-        private void Btn_preview_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
+         private void Btn_exportToExcel_Click(object sender, RoutedEventArgs e)
+         {
+             try
+             {
 
-                HelpClass.StartAwait(grid_main);
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
-                {
-                    #region
-                    Window.GetWindow(this).Opacity = 0.2;
+                 HelpClass.StartAwait(grid_main);
 
-                    string pdfpath = "";
-                    //
-                    pdfpath = @"\Thumb\report\temp.pdf";
-                    pdfpath = reportclass.PathUp(Directory.GetCurrentDirectory(), 2, pdfpath);
-
-                    BuildReport();
-
-                    LocalReportExtensions.ExportToPDF(rep, pdfpath);
-                    wd_previewPdf w = new wd_previewPdf();
-                    w.pdfPath = pdfpath;
-                    if (!string.IsNullOrEmpty(w.pdfPath))
-                    {
-                        w.ShowDialog();
-                        w.wb_pdfWebViewer.Dispose();
-
-
-                    }
-                    Window.GetWindow(this).Opacity = 1;
-                    #endregion
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
+                 {
+                     #region
+                     BuildReport();
+                     this.Dispatcher.Invoke(() =>
+                     {
+                         saveFileDialog.Filter = "EXCEL|*.xls;";
+                         if (saveFileDialog.ShowDialog() == true)
+                         {
+                             string filepath = saveFileDialog.FileName;
+                             LocalReportExtensions.ExportToExcel(rep, filepath);
+                         }
+                     });
+                     #endregion
+                 }
+                 else
+                     Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
 
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+                 HelpClass.EndAwait(grid_main);
+             }
+             catch (Exception ex)
+             {
 
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+                 HelpClass.EndAwait(grid_main);
 
-        }
-        private void Btn_pieChart_Click(object sender, RoutedEventArgs e)
-        {//pie
-            try
-            {
-                HelpClass.StartAwait(grid_main);
+                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             }
+         }
 
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
-                {
-                    #region
-                    Window.GetWindow(this).Opacity = 0.2;
-                    win_lvc win = new win_lvc(suppliersQuery, 1, false);
-                    win.ShowDialog();
-                    Window.GetWindow(this).Opacity = 1;
-                    #endregion
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+         private void Btn_preview_Click(object sender, RoutedEventArgs e)
+         {
+             try
+             {
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+                 HelpClass.StartAwait(grid_main);
+                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
+                 {
+                     #region
+                     Window.GetWindow(this).Opacity = 0.2;
 
-        }
-        #endregion
-        */
+                     string pdfpath = "";
+                     //
+                     pdfpath = @"\Thumb\report\temp.pdf";
+                     pdfpath = reportclass.PathUp(Directory.GetCurrentDirectory(), 2, pdfpath);
+
+                     BuildReport();
+
+                     LocalReportExtensions.ExportToPDF(rep, pdfpath);
+                     wd_previewPdf w = new wd_previewPdf();
+                     w.pdfPath = pdfpath;
+                     if (!string.IsNullOrEmpty(w.pdfPath))
+                     {
+                         w.ShowDialog();
+                         w.wb_pdfWebViewer.Dispose();
+
+
+                     }
+                     Window.GetWindow(this).Opacity = 1;
+                     #endregion
+                 }
+                 else
+                     Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+
+
+                 HelpClass.EndAwait(grid_main);
+             }
+             catch (Exception ex)
+             {
+
+                 Window.GetWindow(this).Opacity = 1;
+                 HelpClass.EndAwait(grid_main);
+                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             }
+
+         }
+         private void Btn_pieChart_Click(object sender, RoutedEventArgs e)
+         {//pie
+             try
+             {
+                 HelpClass.StartAwait(grid_main);
+
+                 if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "report"))
+                 {
+                     #region
+                     Window.GetWindow(this).Opacity = 0.2;
+                     win_lvc win = new win_lvc(suppliersQuery, 1, false);
+                     win.ShowDialog();
+                     Window.GetWindow(this).Opacity = 1;
+                     #endregion
+                 }
+                 else
+                     Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+
+                 HelpClass.EndAwait(grid_main);
+             }
+             catch (Exception ex)
+             {
+                 Window.GetWindow(this).Opacity = 1;
+                 HelpClass.EndAwait(grid_main);
+                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+             }
+
+         }
+         #endregion
+         */
 
     }
 }
