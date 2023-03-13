@@ -335,10 +335,17 @@ namespace POSCA
         */
         public void translate()
         {
+            txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
+            txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
+            txt_vendors.Text = AppSettings.resourcemanager.GetString("Suppliers");
+            txt_vendorsData.Text = AppSettings.resourcemanager.GetString("SuppliersData");
+            txt_vendorsGroups.Text = AppSettings.resourcemanager.GetString("SuppliersGroups");
+            txt_vendorsType.Text = AppSettings.resourcemanager.GetString("SuppliersTypes");
+            txt_supportVendors.Text = AppSettings.resourcemanager.GetString("AssistantSuppliers");
+
             /*
             tt_menu.Content = AppSettings.resourcemanager.GetString("trMenu");
             tt_home.Content = AppSettings.resourcemanager.GetString("trHome");
-            txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
             tt_catalog.Content = AppSettings.resourcemanager.GetString("trCatalog");
             txt_catalog.Text = AppSettings.resourcemanager.GetString("trCatalog");
             tt_storage.Content = AppSettings.resourcemanager.GetString("trStore");

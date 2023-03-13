@@ -5090,6 +5090,9 @@
   <data name="AssistantSupplierHint" xml:space="preserve">
     <value>المورد المساند...</value>
   </data>
+  <data name="AssistantSuppliers" xml:space="preserve">
+    <value>الموردين المساندين</value>
+  </data>
   <data name="BankAccountHint" xml:space="preserve">
     <value>رقم الحساب البنكي...</value>
   </data>
@@ -5138,8 +5141,20 @@
   <data name="SupplierGroupHint" xml:space="preserve">
     <value>مجموعة المورد...</value>
   </data>
+  <data name="Suppliers" xml:space="preserve">
+    <value>الموردين</value>
+  </data>
+  <data name="SuppliersData" xml:space="preserve">
+    <value>بيانات الموردين</value>
+  </data>
   <data name="SupplierSectors" xml:space="preserve">
     <value>قطاعات المورد</value>
+  </data>
+  <data name="SuppliersGroups" xml:space="preserve">
+    <value>مجموعات الموردين</value>
+  </data>
+  <data name="SuppliersTypes" xml:space="preserve">
+    <value>أنواع الموردين</value>
   </data>
   <data name="SupplierTypeHint" xml:space="preserve">
     <value>نوع المورد...</value>
