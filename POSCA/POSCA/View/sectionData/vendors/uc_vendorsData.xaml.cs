@@ -835,6 +835,11 @@ HelpClass.EndAwait(grid_image, "forImage");
 
         }
 
+        private void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         /*
          #region report
          //report  parameters

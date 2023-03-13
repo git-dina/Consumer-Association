@@ -503,5 +503,10 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        private void Btn_addBank_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -401,7 +401,12 @@
                                 </Path>
                             </Grid>
                         </Border>
-                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <ComboBox x:Name="cb_SupplierTypeId"    SelectedValue="{Binding SupplierTypeId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
@@ -416,6 +421,16 @@
 
                             </Grid>
                         </Border>
+                        <Button Grid.Column="1"  Padding="0"    
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
+                                            x:Name="btn_addSupplierType" Click="Btn_addSupplierType_Click"  
+                                Margin="5 5 10 5" IsEnabled="True">
+                            <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                    Width="25.5" Height="27.5" FlowDirection="LeftToRight"
+                           Data="{StaticResource addFile}" />
+                        </Button>
+                        </Grid>
+
                         <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <ComboBox x:Name="cb_SupplierGroupId"    SelectedValue="{Binding SupplierGroupId, Mode=OneWay}"
@@ -446,7 +461,7 @@
 
                             </Grid>
                         </Border>
-                                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                           <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <DatePicker  x:Name="dp_AssistantStartDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -466,7 +481,9 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition />
+                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
@@ -485,12 +502,13 @@
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
                                     </Path>
-                                    <!--<materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
-                                                             Width="20" Height="20" Margin="0 5 10 5"
-                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />-->
+                                    
                                 </Grid>
                             </Border>
-                            <Border  Grid.Row="1" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
+                                                             Width="20" Height="20" Margin="0 5 10 5"
+                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Border  Grid.Row="1" Grid.Column="2" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_FreePercentag" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding FreePercentag, Mode=OneWay}"
@@ -509,7 +527,48 @@
                                     </Path>
                                 </Grid>
                             </Border>
+                            <materialDesign:PackIcon Grid.Column="3" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
+                                                             Width="20" Height="20" Margin="0 5 10 5"
+                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
                         </Grid>
+                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_LicenseId" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding LicenseId, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="LicenseId..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_LicenseId" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <DatePicker  x:Name="dp_LicenseDate" 
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0"
+                                        TextBlock.Foreground="#4E4E4E"
+                                         SelectedDate="{Binding LicenseDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                        materialDesign:HintAssist.Hint="LicenseDate..."  
+                                        Foreground="#4E4E4E"   Height="40"    />
+                                <Path Fill="#E81123" x:Name="p_error_LicenseDate" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                            </Grid>
+                        </Border>
+
                         <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox  x:Name="tb_address" Text="{Binding address, Mode=OneWay}"
