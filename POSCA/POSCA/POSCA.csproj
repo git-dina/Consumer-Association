@@ -139,6 +139,7 @@
     </ApplicationDefinition>
     <Compile Include="Classes\ApiClasses\APIResult.cs" />
     <Compile Include="Classes\ApiClasses\AssistantSupplier.cs" />
+    <Compile Include="Classes\ApiClasses\Bank.cs" />
     <Compile Include="Classes\ApiClasses\Branch.cs" />
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
@@ -190,8 +191,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\sectionData\uc_phoneType.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\sectionData\vendors\uc_supportVendors.xaml">
       <SubType>Designer</SubType>

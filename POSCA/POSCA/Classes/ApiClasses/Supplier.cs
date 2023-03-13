@@ -88,7 +88,7 @@ namespace POSCA.Classes
         public Nullable<System.DateTime> AssistantStartDate { get; set; }
         public decimal DiscountPercentage { get; set; }
         public decimal FreePercentag { get; set; }
-        public Nullable<int> BankId { get; set; }
+        public Nullable<long> BankId { get; set; }
         public string BankAccount { get; set; }
         public Nullable<int> SupNODays { get; set; }
         public int AccountCode { get; set; }
