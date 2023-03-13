@@ -449,6 +449,43 @@ namespace POSCA.Classes
 
             return percentageVal;
         }
+        public static string DecTostring(decimal? dec)
+        {
+            string sdc = "0";
+            if (dec == null)
+            {
+
+            }
+            else
+            {
+                decimal dc = decimal.Parse(dec.ToString());
+
+                switch (AppSettings.accuracy)
+                {
+                    case "0":
+                        sdc = string.Format("{0:F0}", dc);
+                        break;
+                    case "1":
+                        sdc = string.Format("{0:F1}", dc);
+                        break;
+                    case "2":
+                        sdc = string.Format("{0:F2}", dc);
+
+                        break;
+                    case "3":
+                        sdc = string.Format("{0:F3}", dc);
+                        break;
+                    default:
+                        sdc = string.Format("{0:F1}", dc);
+                        break;
+                }
+                if (dc == 0)
+                    sdc = string.Format("{0:G29}", decimal.Parse(sdc));
+            }
+
+
+            return sdc;
+        }
         public static void defaultDatePickerStyle(DatePicker dp)
         {
             dp.Loaded += delegate
