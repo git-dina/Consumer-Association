@@ -15,5 +15,20 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        internal Task<List<PhoneType>> get(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<PhoneType>> save(PhoneType phoneType)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<PhoneType>> delete(int phoneTypeId, long userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
