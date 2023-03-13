@@ -267,6 +267,23 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  vendors-->
+                        <StackPanel>
+                            
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="phoneType" 
+                          x:Name="btn_phoneType"  Click="Btn_phoneType_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="phoneType" Foreground="White" x:Name="txt_phoneType"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="40,0,0,0"/>
+                            </Grid>
+                        </Button>
                         <Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White"
                                    >
                             <Expander.Header>
@@ -351,6 +368,7 @@
                             </StackPanel>
                         </Expander>
 
+                        </StackPanel>
                     </Expander>
                 </StackPanel>
             </Grid>
