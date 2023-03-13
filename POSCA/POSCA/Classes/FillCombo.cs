@@ -92,6 +92,28 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+        #region phoneTypes
+        static public PhoneType phoneType = new PhoneType();
+        static public List<PhoneType> phoneTypeList;
+
+        static public async Task<IEnumerable<PhoneType>> RefreshPhoneTypes()
+        {
+            phoneTypeList = await phoneType.get(true);
+
+            return phoneTypeList;
+        }
+
+        static public async Task fillPhoneTypes(ComboBox combo)
+        {
+            if (phoneTypeList is null)
+                await RefreshPhoneTypes();
+
+            combo.ItemsSource = phoneTypeList;
+            combo.SelectedValuePath = "PhoneTypeId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
 
         #region suppliers
         static public Supplier supplier = new Supplier();
