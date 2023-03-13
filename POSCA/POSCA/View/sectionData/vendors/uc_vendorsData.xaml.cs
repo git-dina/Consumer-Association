@@ -19,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
+using POSCA.View.windows;
 //using POSCA.View.windows;
 
 //using Microsoft.Reporting.WinForms;
@@ -120,10 +121,7 @@ namespace POSCA.View.sectionData
             //   );
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Supplier");
-            txt_contactData.Text = AppSettings.resourcemanager.GetString("ContactData");
-            txt_bankData.Text = AppSettings.resourcemanager.GetString("BankData");
             txt_Notes.Text = AppSettings.resourcemanager.GetString("trNote");
-            txt_mobileButton.Text = AppSettings.resourcemanager.GetString("ContactData");
             txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
             txt_supplierSectorButton.Text = AppSettings.resourcemanager.GetString("SupplierSectors");
             txt_documentsButton.Text = AppSettings.resourcemanager.GetString("MainDocuments");
@@ -140,12 +138,6 @@ namespace POSCA.View.sectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_DiscountPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreePercentag, AppSettings.resourcemanager.GetString("FreePercentagHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BOX, AppSettings.resourcemanager.GetString("BOXHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankAccount, AppSettings.resourcemanager.GetString("BankAccountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseOrderNotes, AppSettings.resourcemanager.GetString("PurchaseOrderNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
@@ -578,15 +570,14 @@ namespace POSCA.View.sectionData
             tb_email.Clear();
             #endregion
             */
-            #region image
-            HelpClass.clearImg(btn_image);
-            openFileDialog.FileName = "";
-            #endregion
+            //#region image
+            //HelpClass.clearImg(btn_image);
+            //openFileDialog.FileName = "";
+            //#endregion
 
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
-            p_error_Email.Visibility = Visibility.Collapsed;
         }
         string input;
         decimal _decimal = 0;
@@ -715,6 +706,8 @@ namespace POSCA.View.sectionData
         #endregion
         */
         #region Image
+        /*
+
         string imgFileName = "pic/no-image-icon-125x125.png";
         bool isImgPressed = false;
         OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -745,26 +738,6 @@ namespace POSCA.View.sectionData
             }
         }
 
-        private void Btn_saveAllowedOperations_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_supplierSector_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_documents_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-        /*
 private async Task getImg()
 {
 try
@@ -809,6 +782,58 @@ HelpClass.EndAwait(grid_image, "forImage");
 
         #endregion
 
+        private void Btn_contactDataButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_supplierContactData w = new wd_supplierContactData();
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_supplierAllowedOperations w = new wd_supplierAllowedOperations();
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Btn_supplierSector_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_documents_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
         /*
          #region report
