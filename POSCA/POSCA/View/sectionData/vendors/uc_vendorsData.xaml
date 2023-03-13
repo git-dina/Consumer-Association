@@ -136,7 +136,7 @@
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
 
-                                <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=name}">
+                                <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="{x:Type TextBlock}">
                                             <Style.Triggers>
@@ -147,7 +147,7 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="*"  Header="Company" Binding="{Binding Path=company}">
+                                <DataGridTextColumn Width="*"  Header="ShortName" Binding="{Binding Path=ShortName}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="{x:Type TextBlock}">
                                             <Style.Triggers>
@@ -158,7 +158,18 @@
                                         </Style>
                                     </DataGridTextColumn.ElementStyle>
                                 </DataGridTextColumn>
-                                <DataGridTextColumn Width="*"  Header="Mobile" Binding="{Binding Path=mobile}">
+                                <DataGridTextColumn Width="*"  Header="SupplierGroup" Binding="{Binding Path=mobile}">
+                                    <DataGridTextColumn.ElementStyle>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding isActive}" Value="0">
+                                                    <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </DataGridTextColumn.ElementStyle>
+                                </DataGridTextColumn> 
+                                <DataGridTextColumn Width="*"  Header="SupplierType" Binding="{Binding Path=mobile}">
                                     <DataGridTextColumn.ElementStyle>
                                         <Style TargetType="{x:Type TextBlock}">
                                             <Style.Triggers>

@@ -116,6 +116,13 @@ namespace POSCA.View.sectionData
             //   );
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Supplier");
+            txt_contactData.Text = AppSettings.resourcemanager.GetString("ContactData");
+            txt_bankData.Text = AppSettings.resourcemanager.GetString("BankData");
+            txt_Notes.Text = AppSettings.resourcemanager.GetString("trNote");
+            txt_mobileButton.Text = AppSettings.resourcemanager.GetString("ContactData");
+            txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
+            txt_supplierSectorButton.Text = AppSettings.resourcemanager.GetString("SupplierSectors");
+            txt_documentsButton.Text = AppSettings.resourcemanager.GetString("MainDocuments");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -141,10 +148,11 @@ namespace POSCA.View.sectionData
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_supplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trCode");
+            dg_supplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
             dg_supplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_supplier.Columns[2].Header = AppSettings.resourcemanager.GetString("trCompany");
-            dg_supplier.Columns[3].Header = AppSettings.resourcemanager.GetString("trMobile");
+            dg_supplier.Columns[2].Header = AppSettings.resourcemanager.GetString("ShortName");
+            dg_supplier.Columns[3].Header = AppSettings.resourcemanager.GetString("Group");
+            dg_supplier.Columns[4].Header = AppSettings.resourcemanager.GetString("trType");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
