@@ -182,11 +182,6 @@ namespace POSCA.View.sectionData.vendors
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             supplierType.Name = tb_Name.Text;
-                            if (tgl_IsBlocked.IsChecked == true)
-                                supplierType.IsBlocked = true;
-                            else
-                                supplierType.IsBlocked = false;
-
                             supplierType.Notes = tb_Notes.Text;
 
                             FillCombo.supplierTypeList = await supplierType.save(supplierType);

@@ -522,7 +522,7 @@ namespace POSCA.View.sectionData
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshCustomersList();
+                await RefreshSuppliersList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -539,22 +539,24 @@ namespace POSCA.View.sectionData
         async Task Search()
         {
             //search
-            if (suppliers is null)
-                await RefreshCustomersList();
+            if (FillCombo.suppliersList is null)
+                await RefreshSuppliersList();
             searchText = tb_search.Text.ToLower();
             suppliersQuery = suppliers.Where(s =>
-            //s.AccountCode.ToLower().Contains(searchText) ||
+            s.SupId.ToString().Contains(searchText) ||
             s.Name.ToLower().Contains(searchText)
-            //  || s.mobile.ToLower().Contains(searchText)
+             || s.ShortName.ToLower().Contains(searchText)
+             || s.SupplierGroup.ToLower().Contains(searchText)
+             || s.SupplierType.ToLower().Contains(searchText)
             );
             RefreshCustomersView();
         }
-        async Task<IEnumerable<Supplier>> RefreshCustomersList()
+        async Task<IEnumerable<Supplier>> RefreshSuppliersList()
         {
-            /*
-            await FillCombo.RefreshSuppliersAll();
-            suppliers = FillCombo.suppliersListAll.ToList();
-            */
+
+            await FillCombo.RefreshSuppliers();
+            suppliers = FillCombo.suppliersList.ToList();
+
             return suppliers;
         }
         void RefreshCustomersView()
@@ -568,7 +570,7 @@ namespace POSCA.View.sectionData
         {
             this.DataContext = new Supplier();
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            dp_AssistantStartDate.Text = DateTime.Now.ToString();
             /*
             #region mobile-Phone-fax-email
             brd_areaPhoneLocal.Visibility =

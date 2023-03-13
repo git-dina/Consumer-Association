@@ -2,6 +2,7 @@
 //using Newtonsoft.Json.Converters;
 //using POSCA.Classes;
 //using POSCA.ApiClasses;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -21,6 +22,7 @@ namespace POSCA.Classes
 {
     public class SupplierPhone
     {
+
         public int SupPhoneId { get; set; }
         public long SupId { get; set; }
         public int PhoneTypeID { get; set; }
@@ -69,17 +71,7 @@ namespace POSCA.Classes
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
     }
-    public class SupNotAllowedTrans
-    {
-        public long Id { get; set; }
-        public long SupId { get; set; }
-        public int SubTransId { get; set; }
-        public bool IsActive { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
-        public Nullable<long> CreateUserId { get; set; }
-        public Nullable<long> UpdateUserId { get; set; }
-    }
+
     public class Supplier
     {
         #region Attributes
@@ -119,12 +111,35 @@ namespace POSCA.Classes
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
 
+
+        public string SupplierGroup { get; set; }
+        public string SupplierType { get; set; }
+
         public List<SupplierPhone> SupplierPhones { get; set; }
         public List<SupplierSector> SupplierSectors { get; set; }
-        public List<SupNotAllowedTrans> SupNotAllowedTrans { get; set; }
 
         #endregion
 
+        #region Methods
+        public async Task<List<Supplier>> get(bool? isActive = null)
+        {
+            var result = new List<Supplier>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Supplier/Get";
+
+            parameters.Add("isActive", isActive.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                }
+            }
+            return result;
+        }
+        #endregion
         /*
         public async Task<List<Vendor>> Get(string type)
         {
