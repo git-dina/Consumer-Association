@@ -161,6 +161,12 @@
     <Compile Include="View\windows\wd_acceptCancelPopup.xaml.cs">
       <DependentUpon>wd_acceptCancelPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_supplierAllowedOperations.xaml.cs">
+      <DependentUpon>wd_supplierAllowedOperations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\windows\wd_supplierContactData.xaml.cs">
+      <DependentUpon>wd_supplierContactData.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -197,6 +203,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_acceptCancelPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\windows\wd_supplierAllowedOperations.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\windows\wd_supplierContactData.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
