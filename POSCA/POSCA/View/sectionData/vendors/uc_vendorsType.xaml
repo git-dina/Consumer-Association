@@ -325,15 +325,6 @@
                                 </Path>
                             </Grid>
                         </Border>
-                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                            <TextBlock   x:Name="txt_IsBlocked"
-                                   Margin="0,0,5,0" Text="IsBlocked" Foreground="#6e6e6e"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   FontSize="12"/>
-                            <ToggleButton   x:Name="tgl_IsBlocked"  IsChecked="{Binding IsBlocked, Mode=OneWay}"
-                                        VerticalAlignment="Center" Padding="10,15,5,5"  
-                                      Margin="0" Height="13" Width="28" />
-                        </StackPanel>
 
                         <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >

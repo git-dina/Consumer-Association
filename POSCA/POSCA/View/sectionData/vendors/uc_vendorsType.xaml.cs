@@ -143,10 +143,6 @@ namespace POSCA.View.sectionData.vendors
                     {
 
                         supplierType.Name = tb_Name.Text;
-                        if (tgl_IsBlocked.IsChecked == true)
-                            supplierType.IsBlocked = true;
-                        else
-                            supplierType.IsBlocked = false;
 
                         supplierType.Notes = tb_Notes.Text;
 
