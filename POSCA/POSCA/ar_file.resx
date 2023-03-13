@@ -5081,4 +5081,49 @@
   <data name="SupplierTypes" xml:space="preserve">
     <value>أنواع الموردين</value>
   </data>
+  <data name="AccountCodetHint" xml:space="preserve">
+    <value>رقم الحساب في الحسابات...</value>
+  </data>
+  <data name="AssistantSupplierHint" xml:space="preserve">
+    <value>المورد المساند...</value>
+  </data>
+  <data name="BankAccountHint" xml:space="preserve">
+    <value>رقم الحساب البنكي...</value>
+  </data>
+  <data name="BOXHint" xml:space="preserve">
+    <value>الصندوق البريدي...</value>
+  </data>
+  <data name="DiscountPercentageHint" xml:space="preserve">
+    <value>نسبة الخصم...</value>
+  </data>
+  <data name="FreePercentagHint" xml:space="preserve">
+    <value>نسبة المجاني...</value>
+  </data>
+  <data name="GeneralNotesHint" xml:space="preserve">
+    <value>ملاحظات عامة...</value>
+  </data>
+  <data name="PurchaseOrderNotesHint" xml:space="preserve">
+    <value>ملاحظات طلب الشراء...</value>
+  </data>
+  <data name="ShortNameHint" xml:space="preserve">
+    <value>الاسم المختصر...</value>
+  </data>
+  <data name="StartMigrationHint" xml:space="preserve">
+    <value>بدء الترحيل...</value>
+  </data>
+  <data name="SupNODaysHint" xml:space="preserve">
+    <value>مدة إصدار الشيك...</value>
+  </data>
+  <data name="Supplier" xml:space="preserve">
+    <value>المورد</value>
+  </data>
+  <data name="SupplierGroupHint" xml:space="preserve">
+    <value>مجموعة المورد...</value>
+  </data>
+  <data name="SupplierTypeHint" xml:space="preserve">
+    <value>نوع المورد...</value>
+  </data>
+  <data name="trNoHint" xml:space="preserve">
+    <value>الرقم...</value>
+  </data>
 </root>
