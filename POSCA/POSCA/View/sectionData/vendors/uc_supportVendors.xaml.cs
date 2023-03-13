@@ -155,6 +155,7 @@ namespace POSCA.View.sectionData.vendors
                         assistantSupplier.IsBlocked = false;
 
                     assistantSupplier.Notes = tb_Notes.Text;
+                    assistantSupplier.CreateUserId = MainWindow.userLogin.userId;
 
                     FillCombo.assistantSupplierList = await assistantSupplier.save(assistantSupplier);
                     if (FillCombo.assistantSupplierList == null)
@@ -199,6 +200,7 @@ namespace POSCA.View.sectionData.vendors
                                 assistantSupplier.IsBlocked = false;
 
                             assistantSupplier.Notes = tb_Notes.Text;
+                            assistantSupplier.UpdateUserId = MainWindow.userLogin.userId;
 
                             FillCombo.assistantSupplierList = await assistantSupplier.save(assistantSupplier);
                             if (FillCombo.assistantSupplierList == null)

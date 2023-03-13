@@ -27,16 +27,46 @@ namespace POSCA.Classes
 
             return supplierGroupList;
         }
+
+        static public async Task fillSupplierGroups(ComboBox combo)
+        {
+            if (supplierGroupList is null)
+                await RefreshSupplierGroups();
+
+            combo.ItemsSource = supplierGroupList;
+            combo.SelectedValuePath = "SupplierGroupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         #endregion
         #region Assistant Supplier
         static public AssistantSupplier assistantSupplier = new AssistantSupplier();
         static public List<AssistantSupplier> assistantSupplierList ;
+        static public List<AssistantSupplier> assistantSupplierListWithDefault ;
 
         static public async Task<IEnumerable<AssistantSupplier>> RefreshAssistantSuppliers()
         {
             assistantSupplierList = await assistantSupplier.get(true);
 
             return assistantSupplierList;
+        }
+
+        static public async Task fillAssistantWithDefault(ComboBox combo)
+        {
+            if (assistantSupplierList is null)
+                await RefreshAssistantSuppliers();
+
+            assistantSupplierListWithDefault = assistantSupplierList.ToList();
+
+            AssistantSupplier sup = new AssistantSupplier();
+            sup.Name = "-";
+            sup.AssistantSupId = 0;
+            assistantSupplierListWithDefault.Insert(0, sup);
+
+            combo.ItemsSource = assistantSupplierListWithDefault;
+            combo.SelectedValuePath = "AssistantSupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
         }
         #endregion
 
@@ -49,6 +79,17 @@ namespace POSCA.Classes
             supplierTypeList = await supplierType.get(true);
 
             return supplierTypeList;
+        }
+
+        static public async Task fillSupplierTypes(ComboBox combo)
+        {
+            if (supplierTypeList is null)
+                await RefreshSupplierTypes();
+
+            combo.ItemsSource = supplierTypeList;
+            combo.SelectedValuePath = "SupplierTypeId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
         }
         #endregion
 

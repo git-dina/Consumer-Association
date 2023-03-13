@@ -74,7 +74,9 @@ namespace POSCA.View.sectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "name", "mobile" };
+                requiredControlList = new List<string> { "Name", "ShortName", "SupplierTypeId" ,
+                                        "SupplierGroupId","AssistantStartDate","FreePercentag",
+                                        "DiscountPercentage"};
                 //if (AppSettings.lang.Equals("en"))
                 //{
                 //grid_main.FlowDirection = FlowDirection.LeftToRight;
@@ -86,7 +88,9 @@ namespace POSCA.View.sectionData
                 translate();
 
                
-                //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
+                await FillCombo.fillAssistantWithDefault(cb_AssistantSupId);
+                await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
+                await FillCombo.fillSupplierGroups(cb_SupplierGroupId);
                 Keyboard.Focus(tb_Name);
                 /*
                 if (FillCombo.suppliersListAll is null)
@@ -171,66 +175,52 @@ namespace POSCA.View.sectionData
         {//add
             try
             {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
+               // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
 
                     supplier = new Supplier();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                        //payType
-                        string payType = "";
-                        if (cb_payType.SelectedIndex != -1)
-                            payType = cb_payType.SelectedValue.ToString();
+                        supplier.ShortName = tb_ShortName.Text;
+                        supplier.Name = tb_Name.Text;
 
-                        //tb_code.Text = await supplier.generateCodeNumber("v");
-                        supplier.code = await supplier.generateCodeNumber("v");
-                        supplier.name = tb_name.Text;
-                        supplier.company = tb_company.Text;
-                        supplier.address = tb_address.Text;
-                        supplier.email = tb_email.Text;
-                        supplier.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
-                        if (!tb_phone.Text.Equals(""))
-                            supplier.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
-                        if (!tb_fax.Text.Equals(""))
-                            supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                        supplier.type = "v";
-                        supplier.accType = "";
-                        supplier.balance = 0;
-                        supplier.balanceType = 0;
-                        supplier.payType = payType;
-                        supplier.createUserId = MainWindow.userLogin.userId;
-                        supplier.updateUserId = MainWindow.userLogin.userId;
-                        supplier.notes = tb_notes.Text;
-                        supplier.isActive = 1;
+                        if (cb_AssistantSupId.SelectedIndex > 0)
+                            supplier.AssistantSupId = (long)cb_AssistantSupId.SelectedValue;
+                        else
+                            supplier.AssistantSupId = null;
 
-                        var s = await supplier.save(supplier);
-                        if (s <= 0)
+                        if (cb_SupplierTypeId.SelectedIndex >= 0)
+                            supplier.SupplierTypeId = (int)cb_SupplierTypeId.SelectedValue;
+
+
+                         if (cb_SupplierGroupId.SelectedIndex >= 0)
+                            supplier.SupplierGroupId = (int)cb_SupplierGroupId.SelectedValue;
+
+                        supplier.AssistantStartDate =DateTime.Parse( dp_AssistantStartDate.Text);
+                        supplier.FreePercentag =decimal.Parse( tb_FreePercentag.Text);
+                        supplier.DiscountPercentage =decimal.Parse( tb_DiscountPercentage.Text);
+                        supplier.Address = tb_address.Text;
+                       
+                        supplier.CreateUserId = MainWindow.userLogin.userId;
+
+                       FillCombo.suppliersList = await supplier.save(supplier);
+                        if (FillCombo.suppliersList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            if (openFileDialog.FileName != "")
-                            {
-                                var supplierId = s;
-                                string b = await supplier.uploadImage(imgFileName,
-                                    Md5Encription.MD5Hash("Inc-m" + supplierId.ToString()), supplierId);
-                                supplier.image = b;
-                            }
-
                             Clear();
-                            await RefreshCustomersList();
                             await Search();
-                            FillCombo.suppliersList = suppliers.ToList();
+
                         }
                     }
                     HelpClass.EndAwait(grid_main);
                 }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                    */
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                 
             }
             catch (Exception ex)
             {
@@ -571,6 +561,8 @@ namespace POSCA.View.sectionData
             this.DataContext = new Supplier();
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             dp_AssistantStartDate.Text = DateTime.Now.ToString();
+            tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
+            tb_FreePercentag.Text = HelpClass.DecTostring(0);
             /*
             #region mobile-Phone-fax-email
             brd_areaPhoneLocal.Visibility =

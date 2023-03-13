@@ -143,8 +143,8 @@ namespace POSCA.View.sectionData.vendors
                     {
 
                         supplierType.Name = tb_Name.Text;
-
                         supplierType.Notes = tb_Notes.Text;
+                        supplierType.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.supplierTypeList = await supplierType.save(supplierType);
                         if (FillCombo.supplierTypeList == null)
@@ -183,6 +183,7 @@ namespace POSCA.View.sectionData.vendors
                         {
                             supplierType.Name = tb_Name.Text;
                             supplierType.Notes = tb_Notes.Text;
+                            supplierType.UpdateUserId = MainWindow.userLogin.userId;
 
                             FillCombo.supplierTypeList = await supplierType.save(supplierType);
                             if (FillCombo.supplierTypeList == null)
