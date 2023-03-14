@@ -522,13 +522,14 @@ namespace POSCA.View.windows
 
         }
 
-        private void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)
+        private async void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                listSupplierPhone.Add(new SupplierPhone());
+                await Task.Delay(0050);
                 btn_addSupplierPhone.IsEnabled = false;
                 dg_supplierPhone.IsEnabled = false;
+                listSupplierPhone.Add(new SupplierPhone());
             }
             catch (Exception ex)
             {
@@ -544,10 +545,12 @@ namespace POSCA.View.windows
                 for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
                     if (vis is DataGridRow)
                     {
-                        SupplierPhone row = (SupplierPhone)dg_supplierPhone.SelectedItems[0];
-                        listSupplierPhone.Remove(row);
+
                         btn_addSupplierPhone.IsEnabled = false;
                         dg_supplierPhone.IsEnabled = false;
+                        SupplierPhone row = (SupplierPhone)dg_supplierPhone.SelectedItems[0];
+                        listSupplierPhone.Remove(row);
+                        
                     }
 
                 HelpClass.EndAwait(grid_main);
@@ -562,8 +565,8 @@ namespace POSCA.View.windows
         {
             dg_supplierPhone.ItemsSource = listSupplierPhone;
             dg_supplierPhone.Items.Refresh();
-            btn_addSupplierPhone.IsEnabled = true;
             dg_supplierPhone.IsEnabled = true;
+            btn_addSupplierPhone.IsEnabled = true;
         }
         void timer_Tick(object sender, EventArgs e)
         {
