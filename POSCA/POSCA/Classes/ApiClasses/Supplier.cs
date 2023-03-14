@@ -159,8 +159,27 @@ namespace POSCA.Classes
             }
             return result;
         }
+
+        public async Task<List<Supplier>> delete(long supGroupId, long userId)
+        {
+            var result = new List<Supplier>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("itemId", supGroupId.ToString());
+            parameters.Add("userId", userId.ToString());
+            string method = "Supplier/delete";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                }
+            }
+            return result;
+        }
         #endregion
-      
+
     }
 
 }

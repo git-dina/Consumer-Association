@@ -141,6 +141,7 @@
     <Compile Include="Classes\ApiClasses\AssistantSupplier.cs" />
     <Compile Include="Classes\ApiClasses\Bank.cs" />
     <Compile Include="Classes\ApiClasses\Branch.cs" />
+    <Compile Include="Classes\ApiClasses\ItemCategory.cs" />
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
