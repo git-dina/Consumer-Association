@@ -134,6 +134,7 @@ namespace POSCA.Classes
 
         public List<SupplierPhone> SupplierPhones { get; set; }
         public List<SupplierSector> SupplierSectors { get; set; }
+        public List<SupplierDoc> SupplierDocuments { get; set; }
 
         #endregion
 
