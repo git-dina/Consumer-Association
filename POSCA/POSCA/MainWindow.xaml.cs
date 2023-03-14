@@ -494,5 +494,17 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_phoneType.Instance);
         }
+
+        private void Btn_bank_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_bank.Instance);
+        }
+
+        private void Btn_country_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_country.Instance);
+        }
     }
 }

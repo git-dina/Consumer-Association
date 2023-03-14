@@ -180,7 +180,7 @@
                 <StackPanel Orientation="Horizontal"  Margin="5 0 0 0 ">
                     <Path   Fill="White"  Stretch="Fill"   FlowDirection="LeftToRight"
                               HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="35" Height="35"
+                         VerticalAlignment="Center" Width="30" Height="30"
                       Data="{StaticResource StarIconGeometry}" />
                     <TextBlock Text="Consumer Association" FontSize="16" FontWeight="Bold" 
                            Foreground="White" Grid.Column="1"
@@ -280,6 +280,36 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                     <TextBlock Text="phoneType" Foreground="White" x:Name="txt_phoneType"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="40,0,0,0"/>
+                            </Grid>
+                        </Button>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="bank" 
+                          x:Name="btn_bank"  Click="Btn_bank_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="bank" Foreground="White" x:Name="txt_bank"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="40,0,0,0"/>
+                            </Grid>
+                        </Button>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="country" 
+                          x:Name="btn_country"  Click="Btn_country_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="country" Foreground="White" x:Name="txt_country"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="40,0,0,0"/>
                             </Grid>
