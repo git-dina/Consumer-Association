@@ -20,6 +20,11 @@ namespace POSCA.Classes
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        #region no database attributes
+        public long DocumentsNumber { get; set; }
+
+        #endregion
         #endregion
 
         #region Methods
