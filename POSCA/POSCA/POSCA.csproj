@@ -149,6 +149,8 @@
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
+    <Compile Include="Classes\SupplierDoc.cs" />
+    <Compile Include="Classes\SupplierDocType.cs" />
     <Compile Include="View\sectionData\uc_bank.xaml.cs">
       <DependentUpon>uc_bank.xaml</DependentUpon>
     </Compile>
