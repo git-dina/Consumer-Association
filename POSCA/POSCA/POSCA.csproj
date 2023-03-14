@@ -149,6 +149,12 @@
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
+    <Compile Include="View\sectionData\uc_bank.xaml.cs">
+      <DependentUpon>uc_bank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\sectionData\uc_country.xaml.cs">
+      <DependentUpon>uc_country.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\sectionData\uc_phoneType.xaml.cs">
       <DependentUpon>uc_phoneType.xaml</DependentUpon>
     </Compile>
@@ -192,6 +198,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\sectionData\uc_bank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\sectionData\uc_country.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\sectionData\uc_phoneType.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
