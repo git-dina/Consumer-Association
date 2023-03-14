@@ -92,6 +92,50 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+        #region Bank
+        static public Bank bank = new Bank();
+        static public List<Bank> bankList;
+
+        static public async Task<IEnumerable<Bank>> RefreshBanks()
+        {
+            bankList = await bank.get(true);
+
+            return bankList;
+        }
+
+        static public async Task fillBanks(ComboBox combo)
+        {
+            if (bankList is null)
+                await RefreshBanks();
+
+            combo.ItemsSource = bankList;
+            combo.SelectedValuePath = "BankId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        #region Country
+        static public Country country = new Country();
+        static public List<Country> countryList;
+
+        static public async Task<IEnumerable<Country>> RefreshCountrys()
+        {
+            countryList = await country.get(true);
+
+            return countryList;
+        }
+
+        static public async Task fillCountrys(ComboBox combo)
+        {
+            if (countryList is null)
+                await RefreshCountrys();
+
+            combo.ItemsSource = countryList;
+            combo.SelectedValuePath = "CountryId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
         #region phoneTypes
         static public PhoneType phoneType = new PhoneType();
         static public List<PhoneType> phoneTypeList;
