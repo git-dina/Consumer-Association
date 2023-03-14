@@ -5162,4 +5162,19 @@
   <data name="trNoHint" xml:space="preserve">
     <value>الرقم...</value>
   </data>
+  <data name="IsAllowCashingChecks" xml:space="preserve">
+    <value>صرف الشيكات</value>
+  </data>
+  <data name="IsAllowedDirectReturn" xml:space="preserve">
+    <value>المرتجع المباشر في الاستلام</value>
+  </data>
+  <data name="IsAllowedPO" xml:space="preserve">
+    <value>طلبات الشراء</value>
+  </data>
+  <data name="IsAllowedReceipt" xml:space="preserve">
+    <value>الاستلام</value>
+  </data>
+  <data name="IsAllowedReturnDiscount" xml:space="preserve">
+    <value>الخصم في المرتجعات</value>
+  </data>
 </root>

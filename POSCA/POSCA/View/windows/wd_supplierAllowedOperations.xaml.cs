@@ -79,9 +79,12 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            //
-
-            //txt_title.Text = AppSettings.resourcemanager.GetString("");
+            txt_title.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
+            txt_IsAllowedPO.Text = AppSettings.resourcemanager.GetString("IsAllowedPO");
+            txt_IsAllowedReceipt.Text = AppSettings.resourcemanager.GetString("IsAllowedReceipt");
+            txt_IsAllowedDirectReturn.Text = AppSettings.resourcemanager.GetString("IsAllowedDirectReturn");
+            txt_IsAllowedReturnDiscount.Text = AppSettings.resourcemanager.GetString("IsAllowedReturnDiscount");
+            txt_IsAllowCashingChecks.Text = AppSettings.resourcemanager.GetString("IsAllowCashingChecks");
 
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
