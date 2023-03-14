@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace POSCA.View.windows
 {
@@ -39,6 +40,8 @@ namespace POSCA.View.windows
         {
             this.Close();
         }
+        List<SupplierPhone> listSupplierPhone = new List<SupplierPhone>();
+        public static DispatcherTimer timer;
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -48,6 +51,12 @@ namespace POSCA.View.windows
 
 
                 HelpClass.StartAwait(grid_main);
+
+                timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(1);
+                timer.Tick += timer_Tick;
+                timer.Start();
+
 
                 #region translate
 
@@ -63,8 +72,10 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-
-
+                listSupplierPhone = new List<SupplierPhone>();
+                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeID = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
+                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeID = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
+                dg_supplierPhone.ItemsSource = listSupplierPhone;
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -93,9 +104,9 @@ namespace POSCA.View.windows
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
 
-            txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
+            //txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
+            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -380,7 +391,7 @@ namespace POSCA.View.windows
         void Clear()
         {
             this.DataContext = new Supplier();
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -468,6 +479,8 @@ namespace POSCA.View.windows
         {
             try
             {
+                if (timer != null)
+                    timer.Stop();
                 e.Cancel = true;
                 this.Visibility = Visibility.Hidden;
             }
@@ -507,6 +520,61 @@ namespace POSCA.View.windows
         private void Btn_addBank_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                listSupplierPhone.Add(new SupplierPhone());
+                btn_addSupplierPhone.IsEnabled = false;
+                dg_supplierPhone.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+         void deleteSupplierPhoneRowinDatagrid(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+
+                for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                    if (vis is DataGridRow)
+                    {
+                        SupplierPhone row = (SupplierPhone)dg_supplierPhone.SelectedItems[0];
+                        listSupplierPhone.Remove(row);
+                        btn_addSupplierPhone.IsEnabled = false;
+                        dg_supplierPhone.IsEnabled = false;
+                    }
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        public async Task RefreshSupplierPhoneDataGrid()
+        {
+            dg_supplierPhone.ItemsSource = listSupplierPhone;
+            dg_supplierPhone.Items.Refresh();
+            btn_addSupplierPhone.IsEnabled = true;
+            dg_supplierPhone.IsEnabled = true;
+        }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                RefreshSupplierPhoneDataGrid();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }
