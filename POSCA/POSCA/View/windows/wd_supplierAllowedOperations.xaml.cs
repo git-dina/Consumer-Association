@@ -39,6 +39,12 @@ namespace POSCA.View.windows
             this.Close();
         }
 
+        public bool IsAllowedPO;
+        public bool IsAllowedReceipt;
+        public bool IsAllowedDirectReturn;
+        public bool IsAllowedReturnDiscount;
+        public bool IsAllowCashingChecks;
+        public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -110,6 +116,7 @@ namespace POSCA.View.windows
             try
             {
                 e.Cancel = true;
+                isOk = false;
                 this.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
@@ -133,8 +140,8 @@ namespace POSCA.View.windows
             {
 
                 HelpClass.StartAwait(grid_main);
-              
 
+                isOk = true;
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

@@ -811,7 +811,21 @@ HelpClass.EndAwait(grid_image, "forImage");
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_supplierAllowedOperations w = new wd_supplierAllowedOperations();
+                w.IsAllowedPO = supplier.IsAllowedPO;
+                w.IsAllowedReceipt = supplier.IsAllowedReceipt;
+                w.IsAllowedDirectReturn = supplier.IsAllowedDirectReturn;
+                w.IsAllowedReturnDiscount = supplier.IsAllowedReturnDiscount;
+                w.IsAllowCashingChecks = supplier.IsAllowCashingChecks;
                 w.ShowDialog();
+
+                if (w.isOk)
+                {
+                    supplier.IsAllowedPO = w.IsAllowedPO;
+                    supplier.IsAllowedReceipt = w.IsAllowedReceipt;
+                    supplier.IsAllowedDirectReturn = w.IsAllowedDirectReturn;
+                    supplier.IsAllowedReturnDiscount = w.IsAllowedReturnDiscount;
+                    supplier.IsAllowCashingChecks = w.IsAllowCashingChecks;
+                }
                 Window.GetWindow(this).Opacity = 1;
 
                 HelpClass.EndAwait(grid_main);
