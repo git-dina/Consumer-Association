@@ -21,7 +21,7 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<List<Country>> save(SupplierType group)
+        public async Task<List<Country>> save(Country group)
         {
             var result = new List<Country>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();

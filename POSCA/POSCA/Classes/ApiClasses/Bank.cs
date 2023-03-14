@@ -24,7 +24,7 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<List<Bank>> save(PhoneType group)
+        public async Task<List<Bank>> save(Bank group)
         {
             var result = new List<Bank>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
