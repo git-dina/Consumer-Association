@@ -316,7 +316,7 @@
                     <StackPanel>
                         <DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_baseInformation" Text="Base Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
-                            <Separator  Background="{StaticResource LightGrey}" VerticalAlignment="Center" Width="auto"  />
+                            <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
                         </DockPanel>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
@@ -590,7 +590,7 @@
                         <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
                             <TextBlock  Text="Notes"   x:Name="txt_Notes"
                                   Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
-                            <Separator Background="{StaticResource LightGrey}"    Margin="5,0,5,0"
+                            <Separator Background="{StaticResource SecondColor}"    Margin="5,0,5,0"
                                       Grid.Column="1" VerticalAlignment="Center" />
 
                         </DockPanel>
