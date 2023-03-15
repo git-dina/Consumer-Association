@@ -92,6 +92,28 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+        #region SupplierDocType
+        static public SupplierDocType supplierDocType = new SupplierDocType();
+        static public List<SupplierDocType> supplierDocTypeList;
+
+        static public async Task<IEnumerable<SupplierDocType>> RefreshSupplierDocTypes()
+        {
+            supplierDocTypeList = await supplierDocType.get(true);
+
+            return supplierDocTypeList;
+        }
+
+        static public async Task fillSupplierDocTypes(ComboBox combo)
+        {
+            if (supplierDocTypeList is null)
+                await RefreshSupplierDocTypes();
+
+            combo.ItemsSource = supplierDocTypeList;
+            combo.SelectedValuePath = "TypeId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
         #region Bank
         static public Bank bank = new Bank();
         static public List<Bank> bankList;
