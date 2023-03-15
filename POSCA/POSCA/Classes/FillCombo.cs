@@ -113,6 +113,22 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
+        static public async Task fillBanksWithDefault(ComboBox combo)
+        {
+            if (bankList is null)
+                await RefreshBanks();
+
+            var lst = bankList.ToList();
+            Bank sup = new Bank();
+            sup.BankName = "-";
+            sup.BankId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "BankId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         #endregion
         #region Country
         static public Country country = new Country();

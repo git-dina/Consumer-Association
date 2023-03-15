@@ -67,8 +67,8 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
-              
 
+                setAllowedOperations();
 
 
                 HelpClass.EndAwait(grid_main);
@@ -97,6 +97,33 @@ namespace POSCA.View.windows
 
         }
 
+       private void setAllowedOperations()
+        {
+            if (IsAllowCashingChecks == true)
+                tgl_IsAllowCashingChecks.IsChecked = true;
+            else
+                tgl_IsAllowCashingChecks.IsChecked = false;
+
+            if (IsAllowedDirectReturn == true)
+                tgl_IsAllowedDirectReturn.IsChecked = true;
+            else
+                tgl_IsAllowedDirectReturn.IsChecked = false;
+
+            if (IsAllowedPO == true)
+                tgl_IsAllowedPO.IsChecked = true;
+            else
+                tgl_IsAllowedPO.IsChecked = false;
+
+            if (IsAllowedReceipt== true)
+                tgl_IsAllowedReceipt.IsChecked = true;
+            else
+                tgl_IsAllowedReceipt.IsChecked = false;
+
+            if (IsAllowedReturnDiscount == true)
+                tgl_IsAllowedReturnDiscount.IsChecked = true;
+            else
+                tgl_IsAllowedReturnDiscount.IsChecked = false;
+        }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -116,6 +143,7 @@ namespace POSCA.View.windows
             try
             {
                 e.Cancel = true;
+               
                 isOk = false;
                 this.Visibility = Visibility.Hidden;
             }
@@ -140,6 +168,31 @@ namespace POSCA.View.windows
             {
 
                 HelpClass.StartAwait(grid_main);
+
+                if (tgl_IsAllowCashingChecks.IsChecked == true)
+                    IsAllowCashingChecks = true;
+                else
+                    IsAllowCashingChecks = false;
+
+                if (tgl_IsAllowedDirectReturn.IsChecked == true)
+                    IsAllowedDirectReturn = true;
+                else
+                    IsAllowedDirectReturn = false;
+
+                if (tgl_IsAllowedPO.IsChecked == true)
+                    IsAllowedPO = true;
+                else
+                    IsAllowedPO = false;
+
+                if (tgl_IsAllowedReceipt.IsChecked == true)
+                    IsAllowedReceipt = true;
+                else
+                    IsAllowedReceipt = false;
+
+                if (tgl_IsAllowedReturnDiscount.IsChecked == true)
+                    IsAllowedReturnDiscount = true;
+                else
+                    IsAllowedReturnDiscount = false;
 
                 isOk = true;
                 HelpClass.EndAwait(grid_main);

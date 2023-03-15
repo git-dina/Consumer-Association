@@ -5177,4 +5177,7 @@
   <data name="IsAllowedReturnDiscount" xml:space="preserve">
     <value>الخصم في المرتجعات</value>
   </data>
+  <data name="Phones" xml:space="preserve">
+    <value>الهواتف</value>
+  </data>
 </root>

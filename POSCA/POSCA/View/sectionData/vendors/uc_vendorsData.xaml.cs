@@ -790,7 +790,26 @@ HelpClass.EndAwait(grid_image, "forImage");
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_supplierContactData w = new wd_supplierContactData();
+
+                w.BankId = supplier.BankId;
+                w.BankAccount = supplier.BankAccount;
+                w.AccountCode = supplier.AccountCode;
+                w.SupNODays = supplier.SupNODays;
+                w.Email = supplier.Email;
+                w.BOX = supplier.BOX;
+                w.SupplierPhones = supplier.SupplierPhones;
+
                 w.ShowDialog();
+                if(w.isOk)
+                {
+                    supplier.BankId = w.BankId;
+                    supplier.BankAccount = w.BankAccount;
+                    supplier.AccountCode = w.AccountCode;
+                    supplier.SupNODays = w.SupNODays;
+                    supplier.Email = w.Email;
+                    supplier.BOX = w.BOX;
+                    supplier.SupplierPhones = w.SupplierPhones;
+                }
                 Window.GetWindow(this).Opacity = 1;
 
                 HelpClass.EndAwait(grid_main);
