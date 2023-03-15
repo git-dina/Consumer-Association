@@ -238,7 +238,10 @@
                                     </Style>
                                 </DataGrid.Resources>
                             <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*"  Header="PhoneTypeID" Binding="{Binding Path=PhoneTypeID, Mode=TwoWay}"/>
+                                    <DataGridComboBoxColumn Width="*"  Header="phoneType"
+                                                            x:Name="cb_phoneType" 
+                                        SelectedValueBinding="{Binding PhoneTypeId, Mode=TwoWay}"  
+                                                            />     
                                     <DataGridTextColumn Width="*"  Header="PhoneNumber" Binding="{Binding Path=PhoneNumber, Mode=TwoWay}"/>
                                     <DataGridTextColumn Width="*"  Header="PersonName" Binding="{Binding Path=PersonName, Mode=TwoWay}"/>
                                     <DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >

@@ -1,4 +1,5 @@
 ﻿using POSCA.Classes;
+using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,7 @@ namespace POSCA.View.windows
             this.Close();
         }
         List<SupplierPhone> listSupplierPhone = new List<SupplierPhone>();
+        List<PhoneType> listPhoneType = new List<PhoneType>();
         public static DispatcherTimer timer;
 
         public Nullable<long> BankId { get; set; }
@@ -84,11 +86,20 @@ namespace POSCA.View.windows
                 await FillCombo.fillBanksWithDefault(cb_BankId);
                 
                 setContactData();
+                #region fill combo PhoneType
+                listPhoneType = new List<PhoneType>();
+                listPhoneType.Add(new PhoneType() { PhoneTypeId = 1, Name = "PhoneType1" });
+                listPhoneType.Add(new PhoneType() { PhoneTypeId = 2, Name = "PhoneType2" });
+                cb_phoneType.DisplayMemberPath = "Name";
+                cb_phoneType.SelectedValuePath = "PhoneTypeId";
+                cb_phoneType.ItemsSource = listPhoneType;
+                #endregion
 
                 listSupplierPhone = new List<SupplierPhone>();
-                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeID = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
-                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeID = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
+                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
+                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
                 dg_supplierPhone.ItemsSource = listSupplierPhone;
+
 
                 HelpClass.EndAwait(grid_main);
             }
