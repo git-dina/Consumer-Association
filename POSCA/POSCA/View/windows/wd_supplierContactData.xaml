@@ -212,9 +212,10 @@
                             </Button>
                             <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
                         </DockPanel>
-                        <Grid  Grid.Row="1" MinHeight="230" MaxHeight="230">
-                        <Border Margin="5,5,5,17.5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
+                        <Grid  Grid.Row="1" MinHeight="190" MaxHeight="190">
+                        <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
                             Background="White"/>
+                            
                             <DataGrid x:Name="dg_supplierPhone" 
                             Margin="10" Grid.Row="1" 
                                    CanUserAddRows="False" IsReadOnly="False" 
@@ -353,7 +354,11 @@
                         </Grid>
 
                     </Border>-->
-                </StackPanel>
+                        <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
+                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
+                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+
+                    </StackPanel>
                 </ScrollViewer>
 
             </Grid>
