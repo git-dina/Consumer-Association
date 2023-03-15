@@ -38,6 +38,7 @@ namespace POSCA.View.windows
 
         private void Btn_colse_Click(object sender, RoutedEventArgs e)
         {
+            isOk = false;
             this.Close();
         }
         List<SupplierPhone> listSupplierPhone = new List<SupplierPhone>();
