@@ -865,7 +865,31 @@ HelpClass.EndAwait(grid_image, "forImage");
 
         private void Btn_documents_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_supplierDoc w = new wd_supplierDoc();
+
+                w.SupplierDocs = supplier.SupplierDocuments;
+
+                w.ShowDialog();
+                if (w.isOk)
+                {
+                    supplier.SupplierDocuments = w.SupplierDocs;
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)

@@ -770,7 +770,7 @@
                                     </Grid.RowDefinitions>
                                     <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                            Width="35" Height="35" FlowDirection="LeftToRight"
-                           Data="{StaticResource downloadFile}"/>
+                           Data="{StaticResource archive}"/>
                                     <TextBlock  x:Name="txt_documentsButton"
                                     Text="documents"  Grid.Row="1" 
                                                     FontWeight="Regular" FontSize="10" TextAlignment="Center"
