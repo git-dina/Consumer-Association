@@ -8,7 +8,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          WindowStyle="None" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Margin="0" AllowsTransparency="True" Background="Transparent"
-        Title="wd_itemsList" Height="175" Width="300"  
+        Height="175" Width="300"  
         Loaded="Window_Loaded" MouseDown="Window_MouseDown">
     <Border CornerRadius="2.5"  Background="White">
         <Grid x:Name="grid_main">

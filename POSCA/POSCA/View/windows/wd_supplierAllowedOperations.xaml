@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:POSCA.View.windows"
         mc:Ignorable="d" KeyDown="HandleKeyPress"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Increase Restaurant"
          WindowStyle="None" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Margin="0"
          Height="325" Width="300"  Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown"
