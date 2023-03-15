@@ -394,6 +394,21 @@
                               Grid.Column="1"      Margin="40,0,0,0"/>
                                     </Grid>
                                 </Button>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="supplierDocType" 
+                          x:Name="btn_supplierDocType"  Click="Btn_supplierDocType_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                    <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                        <Grid.ColumnDefinitions>
+                                             <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                            <TextBlock Text="supplierDocType" Foreground="White" x:Name="txt_supplierDocType"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="40,0,0,0"/>
+                                    </Grid>
+                                </Button>
 
                             </StackPanel>
                         </Expander>
