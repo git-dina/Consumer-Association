@@ -23,12 +23,11 @@ namespace POSCA.Classes
 
         #region no database attributes
         public long DocumentsNumber { get; set; }
-
         #endregion
         #endregion
 
         #region Methods
-        public async Task<List<SupplierDocType>> save(Country group)
+        public async Task<List<SupplierDocType>> save(SupplierDocType group)
         {
             var result = new List<SupplierDocType>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
