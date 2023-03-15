@@ -319,7 +319,7 @@ namespace POSCA.View.sectionData
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshTypesList();
+                await RefreshCountriesList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -337,14 +337,14 @@ namespace POSCA.View.sectionData
         {
             //search
             if (FillCombo.countryList is null)
-                await RefreshTypesList();
+                await RefreshCountriesList();
             searchText = tb_search.Text.ToLower();
             countrysQuery = FillCombo.countryList.Where(s =>
             s.CountryName.ToLower().Contains(searchText)
             ).ToList();
             RefreshTypesView();
         }
-        async Task<IEnumerable<Country>> RefreshTypesList()
+        async Task<IEnumerable<Country>> RefreshCountriesList()
         {
             await FillCombo.RefreshCountrys();
 

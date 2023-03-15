@@ -36,6 +36,7 @@ namespace POSCA.View.windows
 
         private void Btn_colse_Click(object sender, RoutedEventArgs e)
         {
+            isOk = false;
             this.Close();
         }
 
@@ -144,7 +145,6 @@ namespace POSCA.View.windows
             {
                 e.Cancel = true;
                
-                isOk = false;
                 this.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
@@ -195,6 +195,7 @@ namespace POSCA.View.windows
                     IsAllowedReturnDiscount = false;
 
                 isOk = true;
+                this.Close();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

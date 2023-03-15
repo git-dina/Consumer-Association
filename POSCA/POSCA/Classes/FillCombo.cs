@@ -110,7 +110,7 @@ namespace POSCA.Classes
 
             combo.ItemsSource = bankList;
             combo.SelectedValuePath = "BankId";
-            combo.DisplayMemberPath = "Name";
+            combo.DisplayMemberPath = "BankName";
             combo.SelectedIndex = -1;
         }
         static public async Task fillBanksWithDefault(ComboBox combo)
@@ -126,7 +126,7 @@ namespace POSCA.Classes
 
             combo.ItemsSource = lst;
             combo.SelectedValuePath = "BankId";
-            combo.DisplayMemberPath = "Name";
+            combo.DisplayMemberPath = "BankName";
             combo.SelectedIndex = -1;
         }
         #endregion

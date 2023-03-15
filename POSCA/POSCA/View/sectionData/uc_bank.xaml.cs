@@ -322,7 +322,7 @@ namespace POSCA.View.sectionData
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshTypesList();
+                await RefreshBanksList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -340,20 +340,20 @@ namespace POSCA.View.sectionData
         {
             //search
             if (FillCombo.bankList is null)
-                await RefreshTypesList();
+                await RefreshBanksList();
             searchText = tb_search.Text.ToLower();
             banksQuery = FillCombo.bankList.Where(s =>
             s.BankName.ToLower().Contains(searchText)
             ).ToList();
-            RefreshTypesView();
+            RefreshBanksView();
         }
-        async Task<IEnumerable<Bank>> RefreshTypesList()
+        async Task<IEnumerable<Bank>> RefreshBanksList()
         {
             await FillCombo.RefreshBanks();
 
             return FillCombo.bankList;
         }
-        void RefreshTypesView()
+        void RefreshBanksView()
         {
             dg_bank.ItemsSource = banksQuery;
             txt_count.Text = banksQuery.Count().ToString();
