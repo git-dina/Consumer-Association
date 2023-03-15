@@ -3,6 +3,7 @@
 //using POSCA.Classes;
 //using POSCA.ApiClasses;
 using Newtonsoft.Json;
+using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -25,7 +26,7 @@ namespace POSCA.Classes
 
         public int SupPhoneId { get; set; }
         public long SupId { get; set; }
-        public int PhoneTypeID { get; set; }
+        public int PhoneTypeId { get; set; }
         public string PhoneNumber { get; set; }
         public string PersonName { get; set; }
         public bool IsActive { get; set; }
