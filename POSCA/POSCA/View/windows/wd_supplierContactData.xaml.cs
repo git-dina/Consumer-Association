@@ -49,7 +49,7 @@ namespace POSCA.View.windows
         public Nullable<long> BankId { get; set; }
         public string BankAccount { get; set; }
         public Nullable<int> SupNODays { get; set; }
-        public int AccountCode { get; set; }
+        public int? AccountCode { get; set; }
         public string Email { get; set; }
         public string BOX { get; set; }
         public List<SupplierPhone> SupplierPhones { get; set; }
@@ -547,20 +547,23 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
+                if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                {
 
-                if (cb_BankId.SelectedIndex > 0)
-                    BankId = (long)cb_BankId.SelectedValue;
+                    if (cb_BankId.SelectedIndex > 0)
+                        BankId = (long)cb_BankId.SelectedValue;
 
-                  BankAccount = tb_BankAccount.Text;
-                   // AccountCode = int.Parse( tb_AccountCode.Text);
-                if (tb_SupNODays.Text != "")
-                     SupNODays =int.Parse( tb_SupNODays.Text);
+                    BankAccount = tb_BankAccount.Text;
+                    // AccountCode = int.Parse( tb_AccountCode.Text);
+                    if (tb_SupNODays.Text != "")
+                        SupNODays = int.Parse(tb_SupNODays.Text);
 
-                Email = tb_Email.Text ;
-                BOX = tb_BOX.Text ;
-                SupplierPhones =(List<SupplierPhone>) dg_supplierPhone.ItemsSource;
-                isOk = true;
-                this.Close();
+                    Email = tb_Email.Text;
+                    BOX = tb_BOX.Text;
+                    SupplierPhones = (List<SupplierPhone>)dg_supplierPhone.ItemsSource;
+                    isOk = true;
+                    this.Close();
+                }
                 // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
