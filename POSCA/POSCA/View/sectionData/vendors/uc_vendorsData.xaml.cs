@@ -782,7 +782,7 @@ HelpClass.EndAwait(grid_image, "forImage");
 
         #endregion
 
-        private void Btn_contactDataButton_Click(object sender, RoutedEventArgs e)
+        private async void Btn_contactDataButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -809,6 +809,9 @@ HelpClass.EndAwait(grid_image, "forImage");
                     supplier.Email = w.Email;
                     supplier.BOX = w.BOX;
                     supplier.SupplierPhones = w.SupplierPhones;
+
+                    if (supplier.SupId != 0)
+                        await supplier.save(supplier);
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -822,7 +825,7 @@ HelpClass.EndAwait(grid_image, "forImage");
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
+        private async void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -844,6 +847,9 @@ HelpClass.EndAwait(grid_image, "forImage");
                     supplier.IsAllowedDirectReturn = w.IsAllowedDirectReturn;
                     supplier.IsAllowedReturnDiscount = w.IsAllowedReturnDiscount;
                     supplier.IsAllowCashingChecks = w.IsAllowCashingChecks;
+
+                    if (supplier.SupId != 0)
+                        await supplier.save(supplier);
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -858,22 +864,25 @@ HelpClass.EndAwait(grid_image, "forImage");
             }
         }
 
-        private void Btn_supplierSector_Click(object sender, RoutedEventArgs e)
+        private async void Btn_supplierSector_Click(object sender, RoutedEventArgs e)
         {
             try
             {
 
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
-                wd_supplierSectors w = new wd_supplierSectors();
+                //wd_supplierSectors w = new wd_supplierSectors();
 
-                w.SupplierSectors = supplier.SupplierSectors;
+                //w.SupplierSectors = supplier.SupplierSectors;
 
-                w.ShowDialog();
-                if (w.isOk)
-                {
-                    supplier.SupplierSectors = w.SupplierSectors;
-                }
+                //w.ShowDialog();
+                //if (w.isOk)
+                //{
+                //    supplier.SupplierSectors = w.SupplierSectors;
+
+                //    if (supplier.SupId != 0)
+                //        await supplier.save(supplier);
+                //}
                 Window.GetWindow(this).Opacity = 1;
 
                 HelpClass.EndAwait(grid_main);
@@ -887,7 +896,7 @@ HelpClass.EndAwait(grid_image, "forImage");
             }
         }
 
-        private void Btn_documents_Click(object sender, RoutedEventArgs e)
+        private async void Btn_documents_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -902,6 +911,8 @@ HelpClass.EndAwait(grid_image, "forImage");
                 if (w.isOk)
                 {
                     supplier.SupplierDocuments = w.SupplierDocs;
+                    if (supplier.SupId != 0)
+                        await supplier.save(supplier);
                 }
                 Window.GetWindow(this).Opacity = 1;
 

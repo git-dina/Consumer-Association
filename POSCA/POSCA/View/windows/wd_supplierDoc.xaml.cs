@@ -77,7 +77,7 @@ namespace POSCA.View.windows
                 #endregion
 
 
-                setContactData();
+                setDocsData();
                 #region fill combo SupplierDocType
                 listSupplierDocType = new List<SupplierDocType>();
                 listSupplierDocType.Add(new SupplierDocType() { TypeId = 1, Name = "SupplierDocType1" });
@@ -115,11 +115,8 @@ namespace POSCA.View.windows
            
         }
 
-        private void setContactData()
-        {
-         
-        
-
+        private void setDocsData()
+        {      
             dg_supplierDoc.ItemsSource = SupplierDocs;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -517,10 +514,10 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
+                SupplierDocs = (List<SupplierDoc>)dg_supplierDoc.ItemsSource ;
 
-              
-
-
+                isOk = true;
+                this.Close();
                 // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
