@@ -76,21 +76,21 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-
+                await fillDocTypeCombo();
                 setDocsData();
-                #region fill combo SupplierDocType
-                listSupplierDocType = new List<SupplierDocType>();
-                listSupplierDocType.Add(new SupplierDocType() { TypeId = 1, Name = "SupplierDocType1" });
-                listSupplierDocType.Add(new SupplierDocType() { TypeId = 2, Name = "SupplierDocType2" });
-                cb_supplierDocType.DisplayMemberPath = "Name";
-                cb_supplierDocType.SelectedValuePath = "TypeId";
-                cb_supplierDocType.ItemsSource = listSupplierDocType;
-                #endregion
+                //#region fill combo SupplierDocType
+                //listSupplierDocType = new List<SupplierDocType>();
+                //listSupplierDocType.Add(new SupplierDocType() { TypeId = 1, Name = "SupplierDocType1" });
+                //listSupplierDocType.Add(new SupplierDocType() { TypeId = 2, Name = "SupplierDocType2" });
+                //cb_supplierDocType.DisplayMemberPath = "Name";
+                //cb_supplierDocType.SelectedValuePath = "TypeId";
+                //cb_supplierDocType.ItemsSource = listSupplierDocType;
+                //#endregion
 
-                listSupplierDoc = new List<SupplierDoc>();
-                listSupplierDoc.Add(new SupplierDoc() { TypeId = 1, StartDate = DateTime.Now.Date, EndDate = DateTime.Now.Date });
-                listSupplierDoc.Add(new SupplierDoc() { TypeId = 2, StartDate = DateTime.Now.Date, EndDate = DateTime.Now.Date });
-                dg_supplierDoc.ItemsSource = listSupplierDoc;
+                //listSupplierDoc = new List<SupplierDoc>();
+                //listSupplierDoc.Add(new SupplierDoc() { TypeId = 1, StartDate = DateTime.Now.Date, EndDate = DateTime.Now.Date });
+                //listSupplierDoc.Add(new SupplierDoc() { TypeId = 2, StartDate = DateTime.Now.Date, EndDate = DateTime.Now.Date });
+                //dg_supplierDoc.ItemsSource = listSupplierDoc;
 
 
                 HelpClass.EndAwait(grid_main);
@@ -115,6 +115,15 @@ namespace POSCA.View.windows
            
         }
 
+        private async Task fillDocTypeCombo()
+        {
+            if (FillCombo.supplierDocTypeList is null)
+                await FillCombo.RefreshSupplierDocTypes();
+
+            cb_supplierDocType.DisplayMemberPath = "Name";
+            cb_supplierDocType.SelectedValuePath = "TypeId";
+            cb_supplierDocType.ItemsSource = FillCombo.supplierDocTypeList;
+        }
         private void setDocsData()
         {      
             dg_supplierDoc.ItemsSource = SupplierDocs;
