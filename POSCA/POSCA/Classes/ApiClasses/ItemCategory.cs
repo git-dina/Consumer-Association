@@ -20,6 +20,8 @@ namespace POSCA.Classes.ApiClasses
         public decimal DiscountPercentage { get; set; }
         public string Notes { get; set; }
         public bool CanContainItems { get; set; }
+        public string Image { get; set; }
+
         public bool IsBlocked { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
