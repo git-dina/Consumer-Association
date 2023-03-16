@@ -98,8 +98,8 @@ namespace POSCA.Classes
         public string Name { get; set; }
         public string ShortName { get; set; }
         public string Address { get; set; }
-        public int SupplierTypeId { get; set; }
-        public int SupplierGroupId { get; set; }
+        public Nullable<int> SupplierTypeId { get; set; }
+        public Nullable<int> SupplierGroupId { get; set; }
         public Nullable<long> AssistantSupId { get; set; }
         public Nullable<decimal> AssistantAccountNumber { get; set; }
         public string AssistantAccountName { get; set; }
@@ -109,7 +109,7 @@ namespace POSCA.Classes
         public Nullable<long> BankId { get; set; }
         public string BankAccount { get; set; }
         public Nullable<int> SupNODays { get; set; }
-        public int AccountCode { get; set; }
+        public Nullable<int> AccountCode { get; set; }
         public string Email { get; set; }
         public string BOX { get; set; }
         public bool IsBlocked { get; set; }
@@ -118,25 +118,26 @@ namespace POSCA.Classes
         public string Notes { get; set; }
         public string PurchaseOrderNotes { get; set; }
         public string Image { get; set; }
-        public bool IsAllowedPO { get; set; } = true;
-        public bool IsAllowedReceipt { get; set; } = true;
-        public bool IsAllowedDirectReturn { get; set; } = true;
-        public bool IsAllowedReturnDiscount { get; set; } = true;
-        public bool IsAllowCashingChecks { get; set; } = true;
+        public bool IsAllowedPO { get; set; }
+        public bool IsAllowedReceipt { get; set; }
+        public bool IsAllowedDirectReturn { get; set; }
+        public bool IsAllowedReturnDiscount { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+        public bool IsAllowCashingChecks { get; set; }
 
 
+        #region Extra Attributs
         public string SupplierGroup { get; set; }
         public string SupplierType { get; set; }
 
         public List<SupplierPhone> SupplierPhones { get; set; }
         public List<SupplierSector> SupplierSectors { get; set; }
         public List<SupplierDoc> SupplierDocuments { get; set; }
-
+        #endregion
         #endregion
 
         #region Methods
