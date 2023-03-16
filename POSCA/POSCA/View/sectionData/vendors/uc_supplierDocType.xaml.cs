@@ -106,8 +106,8 @@ namespace POSCA.View.sectionData.vendors
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_DocumentsNumber, AppSettings.resourcemanager.GetString("DocumentsNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
@@ -115,6 +115,7 @@ namespace POSCA.View.sectionData.vendors
 
             dg_supplierDocType.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
             dg_supplierDocType.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_supplierDocType.Columns[2].Header = AppSettings.resourcemanager.GetString("DocumentsNumber");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -343,6 +344,7 @@ namespace POSCA.View.sectionData.vendors
             searchText = tb_search.Text.ToLower();
             supplierDocTypesQuery = FillCombo.supplierDocTypeList.Where(s =>
             s.Name.ToLower().Contains(searchText)
+            || s.DocumentsNumber.ToString().Contains(searchText)
             ).ToList();
             RefreshTypesView();
         }

@@ -337,11 +337,14 @@ namespace POSCA
         {
             txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
+            txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
+            txt_bank.Text = AppSettings.resourcemanager.GetString("trBanks");
             txt_vendors.Text = AppSettings.resourcemanager.GetString("Suppliers");
             txt_vendorsData.Text = AppSettings.resourcemanager.GetString("SuppliersData");
             txt_vendorsGroups.Text = AppSettings.resourcemanager.GetString("SuppliersGroups");
             txt_vendorsType.Text = AppSettings.resourcemanager.GetString("SuppliersTypes");
             txt_supportVendors.Text = AppSettings.resourcemanager.GetString("AssistantSuppliers");
+            txt_supplierDocType.Text = AppSettings.resourcemanager.GetString("SupplierDocTypes");
 
             /*
             tt_menu.Content = AppSettings.resourcemanager.GetString("trMenu");

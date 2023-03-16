@@ -84,21 +84,14 @@ namespace POSCA.View.windows
                 #endregion
 
                 await FillCombo.fillBanksWithDefault(cb_BankId);
-                
-                setContactData();
-                #region fill combo PhoneType
-                listPhoneType = new List<PhoneType>();
-                listPhoneType.Add(new PhoneType() { PhoneTypeId = 1, Name = "PhoneType1" });
-                listPhoneType.Add(new PhoneType() { PhoneTypeId = 2, Name = "PhoneType2" });
-                cb_phoneType.DisplayMemberPath = "Name";
-                cb_phoneType.SelectedValuePath = "PhoneTypeId";
-                cb_phoneType.ItemsSource = listPhoneType;
-                #endregion
+                await fillPhoneCombo();
 
-                listSupplierPhone = new List<SupplierPhone>();
-                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
-                listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
-                dg_supplierPhone.ItemsSource = listSupplierPhone;
+                setContactData();
+
+                //listSupplierPhone = new List<SupplierPhone>();
+                //listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
+                //listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
+                //dg_supplierPhone.ItemsSource = listSupplierPhone;
 
 
                 HelpClass.EndAwait(grid_main);
@@ -133,7 +126,15 @@ namespace POSCA.View.windows
             //txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
         }
+        private async Task fillPhoneCombo()
+        {
+            if (FillCombo.phoneTypeList is null)
+                await FillCombo.RefreshPhoneTypes();
 
+            cb_phoneType.DisplayMemberPath = "Name";
+            cb_phoneType.SelectedValuePath = "PhoneTypeId";
+            cb_phoneType.ItemsSource = FillCombo.phoneTypeList;
+        }
         private void setContactData()
         {
             if (BankId != null)
@@ -557,7 +558,9 @@ namespace POSCA.View.windows
 
                 Email = tb_Email.Text ;
                 BOX = tb_BOX.Text ;
-
+                SupplierPhones =(List<SupplierPhone>) dg_supplierPhone.ItemsSource;
+                isOk = true;
+                this.Close();
                 // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

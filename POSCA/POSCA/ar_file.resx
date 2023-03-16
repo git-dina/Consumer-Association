@@ -5180,4 +5180,16 @@
   <data name="Phones" xml:space="preserve">
     <value>الهواتف</value>
   </data>
+  <data name="DocumentsNumber" xml:space="preserve">
+    <value>عدد المستندات</value>
+  </data>
+  <data name="DocumentsNumberHint" xml:space="preserve">
+    <value>عدد المستندات...</value>
+  </data>
+  <data name="PhonesTypes" xml:space="preserve">
+    <value>أنواع الهواتف</value>
+  </data>
+  <data name="SupplierDocTypes" xml:space="preserve">
+    <value>أنواع مستندات الموردين</value>
+  </data>
 </root>
