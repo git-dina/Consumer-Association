@@ -97,7 +97,7 @@
                                 <DataGrid.Columns>
                                     <DataGridComboBoxColumn Width="*"  Header="supplierDocType"
                                                             x:Name="cb_supplierDocType" 
-                                        SelectedValueBinding="{Binding TypeId, Mode=OneTime, StringFormat='yyyy-MM-dd'}"  
+                                        SelectedValueBinding="{Binding TypeId, Mode=TwoWay}"  
                                                             />
                             <DataGridTemplateColumn Width="*" Header="StartDate" IsReadOnly="True" >
                                 <DataGridTemplateColumn.CellTemplate>
