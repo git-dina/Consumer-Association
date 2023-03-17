@@ -220,5 +220,28 @@ namespace POSCA.Classes
             return branchList;
         }
         #endregion
+
+        #region categorys
+        static public Category category = new Category();
+        static public List<Category> categoryList;
+
+        static public async Task<IEnumerable<Category>> RefreshCategorys()
+        {
+            categoryList = await category.get(true);
+
+            return categoryList;
+        }
+
+        static public async Task fillCategorys(ComboBox combo)
+        {
+            if (categoryList is null)
+                await RefreshCategorys();
+
+            combo.ItemsSource = categoryList;
+            combo.SelectedValuePath = "CategoryId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
     }
 }
