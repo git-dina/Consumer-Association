@@ -40,14 +40,13 @@ namespace POSCA.View.windows
         }
 
         SupplierSector supplierSector = new SupplierSector();
-        List<SupplierSector> listSupplierSector = new List<SupplierSector>();
-        List<SupplierSectorSpecify> listSupplierSectorSpecify = new List<SupplierSectorSpecify>();
+       
         List<Branch> listBranch = new List<Branch>();
         List<SupplierSector> listSupplierSector1 = new List<SupplierSector>();
         //public static DispatcherTimer timer;
 
-        public List<SupplierSector> SupplierSectors { get; set; }
-        public List<SupplierSectorSpecify> SupplierSectorSpecifys { get; set; }
+        public List<SupplierSector> SupplierSectors = new List<SupplierSector>();
+        public List<SupplierSectorSpecify> SupplierSectorSpecifys = new List<SupplierSectorSpecify>();
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -79,13 +78,14 @@ namespace POSCA.View.windows
                 #endregion
 
                 await fillBranchCombo();
-                setContactData();
+                fillSectorCombo();
+                setSectorsData();
 
 
                 //#region SupplierSector
 
-                //listSupplierSector = new List<SupplierSector>();
-                //listSupplierSector.Add(new SupplierSector()
+                //SupplierSectors = new List<SupplierSector>();
+                //SupplierSectors.Add(new SupplierSector()
                 //{
                 //    SupSectorId = 1,
                 //    SupSectorName = "SupSectorName1",
@@ -97,8 +97,8 @@ namespace POSCA.View.windows
                 //    DiscountPercentageBranchs = 5,
                 //    DiscountPercentageStores = 6
                 //});
-                //listSupplierSector.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2", Notes = "Notes2" });
-                //dg_supplierSector.ItemsSource = listSupplierSector;
+                //SupplierSectors.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2", Notes = "Notes2" });
+                //dg_supplierSector.ItemsSource = SupplierSectors;
                 //#endregion
 
 
@@ -114,10 +114,10 @@ namespace POSCA.View.windows
                 //#endregion
 
 
-                //listSupplierSectorSpecify = new List<SupplierSectorSpecify>();
-                //listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 1, BranchId = 1, FreePercentage = 1, DiscountPercentage = 2, Notes = "Notes1" });
-                //listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 2, BranchId = 2, FreePercentage = 3, DiscountPercentage = 4, Notes = "Notes2" });
-                //dg_supplierSectorSpecify.ItemsSource = listSupplierSectorSpecify;
+                //SupplierSectorSpecifys = new List<SupplierSectorSpecify>();
+                //SupplierSectorSpecifys.Add(new SupplierSectorSpecify() { SupSectorId = 1, BranchId = 1, FreePercentage = 1, DiscountPercentage = 2, Notes = "Notes1" });
+                //SupplierSectorSpecifys.Add(new SupplierSectorSpecify() { SupSectorId = 2, BranchId = 2, FreePercentage = 3, DiscountPercentage = 4, Notes = "Notes2" });
+                //dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifys;
 
                 #endregion
 
@@ -172,7 +172,14 @@ namespace POSCA.View.windows
             cb_BranchId.SelectedValuePath = "BranchId";
             cb_BranchId.ItemsSource = listBranch;
         }
-        private void setContactData()
+
+        private void  fillSectorCombo()
+        {
+            cb_SupSectorId.DisplayMemberPath = "SupSectorName";
+            cb_SupSectorId.SelectedValuePath = "SupSectorId";
+            cb_SupSectorId.ItemsSource = SupplierSectors;
+        }
+        private void setSectorsData()
         {
             dg_supplierSector.ItemsSource = SupplierSectors;
             foreach (var row in SupplierSectors)
@@ -204,16 +211,13 @@ namespace POSCA.View.windows
                 HelpClass.StartAwait(grid_main);
                 //selection
              
-                if (dg_supplierSector.SelectedIndex != -1)
-                {
-                    if(supplierSector.SupSectorId != 0)
-                    {
-                        supplierSector.supplierSectorSpecifies = (List<SupplierSectorSpecify>)dg_supplierSectorSpecify.ItemsSource;
-                    }
-                    supplierSector = dg_supplierSector.SelectedItem as SupplierSector;
-                    dg_supplierSectorSpecify.ItemsSource = supplierSector.supplierSectorSpecifies;
+                //if (dg_supplierSector.SelectedIndex != -1)
+                //{
+
+                //    supplierSector = dg_supplierSector.SelectedItem as SupplierSector;
+                //    dg_supplierSectorSpecify.ItemsSource = supplierSector.supplierSectorSpecifies;
                    
-                }
+                //}
                 HelpClass.clearValidate(requiredControlList, this);
                
                 HelpClass.EndAwait(grid_main);
@@ -331,7 +335,7 @@ namespace POSCA.View.windows
             {
                 btn_addSupplierSector.IsEnabled = false;
                 dg_supplierSector.IsEnabled = false;
-                listSupplierSector.Add(new SupplierSector());
+                SupplierSectors.Add(new SupplierSector());
                 RefreshSupplierSectorDataGrid();
             }
             catch (Exception ex)
@@ -354,7 +358,7 @@ namespace POSCA.View.windows
                         btn_addSupplierSector.IsEnabled = false;
                         dg_supplierSector.IsEnabled = false;
                         SupplierSector row = (SupplierSector)dg_supplierSector.SelectedItems[0];
-                        listSupplierSector.Remove(row);
+                        SupplierSectors.Remove(row);
                         RefreshSupplierSectorDataGrid();
                     }
 
@@ -373,7 +377,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_supplierSector.CancelEdit();
-                dg_supplierSector.ItemsSource = listSupplierSector;
+                dg_supplierSector.ItemsSource = SupplierSectors;
                 dg_supplierSector.Items.Refresh();
 
                 dg_supplierSector.IsEnabled = true;
@@ -393,7 +397,7 @@ namespace POSCA.View.windows
             {
                 btn_addSupplierSectorSpecify.IsEnabled = false;
                 dg_supplierSectorSpecify.IsEnabled = false;
-                listSupplierSectorSpecify.Add(new SupplierSectorSpecify());
+                SupplierSectorSpecifys.Add(new SupplierSectorSpecify());
                 RefreshSupplierSectorSpecifyDataGrid();
             }
             catch (Exception ex)
@@ -416,7 +420,7 @@ namespace POSCA.View.windows
                         btn_addSupplierSectorSpecify.IsEnabled = false;
                         dg_supplierSectorSpecify.IsEnabled = false;
                         SupplierSectorSpecify row = (SupplierSectorSpecify)dg_supplierSectorSpecify.SelectedItems[0];
-                        listSupplierSectorSpecify.Remove(row);
+                        SupplierSectorSpecifys.Remove(row);
                         RefreshSupplierSectorSpecifyDataGrid();
                     }
 
@@ -435,7 +439,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_supplierSectorSpecify.CancelEdit();
-                dg_supplierSectorSpecify.ItemsSource = listSupplierSectorSpecify;
+                dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifys;
                 dg_supplierSectorSpecify.Items.Refresh();
 
                 dg_supplierSectorSpecify.IsEnabled = true;
