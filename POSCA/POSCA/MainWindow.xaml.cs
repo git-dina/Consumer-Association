@@ -1,4 +1,5 @@
 ﻿using POSCA.Classes;
+using POSCA.View.catalog;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 //using POSCA.View.sectionData.vendors;
@@ -515,6 +516,11 @@ namespace POSCA
         {
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_supplierDocType.Instance);
+        }
+        private void Btn_category_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_category.Instance);
         }
     }
 }

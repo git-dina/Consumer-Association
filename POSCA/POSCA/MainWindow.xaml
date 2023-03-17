@@ -247,6 +247,45 @@
                         </Button>
                       
                     </Grid>
+                    <!--#region  catalog-->
+                    <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconCatalog" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource catalog}"/>
+                                <TextBlock Text="catalog" Foreground="White" x:Name="txt_catalog"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <!--#region  vendors-->
+                        <StackPanel>
+
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="category" 
+                          x:Name="btn_category"  Click="Btn_category_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="category" Foreground="White" x:Name="txt_category"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
                     <!--#region  sectionData-->
                     <Expander  x:Name="exp_sectionData" Tag="sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
