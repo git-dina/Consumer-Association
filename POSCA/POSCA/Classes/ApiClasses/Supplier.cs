@@ -122,16 +122,16 @@ namespace POSCA.Classes
         public string Notes { get; set; }
         public string PurchaseOrderNotes { get; set; }
         public string Image { get; set; }
-        public bool IsAllowedPO { get; set; }
-        public bool IsAllowedReceipt { get; set; }
-        public bool IsAllowedDirectReturn { get; set; }
-        public bool IsAllowedReturnDiscount { get; set; }
+        public bool IsAllowedPO { get; set; } = true;
+        public bool IsAllowedReceipt { get; set; } = true;
+        public bool IsAllowedDirectReturn { get; set; } = true;
+        public bool IsAllowedReturnDiscount { get; set; } = true;
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
-        public bool IsAllowCashingChecks { get; set; }
+        public bool IsAllowCashingChecks { get; set; } = true;
 
 
         #region Extra Attributs
