@@ -281,7 +281,7 @@
                                 </Grid.ColumnDefinitions>
                                     <TextBlock Text="phoneType" Foreground="White" x:Name="txt_phoneType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
                         </Button>
                         <Button   Height="50"
@@ -296,7 +296,7 @@
                                 </Grid.ColumnDefinitions>
                                     <TextBlock Text="bank" Foreground="White" x:Name="txt_bank"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
                         </Button>
                         <Button   Height="50"
@@ -311,7 +311,7 @@
                                 </Grid.ColumnDefinitions>
                                     <TextBlock Text="country" Foreground="White" x:Name="txt_country"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
                         </Button>
                         <Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White"
@@ -319,7 +319,7 @@
                             <Expander.Header>
                                 <Grid Margin="0 -15 0 -15" Height="50"   >
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="10"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="vendors" Foreground="White" x:Name="txt_vendors"
@@ -346,7 +346,7 @@
                               Data="{StaticResource vendor}"/>-->
                                         <TextBlock Text="vendorsData" Foreground="White" x:Name="txt_vendorsData"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                                     </Grid>
                                 </Button>
                         <Button   Height="50"
@@ -361,7 +361,7 @@
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="vendorsGroups" Foreground="White" x:Name="txt_vendorsGroups"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                                     </Grid>
                                 </Button>
                      <Button   Height="50"
@@ -376,7 +376,7 @@
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="vendorsType" Foreground="White" x:Name="txt_vendorsType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                                     </Grid>
                                 </Button>
                         <Button   Height="50"
@@ -391,7 +391,7 @@
                                         </Grid.ColumnDefinitions>
                                         <TextBlock Text="supportVendors" Foreground="White" x:Name="txt_supportVendors"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                                     </Grid>
                                 </Button>
                             <Button   Height="50"
@@ -406,7 +406,7 @@
                                         </Grid.ColumnDefinitions>
                                             <TextBlock Text="supplierDocType" Foreground="White" x:Name="txt_supplierDocType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="40,0,0,0"/>
+                              Grid.Column="1"      Margin="30,0,0,0"/>
                                     </Grid>
                                 </Button>
 
