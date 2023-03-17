@@ -44,7 +44,7 @@ namespace POSCA.View.windows
         }
         List<SupplierPhone> listSupplierPhone = new List<SupplierPhone>();
         List<PhoneType> listPhoneType = new List<PhoneType>();
-        public static DispatcherTimer timer;
+        //public static DispatcherTimer timer;
 
         public Nullable<long> BankId { get; set; }
         public string BankAccount { get; set; }
@@ -63,10 +63,10 @@ namespace POSCA.View.windows
 
                 HelpClass.StartAwait(grid_main);
 
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(1);
-                timer.Tick += timer_Tick;
-                timer.Start();
+                //timer = new DispatcherTimer();
+                //timer.Interval = TimeSpan.FromSeconds(1);
+                //timer.Tick += timer_Tick;
+                //timer.Start();
 
 
                 #region translate
@@ -521,8 +521,8 @@ namespace POSCA.View.windows
         {
             try
             {
-                if (timer != null)
-                    timer.Stop();
+                //if (timer != null)
+                //    timer.Stop();
                 e.Cancel = true;
                 this.Visibility = Visibility.Hidden;
             }
@@ -579,21 +579,23 @@ namespace POSCA.View.windows
 
         }
 
-        private async void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)
+        private void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await Task.Delay(0050);
                 btn_addSupplierPhone.IsEnabled = false;
                 dg_supplierPhone.IsEnabled = false;
                 listSupplierPhone.Add(new SupplierPhone());
+                RefreshSupplierPhoneDataGrid();
             }
             catch (Exception ex)
             {
+                dg_supplierPhone.IsEnabled = true;
+                btn_addSupplierPhone.IsEnabled = true;
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-         void deleteSupplierPhoneRowinDatagrid(object sender, RoutedEventArgs e)
+        void deleteSupplierPhoneRowinDatagrid(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -607,34 +609,57 @@ namespace POSCA.View.windows
                         dg_supplierPhone.IsEnabled = false;
                         SupplierPhone row = (SupplierPhone)dg_supplierPhone.SelectedItems[0];
                         listSupplierPhone.Remove(row);
-                        
+                        RefreshSupplierPhoneDataGrid();
                     }
 
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
+                dg_supplierPhone.IsEnabled = true;
+                btn_addSupplierPhone.IsEnabled = true;
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        public async Task RefreshSupplierPhoneDataGrid()
-        {
-            dg_supplierPhone.ItemsSource = listSupplierPhone;
-            dg_supplierPhone.Items.Refresh();
-            dg_supplierPhone.IsEnabled = true;
-            btn_addSupplierPhone.IsEnabled = true;
-        }
-        void timer_Tick(object sender, EventArgs e)
+        public void RefreshSupplierPhoneDataGrid()
         {
             try
             {
-                RefreshSupplierPhoneDataGrid();
+                dg_supplierPhone.CancelEdit();
+                dg_supplierPhone.ItemsSource = listSupplierPhone;
+                dg_supplierPhone.Items.Refresh();
+
+                dg_supplierPhone.IsEnabled = true;
+                btn_addSupplierPhone.IsEnabled = true;
             }
             catch (Exception ex)
             {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                dg_supplierPhone.IsEnabled = true;
+                btn_addSupplierPhone.IsEnabled = true;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
+        //void timer_Tick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        RefreshSupplierPhoneDataGrid();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
+        //private void DataGrid_PreparingCellForEdit(object sender, DataGridPreparingCellForEditEventArgs e)
+        //{
+        //    if (timer != null)
+        //        timer.Stop();
+        //}
+        //private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        //{
+        //    if (timer != null)
+        //        timer.Start();
+        //}
     }
 }
