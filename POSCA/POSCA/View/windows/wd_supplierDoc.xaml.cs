@@ -43,7 +43,7 @@ namespace POSCA.View.windows
         }
         List<SupplierDoc> listSupplierDoc = new List<SupplierDoc>();
         List<SupplierDocType> listSupplierDocType = new List<SupplierDocType>();
-        public static DispatcherTimer timer;
+        //public static DispatcherTimer timer;
 
         public List<SupplierDoc> SupplierDocs { get; set; }
         public bool isOk { get; set; }
@@ -56,10 +56,10 @@ namespace POSCA.View.windows
 
                 HelpClass.StartAwait(grid_main);
 
-                timer = new DispatcherTimer();
-                timer.Interval = TimeSpan.FromSeconds(1);
-                timer.Tick += timer_Tick;
-                timer.Start();
+                //timer = new DispatcherTimer();
+                //timer.Interval = TimeSpan.FromSeconds(1);
+                //timer.Tick += timer_Tick;
+                //timer.Start();
 
 
                 #region translate
@@ -497,8 +497,8 @@ namespace POSCA.View.windows
         {
             try
             {
-                if (timer != null)
-                    timer.Stop();
+                //if (timer != null)
+                //    timer.Stop();
                 e.Cancel = true;
                 this.Visibility = Visibility.Hidden;
             }
@@ -537,25 +537,7 @@ namespace POSCA.View.windows
             }
         }
 
-        private void Btn_addBank_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private async void Btn_addSupplierDoc_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                await Task.Delay(0050);
-                btn_addSupplierDoc.IsEnabled = false;
-                dg_supplierDoc.IsEnabled = false;
-                listSupplierDoc.Add(new SupplierDoc());
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
         private void uploadSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
         {
             try
@@ -565,20 +547,20 @@ namespace POSCA.View.windows
                 for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
                     if (vis is DataGridRow)
                     {
-                        if (timer != null)
-                            timer.Stop();
+                        //if (timer != null)
+                        //    timer.Stop();
                         btn_addSupplierDoc.IsEnabled = false;
                         dg_supplierDoc.IsEnabled = false;
 
                         SupplierDoc row = (SupplierDoc)dg_supplierDoc.SelectedItems[0];
 
- 
 
 
 
 
-                        if (timer != null)
-                            timer.Start();
+
+                        //if (timer != null)
+                        //    timer.Start();
                     }
 
                 HelpClass.EndAwait(grid_main);
@@ -589,6 +571,24 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
+        }
+      
+
+        private void Btn_addSupplierDoc_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                btn_addSupplierDoc.IsEnabled = false;
+                dg_supplierDoc.IsEnabled = false;
+                listSupplierDoc.Add(new SupplierDoc());
+                RefreshSupplierDocDataGrid();
+            }
+            catch (Exception ex)
+            {
+                btn_addSupplierDoc.IsEnabled = true;
+                dg_supplierDoc.IsEnabled = true;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         void deleteSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
         {
@@ -604,46 +604,60 @@ namespace POSCA.View.windows
                         dg_supplierDoc.IsEnabled = false;
                         SupplierDoc row = (SupplierDoc)dg_supplierDoc.SelectedItems[0];
                         listSupplierDoc.Remove(row);
-
+                        RefreshSupplierDocDataGrid();
                     }
 
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
+                btn_addSupplierDoc.IsEnabled = true;
+                dg_supplierDoc.IsEnabled = true;
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        public async Task RefreshSupplierDocDataGrid()
-        {
-            dg_supplierDoc.ItemsSource = listSupplierDoc;
-            dg_supplierDoc.Items.Refresh();
-            dg_supplierDoc.IsEnabled = true;
-            btn_addSupplierDoc.IsEnabled = true;
-        }
-        void timer_Tick(object sender, EventArgs e)
+        public void RefreshSupplierDocDataGrid()
         {
             try
             {
-                RefreshSupplierDocDataGrid();
+                dg_supplierDoc.CancelEdit();
+                dg_supplierDoc.ItemsSource = listSupplierDoc;
+                dg_supplierDoc.Items.Refresh();
+
+                dg_supplierDoc.IsEnabled = true;
+                btn_addSupplierDoc.IsEnabled = true;
             }
             catch (Exception ex)
             {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                dg_supplierDoc.IsEnabled = true;
+                btn_addSupplierDoc.IsEnabled = true;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
 
-        private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
-        {
-            if (timer != null)
-                timer.Stop();
-        }
+        //void timer_Tick(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        RefreshSupplierDocDataGrid();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
 
-        private void DatePicker_CalendarClosed(object sender, RoutedEventArgs e)
-        {
-            if (timer != null)
-                timer.Start();
-        }
+        //private void DatePicker_CalendarOpened(object sender, RoutedEventArgs e)
+        //{
+        //    if (timer != null)
+        //        timer.Stop();
+        //}
+
+        //private void DatePicker_CalendarClosed(object sender, RoutedEventArgs e)
+        //{
+        //    if (timer != null)
+        //        timer.Start();
+        //}
     }
 }

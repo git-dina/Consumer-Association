@@ -78,7 +78,7 @@
                                    CanUserDeleteRows="False"
                        HeadersVisibility="Column" Background="White"
                        SelectionChanged="Dg_supplierDoc_SelectionChanged"  
-                       AutoGenerateColumns="False" 
+                                      AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
                                 <DataGrid.OpacityMask>
@@ -104,8 +104,6 @@
                                     <DataTemplate>
                                         <DatePicker  
                                         Margin="0" 
-                                            CalendarOpened="DatePicker_CalendarOpened"
-                                            CalendarClosed="DatePicker_CalendarClosed"
                                         TextBlock.Foreground="#4E4E4E"
                                          SelectedDate="{Binding StartDate, Mode=TwoWay}"
                                         Foreground="#4E4E4E"    />
@@ -117,8 +115,6 @@
                                     <DataTemplate>
                                         <DatePicker  
                                         Margin="0"
-                                             CalendarOpened="DatePicker_CalendarOpened"
-                                            CalendarClosed="DatePicker_CalendarClosed"
                                         TextBlock.Foreground="#4E4E4E"
                                          SelectedDate="{Binding EndDate, Mode=TwoWay}"
                                         Foreground="#4E4E4E"    />
