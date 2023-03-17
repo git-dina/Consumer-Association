@@ -175,6 +175,11 @@ namespace POSCA.View.windows
         private void setContactData()
         {
             dg_supplierSector.ItemsSource = SupplierSectors;
+            foreach (var row in SupplierSectors)
+            {
+                if(row.supplierSectorSpecifies != null)
+                    SupplierSectorSpecifys.AddRange(row.supplierSectorSpecifies);
+            }
             dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifys;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
