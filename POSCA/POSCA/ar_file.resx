@@ -5234,4 +5234,16 @@
   <data name="SupplierSectorSpecify" xml:space="preserve">
     <value>تخصيص القطاعات والمواقع</value>
   </data>
+  <data name="ContactName" xml:space="preserve">
+    <value>اسم جهة الاتصال</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>البلدان</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الهاتف</value>
+  </data>
+  <data name="PhoneType" xml:space="preserve">
+    <value>نوع الهاتف</value>
+  </data>
 </root>

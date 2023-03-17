@@ -42,9 +42,7 @@ namespace POSCA.View.windows
             isOk = false;
             this.Close();
         }
-        List<SupplierPhone> listSupplierPhone = new List<SupplierPhone>();
-        List<PhoneType> listPhoneType = new List<PhoneType>();
-        //public static DispatcherTimer timer;
+        public List<SupplierPhone> SupplierPhones = new List<SupplierPhone>();
 
         public Nullable<long> BankId { get; set; }
         public string BankAccount { get; set; }
@@ -52,7 +50,6 @@ namespace POSCA.View.windows
         public int? AccountCode { get; set; }
         public string Email { get; set; }
         public string BOX { get; set; }
-        public List<SupplierPhone> SupplierPhones { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -88,10 +85,10 @@ namespace POSCA.View.windows
 
                 setContactData();
 
-                //listSupplierPhone = new List<SupplierPhone>();
-                //listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
-                //listSupplierPhone.Add(new SupplierPhone() { PhoneTypeId = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
-                //dg_supplierPhone.ItemsSource = listSupplierPhone;
+                //SupplierPhones = new List<SupplierPhone>();
+                //SupplierPhones.Add(new SupplierPhone() { PhoneTypeId = 1, PhoneNumber = "PhoneNumber1", PersonName = "PersonName1" });
+                //SupplierPhones.Add(new SupplierPhone() { PhoneTypeId = 2, PhoneNumber = "PhoneNumber2", PersonName = "PersonName2" });
+                //dg_supplierPhone.ItemsSource = SupplierPhones;
 
 
                 HelpClass.EndAwait(grid_main);
@@ -122,6 +119,9 @@ namespace POSCA.View.windows
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
 
+            dg_supplierPhone.Columns[0].Header = AppSettings.resourcemanager.GetString("PhoneType");
+            dg_supplierPhone.Columns[1].Header = AppSettings.resourcemanager.GetString("PhoneNumber");
+            dg_supplierPhone.Columns[2].Header = AppSettings.resourcemanager.GetString("ContactName");
             //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             //txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -585,7 +585,7 @@ namespace POSCA.View.windows
             {
                 btn_addSupplierPhone.IsEnabled = false;
                 dg_supplierPhone.IsEnabled = false;
-                listSupplierPhone.Add(new SupplierPhone());
+                SupplierPhones.Add(new SupplierPhone());
                 RefreshSupplierPhoneDataGrid();
             }
             catch (Exception ex)
@@ -608,7 +608,7 @@ namespace POSCA.View.windows
                         btn_addSupplierPhone.IsEnabled = false;
                         dg_supplierPhone.IsEnabled = false;
                         SupplierPhone row = (SupplierPhone)dg_supplierPhone.SelectedItems[0];
-                        listSupplierPhone.Remove(row);
+                        SupplierPhones.Remove(row);
                         RefreshSupplierPhoneDataGrid();
                     }
 
@@ -627,7 +627,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_supplierPhone.CancelEdit();
-                dg_supplierPhone.ItemsSource = listSupplierPhone;
+                dg_supplierPhone.ItemsSource = SupplierPhones;
                 dg_supplierPhone.Items.Refresh();
 
                 dg_supplierPhone.IsEnabled = true;
