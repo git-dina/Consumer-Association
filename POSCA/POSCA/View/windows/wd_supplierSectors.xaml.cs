@@ -314,6 +314,11 @@ namespace POSCA.View.windows
 
                     SupplierSectors = (List<SupplierSector>)dg_supplierSector.ItemsSource;
                   
+                    foreach(var row in SupplierSectors)
+                    {
+                        var spec = SupplierSectorSpecifys.Where(x => x.SupSectorId == row.SupSectorId).ToList();
+                        row.supplierSectorSpecifies = spec;
+                    }
                     isOk = true;
                     this.Close();
                 }
