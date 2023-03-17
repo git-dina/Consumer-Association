@@ -125,12 +125,12 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="Code" Binding="{Binding Path=code}"/>
+                                <DataGridTextColumn Width="*"  Header="Code" Binding="{Binding Path=SupId}"/>
 
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
                                 <DataGridTextColumn Width="*"  Header="ShortName" Binding="{Binding Path=ShortName}"/>
-                                <DataGridTextColumn Width="*"  Header="SupplierGroup" Binding="{Binding Path=mobile}"/>
-                                <DataGridTextColumn Width="*"  Header="SupplierType" Binding="{Binding Path=mobile}"/>
+                                <DataGridTextColumn Width="*"  Header="SupplierGroup" Binding="{Binding Path=SupplierGroup}"/>
+                                <DataGridTextColumn Width="*"  Header="SupplierType" Binding="{Binding Path=SupplierType}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -320,9 +320,9 @@
                         </DockPanel>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <TextBox x:Name="tb_Code"  Text="{Binding Code, Mode=OneWay}" Padding="10,0,5,0" 
+                                <TextBox x:Name="tb_Code"  Text="{Binding SupId, Mode=OneWay}" Padding="10,0,5,0" 
                                     IsReadOnly="True"
-                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Code..."  
                                      Foreground="#4E4E4E"  
                                      MaxLength="50" BorderThickness="0"
