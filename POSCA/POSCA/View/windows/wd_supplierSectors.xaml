@@ -105,10 +105,10 @@
                             <DataGridTextColumn Width="*"  Header="DiscountPercentageMarkets" Binding="{Binding Path=DiscountPercentageMarkets, Mode=TwoWay}"/>
                             <DataGridTextColumn Width="*"  Header="DiscountPercentageBranchs" Binding="{Binding Path=DiscountPercentageBranchs, Mode=TwoWay}"/>
                             <DataGridTextColumn Width="*"  Header="DiscountPercentageStores" Binding="{Binding Path=DiscountPercentageStores, Mode=TwoWay}"/>
-                            <DataGridTemplateColumn  Header="IsBlocked" IsReadOnly="True"  >
+                            <DataGridTemplateColumn  Header="IsBlocked"   >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox FlowDirection="LeftToRight" IsEnabled="False" IsChecked="{Binding IsBlocked, Mode=TwoWay}" />
+                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsBlocked, Mode=TwoWay}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -167,6 +167,7 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
+                            <DataGridTextColumn Width="*" IsReadOnly="True" Header="SupSectorSpecifyId" Binding="{Binding Path=SupSectorSpecifyId, Mode=TwoWay}"/>
                             <DataGridComboBoxColumn Width="2*"  Header="SupSectorId"
                                                             x:Name="cb_SupSectorId" 
                                         SelectedValueBinding="{Binding SupSectorId, Mode=TwoWay}"  
