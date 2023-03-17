@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace POSCA.Classes.ApiClasses
 {
-    public class ItemCategory
+    public class Category
     {
         #region Attributes
         public long CategoryId { get; set; }
@@ -32,9 +32,9 @@ namespace POSCA.Classes.ApiClasses
 
         #region Methods
 
-        public async Task<List<ItemCategory>> get(bool? isActive = null)
+        public async Task<List<Category>> get(bool? isActive = null)
         {
-            var result = new List<ItemCategory>();
+            var result = new List<Category>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "ItemCategory/Get";
 
@@ -45,15 +45,15 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<ItemCategory>(c.Value));
+                    result.Add(JsonConvert.DeserializeObject<Category>(c.Value));
                 }
             }
             return result;
         }
 
-        public async Task<List<ItemCategory>> GetCategoriesTree(bool? isActive = null)
+        public async Task<List<Category>> GetCategoriesTree(bool? isActive = null)
         {
-            var result = new List<ItemCategory>();
+            var result = new List<Category>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "ItemCategory/Get";
 
@@ -64,15 +64,15 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<ItemCategory>(c.Value));
+                    result.Add(JsonConvert.DeserializeObject<Category>(c.Value));
                 }
             }
             return result;
         }
 
-        public async Task<List<ItemCategory>> save(Supplier group)
+        public async Task<List<Category>> save(Supplier group)
         {
-            var result = new List<ItemCategory>();
+            var result = new List<Category>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "ItemCategory/Save";
 
@@ -84,15 +84,15 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<ItemCategory>(c.Value));
+                    result.Add(JsonConvert.DeserializeObject<Category>(c.Value));
                 }
             }
             return result;
         }
 
-        public async Task<List<ItemCategory>> delete(long supGroupId, long userId)
+        public async Task<List<Category>> delete(long supGroupId, long userId)
         {
-            var result = new List<ItemCategory>();
+            var result = new List<Category>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("itemId", supGroupId.ToString());
             parameters.Add("userId", userId.ToString());
@@ -103,7 +103,7 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<ItemCategory>(c.Value));
+                    result.Add(JsonConvert.DeserializeObject<Category>(c.Value));
                 }
             }
             return result;
