@@ -38,6 +38,8 @@ namespace POSCA.View.windows
             isOk = false;
             this.Close();
         }
+
+        SupplierSector supplierSector = new SupplierSector();
         List<SupplierSector> listSupplierSector = new List<SupplierSector>();
         List<SupplierSectorSpecify> listSupplierSectorSpecify = new List<SupplierSectorSpecify>();
         List<Branch> listBranch = new List<Branch>();
@@ -76,54 +78,46 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-
+                await fillBranchCombo();
                 setContactData();
 
 
-                #region SupplierSector
+                //#region SupplierSector
 
-                listSupplierSector = new List<SupplierSector>();
-                listSupplierSector.Add(new SupplierSector()
-                {
-                    SupSectorId = 1,
-                    SupSectorName = "SupSectorName1",
-                    Notes = "Notes1",
-                    FreePercentageMarkets = 1,
-                    FreePercentageBranchs = 2,
-                    FreePercentageStores = 3,
-                    DiscountPercentageMarkets = 4,
-                    DiscountPercentageBranchs = 5,
-                    DiscountPercentageStores = 6
-                });
-                listSupplierSector.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2", Notes = "Notes2" });
-                dg_supplierSector.ItemsSource = listSupplierSector;
-                #endregion
+                //listSupplierSector = new List<SupplierSector>();
+                //listSupplierSector.Add(new SupplierSector()
+                //{
+                //    SupSectorId = 1,
+                //    SupSectorName = "SupSectorName1",
+                //    Notes = "Notes1",
+                //    FreePercentageMarkets = 1,
+                //    FreePercentageBranchs = 2,
+                //    FreePercentageStores = 3,
+                //    DiscountPercentageMarkets = 4,
+                //    DiscountPercentageBranchs = 5,
+                //    DiscountPercentageStores = 6
+                //});
+                //listSupplierSector.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2", Notes = "Notes2" });
+                //dg_supplierSector.ItemsSource = listSupplierSector;
+                //#endregion
 
 
                 #region SupplierSectorSpecify
 
-                #region fill combo SupSectorId
-                listSupplierSector1 = new List<SupplierSector>();
-                listSupplierSector1.Add(new SupplierSector() { SupSectorId = 1, SupSectorName = "SupSectorName1" });
-                listSupplierSector1.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2" });
-                cb_SupSectorId.DisplayMemberPath = "SupSectorName";
-                cb_SupSectorId.SelectedValuePath = "SupSectorId";
-                cb_SupSectorId.ItemsSource = listSupplierSector1;
-                #endregion
+                //#region fill combo SupSectorId
+                //listSupplierSector1 = new List<SupplierSector>();
+                //listSupplierSector1.Add(new SupplierSector() { SupSectorId = 1, SupSectorName = "SupSectorName1" });
+                //listSupplierSector1.Add(new SupplierSector() { SupSectorId = 2, SupSectorName = "SupSectorName2" });
+                //cb_SupSectorId.DisplayMemberPath = "SupSectorName";
+                //cb_SupSectorId.SelectedValuePath = "SupSectorId";
+                //cb_SupSectorId.ItemsSource = listSupplierSector1;
+                //#endregion
 
-                #region fill combo Branch
-                listBranch = new List<Branch>();
-                listBranch.Add(new Branch() { BranchId = 1, Name = "Branch1" });
-                listBranch.Add(new Branch() { BranchId = 2, Name = "Branch2" });
-                cb_BranchId.DisplayMemberPath = "Name";
-                cb_BranchId.SelectedValuePath = "BranchId";
-                cb_BranchId.ItemsSource = listBranch;
-                #endregion
 
-                listSupplierSectorSpecify = new List<SupplierSectorSpecify>();
-                listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 1, BranchId = 1, FreePercentage = 1, DiscountPercentage = 2, Notes = "Notes1" });
-                listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 2, BranchId = 2, FreePercentage = 3, DiscountPercentage = 4, Notes = "Notes2" });
-                dg_supplierSectorSpecify.ItemsSource = listSupplierSectorSpecify;
+                //listSupplierSectorSpecify = new List<SupplierSectorSpecify>();
+                //listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 1, BranchId = 1, FreePercentage = 1, DiscountPercentage = 2, Notes = "Notes1" });
+                //listSupplierSectorSpecify.Add(new SupplierSectorSpecify() { SupSectorId = 2, BranchId = 2, FreePercentage = 3, DiscountPercentage = 4, Notes = "Notes2" });
+                //dg_supplierSectorSpecify.ItemsSource = listSupplierSectorSpecify;
 
                 #endregion
 
@@ -142,10 +136,42 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("ContactData");
-            //txt_phonesData.Text = AppSettings.resourcemanager.GetString("Phones");
+            txt_title.Text = AppSettings.resourcemanager.GetString("SupplierSectors");
+            txt_supplierSector.Text = AppSettings.resourcemanager.GetString("MainSectors");
+            txt_supplierSectorSpecify.Text = AppSettings.resourcemanager.GetString("SupplierSectorSpecify");
+
+
+            dg_supplierSector.Columns[0].Header = AppSettings.resourcemanager.GetString("SectorName");
+            dg_supplierSector.Columns[1].Header = AppSettings.resourcemanager.GetString("FreeMarkets");
+            dg_supplierSector.Columns[2].Header = AppSettings.resourcemanager.GetString("FreeBranches");
+            dg_supplierSector.Columns[3].Header = AppSettings.resourcemanager.GetString("FreeStores");
+            dg_supplierSector.Columns[4].Header = AppSettings.resourcemanager.GetString("DiscountMarkets");
+            dg_supplierSector.Columns[5].Header = AppSettings.resourcemanager.GetString("DiscountBranches");
+            dg_supplierSector.Columns[6].Header = AppSettings.resourcemanager.GetString("DiscountStores");
+            dg_supplierSector.Columns[7].Header = AppSettings.resourcemanager.GetString("IsBlocked");
+            dg_supplierSector.Columns[8].Header = AppSettings.resourcemanager.GetString("SectorItemsCount");
+
+
+            dg_supplierSectorSpecify.Columns[0].Header = AppSettings.resourcemanager.GetString("SectorNum");
+            dg_supplierSectorSpecify.Columns[1].Header = AppSettings.resourcemanager.GetString("SectorName");
+            dg_supplierSectorSpecify.Columns[2].Header = AppSettings.resourcemanager.GetString("Branch");
+            dg_supplierSectorSpecify.Columns[3].Header = AppSettings.resourcemanager.GetString("FreePercentag");
+            dg_supplierSectorSpecify.Columns[4].Header = AppSettings.resourcemanager.GetString("DiscountPercentage");
+            dg_supplierSectorSpecify.Columns[5].Header = AppSettings.resourcemanager.GetString("trNotes");
         }
 
+        private async Task fillBranchCombo()
+        {
+            if (FillCombo.branchList is null)
+                await FillCombo.RefreshPhoneTypes();
+
+            listBranch = new List<Branch>();
+            listBranch.Add(new Branch() { BranchId = 1, Name = "Branch1" });
+            listBranch.Add(new Branch() { BranchId = 2, Name = "Branch2" });
+            cb_BranchId.DisplayMemberPath = "Name";
+            cb_BranchId.SelectedValuePath = "BranchId";
+            cb_BranchId.ItemsSource = listBranch;
+        }
         private void setContactData()
         {
             dg_supplierSector.ItemsSource = SupplierSectors;
@@ -172,39 +198,19 @@ namespace POSCA.View.windows
             {
                 HelpClass.StartAwait(grid_main);
                 //selection
-                /*
-                if (dg_supplier.SelectedIndex != -1)
+             
+                if (dg_supplierSector.SelectedIndex != -1)
                 {
-                    supplier = dg_supplier.SelectedItem as Supplier;
-                    this.DataContext = supplier;
-                    if (supplier != null)
+                    if(supplierSector.SupSectorId != 0)
                     {
-                        #region image
-                        bool isModified = HelpClass.chkImgChng(supplier.image, (DateTime)supplier.updateDate, Global.TMPSuppliersFolder);
-                        if (isModified)
-                            getImg();
-                        else
-                            HelpClass.getLocalImg("Supplier", supplier.image, btn_image);
-                        #endregion
-                        //getImg();
-                        #region delete
-                        if (supplier.canDelete)
-                            btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
-                        else
-                        {
-                            if (supplier.isActive == 0)
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
-                            else
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
-                        }
-                        #endregion
-                        HelpClass.getMobile(supplier.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(supplier.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(supplier.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
+                        supplierSector.supplierSectorSpecifies = (List<SupplierSectorSpecify>)dg_supplierSectorSpecify.ItemsSource;
                     }
+                    supplierSector = dg_supplierSector.SelectedItem as SupplierSector;
+                    dg_supplierSectorSpecify.ItemsSource = supplierSector.supplierSectorSpecifies;
+                   
                 }
                 HelpClass.clearValidate(requiredControlList, this);
-                */
+               
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -294,7 +300,14 @@ namespace POSCA.View.windows
 
                 // HelpClass.StartAwait(grid_main);
 
+                if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                {
 
+                    SupplierSectors = (List<SupplierSector>)dg_supplierSector.ItemsSource;
+                  
+                    isOk = true;
+                    this.Close();
+                }
 
 
                 // HelpClass.EndAwait(grid_main);

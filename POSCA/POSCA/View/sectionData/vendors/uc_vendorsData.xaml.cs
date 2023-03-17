@@ -122,6 +122,7 @@ namespace POSCA.View.sectionData
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Supplier");
             txt_Notes.Text = AppSettings.resourcemanager.GetString("trNote");
+            txt_contactDataButton.Text = AppSettings.resourcemanager.GetString("ContactData");
             txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
             txt_supplierSectorButton.Text = AppSettings.resourcemanager.GetString("SupplierSectors");
             txt_documentsButton.Text = AppSettings.resourcemanager.GetString("MainDocuments");
@@ -821,18 +822,18 @@ HelpClass.EndAwait(grid_image, "forImage");
 
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
-                //wd_supplierSectors w = new wd_supplierSectors();
+                wd_supplierSectors w = new wd_supplierSectors();
 
-                //w.SupplierSectors = supplier.SupplierSectors;
+                w.SupplierSectors = supplier.SupplierSectors;
 
-                //w.ShowDialog();
-                //if (w.isOk)
-                //{
-                //    supplier.SupplierSectors = w.SupplierSectors;
+                w.ShowDialog();
+                if (w.isOk)
+                {
+                    supplier.SupplierSectors = w.SupplierSectors;
 
-                //    if (supplier.SupId != 0)
-                //        await supplier.save(supplier);
-                //}
+                    if (supplier.SupId != 0)
+                        await supplier.save(supplier);
+                }
                 Window.GetWindow(this).Opacity = 1;
 
                 HelpClass.EndAwait(grid_main);

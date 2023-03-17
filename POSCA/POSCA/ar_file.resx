@@ -5192,4 +5192,46 @@
   <data name="SupplierDocTypes" xml:space="preserve">
     <value>أنواع مستندات الموردين</value>
   </data>
+  <data name="Branch" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="DiscountBranches" xml:space="preserve">
+    <value>خصم فروع %</value>
+  </data>
+  <data name="DiscountMarkets" xml:space="preserve">
+    <value>خصم أسواق %</value>
+  </data>
+  <data name="DiscountPercentage" xml:space="preserve">
+    <value>نسبة الخصم%</value>
+  </data>
+  <data name="DiscountStores" xml:space="preserve">
+    <value>خصم مخازن %</value>
+  </data>
+  <data name="FreeBranches" xml:space="preserve">
+    <value>مجاني فروع %</value>
+  </data>
+  <data name="FreeMarkets" xml:space="preserve">
+    <value>مجاني أسواق %</value>
+  </data>
+  <data name="FreePercentag" xml:space="preserve">
+    <value>نسبة المجاني</value>
+  </data>
+  <data name="FreeStores" xml:space="preserve">
+    <value>مجاني مخازن %</value>
+  </data>
+  <data name="MainSectors" xml:space="preserve">
+    <value>القطاعات الرئيسية</value>
+  </data>
+  <data name="SectorItemsCount" xml:space="preserve">
+    <value>عدد عناصر القطاع</value>
+  </data>
+  <data name="SectorName" xml:space="preserve">
+    <value>اسم القطاع</value>
+  </data>
+  <data name="SectorNum" xml:space="preserve">
+    <value>رقم القطاع</value>
+  </data>
+  <data name="SupplierSectorSpecify" xml:space="preserve">
+    <value>تخصيص القطاعات والمواقع</value>
+  </data>
 </root>

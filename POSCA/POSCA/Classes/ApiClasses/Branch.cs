@@ -1,6 +1,7 @@
 ﻿//using Newtonsoft.Json;
 //using Newtonsoft.Json.Converters;
 //using POSCA.ApiClasses;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace POSCA.Classes
 
     public class Branch
     {
+
         public long BranchId { get; set; }
         public string code { get; set; }
         public string Name { get; set; }
@@ -51,6 +53,27 @@ namespace POSCA.Classes
         public string posName { get; set; }
         public string posCode { get; set; }
         public Nullable<long> invoiceId { get; set; }
+
+        #region Methods
+        public async Task<List<Branch>> get(bool? isActive = null)
+        {
+            var result = new List<Branch>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Branches/Get";
+
+            parameters.Add("isActive", isActive.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Branch>(c.Value));
+                }
+            }
+            return result;
+        }
+        #endregion
         /*
         public async Task<List<Branch>> GetAll()
         {

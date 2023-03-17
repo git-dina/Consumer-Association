@@ -208,5 +208,17 @@ namespace POSCA.Classes
             return suppliersList;
         }
         #endregion
+
+        #region Branch
+        static public Branch branch = new Branch();
+        static public List<Branch> branchList = new List<Branch>();
+
+        static public async Task<IEnumerable<Branch>> RefreshBranches()
+        {
+            branchList = await branch.get(true);
+
+            return branchList;
+        }
+        #endregion
     }
 }
