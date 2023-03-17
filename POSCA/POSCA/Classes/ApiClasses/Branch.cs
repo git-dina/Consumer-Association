@@ -17,9 +17,9 @@ namespace POSCA.Classes
 
     public class Branch
     {
-        public long branchId { get; set; }
+        public long BranchId { get; set; }
         public string code { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
         public string address { get; set; }
         public string email { get; set; }
         public string phone { get; set; }
