@@ -5246,4 +5246,10 @@
   <data name="PhoneType" xml:space="preserve">
     <value>نوع الهاتف</value>
   </data>
+  <data name="DocumentType" xml:space="preserve">
+    <value>نوع المستند</value>
+  </data>
+  <data name="SupplierDocs" xml:space="preserve">
+    <value>مستندات المورد</value>
+  </data>
 </root>

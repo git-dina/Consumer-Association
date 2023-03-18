@@ -6,6 +6,8 @@ using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -69,14 +71,16 @@ namespace POSCA.View.sectionData.vendors
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "Name" };
-                //if (AppSettings.lang.Equals("en"))
-                //{
-                //    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                //}
-                //else
-                //{
-                grid_main.FlowDirection = FlowDirection.RightToLeft;
-                //}
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
                 translate();
 
 

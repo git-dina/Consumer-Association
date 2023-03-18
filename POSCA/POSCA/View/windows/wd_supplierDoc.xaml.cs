@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -64,14 +66,16 @@ namespace POSCA.View.windows
 
                 #region translate
 
-                //if (AppSettings.lang.Equals("en"))
-                //{
-                //    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                //}
-                //else
-                //{
-                grid_main.FlowDirection = FlowDirection.RightToLeft;
-                //}
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
 
                 translate();
                 #endregion
@@ -108,11 +112,15 @@ namespace POSCA.View.windows
         private void translate()
         {
             //
-
-            txt_title.Text = AppSettings.resourcemanager.GetString("ContactData");
-            //txt_phonesData.Text = AppSettings.resourcemanager.GetString("Phones");
-
+            txt_title.Text = AppSettings.resourcemanager.GetString("MainDocuments");
+            txt_supplierDoc.Text = AppSettings.resourcemanager.GetString("SupplierDocs");
            
+            dg_supplierDoc.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentType");
+            dg_supplierDoc.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
+            dg_supplierDoc.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
+
+            btn_save.ToolTip = AppSettings.resourcemanager.GetString("trSave");
+
         }
 
         private async Task fillDocTypeCombo()

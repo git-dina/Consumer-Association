@@ -3,6 +3,8 @@ using POSCA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -46,7 +48,7 @@ namespace POSCA.View.windows
         //public static DispatcherTimer timer;
 
         public List<SupplierSector> SupplierSectors = new List<SupplierSector>();
-        public List<SupplierSectorSpecify> SupplierSectorSpecifys = new List<SupplierSectorSpecify>();
+        public List<SupplierSectorSpecify> SupplierSectorSpecifies = new List<SupplierSectorSpecify>();
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -65,14 +67,16 @@ namespace POSCA.View.windows
 
                 #region translate
 
-                //if (AppSettings.lang.Equals("en"))
-                //{
-                //    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                //}
-                //else
-                //{
-                grid_main.FlowDirection = FlowDirection.RightToLeft;
-                //}
+                if (AppSettings.lang.Equals("en"))
+                {
+                     AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
 
                 translate();
                 #endregion
@@ -158,6 +162,9 @@ namespace POSCA.View.windows
             dg_supplierSectorSpecify.Columns[3].Header = AppSettings.resourcemanager.GetString("FreePercentag");
             dg_supplierSectorSpecify.Columns[4].Header = AppSettings.resourcemanager.GetString("DiscountPercentage");
             dg_supplierSectorSpecify.Columns[5].Header = AppSettings.resourcemanager.GetString("trNotes");
+
+            btn_save.ToolTip = AppSettings.resourcemanager.GetString("trSave");
+
         }
 
         private async Task fillBranchCombo()
@@ -182,12 +189,7 @@ namespace POSCA.View.windows
         private void setSectorsData()
         {
             dg_supplierSector.ItemsSource = SupplierSectors;
-            foreach (var row in SupplierSectors)
-            {
-                if(row.supplierSectorSpecifies != null)
-                    SupplierSectorSpecifys.AddRange(row.supplierSectorSpecifies);
-            }
-            dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifys;
+            dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifies;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
@@ -313,12 +315,8 @@ namespace POSCA.View.windows
                 {
 
                     SupplierSectors = (List<SupplierSector>)dg_supplierSector.ItemsSource;
-                  
-                    foreach(var row in SupplierSectors)
-                    {
-                        var spec = SupplierSectorSpecifys.Where(x => x.SupSectorId == row.SupSectorId).ToList();
-                        row.supplierSectorSpecifies = spec;
-                    }
+                    SupplierSectorSpecifies = (List<SupplierSectorSpecify>)dg_supplierSectorSpecify.ItemsSource;
+
                     isOk = true;
                     this.Close();
                 }
@@ -365,6 +363,17 @@ namespace POSCA.View.windows
                         SupplierSector row = (SupplierSector)dg_supplierSector.SelectedItems[0];
                         SupplierSectors.Remove(row);
                         RefreshSupplierSectorDataGrid();
+
+                        #region delete related specify
+                        var tmpLst =new List<SupplierSectorSpecify>();
+                        foreach (var r in SupplierSectors)
+                        {
+                            var specify = SupplierSectorSpecifies.Where(x => x.SupSectorId == r.SupSectorId).ToList();
+                            tmpLst.AddRange(specify);
+                        }
+                        SupplierSectorSpecifies = tmpLst.ToList();
+                        RefreshSupplierSectorSpecifyDataGrid();
+                        #endregion
                     }
 
                 HelpClass.EndAwait(grid_main);
@@ -402,7 +411,7 @@ namespace POSCA.View.windows
             {
                 btn_addSupplierSectorSpecify.IsEnabled = false;
                 dg_supplierSectorSpecify.IsEnabled = false;
-                SupplierSectorSpecifys.Add(new SupplierSectorSpecify());
+                SupplierSectorSpecifies.Add(new SupplierSectorSpecify());
                 RefreshSupplierSectorSpecifyDataGrid();
             }
             catch (Exception ex)
@@ -425,7 +434,7 @@ namespace POSCA.View.windows
                         btn_addSupplierSectorSpecify.IsEnabled = false;
                         dg_supplierSectorSpecify.IsEnabled = false;
                         SupplierSectorSpecify row = (SupplierSectorSpecify)dg_supplierSectorSpecify.SelectedItems[0];
-                        SupplierSectorSpecifys.Remove(row);
+                        SupplierSectorSpecifies.Remove(row);
                         RefreshSupplierSectorSpecifyDataGrid();
                     }
 
@@ -444,7 +453,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_supplierSectorSpecify.CancelEdit();
-                dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifys;
+                dg_supplierSectorSpecify.ItemsSource = SupplierSectorSpecifies;
                 dg_supplierSectorSpecify.Items.Refresh();
 
                 dg_supplierSectorSpecify.IsEnabled = true;

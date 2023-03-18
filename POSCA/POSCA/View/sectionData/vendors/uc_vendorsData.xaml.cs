@@ -78,14 +78,17 @@ namespace POSCA.View.sectionData
                 requiredControlList = new List<string> { "Name", "ShortName", "SupplierTypeId" ,
                                         "SupplierGroupId","AssistantStartDate","FreePercentag",
                                         "DiscountPercentage"};
-                //if (AppSettings.lang.Equals("en"))
-                //{
-                //grid_main.FlowDirection = FlowDirection.LeftToRight;
-                //}
-                //else
-                //{
-                grid_main.FlowDirection = FlowDirection.RightToLeft;
-                //}
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
                 translate();
 
                
@@ -748,7 +751,7 @@ HelpClass.EndAwait(grid_image, "forImage");
                 w.SupNODays = supplier.SupNODays;
                 w.Email = supplier.Email;
                 w.BOX = supplier.BOX;
-                w.SupplierPhones = supplier.SupplierPhones;
+                w.SupplierPhones = supplier.SupplierPhones.ToList();
 
                 w.ShowDialog();
                 if(w.isOk)
@@ -762,7 +765,10 @@ HelpClass.EndAwait(grid_image, "forImage");
                     supplier.SupplierPhones = w.SupplierPhones;
 
                     if (supplier.SupId != 0)
-                        await supplier.save(supplier);
+                    {
+                        FillCombo.suppliersList = await supplier.save(supplier);
+                        await Search();
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -800,7 +806,10 @@ HelpClass.EndAwait(grid_image, "forImage");
                     supplier.IsAllowCashingChecks = w.IsAllowCashingChecks;
 
                     if (supplier.SupId != 0)
-                        await supplier.save(supplier);
+                    {
+                        FillCombo.suppliersList = await supplier.save(supplier);
+                        await Search();
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -824,15 +833,19 @@ HelpClass.EndAwait(grid_image, "forImage");
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_supplierSectors w = new wd_supplierSectors();
 
-                w.SupplierSectors = supplier.SupplierSectors;
+                w.SupplierSectors = supplier.SupplierSectors.ToList();
+                w.SupplierSectorSpecifies = supplier.supplierSectorSpecifies.ToList();
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
                     supplier.SupplierSectors = w.SupplierSectors;
-
+                    supplier.supplierSectorSpecifies = w.SupplierSectorSpecifies;
                     if (supplier.SupId != 0)
-                        await supplier.save(supplier);
+                    {
+                        FillCombo.suppliersList = await supplier.save(supplier);
+                        await Search();
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -861,9 +874,12 @@ HelpClass.EndAwait(grid_image, "forImage");
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                    supplier.SupplierDocuments = w.SupplierDocs;
+                    supplier.SupplierDocuments = w.SupplierDocs.ToList();
                     if (supplier.SupId != 0)
-                        await supplier.save(supplier);
+                    {
+                        FillCombo.suppliersList = await supplier.save(supplier);
+                        await Search();
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -881,6 +897,12 @@ HelpClass.EndAwait(grid_image, "forImage");
         private void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Tb_Name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(supplier.SupId == 0)
+                tb_ShortName.Text = tb_Name.Text;
         }
 
         /*

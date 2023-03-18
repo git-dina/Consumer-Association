@@ -54,7 +54,6 @@ namespace POSCA.Classes
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
 
-        public List<SupplierSectorSpecify> supplierSectorSpecifies { get; set; }
 
         #region no database attributes
         public long ItemsNumber { get; set; }
@@ -140,7 +139,9 @@ namespace POSCA.Classes
 
         public List<SupplierPhone> SupplierPhones { get; set; }
         public List<SupplierSector> SupplierSectors { get; set; }
+        public List<SupplierSectorSpecify> supplierSectorSpecifies { get; set; }
         public List<SupplierDoc> SupplierDocuments { get; set; }
+
         #endregion
         #endregion
 
