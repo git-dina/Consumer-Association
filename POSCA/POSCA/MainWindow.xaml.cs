@@ -6,6 +6,8 @@ using POSCA.View.sectionData.vendors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,10 +51,17 @@ namespace POSCA
         void windowFlowDirection()
         {
             #region translate
-            //if (AppSettings.lang.Equals("en"))
-            //    grid_mainWindow.FlowDirection = FlowDirection.LeftToRight;
-            //else
+            if (AppSettings.lang.Equals("en"))
+            {
+                AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                grid_mainWindow.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+
                 grid_mainWindow.FlowDirection = FlowDirection.RightToLeft;
+            }
             #endregion
         }
         public async void Window_Loaded(object sender, RoutedEventArgs e)

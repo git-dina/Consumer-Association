@@ -38,7 +38,7 @@ namespace POSCA.Classes
         //    }
         //}
 
-        public static string lang;
+        public static string lang = "ar";
 
 
     }
