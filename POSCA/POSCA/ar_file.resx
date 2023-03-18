@@ -3740,7 +3740,7 @@
     <value>تم</value>
   </data>
   <data name="trTaxPercentage" xml:space="preserve">
-    <value>% الضريبة</value>
+    <value>%الضريبة</value>
   </data>
   <data name="trTaxValue" xml:space="preserve">
     <value>قيمة الضريبة</value>
@@ -5196,28 +5196,28 @@
     <value>الموقع</value>
   </data>
   <data name="DiscountBranches" xml:space="preserve">
-    <value>خصم فروع %</value>
+    <value>خصم فروع%</value>
   </data>
   <data name="DiscountMarkets" xml:space="preserve">
-    <value>خصم أسواق %</value>
+    <value>خصم أسواق%</value>
   </data>
   <data name="DiscountPercentage" xml:space="preserve">
     <value>نسبة الخصم%</value>
   </data>
   <data name="DiscountStores" xml:space="preserve">
-    <value>خصم مخازن %</value>
+    <value>خصم مخازن%</value>
   </data>
   <data name="FreeBranches" xml:space="preserve">
-    <value>مجاني فروع %</value>
+    <value>مجاني فروع%</value>
   </data>
   <data name="FreeMarkets" xml:space="preserve">
-    <value>مجاني أسواق %</value>
+    <value>مجاني أسواق%</value>
   </data>
   <data name="FreePercentag" xml:space="preserve">
     <value>نسبة المجاني</value>
   </data>
   <data name="FreeStores" xml:space="preserve">
-    <value>مجاني مخازن %</value>
+    <value>مجاني مخازن%</value>
   </data>
   <data name="MainSectors" xml:space="preserve">
     <value>القطاعات الرئيسية</value>
