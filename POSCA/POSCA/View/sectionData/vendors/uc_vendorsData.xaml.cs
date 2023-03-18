@@ -882,7 +882,7 @@ HelpClass.EndAwait(grid_image, "forImage");
                             if(row.IsEdited)
                             {
                                 row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
-                                row.DocName = row.DocName.ToLower() + MainWindow.userLogin.userId + row.TypeId + DateTime.Now;
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId + DateTime.Now.ToString("yyyyMMddHHmmss");
                                 string b = await supplier.uploadDocument(row.DocPath,row.DocName);
                             }
                         }
