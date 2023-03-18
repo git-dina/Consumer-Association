@@ -95,11 +95,18 @@
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                                 <Setter Property="Foreground" Value="{StaticResource textColor}"/>
                                 <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding}"></TextBlock>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="2*"  Header="SupSectorName" Binding="{Binding Path=SupSectorName, Mode=TwoWay}"/>
-                            <DataGridTextColumn Width="*"  Header="FreePercentageMarkets" Binding="{Binding Path=FreePercentageMarkets, Mode=TwoWay}"/>
+                            <DataGridTextColumn Width="*"  Header="Free Percentage Markets" Binding="{Binding Path=FreePercentageMarkets, Mode=TwoWay}"/>
                             <DataGridTextColumn Width="*"  Header="FreePercentageBranchs" Binding="{Binding Path=FreePercentageBranchs, Mode=TwoWay}"/>
                             <DataGridTextColumn Width="*"  Header="FreePercentageStores" Binding="{Binding Path=FreePercentageStores, Mode=TwoWay}"/>
                             <DataGridTextColumn Width="*"  Header="DiscountPercentageMarkets" Binding="{Binding Path=DiscountPercentageMarkets, Mode=TwoWay}"/>
@@ -164,6 +171,13 @@
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                                 <Setter Property="Foreground" Value="{StaticResource textColor}"/>
                                 <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding}"></TextBlock>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
