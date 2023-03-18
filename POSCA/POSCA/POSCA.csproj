@@ -324,5 +324,19 @@
   <ItemGroup>
     <Folder Include="converters\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Thumb\tmp0.txt" />
+    <Resource Include="Thumb\tmp1.txt" />
+    <Resource Include="Thumb\tmp2.txt" />
+    <Resource Include="Thumb\tmp3.txt" />
+    <Resource Include="Thumb\tmp4.txt" />
+    <Resource Include="Thumb\tmp5.txt" />
+    <Resource Include="Thumb\tmp6.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Thumb\SupDocuments\tmp.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

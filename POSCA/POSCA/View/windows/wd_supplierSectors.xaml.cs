@@ -163,7 +163,7 @@ namespace POSCA.View.windows
             dg_supplierSectorSpecify.Columns[4].Header = AppSettings.resourcemanager.GetString("DiscountPercentage");
             dg_supplierSectorSpecify.Columns[5].Header = AppSettings.resourcemanager.GetString("trNotes");
 
-            btn_save.ToolTip = AppSettings.resourcemanager.GetString("trSave");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
         }
 

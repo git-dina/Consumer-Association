@@ -91,6 +91,9 @@ namespace POSCA.Classes
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        public bool IsEdited { get; set; }
+        public string DocPath { get; set; }
         #endregion
     }
     public class Supplier
@@ -184,7 +187,66 @@ namespace POSCA.Classes
             }
             return result;
         }
+        public async Task<string> uploadDocument(string documentPath, string documentName)
+        {
+            if (documentPath != "")
+            {
+                //string imageName = userId.ToString();
+                MultipartFormDataContent form = new MultipartFormDataContent();
+                // get file extension
+                var ext = documentPath.Substring(documentPath.LastIndexOf('.'));
+                var extension = ext.ToLower();
+                string fileName = documentName + extension;
+                try
+                {
+                    // configure trmporery path
+                    string dir = Directory.GetCurrentDirectory();
+                    string tmpPath = Path.Combine(dir, AppSettings.TMPSupFolder);
 
+                    string[] files = System.IO.Directory.GetFiles(tmpPath, documentName + ".*");
+                    foreach (string f in files)
+                    {
+                        System.IO.File.Delete(f);
+                    }
+
+                    tmpPath = Path.Combine(tmpPath, documentName + extension);
+                    if (documentPath != tmpPath) // edit mode
+                    {
+                        //// resize image
+                        //ImageProcess imageP = new ImageProcess(150, documentPath);
+                        //imageP.ScaleImage(tmpPath);
+
+                        // read image file
+                        var stream = new FileStream(tmpPath, FileMode.Open, FileAccess.Read);
+
+                        // create http client request
+                        using (var client = new HttpClient())
+                        {
+                            client.BaseAddress = new Uri(AppSettings.APIUri);
+                            client.Timeout = System.TimeSpan.FromSeconds(3600);
+                            string boundary = string.Format("----WebKitFormBoundary{0}", DateTime.Now.Ticks.ToString("x"));
+                            HttpContent content = new StreamContent(stream);
+                            content.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
+                            content.Headers.Add("client", "true");
+
+                            content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                            {
+                                Name = documentName,
+                                FileName = fileName
+                            };
+                            form.Add(content, "fileToUpload");
+
+                            var response = await client.PostAsync(@"Supplier/PostDocument", form);
+                        }
+                        stream.Dispose();
+                    }
+                    return fileName;
+                }
+                catch
+                { return ""; }
+            }
+            return "";
+        }
         public async Task<List<Supplier>> delete(long supGroupId, long userId)
         {
             var result = new List<Supplier>();

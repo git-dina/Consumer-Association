@@ -22,6 +22,7 @@ namespace POSCA.Classes
 
         #region folders Paths
         public const string TMPFolder = "Thumb";
+        public const string TMPSupFolder = "Thumb/SupDocuments";
         #endregion
 
         //general info

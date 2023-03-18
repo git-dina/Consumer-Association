@@ -1,4 +1,5 @@
-﻿using POSCA.Classes;
+﻿using Microsoft.Win32;
+using POSCA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -119,7 +120,7 @@ namespace POSCA.View.windows
             dg_supplierDoc.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
             dg_supplierDoc.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
 
-            btn_save.ToolTip = AppSettings.resourcemanager.GetString("trSave");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
         }
 
@@ -545,7 +546,7 @@ namespace POSCA.View.windows
             }
         }
 
-
+        OpenFileDialog openFileDialog = new OpenFileDialog();
         private void uploadSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
         {
             try
@@ -555,20 +556,18 @@ namespace POSCA.View.windows
                 for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
                     if (vis is DataGridRow)
                     {
-                        //if (timer != null)
-                        //    timer.Stop();
                         btn_addSupplierDoc.IsEnabled = false;
                         dg_supplierDoc.IsEnabled = false;
 
                         SupplierDoc row = (SupplierDoc)dg_supplierDoc.SelectedItems[0];
 
 
+                        if (openFileDialog.ShowDialog() == true)
+                        {
+                            row.DocPath = openFileDialog.FileName;
+                            row.IsEdited = true;
+                        }
 
-
-
-
-                        //if (timer != null)
-                        //    timer.Start();
                     }
 
                 HelpClass.EndAwait(grid_main);

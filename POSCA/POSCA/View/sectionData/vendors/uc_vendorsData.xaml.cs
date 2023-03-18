@@ -877,7 +877,17 @@ HelpClass.EndAwait(grid_image, "forImage");
                     supplier.SupplierDocuments = w.SupplierDocs.ToList();
                     if (supplier.SupId != 0)
                     {
+                        foreach(var row in supplier.SupplierDocuments)
+                        {
+                            if(row.IsEdited)
+                            {
+                                row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
+                                row.DocName = row.DocName.ToLower() + MainWindow.userLogin.userId + row.TypeId + DateTime.Now;
+                                string b = await supplier.uploadDocument(row.DocPath,row.DocName);
+                            }
+                        }
                         FillCombo.suppliersList = await supplier.save(supplier);
+                        
                         await Search();
                     }
                 }
