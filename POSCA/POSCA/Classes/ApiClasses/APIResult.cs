@@ -233,8 +233,7 @@ namespace POSCA.Classes
             {
                 client.BaseAddress = new Uri(AppSettings.APIUri);
                 client.Timeout = System.TimeSpan.FromSeconds(3600);
-                int numOfRequest = 1;
-            RequestBody:
+
 
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
                 parameters.Add("documentName", documentName);
@@ -322,9 +321,9 @@ namespace POSCA.Classes
                         {
                             if (c.Type == "scopes")
                             {
-                                string imageStr = c.Value;
-                                if (!imageStr.Equals(""))
-                                    byteImg = Convert.FromBase64String(imageStr);
+                                string documentStr = c.Value;
+                                if (!documentStr.Equals(""))
+                                    byteImg = Convert.FromBase64String(documentStr);
                                 break;
                             }
                         }
