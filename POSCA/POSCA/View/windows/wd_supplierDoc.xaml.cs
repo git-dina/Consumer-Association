@@ -567,6 +567,8 @@ namespace POSCA.View.windows
                             row.DocPath = openFileDialog.FileName;
                             row.IsEdited = true;
                         }
+                        btn_addSupplierDoc.IsEnabled = true;
+                        dg_supplierDoc.IsEnabled = true;
 
                     }
 

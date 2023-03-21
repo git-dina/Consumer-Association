@@ -216,8 +216,8 @@ namespace POSCA.Classes
                         //ImageProcess imageP = new ImageProcess(150, documentPath);
                         //imageP.ScaleImage(tmpPath);
 
-                        // read image file
-                        var stream = new FileStream(tmpPath, FileMode.Open, FileAccess.Read);
+                        // read document file
+                        var stream = new FileStream(documentPath, FileMode.Open, FileAccess.Read);
 
                         // create http client request
                         using (var client = new HttpClient())
@@ -246,6 +246,34 @@ namespace POSCA.Classes
                 { return ""; }
             }
             return "";
+        }
+
+        public async Task<byte[]> downloadDocument(string documentName)
+        {
+            byte[] byteImg = null;
+            if (documentName != "")
+            {
+                byteImg = await APIResult.getDocument("Supplier/downloadDocument", documentName);
+
+                string dir = Directory.GetCurrentDirectory();
+                string tmpPath = Path.Combine(dir, AppSettings.TMPSupFolder);
+                if (!Directory.Exists(tmpPath))
+                    Directory.CreateDirectory(tmpPath);
+                tmpPath = Path.Combine(tmpPath, documentName);
+                if (System.IO.File.Exists(tmpPath))
+                {
+                    System.IO.File.Delete(tmpPath);
+                }
+                if (byteImg != null)
+                {
+                    using (FileStream fs = new FileStream(tmpPath, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        fs.Write(byteImg, 0, byteImg.Length);
+                    }
+                }
+
+            }
+            return byteImg;
         }
         public async Task<List<Supplier>> delete(long supGroupId, long userId)
         {
