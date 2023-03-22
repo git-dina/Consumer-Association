@@ -462,23 +462,32 @@ namespace POSCA
             try
             {
                 var Sender = sender as Expander;
+                //List<Expander> expanderList = new List<Expander>();
+                //if (Sender.Tag.ToString() == "vendors")
+                //    expanderList = FindControls.FindVisualChildren<Expander>(this)
+                //        .Where(x => x.Tag != null && x.Tag.ToString() != "sectionData").ToList();
+                //else if (Sender.Tag.ToString() == "sectionData")
+                //    expanderList = FindControls.FindVisualChildren<Expander>(this)
+                //        .Where(x => x.Tag != null && x.Tag.ToString() != "vendors").ToList();
+                //else
+                //    expanderList = FindControls.FindVisualChildren<Expander>(this).ToList();
 
-                //foreach (var control in FindControls.FindVisualChildren<Expander>(this))
-                //{
+                foreach (var control in FindControls.FindVisualChildren<Expander>(this).ToList())
+                {
 
-                //    var expander = control as Expander;
-                //    if (expander.Tag != null && Sender.Tag != null)
-                //        if (expander.Tag.ToString() != Sender.Tag.ToString())
-                //            expander.IsExpanded = false;
-                //}
-               
+                    var expander = control as Expander;
+                    if (expander.Tag != null && Sender.Tag != null)
+                        if (expander.Tag.ToString() != Sender.Tag.ToString() )
+                            expander.IsExpanded = false;
+                }
+
             }
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
             grid_main.Children.Clear();
