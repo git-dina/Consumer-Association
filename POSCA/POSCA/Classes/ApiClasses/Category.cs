@@ -14,6 +14,7 @@ namespace POSCA.Classes.ApiClasses
         public long CategoryId { get; set; }
         public Nullable<long> CategoryParentId { get; set; }
         public string Name { get; set; }
+        public string CategoryParentName { get; set; }
         public decimal ProfitPercentage { get; set; }
         public decimal WholesalePercentage { get; set; }
         public decimal FreePercentage { get; set; }
@@ -28,6 +29,9 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+
+
         #endregion
 
         #region Methods
