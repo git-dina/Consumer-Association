@@ -582,6 +582,39 @@ namespace POSCA.View.windows
 
         }
       
+     private void downloadSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
+            {
+                try
+                {
+                    HelpClass.StartAwait(grid_main);
+
+                    for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                        if (vis is DataGridRow)
+                        {
+                            btn_addSupplierDoc.IsEnabled = false;
+                            dg_supplierDoc.IsEnabled = false;
+
+                            SupplierDoc row = (SupplierDoc)dg_supplierDoc.SelectedItems[0];
+
+
+
+
+
+                          
+                            btn_addSupplierDoc.IsEnabled = true;
+                            dg_supplierDoc.IsEnabled = true;
+                        }
+
+                    HelpClass.EndAwait(grid_main);
+                }
+                catch (Exception ex)
+                {
+                    HelpClass.EndAwait(grid_main);
+                    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                }
+
+            }
+      
 
         private void Btn_addSupplierDoc_Click(object sender, RoutedEventArgs e)
         {
