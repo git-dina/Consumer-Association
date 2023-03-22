@@ -248,25 +248,25 @@ namespace POSCA.Classes
             return "";
         }
 
-        public async Task<byte[]> downloadDocument(string documentName)
+        public async Task<byte[]> downloadDocument(string documentName,string destinationDoc)
         {
             byte[] byteImg = null;
             if (documentName != "")
             {
                 byteImg = await APIResult.getDocument("Supplier/downloadDocument", documentName);
 
-                string dir = Directory.GetCurrentDirectory();
-                string tmpPath = Path.Combine(dir, AppSettings.TMPSupFolder);
-                if (!Directory.Exists(tmpPath))
-                    Directory.CreateDirectory(tmpPath);
-                tmpPath = Path.Combine(tmpPath, documentName);
-                if (System.IO.File.Exists(tmpPath))
-                {
-                    System.IO.File.Delete(tmpPath);
-                }
+                //string dir = Directory.GetCurrentDirectory();
+                //string tmpPath = Path.Combine(dir, AppSettings.TMPSupFolder);
+                //if (!Directory.Exists(tmpPath))
+                //    Directory.CreateDirectory(tmpPath);
+                //tmpPath = Path.Combine(tmpPath, documentName);
+                //if (System.IO.File.Exists(tmpPath))
+                //{
+                //    System.IO.File.Delete(tmpPath);
+                //}
                 if (byteImg != null)
                 {
-                    using (FileStream fs = new FileStream(tmpPath, FileMode.Create, FileAccess.ReadWrite))
+                    using (FileStream fs = new FileStream(destinationDoc, FileMode.Create, FileAccess.ReadWrite))
                     {
                         fs.Write(byteImg, 0, byteImg.Length);
                     }

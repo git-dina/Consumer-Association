@@ -267,7 +267,10 @@ namespace POSCA.View.sectionData
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
                             await Search();
-
+                            if (dg_supplier.SelectedIndex != -1)
+                            {
+                                supplier = dg_supplier.SelectedItem as Supplier;
+                            }
                         }
                     }
                 }
@@ -767,7 +770,12 @@ HelpClass.EndAwait(grid_image, "forImage");
                     if (supplier.SupId != 0)
                     {
                         FillCombo.suppliersList = await supplier.save(supplier);
+                        
                         await Search();
+                        if (dg_supplier.SelectedIndex != -1)
+                        {
+                            supplier = dg_supplier.SelectedItem as Supplier;
+                        }
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -808,7 +816,12 @@ HelpClass.EndAwait(grid_image, "forImage");
                     if (supplier.SupId != 0)
                     {
                         FillCombo.suppliersList = await supplier.save(supplier);
+                        
                         await Search();
+                        if (dg_supplier.SelectedIndex != -1)
+                        {
+                            supplier = dg_supplier.SelectedItem as Supplier;
+                        }
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -845,6 +858,10 @@ HelpClass.EndAwait(grid_image, "forImage");
                     {
                         FillCombo.suppliersList = await supplier.save(supplier);
                         await Search();
+                        if (dg_supplier.SelectedIndex != -1)
+                        {
+                            supplier = dg_supplier.SelectedItem as Supplier;
+                        }
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -882,13 +899,20 @@ HelpClass.EndAwait(grid_image, "forImage");
                             if(row.IsEdited)
                             {
                                 row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
-                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId + DateTime.Now.ToString("yyyyMMddHHmmss");
+                                var ext = row.DocPath.Substring(row.DocPath.LastIndexOf('.'));
+                                var extension = ext.ToLower();
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId ;
                                 string b = await supplier.uploadDocument(row.DocPath,row.DocName);
+                                row.DocName = row.DocName +  ext;
                             }
                         }
                         FillCombo.suppliersList = await supplier.save(supplier);
                         
                         await Search();
+                        if (dg_supplier.SelectedIndex != -1)
+                        {
+                            supplier = dg_supplier.SelectedItem as Supplier;
+                        }
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;

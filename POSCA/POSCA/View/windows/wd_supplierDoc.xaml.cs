@@ -581,8 +581,9 @@ namespace POSCA.View.windows
             }
 
         }
-      
-     private void downloadSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
+        SaveFileDialog saveFileDialog = new SaveFileDialog();
+        Supplier supplier = new Supplier();
+     private async void downloadSupplierDocRowinDatagrid(object sender, RoutedEventArgs e)
             {
                 try
                 {
@@ -596,12 +597,19 @@ namespace POSCA.View.windows
 
                             SupplierDoc row = (SupplierDoc)dg_supplierDoc.SelectedItems[0];
 
+                        if (row.DocumentId != 0)
+                        {
+                            if (saveFileDialog.ShowDialog() == true)
+                            {
+
+                               await supplier.downloadDocument(row.DocName, saveFileDialog.FileName);
+                                //row.DocPath = openFileDialog.FileName;
+                                //row.IsEdited = true;
+                            }
+                        }
 
 
-
-
-                          
-                            btn_addSupplierDoc.IsEnabled = true;
+                        btn_addSupplierDoc.IsEnabled = true;
                             dg_supplierDoc.IsEnabled = true;
                         }
 
