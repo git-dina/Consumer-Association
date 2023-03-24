@@ -62,6 +62,7 @@ namespace POSCA.View.catalog
             Instance = null;
             GC.Collect();
         }
+        //List<Category> categories;
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {//load
             try
@@ -79,6 +80,19 @@ namespace POSCA.View.catalog
                 translate();
 
 
+                //categorys = new List<Category>()
+                //{
+                //    new Category(){CategoryId = 1, Name= "root", CategoryParentId = null, CategoryParentName = "" },
+                //    new Category(){CategoryId = 2, Name= "son1-1", CategoryParentId = 1, CategoryParentName = "root" },
+                //    new Category(){CategoryId = 3, Name= "son1-2", CategoryParentId = 1, CategoryParentName = "root"},
+                //    new Category(){CategoryId = 4, Name= "son2-1", CategoryParentId = 2, CategoryParentName = "son1-1" },
+                //    new Category(){CategoryId = 5, Name= "son2-2", CategoryParentId = 3, CategoryParentName = "son1-2" },
+                //};
+                //tv_categorys.Items.Clear();
+                //categorysQuery = categorys.ToList();
+                //buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
+
+
                 Keyboard.Focus(tb_Name);
               
                 await Search();
@@ -92,6 +106,7 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+       
 
         private void translate()
         {
@@ -100,7 +115,7 @@ namespace POSCA.View.catalog
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Category");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
+            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Code, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
@@ -110,8 +125,8 @@ namespace POSCA.View.catalog
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_category.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
-            dg_category.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
+            //dg_category.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            //dg_category.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
@@ -219,6 +234,7 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        /*
         private async void Dg_category_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -255,6 +271,7 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        */
         private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
         {//refresh
             try
@@ -262,7 +279,7 @@ namespace POSCA.View.catalog
 
                 HelpClass.StartAwait(grid_main);
 
-                tb_search.Text = "";
+                //tb_search.Text = "";
                 searchText = "";
                 await RefreshCategorysList();
                 await Search();
@@ -283,11 +300,15 @@ namespace POSCA.View.catalog
             //search
             if (FillCombo.categoryList is null)
                 await RefreshCategorysList();
+            /*
             searchText = tb_search.Text.ToLower();
-            categorysQuery = FillCombo.categoryList.Where(s =>
+            //categorysQuery = FillCombo.categoryList.Where(s =>
+            categorysQuery = categorys.Where(s =>
             s.CategoryId.ToString().Contains(searchText) ||
             s.Name.ToLower().Contains(searchText)
             ).ToList();
+            */
+            categorysQuery = FillCombo.categoryList.ToList();
             RefreshCategorysView();
         }
         async Task<IEnumerable<Category>> RefreshCategorysList()
@@ -300,16 +321,30 @@ namespace POSCA.View.catalog
         }
         void RefreshCategorysView()
         {
-            dg_category.ItemsSource = null;
-            dg_category.ItemsSource = categorysQuery;
-            txt_count.Text = categorysQuery.Count().ToString();
+            //dg_category.ItemsSource = null;
+            //dg_category.ItemsSource = categorysQuery;
+            //txt_count.Text = categorysQuery.Count().ToString();
+
+            tv_categorys.Items.Clear();
+            if (categorysQuery.Where(x => x.CategoryParentId is null).Count()>0)
+            {
+                buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
+
+            }
+            else
+            {
+                buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
+
+            }
+
+
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
         {
             this.DataContext = new Category();
-            dg_category.SelectedIndex = -1;
+            //dg_category.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
 
@@ -393,8 +428,89 @@ namespace POSCA.View.catalog
             }
         }
 
+
+        #endregion
+        #region TreeView
+       
+        void buildTreeViewList(List<Category> _categories, TreeView treeViewItemParent )
+        {
+            foreach (var item in _categories)
+            {
+                TreeViewItem treeViewItem = new TreeViewItem();
+                treeViewItem.Tag = item.CategoryId.ToString();
+                treeViewItem.Header = item.Name;
+                treeViewItem.FontSize = 18;
+                treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
+                treeViewItem.Selected += TreeViewItem_Selected;
+
+                treeViewItemParent.Items.Add(treeViewItem);
+                if(categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList().Count() >0)
+                {
+                    buildTreeViewList(categorysQuery.Where(x=> x.CategoryParentId == item.CategoryId ).ToList()  , treeViewItem);
+                }
+                 
+                
+            }
+        }
+        void buildTreeViewList(List<Category> _categories, TreeViewItem treeViewItemParent)
+        {
+            foreach (var item in _categories)
+            {
+                TreeViewItem treeViewItem = new TreeViewItem();
+                treeViewItem.Tag = item.CategoryId.ToString();
+                treeViewItem.Header = item.Name;
+                treeViewItem.FontSize = 18;
+                treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
+                treeViewItem.Selected += TreeViewItem_Selected;
+
+                treeViewItemParent.Items.Add(treeViewItem);
+                if (categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList().Count() > 0)
+                {
+                    buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList(), treeViewItem);
+                }
+            }
+        }
+        private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            
+            TreeViewItem treeViewItem = sender as TreeViewItem;
+            if (treeViewItem.IsSelected)
+            {
+                unExpandTreeViewItem();
+                setSelectedStyleTreeViewItem();
+                //MessageBox.Show($"Category Id is: {treeViewItem.Tag}, Category Name: {treeViewItem.Header}");
+
+            }
+            treeViewItem.IsExpanded = true;
+        }
+        void unExpandTreeViewItem()
+        {
+            List<TreeViewItem> list  = FindControls.FindVisualChildren<TreeViewItem>(this).ToList();
+            foreach (var item in list)
+            {
+                if(!item.IsSelected)
+                item.IsExpanded = false;
+            }
+        }
+        void setSelectedStyleTreeViewItem()
+        {
+            List<TreeViewItem> list  = FindControls.FindVisualChildren<TreeViewItem>(this).ToList();
+            foreach (var item in list)
+            {
+                if(!item.IsSelected)
+                {
+                    item.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush;
+                    item.FontWeight = FontWeights.Regular;
+                }
+                else
+                {
+                    item.Foreground = Application.Current.Resources["SecondColor"] as SolidColorBrush; 
+                    item.FontWeight = FontWeights.SemiBold;
+                }
+            }
+        }
+
         #endregion
 
-       
     }
 }

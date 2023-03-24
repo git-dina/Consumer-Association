@@ -14,18 +14,18 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions >
-                <RowDefinition Height="65"/>
+                <!--<RowDefinition Height="65"/>-->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border Grid.ColumnSpan="2"   CornerRadius="22.5" Margin="0,10,10,5"   BorderThickness="1" BorderBrush="{StaticResource SecondColor}" Background="White">
-                <Border.Effect>
+            <!--<Border Grid.ColumnSpan="2"   CornerRadius="22.5" Margin="0,10,10,5"   BorderThickness="1" BorderBrush="{StaticResource SecondColor}" Background="White">
+                --><!--<Border.Effect>
                     <DropShadowEffect
                           ShadowDepth="1"
                           Direction="360"
                           Color="Gray"
                           Opacity="0.3"
                          BlurRadius="10"/>
-                </Border.Effect>
+                </Border.Effect>--><!--
                 <Grid Margin="0 0 10 0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
@@ -42,15 +42,16 @@
                               Data="{StaticResource magnifying}"/>
                     <Border Background="White" Grid.Column="1" Height="40" CornerRadius="0" Margin="15,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
                         <Grid   >
-                            <!--<TextBox x:Name="tb_search" Grid.Column="1"    Padding="10,0,5,0" 
+                            --><!--<TextBox x:Name="tb_search" Grid.Column="1"    Padding="10,0,5,0" 
                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                       materialDesign:HintAssist.Hint="Enter Here To Start Search ...."  
                                      Foreground="#4E4E4E"  TextChanged="Tb_search_TextChanged"
                                       MaxLength="50" Height="40"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      BorderBrush="#737373"   BorderThickness="0" Margin="0,0"
-                                      VerticalAlignment="Center"/>-->
+                                      VerticalAlignment="Center"/>--><!--
                             <TextBox Margin="0,0" x:Name="tb_search"  
+                                            TextChanged="Tb_search_TextChanged"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                          Padding="10,0,5,0"   BorderThickness="0" 
                                          materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="#4E4E4E"
@@ -58,13 +59,13 @@
                                        />
                         </Grid>
                     </Border>
-                    <!--<TextBlock    x:Name="txt_active" Grid.Column="3"
+                    --><!--<TextBlock    x:Name="txt_active" Grid.Column="3"
                                    Margin="5,0,5,0" Text="Active" Foreground="{StaticResource SecondColor}"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    FontSize="12"/>-->
                     <!--<ToggleButton Grid.Column="4" Background="{StaticResource MainColor}"   x:Name="tgl_isActive"   Checked="Tgl_isActive_Checked" Unchecked="Tgl_isActive_Unchecked"
                              VerticalAlignment="Center" Padding="10,15,5,5"  IsChecked="True" 
-                                          Margin="0" Height="13" Width="28" />-->
+                                          Margin="0" Height="13" Width="28" />--><!--
                     <Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
                             materialDesign:ButtonAssist.CornerRadius="15" Cursor="Hand"
                           Background="{x:Null}" BorderBrush="{x:Null}"   Style="{StaticResource SmallButtonCircleRotate}"
@@ -88,16 +89,16 @@
                     </Button>
 
                 </Grid>
-            </Border>
-            <Border Margin="0,0,10,5" Grid.Row="1"  Background="White" CornerRadius="10">
-                <Border.Effect>
+            </Border>-->
+            <Border Margin="0,10,10,5" Grid.Row="1"  Background="White" CornerRadius="10">
+                <!--<Border.Effect>
                     <DropShadowEffect
                           ShadowDepth="1"
                           Direction="360"
                           Color="Gray"
                           Opacity="0.3"
                          BlurRadius="10"/>
-                </Border.Effect>
+                </Border.Effect>-->
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -108,7 +109,7 @@
                     <Grid  Grid.Row="1" >
                         <Border Margin="5,5,5,17.5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
                             Background="White"/>
-                        <DataGrid  Margin="5,5,5,45" Grid.Row="1"  IsReadOnly="True"   HeadersVisibility="Column"
+                        <!--<DataGrid  Margin="5,5,5,45" Grid.Row="1"  IsReadOnly="True"   HeadersVisibility="Column"
                        x:Name="dg_category" SelectionChanged="Dg_category_SelectionChanged"
                                    MouseDoubleClick="Dg_category_MouseDoubleClick"
                                    AutoGenerateColumns="False"   Background="White"
@@ -132,14 +133,53 @@
                                 <DataGridTextColumn Width="*"  Header="CategoryParentName" Binding="{Binding Path=CategoryParentName}"/>
                                 <DataGridTextColumn Width="*"  Header="CategorySonsCount" Binding="{Binding Path=CategorySonsCount}"/>
                             </DataGrid.Columns>
-                        </DataGrid>
+                        </DataGrid>-->
+                        <TreeView x:Name="tv_categorys" Margin="10">
+                            <TreeViewItem Header="root" Tag="1"  Selected="TreeViewItem_Selected"
+                                          FontSize="18" Foreground="{StaticResource textColor}">
+                                <TreeViewItem Header="son1-1" Tag="2"  Selected="TreeViewItem_Selected"
+                                              FontSize="18" Foreground="{StaticResource textColor}">
+                                    <TreeViewItem Header="son2-1" Tag="4"  Selected="TreeViewItem_Selected"
+                                                  FontSize="18" Foreground="{StaticResource textColor}"/>
+                               </TreeViewItem>
+                                <TreeViewItem Header="son1-2" Tag="3" Selected="TreeViewItem_Selected"
+                                            FontSize="18" Foreground="{StaticResource textColor}">
+                                    <TreeViewItem Header="son2-2" Tag="5"  Selected="TreeViewItem_Selected"
+                                                FontSize="18" Foreground="{StaticResource textColor}"/>
+                                </TreeViewItem>
+                            </TreeViewItem>
+                        </TreeView>
+                        <Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
+                            materialDesign:ButtonAssist.CornerRadius="15" Cursor="Hand"
+                          Background="{x:Null}" BorderBrush="{x:Null}"   Style="{StaticResource SmallButtonCircleRotate}"
+                               RenderTransformOrigin="0.5,0.5"
+                            DataContext="{StaticResource refreshCyrcle}"
+                                  Margin="0 10 10 0"
+                                  VerticalAlignment="Top"
+                                  HorizontalAlignment="Right">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <Button.ToolTip>
+                                <ToolTip x:Name="tt_refresh" Content="Refresh"
+                                              Placement="left" 
+                                              HorizontalOffset="15"
+                                              PlacementRectangle="50,0,0,0"
+                                              VerticalOffset="25"/>
+                            </Button.ToolTip>
+                        </Button>
 
                     </Grid>
-                    <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,10,10" Width="auto"
+                    <!--<Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,10,10" Width="auto"
                      Grid.RowSpan="2"   HorizontalAlignment="Left" VerticalAlignment="Bottom">
                         <StackPanel  Orientation="Horizontal" >
 
-                            <!--<Button x:Name="btn_pdf"   Background="{x:Null}"   Margin="10,0,5,0"
+                            --><!--<Button x:Name="btn_pdf"   Background="{x:Null}"   Margin="10,0,5,0"
                                     Padding="0" Height="35" 
                                     BorderBrush="{x:Null}" Click="Btn_pdf_Click"   >
                                 <materialDesign:PackIcon Foreground="#D20A0A" Kind="FilePdf"  
@@ -252,7 +292,7 @@
 
                                     </Path>
                                 </Grid>
-                            </Button>-->
+                            </Button>--><!--
                             <TextBlock   Background="{x:Null}" x:Name="txt_count"   Grid.Column="4"
                             Padding="10"   Text="0" Foreground="#378500" FontSize="12"  >
                                 <TextBlock.ToolTip>
@@ -265,20 +305,20 @@
                             </TextBlock>
 
                         </StackPanel >
-                    </Border>
+                    </Border>-->
 
                 </Grid>
             </Border>
         </Grid>
         <Border Margin="10 10 0 5" Grid.Column="1"  >
-            <Border.Effect>
+            <!--<Border.Effect>
                 <DropShadowEffect
                           ShadowDepth="1"
                           Direction="360"
                           Color="Gray"
                           Opacity="0.3"
                          BlurRadius="10"/>
-            </Border.Effect>
+            </Border.Effect>-->
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"></RowDefinition>
