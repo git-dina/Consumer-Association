@@ -4998,4 +4998,13 @@ Main Documents</value>
   <data name="yourPasswordHasBeenChange" xml:space="preserve">
     <value>تم تغيير كلمة مرورك</value>
   </data>
+  <data name="ContainItems" xml:space="preserve">
+    <value>Contain Items</value>
+  </data>
+  <data name="ParentCategoryHint" xml:space="preserve">
+    <value>Parent Category...</value>
+  </data>
+  <data name="ProfitPercentageHint" xml:space="preserve">
+    <value>Profit Percentage...</value>
+  </data>
 </root>

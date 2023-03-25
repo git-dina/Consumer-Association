@@ -1,6 +1,7 @@
 ﻿using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
+using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -94,7 +95,8 @@ namespace POSCA.View.catalog
 
 
                 Keyboard.Focus(tb_Name);
-              
+
+                await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
                 await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
@@ -119,14 +121,17 @@ namespace POSCA.View.catalog
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Code, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CategoryParentId, AppSettings.resourcemanager.GetString("ParentCategoryHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ProfitPercentage, AppSettings.resourcemanager.GetString("ProfitPercentageHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreePercentage, AppSettings.resourcemanager.GetString("FreePercentagHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_DiscountPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
+
+            txt_CanContainItems.Text = AppSettings.resourcemanager.GetString("ContainItems");
+            txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-
-            //dg_category.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
-            //dg_category.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
@@ -144,7 +149,42 @@ namespace POSCA.View.catalog
                     category = new Category();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                       
+                        category.Name = tb_Name.Text;
+                        if (cb_CategoryParentId.SelectedIndex > 0)
+                            category.CategoryParentId = (long)cb_CategoryParentId.SelectedValue;
+
+                        if(tb_ProfitPercentage.Text != "")
+                            category.ProfitPercentage = decimal.Parse( tb_ProfitPercentage.Text);
+                        if (tb_WholesalePercentage.Text != "")
+                            category.WholesalePercentage = decimal.Parse(tb_WholesalePercentage.Text);
+                        if (tb_DiscountPercentage.Text != "")
+                            category.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
+                        if (tb_FreePercentage.Text != "")
+                            category.FreePercentage = decimal.Parse( tb_FreePercentage.Text);
+
+                        if (tgl_CanContainItems.IsChecked == true)
+                            category.CanContainItems = true;
+                        else
+                            category.CanContainItems = false;
+
+                        if (tgl_IsBlocked.IsChecked == true)
+                            category.IsBlocked = true;
+                        else
+                            category.IsBlocked = false;
+
+                        category.Notes = tb_Notes.Text;
+
+                        FillCombo.categoryList = await category.save(category);
+
+                        if (FillCombo.categoryList == null)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                            Clear();
+                            await Search();
+                        }
                     }
                     HelpClass.EndAwait(grid_main);
                 }
@@ -171,7 +211,42 @@ namespace POSCA.View.catalog
                 {
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                      
+                        category.Name = tb_Name.Text;
+                        if (cb_CategoryParentId.SelectedIndex > 0)
+                            category.CategoryParentId = (long)cb_CategoryParentId.SelectedValue;
+
+                        if (tb_ProfitPercentage.Text != "")
+                            category.ProfitPercentage = decimal.Parse(tb_ProfitPercentage.Text);
+                        if (tb_WholesalePercentage.Text != "")
+                            category.WholesalePercentage = decimal.Parse(tb_WholesalePercentage.Text);
+                        if (tb_DiscountPercentage.Text != "")
+                            category.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
+                        if (tb_FreePercentage.Text != "")
+                            category.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
+
+                        if (tgl_CanContainItems.IsChecked == true)
+                            category.CanContainItems = true;
+                        else
+                            category.CanContainItems = false;
+
+                        if (tgl_IsBlocked.IsChecked == true)
+                            category.IsBlocked = true;
+                        else
+                            category.IsBlocked = false;
+
+                        category.Notes = tb_Notes.Text;
+
+                        FillCombo.categoryList = await category.save(category);
+
+                        if (FillCombo.bankList == null)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                            Clear();
+                            await Search();
+                        }
                     }
                 }
                 else
@@ -193,7 +268,35 @@ namespace POSCA.View.catalog
         {//delete
             try
             {
-               
+                HelpClass.StartAwait(grid_main);
+                if (category.CategoryId != 0)
+                {
+                    #region
+                    Window.GetWindow(this).Opacity = 0.2;
+                    wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                    w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
+
+                    w.ShowDialog();
+                    Window.GetWindow(this).Opacity = 1;
+                    #endregion
+
+                    if (w.isOk)
+                    {
+                        FillCombo.categoryList = await category.delete(category.CategoryId, MainWindow.userLogin.userId);
+                        if (FillCombo.categoryList == null)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            category.CategoryId = 0;
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
+
+                            await Search();
+                            Clear();
+                        }
+                    }
+
+                }
+                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
@@ -341,13 +444,14 @@ namespace POSCA.View.catalog
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new Category();
             //dg_category.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
 
+            await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

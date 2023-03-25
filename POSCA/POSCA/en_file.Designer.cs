@@ -403,6 +403,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contain Items.
+        /// </summary>
+        internal static string ContainItems {
+            get {
+                return ResourceManager.GetString("ContainItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Content.
         /// </summary>
         internal static string content {
@@ -1466,6 +1475,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parent Category....
+        /// </summary>
+        internal static string ParentCategoryHint {
+            get {
+                return ResourceManager.GetString("ParentCategoryHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Agent.
         /// </summary>
         internal static string paymentAgent {
@@ -1660,6 +1678,15 @@ namespace POSCA {
         internal static string printOnSale {
             get {
                 return ResourceManager.GetString("printOnSale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit Percentage....
+        /// </summary>
+        internal static string ProfitPercentageHint {
+            get {
+                return ResourceManager.GetString("ProfitPercentageHint", resourceCulture);
             }
         }
         

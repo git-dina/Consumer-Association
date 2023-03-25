@@ -5252,4 +5252,13 @@
   <data name="SupplierDocs" xml:space="preserve">
     <value>مستندات المورد</value>
   </data>
+  <data name="ContainItems" xml:space="preserve">
+    <value>تحوي أصناف</value>
+  </data>
+  <data name="ParentCategoryHint" xml:space="preserve">
+    <value>المجموعة الأب...</value>
+  </data>
+  <data name="ProfitPercentageHint" xml:space="preserve">
+    <value>هامش الربح...</value>
+  </data>
 </root>

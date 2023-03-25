@@ -74,7 +74,7 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<Category>> save(Supplier group)
+        public async Task<List<Category>> save(Category group)
         {
             var result = new List<Category>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();

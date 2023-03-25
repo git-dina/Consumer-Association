@@ -232,12 +232,30 @@ namespace POSCA.Classes
             return categoryList;
         }
 
+        static public async Task fillCategorysWithDefault(ComboBox combo)
+        {
+            if (categoryList is null)
+                await RefreshCategorys();
+
+            var lst = categoryList.ToList();
+            Category sup = new Category();
+            sup.Name = "-";
+            sup.CategoryId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+
+            combo.SelectedValuePath = "CategoryId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         static public async Task fillCategorys(ComboBox combo)
         {
             if (categoryList is null)
                 await RefreshCategorys();
 
             combo.ItemsSource = categoryList;
+
             combo.SelectedValuePath = "CategoryId";
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
