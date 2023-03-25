@@ -75,6 +75,16 @@ namespace POSCA
                 timer.Start();
 
 
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
                 translate();
                 //try
                 //{
@@ -346,6 +356,8 @@ namespace POSCA
         public void translate()
         {
             txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
+            txt_catalog.Text = AppSettings.resourcemanager.GetString("trCatalog");
+            txt_category.Text = AppSettings.resourcemanager.GetString("Categories");
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
             txt_bank.Text = AppSettings.resourcemanager.GetString("trBanks");

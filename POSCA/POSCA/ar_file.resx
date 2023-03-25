@@ -5252,6 +5252,9 @@
   <data name="SupplierDocs" xml:space="preserve">
     <value>مستندات المورد</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>المجموعات</value>
+  </data>
   <data name="ContainItems" xml:space="preserve">
     <value>تحوي أصناف</value>
   </data>

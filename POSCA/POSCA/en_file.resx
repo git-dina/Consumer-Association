@@ -4998,6 +4998,9 @@ Main Documents</value>
   <data name="yourPasswordHasBeenChange" xml:space="preserve">
     <value>تم تغيير كلمة مرورك</value>
   </data>
+  <data name="Categories" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="ContainItems" xml:space="preserve">
     <value>Contain Items</value>
   </data>
