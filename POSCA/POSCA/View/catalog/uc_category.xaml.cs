@@ -101,8 +101,9 @@ namespace POSCA.View.catalog
                 Keyboard.Focus(tb_Name);
 
                 await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
-                await Search();
                 Clear();
+                await Search();
+                
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -242,7 +243,7 @@ namespace POSCA.View.catalog
 
                         FillCombo.categoryList = await category.save(category);
 
-                        if (FillCombo.bankList == null)
+                        if (FillCombo.categoryList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
@@ -453,7 +454,6 @@ namespace POSCA.View.catalog
             this.DataContext = new Category();
             //dg_category.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
-            tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
 
             await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
             // last 
@@ -586,6 +586,8 @@ namespace POSCA.View.catalog
             {
                 unExpandTreeViewItem();
                 setSelectedStyleTreeViewItem();
+                category = FillCombo.categoryList.Where(x => x.CategoryId ==long.Parse( treeViewItem.Tag.ToString())).FirstOrDefault();
+                this.DataContext = category;
                 //MessageBox.Show($"Category Id is: {treeViewItem.Tag}, Category Name: {treeViewItem.Header}");
 
             }
