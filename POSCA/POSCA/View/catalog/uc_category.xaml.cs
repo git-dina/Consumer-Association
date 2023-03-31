@@ -548,7 +548,7 @@ namespace POSCA.View.catalog
                 TreeViewItem treeViewItem = new TreeViewItem();
                 treeViewItem.Tag = item.CategoryId.ToString();
                 treeViewItem.Header = item.Name;
-                treeViewItem.FontSize = 18;
+                treeViewItem.FontSize = 16;
                 treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
                 treeViewItem.Selected += TreeViewItem_Selected;
 
@@ -568,7 +568,7 @@ namespace POSCA.View.catalog
                 TreeViewItem treeViewItem = new TreeViewItem();
                 treeViewItem.Tag = item.CategoryId.ToString();
                 treeViewItem.Header = item.Name;
-                treeViewItem.FontSize = 18;
+                treeViewItem.FontSize = 16;
                 treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
                 treeViewItem.Selected += TreeViewItem_Selected;
 
