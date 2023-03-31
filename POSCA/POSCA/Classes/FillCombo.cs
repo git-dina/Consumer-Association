@@ -221,6 +221,53 @@ namespace POSCA.Classes
         }
         #endregion
 
+        #region Brand
+        static public Brand brand = new Brand();
+        static public List<Brand> brandList;
+
+        static public async Task<IEnumerable<Brand>> RefreshBrands()
+        {
+            brandList = await brand.get(true);
+
+            return brandList;
+        }
+
+        static public async Task fillBrands(ComboBox combo)
+        {
+            if (brandList is null)
+                await RefreshBrands();
+
+            combo.ItemsSource = brandList;
+            combo.SelectedValuePath = "BrandId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        #region BarcodeType
+        static public List<keyValueString> barcodeTypeList;
+
+        static public  IEnumerable<keyValueString>RefreshBarcodeTypes()
+        {
+            barcodeTypeList = new List<keyValueString>() {
+                new keyValueString(){key="external", value=AppSettings.resourcemanager.GetString("external") },
+                new keyValueString(){key="internal", value=AppSettings.resourcemanager.GetString("internal") },
+                new keyValueString(){key="wait", value=AppSettings.resourcemanager.GetString("wait") },
+            };
+
+            return barcodeTypeList;
+        }
+
+        static public  void fillBarcodeTypes(ComboBox combo)
+        {
+            if (barcodeTypeList is null)
+                RefreshBarcodeTypes();
+
+            combo.ItemsSource = barcodeTypeList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
         #region categorys
         static public Category category = new Category();
         static public List<Category> categoryList;
