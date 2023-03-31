@@ -5267,4 +5267,13 @@
   <data name="WholeSalePercentageHint" xml:space="preserve">
     <value>نسبة بيع الجملة...</value>
   </data>
+  <data name="external" xml:space="preserve">
+    <value>خارجي</value>
+  </data>
+  <data name="internal" xml:space="preserve">
+    <value>داخلي</value>
+  </data>
+  <data name="wait" xml:space="preserve">
+    <value>انتظار</value>
+  </data>
 </root>

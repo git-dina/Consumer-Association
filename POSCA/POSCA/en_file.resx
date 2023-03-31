@@ -5013,4 +5013,13 @@ Main Documents</value>
   <data name="WholeSalePercentageHint" xml:space="preserve">
     <value>Whole Sale Percentage...</value>
   </data>
+  <data name="external" xml:space="preserve">
+    <value>external</value>
+  </data>
+  <data name="internal" xml:space="preserve">
+    <value>internal</value>
+  </data>
+  <data name="wait" xml:space="preserve">
+    <value>wait</value>
+  </data>
 </root>

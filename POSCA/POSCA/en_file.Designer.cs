@@ -79,6 +79,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to internal.
+        /// </summary>
+        internal static string _internal {
+            get {
+                return ResourceManager.GetString("internal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Private.
         /// </summary>
         internal static string _private {
@@ -759,6 +768,15 @@ namespace POSCA {
         internal static string expirationDate {
             get {
                 return ResourceManager.GetString("expirationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to external.
+        /// </summary>
+        internal static string external {
+            get {
+                return ResourceManager.GetString("external", resourceCulture);
             }
         }
         
@@ -14631,6 +14649,15 @@ namespace POSCA {
         internal static string Voucherno {
             get {
                 return ResourceManager.GetString("Voucherno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to wait.
+        /// </summary>
+        internal static string wait {
+            get {
+                return ResourceManager.GetString("wait", resourceCulture);
             }
         }
         
