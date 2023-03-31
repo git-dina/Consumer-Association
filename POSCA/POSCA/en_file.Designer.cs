@@ -14653,6 +14653,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Whole Sale Percentage....
+        /// </summary>
+        internal static string WholeSalePercentageHint {
+            get {
+                return ResourceManager.GetString("WholeSalePercentageHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مع السائق.
         /// </summary>
         internal static string withDelivery {

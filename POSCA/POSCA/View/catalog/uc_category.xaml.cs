@@ -128,6 +128,7 @@ namespace POSCA.View.catalog
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CategoryParentId, AppSettings.resourcemanager.GetString("ParentCategoryHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ProfitPercentage, AppSettings.resourcemanager.GetString("ProfitPercentageHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WholesalePercentage, AppSettings.resourcemanager.GetString("WholeSalePercentageHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreePercentage, AppSettings.resourcemanager.GetString("FreePercentagHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_DiscountPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));

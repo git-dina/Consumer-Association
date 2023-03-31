@@ -5264,4 +5264,7 @@
   <data name="ProfitPercentageHint" xml:space="preserve">
     <value>هامش الربح...</value>
   </data>
+  <data name="WholeSalePercentageHint" xml:space="preserve">
+    <value>نسبة بيع الجملة...</value>
+  </data>
 </root>

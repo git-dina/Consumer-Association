@@ -5010,4 +5010,7 @@ Main Documents</value>
   <data name="ProfitPercentageHint" xml:space="preserve">
     <value>Profit Percentage...</value>
   </data>
+  <data name="WholeSalePercentageHint" xml:space="preserve">
+    <value>Whole Sale Percentage...</value>
+  </data>
 </root>
