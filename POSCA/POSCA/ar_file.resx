@@ -5276,4 +5276,7 @@
   <data name="wait" xml:space="preserve">
     <value>انتظار</value>
   </data>
+  <data name="Brands" xml:space="preserve">
+    <value>العلامات التجارية</value>
+  </data>
 </root>

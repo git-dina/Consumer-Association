@@ -5022,4 +5022,7 @@ Main Documents</value>
   <data name="wait" xml:space="preserve">
     <value>wait</value>
   </data>
+  <data name="Brands" xml:space="preserve">
+    <value>Brands</value>
+  </data>
 </root>

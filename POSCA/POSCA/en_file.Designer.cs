@@ -286,6 +286,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brands.
+        /// </summary>
+        internal static string Brands {
+            get {
+                return ResourceManager.GetString("Brands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By.
         /// </summary>
         internal static string By {

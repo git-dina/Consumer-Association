@@ -358,10 +358,13 @@ namespace POSCA
             txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
             txt_catalog.Text = AppSettings.resourcemanager.GetString("trCatalog");
             txt_category.Text = AppSettings.resourcemanager.GetString("Categories");
+
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
             txt_bank.Text = AppSettings.resourcemanager.GetString("trBanks");
             txt_country.Text = AppSettings.resourcemanager.GetString("Countries");
+            txt_brand.Text = AppSettings.resourcemanager.GetString("Brands");
+
             txt_vendors.Text = AppSettings.resourcemanager.GetString("Suppliers");
             txt_vendorsData.Text = AppSettings.resourcemanager.GetString("SuppliersData");
             txt_vendorsGroups.Text = AppSettings.resourcemanager.GetString("SuppliersGroups");
