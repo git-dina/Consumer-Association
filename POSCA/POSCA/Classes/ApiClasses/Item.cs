@@ -8,6 +8,7 @@ namespace POSCA.Classes.ApiClasses
 {
     public class Item
     {
+        #region Attributes
         public long ItemId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
@@ -39,10 +40,26 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> QtyMin { get; set; }
         public Nullable<int> QtyMax { get; set; }
         public Nullable<decimal> PackageWeight { get; set; }
+        public Nullable<long> PackageUnit { get; set; }
         public bool IsWeight { get; set; }
         public bool IsContainExpiryDate { get; set; }
         public bool IsSellNotAllow { get; set; }
         public string Notes { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<long> CreateUserId { get; set; }
+        public Nullable<long> UpdateUserId { get; set; }
+        #endregion
+    }
+
+    public class ItemGeneralization
+    {
+
+        public long Id { get; set; }
+        public Nullable<long> ItemId { get; set; }
+        public Nullable<int> GeneralizationYear { get; set; }
+        public Nullable<int> GeneralizationNo { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
