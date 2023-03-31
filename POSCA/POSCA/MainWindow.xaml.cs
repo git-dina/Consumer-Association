@@ -552,5 +552,11 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_category.Instance);
         }
+
+        private void Btn_brand_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_brand.Instance);
+        }
     }
 }

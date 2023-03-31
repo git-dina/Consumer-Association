@@ -456,6 +456,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
                         </Button>
+                         <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="brand" 
+                          x:Name="btn_brand"  Click="Btn_brand_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="brand" Foreground="White" x:Name="txt_brand"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                            </Grid>
+                        </Button>
                         <!--<Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White"
                                    >
                             <Expander.Header>
