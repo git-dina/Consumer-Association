@@ -360,6 +360,7 @@ namespace POSCA.View.sectionData
             searchText = tb_search.Text.ToLower();
             brandsQuery = FillCombo.brandList.Where(s =>
             s.Name.ToLower().Contains(searchText)
+            || s.Notes.ToLower().Contains(searchText)
             ).ToList();
             RefreshGroupsView();
         }
