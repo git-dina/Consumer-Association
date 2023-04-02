@@ -284,6 +284,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="item" 
+                          x:Name="btn_item"  Click="Btn_item_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="item" Foreground="White" x:Name="txt_item"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
                         </StackPanel>
                     </Expander>
                     <!--#region  vendors-->
