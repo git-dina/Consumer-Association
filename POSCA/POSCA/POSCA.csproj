@@ -160,6 +160,9 @@
     <Compile Include="View\catalog\uc_category.xaml.cs">
       <DependentUpon>uc_category.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\catalog\uc_item.xaml.cs">
+      <DependentUpon>uc_item.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\sectionData\uc_bank.xaml.cs">
       <DependentUpon>uc_bank.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,9 @@
     <Compile Include="View\windows\wd_acceptCancelPopup.xaml.cs">
       <DependentUpon>wd_acceptCancelPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_itemGeneralization.xaml.cs">
+      <DependentUpon>wd_itemGeneralization.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_supplierAllowedOperations.xaml.cs">
       <DependentUpon>wd_supplierAllowedOperations.xaml</DependentUpon>
     </Compile>
@@ -201,6 +207,9 @@
     </Compile>
     <Compile Include="View\windows\wd_supplierSectors.xaml.cs">
       <DependentUpon>wd_supplierSectors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\windows\wd_supplyingItem.xaml.cs">
+      <DependentUpon>wd_supplyingItem.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -222,6 +231,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\catalog\uc_category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\catalog\uc_item.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\windows\wd_itemGeneralization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\windows\wd_supplierAllowedOperations.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -278,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\windows\wd_supplierSectors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_supplyingItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
