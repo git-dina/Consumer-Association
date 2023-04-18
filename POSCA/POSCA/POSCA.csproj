@@ -150,6 +150,7 @@
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
+    <Compile Include="Classes\ApiClasses\Unit.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
     <Compile Include="Classes\ApiClasses\SupplierDocType.cs" />
     <Compile Include="en_file.Designer.cs">
