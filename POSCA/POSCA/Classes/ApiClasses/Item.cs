@@ -41,6 +41,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> QtyMax { get; set; }
         public Nullable<decimal> PackageWeight { get; set; }
         public Nullable<long> PackageUnit { get; set; }
+        public bool IsSpecialOffer { get; set; }
         public bool IsWeight { get; set; }
         public bool IsContainExpiryDate { get; set; }
         public bool IsSellNotAllow { get; set; }
