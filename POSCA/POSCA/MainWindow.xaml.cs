@@ -79,11 +79,15 @@ namespace POSCA
                 {
                     AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
+                    txt_lang.Text = "EN";
+
                 }
                 else
                 {
                     AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
+                    txt_lang.Text = "AR";
+
                 }
                 translate();
                 //try
@@ -560,12 +564,47 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_item.Instance);
         }
+        private void Btn_unit_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_unit.Instance);
+        }
         private void Btn_brand_Click(object sender, RoutedEventArgs e)
         {
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_brand.Instance);
         }
 
-        
+        private void Btn_lang_Click(object sender, RoutedEventArgs e)
+        {
+            if (AppSettings.lang.Equals("en"))
+                AppSettings.lang = "ar";
+            else
+                AppSettings.lang = "en";
+
+
+            //update languge in main window
+            MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+
+            if (parentWindow != null)
+            {
+                //access property of the MainWindow class that exposes the access rights...
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    parentWindow.grid_mainWindow.FlowDirection = FlowDirection.LeftToRight;
+                    txt_lang.Text = "AR";
+
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    parentWindow.grid_mainWindow.FlowDirection = FlowDirection.RightToLeft;
+                    txt_lang.Text = "EN";
+                }
+                parentWindow.translate();
+
+            }
+        }
     }
 }
