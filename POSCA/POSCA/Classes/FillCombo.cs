@@ -308,5 +308,43 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+        #region Unit
+        static public Unit unit = new Unit();
+        static public List<Unit> unitList;
+
+        static public async Task<IEnumerable<Unit>> RefreshUnits()
+        {
+            unitList = await unit.get(true);
+
+            return unitList;
+        }
+
+        static public async Task fillUnits(ComboBox combo)
+        {
+            if (unitList is null)
+                await RefreshUnits();
+
+            combo.ItemsSource = unitList;
+            combo.SelectedValuePath = "UnitId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillUnitsWithDefault(ComboBox combo)
+        {
+            if (unitList is null)
+                await RefreshUnits();
+
+            var lst = unitList.ToList();
+            Unit sup = new Unit();
+            sup.Name = "-";
+            sup.UnitId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "UnitId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
     }
 }
