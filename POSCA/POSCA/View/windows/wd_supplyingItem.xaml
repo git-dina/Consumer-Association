@@ -59,7 +59,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <!--<ColumnDefinition Width="*"/>-->
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
@@ -91,8 +91,15 @@
 
                                 </Grid>
                             </Border>
-                            <Border Grid.Column="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                               
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <!--<ColumnDefinition Width="*"/>-->
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+
                                 <Grid   >
                                     <ComboBox x:Name="cb_ItemType"    SelectedValue="{Binding ItemType, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
@@ -107,58 +114,30 @@
 
                                 </Grid>
                             </Border>
+                            <Border Grid.Column="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox  x:Name="tb_ItemStatus" Text="{Binding ItemStatus, Mode=OneWay}"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  Padding="10,0,5,0"  
+                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                  materialDesign:HintAssist.Hint="ItemStatus..."  
+                                  Foreground="#4E4E4E"
+                                 Margin="0,0"  BorderThickness="0"
+                            Grid.Column="1"  Height="40" TextWrapping="Wrap"/>
+                                    <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
+                                  HorizontalAlignment="Right" Grid.Column="2"  Visibility="Collapsed"   
+                             VerticalAlignment="Center" Width="15"  Height="15"
+                                 Data="{StaticResource infoCircle}">
+                                    </Path>
+
+                                </Grid>
+                            </Border>
                         </Grid>
 
                         <DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_packageInformation" Text="Package Information" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
                         </DockPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_QtyMin" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding QtyMin, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="QtyMin..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_QtyMin" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                </Path>
-
-                            </Grid>
-                        </Border>
-                        <Border  Grid.Column="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_QtyMax" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding QtyMax, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="QtyMax..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_QtyMax" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                </Path>
-
-                            </Grid>
-                        </Border>
-                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -271,33 +250,7 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_Cost" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding Cost, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="Cost..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Cost" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="1"  Grid.Column="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_ConsumerProfitPerc" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding ConsumerProfitPerc, Mode=OneWay}"
@@ -317,19 +270,27 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+
+
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border   Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_WholesaleProfitPerc" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding WholesaleProfitPerc, Mode=OneWay}"
+                                    <TextBox x:Name="tb_MainPrice" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding MainPrice, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="WholesaleProfitPerc..."    
+                                         materialDesign:HintAssist.Hint="MainPrice..."    
                                         Foreground="#4E4E4E"    
                                      BorderThickness="0" Tag="decimal"
                                  BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_WholesaleProfitPerc" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MainPrice" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
@@ -337,13 +298,7 @@
 
                                 </Grid>
                             </Border>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="1"  Grid.Column="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_ConsumerDiscPerc" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding ConsumerDiscPerc, Mode=OneWay}"
@@ -363,92 +318,27 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_WholesaleDiscPerc" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding WholesaleDiscPerc, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="WholesaleDiscPerc..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_WholesaleDiscPerc" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
 
-                                </Grid>
-                            </Border>
                         </Grid>
-                     <Grid>
+
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_FreePerc" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding FreePerc, Mode=OneWay}"
+                                    <TextBox x:Name="tb_Cost" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding Cost, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="FreePerc..."    
+                                         materialDesign:HintAssist.Hint="Cost..."    
                                         Foreground="#4E4E4E"    
                                      BorderThickness="0" Tag="decimal"
                                  BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FreePerc" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_DiscPerc" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding DiscPerc, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="DiscPerc..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_DiscPerc" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                        </Grid>
-                     <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_MainPrice" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding MainPrice, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="MainPrice..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MainPrice" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Cost" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
@@ -476,7 +366,14 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="2" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+
+                        </Grid>
+                     <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_WholesalePrice" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding WholesalePrice, Mode=OneWay}"
@@ -489,6 +386,27 @@
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_WholesalePrice" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+
+                                </Grid>
+                            </Border>
+
+                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_WholesaleProfitPerc" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding WholesaleProfitPerc, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="WholesaleProfitPerc..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="decimal"
+                                 BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_WholesaleProfitPerc" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">

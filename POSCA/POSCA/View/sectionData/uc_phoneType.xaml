@@ -7,9 +7,9 @@
              mc:Ignorable="d"  Tag="phoneType"  Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded"
            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="870" d:DesignWidth="950">
-    <Grid x:Name="grid_main" Margin="20 10" >
+    <Grid x:Name="grid_main" Margin="20 10"  >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="1.8*"/>
             <ColumnDefinition x:Name="gridWidth" Width="*" MinWidth="225"/>
         </Grid.ColumnDefinitions>
         <Grid>
