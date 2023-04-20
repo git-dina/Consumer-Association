@@ -164,6 +164,9 @@
     <Compile Include="View\catalog\uc_item.xaml.cs">
       <DependentUpon>uc_item.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\catalog\uc_unit.xaml.cs">
+      <DependentUpon>uc_unit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\sectionData\uc_bank.xaml.cs">
       <DependentUpon>uc_bank.xaml</DependentUpon>
     </Compile>
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\catalog\uc_item.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\catalog\uc_unit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
