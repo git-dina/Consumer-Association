@@ -551,5 +551,10 @@ namespace POSCA.View.catalog
         {
 
         }
+
+        private void Btn_addCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

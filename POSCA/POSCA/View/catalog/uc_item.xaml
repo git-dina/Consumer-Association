@@ -385,6 +385,36 @@
 
                             <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
+                                    <ComboBox x:Name="cb_CategoryId"    SelectedValue="{Binding CategoryId, Mode=OneWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  materialDesign:HintAssist.Hint="CategoryId..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"  />
+                                    <Path Fill="#E81123" x:Name="p_error_CategoryId" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Column="1"  Padding="0"    
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
+                                            x:Name="btn_addCategory" Click="Btn_addCategory_Click"  
+                                Margin="5 5 10 5" IsEnabled="True">
+                                <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                    Width="25.5" Height="27.5" FlowDirection="LeftToRight"
+                           Data="{StaticResource addFile}" />
+                            </Button>
+                        </Grid>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
                                     <ComboBox x:Name="cb_CountryId"    SelectedValue="{Binding CountryId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
                                   materialDesign:HintAssist.Hint="CountryId..."  
@@ -517,6 +547,11 @@
 
                             </Grid>
                         </Border>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
                             <TextBlock   x:Name="txt_IsWeight"
                                    Margin="0,0,5,0" Text="IsWeight" Foreground="#6e6e6e"
@@ -526,7 +561,7 @@
                                         VerticalAlignment="Center" Padding="10,15,5,5"  
                                       Margin="0" Height="13" Width="28"    />
                         </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                        <StackPanel Grid.Column="1"  Orientation="Horizontal" Margin="10,5,10,5">
                             <TextBlock   x:Name="txt_IsSpecialOffer"
                                    Margin="0,0,5,0" Text="IsSpecialOffer" Foreground="#6e6e6e"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -535,6 +570,7 @@
                                         VerticalAlignment="Center" Padding="10,15,5,5"  
                                       Margin="0" Height="13" Width="28"    />
                         </StackPanel>
+                        </Grid>
                         <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
