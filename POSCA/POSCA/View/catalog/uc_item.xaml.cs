@@ -86,6 +86,11 @@ namespace POSCA.View.catalog
 
                 Keyboard.Focus(tb_Name);
 
+                await FillCombo.fillCategorys(cb_CategoryId);
+                await FillCombo.fillCountrys(cb_CountryId);
+                await FillCombo.fillBrands(cb_BrandId);
+                await FillCombo.fillSuppliers(cb_SupId);
+
                 await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
@@ -555,6 +560,29 @@ namespace POSCA.View.catalog
         private void Btn_addCategory_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+
+                var supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
+
+                cb_SupSectorIdId.ItemsSource = supplier.SupplierSectors;
+                cb_SupSectorIdId.SelectedValuePath = "SupSectorId";
+                cb_SupSectorIdId.DisplayMemberPath = "SupSectorName";
+                cb_SupSectorIdId.SelectedIndex = -1;
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

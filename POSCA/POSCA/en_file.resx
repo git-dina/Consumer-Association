@@ -2693,7 +2693,7 @@ Main Documents</value>
     <value>اللغة</value>
   </data>
   <data name="trLastName" xml:space="preserve">
-    <value>الاسم الاخير</value>
+    <value>Last Name</value>
   </data>
   <data name="trLastNameHint" xml:space="preserve">
     <value>الكنية...</value>
@@ -2921,10 +2921,10 @@ Main Documents</value>
     <value>العدد يجب أن يكون أكبر من الصفر</value>
   </data>
   <data name="trName" xml:space="preserve">
-    <value>الاسم</value>
+    <value>Name</value>
   </data>
   <data name="trNameHint" xml:space="preserve">
-    <value>الاسم...</value>
+    <value>Name...</value>
   </data>
   <data name="trNetProfit" xml:space="preserve">
     <value>صافي الربح</value>
@@ -3015,13 +3015,13 @@ Main Documents</value>
     <value>العملية لم تكتمل</value>
   </data>
   <data name="trNote" xml:space="preserve">
-    <value>ملاحظات</value>
+    <value>Notes</value>
   </data>
   <data name="trNoteHint" xml:space="preserve">
-    <value>ملاحظات...</value>
+    <value>Notes...</value>
   </data>
   <data name="trNotes" xml:space="preserve">
-    <value>ملاحظات</value>
+    <value>Notes</value>
   </data>
   <data name="trNote_" xml:space="preserve">
     <value>ملاحظة</value>
@@ -3984,7 +3984,7 @@ Main Documents</value>
     <value>القسم</value>
   </data>
   <data name="trSectionData" xml:space="preserve">
-    <value>البيانات</value>
+    <value>Data Section</value>
   </data>
   <data name="trSectionHint" xml:space="preserve">
     <value>القسم...</value>
@@ -5024,5 +5024,23 @@ Main Documents</value>
   </data>
   <data name="Brands" xml:space="preserve">
     <value>Brands</value>
+  </data>
+  <data name="FactorHint" xml:space="preserve">
+    <value>Factor...</value>
+  </data>
+  <data name="FactorMustBeGreaterThanZero" xml:space="preserve">
+    <value>Factor must be more than zero</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="SmallerUnitHint" xml:space="preserve">
+    <value>Smaller Unit...</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value>Units</value>
   </data>
 </root>

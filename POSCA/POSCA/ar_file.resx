@@ -5279,4 +5279,22 @@
   <data name="Brands" xml:space="preserve">
     <value>العلامات التجارية</value>
   </data>
+  <data name="FactorHint" xml:space="preserve">
+    <value>الشد...</value>
+  </data>
+  <data name="FactorMustBeGreaterThanZero" xml:space="preserve">
+    <value>الشد يجب أن يكون أكبر من الصفر</value>
+  </data>
+  <data name="Items" xml:space="preserve">
+    <value>الأصناف</value>
+  </data>
+  <data name="SmallerUnitHint" xml:space="preserve">
+    <value>الوحدة الأصغر...</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>الوحدة</value>
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value>الوحدات</value>
+  </data>
 </root>

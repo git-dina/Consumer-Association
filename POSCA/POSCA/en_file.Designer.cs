@@ -817,6 +817,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Factor....
+        /// </summary>
+        internal static string FactorHint {
+            get {
+                return ResourceManager.GetString("FactorHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factor must be more than zero.
+        /// </summary>
+        internal static string FactorMustBeGreaterThanZero {
+            get {
+                return ResourceManager.GetString("FactorMustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fax.
         /// </summary>
         internal static string fax {
@@ -1137,6 +1155,15 @@ namespace POSCA {
         internal static string itemName {
             get {
                 return ResourceManager.GetString("itemName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items.
+        /// </summary>
+        internal static string Items {
+            get {
+                return ResourceManager.GetString("Items", resourceCulture);
             }
         }
         
@@ -2074,6 +2101,15 @@ namespace POSCA {
         internal static string slices {
             get {
                 return ResourceManager.GetString("slices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smaller Unit....
+        /// </summary>
+        internal static string SmallerUnitHint {
+            get {
+                return ResourceManager.GetString("SmallerUnitHint", resourceCulture);
             }
         }
         
@@ -7901,7 +7937,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الاسم الاخير.
+        ///   Looks up a localized string similar to Last Name.
         /// </summary>
         internal static string trLastName {
             get {
@@ -8585,7 +8621,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الاسم.
+        ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string trName {
             get {
@@ -8594,7 +8630,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الاسم....
+        ///   Looks up a localized string similar to Name....
         /// </summary>
         internal static string trNameHint {
             get {
@@ -8865,7 +8901,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ملاحظات.
+        ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string trNote {
             get {
@@ -8883,7 +8919,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ملاحظات....
+        ///   Looks up a localized string similar to Notes....
         /// </summary>
         internal static string trNoteHint {
             get {
@@ -8892,7 +8928,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ملاحظات.
+        ///   Looks up a localized string similar to Notes.
         /// </summary>
         internal static string trNotes {
             get {
@@ -11772,7 +11808,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to البيانات.
+        ///   Looks up a localized string similar to Data Section.
         /// </summary>
         internal static string trSectionData {
             get {
@@ -14585,6 +14621,24 @@ namespace POSCA {
         internal static string typesOfService {
             get {
                 return ResourceManager.GetString("typesOfService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit.
+        /// </summary>
+        internal static string Unit {
+            get {
+                return ResourceManager.GetString("Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Units.
+        /// </summary>
+        internal static string Units {
+            get {
+                return ResourceManager.GetString("Units", resourceCulture);
             }
         }
         

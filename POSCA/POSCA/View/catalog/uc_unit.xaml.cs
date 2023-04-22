@@ -69,21 +69,22 @@ namespace POSCA.View.catalog
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
-                //if (AppSettings.lang.Equals("en"))
-                //{
-                //    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
-                //    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                //}
-                //else
-                //{
-                //    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
-                //    grid_main.FlowDirection = FlowDirection.RightToLeft;
-                //}
+                requiredControlList = new List<string> { "Name" ,"UnitValue"};
+                if (AppSettings.lang.Equals("en"))
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
                 translate();
 
 
                 Keyboard.Focus(tb_Name);
+                await FillCombo.fillUnitsWithDefault(cb_MinUnitId);
 
                 await Search();
                 Clear();
@@ -110,9 +111,13 @@ namespace POSCA.View.catalog
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
+
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MinUnitId, AppSettings.resourcemanager.GetString("SmallerUnitHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_UnitValue, AppSettings.resourcemanager.GetString("FactorHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+
+            txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -144,20 +149,35 @@ namespace POSCA.View.catalog
                     unit = new Unit();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
+                        if (int.Parse(tb_UnitValue.Text) > 0)
+                        {
+                            unit.Name = tb_Name.Text;
+                            if (cb_MinUnitId.SelectedIndex > 0)
+                                unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
+                            unit.UnitValue = int.Parse(tb_UnitValue.Text);
 
-                        unit.Name = tb_Name.Text;
-                        unit.Notes = tb_Notes.Text;
-                        unit.CreateUserId = MainWindow.userLogin.userId;
+                            if (tgl_IsBlocked.IsChecked == true)
+                                unit.IsBlocked = true;
+                            else
+                                unit.IsBlocked = false;
+                            unit.Notes = tb_Notes.Text;
+                            unit.CreateUserId = MainWindow.userLogin.userId;
 
-                        FillCombo.unitList = await unit.save(unit);
-                        if (FillCombo.unitList == null)
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                            FillCombo.unitList = await unit.save(unit);
+                            if (FillCombo.unitList == null)
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                            else
+                            {
+                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                                Clear();
+                                await FillCombo.fillUnitsWithDefault(cb_MinUnitId);
+                                await Search();
+                            }
+                        }
                         else
                         {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                            Clear();
-                            await Search();
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FactorMustBeGreaterThanZero"), animation: ToasterAnimation.FadeIn);
                         }
                     }
                     HelpClass.EndAwait(grid_main);
@@ -184,19 +204,35 @@ namespace POSCA.View.catalog
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-                            unit.Name = tb_Name.Text;
-                            unit.Notes = tb_Notes.Text;
-                            unit.UpdateUserId = MainWindow.userLogin.userId;
-
-                            FillCombo.unitList = await unit.save(unit);
-                            if (FillCombo.unitList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
+                            if (int.Parse(tb_UnitValue.Text) > 0)
                             {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await Search();
+                                unit.Name = tb_Name.Text;
+                                if (cb_MinUnitId.SelectedIndex > 0)
+                                    unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
+                                unit.UnitValue = int.Parse(tb_UnitValue.Text);
 
+                                if (tgl_IsBlocked.IsChecked == true)
+                                    unit.IsBlocked = true;
+                                else
+                                    unit.IsBlocked = false;
+                                unit.Notes = tb_Notes.Text;
+                                unit.CreateUserId = MainWindow.userLogin.userId;
+
+                                FillCombo.unitList = await unit.save(unit);
+                                if (FillCombo.unitList == null)
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                                else
+                                {
+                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                                    await FillCombo.fillUnitsWithDefault(cb_MinUnitId);
+                                    await Search();
+
+                                }
                             }
+                        }
+                        else
+                        {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FactorMustBeGreaterThanZero"), animation: ToasterAnimation.FadeIn);
                         }
                     }
                     else

@@ -170,7 +170,7 @@ namespace POSCA.Classes
 
             combo.ItemsSource = countryList;
             combo.SelectedValuePath = "CountryId";
-            combo.DisplayMemberPath = "Name";
+            combo.DisplayMemberPath = "CountryName";
             combo.SelectedIndex = -1;
         }
         #endregion
@@ -206,6 +206,17 @@ namespace POSCA.Classes
             suppliersList = await supplier.get(true);
 
             return suppliersList;
+        }
+
+        static public async Task fillSuppliers(ComboBox combo)
+        {
+            if (suppliersList is null)
+                await RefreshSuppliers();
+
+            combo.ItemsSource = suppliersList;
+            combo.SelectedValuePath = "SupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
         }
         #endregion
 
