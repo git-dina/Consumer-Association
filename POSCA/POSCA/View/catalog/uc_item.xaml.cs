@@ -70,7 +70,8 @@ namespace POSCA.View.catalog
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "Name" ,"ShortName", "EngName", "UnitId" , "Factor",
+                                                "CountryId"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -570,10 +571,16 @@ namespace POSCA.View.catalog
 
                 var supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
-                cb_SupSectorIdId.ItemsSource = supplier.SupplierSectors;
+                var lst = supplier.SupplierSectors.ToList();
+                var sup = new SupplierSector();
+                sup.SupSectorName = "-";
+                sup.SupSectorId = 0;
+                lst.Insert(0, sup);
+
+                cb_SupSectorIdId.ItemsSource = lst;
                 cb_SupSectorIdId.SelectedValuePath = "SupSectorId";
                 cb_SupSectorIdId.DisplayMemberPath = "SupSectorName";
-                cb_SupSectorIdId.SelectedIndex = -1;
+                cb_SupSectorIdId.SelectedIndex = 0;
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

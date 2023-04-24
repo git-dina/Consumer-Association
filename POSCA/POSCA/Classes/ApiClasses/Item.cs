@@ -42,15 +42,20 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<decimal> PackageWeight { get; set; }
         public Nullable<long> PackageUnit { get; set; }
         public bool IsSpecialOffer { get; set; }
+        public Nullable<DateTime> OfferEndDate { get; set; }
         public bool IsWeight { get; set; }
         public bool IsContainExpiryDate { get; set; }
         public bool IsSellNotAllow { get; set; }
         public string Notes { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<DateTime> CreateDate { get; set; }
+        public Nullable<DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        #region extra attributes
+        public Supplier supplier { get; set; }
+        #endregion
         #endregion
     }
 
