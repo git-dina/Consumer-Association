@@ -561,7 +561,29 @@ namespace POSCA.View.catalog
 
         private void Btn_units_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_itemUnits w = new wd_itemUnits();
 
+
+                w.ShowDialog();
+                if (w.isOk)
+                {
+
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_addCategory_Click(object sender, RoutedEventArgs e)
