@@ -15,6 +15,9 @@ namespace POSCA.Classes
         public string BarcodeType { get; set; }
         public bool IsBlocked { get; set; }
         public bool IsActive { get; set; }
+        public decimal Cost { get; set; }
+        public decimal SalePrice { get; set; }
+        public int Factor { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

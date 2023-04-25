@@ -117,7 +117,13 @@ namespace POSCA.View.catalog
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Code, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ShortName, AppSettings.resourcemanager.GetString("ShortNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_EngName, AppSettings.resourcemanager.GetString("EnglishNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CategoryId, AppSettings.resourcemanager.GetString("CategoryHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CountryId, AppSettings.resourcemanager.GetString("CountryHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");

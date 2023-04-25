@@ -2979,7 +2979,7 @@ Main Documents</value>
 يرجى اضافة بريد الكتروني في الاعدادات</value>
   </data>
   <data name="trNoHint" xml:space="preserve">
-    <value>الرقم...</value>
+    <value>Num...</value>
   </data>
   <data name="trNoInternetConnection" xml:space="preserve">
     <value>لا يوجد اتصال بالانترنت</value>
@@ -5042,5 +5042,14 @@ Main Documents</value>
   </data>
   <data name="Units" xml:space="preserve">
     <value>Units</value>
+  </data>
+  <data name="CategoryHint" xml:space="preserve">
+    <value>Category...</value>
+  </data>
+  <data name="CountryHint" xml:space="preserve">
+    <value>Provenance...</value>
+  </data>
+  <data name="EnglishNameHint" xml:space="preserve">
+    <value>English Name...</value>
   </data>
 </root>

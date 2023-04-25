@@ -331,6 +331,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category....
+        /// </summary>
+        internal static string CategoryHint {
+            get {
+                return ResourceManager.GetString("CategoryHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charts.
         /// </summary>
         internal static string charts {
@@ -471,6 +480,15 @@ namespace POSCA {
         internal static string Countries {
             get {
                 return ResourceManager.GetString("Countries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provenance....
+        /// </summary>
+        internal static string CountryHint {
+            get {
+                return ResourceManager.GetString("CountryHint", resourceCulture);
             }
         }
         
@@ -750,6 +768,15 @@ namespace POSCA {
         internal static string englishInformation {
             get {
                 return ResourceManager.GetString("englishInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to English Name....
+        /// </summary>
+        internal static string EnglishNameHint {
+            get {
+                return ResourceManager.GetString("EnglishNameHint", resourceCulture);
             }
         }
         
@@ -8793,7 +8820,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الرقم....
+        ///   Looks up a localized string similar to Num....
         /// </summary>
         internal static string trNoHint {
             get {
