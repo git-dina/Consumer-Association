@@ -71,7 +71,7 @@ namespace POSCA.View.catalog
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "Name" ,"ShortName", "EngName", "UnitId" , "Factor",
-                                                "CountryId"};
+                                                "CategoryId","CountryId"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -89,7 +89,7 @@ namespace POSCA.View.catalog
 
                 await FillCombo.fillCategorys(cb_CategoryId);
                 await FillCombo.fillCountrys(cb_CountryId);
-                await FillCombo.fillBrands(cb_BrandId);
+                await FillCombo.fillBrandsWithDefault(cb_BrandId);
                 await FillCombo.fillSuppliers(cb_SupId);
 
                 await Search();
@@ -167,7 +167,13 @@ namespace POSCA.View.catalog
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
                     item.Name = tb_Name.Text;
-                   
+                    item.ShortName = tb_ShortName.Text;
+                    item.EngName = tb_EngName.Text;
+                    item.CategoryId = (long)cb_CategoryId.SelectedValue;
+                    item.CountryId = (long)cb_CountryId.SelectedValue;
+
+                    if(cb_BrandId.SelectedIndex > 0)
+                        item.BrandId = (int)cb_BrandId.SelectedValue;
 
                     item.Notes = tb_Notes.Text;
                     item.CreateUserId = MainWindow.userLogin.userId;

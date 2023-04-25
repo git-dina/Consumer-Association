@@ -253,6 +253,23 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
+
+        static public async Task fillBrandsWithDefault(ComboBox combo)
+        {
+            if (brandList is null)
+                await RefreshBrands();
+
+            var lst = brandList.ToList();
+            Brand sup = new Brand();
+            sup.Name = "-";
+            sup.BrandId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "BrandId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
         #endregion
         #region BarcodeType
         static public List<keyValueString> barcodeTypeList;
