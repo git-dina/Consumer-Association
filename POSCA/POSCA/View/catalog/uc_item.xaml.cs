@@ -124,7 +124,17 @@ namespace POSCA.View.catalog
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_EngName, AppSettings.resourcemanager.GetString("EnglishNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CategoryId, AppSettings.resourcemanager.GetString("CategoryHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CountryId, AppSettings.resourcemanager.GetString("CountryHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BrandId, AppSettings.resourcemanager.GetString("BrandHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupSectorIdId, AppSettings.resourcemanager.GetString("SupplierSectorHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CommitteeNo, AppSettings.resourcemanager.GetString("CommitteeNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+
+            txt_IsSpecialOffer.Text = AppSettings.resourcemanager.GetString("SpecialOffer");
+            txt_IsWeight.Text = AppSettings.resourcemanager.GetString("IsWeight");
+            txt_unitsButton.Text = AppSettings.resourcemanager.GetString("trUnits");
+            txt_itemGeneralizationButton.Text = AppSettings.resourcemanager.GetString("Generalization");
+            txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("ItemMovements");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");

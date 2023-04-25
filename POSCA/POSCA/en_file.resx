@@ -5052,4 +5052,28 @@ Main Documents</value>
   <data name="EnglishNameHint" xml:space="preserve">
     <value>English Name...</value>
   </data>
+  <data name="BrandHint" xml:space="preserve">
+    <value>Brand...</value>
+  </data>
+  <data name="CommitteeNoHint" xml:space="preserve">
+    <value>Committee No...</value>
+  </data>
+  <data name="Generalization" xml:space="preserve">
+    <value>Generalization</value>
+  </data>
+  <data name="IsWeight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="ItemMovements" xml:space="preserve">
+    <value>Item Movements</value>
+  </data>
+  <data name="SpecialOffer" xml:space="preserve">
+    <value>Special Offer</value>
+  </data>
+  <data name="SupplierHint" xml:space="preserve">
+    <value>Supplier...</value>
+  </data>
+  <data name="SupplierSectorHint" xml:space="preserve">
+    <value>Supplier Sector...</value>
+  </data>
 </root>

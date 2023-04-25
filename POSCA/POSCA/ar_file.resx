@@ -5297,4 +5297,31 @@
   <data name="Units" xml:space="preserve">
     <value>الوحدات</value>
   </data>
+  <data name="CategoryHint" xml:space="preserve">
+    <value>المجموعة...</value>
+  </data>
+  <data name="CountryHint" xml:space="preserve">
+    <value>بلد المنشأ...</value>
+  </data>
+  <data name="EnglishNameHint" xml:space="preserve">
+    <value>الاسم الانكليزي...</value>
+  </data>
+  <data name="BrandHint" xml:space="preserve">
+    <value>العلامة التجارية...</value>
+  </data>
+  <data name="CommitteeNoHint" xml:space="preserve">
+    <value>رقم اللجنة...</value>
+  </data>
+  <data name="IsWeight" xml:space="preserve">
+    <value>وزني</value>
+  </data>
+  <data name="SpecialOffer" xml:space="preserve">
+    <value>عرض خاص</value>
+  </data>
+  <data name="SupplierHint" xml:space="preserve">
+    <value>المورد...</value>
+  </data>
+  <data name="SupplierSectorHint" xml:space="preserve">
+    <value>قطاع المورد...</value>
+  </data>
 </root>

@@ -286,6 +286,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Brand....
+        /// </summary>
+        internal static string BrandHint {
+            get {
+                return ResourceManager.GetString("BrandHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Brands.
         /// </summary>
         internal static string Brands {
@@ -399,6 +408,15 @@ namespace POSCA {
         internal static string commissionValue {
             get {
                 return ResourceManager.GetString("commissionValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Committee No....
+        /// </summary>
+        internal static string CommitteeNoHint {
+            get {
+                return ResourceManager.GetString("CommitteeNoHint", resourceCulture);
             }
         }
         
@@ -943,6 +961,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generalization.
+        /// </summary>
+        internal static string Generalization {
+            get {
+                return ResourceManager.GetString("Generalization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General Notes....
         /// </summary>
         internal static string GeneralNotesHint {
@@ -1159,6 +1186,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        internal static string IsWeight {
+            get {
+                return ResourceManager.GetString("IsWeight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item details.
         /// </summary>
         internal static string itemDetails {
@@ -1173,6 +1209,15 @@ namespace POSCA {
         internal static string itemInfo {
             get {
                 return ResourceManager.GetString("itemInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Movements.
+        /// </summary>
+        internal static string ItemMovements {
+            get {
+                return ResourceManager.GetString("ItemMovements", resourceCulture);
             }
         }
         
@@ -2159,6 +2204,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Special Offer.
+        /// </summary>
+        internal static string SpecialOffer {
+            get {
+                return ResourceManager.GetString("SpecialOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to spending Order Approve.
         /// </summary>
         internal static string spendingOrderApprove {
@@ -2240,6 +2294,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplier....
+        /// </summary>
+        internal static string SupplierHint {
+            get {
+                return ResourceManager.GetString("SupplierHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suppliers.
         /// </summary>
         internal static string Suppliers {
@@ -2254,6 +2317,15 @@ namespace POSCA {
         internal static string SuppliersData {
             get {
                 return ResourceManager.GetString("SuppliersData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier Sector....
+        /// </summary>
+        internal static string SupplierSectorHint {
+            get {
+                return ResourceManager.GetString("SupplierSectorHint", resourceCulture);
             }
         }
         
