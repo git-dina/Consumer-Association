@@ -201,6 +201,9 @@
     <Compile Include="View\windows\wd_itemGeneralization.xaml.cs">
       <DependentUpon>wd_itemGeneralization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_ItemUnits.xaml.cs">
+      <DependentUpon>wd_ItemUnits.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_supplierAllowedOperations.xaml.cs">
       <DependentUpon>wd_supplierAllowedOperations.xaml</DependentUpon>
     </Compile>
@@ -290,6 +293,10 @@
     <Page Include="View\windows\wd_itemGeneralization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_ItemUnits.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_supplierAllowedOperations.xaml">
       <Generator>MSBuild:Compile</Generator>
