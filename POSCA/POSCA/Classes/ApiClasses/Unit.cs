@@ -22,6 +22,11 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        #region extra
+        public int Factor { get; set; }
+
+        #endregion
         #endregion
 
         #region Methods

@@ -5330,4 +5330,34 @@
   <data name="ItemMovements" xml:space="preserve">
     <value>حركات الأصناف</value>
   </data>
+  <data name="ConsumerDiscountHint" xml:space="preserve">
+    <value>خصم المستهلك...</value>
+  </data>
+  <data name="NetCostHint" xml:space="preserve">
+    <value>صافي التكلفة...</value>
+  </data>
+  <data name="NetPieceSellingHint" xml:space="preserve">
+    <value>صافي بيع الحبة...</value>
+  </data>
+  <data name="PieceSellingHint" xml:space="preserve">
+    <value>بيع الحبة...</value>
+  </data>
+  <data name="ProfitMarginHint" xml:space="preserve">
+    <value>هامش الربح...</value>
+  </data>
+  <data name="SupplyCostHint" xml:space="preserve">
+    <value>تكلفة التوريد...</value>
+  </data>
+  <data name="SupplyUnitHint" xml:space="preserve">
+    <value>وحدة التوريد...</value>
+  </data>
+  <data name="trEnterSupplyCostError" xml:space="preserve">
+    <value>حدد كلفة التوريد</value>
+  </data>
+  <data name="trSelectCategoryError" xml:space="preserve">
+    <value>اختر المجموعة</value>
+  </data>
+  <data name="trSelectSupplyUnitError" xml:space="preserve">
+    <value>اختر وحدة التوريد</value>
+  </data>
 </root>

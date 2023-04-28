@@ -5076,4 +5076,34 @@ Main Documents</value>
   <data name="SupplierSectorHint" xml:space="preserve">
     <value>Supplier Sector...</value>
   </data>
+  <data name="ConsumerDiscountHint" xml:space="preserve">
+    <value>Consumer Discount...</value>
+  </data>
+  <data name="NetCostHint" xml:space="preserve">
+    <value>Net Cost...</value>
+  </data>
+  <data name="NetPieceSellingHint" xml:space="preserve">
+    <value>Net Piece Selling...</value>
+  </data>
+  <data name="PieceSellingHint" xml:space="preserve">
+    <value>Piece Selling...</value>
+  </data>
+  <data name="ProfitMarginHint" xml:space="preserve">
+    <value>Profit Margin...</value>
+  </data>
+  <data name="SupplyCostHint" xml:space="preserve">
+    <value>Supply Cost...</value>
+  </data>
+  <data name="SupplyUnitHint" xml:space="preserve">
+    <value>Supply Unit...</value>
+  </data>
+  <data name="trEnterSupplyCostError" xml:space="preserve">
+    <value>Enter supply cost</value>
+  </data>
+  <data name="trSelectCategoryError" xml:space="preserve">
+    <value>Select Category</value>
+  </data>
+  <data name="trSelectSupplyUnitError" xml:space="preserve">
+    <value>Select supply unit</value>
+  </data>
 </root>

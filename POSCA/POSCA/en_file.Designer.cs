@@ -439,6 +439,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consumer Discount....
+        /// </summary>
+        internal static string ConsumerDiscountHint {
+            get {
+                return ResourceManager.GetString("ConsumerDiscountHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Data.
         /// </summary>
         internal static string ContactData {
@@ -1376,6 +1385,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Net Cost....
+        /// </summary>
+        internal static string NetCostHint {
+            get {
+                return ResourceManager.GetString("NetCostHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Piece Selling....
+        /// </summary>
+        internal static string NetPieceSellingHint {
+            get {
+                return ResourceManager.GetString("NetPieceSellingHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Membership.
         /// </summary>
         internal static string newMembership {
@@ -1709,6 +1736,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Piece Selling....
+        /// </summary>
+        internal static string PieceSellingHint {
+            get {
+                return ResourceManager.GetString("PieceSellingHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Poor Connection.
         /// </summary>
         internal static string PoorConnection {
@@ -1813,6 +1849,15 @@ namespace POSCA {
         internal static string printOnSale {
             get {
                 return ResourceManager.GetString("printOnSale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profit Margin....
+        /// </summary>
+        internal static string ProfitMarginHint {
+            get {
+                return ResourceManager.GetString("ProfitMarginHint", resourceCulture);
             }
         }
         
@@ -2380,6 +2425,24 @@ namespace POSCA {
         internal static string SupplierTypes {
             get {
                 return ResourceManager.GetString("SupplierTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supply Cost....
+        /// </summary>
+        internal static string SupplyCostHint {
+            get {
+                return ResourceManager.GetString("SupplyCostHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supply Unit....
+        /// </summary>
+        internal static string SupplyUnitHint {
+            get {
+                return ResourceManager.GetString("SupplyUnitHint", resourceCulture);
             }
         }
         
@@ -5980,6 +6043,15 @@ namespace POSCA {
         internal static string trEnglish {
             get {
                 return ResourceManager.GetString("trEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter supply cost.
+        /// </summary>
+        internal static string trEnterSupplyCostError {
+            get {
+                return ResourceManager.GetString("trEnterSupplyCostError", resourceCulture);
             }
         }
         
@@ -11988,6 +12060,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Category.
+        /// </summary>
+        internal static string trSelectCategoryError {
+            get {
+                return ResourceManager.GetString("trSelectCategoryError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اختر بطاقة ائتمان.
         /// </summary>
         internal static string trSelectCreditCard {
@@ -12236,6 +12317,15 @@ namespace POSCA {
         internal static string trSelectStoreHint {
             get {
                 return ResourceManager.GetString("trSelectStoreHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select supply unit.
+        /// </summary>
+        internal static string trSelectSupplyUnitError {
+            get {
+                return ResourceManager.GetString("trSelectSupplyUnitError", resourceCulture);
             }
         }
         

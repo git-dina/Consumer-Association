@@ -91,6 +91,7 @@ namespace POSCA.View.catalog
                 await FillCombo.fillCountrys(cb_CountryId);
                 await FillCombo.fillBrandsWithDefault(cb_BrandId);
                 await FillCombo.fillSuppliers(cb_SupId);
+                await FillCombo.fillUnits(cb_UnitId);
 
                 await Search();
                 Clear();
@@ -128,6 +129,14 @@ namespace POSCA.View.catalog
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupSectorIdId, AppSettings.resourcemanager.GetString("SupplierSectorHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CommitteeNo, AppSettings.resourcemanager.GetString("CommitteeNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_UnitId, AppSettings.resourcemanager.GetString("SupplyUnitHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Factor, AppSettings.resourcemanager.GetString("FactorHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MainCost, AppSettings.resourcemanager.GetString("SupplyCostHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ConsumerProfitPerc, AppSettings.resourcemanager.GetString("ProfitMarginHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MainPrice, AppSettings.resourcemanager.GetString("PieceSellingHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ConsumerDiscPerc, AppSettings.resourcemanager.GetString("ConsumerDiscountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Cost, AppSettings.resourcemanager.GetString("NetCostHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Price, AppSettings.resourcemanager.GetString("NetPieceSellingHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
             txt_IsSpecialOffer.Text = AppSettings.resourcemanager.GetString("SpecialOffer");
@@ -608,19 +617,29 @@ namespace POSCA.View.catalog
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                Window.GetWindow(this).Opacity = 0.2;
-                wd_itemUnits w = new wd_itemUnits();
-
-                w.item = item;
-                w.ShowDialog();
-                if (w.isOk)
+                if (cb_UnitId.SelectedIndex == -1)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
+                else if (cb_CategoryId.SelectedIndex == -1)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
+                else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
+                else
                 {
-                    item = w.item;
-                }
-                Window.GetWindow(this).Opacity = 1;
+                    HelpClass.StartAwait(grid_main);
+                    Window.GetWindow(this).Opacity = 0.2;
+                    wd_itemUnits w = new wd_itemUnits();
 
-                HelpClass.EndAwait(grid_main);
+                    w.item = item;
+                    w.ShowDialog();
+                    if (w.isOk)
+                    {
+                        item = w.item;
+                    }
+                    Window.GetWindow(this).Opacity = 1;
+
+                    HelpClass.EndAwait(grid_main);
+                }
+                    
             }
             catch (Exception ex)
             {
@@ -640,7 +659,6 @@ namespace POSCA.View.catalog
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
 
                 var supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
@@ -654,17 +672,90 @@ namespace POSCA.View.catalog
                 cb_SupSectorIdId.SelectedValuePath = "SupSectorId";
                 cb_SupSectorIdId.DisplayMemberPath = "SupSectorName";
                 cb_SupSectorIdId.SelectedIndex = 0;
-                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
 
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
+        int factor = 0;
+        private void Cb_UnitId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
+                factor = unit.Factor;
+                tb_Factor.Text = unit.Factor.ToString();
+                calculatePeicePrice();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        decimal profitPercentage = 0;
+        decimal dicountPercentage = 0;
+        private void Cb_CategoryId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                var category = FillCombo.categoryList.Where(x => x.CategoryId == (long)cb_CategoryId.SelectedValue).FirstOrDefault();
+                profitPercentage = category.ProfitPercentage;
+                dicountPercentage = category.DiscountPercentage;
+                tb_ConsumerProfitPerc.Text = category.ProfitPercentage.ToString();
+                tb_ConsumerDiscPerc.Text = category.DiscountPercentage.ToString();
+                calculatePeicePrice();
+            }
+            catch (Exception ex)
+            {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
        
+        private void Tb_MainCost_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                calculatePeicePrice();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        decimal peicePrice = 0;
+        decimal finalPrice = 0;
+        private void calculatePeicePrice()
+        {
+            try
+            {
+                if (factor != 0)
+                {
+                    decimal cost = decimal.Parse(tb_MainCost.Text);
+                    if (profitPercentage != 0)
+                        peicePrice = cost / factor * HelpClass.calcPercentage(1, profitPercentage);
+                    else
+                        peicePrice = cost / factor;
+
+                    finalPrice = peicePrice;
+                    if (dicountPercentage != 0)
+                        finalPrice = peicePrice - HelpClass.calcPercentage(1, dicountPercentage);
+
+                    if (finalPrice < 0)
+                        finalPrice = 0;
+
+                    tb_MainPrice.Text = HelpClass.DecTostring( peicePrice);
+                    tb_Cost.Text = HelpClass.DecTostring(cost);
+                    tb_Price.Text = HelpClass.DecTostring( finalPrice);
+                }
+            }
+            catch { }
+        }
     }
 }

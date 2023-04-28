@@ -180,11 +180,11 @@
                         </Border>
                          </Grid>
 
-            <DockPanel Margin="10 0" LastChildFill="True"  >
+            <!--<DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_baseInformation" Text="Base Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
-                        </DockPanel>
-                        <Grid>
+                        </DockPanel>-->
+                        <!--<Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -224,8 +224,8 @@
 
                                 </Grid>
                             </Border>
-                        </Grid>
-                        <Grid>
+                        </Grid>-->
+                        <!--<Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -272,8 +272,8 @@
                             </Border>
 
 
-                        </Grid>
-                        <Grid>
+                        </Grid>-->
+                        <!--<Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -319,9 +319,9 @@
                                 </Grid>
                             </Border>
 
-                        </Grid>
+                        </Grid>-->
 
-                        <Grid>
+                        <!--<Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -367,8 +367,8 @@
                                 </Grid>
                             </Border>
 
-                        </Grid>
-                     <Grid>
+                        </Grid>-->
+                     <!--<Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -414,7 +414,7 @@
 
                                 </Grid>
                             </Border>
-                        </Grid>
+                        </Grid>-->
                     </StackPanel>
                 </ScrollViewer>
 
