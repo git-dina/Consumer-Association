@@ -71,7 +71,7 @@ namespace POSCA.View.catalog
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "Name" ,"ShortName", "EngName", "UnitId" , "Factor",
-                                                "CategoryId","CountryId"};
+                                                "CategoryId","CountryId", "SupId", "SupSectorId"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -175,9 +175,17 @@ namespace POSCA.View.catalog
                     if(cb_BrandId.SelectedIndex > 0)
                         item.BrandId = (int)cb_BrandId.SelectedValue;
 
+                    item.SupId = (long)cb_SupId.SelectedValue;
+                    item.SupSectorId =(long)cb_SupSectorIdId.SelectedValue;
+                    if (tb_CommitteeNo.Text != "")
+                        item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
+                    if (tgl_IsWeight.IsChecked == true)
+                        item.IsWeight = true;
+                    if (tgl_IsSpecialOffer.IsChecked == true)
+                        item.IsSpecialOffer = true;
                     item.Notes = tb_Notes.Text;
                     item.CreateUserId = MainWindow.userLogin.userId;
-                    /*
+                   
                     FillCombo.itemList = await item.save(item);
                     if (FillCombo.itemList == null)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
@@ -187,7 +195,7 @@ namespace POSCA.View.catalog
                         Clear();
                         await Search();
                     }
-                    */
+                    
                 }
                 HelpClass.EndAwait(grid_main);
                 //}
@@ -363,7 +371,7 @@ namespace POSCA.View.catalog
 
                 tb_search.Text = "";
                 searchText = "";
-                await RefreshGroupsList();
+                await RefreshItemsList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -380,26 +388,30 @@ namespace POSCA.View.catalog
         async Task Search()
         {
             //search
-            /*
+        
             if (FillCombo.itemList is null)
-                await RefreshGroupsList();
+                await RefreshItemsList();
             searchText = tb_search.Text.ToLower();
             itemsQuery = FillCombo.itemList.Where(s =>
             s.Name.ToLower().Contains(searchText)
+            || s.ShortName.ToLower().Contains(searchText)
+            || s.EngName.ToLower().Contains(searchText)
+            || s.SupId.ToString().Contains(searchText)
+            || s.Supplier.Name.ToLower().Contains(searchText)
+
             ).ToList();
-            */
-            RefreshGroupsView();
+         
+            RefreshItemsView();
         }
-        async Task<IEnumerable<Item>> RefreshGroupsList()
+        async Task<IEnumerable<Item>> RefreshItemsList()
         {
-            /*
+
             await FillCombo.RefreshItems();
             return FillCombo.itemList;
-            */
-            return new List<Item>();
+    
         }
 
-        void RefreshGroupsView()
+        void RefreshItemsView()
         {
             dg_item.ItemsSource = itemsQuery;
             txt_count.Text = itemsQuery.Count().ToString();
@@ -409,6 +421,8 @@ namespace POSCA.View.catalog
         void Clear()
         {
             this.DataContext = new Item();
+            tb_ShortName.Clear();
+            nameFirstChange = true;
             dg_item.SelectedIndex = -1;
 
             // last 
@@ -491,8 +505,23 @@ namespace POSCA.View.catalog
             }
         }
 
-
-
+        bool nameFirstChange = true;
+        private void Tb_Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                validateEmpty_LostFocus(sender, e);
+                if (nameFirstChange && item.ItemId == 0)
+                {
+                    nameFirstChange = false;
+                    tb_ShortName.Text = tb_Name.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
 
         #endregion
 
@@ -583,11 +612,11 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemUnits w = new wd_itemUnits();
 
-
+                w.item = item;
                 w.ShowDialog();
                 if (w.isOk)
                 {
-
+                    item = w.item;
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -635,5 +664,7 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+       
     }
 }

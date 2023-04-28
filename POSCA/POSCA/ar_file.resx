@@ -5324,4 +5324,10 @@
   <data name="SupplierSectorHint" xml:space="preserve">
     <value>قطاع المورد...</value>
   </data>
+  <data name="Generalization" xml:space="preserve">
+    <value>التعميم</value>
+  </data>
+  <data name="ItemMovements" xml:space="preserve">
+    <value>حركات الأصناف</value>
+  </data>
 </root>

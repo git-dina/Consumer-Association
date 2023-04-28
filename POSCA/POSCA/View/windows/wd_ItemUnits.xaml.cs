@@ -45,10 +45,13 @@ namespace POSCA.View.windows
             isOk = false;
             this.Close();
         }
+
         List<ItemUnit> listItemUnit = new List<ItemUnit>();
         List<Unit> listUnit = new List<Unit>();
 
-        public List<ItemUnit> ItemUnits { get; set; }
+       // public List<ItemUnit> ItemUnits { get; set; }
+
+        public Item item { get; set; }      
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -125,7 +128,7 @@ namespace POSCA.View.windows
         }
         private void setItemUnitsData()
         {
-            dg_itemUnit.ItemsSource = ItemUnits;
+            dg_itemUnit.ItemsSource = item.ItemUnits;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
@@ -522,7 +525,7 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
-                ItemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                item.ItemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
 
                 isOk = true;
                 this.Close();
