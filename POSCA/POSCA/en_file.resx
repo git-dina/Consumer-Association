@@ -5019,8 +5019,8 @@ Main Documents</value>
   <data name="internal" xml:space="preserve">
     <value>internal</value>
   </data>
-  <data name="wait" xml:space="preserve">
-    <value>wait</value>
+  <data name="waitng" xml:space="preserve">
+    <value>waiting</value>
   </data>
   <data name="Brands" xml:space="preserve">
     <value>Brands</value>
@@ -5105,5 +5105,11 @@ Main Documents</value>
   </data>
   <data name="trSelectSupplyUnitError" xml:space="preserve">
     <value>Select supply unit</value>
+  </data>
+  <data name="WholesalePriceHint" xml:space="preserve">
+    <value>Wholesale Price...</value>
+  </data>
+  <data name="WholesaleProfitMarginHint" xml:space="preserve">
+    <value>Wholesale Profit Margin...</value>
   </data>
 </root>

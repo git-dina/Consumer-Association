@@ -56,6 +56,8 @@ namespace POSCA.View.catalog
         }
 
         Item item = new Item();
+        Category category = new Category();
+
         IEnumerable<Item> itemsQuery;
         string searchText = "";
         public static List<string> requiredControlList;
@@ -137,6 +139,8 @@ namespace POSCA.View.catalog
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ConsumerDiscPerc, AppSettings.resourcemanager.GetString("ConsumerDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Cost, AppSettings.resourcemanager.GetString("NetCostHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Price, AppSettings.resourcemanager.GetString("NetPieceSellingHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WholesaleProfitPerc, AppSettings.resourcemanager.GetString("WholesaleProfitMarginHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WholesalePrice, AppSettings.resourcemanager.GetString("WholesalePriceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
             txt_IsSpecialOffer.Text = AppSettings.resourcemanager.GetString("SpecialOffer");
@@ -434,6 +438,7 @@ namespace POSCA.View.catalog
             nameFirstChange = true;
             dg_item.SelectedIndex = -1;
 
+            category = new Category();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -687,11 +692,16 @@ namespace POSCA.View.catalog
         {
             try
             {
+                if (cb_UnitId.SelectedIndex > -1)
+                {
+                    var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
+                    factor = unit.Factor;
+                    tb_Factor.Text = unit.Factor.ToString();
 
-                var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
-                factor = unit.Factor;
-                tb_Factor.Text = unit.Factor.ToString();
-                calculatePeicePrice();
+                    item.Factor = unit.Factor;
+                    item.UnitId = (long)cb_UnitId.SelectedValue;
+                    calculatePeicePrice();
+                }
             }
             catch (Exception ex)
             {
@@ -699,18 +709,18 @@ namespace POSCA.View.catalog
             }
         }
 
-        decimal profitPercentage = 0;
-        decimal dicountPercentage = 0;
         private void Cb_CategoryId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
 
-                var category = FillCombo.categoryList.Where(x => x.CategoryId == (long)cb_CategoryId.SelectedValue).FirstOrDefault();
-                profitPercentage = category.ProfitPercentage;
-                dicountPercentage = category.DiscountPercentage;
+                category = FillCombo.categoryList.Where(x => x.CategoryId == (long)cb_CategoryId.SelectedValue).FirstOrDefault();
+
                 tb_ConsumerProfitPerc.Text = category.ProfitPercentage.ToString();
                 tb_ConsumerDiscPerc.Text = category.DiscountPercentage.ToString();
+                tb_WholesaleProfitPerc.Text=category.WholesalePercentage.ToString();
+                item.ConsumerProfitPerc = category.ProfitPercentage;
+                item.ConsumerDiscPerc = category.DiscountPercentage;
                 calculatePeicePrice();
             }
             catch (Exception ex)
@@ -741,21 +751,34 @@ namespace POSCA.View.catalog
                 if (factor != 0)
                 {
                     decimal cost = decimal.Parse(tb_MainCost.Text);
-                    if (profitPercentage != 0)
-                        peicePrice = cost / factor * HelpClass.calcPercentage(1, profitPercentage);
+                    //سعر بيع الحبة
+                    if (category.ProfitPercentage != 0)
+                        peicePrice = (cost / factor) * HelpClass.calcPercentage(1, category.ProfitPercentage);
                     else
                         peicePrice = cost / factor;
 
+                    //صافي بيع الحبة
                     finalPrice = peicePrice;
-                    if (dicountPercentage != 0)
-                        finalPrice = peicePrice - HelpClass.calcPercentage(1, dicountPercentage);
+                    if (category.DiscountPercentage != 0)
+                        finalPrice = peicePrice - HelpClass.calcPercentage(1, category.DiscountPercentage);
 
                     if (finalPrice < 0)
                         finalPrice = 0;
 
+                    //wholesale price سعر الجملة
+                    var wholesalePrice = finalPrice + HelpClass.calcPercentage(finalPrice, category.WholesalePercentage);
+
                     tb_MainPrice.Text = HelpClass.DecTostring( peicePrice);
                     tb_Cost.Text = HelpClass.DecTostring(cost);
                     tb_Price.Text = HelpClass.DecTostring( finalPrice);
+                    tb_WholesalePrice.Text = HelpClass.DecTostring(wholesalePrice);
+
+                    item.MainPrice = peicePrice;
+                    item.MainCost = cost;
+                    item.Cost = cost;
+                    item.Price = finalPrice;
+                    item.WholesalePrice = wholesalePrice;
+
                 }
             }
             catch { }

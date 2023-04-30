@@ -19,7 +19,7 @@ namespace POSCA {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class en_file {
@@ -14905,11 +14905,11 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to wait.
+        ///   Looks up a localized string similar to waiting.
         /// </summary>
-        internal static string wait {
+        internal static string waitng {
             get {
-                return ResourceManager.GetString("wait", resourceCulture);
+                return ResourceManager.GetString("waitng", resourceCulture);
             }
         }
         
@@ -14937,6 +14937,24 @@ namespace POSCA {
         internal static string WholeSalePercentageHint {
             get {
                 return ResourceManager.GetString("WholeSalePercentageHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wholesale Price....
+        /// </summary>
+        internal static string WholesalePriceHint {
+            get {
+                return ResourceManager.GetString("WholesalePriceHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wholesale Profit Margin....
+        /// </summary>
+        internal static string WholesaleProfitMarginHint {
+            get {
+                return ResourceManager.GetString("WholesaleProfitMarginHint", resourceCulture);
             }
         }
         

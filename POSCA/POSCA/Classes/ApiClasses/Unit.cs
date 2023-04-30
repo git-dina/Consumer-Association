@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace POSCA.Classes.ApiClasses
 {
+   
     public class Unit
     {
         #region Atrributes
@@ -26,6 +27,7 @@ namespace POSCA.Classes.ApiClasses
         #region extra
         public int Factor { get; set; }
 
+        private List<long> unitsIds;
         #endregion
         #endregion
 
@@ -86,6 +88,45 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
+        }
+
+        public async Task<List<Unit>> fillSmallUnits(long unitId)
+        {
+            if (FillCombo.unitList == null)
+                FillCombo.RefreshUnits();
+
+           unitsIds = new List<long>();
+            var result = Recursive(FillCombo.unitList, unitId);
+
+            var units = FillCombo.unitList.Where(p => !unitsIds.Contains((long)p.UnitId)).ToList();
+
+            if (units.Count().Equals(0))
+            {
+                return FillCombo.unitList.Where(x => x.UnitId == unitId).ToList();
+            }
+            else
+            {
+                return units;
+
+            }
+        }
+        public IEnumerable<Unit> Recursive(List<Unit> unitsList, long smallLevelid)
+        {
+            List<Unit> inner = new List<Unit>();
+
+            foreach (var t in unitsList.Where(item => item.MinUnitId == smallLevelid))
+            {
+                if (t.UnitId != smallLevelid)
+                {
+                    unitsIds.Add(t.UnitId);
+                    inner.Add(t);
+                }
+                if (t.UnitId == smallLevelid)
+                    return inner;
+                inner = inner.Union(Recursive(unitsList, t.UnitId)).ToList();
+            }
+
+            return inner;
         }
         #endregion
     }

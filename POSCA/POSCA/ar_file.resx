@@ -5273,8 +5273,8 @@
   <data name="internal" xml:space="preserve">
     <value>داخلي</value>
   </data>
-  <data name="wait" xml:space="preserve">
-    <value>انتظار</value>
+  <data name="waiting" xml:space="preserve">
+    <value>في الانتظار</value>
   </data>
   <data name="Brands" xml:space="preserve">
     <value>العلامات التجارية</value>
@@ -5352,12 +5352,18 @@
     <value>وحدة التوريد...</value>
   </data>
   <data name="trEnterSupplyCostError" xml:space="preserve">
-    <value>حدد كلفة التوريد</value>
+    <value>حدد تكلفة التوريد</value>
   </data>
   <data name="trSelectCategoryError" xml:space="preserve">
     <value>اختر المجموعة</value>
   </data>
   <data name="trSelectSupplyUnitError" xml:space="preserve">
     <value>اختر وحدة التوريد</value>
+  </data>
+  <data name="WholesalePriceHint" xml:space="preserve">
+    <value>سعر الجملة...</value>
+  </data>
+  <data name="WholesaleProfitMarginHint" xml:space="preserve">
+    <value>هامش ربح الجملة...</value>
   </data>
 </root>

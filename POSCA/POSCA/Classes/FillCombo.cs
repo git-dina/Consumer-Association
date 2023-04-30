@@ -279,7 +279,7 @@ namespace POSCA.Classes
             barcodeTypeList = new List<keyValueString>() {
                 new keyValueString(){key="external", value=AppSettings.resourcemanager.GetString("external") },
                 new keyValueString(){key="internal", value=AppSettings.resourcemanager.GetString("internal") },
-                new keyValueString(){key="wait", value=AppSettings.resourcemanager.GetString("wait") },
+                new keyValueString(){key="waiting", value=AppSettings.resourcemanager.GetString("waiting") },
             };
 
             return barcodeTypeList;

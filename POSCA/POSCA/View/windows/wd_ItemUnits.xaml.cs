@@ -79,7 +79,7 @@ namespace POSCA.View.windows
                 #endregion
 
                 await fillUnitCombo(); 
-                await fillBarcodeTypeCombo();
+                fillBarcodeTypeCombo();
                 setItemUnitsData();
 
 
@@ -114,18 +114,19 @@ namespace POSCA.View.windows
 
             var units = await unit.fillSmallUnits((long)item.UnitId);
 
+
             cb_unit.DisplayMemberPath = "Name";
             cb_unit.SelectedValuePath = "UnitId";
             cb_unit.ItemsSource = units;
         }
-       private async Task fillBarcodeTypeCombo()
+       private void fillBarcodeTypeCombo()
         {
-            //if (FillCombo.barcodeTypeList is null)
-            //    await FillCombo.RefreshBarcodeTypes();
+            if (FillCombo.barcodeTypeList is null)
+                 FillCombo.RefreshBarcodeTypes();
 
-            //cb_barcodeType.DisplayMemberPath = "Name";
-            //cb_barcodeType.SelectedValuePath = "BarcodeTypeId";
-            //cb_barcodeType.ItemsSource = FillCombo.barcodeTypeList;
+            cb_barcodeType.DisplayMemberPath = "value";
+            cb_barcodeType.SelectedValuePath = "key";
+            cb_barcodeType.ItemsSource = FillCombo.barcodeTypeList;
         }
         private void setItemUnitsData()
         {
