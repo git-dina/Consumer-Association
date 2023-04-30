@@ -599,11 +599,12 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemGeneralization w = new wd_itemGeneralization();
 
+                w.ItemGeneralizations = item.ItemGeneralizations;
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
-
+                    item.ItemGeneralizations = w.ItemGeneralizations;
                 }
                 Window.GetWindow(this).Opacity = 1;
 

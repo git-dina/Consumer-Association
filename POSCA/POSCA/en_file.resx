@@ -5118,6 +5118,9 @@ Main Documents</value>
   <data name="Factor" xml:space="preserve">
     <value>Factor</value>
   </data>
+  <data name="GeneralizationNumber" xml:space="preserve">
+    <value>Generalization No.</value>
+  </data>
   <data name="ItemUnits" xml:space="preserve">
     <value>Item Units</value>
   </data>
@@ -5129,5 +5132,8 @@ Main Documents</value>
   </data>
   <data name="WholesaleProfitMarginHint" xml:space="preserve">
     <value>Wholesale Profit Margin...</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>Year</value>
   </data>
 </root>

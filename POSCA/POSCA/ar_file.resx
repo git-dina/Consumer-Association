@@ -5372,6 +5372,9 @@
   <data name="Factor" xml:space="preserve">
     <value>الشد</value>
   </data>
+  <data name="GeneralizationNumber" xml:space="preserve">
+    <value>رقم التعميم</value>
+  </data>
   <data name="ItemUnits" xml:space="preserve">
     <value>وحدات العنصر</value>
   </data>
@@ -5383,5 +5386,8 @@
   </data>
   <data name="WholesaleProfitMarginHint" xml:space="preserve">
     <value>هامش ربح الجملة...</value>
+  </data>
+  <data name="Year" xml:space="preserve">
+    <value>السنة</value>
   </data>
 </root>

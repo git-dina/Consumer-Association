@@ -92,11 +92,11 @@ namespace POSCA.View.windows
         private void translate()
         {
             //
-            //txt_title.Text = AppSettings.resourcemanager.GetString("MainDocuments");
-            //txt_itemGeneralization.Text = AppSettings.resourcemanager.GetString("ItemGeneralizations");
+            txt_title.Text = AppSettings.resourcemanager.GetString("Generalization");
+            txt_itemGeneralization.Text = AppSettings.resourcemanager.GetString("Generalization");
 
-            //dg_itemGeneralization.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentType");
-            //dg_itemGeneralization.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
+            dg_itemGeneralization.Columns[0].Header = AppSettings.resourcemanager.GetString("Year");
+            dg_itemGeneralization.Columns[1].Header = AppSettings.resourcemanager.GetString("GeneralizationNumber");
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 

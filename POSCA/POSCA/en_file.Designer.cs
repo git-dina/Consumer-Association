@@ -1015,6 +1015,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generalization No..
+        /// </summary>
+        internal static string GeneralizationNumber {
+            get {
+                return ResourceManager.GetString("GeneralizationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General Notes....
         /// </summary>
         internal static string GeneralNotesHint {
@@ -15063,6 +15072,15 @@ namespace POSCA {
         internal static string wrongTime {
             get {
                 return ResourceManager.GetString("wrongTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Year.
+        /// </summary>
+        internal static string Year {
+            get {
+                return ResourceManager.GetString("Year", resourceCulture);
             }
         }
         
