@@ -5360,6 +5360,24 @@
   <data name="trSelectSupplyUnitError" xml:space="preserve">
     <value>اختر وحدة التوريد</value>
   </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>الباركود</value>
+  </data>
+  <data name="BarcodeType" xml:space="preserve">
+    <value>نوع الباركود</value>
+  </data>
+  <data name="Cost" xml:space="preserve">
+    <value>التكلفة</value>
+  </data>
+  <data name="Factor" xml:space="preserve">
+    <value>الشد</value>
+  </data>
+  <data name="ItemUnits" xml:space="preserve">
+    <value>وحدات العنصر</value>
+  </data>
+  <data name="SalePrice" xml:space="preserve">
+    <value>سعر البيع</value>
+  </data>
   <data name="WholesalePriceHint" xml:space="preserve">
     <value>سعر الجملة...</value>
   </data>

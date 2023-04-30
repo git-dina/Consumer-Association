@@ -98,12 +98,16 @@ namespace POSCA.View.windows
         private void translate()
         {
             //
-            txt_title.Text = AppSettings.resourcemanager.GetString("MainDocuments");
+            txt_title.Text = AppSettings.resourcemanager.GetString("ItemUnits");
             txt_itemUnit.Text = AppSettings.resourcemanager.GetString("ItemUnits");
 
-            //dg_itemUnit.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentType");
-            //dg_itemUnit.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
-            //dg_itemUnit.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
+            dg_itemUnit.Columns[0].Header = AppSettings.resourcemanager.GetString("Unit");
+            dg_itemUnit.Columns[1].Header = AppSettings.resourcemanager.GetString("Barcode");
+            dg_itemUnit.Columns[2].Header = AppSettings.resourcemanager.GetString("BarcodeType");
+            dg_itemUnit.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_itemUnit.Columns[4].Header = AppSettings.resourcemanager.GetString("Cost");
+            dg_itemUnit.Columns[5].Header = AppSettings.resourcemanager.GetString("SalePrice");
+            dg_itemUnit.Columns[6].Header = AppSettings.resourcemanager.GetString("IsBlocked");
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
