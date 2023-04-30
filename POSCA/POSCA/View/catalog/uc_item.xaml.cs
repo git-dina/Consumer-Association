@@ -629,6 +629,9 @@ namespace POSCA.View.catalog
                     Window.GetWindow(this).Opacity = 0.2;
                     wd_itemUnits w = new wd_itemUnits();
 
+                    item.UnitId = (long)cb_UnitId.SelectedValue;
+                    item.CategoryId = (long)cb_CategoryId.SelectedValue;
+                    item.MainCost = decimal.Parse(tb_MainCost.Text);
                     w.item = item;
                     w.ShowDialog();
                     if (w.isOk)

@@ -49,6 +49,7 @@ namespace POSCA.View.windows
         List<ItemUnit> listItemUnit = new List<ItemUnit>();
         List<Unit> listUnit = new List<Unit>();
 
+        Unit unit = new Unit();
        // public List<ItemUnit> ItemUnits { get; set; }
 
         public Item item { get; set; }      
@@ -77,7 +78,7 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-                await fillUnitCombo();
+                await fillUnitCombo(); 
                 await fillBarcodeTypeCombo();
                 setItemUnitsData();
 
@@ -110,12 +111,12 @@ namespace POSCA.View.windows
 
         private async Task fillUnitCombo()
         {
-            if (FillCombo.unitList is null)
-                await FillCombo.RefreshUnits();
+
+            var units = await unit.fillSmallUnits((long)item.UnitId);
 
             cb_unit.DisplayMemberPath = "Name";
             cb_unit.SelectedValuePath = "UnitId";
-            cb_unit.ItemsSource = FillCombo.unitList;
+            cb_unit.ItemsSource = units;
         }
        private async Task fillBarcodeTypeCombo()
         {
