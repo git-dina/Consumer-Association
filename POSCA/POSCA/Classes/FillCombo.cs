@@ -343,6 +343,8 @@ namespace POSCA.Classes
         static public async Task<IEnumerable<Unit>> RefreshUnits()
         {
             unitList = await unit.get(true);
+            foreach (var row in unitList)
+                row.Name = AppSettings.resourcemanager.GetString(row.Name);
 
             return unitList;
         }
@@ -356,6 +358,16 @@ namespace POSCA.Classes
             combo.SelectedValuePath = "UnitId";
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
+        } 
+        static public async Task fillUnits(DataGridComboBoxColumn combo)
+        {
+            if (unitList is null)
+                await RefreshUnits();
+
+            combo.ItemsSource = unitList;
+            combo.SelectedValuePath = "UnitId";
+            combo.DisplayMemberPath = "Name";
+           // combo.SelectedIndex = -1;
         }
         static public async Task fillUnitsWithDefault(ComboBox combo)
         {
@@ -375,10 +387,112 @@ namespace POSCA.Classes
         }
         #endregion
 
+        #region itemstatus
+        static public List<keyValueString> itemStatusList;
+        static public IEnumerable<keyValueString> RefreshItemStatus()
+        {
+            itemStatusList = new List<keyValueString>() {
+                new keyValueString(){key="normal", value=AppSettings.resourcemanager.GetString("Normal") },
+                new keyValueString(){key="stopped", value=AppSettings.resourcemanager.GetString("Stopped") },
+                new keyValueString(){key="canceled", value=AppSettings.resourcemanager.GetString("trCanceled") },
+            };
+
+            return itemStatusList;
+        }
+
+        static public void fillItemStatus(ComboBox combo)
+        {
+            if (itemStatusList is null)
+                RefreshItemStatus();
+
+            combo.ItemsSource = itemStatusList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        #region itemRecieptType
+        static public List<keyValueString> itemRecieptTypeList;
+        static public IEnumerable<keyValueString> RefreshItemRecieptType()
+        {
+            itemRecieptTypeList = new List<keyValueString>() {
+                new keyValueString(){key="orders", value=AppSettings.resourcemanager.GetString("Orders") },
+                new keyValueString(){key="direct", value=AppSettings.resourcemanager.GetString("Direct") },
+                new keyValueString(){key="orders_direct", value=AppSettings.resourcemanager.GetString("OrdersAndDirect") },
+                new keyValueString(){key="service", value=AppSettings.resourcemanager.GetString("Service") },
+                new keyValueString(){key="vegetable", value=AppSettings.resourcemanager.GetString("Vegetable") },
+                new keyValueString(){key="forStorage", value=AppSettings.resourcemanager.GetString("ForStorage") },
+                new keyValueString(){key="forStorage_branchDirect", value=AppSettings.resourcemanager.GetString("ForStorageAndBranch") },
+            };
+
+            return itemRecieptTypeList;
+        }
+
+        static public void fillItemRecieptType(ComboBox combo)
+        {
+            if (itemStatusList is null)
+                RefreshItemRecieptType();
+
+            combo.ItemsSource = itemRecieptTypeList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        
+        #region itemType
+        static public List<keyValueString> itemTypeList;
+        static public IEnumerable<keyValueString> RefreshItemTypes()
+        {
+            itemTypeList = new List<keyValueString>() {
+                new keyValueString(){key="general", value=AppSettings.resourcemanager.GetString("General") },
+                new keyValueString(){key="allSup", value=AppSettings.resourcemanager.GetString("FromAllSuppliers") },
+                new keyValueString(){key="festivals", value=AppSettings.resourcemanager.GetString("Festivals") },
+            };
+
+            return itemTypeList;
+        }
+
+        static public void fillItemType(ComboBox combo)
+        {
+            if (itemTypeList is null)
+                RefreshItemTypes();
+
+            combo.ItemsSource = itemTypeList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion 
+        #region itemTransType
+        static public List<keyValueString> itemTransTypeList;
+        static public IEnumerable<keyValueString> RefreshItemTransTypes()
+        {
+            itemTransTypeList = new List<keyValueString>() {
+                new keyValueString(){key="new_committee", value=AppSettings.resourcemanager.GetString("NewAndCommittee") },
+                new keyValueString(){key="isPurchased", value=AppSettings.resourcemanager.GetString("IsPurchased") },
+                new keyValueString(){key="recieved", value=AppSettings.resourcemanager.GetString("ItemRecieved") },
+            };
+
+            return itemTransTypeList;
+        }
+
+        static public void fillItemTransTypes(ComboBox combo)
+        {
+            if (itemTransTypeList is null)
+                RefreshItemTransTypes();
+
+            combo.ItemsSource = itemTransTypeList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
         #region Item
         static public Item item = new Item();
         static public List<Item> itemList;
 
+      
         static public async Task<IEnumerable<Item>> RefreshItems()
         {
             itemList = await item.get(true);

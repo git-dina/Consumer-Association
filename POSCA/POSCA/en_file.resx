@@ -5136,4 +5136,85 @@ Main Documents</value>
   <data name="Year" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="Direct" xml:space="preserve">
+    <value>Direct</value>
+  </data>
+  <data name="Festivals" xml:space="preserve">
+    <value>Festivals</value>
+  </data>
+  <data name="ForStorage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="ForStorageAndBranch" xml:space="preserve">
+    <value>Storage + Direct For Branches</value>
+  </data>
+  <data name="FromAllSuppliers" xml:space="preserve">
+    <value>From All Suppliers</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="IsPurchased" xml:space="preserve">
+    <value>Purchase Orders Have Been Placed</value>
+  </data>
+  <data name="ItemRecieved" xml:space="preserve">
+    <value>Item Has Been Received</value>
+  </data>
+  <data name="NewAndCommittee" xml:space="preserve">
+    <value>New - Committee</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>Orders</value>
+  </data>
+  <data name="OrdersAndDirect" xml:space="preserve">
+    <value>Orders + Direct</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="Stopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="Vegetable" xml:space="preserve">
+    <value>Vegetable</value>
+  </data>
+  <data name="cartoon" xml:space="preserve">
+    <value>cartoon</value>
+  </data>
+  <data name="dozen" xml:space="preserve">
+    <value>dozen</value>
+  </data>
+  <data name="kilo" xml:space="preserve">
+    <value>kilo</value>
+  </data>
+  <data name="meter" xml:space="preserve">
+    <value>meter</value>
+  </data>
+  <data name="package" xml:space="preserve">
+    <value>package</value>
+  </data>
+  <data name="packet" xml:space="preserve">
+    <value>packet</value>
+  </data>
+  <data name="piece" xml:space="preserve">
+    <value>piece</value>
+  </data>
+  <data name="roll" xml:space="preserve">
+    <value>roll</value>
+  </data>
+  <data name="stand" xml:space="preserve">
+    <value>stand</value>
+  </data>
+  <data name="tank" xml:space="preserve">
+    <value>tank</value>
+  </data>
+  <data name="trEnterFactorError" xml:space="preserve">
+    <value>Enter factor</value>
+  </data>
+  <data name="trFactorZeroError" xml:space="preserve">
+    <value>Factor should be more than zero</value>
+  </data>
 </root>

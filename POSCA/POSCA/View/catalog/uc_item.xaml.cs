@@ -129,7 +129,7 @@ namespace POSCA.View.catalog
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CountryId, AppSettings.resourcemanager.GetString("CountryHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BrandId, AppSettings.resourcemanager.GetString("BrandHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupSectorIdId, AppSettings.resourcemanager.GetString("SupplierSectorHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupSectorId, AppSettings.resourcemanager.GetString("SupplierSectorHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CommitteeNo, AppSettings.resourcemanager.GetString("CommitteeNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_UnitId, AppSettings.resourcemanager.GetString("SupplyUnitHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Factor, AppSettings.resourcemanager.GetString("FactorHint"));
@@ -179,36 +179,42 @@ namespace POSCA.View.catalog
                 item = new Item();
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
-                    item.Name = tb_Name.Text;
-                    item.ShortName = tb_ShortName.Text;
-                    item.EngName = tb_EngName.Text;
-                    item.CategoryId = (long)cb_CategoryId.SelectedValue;
-                    item.CountryId = (long)cb_CountryId.SelectedValue;
-
-                    if(cb_BrandId.SelectedIndex > 0)
-                        item.BrandId = (int)cb_BrandId.SelectedValue;
-
-                    item.SupId = (long)cb_SupId.SelectedValue;
-                    item.SupSectorId =(long)cb_SupSectorIdId.SelectedValue;
-                    if (tb_CommitteeNo.Text != "")
-                        item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
-                    if (tgl_IsWeight.IsChecked == true)
-                        item.IsWeight = true;
-                    if (tgl_IsSpecialOffer.IsChecked == true)
-                        item.IsSpecialOffer = true;
-                    item.Notes = tb_Notes.Text;
-                    item.CreateUserId = MainWindow.userLogin.userId;
-                   
-                    FillCombo.itemList = await item.save(item);
-                    if (FillCombo.itemList == null)
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                    else
+                    if (!tb_Factor.Text.Equals("0"))
                     {
-                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                        Clear();
-                        await Search();
+                        item.Name = tb_Name.Text;
+                        item.ShortName = tb_ShortName.Text;
+                        item.EngName = tb_EngName.Text;
+                        item.CategoryId = (long)cb_CategoryId.SelectedValue;
+                        item.CountryId = (long)cb_CountryId.SelectedValue;
+
+                        if (cb_BrandId.SelectedIndex > 0)
+                            item.BrandId = (int)cb_BrandId.SelectedValue;
+
+                        item.SupId = (long)cb_SupId.SelectedValue;
+                        item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
+                        item.Factor = int.Parse(tb_Factor.Text);
+                        if (tb_CommitteeNo.Text != "")
+                            item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
+                        if (tgl_IsWeight.IsChecked == true)
+                            item.IsWeight = true;
+                        if (tgl_IsSpecialOffer.IsChecked == true)
+                            item.IsSpecialOffer = true;
+                        item.Notes = tb_Notes.Text;
+                        item.CreateUserId = MainWindow.userLogin.userId;
+
+                        FillCombo.itemList = await item.save(item);
+                        if (FillCombo.itemList == null)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            Clear();
+                            await Search();
+                        }
                     }
-                    
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
+
                 }
                 HelpClass.EndAwait(grid_main);
                 //}
@@ -438,6 +444,7 @@ namespace POSCA.View.catalog
             nameFirstChange = true;
             dg_item.SelectedIndex = -1;
 
+            tb_Factor.IsEnabled = true;
             category = new Category();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -625,6 +632,8 @@ namespace POSCA.View.catalog
             {
                 if (cb_UnitId.SelectedIndex == -1)
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
+                if (tb_Factor.Text.Equals("") || tb_Factor.Text.Equals("0"))
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterFactorError"), animation: ToasterAnimation.FadeIn);
                 else if (cb_CategoryId.SelectedIndex == -1)
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
                 else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
@@ -635,6 +644,7 @@ namespace POSCA.View.catalog
                     Window.GetWindow(this).Opacity = 0.2;
                     wd_itemUnits w = new wd_itemUnits();
 
+                    item.Factor = int.Parse(tb_Factor.Text);
                     item.UnitId = (long)cb_UnitId.SelectedValue;
                     item.CategoryId = (long)cb_CategoryId.SelectedValue;
                     item.MainCost = decimal.Parse(tb_MainCost.Text);
@@ -677,10 +687,10 @@ namespace POSCA.View.catalog
                 sup.SupSectorId = 0;
                 lst.Insert(0, sup);
 
-                cb_SupSectorIdId.ItemsSource = lst;
-                cb_SupSectorIdId.SelectedValuePath = "SupSectorId";
-                cb_SupSectorIdId.DisplayMemberPath = "SupSectorName";
-                cb_SupSectorIdId.SelectedIndex = 0;
+                cb_SupSectorId.ItemsSource = lst;
+                cb_SupSectorId.SelectedValuePath = "SupSectorId";
+                cb_SupSectorId.DisplayMemberPath = "SupSectorName";
+                cb_SupSectorId.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -688,19 +698,25 @@ namespace POSCA.View.catalog
             }
         }
 
-        int factor = 0;
         private void Cb_UnitId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 if (cb_UnitId.SelectedIndex > -1)
                 {
-                    var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
-                    factor = unit.Factor;
-                    tb_Factor.Text = unit.Factor.ToString();
-
-                    item.Factor = unit.Factor;
                     item.UnitId = (long)cb_UnitId.SelectedValue;
+
+                    var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
+                    if (unit.Name.ToLower().Trim().Equals(AppSettings.resourcemanager.GetString("piece")))
+                    {
+                        tb_Factor.Text = "1";
+                        tb_Factor.IsEnabled = false;
+                    }
+                    else
+                    {
+                        tb_Factor.IsEnabled = true;
+                    }
+
                     calculatePeicePrice();
                 }
             }
@@ -730,11 +746,25 @@ namespace POSCA.View.catalog
             }
         }
 
-       
+        private void tb_Factor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+
+                ValidateEmpty_TextChange(sender, e);
+                calculatePeicePrice();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void Tb_MainCost_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
+                ValidateEmpty_TextChange(sender, e);
                 calculatePeicePrice();
             }
             catch (Exception ex)
@@ -749,40 +779,46 @@ namespace POSCA.View.catalog
         {
             try
             {
-                if (factor != 0)
+                if (!tb_Factor.Text.Equals(""))
                 {
-                    decimal cost = decimal.Parse(tb_MainCost.Text);
-                    //سعر بيع الحبة
-                    if (category.ProfitPercentage != 0)
-                        peicePrice = (cost / factor) * HelpClass.calcPercentage(1, category.ProfitPercentage);
-                    else
-                        peicePrice = cost / factor;
+                    int factor = int.Parse(tb_Factor.Text);
+                    if (factor != 0)
+                    {
+                        decimal cost = decimal.Parse(tb_MainCost.Text);
+                        //سعر بيع الحبة
+                        if (category.ProfitPercentage != 0)
+                            peicePrice = cost / factor * (1+ HelpClass.calcPercentage(1, category.ProfitPercentage));
+                        else
+                            peicePrice = cost / factor;
 
-                    //صافي بيع الحبة
-                    finalPrice = peicePrice;
-                    if (category.DiscountPercentage != 0)
-                        finalPrice = peicePrice - HelpClass.calcPercentage(1, category.DiscountPercentage);
+                        //صافي بيع الحبة
+                        finalPrice = peicePrice;
+                        if (category.DiscountPercentage != 0)
+                            finalPrice = peicePrice - (1+HelpClass.calcPercentage(1, category.DiscountPercentage));
 
-                    if (finalPrice < 0)
-                        finalPrice = 0;
+                        if (finalPrice < 0)
+                            finalPrice = 0;
 
-                    //wholesale price سعر الجملة
-                    var wholesalePrice = finalPrice + HelpClass.calcPercentage(finalPrice, category.WholesalePercentage);
+                        //wholesale price سعر الجملة
+                        var wholesalePrice = cost / factor * (1 + HelpClass.calcPercentage(1, category.WholesalePercentage));
 
-                    tb_MainPrice.Text = HelpClass.DecTostring( peicePrice);
-                    tb_Cost.Text = HelpClass.DecTostring(cost);
-                    tb_Price.Text = HelpClass.DecTostring( finalPrice);
-                    tb_WholesalePrice.Text = HelpClass.DecTostring(wholesalePrice);
+                        tb_MainPrice.Text = HelpClass.DecTostring(peicePrice);
+                        tb_Cost.Text = HelpClass.DecTostring(cost);
+                        tb_Price.Text = HelpClass.DecTostring(finalPrice);
+                        tb_WholesalePrice.Text = HelpClass.DecTostring(wholesalePrice);
 
-                    item.MainPrice = peicePrice;
-                    item.MainCost = cost;
-                    item.Cost = cost;
-                    item.Price = finalPrice;
-                    item.WholesalePrice = wholesalePrice;
+                        item.MainPrice = peicePrice;
+                        item.MainCost = cost;
+                        item.Cost = cost;
+                        item.Price = finalPrice;
+                        item.WholesalePrice = wholesalePrice;
 
+                    }
                 }
             }
             catch { }
         }
+
+      
     }
 }

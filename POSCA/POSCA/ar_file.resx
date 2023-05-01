@@ -5390,4 +5390,85 @@
   <data name="Year" xml:space="preserve">
     <value>السنة</value>
   </data>
+  <data name="Direct" xml:space="preserve">
+    <value>مباشر</value>
+  </data>
+  <data name="Festivals" xml:space="preserve">
+    <value>مهرجانات</value>
+  </data>
+  <data name="ForStorage" xml:space="preserve">
+    <value>مخزني</value>
+  </data>
+  <data name="ForStorageAndBranch" xml:space="preserve">
+    <value>مخزني + مباشر فروع</value>
+  </data>
+  <data name="FromAllSuppliers" xml:space="preserve">
+    <value>كل الموردين</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>عام</value>
+  </data>
+  <data name="IsPurchased" xml:space="preserve">
+    <value>تم عمل طلبات شراء</value>
+  </data>
+  <data name="ItemRecieved" xml:space="preserve">
+    <value>تم استلام الصنف</value>
+  </data>
+  <data name="NewAndCommittee" xml:space="preserve">
+    <value>جديد - لجنة</value>
+  </data>
+  <data name="Normal" xml:space="preserve">
+    <value>طبيعية</value>
+  </data>
+  <data name="Orders" xml:space="preserve">
+    <value>طلبات</value>
+  </data>
+  <data name="OrdersAndDirect" xml:space="preserve">
+    <value>طلبات + مباشر</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>خدمي</value>
+  </data>
+  <data name="Stopped" xml:space="preserve">
+    <value>موقوف</value>
+  </data>
+  <data name="Vegetable" xml:space="preserve">
+    <value>خضار</value>
+  </data>
+  <data name="cartoon" xml:space="preserve">
+    <value>كرتون</value>
+  </data>
+  <data name="dozen" xml:space="preserve">
+    <value>درزن</value>
+  </data>
+  <data name="kilo" xml:space="preserve">
+    <value>كيلو</value>
+  </data>
+  <data name="meter" xml:space="preserve">
+    <value>ميتر</value>
+  </data>
+  <data name="package" xml:space="preserve">
+    <value>ربطة</value>
+  </data>
+  <data name="packet" xml:space="preserve">
+    <value>باكيت</value>
+  </data>
+  <data name="piece" xml:space="preserve">
+    <value>حبة</value>
+  </data>
+  <data name="roll" xml:space="preserve">
+    <value>رول</value>
+  </data>
+  <data name="stand" xml:space="preserve">
+    <value>ستاند</value>
+  </data>
+  <data name="tank" xml:space="preserve">
+    <value>تنك</value>
+  </data>
+  <data name="trEnterFactorError" xml:space="preserve">
+    <value>أدخل الشد</value>
+  </data>
+  <data name="trFactorZeroError" xml:space="preserve">
+    <value>الشد يجب أن يكون أكبر من الصفر</value>
+  </data>
 </root>

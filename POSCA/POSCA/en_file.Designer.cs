@@ -331,6 +331,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cartoon.
+        /// </summary>
+        internal static string cartoon {
+            get {
+                return ResourceManager.GetString("cartoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string cashAmount {
@@ -673,6 +682,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direct.
+        /// </summary>
+        internal static string Direct {
+            get {
+                return ResourceManager.GetString("Direct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Discount Branches%.
         /// </summary>
         internal static string DiscountBranches {
@@ -777,6 +795,15 @@ namespace POSCA {
         internal static string doesntHaveUpperLimit {
             get {
                 return ResourceManager.GetString("doesntHaveUpperLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dozen.
+        /// </summary>
+        internal static string dozen {
+            get {
+                return ResourceManager.GetString("dozen", resourceCulture);
             }
         }
         
@@ -943,11 +970,38 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Festivals.
+        /// </summary>
+        internal static string Festivals {
+            get {
+                return ResourceManager.GetString("Festivals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finance.
         /// </summary>
         internal static string finance {
             get {
                 return ResourceManager.GetString("finance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage.
+        /// </summary>
+        internal static string ForStorage {
+            get {
+                return ResourceManager.GetString("ForStorage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Storage + Direct For Branches.
+        /// </summary>
+        internal static string ForStorageAndBranch {
+            get {
+                return ResourceManager.GetString("ForStorageAndBranch", resourceCulture);
             }
         }
         
@@ -1002,6 +1056,24 @@ namespace POSCA {
         internal static string FreeStores {
             get {
                 return ResourceManager.GetString("FreeStores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From All Suppliers.
+        /// </summary>
+        internal static string FromAllSuppliers {
+            get {
+                return ResourceManager.GetString("FromAllSuppliers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
             }
         }
         
@@ -1240,6 +1312,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchase Orders Have Been Placed.
+        /// </summary>
+        internal static string IsPurchased {
+            get {
+                return ResourceManager.GetString("IsPurchased", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Weight.
         /// </summary>
         internal static string IsWeight {
@@ -1285,6 +1366,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Has Been Received.
+        /// </summary>
+        internal static string ItemRecieved {
+            get {
+                return ResourceManager.GetString("ItemRecieved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Items.
         /// </summary>
         internal static string Items {
@@ -1308,6 +1398,15 @@ namespace POSCA {
         internal static string itMustBeGreaterThanZero {
             get {
                 return ResourceManager.GetString("itMustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kilo.
+        /// </summary>
+        internal static string kilo {
+            get {
+                return ResourceManager.GetString("kilo", resourceCulture);
             }
         }
         
@@ -1403,6 +1502,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to meter.
+        /// </summary>
+        internal static string meter {
+            get {
+                return ResourceManager.GetString("meter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minimize.
         /// </summary>
         internal static string minimize {
@@ -1457,6 +1565,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New - Committee.
+        /// </summary>
+        internal static string NewAndCommittee {
+            get {
+                return ResourceManager.GetString("NewAndCommittee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Membership.
         /// </summary>
         internal static string newMembership {
@@ -1489,6 +1606,15 @@ namespace POSCA {
         internal static string noOffers {
             get {
                 return ResourceManager.GetString("noOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normal.
+        /// </summary>
+        internal static string Normal {
+            get {
+                return ResourceManager.GetString("Normal", resourceCulture);
             }
         }
         
@@ -1628,6 +1754,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Orders.
+        /// </summary>
+        internal static string Orders {
+            get {
+                return ResourceManager.GetString("Orders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orders + Direct.
+        /// </summary>
+        internal static string OrdersAndDirect {
+            get {
+                return ResourceManager.GetString("OrdersAndDirect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order status.
         /// </summary>
         internal static string orderStatus {
@@ -1642,6 +1786,15 @@ namespace POSCA {
         internal static string overQuantity {
             get {
                 return ResourceManager.GetString("overQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to package.
+        /// </summary>
+        internal static string package {
+            get {
+                return ResourceManager.GetString("package", resourceCulture);
             }
         }
         
@@ -1678,6 +1831,15 @@ namespace POSCA {
         internal static string packagingCost {
             get {
                 return ResourceManager.GetString("packagingCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to packet.
+        /// </summary>
+        internal static string packet {
+            get {
+                return ResourceManager.GetString("packet", resourceCulture);
             }
         }
         
@@ -1786,6 +1948,15 @@ namespace POSCA {
         internal static string PhoneType {
             get {
                 return ResourceManager.GetString("PhoneType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to piece.
+        /// </summary>
+        internal static string piece {
+            get {
+                return ResourceManager.GetString("piece", resourceCulture);
             }
         }
         
@@ -2096,6 +2267,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to roll.
+        /// </summary>
+        internal static string roll {
+            get {
+                return ResourceManager.GetString("roll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sale Price.
         /// </summary>
         internal static string SalePrice {
@@ -2209,6 +2389,15 @@ namespace POSCA {
         internal static string sequence {
             get {
                 return ResourceManager.GetString("sequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service.
+        /// </summary>
+        internal static string Service {
+            get {
+                return ResourceManager.GetString("Service", resourceCulture);
             }
         }
         
@@ -2330,6 +2519,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to stand.
+        /// </summary>
+        internal static string stand {
+            get {
+                return ResourceManager.GetString("stand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Migration....
         /// </summary>
         internal static string StartMigrationHint {
@@ -2344,6 +2542,15 @@ namespace POSCA {
         internal static string statuses {
             get {
                 return ResourceManager.GetString("statuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stopped.
+        /// </summary>
+        internal static string Stopped {
+            get {
+                return ResourceManager.GetString("Stopped", resourceCulture);
             }
         }
         
@@ -2506,6 +2713,15 @@ namespace POSCA {
         internal static string SupplyUnitHint {
             get {
                 return ResourceManager.GetString("SupplyUnitHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to tank.
+        /// </summary>
+        internal static string tank {
+            get {
+                return ResourceManager.GetString("tank", resourceCulture);
             }
         }
         
@@ -6110,6 +6326,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter factor.
+        /// </summary>
+        internal static string trEnterFactorError {
+            get {
+                return ResourceManager.GetString("trEnterFactorError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter supply cost.
         /// </summary>
         internal static string trEnterSupplyCostError {
@@ -7051,6 +7276,15 @@ namespace POSCA {
         internal static string trExternal {
             get {
                 return ResourceManager.GetString("trExternal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Factor should be more than zero.
+        /// </summary>
+        internal static string trFactorZeroError {
+            get {
+                return ResourceManager.GetString("trFactorZeroError", resourceCulture);
             }
         }
         
@@ -14928,6 +15162,15 @@ namespace POSCA {
         internal static string upperLimitAdministrativePayment {
             get {
                 return ResourceManager.GetString("upperLimitAdministrativePayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vegetable.
+        /// </summary>
+        internal static string Vegetable {
+            get {
+                return ResourceManager.GetString("Vegetable", resourceCulture);
             }
         }
         

@@ -152,9 +152,9 @@ namespace POSCA.View.catalog
                         if (int.Parse(tb_UnitValue.Text) > 0)
                         {
                             unit.Name = tb_Name.Text;
-                            if (cb_MinUnitId.SelectedIndex > 0)
-                                unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
-                            unit.UnitValue = int.Parse(tb_UnitValue.Text);
+                            //if (cb_MinUnitId.SelectedIndex > 0)
+                            //    unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
+                            //unit.UnitValue = int.Parse(tb_UnitValue.Text);
 
                             if (tgl_IsBlocked.IsChecked == true)
                                 unit.IsBlocked = true;
@@ -163,7 +163,7 @@ namespace POSCA.View.catalog
                             unit.Notes = tb_Notes.Text;
                             unit.CreateUserId = MainWindow.userLogin.userId;
 
-                            FillCombo.unitList = await unit.save(unit);
+                           // FillCombo.unitList = await unit.save(unit);
                             if (FillCombo.unitList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -207,9 +207,9 @@ namespace POSCA.View.catalog
                             if (int.Parse(tb_UnitValue.Text) > 0)
                             {
                                 unit.Name = tb_Name.Text;
-                                if (cb_MinUnitId.SelectedIndex > 0)
-                                    unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
-                                unit.UnitValue = int.Parse(tb_UnitValue.Text);
+                                //if (cb_MinUnitId.SelectedIndex > 0)
+                                //    unit.MinUnitId = (long)cb_MinUnitId.SelectedValue;
+                                //unit.UnitValue = int.Parse(tb_UnitValue.Text);
 
                                 if (tgl_IsBlocked.IsChecked == true)
                                     unit.IsBlocked = true;
@@ -218,7 +218,7 @@ namespace POSCA.View.catalog
                                 unit.Notes = tb_Notes.Text;
                                 unit.CreateUserId = MainWindow.userLogin.userId;
 
-                                FillCombo.unitList = await unit.save(unit);
+                               // FillCombo.unitList = await unit.save(unit);
                                 if (FillCombo.unitList == null)
                                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                                 else
@@ -270,7 +270,7 @@ namespace POSCA.View.catalog
 
                         if (w.isOk)
                         {
-                            FillCombo.unitList = await unit.delete(unit.UnitId, MainWindow.userLogin.userId);
+                           // FillCombo.unitList = await unit.delete(unit.UnitId, MainWindow.userLogin.userId);
                             if (FillCombo.unitList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

@@ -313,7 +313,7 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>
-                        <Button   Height="50"
+                        <!--<Button   Height="50"
                                   Grid.Row="1"
                            Tag="unit" 
                           x:Name="btn_unit"  Click="Btn_unit_Click"
@@ -327,7 +327,7 @@
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
-                            </Button>
+                            </Button>-->
                         </StackPanel>
                     </Expander>
                     <!--#region  vendors-->

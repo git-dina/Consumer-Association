@@ -69,7 +69,11 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-
+                FillCombo.fillItemStatus(cb_ItemStatus);
+                FillCombo.fillItemRecieptType(cb_ItemReceiptType);
+                FillCombo.fillItemType(cb_ItemType);
+                FillCombo.fillItemTransTypes(cb_ItemTransactionType);
+                await FillCombo.fillUnits(cb_PackageUnit);
 
                 HelpClass.EndAwait(grid_main);
             }
