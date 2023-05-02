@@ -59,6 +59,7 @@ namespace POSCA.Classes.ApiClasses
         public Supplier Supplier { get; set; }
         public List<ItemGeneralization> ItemGeneralizations { get; set; }
         public List<ItemUnit> ItemUnits { get; set; }
+        public List<ItemAllowedTransaction> ItemAllowedTransactions { get; set; }
         #endregion
         #endregion
 
