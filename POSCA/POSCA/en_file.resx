@@ -5259,4 +5259,31 @@ Main Documents</value>
   <data name="trSaveItemFirstError" xml:space="preserve">
     <value>Save the item first</value>
   </data>
+  <data name="ItemReceiptTypeHint" xml:space="preserve">
+    <value>Receipt Type...</value>
+  </data>
+  <data name="ItemStatus" xml:space="preserve">
+    <value>Item Status</value>
+  </data>
+  <data name="ItemStatusHint" xml:space="preserve">
+    <value>Item Status...</value>
+  </data>
+  <data name="ItemTransaction" xml:space="preserve">
+    <value>Item Transaction</value>
+  </data>
+  <data name="ItemTransactionTypeHint" xml:space="preserve">
+    <value>Item Transaction Type...</value>
+  </data>
+  <data name="ItemTypeHint" xml:space="preserve">
+    <value>Classification...</value>
+  </data>
+  <data name="PackageInformation" xml:space="preserve">
+    <value>Package Information</value>
+  </data>
+  <data name="PackageUnitHint" xml:space="preserve">
+    <value>Package Unit...</value>
+  </data>
+  <data name="PackageWeightHint" xml:space="preserve">
+    <value>Package Weight...</value>
+  </data>
 </root>

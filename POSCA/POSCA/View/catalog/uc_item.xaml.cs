@@ -73,7 +73,7 @@ namespace POSCA.View.catalog
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "Name" ,"ShortName", "EngName", "UnitId" , "Factor",
-                                                "CategoryId","CountryId", "SupId", "SupSectorId"};
+                                                "CategoryId","CountryId", "SupId"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -200,7 +200,8 @@ namespace POSCA.View.catalog
                             item.BrandId = (int)cb_BrandId.SelectedValue;
 
                         item.SupId = (long)cb_SupId.SelectedValue;
-                        item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
+                        if(cb_SupSectorId.SelectedIndex > 0)
+                            item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
                         item.Factor = int.Parse(tb_Factor.Text);
                         if (tb_CommitteeNo.Text != "")
                             item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
@@ -248,7 +249,7 @@ namespace POSCA.View.catalog
                     HelpClass.StartAwait(grid_main);
                     if (item.ItemId > 0)
                     {
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                        if (HelpClass.validate(requiredControlList, this) )
                         {
                             if (!tb_Factor.Text.Equals("0"))
                             {
@@ -262,7 +263,8 @@ namespace POSCA.View.catalog
                                     item.BrandId = (int)cb_BrandId.SelectedValue;
 
                                 item.SupId = (long)cb_SupId.SelectedValue;
-                                item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
+                                if (cb_SupSectorId.SelectedIndex > 0)
+                                    item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
                                 item.Factor = int.Parse(tb_Factor.Text);
                                 if (tb_CommitteeNo.Text != "")
                                     item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
@@ -442,7 +444,7 @@ namespace POSCA.View.catalog
             || s.ShortName.ToLower().Contains(searchText)
             || s.EngName.ToLower().Contains(searchText)
             || s.CategoryName.ToLower().Contains(searchText)
-            || s.ItemId.ToString() ==searchText
+            || s.Code.ToLower().Contains(searchText)
             || s.SupId.ToString() == searchText
             || s.Factor.ToString() == searchText
             || s.Price.ToString() == searchText
@@ -605,7 +607,13 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_supplyingItem w = new wd_supplyingItem();
 
+                w.itemStatus = item.ItemStatus;
+                w.itemRecieptType = item.ItemReceiptType;
+                w.itemType = item.ItemType;
+                w.itemTransactionType = item.ItemTransactionType;
 
+                w.packageWeight =item.PackageWeight;
+                w.packageUnit = item.PackageUnit;
                 w.ShowDialog();
                 if (w.isOk)
                 {
@@ -735,7 +743,7 @@ namespace POSCA.View.catalog
                 cb_SupSectorId.ItemsSource = lst;
                 cb_SupSectorId.SelectedValuePath = "SupSectorId";
                 cb_SupSectorId.DisplayMemberPath = "SupSectorName";
-                cb_SupSectorId.SelectedIndex = 0;
+                cb_SupSectorId.SelectedIndex = -1;
             }
             catch (Exception ex)
             {

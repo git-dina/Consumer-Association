@@ -1411,6 +1411,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receipt Type....
+        /// </summary>
+        internal static string ItemReceiptTypeHint {
+            get {
+                return ResourceManager.GetString("ItemReceiptTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Has Been Received.
         /// </summary>
         internal static string ItemRecieved {
@@ -1425,6 +1434,51 @@ namespace POSCA {
         internal static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Status.
+        /// </summary>
+        internal static string ItemStatus {
+            get {
+                return ResourceManager.GetString("ItemStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Status....
+        /// </summary>
+        internal static string ItemStatusHint {
+            get {
+                return ResourceManager.GetString("ItemStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Transaction.
+        /// </summary>
+        internal static string ItemTransaction {
+            get {
+                return ResourceManager.GetString("ItemTransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Transaction Type....
+        /// </summary>
+        internal static string ItemTransactionTypeHint {
+            get {
+                return ResourceManager.GetString("ItemTransactionTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classification....
+        /// </summary>
+        internal static string ItemTypeHint {
+            get {
+                return ResourceManager.GetString("ItemTypeHint", resourceCulture);
             }
         }
         
@@ -1880,11 +1934,38 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package Information.
+        /// </summary>
+        internal static string PackageInformation {
+            get {
+                return ResourceManager.GetString("PackageInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Package items.
         /// </summary>
         internal static string packageItems {
             get {
                 return ResourceManager.GetString("packageItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package Unit....
+        /// </summary>
+        internal static string PackageUnitHint {
+            get {
+                return ResourceManager.GetString("PackageUnitHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package Weight....
+        /// </summary>
+        internal static string PackageWeightHint {
+            get {
+                return ResourceManager.GetString("PackageWeightHint", resourceCulture);
             }
         }
         

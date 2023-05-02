@@ -40,6 +40,12 @@ namespace POSCA.View.windows
             this.Close();
         }
 
+        public string itemStatus { get; set; }
+        public string itemRecieptType { get; set; }
+        public string itemType { get; set; }
+        public string itemTransactionType { get; set; }
+        public decimal? packageWeight { get; set; }
+        public long? packageUnit { get; set; }
         public bool isOk { get; set; }
         public static List<string> requiredControlList;
 
@@ -90,8 +96,15 @@ namespace POSCA.View.windows
         private void translate()
         {
             txt_title.Text = AppSettings.resourcemanager.GetString("ExtraInformation");
-          
+           txt_itemTransaction.Text = AppSettings.resourcemanager.GetString("ItemTransaction");
+           txt_packageInformation.Text = AppSettings.resourcemanager.GetString("PackageInformation");
 
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemStatus, AppSettings.resourcemanager.GetString("ItemStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemReceiptType, AppSettings.resourcemanager.GetString("ItemReceiptTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemType, AppSettings.resourcemanager.GetString("ItemTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemTransactionType, AppSettings.resourcemanager.GetString("ItemTransactionTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PackageWeight, AppSettings.resourcemanager.GetString("PackageWeightHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PackageUnit, AppSettings.resourcemanager.GetString("PackageUnitHint"));
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 

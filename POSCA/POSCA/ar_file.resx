@@ -5513,4 +5513,31 @@
   <data name="SupplierNumber" xml:space="preserve">
     <value>رقم المورد</value>
   </data>
+  <data name="ItemReceiptTypeHint" xml:space="preserve">
+    <value>نوع الاستلام...</value>
+  </data>
+  <data name="ItemStatus" xml:space="preserve">
+    <value>حالة الصنف</value>
+  </data>
+  <data name="ItemStatusHint" xml:space="preserve">
+    <value>حالة الصنف...</value>
+  </data>
+  <data name="ItemTransaction" xml:space="preserve">
+    <value>حركة الصنف</value>
+  </data>
+  <data name="ItemTransactionTypeHint" xml:space="preserve">
+    <value>نوع حركة الصنف...</value>
+  </data>
+  <data name="ItemTypeHint" xml:space="preserve">
+    <value>التصنيف...</value>
+  </data>
+  <data name="PackageInformation" xml:space="preserve">
+    <value>معلومات التعبئة</value>
+  </data>
+  <data name="PackageUnitHint" xml:space="preserve">
+    <value>وحدة التعبئة...</value>
+  </data>
+  <data name="PackageWeightHint" xml:space="preserve">
+    <value>وزن التعبئة...</value>
+  </data>
 </root>
