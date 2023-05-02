@@ -146,6 +146,8 @@
     <Compile Include="Classes\ApiClasses\Category.cs" />
     <Compile Include="Classes\ApiClasses\Item.cs" />
     <Compile Include="Classes\ApiClasses\ItemUnit.cs" />
+    <Compile Include="Classes\ApiClasses\Location.cs" />
+    <Compile Include="Classes\ApiClasses\LocationType.cs" />
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
