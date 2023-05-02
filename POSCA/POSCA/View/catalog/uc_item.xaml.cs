@@ -630,14 +630,16 @@ namespace POSCA.View.catalog
         {
             try
             {
-                if (cb_UnitId.SelectedIndex == -1)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
-                if (tb_Factor.Text.Equals("") || tb_Factor.Text.Equals("0"))
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterFactorError"), animation: ToasterAnimation.FadeIn);
-                else if (cb_CategoryId.SelectedIndex == -1)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
-                else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
+                //if (cb_UnitId.SelectedIndex == -1)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
+                //if (tb_Factor.Text.Equals("") || tb_Factor.Text.Equals("0"))
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterFactorError"), animation: ToasterAnimation.FadeIn);
+                //else if (cb_CategoryId.SelectedIndex == -1)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
+                //else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
+                if (item.ItemId == 0)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSaveItemFirstError"), animation: ToasterAnimation.FadeIn);
                 else
                 {
                     HelpClass.StartAwait(grid_main);

@@ -137,4 +137,16 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
     }
+
+    public class ItemAllowedTransaction
+    {
+        public long Id { get; set; }
+        public Nullable<long> ItemId { get; set; }
+        public string Transaction { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<long> CreateUserId { get; set; }
+        public Nullable<long> UpdateUserId { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+    }
 }

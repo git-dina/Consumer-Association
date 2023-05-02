@@ -682,6 +682,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Destructive.
+        /// </summary>
+        internal static string Destructive {
+            get {
+                return ResourceManager.GetString("Destructive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Direct.
         /// </summary>
         internal static string Direct {
@@ -867,6 +876,15 @@ namespace POSCA {
         internal static string enter {
             get {
                 return ResourceManager.GetString("enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange And Transfer.
+        /// </summary>
+        internal static string ExchangeAndTransfer {
+            get {
+                return ResourceManager.GetString("ExchangeAndTransfer", resourceCulture);
             }
         }
         
@@ -1682,6 +1700,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offers.
+        /// </summary>
+        internal static string Offers {
+            get {
+                return ResourceManager.GetString("Offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On company.
         /// </summary>
         internal static string onCompany {
@@ -2114,6 +2141,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PurchaseOrders.
+        /// </summary>
+        internal static string PurchaseOrders {
+            get {
+                return ResourceManager.GetString("PurchaseOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase Return Invoice.
         /// </summary>
         internal static string PurchaseReturnInvTitle {
@@ -2155,6 +2191,15 @@ namespace POSCA {
         internal static string reading {
             get {
                 return ResourceManager.GetString("reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt.
+        /// </summary>
+        internal static string Receipt {
+            get {
+                return ResourceManager.GetString("Receipt", resourceCulture);
             }
         }
         
@@ -2263,6 +2308,15 @@ namespace POSCA {
         internal static string ReturnPeriodExceeded {
             get {
                 return ResourceManager.GetString("ReturnPeriodExceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Returns.
+        /// </summary>
+        internal static string Returns {
+            get {
+                return ResourceManager.GetString("Returns", resourceCulture);
             }
         }
         
@@ -2411,6 +2465,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settlements.
+        /// </summary>
+        internal static string Settlements {
+            get {
+                return ResourceManager.GetString("Settlements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shipping amount.
         /// </summary>
         internal static string shippingAmount {
@@ -2551,6 +2614,15 @@ namespace POSCA {
         internal static string Stopped {
             get {
                 return ResourceManager.GetString("Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Strategic Item.
+        /// </summary>
+        internal static string StrategicItem {
+            get {
+                return ResourceManager.GetString("StrategicItem", resourceCulture);
             }
         }
         
@@ -12173,6 +12245,15 @@ namespace POSCA {
         internal static string trSaveInvoiceToPreview {
             get {
                 return ResourceManager.GetString("trSaveInvoiceToPreview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save the item first.
+        /// </summary>
+        internal static string trSaveItemFirstError {
+            get {
+                return ResourceManager.GetString("trSaveItemFirstError", resourceCulture);
             }
         }
         

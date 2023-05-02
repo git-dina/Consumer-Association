@@ -5217,4 +5217,31 @@ Main Documents</value>
   <data name="trFactorZeroError" xml:space="preserve">
     <value>Factor should be more than zero</value>
   </data>
+  <data name="Destructive" xml:space="preserve">
+    <value>Destructive</value>
+  </data>
+  <data name="ExchangeAndTransfer" xml:space="preserve">
+    <value>Exchange And Transfer</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>Offers</value>
+  </data>
+  <data name="PurchaseOrders" xml:space="preserve">
+    <value>PurchaseOrders</value>
+  </data>
+  <data name="Receipt" xml:space="preserve">
+    <value>Receipt</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>Returns</value>
+  </data>
+  <data name="Settlements" xml:space="preserve">
+    <value>Settlements</value>
+  </data>
+  <data name="StrategicItem" xml:space="preserve">
+    <value>Strategic Item</value>
+  </data>
+  <data name="trSaveItemFirstError" xml:space="preserve">
+    <value>Save the item first</value>
+  </data>
 </root>

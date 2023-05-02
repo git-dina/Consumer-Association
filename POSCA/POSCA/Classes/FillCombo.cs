@@ -279,7 +279,7 @@ namespace POSCA.Classes
             barcodeTypeList = new List<keyValueString>() {
                 new keyValueString(){key="external", value=AppSettings.resourcemanager.GetString("external") },
                 new keyValueString(){key="internal", value=AppSettings.resourcemanager.GetString("internal") },
-                new keyValueString(){key="waiting", value=AppSettings.resourcemanager.GetString("waiting") },
+                new keyValueString(){key="isWeight", value=AppSettings.resourcemanager.GetString("IsWeight") },
             };
 
             return barcodeTypeList;
@@ -486,6 +486,25 @@ namespace POSCA.Classes
             combo.SelectedValuePath = "key";
             combo.DisplayMemberPath = "value";
             combo.SelectedIndex = -1;
+        }
+        #endregion
+
+        #region itemTransaction list
+        static public List<keyValueString> itemTransactionsList;
+        static public IEnumerable<keyValueString> RefreshItemTransactionsList()
+        {
+            itemTransactionsList = new List<keyValueString>() {
+                new keyValueString(){key="purchaseOrders", value=AppSettings.resourcemanager.GetString("PurchaseOrders") },
+                new keyValueString(){key="receipt", value=AppSettings.resourcemanager.GetString("Receipt") },
+                new keyValueString(){key="returns", value=AppSettings.resourcemanager.GetString("Returns") },
+                new keyValueString(){key="destructive", value=AppSettings.resourcemanager.GetString("Destructive") },
+                new keyValueString(){key="offers", value=AppSettings.resourcemanager.GetString("Offers") },
+                new keyValueString(){key="exchangeTransfer", value=AppSettings.resourcemanager.GetString("ExchangeAndTransfer") },
+                new keyValueString(){key="settlements", value=AppSettings.resourcemanager.GetString("Settlements") },
+                new keyValueString(){key="strategic", value=AppSettings.resourcemanager.GetString("StrategicItem") },
+            };
+
+            return itemTransactionsList;
         }
         #endregion
         #region Item

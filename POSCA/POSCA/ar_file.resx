@@ -5471,4 +5471,28 @@
   <data name="trFactorZeroError" xml:space="preserve">
     <value>الشد يجب أن يكون أكبر من الصفر</value>
   </data>
+  <data name="Destructive" xml:space="preserve">
+    <value>التوالف</value>
+  </data>
+  <data name="ExchangeAndTransfer" xml:space="preserve">
+    <value>الصرف والتحويل</value>
+  </data>
+  <data name="Offers" xml:space="preserve">
+    <value>العروض</value>
+  </data>
+  <data name="PurchaseOrders" xml:space="preserve">
+    <value>طلبات الشراء</value>
+  </data>
+  <data name="Receipt" xml:space="preserve">
+    <value>الاستلام</value>
+  </data>
+  <data name="Returns" xml:space="preserve">
+    <value>المرتجعات</value>
+  </data>
+  <data name="Settlements" xml:space="preserve">
+    <value>التسويات</value>
+  </data>
+  <data name="trSaveItemFirstError" xml:space="preserve">
+    <value>احفظ الصنف اولاً</value>
+  </data>
 </root>
