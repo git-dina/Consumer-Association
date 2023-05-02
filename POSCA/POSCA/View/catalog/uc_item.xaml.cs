@@ -424,7 +424,12 @@ namespace POSCA.View.catalog
             s.Name.ToLower().Contains(searchText)
             || s.ShortName.ToLower().Contains(searchText)
             || s.EngName.ToLower().Contains(searchText)
-            || s.SupId.ToString().Contains(searchText)
+            || s.CategoryName.ToLower().Contains(searchText)
+            || s.ItemId.ToString() ==searchText
+            || s.SupId.ToString() == searchText
+            || s.Factor.ToString() == searchText
+            || s.Price.ToString() == searchText
+            || s.Cost.ToString() == searchText
             || s.Supplier.Name.ToLower().Contains(searchText)
 
             ).ToList();
@@ -684,7 +689,19 @@ namespace POSCA.View.catalog
         {
 
         }
-
+        private void cb_SupId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_SupId.Template.FindName("PART_EditableTextBox", cb_SupId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) ||  p.SupId.ToString().Contains(tb.Text)).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -805,8 +822,10 @@ namespace POSCA.View.catalog
                         //صافي بيع الحبة
                         finalPrice = peicePrice;
                         if (category.DiscountPercentage != 0)
-                            finalPrice = peicePrice - (1+HelpClass.calcPercentage(1, category.DiscountPercentage));
-
+                        {
+                            var discount = peicePrice - HelpClass.calcPercentage(peicePrice, 100+ category.DiscountPercentage);
+                            finalPrice = peicePrice - Math.Abs( discount);
+                        }
                         if (finalPrice < 0)
                             finalPrice = 0;
 
@@ -830,6 +849,6 @@ namespace POSCA.View.catalog
             catch { }
         }
 
-      
+     
     }
 }
