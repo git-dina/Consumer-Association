@@ -126,8 +126,13 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
+                                <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=ItemId}"/>
+                                <DataGridTextColumn Width="*"  Header="SupId" Binding="{Binding Path=SupId}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
-                                <DataGridTextColumn Width="*"  Header="Notes" Binding="{Binding Path=Notes}"/>
+                                <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor}"/>
+                                <DataGridTextColumn Width="*"  Header="Price" Binding="{Binding Path=Price}"/>
+                                <DataGridTextColumn Width="*"  Header="Cost" Binding="{Binding Path=Cost}"/>
+                                <DataGridTextColumn Width="*"  Header="Category" Binding="{Binding Path=CategoryName}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

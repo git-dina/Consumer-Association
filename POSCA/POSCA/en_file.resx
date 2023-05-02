@@ -5217,11 +5217,23 @@ Main Documents</value>
   <data name="trFactorZeroError" xml:space="preserve">
     <value>Factor should be more than zero</value>
   </data>
+  <data name="Category" xml:space="preserve">
+    <value>Category</value>
+  </data>
   <data name="Destructive" xml:space="preserve">
     <value>Destructive</value>
   </data>
   <data name="ExchangeAndTransfer" xml:space="preserve">
     <value>Exchange And Transfer</value>
+  </data>
+  <data name="ExtraInformation" xml:space="preserve">
+    <value>Extra Information</value>
+  </data>
+  <data name="ItemNumber" xml:space="preserve">
+    <value>Item No.</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
   </data>
   <data name="Offers" xml:space="preserve">
     <value>Offers</value>
@@ -5240,6 +5252,9 @@ Main Documents</value>
   </data>
   <data name="StrategicItem" xml:space="preserve">
     <value>Strategic Item</value>
+  </data>
+  <data name="SupplierNumber" xml:space="preserve">
+    <value>Supplier No.</value>
   </data>
   <data name="trSaveItemFirstError" xml:space="preserve">
     <value>Save the item first</value>

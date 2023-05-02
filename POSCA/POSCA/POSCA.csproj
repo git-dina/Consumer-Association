@@ -333,7 +333,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="ar_file.resx" />
+    <EmbeddedResource Include="ar_file.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="en_file.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>en_file.Designer.cs</LastGenOutput>

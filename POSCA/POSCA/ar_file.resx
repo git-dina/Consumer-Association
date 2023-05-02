@@ -5477,6 +5477,9 @@
   <data name="ExchangeAndTransfer" xml:space="preserve">
     <value>الصرف والتحويل</value>
   </data>
+  <data name="ExtraInformation" xml:space="preserve">
+    <value>معلومات إضافية</value>
+  </data>
   <data name="Offers" xml:space="preserve">
     <value>العروض</value>
   </data>
@@ -5492,7 +5495,22 @@
   <data name="Settlements" xml:space="preserve">
     <value>التسويات</value>
   </data>
+  <data name="StrategicItem" xml:space="preserve">
+    <value>صنف استراتيجي</value>
+  </data>
   <data name="trSaveItemFirstError" xml:space="preserve">
     <value>احفظ الصنف اولاً</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>المجموعة</value>
+  </data>
+  <data name="ItemNumber" xml:space="preserve">
+    <value>رقم الصنف</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>الموقع</value>
+  </data>
+  <data name="SupplierNumber" xml:space="preserve">
+    <value>رقم المورد</value>
   </data>
 </root>

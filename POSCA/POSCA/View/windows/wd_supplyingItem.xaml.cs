@@ -89,7 +89,7 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
+            txt_title.Text = AppSettings.resourcemanager.GetString("ExtraInformation");
           
 
 

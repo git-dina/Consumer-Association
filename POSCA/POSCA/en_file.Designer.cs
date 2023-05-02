@@ -367,6 +367,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Category.
+        /// </summary>
+        internal static string Category {
+            get {
+                return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category....
         /// </summary>
         internal static string CategoryHint {
@@ -925,6 +934,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extra Information.
+        /// </summary>
+        internal static string ExtraInformation {
+            get {
+                return ResourceManager.GetString("ExtraInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Extra Items.
         /// </summary>
         internal static string extraItems {
@@ -1384,6 +1402,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item No..
+        /// </summary>
+        internal static string ItemNumber {
+            get {
+                return ResourceManager.GetString("ItemNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Has Been Received.
         /// </summary>
         internal static string ItemRecieved {
@@ -1425,6 +1452,15 @@ namespace POSCA {
         internal static string kilo {
             get {
                 return ResourceManager.GetString("kilo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string Location {
+            get {
+                return ResourceManager.GetString("Location", resourceCulture);
             }
         }
         
@@ -2686,6 +2722,15 @@ namespace POSCA {
         internal static string SupplierHint {
             get {
                 return ResourceManager.GetString("SupplierHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier No..
+        /// </summary>
+        internal static string SupplierNumber {
+            get {
+                return ResourceManager.GetString("SupplierNumber", resourceCulture);
             }
         }
         

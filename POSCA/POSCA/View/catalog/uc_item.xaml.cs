@@ -145,15 +145,24 @@ namespace POSCA.View.catalog
 
             txt_IsSpecialOffer.Text = AppSettings.resourcemanager.GetString("SpecialOffer");
             txt_IsWeight.Text = AppSettings.resourcemanager.GetString("IsWeight");
+
             txt_unitsButton.Text = AppSettings.resourcemanager.GetString("trUnits");
             txt_itemGeneralizationButton.Text = AppSettings.resourcemanager.GetString("Generalization");
             txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("ItemMovements");
+            txt_supplyingItemButton.Text = AppSettings.resourcemanager.GetString("ExtraInformation");
+
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_item.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_item.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_item.Columns[0].Header = AppSettings.resourcemanager.GetString("ItemNumber");
+            dg_item.Columns[1].Header = AppSettings.resourcemanager.GetString("SupplierNumber");
+            dg_item.Columns[2].Header = AppSettings.resourcemanager.GetString("trName");
+            dg_item.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_item.Columns[4].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_item.Columns[5].Header = AppSettings.resourcemanager.GetString("Cost");
+            dg_item.Columns[6].Header = AppSettings.resourcemanager.GetString("Category");
+
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
