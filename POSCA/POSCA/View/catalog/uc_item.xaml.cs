@@ -217,7 +217,7 @@ namespace POSCA.View.catalog
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                            Clear();
+                          //  Clear();
                             await Search();
                         }
                     }
@@ -250,24 +250,41 @@ namespace POSCA.View.catalog
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-
-                            item.Name = tb_Name.Text;
-                           
-
-                            item.Notes = tb_Notes.Text;
-                            item.UpdateUserId = MainWindow.userLogin.userId;
-                            /*
-                            FillCombo.itemList = await item.save(item);
-                            if (FillCombo.itemList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
+                            if (!tb_Factor.Text.Equals("0"))
                             {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                                item.Name = tb_Name.Text;
+                                item.ShortName = tb_ShortName.Text;
+                                item.EngName = tb_EngName.Text;
+                                item.CategoryId = (long)cb_CategoryId.SelectedValue;
+                                item.CountryId = (long)cb_CountryId.SelectedValue;
 
-                                await Search();
+                                if (cb_BrandId.SelectedIndex > 0)
+                                    item.BrandId = (int)cb_BrandId.SelectedValue;
 
+                                item.SupId = (long)cb_SupId.SelectedValue;
+                                item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
+                                item.Factor = int.Parse(tb_Factor.Text);
+                                if (tb_CommitteeNo.Text != "")
+                                    item.CommitteeNo = int.Parse(tb_CommitteeNo.Text);
+                                if (tgl_IsWeight.IsChecked == true)
+                                    item.IsWeight = true;
+                                if (tgl_IsSpecialOffer.IsChecked == true)
+                                    item.IsSpecialOffer = true;
+                                item.Notes = tb_Notes.Text;
+                                item.CreateUserId = MainWindow.userLogin.userId;
+
+                                FillCombo.itemList = await item.save(item);
+                                if (FillCombo.itemList == null)
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                                else
+                                {
+                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                                    //Clear();
+                                    await Search();
+                                }
                             }
-                            */
+                            else
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
                         }
                     }
                     else

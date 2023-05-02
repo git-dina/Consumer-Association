@@ -5265,7 +5265,7 @@
     <value>هامش الربح...</value>
   </data>
   <data name="WholeSalePercentageHint" xml:space="preserve">
-    <value>نسبة بيع الجملة...</value>
+    <value>هامش ربح الجملة...</value>
   </data>
   <data name="external" xml:space="preserve">
     <value>خارجي</value>

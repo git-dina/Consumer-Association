@@ -15364,7 +15364,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Whole Sale Percentage....
+        ///   Looks up a localized string similar to Whole Sale Profit Percentage....
         /// </summary>
         internal static string WholeSalePercentageHint {
             get {

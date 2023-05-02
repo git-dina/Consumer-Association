@@ -126,7 +126,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=ItemId}"/>
+                                <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=Code}"/>
                                 <DataGridTextColumn Width="*"  Header="SupId" Binding="{Binding Path=SupId}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
                                 <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor}"/>

@@ -5011,7 +5011,7 @@ Main Documents</value>
     <value>Profit Percentage...</value>
   </data>
   <data name="WholeSalePercentageHint" xml:space="preserve">
-    <value>Whole Sale Percentage...</value>
+    <value>Whole Sale Profit Percentage...</value>
   </data>
   <data name="external" xml:space="preserve">
     <value>external</value>
