@@ -597,6 +597,40 @@ namespace POSCA.View.windows
             }
         }
 
-        
+        private void Cb_barcodeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var cmb = sender as ComboBox;
+                if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
+                {
+                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                    string barcodeTypeValue = (string)cmb.SelectedValue;
+                    var _barcodeType = (keyValueString)cmb.SelectedItem;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Cb_unit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var cmb = sender as ComboBox;
+                if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
+                {
+                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                    int unitId = (int)cmb.SelectedValue;
+                    var _unit = (Unit)cmb.SelectedItem;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }

@@ -95,16 +95,32 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridComboBoxColumn Width="4*"  Header="unit"
-                                                            x:Name="cb_unit" 
-                                        SelectedValueBinding="{Binding UnitId, Mode=TwoWay}"  
-                                                            />
+                            <DataGridTemplateColumn  Width="4*" Header="unit"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding ElementName=cb_unit, Path=ItemsSource}"  
+                                                  SelectedValue="{Binding UnitId, Mode=TwoWay}"
+                                                  DisplayMemberPath="Name"
+                                                  SelectedValuePath="UnitId" 
+                                                  SelectionChanged="Cb_unit_SelectionChanged"
+                                              />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                             <DataGridTextColumn Width="5*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
-                            <DataGridComboBoxColumn Width="4*"  Header="BarcodeType"
-                                                            x:Name="cb_barcodeType" 
-                                        SelectedValueBinding="{Binding BarcodeType, Mode=TwoWay}"  
-                                                            />
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay}"/>
+                            <DataGridTemplateColumn  Width="4*" Header="BarcodeType"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding ElementName=cb_barcodeType, Path=ItemsSource}"  
+                                                  SelectedValue="{Binding BarcodeType, Mode=TwoWay}"
+                                                  DisplayMemberPath="value"
+                                                  SelectedValuePath="key"
+                                                  SelectionChanged="Cb_barcodeType_SelectionChanged"
+                                              />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Width="3*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=SalePrice, Mode=OneWay}"/>
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
@@ -127,6 +143,14 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
+                            <DataGridComboBoxColumn Width="4*"  Header="unit"
+                                                            x:Name="cb_unit" 
+                                        SelectedValueBinding="{Binding UnitId, Mode=TwoWay}"  
+                                                           Visibility="Collapsed" />
+                            <DataGridComboBoxColumn Width="4*"  Header="BarcodeType"
+                                                            x:Name="cb_barcodeType" 
+                                        SelectedValueBinding="{Binding BarcodeType, Mode=TwoWay}"  
+                                                     Visibility="Collapsed"       />
                         </DataGrid.Columns>
                     </DataGrid>
 
