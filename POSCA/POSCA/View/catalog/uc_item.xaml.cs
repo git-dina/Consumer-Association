@@ -634,7 +634,30 @@ namespace POSCA.View.catalog
 
         private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_itemAllowedOperations w = new wd_itemAllowedOperations();
 
+                //w.ItemGeneralizations = item.ItemGeneralizations;
+
+                w.ShowDialog();
+                if (w.isOk)
+                {
+                    //item.ItemGeneralizations = w.ItemGeneralizations;
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_itemGeneralization_Click(object sender, RoutedEventArgs e)
