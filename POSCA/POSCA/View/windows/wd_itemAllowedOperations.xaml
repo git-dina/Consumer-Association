@@ -1,0 +1,147 @@
+﻿<Window x:Class="POSCA.View.windows.wd_itemAllowedOperations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POSCA.View.windows"
+        mc:Ignorable="d" KeyDown="HandleKeyPress"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Margin="0"
+         Height="600" Width="800"  Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown"
+        Loaded="Window_Loaded" Closing="Window_Closing" >
+    <Grid Grid.Column="1" Grid.Row="1"    x:Name="grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid   >
+            <Border  BorderThickness="0" Grid.Row="0" 
+                    CornerRadius="7,7,0,0"  Background="{StaticResource MainColor}">
+                <Grid>
+
+                    <Button   IsCancel="true"  HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" 
+                             BorderBrush="{x:Null}"  Foreground="White" Margin="7.5,0"  x:Name="btn_colse" Click="Btn_colse_Click"
+                             FontWeight="SemiBold" Width="24" Padding="0" ToolTip="Close"  FontSize="14">
+                        <materialDesign:PackIcon Foreground="White" Kind="Close" 
+                                         Width="20" Height="20"/>
+                    </Button>
+                    <Grid  HorizontalAlignment="Center"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Fill="White" Stretch="Fill" Margin="5,0" FlowDirection="LeftToRight"
+                              HorizontalAlignment="Right" Grid.Column="0"  
+                         VerticalAlignment="Center"  Width="20" Height="20"
+                              Data="{StaticResource unlock}"/>
+                        <TextBlock Text="itemAllowedTransaction" x:Name="txt_title" Foreground="White" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="5,0"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Border BorderThickness="1,0,1,1"  Grid.Row="1"
+                    CornerRadius="0,0,7,7" BorderBrush="#999999"  Background="White">
+            <Grid  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <!--<ScrollViewer Background="White"  Grid.Row="0"   VerticalScrollBarVisibility="Auto"   >-->
+                <!--<StackPanel>-->
+                <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="0">
+                    <TextBlock  Text="itemAllowedTransaction"   x:Name="txt_itemAllowedTransaction" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                    <!--<Button  Padding="0"     Width="35" Height="35"
+                                     DockPanel.Dock="Right"
+                                Background="{x:Null}" BorderBrush="{x:Null}" 
+                                     HorizontalAlignment="Right"  VerticalAlignment="Top"
+                                            x:Name="btn_addItemAllowedTransaction" Click="Btn_addItemAllowedTransaction_Click"  
+                               Margin="5,1" IsEnabled="True">
+                        <materialDesign:PackIcon Foreground="{StaticResource SecondColor}" Kind="AddCircle" 
+                                         Width="25" Height="25"/>
+                    </Button>-->
+                    <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
+                </DockPanel>
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <TextBlock x:Name="txt_selectAll" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="selectAll" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                    <ToggleButton x:Name="tgl_selectAll" Grid.Row="0" Grid.Column="1"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10" 
+                                  Checked="tgl_selectAll_Checked"
+                                  Unchecked="tgl_selectAll_Unchecked"/>
+                </StackPanel>
+                <Grid  Grid.Row="2" >
+                    <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
+                            Background="White"/>
+
+                    <DataGrid x:Name="dg_itemAllowedTransaction" 
+                            Margin="10" Grid.Row="1" MaxHeight="430" MinHeight="430"
+                                   CanUserAddRows="False" IsReadOnly="False" 
+                                   CanUserDeleteRows="False"
+                       HeadersVisibility="Column" Background="White"
+                                      AutoGenerateColumns="False" 
+                        ColumnWidth="SizeToHeader"    
+                        AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid}"/>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#BADAEF" />
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                                <Setter Property="Foreground" Value="{StaticResource textColor}"/>
+                                <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Transaction" Binding="{Binding Path=Transaction, Mode=OneWay}"/>
+                            <DataGridTemplateColumn  Header="IsActive"   >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsActive, Mode=TwoWay}" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <!--<DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Margin="-10"   Click="deleteItemAllowedTransactionRowinDatagrid"
+                                            Padding="0" 
+                                            Background="{x:Null}" BorderBrush="{x:Null}">
+                                            <materialDesign:PackIcon Foreground="{StaticResource MainColorRed}" Kind="CancelCircle"  
+                                                                 HorizontalAlignment="Center" Grid.Column="0"  
+                                                                 VerticalAlignment="Center" Width="25" Height="25"/>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+                <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
+                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
+                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+
+                <!--</StackPanel>-->
+                <!--</ScrollViewer>-->
+
+            </Grid>
+
+        </Border>
+
+
+    </Grid>
+</Window>
