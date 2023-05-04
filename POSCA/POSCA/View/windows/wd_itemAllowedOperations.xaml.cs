@@ -47,7 +47,7 @@ namespace POSCA.View.windows
         }
         List<ItemAllowedTransaction> listItemAllowedTransaction = new List<ItemAllowedTransaction>();
 
-        public List<ItemAllowedTransaction> ItemAllowedTransactions { get; set; }
+        public List<ItemAllowedTransaction> itemAllowedTransactions { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -89,9 +89,10 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            //
-            txt_title.Text = AppSettings.resourcemanager.GetString("Generalization");
-            txt_itemAllowedTransaction.Text = AppSettings.resourcemanager.GetString("Generalization");
+          
+            txt_title.Text = AppSettings.resourcemanager.GetString("ItemTransactions");
+            txt_itemAllowedTransaction.Text = AppSettings.resourcemanager.GetString("ItemTransactions");
+            txt_selectAll.Text = AppSettings.resourcemanager.GetString("SelectAll");
 
             //dg_itemAllowedTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("Year");
             //dg_itemAllowedTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("GeneralizationNumber");
@@ -99,12 +100,35 @@ namespace POSCA.View.windows
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
         }
-
-
         private void setItemAllowedTransactionData()
         {
-            dg_itemAllowedTransaction.ItemsSource = ItemAllowedTransactions;
+            if (FillCombo.itemTransactionsList == null)
+                FillCombo.RefreshItemTransactionsList();
+
+            foreach(var row in FillCombo.itemTransactionsList)
+            {
+                var isAllowed = false;
+                if (itemAllowedTransactions != null)
+                {
+                    var selected = itemAllowedTransactions.Where(x => x.Transaction == row.key).FirstOrDefault();
+
+                    if (selected != null)
+                        isAllowed = true;
+                }
+                listItemAllowedTransaction.Add(new ItemAllowedTransaction()
+                {
+                    Transaction = row.key,
+                    TransactionText = row.value,
+                    IsAllowed = isAllowed,
+                });
+
+            }
+            dg_itemAllowedTransaction.ItemsSource = listItemAllowedTransaction;
+
         }
+
+
+
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -230,7 +254,14 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
-                ItemAllowedTransactions = (List<ItemAllowedTransaction>)dg_itemAllowedTransaction.ItemsSource;
+                listItemAllowedTransaction = (List<ItemAllowedTransaction>)dg_itemAllowedTransaction.ItemsSource;
+
+                itemAllowedTransactions = new List<ItemAllowedTransaction>();
+                foreach(var row in listItemAllowedTransaction)
+                {
+                    if (row.IsAllowed)
+                        itemAllowedTransactions.Add(row);
+                }
 
                 isOk = true;
                 this.Close();

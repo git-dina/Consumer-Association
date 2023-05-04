@@ -430,7 +430,7 @@ namespace POSCA.Classes
 
         static public void fillItemRecieptType(ComboBox combo)
         {
-            if (itemStatusList is null)
+            if (itemRecieptTypeList is null)
                 RefreshItemRecieptType();
 
             combo.ItemsSource = itemRecieptTypeList;

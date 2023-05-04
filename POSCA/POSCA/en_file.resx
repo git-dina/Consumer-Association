@@ -5286,4 +5286,10 @@ Main Documents</value>
   <data name="PackageWeightHint" xml:space="preserve">
     <value>Package Weight...</value>
   </data>
+  <data name="ItemTransactions" xml:space="preserve">
+    <value>Item Transactions</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
 </root>

@@ -293,65 +293,41 @@ namespace POSCA.View.sectionData
         {//delete
             try
             {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
+              
+               // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (supplier.supplierId != 0)
+                    if (supplier.SupId != 0)
                     {
-                        if ((!supplier.canDelete) && (supplier.isActive == 0))
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxActivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
+                        #region
+                        Window.GetWindow(this).Opacity = 0.2;
+                        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                        w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
 
-                            if (w.isOk)
-                                await activate();
-                        }
-                        else
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            if (supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-                            if (!supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDeactivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
+                        w.ShowDialog();
+                        Window.GetWindow(this).Opacity = 1;
+                        #endregion
 
-                            if (w.isOk)
+                        if (w.isOk)
+                        {
+                            FillCombo.suppliersList = await supplier.delete(supplier.SupId, MainWindow.userLogin.userId);
+                            if (FillCombo.suppliersList == null)
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                            else
                             {
-                                string popupContent = "";
-                                if (supplier.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
-                                if ((!supplier.canDelete) && (supplier.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
+                                supplier.SupId = 0;
+                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
-                                var s = await supplier.delete(supplier.supplierId, MainWindow.userLogin.userId, supplier.canDelete);
-                                if (s < 0)
-                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                                else
-                                {
-                                    supplier.supplierId = 0;
-                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                    await RefreshCustomersList();
-                                    await Search();
-                                    Clear();
-                                    FillCombo.suppliersList = suppliers.ToList();
-                                }
+                                await Search();
+                                Clear();
                             }
                         }
                     }
                     HelpClass.EndAwait(grid_main);
                 }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+          
             }
             catch (Exception ex)
             {

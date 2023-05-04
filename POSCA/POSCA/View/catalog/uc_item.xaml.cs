@@ -640,12 +640,12 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemAllowedOperations w = new wd_itemAllowedOperations();
 
-                //w.ItemGeneralizations = item.ItemGeneralizations;
+                w.itemAllowedTransactions = item.ItemAllowedTransactions;
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                    //item.ItemGeneralizations = w.ItemGeneralizations;
+                    item.ItemAllowedTransactions = w.itemAllowedTransactions;
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -778,6 +778,7 @@ namespace POSCA.View.catalog
         {
             try
             {
+                tb_Factor.Text = "";
                 if (cb_UnitId.SelectedIndex > -1)
                 {
                     item.UnitId = (long)cb_UnitId.SelectedValue;

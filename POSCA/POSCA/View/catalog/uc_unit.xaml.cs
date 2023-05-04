@@ -330,11 +330,10 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Dg_unit_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private  void Dg_unit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
                 //selection
 
                 if (dg_unit.SelectedIndex != -1)
@@ -344,11 +343,9 @@ namespace POSCA.View.catalog
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 
-                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }

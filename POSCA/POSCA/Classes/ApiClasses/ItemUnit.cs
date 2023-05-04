@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +10,7 @@ namespace POSCA.Classes
 {
     public class ItemUnit
     {
+        #region Attributes
         public long ItemUnitId { get; set; }
         public Nullable<long> ItemId { get; set; }
         public Nullable<long> UnitId { get; set; }
@@ -22,5 +25,7 @@ namespace POSCA.Classes
         public Nullable<long> UpdateUserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+        #endregion
+
     }
 }

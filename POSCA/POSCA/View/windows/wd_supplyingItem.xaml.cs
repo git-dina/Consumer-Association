@@ -81,6 +81,7 @@ namespace POSCA.View.windows
                 FillCombo.fillItemTransTypes(cb_ItemTransactionType);
                 await FillCombo.fillUnits(cb_PackageUnit);
 
+                setSupplyingItemData();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -110,6 +111,19 @@ namespace POSCA.View.windows
 
         }
 
+        private void setSupplyingItemData()
+        {
+            cb_ItemReceiptType.SelectedValue = itemRecieptType;
+            cb_ItemStatus.SelectedValue = itemStatus;
+            cb_ItemType.SelectedValue = itemType;
+            if (itemTransactionType == null || itemTransactionType.Equals(""))
+                cb_ItemTransactionType.SelectedValue = "new_committee";
+            else
+                cb_ItemTransactionType.SelectedValue = itemTransactionType;
+
+            cb_PackageUnit.SelectedValue = packageUnit;
+            tb_PackageWeight.Text = packageWeight.ToString();
+        }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -225,13 +239,21 @@ namespace POSCA.View.windows
         }
 
         #endregion
-        private async void Btn_save_Click(object sender, RoutedEventArgs e)
+        private  void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
 
                 HelpClass.StartAwait(grid_main);
 
+                itemRecieptType = cb_ItemReceiptType.SelectedValue.ToString();
+                itemStatus = cb_ItemStatus.SelectedValue.ToString();
+                itemType = cb_ItemType.SelectedValue.ToString();
+                itemTransactionType = cb_ItemTransactionType.SelectedValue.ToString();
+                if (!tb_PackageWeight.Text.Equals(""))
+                    packageWeight = int.Parse(tb_PackageWeight.Text);
+                if(cb_PackageUnit.SelectedIndex != -1)
+                    packageUnit = int.Parse(cb_PackageUnit.SelectedValue.ToString());
                
 
                 isOk = true;

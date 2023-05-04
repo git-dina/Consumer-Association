@@ -1465,6 +1465,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Transactions.
+        /// </summary>
+        internal static string ItemTransactions {
+            get {
+                return ResourceManager.GetString("ItemTransactions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Transaction Type....
         /// </summary>
         internal static string ItemTransactionTypeHint {
@@ -2533,6 +2542,15 @@ namespace POSCA {
         internal static string SectorNum {
             get {
                 return ResourceManager.GetString("SectorNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select All.
+        /// </summary>
+        internal static string SelectAll {
+            get {
+                return ResourceManager.GetString("SelectAll", resourceCulture);
             }
         }
         

@@ -151,5 +151,10 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+
+        //extra
+        public bool IsAllowed { get; set; }
+        public string TransactionText { get; set; }
+
     }
 }

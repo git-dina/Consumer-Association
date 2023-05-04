@@ -106,11 +106,11 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Transaction" Binding="{Binding Path=Transaction, Mode=OneWay}"/>
+                            <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Transaction" Binding="{Binding Path=TransactionText, Mode=OneWay}"/>
                             <DataGridTemplateColumn  Header="IsActive"   >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsActive, Mode=TwoWay}" />
+                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsAllowed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
