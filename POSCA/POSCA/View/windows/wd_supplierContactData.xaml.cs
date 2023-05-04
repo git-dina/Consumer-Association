@@ -317,65 +317,7 @@ namespace POSCA.View.windows
         {//delete
             try
             {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    if (supplier.supplierId != 0)
-                    {
-                        if ((!supplier.canDelete) && (supplier.isActive == 0))
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxActivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
 
-                            if (w.isOk)
-                                await activate();
-                        }
-                        else
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            if (supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-                            if (!supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDeactivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
-
-                            if (w.isOk)
-                            {
-                                string popupContent = "";
-                                if (supplier.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
-                                if ((!supplier.canDelete) && (supplier.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
-
-                                var s = await supplier.delete(supplier.supplierId, MainWindow.userLogin.userId, supplier.canDelete);
-                                if (s < 0)
-                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                                else
-                                {
-                                    supplier.supplierId = 0;
-                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                    await RefreshCustomersList();
-                                    await Search();
-                                    Clear();
-                                    FillCombo.suppliersList = suppliers.ToList();
-                                }
-                            }
-                        }
-                    }
-                    HelpClass.EndAwait(grid_main);
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
             }
             catch (Exception ex)
             {
@@ -389,40 +331,7 @@ namespace POSCA.View.windows
             try
             {
                 HelpClass.StartAwait(grid_main);
-                //selection
-                /*
-                if (dg_supplier.SelectedIndex != -1)
-                {
-                    supplier = dg_supplier.SelectedItem as Supplier;
-                    this.DataContext = supplier;
-                    if (supplier != null)
-                    {
-                        #region image
-                        bool isModified = HelpClass.chkImgChng(supplier.image, (DateTime)supplier.updateDate, Global.TMPSuppliersFolder);
-                        if (isModified)
-                            getImg();
-                        else
-                            HelpClass.getLocalImg("Supplier", supplier.image, btn_image);
-                        #endregion
-                        //getImg();
-                        #region delete
-                        if (supplier.canDelete)
-                            btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
-                        else
-                        {
-                            if (supplier.isActive == 0)
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
-                            else
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
-                        }
-                        #endregion
-                        HelpClass.getMobile(supplier.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(supplier.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(supplier.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
-                    }
-                }
-                HelpClass.clearValidate(requiredControlList, this);
-                */
+                
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
