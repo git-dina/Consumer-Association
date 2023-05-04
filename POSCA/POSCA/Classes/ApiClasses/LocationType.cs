@@ -13,6 +13,7 @@ namespace POSCA.Classes.ApiClasses
         #region attributes
         public int LocationTypeId { get; set; }
         public string Name { get; set; }
+        public string Notes { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
