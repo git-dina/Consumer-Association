@@ -307,5 +307,29 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
+
+        private void Tb_GeneralizationNo_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                Convert.ToInt32(e.Text);
+            }
+            catch
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Tb_GeneralizationYear_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            try
+            {
+                Convert.ToInt32(e.Text);
+            }
+            catch
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

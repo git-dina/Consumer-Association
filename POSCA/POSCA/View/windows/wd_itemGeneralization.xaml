@@ -94,8 +94,32 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="*"  Header="GeneralizationYear" Binding="{Binding Path=GeneralizationYear, Mode=TwoWay}"/>
-                            <DataGridTextColumn Width="*"  Header="GeneralizationNo" Binding="{Binding Path=GeneralizationNo, Mode=TwoWay}"/>
+                            <!--<DataGridTextColumn Width="*"  Header="GeneralizationYear" Binding="{Binding Path=GeneralizationYear, Mode=TwoWay}"/>-->
+                            <DataGridTemplateColumn Header="GeneralizationYear" Width="*" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox  Text="{Binding Path=GeneralizationYear, Mode=TwoWay}"
+                                                 PreviewTextInput="Tb_GeneralizationYear_PreviewTextInput" 
+                                                  MaxLength="4"
+                                                  BorderThickness="0"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <!--<DataGridTextColumn Width="*"  Header="GeneralizationNo" Binding="{Binding Path=GeneralizationNo, Mode=TwoWay}"/>-->
+                            <DataGridTemplateColumn Header="GeneralizationNo" Width="*" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox  Text="{Binding Path=GeneralizationNo, Mode=TwoWay}"
+                                                 PreviewTextInput="Tb_GeneralizationNo_PreviewTextInput" 
+                                                  BorderThickness="0"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+
                             <DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
