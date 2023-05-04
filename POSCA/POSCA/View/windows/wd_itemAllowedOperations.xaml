@@ -85,10 +85,11 @@
                             Background="White"/>
 
                     <DataGrid x:Name="dg_itemAllowedTransaction" 
-                            Margin="10" Grid.Row="1" MaxHeight="430" MinHeight="430"
+                            Margin="10" Grid.Row="1" 
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
-                       HeadersVisibility="Column" Background="White"
+                              HeadersVisibility="None"
+                        Background="White"
                                       AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
