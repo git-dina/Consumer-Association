@@ -185,7 +185,7 @@ namespace POSCA.View.catalog
                 //{
                 HelpClass.StartAwait(grid_main);
 
-                item = new Item();
+                item.ItemId = 0;
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
                     if (!tb_Factor.Text.Equals("0"))
@@ -218,7 +218,7 @@ namespace POSCA.View.catalog
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                          //  Clear();
+                             Clear();
                             await Search();
                         }
                     }
@@ -281,7 +281,7 @@ namespace POSCA.View.catalog
                                 else
                                 {
                                     Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                                    //Clear();
+                                    Clear();
                                     await Search();
                                 }
                             }
@@ -397,7 +397,15 @@ namespace POSCA.View.catalog
                 {
                     item = dg_item.SelectedItem as Item;
                     this.DataContext = item;
-
+                    tb_Factor.Text = item.Factor.ToString();
+                    tb_ShortName.Text = item.ShortName;
+                    tb_ConsumerProfitPerc.Text = item.ConsumerProfitPerc.ToString();
+                    tb_MainPrice.Text = item.MainPrice.ToString();
+                    tb_ConsumerDiscPerc.Text = item.ConsumerDiscPerc.ToString();
+                    tb_Cost.Text = item.Cost.ToString();
+                    tb_Price.Text = item.Price.ToString();
+                    tb_WholesaleProfitPerc.Text = item.WholesaleProfitPerc.ToString();
+                    tb_WholesalePrice.Text = item.WholesalePrice.ToString();
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 
@@ -474,6 +482,10 @@ namespace POSCA.View.catalog
         {
             this.DataContext = new Item();
             tb_ShortName.Clear();
+            tb_Factor.Text = "";
+            tb_ConsumerProfitPerc.Text = "0";
+            tb_ConsumerDiscPerc.Text = "0";
+            tb_WholesaleProfitPerc.Text = "0";
             nameFirstChange = true;
             dg_item.SelectedIndex = -1;
 
@@ -599,7 +611,7 @@ namespace POSCA.View.catalog
 
         }
 
-        private void Btn_supplyingItemButton_Click(object sender, RoutedEventArgs e)
+        private async void Btn_supplyingItemButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -617,7 +629,22 @@ namespace POSCA.View.catalog
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                  
+                    item.ItemStatus = w.itemStatus;
+                    item.ItemReceiptType = w.itemRecieptType;
+                    item.ItemType = w.itemType;
+                    item.ItemTransactionType = w.itemTransactionType;
+
+                    item.PackageWeight = w.packageWeight;
+                    item.PackageUnit = w.packageUnit;
+                    if(item.ItemId != 0)
+                    {
+                        FillCombo.itemList = await item.save(item);
+                        await Search();
+                        if (dg_item.SelectedIndex != -1)
+                        {
+                            item = dg_item.SelectedItem as Item;
+                        }
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -632,7 +659,7 @@ namespace POSCA.View.catalog
             }
         }
 
-        private void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
+        private async void Btn_allowedOperations_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -646,6 +673,16 @@ namespace POSCA.View.catalog
                 if (w.isOk)
                 {
                     item.ItemAllowedTransactions = w.itemAllowedTransactions;
+
+                    if (item.ItemId != 0)
+                    {
+                        FillCombo.itemList = await item.save(item);
+                        await Search();
+                        if (dg_item.SelectedIndex != -1)
+                        {
+                            item = dg_item.SelectedItem as Item;
+                        }
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -660,7 +697,7 @@ namespace POSCA.View.catalog
             }
         }
 
-        private void Btn_itemGeneralization_Click(object sender, RoutedEventArgs e)
+        private async void Btn_itemGeneralization_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -674,6 +711,16 @@ namespace POSCA.View.catalog
                 if (w.isOk)
                 {
                     item.ItemGeneralizations = w.ItemGeneralizations;
+
+                    if (item.ItemId != 0)
+                    {
+                        FillCombo.itemList = await item.save(item);
+                        await Search();
+                        if (dg_item.SelectedIndex != -1)
+                        {
+                            item = dg_item.SelectedItem as Item;
+                        }
+                    }
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -688,7 +735,7 @@ namespace POSCA.View.catalog
             }
         }
 
-        private void Btn_units_Click(object sender, RoutedEventArgs e)
+        private async void Btn_units_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -717,6 +764,16 @@ namespace POSCA.View.catalog
                     if (w.isOk)
                     {
                         item = w.item;
+
+                        if (item.ItemId != 0)
+                        {
+                            FillCombo.itemList = await item.save(item);
+                            await Search();
+                            if (dg_item.SelectedIndex != -1)
+                            {
+                                item = dg_item.SelectedItem as Item;
+                            }
+                        }
                     }
                     Window.GetWindow(this).Opacity = 1;
 
@@ -778,6 +835,7 @@ namespace POSCA.View.catalog
         {
             try
             {
+
                 tb_Factor.Text = "";
                 if (cb_UnitId.SelectedIndex > -1)
                 {
@@ -807,15 +865,16 @@ namespace POSCA.View.catalog
         {
             try
             {
-
                 category = FillCombo.categoryList.Where(x => x.CategoryId == (long)cb_CategoryId.SelectedValue).FirstOrDefault();
 
                 tb_ConsumerProfitPerc.Text = category.ProfitPercentage.ToString();
                 tb_ConsumerDiscPerc.Text = category.DiscountPercentage.ToString();
-                tb_WholesaleProfitPerc.Text=category.WholesalePercentage.ToString();
+                tb_WholesaleProfitPerc.Text = category.WholesalePercentage.ToString();
                 item.ConsumerProfitPerc = category.ProfitPercentage;
                 item.ConsumerDiscPerc = category.DiscountPercentage;
+                item.WholesaleProfitPerc = category.WholesalePercentage;
                 calculatePeicePrice();
+             
             }
             catch (Exception ex)
             {
@@ -827,10 +886,11 @@ namespace POSCA.View.catalog
         {
             try
             {
-
-                ValidateEmpty_TextChange(sender, e);
-                calculatePeicePrice();
-
+                if (tb_Factor.IsFocused)
+                {
+                    ValidateEmpty_TextChange(sender, e);
+                    calculatePeicePrice();
+                }
             }
             catch (Exception ex)
             {
@@ -841,8 +901,11 @@ namespace POSCA.View.catalog
         {
             try
             {
-                ValidateEmpty_TextChange(sender, e);
-                calculatePeicePrice();
+                if (tb_MainCost.IsFocused)
+                {
+                    ValidateEmpty_TextChange(sender, e);
+                    calculatePeicePrice();
+                }
             }
             catch (Exception ex)
             {
