@@ -546,5 +546,83 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+
+        #region LocationType
+        static public LocationType locationType = new LocationType();
+        static public List<LocationType> locationTypeList;
+
+        static public async Task<IEnumerable<LocationType>> RefreshLocationTypes()
+        {
+            locationTypeList = await locationType.get(true);
+
+            return locationTypeList;
+        }
+
+        static public async Task fillLocationTypes(ComboBox combo)
+        {
+            if (locationTypeList is null)
+                await RefreshLocationTypes();
+
+            combo.ItemsSource = locationTypeList;
+            combo.SelectedValuePath = "LocationTypeId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillLocationTypesWithDefault(ComboBox combo)
+        {
+            if (locationTypeList is null)
+                await RefreshLocationTypes();
+
+            var lst = locationTypeList.ToList();
+            LocationType sup = new LocationType();
+            sup.Name = "-";
+            sup.LocationTypeId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "LocationTypeId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+
+        #region Location
+        static public Location location = new Location();
+        static public List<Location> locationList;
+
+        static public async Task<IEnumerable<Location>> RefreshLocations()
+        {
+            locationList = await location.get(true);
+
+            return locationList;
+        }
+
+        static public async Task fillLocations(ComboBox combo)
+        {
+            if (locationList is null)
+                await RefreshLocations();
+
+            combo.ItemsSource = locationList;
+            combo.SelectedValuePath = "LocationId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillLocationsWithDefault(ComboBox combo)
+        {
+            if (locationList is null)
+                await RefreshLocations();
+
+            var lst = locationList.ToList();
+            Location sup = new Location();
+            sup.Name = "-";
+            sup.LocationId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "LocationId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
     }
 }
