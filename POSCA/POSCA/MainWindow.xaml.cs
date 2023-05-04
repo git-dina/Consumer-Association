@@ -79,14 +79,14 @@ namespace POSCA
                 {
                     AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
-                    txt_lang.Text = "EN";
+                    txt_lang.Text = "AR";
 
                 }
                 else
                 {
                     AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
-                    txt_lang.Text = "AR";
+                    txt_lang.Text = "EN";
 
                 }
                 translate();
