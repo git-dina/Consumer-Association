@@ -145,6 +145,7 @@
     <Compile Include="Classes\ApiClasses\Country.cs" />
     <Compile Include="Classes\ApiClasses\Category.cs" />
     <Compile Include="Classes\ApiClasses\Item.cs" />
+    <Compile Include="Classes\ApiClasses\ItemLocation.cs" />
     <Compile Include="Classes\ApiClasses\ItemUnit.cs" />
     <Compile Include="Classes\ApiClasses\Location.cs" />
     <Compile Include="Classes\ApiClasses\LocationType.cs" />
@@ -169,6 +170,12 @@
     </Compile>
     <Compile Include="View\catalog\uc_unit.xaml.cs">
       <DependentUpon>uc_unit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\locations\uc_locationsData.xaml.cs">
+      <DependentUpon>uc_locationsData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\locations\uc_locationType.xaml.cs">
+      <DependentUpon>uc_locationType.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\sectionData\uc_bank.xaml.cs">
       <DependentUpon>uc_bank.xaml</DependentUpon>
@@ -254,6 +261,14 @@
     <Page Include="View\catalog\uc_unit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\locations\uc_locationsData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\locations\uc_locationType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\sectionData\uc_bank.xaml">
       <SubType>Designer</SubType>
@@ -348,6 +363,7 @@
     <EmbeddedResource Include="en_file.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>en_file.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -45,9 +45,8 @@ namespace POSCA.View.windows
             isOk = false;
             this.Close();
         }
-        List<ItemGeneralization> listItemGeneralization = new List<ItemGeneralization>();
 
-        public List<ItemGeneralization> ItemGeneralizations { get; set; }
+        public List<ItemGeneralization> itemGeneralizations { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -89,7 +88,7 @@ namespace POSCA.View.windows
         }
 
 
-        private void translate()
+        private void translate() 
         {
             //
             txt_title.Text = AppSettings.resourcemanager.GetString("Generalization");
@@ -105,7 +104,7 @@ namespace POSCA.View.windows
        
         private void setItemGeneralizationData()
         {
-            dg_itemGeneralization.ItemsSource = ItemGeneralizations;
+            dg_itemGeneralization.ItemsSource = itemGeneralizations;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
@@ -232,7 +231,7 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
-                ItemGeneralizations = (List<ItemGeneralization>)dg_itemGeneralization.ItemsSource;
+                itemGeneralizations = (List<ItemGeneralization>)dg_itemGeneralization.ItemsSource;
 
                 isOk = true;
                 this.Close();
@@ -252,7 +251,7 @@ namespace POSCA.View.windows
             {
                 btn_addItemGeneralization.IsEnabled = false;
                 dg_itemGeneralization.IsEnabled = false;
-                listItemGeneralization.Add(new ItemGeneralization());
+                itemGeneralizations.Add(new ItemGeneralization());
                 RefreshItemGeneralizationDataGrid();
             }
             catch (Exception ex)
@@ -275,7 +274,7 @@ namespace POSCA.View.windows
                         btn_addItemGeneralization.IsEnabled = false;
                         dg_itemGeneralization.IsEnabled = false;
                         ItemGeneralization row = (ItemGeneralization)dg_itemGeneralization.SelectedItems[0];
-                        listItemGeneralization.Remove(row);
+                        itemGeneralizations.Remove(row);
                         RefreshItemGeneralizationDataGrid();
                     }
 
@@ -294,7 +293,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_itemGeneralization.CancelEdit();
-                dg_itemGeneralization.ItemsSource = listItemGeneralization;
+                dg_itemGeneralization.ItemsSource = itemGeneralizations;
                 dg_itemGeneralization.Items.Refresh();
 
                 dg_itemGeneralization.IsEnabled = true;
