@@ -1528,6 +1528,51 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location No....
+        /// </summary>
+        internal static string LocationNumHint {
+            get {
+                return ResourceManager.GetString("LocationNumHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations.
+        /// </summary>
+        internal static string Locations {
+            get {
+                return ResourceManager.GetString("Locations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations Data.
+        /// </summary>
+        internal static string LocationsData {
+            get {
+                return ResourceManager.GetString("LocationsData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locations Type.
+        /// </summary>
+        internal static string LocationsType {
+            get {
+                return ResourceManager.GetString("LocationsType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location Type....
+        /// </summary>
+        internal static string LocationTypeHint {
+            get {
+                return ResourceManager.GetString("LocationTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are logged out because you haven&apos;t done any process for 15 minutes.
         /// </summary>
         internal static string LoggedOutBecauseDidNotDoneAnyProcess {

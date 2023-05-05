@@ -126,7 +126,7 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
-                                <DataGridTextColumn Width="*"  Header="LocationType" Binding="{Binding Path=LocationType}"/>
+                                <DataGridTextColumn Width="*"  Header="LocationType" Binding="{Binding Path=LocationTypeName}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -323,7 +323,23 @@
                                 </Path>
                             </Grid>
                         </Border>
-
+                        <Border  Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_LocationNumber"  Text="{Binding LocationNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Location No..."  
+                                     Foreground="#4E4E4E"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_LocationNumber" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -373,7 +389,7 @@
                         </Border>
                         <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <TextBox  x:Name="tb_address" Text="{Binding address, Mode=OneWay}"
+                                <TextBox  x:Name="tb_address" Text="{Binding Address, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"

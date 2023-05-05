@@ -73,7 +73,7 @@ namespace POSCA.View.locations
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name", "LocationTypeId" };
+                requiredControlList = new List<string> { "LocationNumber", "Name", "LocationTypeId" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -121,10 +121,14 @@ namespace POSCA.View.locations
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("NameHint"));
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_LocationNumber, AppSettings.resourcemanager.GetString("LocationNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationTypeId, AppSettings.resourcemanager.GetString("LocationTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
+           
+            txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -157,16 +161,19 @@ namespace POSCA.View.locations
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         location.Name = tb_Name.Text;
-                        location.Name = tb_Name.Text;
+                        location.LocationNumber = tb_LocationNumber.Text;
 
-                      
+                        if (tgl_IsBlocked.IsChecked == true)
+                            location.IsBlocked = true;
+                        else
+                            location.IsBlocked = false;
 
                         if (cb_LocationTypeId.SelectedIndex >= 0)
                             location.LocationTypeId = (int)cb_LocationTypeId.SelectedValue;
                      
 
                         location.Address = tb_address.Text;
-
+                        location.Notes = tb_Notes.Text;
                         location.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.locationsList = await location.save(location);
@@ -207,11 +214,19 @@ namespace POSCA.View.locations
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         location.Name = tb_Name.Text;
+                        location.LocationNumber = tb_LocationNumber.Text;
+
+                        if (tgl_IsBlocked.IsChecked == true)
+                            location.IsBlocked = true;
+                        else
+                            location.IsBlocked = false;
 
                         if (cb_LocationTypeId.SelectedIndex >= 0)
                             location.LocationTypeId = (int)cb_LocationTypeId.SelectedValue;
 
+
                         location.Address = tb_address.Text;
+                        location.Notes = tb_Notes.Text;
                         location.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.locationsList = await location.save(location);

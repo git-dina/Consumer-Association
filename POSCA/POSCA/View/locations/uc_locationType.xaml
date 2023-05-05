@@ -127,7 +127,7 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
-                                <DataGridTextColumn Width="*"  Header="Notes" Binding="{Binding Path=Notes}"/>
+                                <!--<DataGridTextColumn Width="*"  Header="Notes" Binding="{Binding Path=Notes}"/>-->
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -327,7 +327,7 @@
                             </Grid>
                         </Border>
 
-                        <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -338,7 +338,7 @@
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                             </Grid>
-                        </Border>
+                        </Border>-->
 
 
                         <!--</Grid>-->

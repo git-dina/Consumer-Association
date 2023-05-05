@@ -5546,4 +5546,19 @@
   <data name="SelectAll" xml:space="preserve">
     <value>تحديد الكل</value>
   </data>
+  <data name="LocationNumHint" xml:space="preserve">
+    <value>رقم الفرع...</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>المواقع</value>
+  </data>
+  <data name="LocationsData" xml:space="preserve">
+    <value>بيانات المواقع</value>
+  </data>
+  <data name="LocationsType" xml:space="preserve">
+    <value>أنواع المواقع</value>
+  </data>
+  <data name="LocationTypeHint" xml:space="preserve">
+    <value>نوع الموقع...</value>
+  </data>
 </root>

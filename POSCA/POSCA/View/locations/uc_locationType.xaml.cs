@@ -112,13 +112,13 @@ namespace POSCA.View.locations
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+           // MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             dg_locationType.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_locationType.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            //dg_locationType.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -146,7 +146,7 @@ namespace POSCA.View.locations
                     {
 
                         locationType.Name = tb_Name.Text;
-                        locationType.Notes = tb_Notes.Text;
+                        //locationType.Notes = tb_Notes.Text;
                         locationType.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.locationTypeList = await locationType.save(locationType);
@@ -185,7 +185,7 @@ namespace POSCA.View.locations
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             locationType.Name = tb_Name.Text;
-                            locationType.Notes = tb_Notes.Text;
+                            //locationType.Notes = tb_Notes.Text;
                             locationType.UpdateUserId = MainWindow.userLogin.userId;
 
                             FillCombo.locationTypeList = await locationType.save(locationType);

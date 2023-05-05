@@ -5292,4 +5292,19 @@ Main Documents</value>
   <data name="SelectAll" xml:space="preserve">
     <value>Select All</value>
   </data>
+  <data name="LocationNumHint" xml:space="preserve">
+    <value>Location No...</value>
+  </data>
+  <data name="Locations" xml:space="preserve">
+    <value>Locations</value>
+  </data>
+  <data name="LocationsData" xml:space="preserve">
+    <value>Locations Data</value>
+  </data>
+  <data name="LocationsType" xml:space="preserve">
+    <value>Locations Type</value>
+  </data>
+  <data name="LocationTypeHint" xml:space="preserve">
+    <value>Location Type...</value>
+  </data>
 </root>

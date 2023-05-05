@@ -372,6 +372,10 @@ namespace POSCA
             txt_country.Text = AppSettings.resourcemanager.GetString("Countries");
             txt_brand.Text = AppSettings.resourcemanager.GetString("Brands");
 
+            txt_locations.Text = AppSettings.resourcemanager.GetString("Locations");
+            txt_locationsData.Text = AppSettings.resourcemanager.GetString("LocationsData");
+            txt_locationType.Text = AppSettings.resourcemanager.GetString("LocationsType");
+            
             txt_vendors.Text = AppSettings.resourcemanager.GetString("Suppliers");
             txt_vendorsData.Text = AppSettings.resourcemanager.GetString("SuppliersData");
             txt_vendorsGroups.Text = AppSettings.resourcemanager.GetString("SuppliersGroups");
@@ -379,6 +383,7 @@ namespace POSCA
             txt_supportVendors.Text = AppSettings.resourcemanager.GetString("AssistantSuppliers");
             txt_supplierDocType.Text = AppSettings.resourcemanager.GetString("SupplierDocTypes");
 
+          
             /*
             tt_menu.Content = AppSettings.resourcemanager.GetString("trMenu");
             tt_home.Content = AppSettings.resourcemanager.GetString("trHome");

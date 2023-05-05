@@ -12,6 +12,7 @@ namespace POSCA.Classes.ApiClasses
     {
         #region Attributes
         public long LocationId { get; set; }
+        public string LocationNumber { get; set; }
         public Nullable<int> LocationTypeId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
@@ -22,6 +23,11 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+
+        #region Extra attributes
+        public string LocationTypeName { get; set; }
+
+        #endregion
         #endregion
 
         #region Methods
