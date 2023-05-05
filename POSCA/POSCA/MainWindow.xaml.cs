@@ -1,5 +1,6 @@
 ﻿using POSCA.Classes;
 using POSCA.View.catalog;
+using POSCA.View.locations;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 //using POSCA.View.sectionData.vendors;
@@ -577,6 +578,18 @@ namespace POSCA
             grid_main.Children.Add(uc_brand.Instance);
         }
 
+        private void Btn_locationsData_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_locationsData.Instance);
+        }
+
+        private void Btn_locationType_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_locationType.Instance);
+        }
+
         private void Btn_lang_Click(object sender, RoutedEventArgs e)
         {
             if (AppSettings.lang.Equals("en"))
@@ -608,5 +621,7 @@ namespace POSCA
 
             }
         }
+
+       
     }
 }

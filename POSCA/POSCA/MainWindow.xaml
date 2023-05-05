@@ -433,6 +433,63 @@
 
                         </StackPanel>
                     </Expander>
+                    <!--#region  locations-->
+                    <Expander  x:Name="exp_locations" Tag="locations" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconLocations" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource map}"/>
+                                <TextBlock Text="locations" Foreground="White" x:Name="txt_locations"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <StackPanel>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="locationsData" 
+                          x:Name="btn_locationsData"  Click="Btn_locationsData_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <!--<ColumnDefinition Width="50"/>-->
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Path Fill="White" x:Name="path_iconLocations" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                              Data="{StaticResource vendor}"/>-->
+                                    <TextBlock Text="locationsData" Foreground="White" x:Name="txt_locationsData"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="locationType" 
+                          x:Name="btn_locationType"  Click="Btn_locationType_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="locationType" Foreground="White" x:Name="txt_locationType"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
 
                     <!--#region  sectionData-->
                     <Expander  x:Name="exp_sectionData" Tag="sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
