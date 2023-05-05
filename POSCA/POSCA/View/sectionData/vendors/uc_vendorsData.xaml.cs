@@ -750,7 +750,8 @@ HelpClass.EndAwait(grid_image, "forImage");
                         await Search();
                         if (dg_supplier.SelectedIndex != -1)
                         {
-                            supplier = dg_supplier.SelectedItem as Supplier;
+                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+
                         }
                     }
                 }
@@ -796,7 +797,8 @@ HelpClass.EndAwait(grid_image, "forImage");
                         await Search();
                         if (dg_supplier.SelectedIndex != -1)
                         {
-                            supplier = dg_supplier.SelectedItem as Supplier;
+                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+
                         }
                     }
                 }
@@ -836,7 +838,8 @@ HelpClass.EndAwait(grid_image, "forImage");
                         await Search();
                         if (dg_supplier.SelectedIndex != -1)
                         {
-                            supplier = dg_supplier.SelectedItem as Supplier;
+                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+
                         }
                     }
                 }
@@ -887,7 +890,8 @@ HelpClass.EndAwait(grid_image, "forImage");
                         await Search();
                         if (dg_supplier.SelectedIndex != -1)
                         {
-                            supplier = dg_supplier.SelectedItem as Supplier;
+                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+                            //supplier = dg_supplier.SelectedItem as Supplier;
                         }
                     }
                 }

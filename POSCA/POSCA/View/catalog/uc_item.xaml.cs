@@ -642,7 +642,7 @@ namespace POSCA.View.catalog
                         await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
-                            item = dg_item.SelectedItem as Item;
+                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
                         }
                     }
                 }
@@ -680,7 +680,7 @@ namespace POSCA.View.catalog
                         await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
-                            item = dg_item.SelectedItem as Item;
+                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
                         }
                     }
                 }
@@ -715,10 +715,11 @@ namespace POSCA.View.catalog
                     if (item.ItemId != 0)
                     {
                         FillCombo.itemList = await item.save(item);
+                       
                         await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
-                            item = dg_item.SelectedItem as Item;
+                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
                         }
                     }
                 }
@@ -771,7 +772,7 @@ namespace POSCA.View.catalog
                             await Search();
                             if (dg_item.SelectedIndex != -1)
                             {
-                                item = dg_item.SelectedItem as Item;
+                                item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
                             }
                         }
                     }
