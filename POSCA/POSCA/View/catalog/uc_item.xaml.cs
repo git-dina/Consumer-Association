@@ -854,6 +854,17 @@ namespace POSCA.View.catalog
                     }
 
                     calculatePeicePrice();
+                    if(item.ItemUnits == null || item.ItemUnits.Count == 0)
+                    {
+                        item.ItemUnits.Add(new ItemUnit()
+                        {
+                            UnitId = unit.UnitId,
+                            ItemId = item.ItemId,
+                            Factor = unit.Factor,
+                            Cost = item.Cost,
+
+                        }) ;
+                    }
                 }
             }
             catch (Exception ex)
