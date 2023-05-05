@@ -588,31 +588,31 @@ namespace POSCA.Classes
 
         #region Location
         static public Location location = new Location();
-        static public List<Location> locationList;
+        static public List<Location> locationsList;
 
         static public async Task<IEnumerable<Location>> RefreshLocations()
         {
-            locationList = await location.get(true);
+            locationsList = await location.get(true);
 
-            return locationList;
+            return locationsList;
         }
 
         static public async Task fillLocations(ComboBox combo)
         {
-            if (locationList is null)
+            if (locationsList is null)
                 await RefreshLocations();
 
-            combo.ItemsSource = locationList;
+            combo.ItemsSource = locationsList;
             combo.SelectedValuePath = "LocationId";
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
         static public async Task fillLocationsWithDefault(ComboBox combo)
         {
-            if (locationList is null)
+            if (locationsList is null)
                 await RefreshLocations();
 
-            var lst = locationList.ToList();
+            var lst = locationsList.ToList();
             Location sup = new Location();
             sup.Name = "-";
             sup.LocationId = 0;
