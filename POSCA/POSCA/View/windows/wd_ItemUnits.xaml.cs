@@ -328,7 +328,8 @@ namespace POSCA.View.windows
             {
                 btn_addItemUnit.IsEnabled = false;
                 dg_itemUnit.IsEnabled = false;
-                itemUnits.Add(new ItemUnit() { ItemId = item.ItemId});
+                listItemUnit   = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                listItemUnit.Add(new ItemUnit() { ItemId = item.ItemId});
                 RefreshItemUnitDataGrid();
             }
             catch (Exception ex)
@@ -351,7 +352,8 @@ namespace POSCA.View.windows
                         btn_addItemUnit.IsEnabled = false;
                         dg_itemUnit.IsEnabled = false;
                         ItemUnit row = (ItemUnit)dg_itemUnit.SelectedItems[0];
-                        itemUnits.Remove(row);
+                        listItemUnit = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                        listItemUnit.Remove(row);
                         RefreshItemUnitDataGrid();
                     }
 
@@ -370,7 +372,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_itemUnit.CancelEdit();
-                dg_itemUnit.ItemsSource = itemUnits;
+                dg_itemUnit.ItemsSource = listItemUnit;
                 dg_itemUnit.Items.Refresh();
 
                 dg_itemUnit.IsEnabled = true;
@@ -396,7 +398,7 @@ namespace POSCA.View.windows
                     string barcodeTypeValue = (string)cmb.SelectedValue;
                     var _barcodeType = (keyValueString)cmb.SelectedItem;
 
-                    listItemUnit = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                    var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
                     //if (barcodeTypeValue != "external" && barcodeTypeValue != "")
                     //{
                     //    listItemUnit.Remove(itemUnit);
@@ -428,7 +430,7 @@ namespace POSCA.View.windows
                     var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem ;
                     int unitId = int.Parse(cmb.SelectedValue.ToString());
                     var _unit = (Unit)cmb.SelectedItem;
-                    listItemUnit  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                   var lst  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
                     //if(itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
                     //{
                     //    listItemUnit.Remove(itemUnit);
