@@ -448,10 +448,17 @@ namespace POSCA.View.sectionData
             }
         }
 
+
+
+
         #endregion
 
-
-
-
+        private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
+        {
+            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
+            cd_gridMain3.Width = cd_gridMain1.Width;
+            cd_gridMain1.Width = cd_gridMain2.Width;
+            cd_gridMain2.Width = cd_gridMain3.Width;
+        }
     }
 }

@@ -9,8 +9,8 @@
              d:DesignHeight="800" d:DesignWidth="950">
     <Grid x:Name="grid_main" Margin="20 10" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.8*"/>
-            <ColumnDefinition x:Name="gridWidth" Width="*" MinWidth="225"/>
+            <ColumnDefinition x:Name="cd_gridMain1" Width="1.8*"/>
+            <ColumnDefinition x:Name="cd_gridMain2" Width="*" MinWidth="225"/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions >
@@ -173,7 +173,17 @@
                                               VerticalOffset="25"/>
                             </Button.ToolTip>
                         </Button>
-
+                        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,10,10" Width="auto"
+                     Grid.RowSpan="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <StackPanel  Orientation="Horizontal" >
+                                <Button   x:Name="btn_columnSwap" Click="btn_columnSwap_Click" Grid.Column="3" Padding="0" 
+                               VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}"   >
+                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill" 
+                         Width="25" Height="25" 
+                              Data="{StaticResource twoWayArrow}"/>
+                                </Button>
+                            </StackPanel >
+                        </Border>
                     </Grid>
                     <!--<Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,10,10" Width="auto"
                      Grid.RowSpan="2"   HorizontalAlignment="Left" VerticalAlignment="Bottom">
