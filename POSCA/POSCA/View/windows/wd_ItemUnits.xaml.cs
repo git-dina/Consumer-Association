@@ -46,7 +46,7 @@ namespace POSCA.View.windows
             this.Close();
         }
 
-        List<ItemUnit> listItemUnit = new List<ItemUnit>();
+        //List<ItemUnit> listItemUnit = new List<ItemUnit>();
        public List<ItemUnit> itemUnits = new List<ItemUnit>();
         List<Unit> listUnit = new List<Unit>();
 
@@ -328,8 +328,8 @@ namespace POSCA.View.windows
             {
                 btn_addItemUnit.IsEnabled = false;
                 dg_itemUnit.IsEnabled = false;
-                listItemUnit   = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                listItemUnit.Add(new ItemUnit() { ItemId = item.ItemId});
+                itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                itemUnits.Add(new ItemUnit() { ItemId = item.ItemId});
                 RefreshItemUnitDataGrid();
             }
             catch (Exception ex)
@@ -352,8 +352,8 @@ namespace POSCA.View.windows
                         btn_addItemUnit.IsEnabled = false;
                         dg_itemUnit.IsEnabled = false;
                         ItemUnit row = (ItemUnit)dg_itemUnit.SelectedItems[0];
-                        listItemUnit = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                        listItemUnit.Remove(row);
+                        itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                        itemUnits.Remove(row);
                         RefreshItemUnitDataGrid();
                     }
 
@@ -372,7 +372,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_itemUnit.CancelEdit();
-                dg_itemUnit.ItemsSource = listItemUnit;
+                dg_itemUnit.ItemsSource = itemUnits;
                 dg_itemUnit.Items.Refresh();
 
                 dg_itemUnit.IsEnabled = true;
