@@ -360,14 +360,14 @@
 
                                 </Grid>
                             </Border>
-                            <!--<Button Grid.Column="1"  Padding="0"    
+                            <Button Grid.Column="1"  Padding="0"    
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
                                             x:Name="btn_addLocationType" Click="Btn_addLocationType_Click"  
                                 Margin="5 5 10 5" IsEnabled="True">
                                 <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource addFile}" />
-                            </Button>-->
+                            </Button>
                         </Grid>
 
                         <Border  Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
