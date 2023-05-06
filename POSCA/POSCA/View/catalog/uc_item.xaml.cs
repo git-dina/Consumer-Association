@@ -761,11 +761,12 @@ namespace POSCA.View.catalog
                     item.UnitId = (long)cb_UnitId.SelectedValue;
                     item.CategoryId = (long)cb_CategoryId.SelectedValue;
                     item.MainCost = decimal.Parse(tb_MainCost.Text);
+                    w.itemUnits = item.ItemUnits.ToList();
                     w.item = item;
                     w.ShowDialog();
                     if (w.isOk)
                     {
-                        item = w.item;
+                        item.ItemUnits = w.itemUnits;
 
                         if (item.ItemId != 0)
                         {

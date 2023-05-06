@@ -47,6 +47,7 @@ namespace POSCA.View.windows
         }
 
         List<ItemUnit> listItemUnit = new List<ItemUnit>();
+       public List<ItemUnit> itemUnits = new List<ItemUnit>();
         List<Unit> listUnit = new List<Unit>();
 
        // public List<ItemUnit> ItemUnits { get; set; }
@@ -123,7 +124,7 @@ namespace POSCA.View.windows
         }
         private void setItemUnitsData()
         {
-            dg_itemUnit.ItemsSource = item.ItemUnits;
+            dg_itemUnit.ItemsSource = itemUnits;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
@@ -139,221 +140,7 @@ namespace POSCA.View.windows
         }
         public static List<string> requiredControlList;
         #region events
-        private async void Btn_add_Click(object sender, RoutedEventArgs e)
-        {//add
-            try
-            {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-
-                    supplier = new Supplier();
-                    if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                    {
-                        //payType
-                        string payType = "";
-                        if (cb_payType.SelectedIndex != -1)
-                            payType = cb_payType.SelectedValue.ToString();
-
-                        //tb_code.Text = await supplier.generateCodeNumber("v");
-                        supplier.code = await supplier.generateCodeNumber("v");
-                        supplier.name = tb_name.Text;
-                        supplier.company = tb_company.Text;
-                        supplier.address = tb_address.Text;
-                        supplier.email = tb_email.Text;
-                        supplier.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
-                        if (!tb_phone.Text.Equals(""))
-                            supplier.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
-                        if (!tb_fax.Text.Equals(""))
-                            supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                        supplier.type = "v";
-                        supplier.accType = "";
-                        supplier.balance = 0;
-                        supplier.balanceType = 0;
-                        supplier.payType = payType;
-                        supplier.createUserId = MainWindow.userLogin.userId;
-                        supplier.updateUserId = MainWindow.userLogin.userId;
-                        supplier.notes = tb_notes.Text;
-                        supplier.isActive = 1;
-
-                        var s = await supplier.save(supplier);
-                        if (s <= 0)
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                        else
-                        {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                            if (openFileDialog.FileName != "")
-                            {
-                                var supplierId = s;
-                                string b = await supplier.uploadImage(imgFileName,
-                                    Md5Encription.MD5Hash("Inc-m" + supplierId.ToString()), supplierId);
-                                supplier.image = b;
-                            }
-
-                            Clear();
-                            await RefreshCustomersList();
-                            await Search();
-                            FillCombo.suppliersList = suppliers.ToList();
-                        }
-                    }
-                    HelpClass.EndAwait(grid_main);
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                    */
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Btn_update_Click(object sender, RoutedEventArgs e)
-        {//update
-            try
-            {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    if (supplier.supplierId > 0)
-                    {
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                        {
-                            //payType
-                            string payType = "";
-                            if (cb_payType.SelectedIndex != -1)
-                                payType = cb_payType.SelectedValue.ToString();
-
-                            supplier.name = tb_name.Text;
-                            supplier.company = tb_company.Text;
-                            supplier.email = tb_email.Text;
-                            supplier.address = tb_address.Text;
-                            supplier.mobile = cb_areaMobile.Text + "-" + tb_mobile.Text;
-                            if (!tb_phone.Text.Equals(""))
-                                supplier.phone = cb_areaPhone.Text + "-" + cb_areaPhoneLocal.Text + "-" + tb_phone.Text;
-                            if (!tb_fax.Text.Equals(""))
-                                supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
-                            supplier.payType = payType;
-                            supplier.updateUserId = MainWindow.userLogin.userId;
-                            supplier.notes = tb_notes.Text;
-
-                            var s = await supplier.save(supplier);
-                            if (s <= 0)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await RefreshCustomersList();
-                                await Search();
-                                FillCombo.suppliersList = suppliers.ToList();
-                                if (openFileDialog.FileName != "")
-                                {
-                                    var supplierId = s;
-                                    string b = await supplier.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + supplierId.ToString()), supplierId);
-                                    supplier.image = b;
-                                    //isImgPressed = false;
-                                    if (!b.Equals(""))
-                                    {
-                                        await getImg();
-                                    }
-                                    else
-                                    {
-                                        HelpClass.clearImg(btn_image);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemFirst"), animation: ToasterAnimation.FadeIn);
-
-                    HelpClass.EndAwait(grid_main);
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Btn_delete_Click(object sender, RoutedEventArgs e)
-        {//delete
-            try
-            {
-                /*
-                if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    if (supplier.supplierId != 0)
-                    {
-                        if ((!supplier.canDelete) && (supplier.isActive == 0))
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxActivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
-
-                            if (w.isOk)
-                                await activate();
-                        }
-                        else
-                        {
-                            #region
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                            if (supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-                            if (!supplier.canDelete)
-                                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDeactivate");
-                            w.ShowDialog();
-                            Window.GetWindow(this).Opacity = 1;
-                            #endregion
-
-                            if (w.isOk)
-                            {
-                                string popupContent = "";
-                                if (supplier.canDelete) popupContent = AppSettings.resourcemanager.GetString("trPopDelete");
-                                if ((!supplier.canDelete) && (supplier.isActive == 1)) popupContent = AppSettings.resourcemanager.GetString("trPopInActive");
-
-                                var s = await supplier.delete(supplier.supplierId, MainWindow.userLogin.userId, supplier.canDelete);
-                                if (s < 0)
-                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                                else
-                                {
-                                    supplier.supplierId = 0;
-                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                    await RefreshCustomersList();
-                                    await Search();
-                                    Clear();
-                                    FillCombo.suppliersList = suppliers.ToList();
-                                }
-                            }
-                        }
-                    }
-                    HelpClass.EndAwait(grid_main);
-                }
-                else
-                    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
-            }
-            catch (Exception ex)
-            {
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+     
         private async void Dg_itemUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -520,7 +307,7 @@ namespace POSCA.View.windows
             {
 
                 // HelpClass.StartAwait(grid_main);
-                item.ItemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
 
                 isOk = true;
                 this.Close();
@@ -541,7 +328,7 @@ namespace POSCA.View.windows
             {
                 btn_addItemUnit.IsEnabled = false;
                 dg_itemUnit.IsEnabled = false;
-                listItemUnit.Add(new ItemUnit());
+                itemUnits.Add(new ItemUnit() { ItemId = item.ItemId});
                 RefreshItemUnitDataGrid();
             }
             catch (Exception ex)
@@ -564,7 +351,7 @@ namespace POSCA.View.windows
                         btn_addItemUnit.IsEnabled = false;
                         dg_itemUnit.IsEnabled = false;
                         ItemUnit row = (ItemUnit)dg_itemUnit.SelectedItems[0];
-                        listItemUnit.Remove(row);
+                        itemUnits.Remove(row);
                         RefreshItemUnitDataGrid();
                     }
 
@@ -583,7 +370,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_itemUnit.CancelEdit();
-                dg_itemUnit.ItemsSource = listItemUnit;
+                dg_itemUnit.ItemsSource = itemUnits;
                 dg_itemUnit.Items.Refresh();
 
                 dg_itemUnit.IsEnabled = true;
@@ -605,8 +392,23 @@ namespace POSCA.View.windows
                 if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
                 {
                     int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
                     string barcodeTypeValue = (string)cmb.SelectedValue;
                     var _barcodeType = (keyValueString)cmb.SelectedItem;
+
+                    listItemUnit = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                    if (barcodeTypeValue != "external" && barcodeTypeValue != "")
+                    {
+                        listItemUnit.Remove(itemUnit);
+                        foreach (var row in listItemUnit)
+                        {
+                            if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+                            {
+                                cmb.SelectedIndex = -1;
+                                cmb.SelectedItem = null;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -623,8 +425,22 @@ namespace POSCA.View.windows
                 if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
                 {
                     int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                    int unitId = (int)cmb.SelectedValue;
+                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem ;
+                    int unitId = int.Parse(cmb.SelectedValue.ToString());
                     var _unit = (Unit)cmb.SelectedItem;
+                    listItemUnit  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                    if(itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
+                    {
+                        listItemUnit.Remove(itemUnit);
+                        foreach(var row in listItemUnit)
+                        {
+                            if(row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
+                            {
+                                cmb.SelectedIndex = -1;
+                                cmb.SelectedItem = null;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
