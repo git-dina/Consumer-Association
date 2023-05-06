@@ -705,7 +705,8 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemGeneralization w = new wd_itemGeneralization();
 
-                w.itemGeneralizations = item.ItemGeneralizations;
+                if (item.ItemGeneralizations != null)
+                    w.itemGeneralizations = item.ItemGeneralizations.ToList();
 
                 w.ShowDialog();
                 if (w.isOk)
