@@ -284,6 +284,26 @@ namespace POSCA.View.windows
         {
 
         }
+
+        private void tgl_connectAllLocation_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tgl_connectAllLocation_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tgl_connectAllMarketsAndBranches_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tgl_connectAllMarketsAndBranches_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
         /*
 private void Btn_addItemAllowedTransaction_Click(object sender, RoutedEventArgs e)
 {
@@ -308,15 +328,15 @@ try
 HelpClass.StartAwait(grid_main);
 
 for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-  if (vis is DataGridRow)
-  {
+if (vis is DataGridRow)
+{
 
-      btn_addItemAllowedTransaction.IsEnabled = false;
-      dg_itemAllowedTransaction.IsEnabled = false;
-      ItemAllowedTransaction row = (ItemAllowedTransaction)dg_itemAllowedTransaction.SelectedItems[0];
-      listItemAllowedTransaction.Remove(row);
-      RefreshItemAllowedTransactionDataGrid();
-  }
+btn_addItemAllowedTransaction.IsEnabled = false;
+dg_itemAllowedTransaction.IsEnabled = false;
+ItemAllowedTransaction row = (ItemAllowedTransaction)dg_itemAllowedTransaction.SelectedItems[0];
+listItemAllowedTransaction.Remove(row);
+RefreshItemAllowedTransactionDataGrid();
+}
 
 HelpClass.EndAwait(grid_main);
 }

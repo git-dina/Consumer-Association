@@ -44,16 +44,24 @@
         </Grid>
         <Border BorderThickness="1,0,1,1"  Grid.Row="1"
                     CornerRadius="0,0,7,7" BorderBrush="#999999"  Background="White">
-            <Grid  Margin="5">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid  Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
+                
                 <!--<ScrollViewer Background="White"  Grid.Row="0"   VerticalScrollBarVisibility="Auto"   >-->
                 <!--<StackPanel>-->
                 <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="0">
@@ -132,15 +140,96 @@
                     </DataGrid>
 
                 </Grid>
-                <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
-                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
-                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+                
 
                 <!--</StackPanel>-->
                 <!--</ScrollViewer>-->
 
             </Grid>
+                <Border Grid.Column="1" Width="1" 
+                        Margin="5 10"
+                        Background="{StaticResource SecondColor}"/>
+                <Grid Grid.Column="2"  Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="0">
+                        <TextBlock  Text="itemLocation"   x:Name="txt_itemLocation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                        <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
+                    </DockPanel>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <TextBlock x:Name="txt_connectAllLocation" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="connectAllLocation" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                        <ToggleButton x:Name="tgl_connectAllLocation" Grid.Row="0" Grid.Column="1"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10" 
+                                  Checked="tgl_connectAllLocation_Checked"
+                                  Unchecked="tgl_connectAllLocation_Unchecked"/>
+                    </StackPanel>
+                     <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <TextBlock x:Name="txt_connectAllMarketsAndBranches" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="connectAllMarketsAndBranches" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                        <ToggleButton x:Name="tgl_connectAllMarketsAndBranches" Grid.Row="0" Grid.Column="1"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10" 
+                                  Checked="tgl_connectAllMarketsAndBranches_Checked"
+                                  Unchecked="tgl_connectAllMarketsAndBranches_Unchecked"/>
+                    </StackPanel>
+                    <Grid  Grid.Row="3" >
+                        <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGridLocation" BorderThickness="0" 
+                            Background="White"/>
 
+                        <DataGrid x:Name="dg_itemLocation" 
+                            Margin="10" Grid.Row="1" 
+                                   CanUserAddRows="False" IsReadOnly="False" 
+                                   CanUserDeleteRows="False"
+                              HeadersVisibility="None"
+                        Background="White"
+                                      AutoGenerateColumns="False" 
+                        ColumnWidth="SizeToHeader"    
+                        AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
+                            <DataGrid.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=brd_roundDataGridLocation}"/>
+                            </DataGrid.OpacityMask>
+                            <DataGrid.Resources>
+                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
+                                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#BADAEF" />
+                                    <Setter Property="BorderBrush" Value="White"/>
+                                    <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                                    <Setter Property="Foreground" Value="{StaticResource textColor}"/>
+                                    <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=OneWay}"/>
+                                <DataGridTemplateColumn  Header="IsActive"   >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsAllowed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+
+                </Grid>
+
+
+                <Button   Grid.Row="6" Grid.ColumnSpan="3"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
+                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
+                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+            </Grid>
         </Border>
 
 
