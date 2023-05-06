@@ -12,7 +12,7 @@ namespace POSCA.Classes.ApiClasses
         public long ItemLocationId { get; set; }
         public Nullable<long> ItemId { get; set; }
         public Nullable<long> LocationId { get; set; }
-     
+        public Nullable<long> LocationName { get; set; }
         public bool IsActive { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
