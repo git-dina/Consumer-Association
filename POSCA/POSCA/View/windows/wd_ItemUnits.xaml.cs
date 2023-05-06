@@ -397,18 +397,18 @@ namespace POSCA.View.windows
                     var _barcodeType = (keyValueString)cmb.SelectedItem;
 
                     listItemUnit = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    if (barcodeTypeValue != "external" && barcodeTypeValue != "")
-                    {
-                        listItemUnit.Remove(itemUnit);
-                        foreach (var row in listItemUnit)
-                        {
-                            if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
-                            {
-                                cmb.SelectedIndex = -1;
-                                cmb.SelectedItem = null;
-                            }
-                        }
-                    }
+                    //if (barcodeTypeValue != "external" && barcodeTypeValue != "")
+                    //{
+                    //    listItemUnit.Remove(itemUnit);
+                    //    foreach (var row in listItemUnit)
+                    //    {
+                    //        if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+                    //        {
+                    //            cmb.SelectedIndex = -1;
+                    //            cmb.SelectedItem = null;
+                    //        }
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
@@ -429,18 +429,18 @@ namespace POSCA.View.windows
                     int unitId = int.Parse(cmb.SelectedValue.ToString());
                     var _unit = (Unit)cmb.SelectedItem;
                     listItemUnit  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    if(itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
-                    {
-                        listItemUnit.Remove(itemUnit);
-                        foreach(var row in listItemUnit)
-                        {
-                            if(row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
-                            {
-                                cmb.SelectedIndex = -1;
-                                cmb.SelectedItem = null;
-                            }
-                        }
-                    }
+                    //if(itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
+                    //{
+                    //    listItemUnit.Remove(itemUnit);
+                    //    foreach(var row in listItemUnit)
+                    //    {
+                    //        if(row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
+                    //        {
+                    //            cmb.SelectedIndex = -1;
+                    //            cmb.SelectedItem = null;
+                    //        }
+                    //    }
+                    //}
                 }
             }
             catch (Exception ex)
