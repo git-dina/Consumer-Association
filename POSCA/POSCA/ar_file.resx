@@ -5573,4 +5573,7 @@
   <data name="trRowWithEmptyError" xml:space="preserve">
     <value>يوجد سطر يحوي قيمة فارغة</value>
   </data>
+  <data name="trFactorMaxError" xml:space="preserve">
+    <value>القيمة العظمى للشد:</value>
+  </data>
 </root>

@@ -128,7 +128,7 @@
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=Factor, Mode=TwoWay}"
                                                   BorderThickness="0"
-                                                  TextChanged="Tb_Factor_TextChanged"/>
+                                                  LostFocus="TextBox_LostFocus"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -137,7 +137,8 @@
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsBlocked, Mode=TwoWay}" />
+                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsBlocked, Mode=TwoWay}"
+                                                  Checked="chk_isBlocked_Changed"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

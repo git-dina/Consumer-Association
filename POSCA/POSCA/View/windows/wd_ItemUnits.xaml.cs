@@ -78,9 +78,9 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
+                fillBarcodeTypeCombo();
 
                 await FillCombo.fillUnits(cb_unit);
-                fillBarcodeTypeCombo();
                 setItemUnitsData();
 
 
@@ -307,7 +307,8 @@ namespace POSCA.View.windows
             try
             {
                 itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null || x.fa).FirstOrDefault();
+                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null
+                                || x.Factor == 0||x.Barcode == null || x.Barcode == "").FirstOrDefault();
                 if (isEmpty != null)
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
                 else
@@ -332,13 +333,27 @@ namespace POSCA.View.windows
                 btn_addItemUnit.IsEnabled = false;
                 dg_itemUnit.IsEnabled = false;
                 itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null).FirstOrDefault();
+                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null || x.BarcodeType ==""
+                                || x.Factor == 0 || x.Barcode == null || x.Barcode =="").FirstOrDefault();
                 if (isEmpty != null)
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
                 else
                 {
-                    itemUnits.Add(new ItemUnit() { ItemId = item.ItemId });
-                    RefreshItemUnitDataGrid();
+                    itemUnits.Add(new ItemUnit()
+                    {
+                        ItemId = item.ItemId,
+                        Barcode = "",
+                        BarcodeType = "",
+                        Factor = 0,
+                        UnitId = item.UnitId,
+                        Cost = 0,
+                        SalePrice = 0,
+                        CreateUserId = MainWindow.userLogin.userId,
+                        UpdateUserId = MainWindow.userLogin.userId,
+                        CreateDate = DateTime.Now,
+                        UpdateDate = DateTime.Now,
+                    }) ;
+                   RefreshItemUnitDataGrid();
                 }
                 btn_addItemUnit.IsEnabled = true;
                 dg_itemUnit.IsEnabled = true;
@@ -385,7 +400,6 @@ namespace POSCA.View.windows
                 dg_itemUnit.CancelEdit();
                 dg_itemUnit.ItemsSource = itemUnits;
                 dg_itemUnit.Items.Refresh();
-                dg_itemUnit.Items.Refresh();
 
                 dg_itemUnit.IsEnabled = true;
                 btn_addItemUnit.IsEnabled = true;
@@ -403,25 +417,64 @@ namespace POSCA.View.windows
             try
             {
                 var cmb = sender as ComboBox;
-                if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
+                if (cmb.IsMouseOver)
                 {
-                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
-                    string barcodeTypeValue = (string)cmb.SelectedValue;
-                    var _barcodeType = (keyValueString)cmb.SelectedItem;
-
-                    var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    if (barcodeTypeValue != "external" && barcodeTypeValue != "")
+                    //e.Handled = true;
+                    if (dg_itemUnit.SelectedIndex != -1 && cmb != null && cmb.SelectedValue != null)
                     {
-                        lst.Remove(itemUnit);
-                        foreach (var row in lst)
+                        int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                        var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+                        string barcodeTypeValue = (string)cmb.SelectedValue;
+                        itemUnit.BarcodeType = barcodeTypeValue;
+                        var _barcodeType = (keyValueString)cmb.SelectedItem;
+
+                        itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+
+                        bool valid = true;
+                        if (barcodeTypeValue != "external" )
                         {
-                            if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+                            var lst = itemUnits.Select(x => new ItemUnit()
                             {
-                                cmb.SelectedIndex = -1;
-                                cmb.SelectedItem = null;
+                                Barcode = x.Barcode,
+                                BarcodeType = x.BarcodeType,
+                                Cost = x.Cost,
+                                SalePrice = x.SalePrice,
+                                Factor = x.Factor,
+                                IsBlocked = x.IsBlocked,
+                                ItemId = x.ItemId,
+                                ItemUnitId = x.ItemUnitId,
+                                UnitId = x.UnitId,
+                                CreateDate = x.CreateDate,
+                                UpdateDate=x.UpdateDate,
+                                CreateUserId=x.CreateUserId,
+                                UpdateUserId=x.UpdateUserId
+                            }).ToList();
+                            var u = lst.Where(x => x.UnitId == itemUnit.UnitId && x.BarcodeType == itemUnit.BarcodeType).FirstOrDefault();
+                            lst.Remove(u);
+                            foreach (var row in lst)
+                            {
+                                if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+                                {
+                                    valid = false;
+
+                                    cmb.SelectedIndex = -1;
+                                    cmb.SelectedItem = null;
+                                    cmb.SelectedValue = null;
+                                    break;
+                                }
                             }
                         }
+                        if (valid)
+                        {
+                            itemUnit.BarcodeType = barcodeTypeValue;
+                            itemUnit.Barcode = generateBarcode(barcodeTypeValue);
+                        }
+                        else
+                        {
+                            itemUnit.BarcodeType = "";
+                            itemUnit.Barcode = "";
+                        }
+                        RefreshItemUnitDataGrid();
                     }
                 }
             }
@@ -430,30 +483,68 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        private string generateBarcode(string barcodeTypeValue)
+        {
+            string barcode = "";
+            switch (barcodeTypeValue)
+            {
+                case "external":
+                   
+                    break;
+                case "internal":
+                    var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                    var barcodeNum = lst.Where(x => x.BarcodeType == "internal").Select(x => x.Barcode).Max();
+                    int num = 0;
+                    if (barcodeNum != null && barcodeNum != "")
+                        num = int.Parse(barcodeNum.Substring(0, 4));
+                    num++;
+                    barcode = num.ToString().PadLeft(4, '0') + item.ItemId.ToString().PadLeft(4, '0');
+                    break;
+                case "isWeight":
+                     lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                     barcodeNum = lst.Where(x => x.BarcodeType == "isWeight").Select(x => x.Barcode).Max();
+                     num = 0;
+                    if (barcodeNum != null && barcodeNum != "")
+                        num = int.Parse(barcodeNum);
+                    num++;
+                    barcode = num.ToString();
+                    break;
+                default:
+                    break;
+            }
+            return barcode;
+        }
         private void Cb_unit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 var cmb = sender as ComboBox;
-                if (dg_itemUnit.SelectedIndex != -1 && cmb != null)
+                e.Handled = true;
+
+                if (cmb.IsMouseOver)
                 {
-                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem ;
-                    int unitId = int.Parse(cmb.SelectedValue.ToString());
-                    var _unit = (Unit)cmb.SelectedItem;
-                   var lst  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    if (itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
+                    if (dg_itemUnit.SelectedIndex != -1 && cmb != null && cmb.SelectedValue != null)
                     {
-                        lst.Remove(itemUnit);
-                        foreach (var row in lst)
+                        int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                        var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+                        int unitId = int.Parse(cmb.SelectedValue.ToString());
+                        itemUnit.UnitId = unitId;
+                        var _unit = (Unit)cmb.SelectedItem;
+                        var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                        if (itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
                         {
-                            if (row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
+                            lst.Remove(itemUnit);
+                            foreach (var row in lst)
                             {
-                                cmb.SelectedIndex = -1;
-                                cmb.SelectedItem = null;
+                                if (row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
+                                {
+                                    cmb.SelectedIndex = -1;
+                                    cmb.SelectedItem = null;
+                                }
                             }
                         }
+                        RefreshItemUnitDataGrid();
+
                     }
                 }
             }
@@ -470,7 +561,129 @@ namespace POSCA.View.windows
 
         private void Tb_Factor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+                if (txt.IsFocused)
+                {
+                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
 
+                    if (itemUnit.UnitId == item.UnitId)
+                    {
+                        txt.Text = item.Factor.ToString();                  
+                    }
+                    int factor = int.Parse(txt.Text);
+                    if(factor > item.Factor)
+                    {
+                        txt.Text = "0";
+                        factor = 0;
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorMaxError")+"("+item.Factor+")", animation: ToasterAnimation.FadeIn);
+
+                    }
+                    itemUnit.Factor = factor;
+                   // RefreshItemUnitDataGrid();
+                }
+                    
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+                //if (txt.IsFocused)
+                {
+                    int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                    var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+
+                    decimal cost = 0;
+                    decimal price = 0;
+                    if (itemUnit.UnitId == item.UnitId)
+                    {
+                        txt.Text = item.Factor.ToString();
+                    }
+ 
+
+                    int factor = int.Parse(txt.Text);
+                    if (factor > item.Factor)
+                    {
+                        txt.Text = "0";
+                        factor = 0;
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorMaxError") + "(" + item.Factor + ")", animation: ToasterAnimation.FadeIn);
+
+                    }
+                    if (itemUnit.UnitId == item.UnitId)
+                    {
+                        txt.Text = item.Factor.ToString();
+                        cost = item.Cost;
+                        price = item.Price * (int)item.Factor;
+                    }
+                    else
+                    {
+                        cost = item.Cost / factor;
+                        price = item.Price * factor;
+                    }
+                    itemUnit.Factor = factor;
+                    itemUnit.Cost = cost;
+                    itemUnit.SalePrice = price;
+                    RefreshItemUnitDataGrid();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void chk_isBlocked_Changed(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var chk = sender as CheckBox;
+                e.Handled = true;
+
+                int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+
+                itemUnit.IsBlocked = true;
+                RefreshItemUnitDataGrid();
+
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void chk_isBlocked_Uncheck_Changed(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var chk = sender as CheckBox;
+                e.Handled = true;
+
+                int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+
+                itemUnit.IsBlocked = false;
+                RefreshItemUnitDataGrid();
+
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

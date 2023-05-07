@@ -761,7 +761,18 @@ namespace POSCA.View.catalog
                     item.UnitId = (long)cb_UnitId.SelectedValue;
                     item.CategoryId = (long)cb_CategoryId.SelectedValue;
                     item.MainCost = decimal.Parse(tb_MainCost.Text);
-                    w.itemUnits = item.ItemUnits.ToList();
+                    w.itemUnits = item.ItemUnits.Select(x => new ItemUnit()
+                    {
+                        Barcode = x.Barcode,
+                        BarcodeType = x.BarcodeType,
+                        Cost=x.Cost,
+                        SalePrice = x.SalePrice,
+                        Factor = x.Factor,
+                        IsBlocked = x.IsBlocked,
+                        ItemId=x.ItemId,
+                        ItemUnitId = x.ItemUnitId,
+                        UnitId=x.UnitId,
+                    }).ToList();
                     w.item = item;
                     w.ShowDialog();
                     if (w.isOk)
@@ -860,11 +871,16 @@ namespace POSCA.View.catalog
                     {
                         item.ItemUnits.Add(new ItemUnit()
                         {
+
                             UnitId = unit.UnitId,
                             ItemId = item.ItemId,
-                            Factor = unit.Factor,
+                            Barcode = "",
+                            BarcodeType = "",
+                            Factor = (int)item.Factor,
                             Cost = item.Cost,
-
+                            SalePrice = item.Price * (int)item.Factor,
+                            CreateUserId= MainWindow.userLogin.userId,
+                            UpdateUserId = MainWindow.userLogin.userId,
                         }) ;
                     }
                 }

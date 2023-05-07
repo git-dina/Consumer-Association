@@ -7568,6 +7568,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Max value of factor is:.
+        /// </summary>
+        internal static string trFactorMaxError {
+            get {
+                return ResourceManager.GetString("trFactorMaxError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Factor should be more than zero.
         /// </summary>
         internal static string trFactorZeroError {

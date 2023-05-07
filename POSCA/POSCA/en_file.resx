@@ -5319,4 +5319,7 @@ Main Documents</value>
   <data name="trRowWithEmptyError" xml:space="preserve">
     <value>There is a row with empty value</value>
   </data>
+  <data name="trFactorMaxError" xml:space="preserve">
+    <value>Max value of factor is:</value>
+  </data>
 </root>
