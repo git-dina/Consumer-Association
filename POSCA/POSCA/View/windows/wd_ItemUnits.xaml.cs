@@ -462,5 +462,15 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Tb_Factor_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
