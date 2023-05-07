@@ -5316,4 +5316,7 @@ Main Documents</value>
   <data name="ItemLocations" xml:space="preserve">
     <value>Item Locations</value>
   </data>
+  <data name="trRowWithEmptyError" xml:space="preserve">
+    <value>There is a row with empty value</value>
+  </data>
 </root>

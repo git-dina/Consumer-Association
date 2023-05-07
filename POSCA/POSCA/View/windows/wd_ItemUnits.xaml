@@ -120,7 +120,8 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Width="3*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
+                            <DataGridTextColumn Width="3*"  Header="Factor" 
+                                                Binding="{Binding Path=Factor, Mode=TwoWay}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=SalePrice, Mode=OneWay}"/>
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
@@ -305,13 +306,15 @@ namespace POSCA.View.windows
         {
             try
             {
-
-                // HelpClass.StartAwait(grid_main);
                 itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-
-                isOk = true;
-                this.Close();
-                // HelpClass.EndAwait(grid_main);
+                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null || x.fa).FirstOrDefault();
+                if (isEmpty != null)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
+                else
+                {
+                    isOk = true;
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -329,8 +332,16 @@ namespace POSCA.View.windows
                 btn_addItemUnit.IsEnabled = false;
                 dg_itemUnit.IsEnabled = false;
                 itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                itemUnits.Add(new ItemUnit() { ItemId = item.ItemId});
-                RefreshItemUnitDataGrid();
+                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null).FirstOrDefault();
+                if (isEmpty != null)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
+                else
+                {
+                    itemUnits.Add(new ItemUnit() { ItemId = item.ItemId });
+                    RefreshItemUnitDataGrid();
+                }
+                btn_addItemUnit.IsEnabled = true;
+                dg_itemUnit.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -374,6 +385,7 @@ namespace POSCA.View.windows
                 dg_itemUnit.CancelEdit();
                 dg_itemUnit.ItemsSource = itemUnits;
                 dg_itemUnit.Items.Refresh();
+                dg_itemUnit.Items.Refresh();
 
                 dg_itemUnit.IsEnabled = true;
                 btn_addItemUnit.IsEnabled = true;
@@ -399,18 +411,18 @@ namespace POSCA.View.windows
                     var _barcodeType = (keyValueString)cmb.SelectedItem;
 
                     var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    //if (barcodeTypeValue != "external" && barcodeTypeValue != "")
-                    //{
-                    //    listItemUnit.Remove(itemUnit);
-                    //    foreach (var row in listItemUnit)
-                    //    {
-                    //        if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
-                    //        {
-                    //            cmb.SelectedIndex = -1;
-                    //            cmb.SelectedItem = null;
-                    //        }
-                    //    }
-                    //}
+                    if (barcodeTypeValue != "external" && barcodeTypeValue != "")
+                    {
+                        lst.Remove(itemUnit);
+                        foreach (var row in lst)
+                        {
+                            if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+                            {
+                                cmb.SelectedIndex = -1;
+                                cmb.SelectedItem = null;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -431,18 +443,18 @@ namespace POSCA.View.windows
                     int unitId = int.Parse(cmb.SelectedValue.ToString());
                     var _unit = (Unit)cmb.SelectedItem;
                    var lst  = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    //if(itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
-                    //{
-                    //    listItemUnit.Remove(itemUnit);
-                    //    foreach(var row in listItemUnit)
-                    //    {
-                    //        if(row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
-                    //        {
-                    //            cmb.SelectedIndex = -1;
-                    //            cmb.SelectedItem = null;
-                    //        }
-                    //    }
-                    //}
+                    if (itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
+                    {
+                        lst.Remove(itemUnit);
+                        foreach (var row in lst)
+                        {
+                            if (row.UnitId == unitId && row.BarcodeType == itemUnit.BarcodeType)
+                            {
+                                cmb.SelectedIndex = -1;
+                                cmb.SelectedItem = null;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

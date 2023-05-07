@@ -5570,4 +5570,7 @@
   <data name="ItemLocations" xml:space="preserve">
     <value>مواقع الصنف</value>
   </data>
+  <data name="trRowWithEmptyError" xml:space="preserve">
+    <value>يوجد سطر يحوي قيمة فارغة</value>
+  </data>
 </root>

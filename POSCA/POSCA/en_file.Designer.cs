@@ -12168,6 +12168,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is a row with empty value.
+        /// </summary>
+        internal static string trRowWithEmptyError {
+            get {
+                return ResourceManager.GetString("trRowWithEmptyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الرواتب.
         /// </summary>
         internal static string trSalaries {

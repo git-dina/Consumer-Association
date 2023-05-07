@@ -76,7 +76,7 @@ namespace POSCA.View.sectionData
             {
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "Name", "ShortName", "SupplierTypeId" ,
-                                        "SupplierGroupId","AssistantStartDate","FreePercentag",
+                                        "AssistantSupId","SupplierGroupId","AssistantStartDate","FreePercentag",
                                         "DiscountPercentage"};
                 if (AppSettings.lang.Equals("en"))
                 {
@@ -92,7 +92,7 @@ namespace POSCA.View.sectionData
                 translate();
 
                
-                await FillCombo.fillAssistantWithDefault(cb_AssistantSupId);
+                await FillCombo.fillAssistant(cb_AssistantSupId);
                 await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
                 await FillCombo.fillSupplierGroups(cb_SupplierGroupId);
                 Keyboard.Focus(tb_Name);

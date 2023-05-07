@@ -68,6 +68,16 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
+        static public async Task fillAssistant(ComboBox combo)
+        {
+            if (assistantSupplierList is null)
+                await RefreshAssistantSuppliers();
+
+            combo.ItemsSource = assistantSupplierList;
+            combo.SelectedValuePath = "AssistantSupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         #endregion
 
         #region supplier types
