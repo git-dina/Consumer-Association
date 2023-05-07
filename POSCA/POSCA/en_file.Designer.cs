@@ -475,6 +475,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Connect All Locations.
+        /// </summary>
+        internal static string ConnectAllLocations {
+            get {
+                return ResourceManager.GetString("ConnectAllLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to connect Markets And Branches.
+        /// </summary>
+        internal static string ConnectAllMarketsAndBranches {
+            get {
+                return ResourceManager.GetString("ConnectAllMarketsAndBranches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consumer Discount....
         /// </summary>
         internal static string ConsumerDiscountHint {
@@ -1380,6 +1398,15 @@ namespace POSCA {
         internal static string itemInfo {
             get {
                 return ResourceManager.GetString("itemInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item Locations.
+        /// </summary>
+        internal static string ItemLocations {
+            get {
+                return ResourceManager.GetString("ItemLocations", resourceCulture);
             }
         }
         

@@ -62,6 +62,7 @@ namespace POSCA.Classes.ApiClasses
         public List<ItemGeneralization> ItemGeneralizations { get; set; }
         public List<ItemUnit> ItemUnits { get; set; }
         public List<ItemAllowedTransaction> ItemAllowedTransactions { get; set; }
+        public List<ItemLocation> ItemLocations { get; set; }
         #endregion
         #endregion
 

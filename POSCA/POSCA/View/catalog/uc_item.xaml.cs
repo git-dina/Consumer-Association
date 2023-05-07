@@ -667,13 +667,13 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemAllowedOperations w = new wd_itemAllowedOperations();
 
-                w.itemAllowedTransactions = item.ItemAllowedTransactions;
-
+                w.itemAllowedTransactions = item.ItemAllowedTransactions.ToList();
+                w.itemLocations = item.ItemLocations.ToList();
                 w.ShowDialog();
                 if (w.isOk)
                 {
                     item.ItemAllowedTransactions = w.itemAllowedTransactions;
-
+                    item.ItemLocations = w.itemLocations;
                     if (item.ItemId != 0)
                     {
                         FillCombo.itemList = await item.save(item);

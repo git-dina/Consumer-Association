@@ -46,8 +46,10 @@ namespace POSCA.View.windows
             this.Close();
         }
         List<ItemAllowedTransaction> listItemAllowedTransaction = new List<ItemAllowedTransaction>();
+        List<ItemLocation> listItemLocations = new List<ItemLocation>();
 
         public List<ItemAllowedTransaction> itemAllowedTransactions { get; set; }
+        public List<ItemLocation> itemLocations { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -73,7 +75,7 @@ namespace POSCA.View.windows
                 #endregion
 
                 setItemAllowedTransactionData();
-
+                await setItemLocationsData();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -94,6 +96,10 @@ namespace POSCA.View.windows
             txt_itemAllowedTransaction.Text = AppSettings.resourcemanager.GetString("ItemTransactions");
             txt_selectAll.Text = AppSettings.resourcemanager.GetString("SelectAll");
 
+            txt_itemLocation.Text = AppSettings.resourcemanager.GetString("ItemLocations");
+            txt_connectAllLocation.Text = AppSettings.resourcemanager.GetString("ConnectAllLocations");
+            txt_connectAllMarketsAndBranches.Text = AppSettings.resourcemanager.GetString("ConnectAllMarketsAndBranches");
+         
             //dg_itemAllowedTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("Year");
             //dg_itemAllowedTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("GeneralizationNumber");
 
@@ -108,22 +114,59 @@ namespace POSCA.View.windows
             foreach(var row in FillCombo.itemTransactionsList)
             {
                 var isAllowed = false;
+                long id = 0;
                 if (itemAllowedTransactions != null)
                 {
                     var selected = itemAllowedTransactions.Where(x => x.Transaction == row.key).FirstOrDefault();
 
                     if (selected != null)
+                    {
                         isAllowed = true;
+                        id = selected.Id;
+                    }
                 }
                 listItemAllowedTransaction.Add(new ItemAllowedTransaction()
                 {
+                    Id = id,
                     Transaction = row.key,
                     TransactionText = row.value,
+                    IsAllowed = isAllowed,
+                }); ;
+
+            }
+            dg_itemAllowedTransaction.ItemsSource = listItemAllowedTransaction;
+
+        }
+
+       private async Task setItemLocationsData()
+        {
+            if (FillCombo.locationsList == null)
+                await FillCombo.RefreshLocations();
+
+            foreach(var row in FillCombo.locationsList)
+            {
+                var isAllowed = false;
+                long itemLocationId = 0;
+                if (itemLocations != null)
+                {
+                    var selected = itemLocations.Where(x => x.LocationId == row.LocationId).FirstOrDefault();
+
+                    if (selected != null)
+                    {
+                        isAllowed = true;
+                        itemLocationId = selected.ItemLocationId;
+                    }
+                }
+                listItemLocations.Add(new ItemLocation()
+                {
+                    ItemLocationId = itemLocationId,
+                    LocationId = row.LocationId,
+                    LocationName = row.Name,
                     IsAllowed = isAllowed,
                 });
 
             }
-            dg_itemAllowedTransaction.ItemsSource = listItemAllowedTransaction;
+            dg_itemLocation.ItemsSource = listItemLocations;
 
         }
 
@@ -260,7 +303,22 @@ namespace POSCA.View.windows
                 foreach(var row in listItemAllowedTransaction)
                 {
                     if (row.IsAllowed)
+                    {
+                        row.CreateUserId = MainWindow.userLogin.userId;
                         itemAllowedTransactions.Add(row);
+                    }
+                }
+
+                listItemLocations = (List<ItemLocation>)dg_itemLocation.ItemsSource;
+
+                itemLocations = new List<ItemLocation>();
+                foreach (var row in listItemLocations)
+                {
+                    if (row.IsAllowed)
+                    {
+                        row.CreateUserId = MainWindow.userLogin.userId;
+                        itemLocations.Add(row);
+                    }
                 }
 
                 isOk = true;
@@ -277,13 +335,16 @@ namespace POSCA.View.windows
 
         private void tgl_selectAll_Checked(object sender, RoutedEventArgs e)
         {
+            listItemAllowedTransaction = (List<ItemAllowedTransaction>)dg_itemAllowedTransaction.ItemsSource;
 
+            foreach (var row in listItemAllowedTransaction)
+            {
+                row.IsAllowed = true;
+            }
+            dg_itemAllowedTransaction.ItemsSource = listItemAllowedTransaction;
+            dg_itemAllowedTransaction.Items.Refresh();
         }
 
-        private void tgl_selectAll_Unchecked(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void tgl_connectAllLocation_Checked(object sender, RoutedEventArgs e)
         {

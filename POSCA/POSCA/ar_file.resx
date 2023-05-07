@@ -5561,4 +5561,13 @@
   <data name="LocationTypeHint" xml:space="preserve">
     <value>نوع الموقع...</value>
   </data>
+  <data name="ConnectAllLocations" xml:space="preserve">
+    <value>ربط كل المواقع</value>
+  </data>
+  <data name="ConnectAllMarketsAndBranches" xml:space="preserve">
+    <value>ربط الأسواق والفروع</value>
+  </data>
+  <data name="ItemLocations" xml:space="preserve">
+    <value>مواقع الصنف</value>
+  </data>
 </root>

@@ -5307,4 +5307,13 @@ Main Documents</value>
   <data name="LocationTypeHint" xml:space="preserve">
     <value>Location Type...</value>
   </data>
+  <data name="ConnectAllLocations" xml:space="preserve">
+    <value>Connect All Locations</value>
+  </data>
+  <data name="ConnectAllMarketsAndBranches" xml:space="preserve">
+    <value>connect Markets And Branches</value>
+  </data>
+  <data name="ItemLocations" xml:space="preserve">
+    <value>Item Locations</value>
+  </data>
 </root>
