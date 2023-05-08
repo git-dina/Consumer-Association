@@ -94,21 +94,21 @@
                             </Style>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Width="*"  Header="GeneralizationYear" Binding="{Binding Path=GeneralizationYear, Mode=TwoWay}"/>
-                            <!--<DataGridTemplateColumn Header="GeneralizationYear" Width="*" >
+                            <!--<DataGridTextColumn Width="*"  Header="GeneralizationYear" Binding="{Binding Path=GeneralizationYear, Mode=TwoWay}"/>-->
+                            <DataGridTemplateColumn Header="GeneralizationYear" Width="*" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=GeneralizationYear, Mode=TwoWay}"
-                                                 PreviewTextInput="Tb_GeneralizationYear_PreviewTextInput" 
+                                                 PreviewTextInput="Tb_GeneralizationNo_PreviewTextInput" 
                                                   MaxLength="4"
                                                   BorderThickness="0"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>-->
+                            </DataGridTemplateColumn>
 
-                            <DataGridTextColumn Width="*"  Header="GeneralizationNo" Binding="{Binding Path=GeneralizationNo, Mode=TwoWay}"/>
-                            <!--<DataGridTemplateColumn Header="GeneralizationNo" Width="*" >
+                            <!--<DataGridTextColumn Width="*"  Header="GeneralizationNo" Binding="{Binding Path=GeneralizationNo, Mode=TwoWay}"/>-->
+                            <DataGridTemplateColumn Header="GeneralizationNo" Width="*" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=GeneralizationNo, Mode=TwoWay}"
@@ -117,7 +117,7 @@
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>-->
+                            </DataGridTemplateColumn>
 
 
                             <DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >

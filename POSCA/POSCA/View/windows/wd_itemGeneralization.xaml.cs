@@ -319,16 +319,16 @@ namespace POSCA.View.windows
             }
         }
 
-        private void Tb_GeneralizationYear_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            try
-            {
-                Convert.ToInt32(e.Text);
-            }
-            catch
-            {
-                e.Handled = true;
-            }
-        }
+        //private void Tb_GeneralizationYear_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Convert.ToInt32(e.Text);
+        //    }
+        //    catch
+        //    {
+        //        e.Handled = true;
+        //    }
+        //}
     }
 }
