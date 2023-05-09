@@ -187,6 +187,7 @@
     <Compile Include="Classes\ApiClasses\Unit.cs" />
     <Compile Include="Classes\ApiClasses\User.cs" />
     <Compile Include="Classes\ApiClasses\SupplierDocType.cs" />
+    <Compile Include="Classes\ApiClasses\PurchaseInvoice.cs" />
     <Compile Include="en_file.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
