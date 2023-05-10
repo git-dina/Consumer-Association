@@ -58,7 +58,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>0D1D19156079EA9E0601BE4039A3193122B108A2</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>4700B7E7F262B37AD428364F61D770461F8785AD</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>POSCA_TemporaryKey.pfx</ManifestKeyFile>
@@ -208,6 +208,9 @@
     <Compile Include="View\locations\uc_locationType.xaml.cs">
       <DependentUpon>uc_locationType.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\purchases\uc_purchaseOrder.xaml.cs">
+      <DependentUpon>uc_purchaseOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\sectionData\uc_bank.xaml.cs">
       <DependentUpon>uc_bank.xaml</DependentUpon>
     </Compile>
@@ -298,6 +301,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\locations\uc_locationType.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\purchases\uc_purchaseOrder.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
