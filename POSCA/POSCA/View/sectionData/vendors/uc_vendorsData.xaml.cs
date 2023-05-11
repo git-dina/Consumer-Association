@@ -75,8 +75,8 @@ namespace POSCA.View.sectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name", "ShortName", "SupplierTypeId" ,
-                                        "AssistantSupId","SupplierGroupId","AssistantStartDate","FreePercentag",
+                requiredControlList = new List<string> { "Name", "ShortName", "SupplierTypeId" 
+                                        ,"SupplierGroupId","AssistantStartDate","FreePercentag",
                                         "DiscountPercentage"};
                 if (AppSettings.lang.Equals("en"))
                 {
@@ -92,16 +92,11 @@ namespace POSCA.View.sectionData
                 translate();
 
                
-                await FillCombo.fillAssistant(cb_AssistantSupId);
+                await FillCombo.fillAssistantWithDefault(cb_AssistantSupId);
                 await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
                 await FillCombo.fillSupplierGroups(cb_SupplierGroupId);
                 Keyboard.Focus(tb_Name);
-                /*
-                if (FillCombo.suppliersListAll is null)
-                    await RefreshCustomersList();
-                else
-                    suppliers = FillCombo.suppliersListAll.ToList();
-                */
+
                 await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
@@ -508,7 +503,11 @@ namespace POSCA.View.sectionData
             dp_AssistantStartDate.Text = DateTime.Now.ToString();
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
             tb_FreePercentag.Text = HelpClass.DecTostring(0);
-
+            long lastSupId = 0;
+            if(FillCombo.suppliersList != null && FillCombo.suppliersList.Count > 0)
+                lastSupId = FillCombo.suppliersList.Select(x => x.SupId).Max();
+            lastSupId++;
+            tb_Code.Text = lastSupId.ToString();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
