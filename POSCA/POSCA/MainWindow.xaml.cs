@@ -367,6 +367,9 @@ namespace POSCA
             txt_item.Text = AppSettings.resourcemanager.GetString("Items");
             //txt_unit.Text = AppSettings.resourcemanager.GetString("Units");
 
+            txt_purchases.Text = AppSettings.resourcemanager.GetString("trPurchase");
+            txt_purchaseOrder.Text = AppSettings.resourcemanager.GetString("ProcurementRequests");
+
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
             txt_bank.Text = AppSettings.resourcemanager.GetString("trBanks");

@@ -1885,8 +1885,8 @@
   <data name="trDepositor" xml:space="preserve">
     <value>المودع</value>
   </data>
-  <data name="trPurchaceOrder" xml:space="preserve">
-    <value>طلبية شراء</value>
+  <data name="ProcurementRequests" xml:space="preserve">
+    <value>طلبات التزويد</value>
   </data>
   <data name="trPurchaceOrderDraft" xml:space="preserve">
     <value>مسودة طلبية شراء</value>

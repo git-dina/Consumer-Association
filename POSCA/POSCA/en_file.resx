@@ -3545,8 +3545,8 @@ Main Documents</value>
   <data name="trPull" xml:space="preserve">
     <value>سحب</value>
   </data>
-  <data name="trPurchaceOrder" xml:space="preserve">
-    <value>طلبية شراء</value>
+  <data name="ProcurementRequests" xml:space="preserve">
+    <value>Procurement Requests</value>
   </data>
   <data name="trPurchaceOrderDraft" xml:space="preserve">
     <value>مسودة طلبية شراء</value>
@@ -3555,7 +3555,7 @@ Main Documents</value>
     <value>طلبية شراء محفوظة</value>
   </data>
   <data name="trPurchase" xml:space="preserve">
-    <value>المشتريات</value>
+    <value>Purchases</value>
   </data>
   <data name="trPurchase&amp;Sales" xml:space="preserve">
     <value>المشتريات &amp; المبيعات</value>

@@ -2303,6 +2303,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procurement Requests.
+        /// </summary>
+        internal static string ProcurementRequests {
+            get {
+                return ResourceManager.GetString("ProcurementRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profit Margin....
         /// </summary>
         internal static string ProfitMarginHint {
@@ -11259,15 +11268,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طلبية شراء.
-        /// </summary>
-        internal static string trPurchaceOrder {
-            get {
-                return ResourceManager.GetString("trPurchaceOrder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to مسودة طلبية شراء.
         /// </summary>
         internal static string trPurchaceOrderDraft {
@@ -11286,7 +11286,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المشتريات.
+        ///   Looks up a localized string similar to Purchases.
         /// </summary>
         internal static string trPurchase {
             get {

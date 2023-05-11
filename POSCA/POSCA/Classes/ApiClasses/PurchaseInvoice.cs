@@ -17,8 +17,8 @@ namespace POSCA.Classes
         public Nullable<System.DateTime> OrderDate { get; set; }
         public Nullable<System.DateTime> OrderRecieveDate { get; set; }
         public string Notes { get; set; }
-        public string Notes1 { get; set; }
-        public string Notes2 { get; set; }
+        public string SupplierNotes { get; set; }
+        public string SupplierPurchaseNotes { get; set; }
         public Nullable<decimal> TotalCost { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<decimal> EnterpriseDiscount { get; set; }
