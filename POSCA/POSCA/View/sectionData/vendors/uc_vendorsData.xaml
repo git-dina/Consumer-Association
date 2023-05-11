@@ -102,6 +102,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
 
 
@@ -131,6 +132,13 @@
                                 <DataGridTextColumn Width="*"  Header="ShortName" Binding="{Binding Path=ShortName}"/>
                                 <DataGridTextColumn Width="*"  Header="SupplierGroup" Binding="{Binding Path=SupplierGroup}"/>
                                 <DataGridTextColumn Width="*"  Header="SupplierType" Binding="{Binding Path=SupplierType}"/>
+                                <DataGridTemplateColumn  Header="IsActive"   >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -277,6 +285,11 @@
                             </Button>
                         </StackPanel >
                     </Border>
+
+                    <Button Grid.Row="2" Content="Update" Height="auto" BorderBrush="{x:Null}"  FontSize="14" x:Name="btn_updateGrid"
+                    Background="{StaticResource SecondColor}"
+                            Foreground="White"
+                            Click="btn_updateGrid_Click"   Margin="10,10,10,10" />
                 </Grid>
             </Border>
         </Grid>
