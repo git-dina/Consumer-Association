@@ -630,5 +630,19 @@ namespace POSCA.View.catalog
             cd_gridMain1.Width = cd_gridMain2.Width;
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
+
+        private void cb_CategoryParentId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_CategoryParentId.Template.FindName("PART_EditableTextBox", cb_CategoryParentId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_CategoryParentId.ItemsSource = FillCombo.categoryList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }
