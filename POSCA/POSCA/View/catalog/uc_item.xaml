@@ -443,6 +443,10 @@
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0" 
+                                   IsTextSearchEnabled ="False"
+                                   IsEditable="True"
+                                   StaysOpenOnEdit="true"
+                                   KeyUp ="cb_CategoryId_KeyUp"
                                    SelectionChanged="Cb_CategoryId_SelectionChanged"/>
                                     <Path Fill="#E81123" x:Name="p_error_CategoryId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
@@ -473,7 +477,11 @@
                                   materialDesign:HintAssist.Hint="CountryId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
+                                  BorderBrush="#737373" BorderThickness="0" 
+                                  IsTextSearchEnabled ="False"
+                                   IsEditable="True"
+                                   StaysOpenOnEdit="true"
+                                   KeyUp ="cb_CountryId_KeyUp"/>
                                     <Path Fill="#E81123" x:Name="p_error_CountryId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -503,7 +511,11 @@
                                   materialDesign:HintAssist.Hint="BrandId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
+                                  BorderBrush="#737373" BorderThickness="0" 
+                                   IsTextSearchEnabled ="False"
+                                   IsEditable="True"
+                                   StaysOpenOnEdit="true"
+                                   KeyUp ="cb_BrandId_KeyUp"/>
                                     <Path Fill="#E81123" x:Name="p_error_BrandId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 

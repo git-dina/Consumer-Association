@@ -88,12 +88,45 @@ namespace POSCA.View.catalog
 
 
                 Keyboard.Focus(tb_Name);
+                #region loading
+                loadingList = new List<keyValueBool>();
+                bool isDone = true;
 
-                await FillCombo.fillCategorys(cb_CategoryId);
-                await FillCombo.fillCountrys(cb_CountryId);
-                await FillCombo.fillBrandsWithDefault(cb_BrandId);
-                await FillCombo.fillSuppliers(cb_SupId);
-                await FillCombo.fillUnits(cb_UnitId);
+                loadingList.Add(new keyValueBool { key = "loading_RefrishCategories", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishCountries", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishBrands", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishUnits", value = false });
+
+                loading_RefrishCategories();
+                loading_RefrishCountries();
+                loading_RefrishBrands();
+                loading_RefrishSuppliers();
+                loading_RefrishUnits();
+
+                do
+                {
+                    isDone = true;
+                    foreach (var item in loadingList)
+                    {
+                        if (item.value == false)
+                        {
+                            isDone = false;
+                            break;
+                        }
+                    }
+                    if (!isDone)
+                    {
+                        await Task.Delay(0500);
+                    }
+                }
+                while (!isDone);
+                #endregion
+                //await FillCombo.fillCategorys(cb_CategoryId);
+                // await FillCombo.fillCountrys(cb_CountryId);
+                // await FillCombo.fillBrandsWithDefault(cb_BrandId);
+                //await FillCombo.fillSuppliers(cb_SupId);
+                //await FillCombo.fillUnits(cb_UnitId);
 
                 await Search();
                 Clear();
@@ -175,6 +208,182 @@ namespace POSCA.View.catalog
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
 
         }
+
+        #region Loading
+        List<keyValueBool> loadingList;
+        List<string> catchError = new List<string>();
+        int catchErrorCount = 0;
+
+        bool loadingSuccess_RefrishCategories = false;
+        async void loading_RefrishCategories()
+        {
+            try
+            {
+                await FillCombo.fillCategorys(cb_CategoryId);
+                if (FillCombo.categoryList is null)
+                    loading_RefrishCategories();
+                else
+                    loadingSuccess_RefrishCategories = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishCategories");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishCategories = true;
+                }
+                else
+                    loading_RefrishCategories();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishCategories)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishCategories"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }
+        
+        bool loadingSuccess_RefrishCountries = false;
+        async void loading_RefrishCountries()
+        {
+            try
+            {
+                await FillCombo.fillCountrys(cb_CountryId);
+                if (FillCombo.countryList is null)
+                    loading_RefrishCountries();
+                else
+                    loadingSuccess_RefrishCountries = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishCountries");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishCountries = true;
+                }
+                else
+                    loading_RefrishCountries();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishCountries)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishCountries"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        } 
+        
+        bool loadingSuccess_RefrishBrands = false;
+        async void loading_RefrishBrands()
+        {
+            try
+            {
+                await FillCombo.fillBrandsWithDefault(cb_BrandId);
+                if (FillCombo.brandList is null)
+                    loading_RefrishBrands();
+                else
+                    loadingSuccess_RefrishBrands = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishBrands");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishBrands = true;
+                }
+                else
+                    loading_RefrishBrands();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishBrands)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishBrands"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        } 
+        
+        bool loadingSuccess_RefrishSuppliers = false;
+        async void loading_RefrishSuppliers()
+        {
+            try
+            {
+                await FillCombo.fillSuppliers(cb_SupId);
+                if (FillCombo.suppliersList is null)
+                    loading_RefrishSuppliers();
+                else
+                    loadingSuccess_RefrishSuppliers = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishSuppliers");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishSuppliers = true;
+                }
+                else
+                    loading_RefrishSuppliers();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishSuppliers)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishSuppliers"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }
+        
+        bool loadingSuccess_RefrishUnits = false;
+        async void loading_RefrishUnits()
+        {
+            try
+            {
+                await FillCombo.fillUnits(cb_UnitId);
+                if (FillCombo.unitList is null)
+                    loading_RefrishUnits();
+                else
+                    loadingSuccess_RefrishUnits = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishUnits");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishUnits = true;
+                }
+                else
+                    loading_RefrishUnits();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishUnits)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishUnits"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }
+        #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
         {//add
@@ -890,7 +1099,19 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        private void cb_CategoryId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_CategoryId.Template.FindName("PART_EditableTextBox", cb_CategoryId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_CategoryId.ItemsSource = FillCombo.categoryList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) ).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void Cb_CategoryId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -911,7 +1132,32 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        private void cb_CountryId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_CountryId.Template.FindName("PART_EditableTextBox", cb_CountryId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_CountryId.ItemsSource = FillCombo.countryList.Where(p => p.CountryName.ToLower().Contains(tb.Text.ToLower())).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        private void cb_BrandId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_BrandId.Template.FindName("PART_EditableTextBox", cb_BrandId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_BrandId.ItemsSource = FillCombo.brandList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void tb_Factor_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
@@ -999,5 +1245,6 @@ namespace POSCA.View.catalog
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
+      
     }
 }
