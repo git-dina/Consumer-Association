@@ -5576,4 +5576,7 @@
   <data name="trFactorMaxError" xml:space="preserve">
     <value>القيمة العظمى للشد:</value>
   </data>
+  <data name="trItemBarcodError" xml:space="preserve">
+    <value>يجب أن يكون للعنصر باركود واحد على الأقل</value>
+  </data>
 </root>

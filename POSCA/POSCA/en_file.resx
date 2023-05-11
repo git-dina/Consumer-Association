@@ -5322,4 +5322,7 @@ Main Documents</value>
   <data name="trFactorMaxError" xml:space="preserve">
     <value>Max value of factor is:</value>
   </data>
+  <data name="trItemBarcodError" xml:space="preserve">
+    <value>Item should have one barcode al least</value>
+  </data>
 </root>

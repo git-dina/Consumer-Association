@@ -103,8 +103,8 @@ namespace POSCA.View.windows
             txt_itemUnit.Text = AppSettings.resourcemanager.GetString("ItemUnits");
 
             dg_itemUnit.Columns[0].Header = AppSettings.resourcemanager.GetString("Unit");
-            dg_itemUnit.Columns[1].Header = AppSettings.resourcemanager.GetString("Barcode");
-            dg_itemUnit.Columns[2].Header = AppSettings.resourcemanager.GetString("BarcodeType");
+            dg_itemUnit.Columns[1].Header = AppSettings.resourcemanager.GetString("BarcodeType");
+            dg_itemUnit.Columns[2].Header = AppSettings.resourcemanager.GetString("Barcode");
             dg_itemUnit.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
             dg_itemUnit.Columns[4].Header = AppSettings.resourcemanager.GetString("Cost");
             dg_itemUnit.Columns[5].Header = AppSettings.resourcemanager.GetString("SalePrice");
@@ -144,50 +144,7 @@ namespace POSCA.View.windows
      
         private async void Dg_itemUnit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                //selection
-                /*
-                if (dg_supplier.SelectedIndex != -1)
-                {
-                    supplier = dg_supplier.SelectedItem as Supplier;
-                    this.DataContext = supplier;
-                    if (supplier != null)
-                    {
-                        #region image
-                        bool isModified = HelpClass.chkImgChng(supplier.image, (DateTime)supplier.updateDate, Global.TMPSuppliersFolder);
-                        if (isModified)
-                            getImg();
-                        else
-                            HelpClass.getLocalImg("Supplier", supplier.image, btn_image);
-                        #endregion
-                        //getImg();
-                        #region delete
-                        if (supplier.canDelete)
-                            btn_delete.Content = AppSettings.resourcemanager.GetString("trDelete");
-                        else
-                        {
-                            if (supplier.isActive == 0)
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trActive");
-                            else
-                                btn_delete.Content = AppSettings.resourcemanager.GetString("trInActive");
-                        }
-                        #endregion
-                        HelpClass.getMobile(supplier.mobile, cb_areaMobile, tb_mobile);
-                        HelpClass.getPhone(supplier.phone, cb_areaPhone, cb_areaPhoneLocal, tb_phone);
-                        HelpClass.getPhone(supplier.fax, cb_areaFax, cb_areaFaxLocal, tb_fax);
-                    }
-                }
-                HelpClass.clearValidate(requiredControlList, this);
-                */
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+           
         }
         #endregion
 
@@ -498,7 +455,7 @@ namespace POSCA.View.windows
                     if (barcodeNum != null && barcodeNum != "")
                         num = int.Parse(barcodeNum.Substring(0, 4));
                     num++;
-                    barcode = num.ToString().PadLeft(4, '0') + item.ItemId.ToString().PadLeft(4, '0');
+                    barcode = "1000"+num.ToString().PadLeft(4, '0') + item.ItemId.ToString().PadLeft(4, '0');
                     break;
                 case "isWeight":
                      lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
@@ -507,7 +464,7 @@ namespace POSCA.View.windows
                     if (barcodeNum != null && barcodeNum != "")
                         num = int.Parse(barcodeNum);
                     num++;
-                    barcode = num.ToString();
+                    barcode = num.ToString().PadLeft(4, '0');
                     break;
                 default:
                     break;
@@ -643,7 +600,25 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        private void tb_barcode_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+                int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
 
+                itemUnit.Barcode = txt.Text;
+
+                RefreshItemUnitDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void chk_isBlocked_Changed(object sender, RoutedEventArgs e)
         {
             try
@@ -685,5 +660,7 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+       
     }
 }

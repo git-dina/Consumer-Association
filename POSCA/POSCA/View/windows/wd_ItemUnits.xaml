@@ -77,7 +77,6 @@
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
                        HeadersVisibility="Column" Background="White"
-                       SelectionChanged="Dg_itemUnit_SelectionChanged"  
                                       AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
@@ -107,7 +106,7 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn Width="5*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
+                           
                             <DataGridTemplateColumn  Width="4*" Header="BarcodeType"   >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -117,6 +116,15 @@
                                                   SelectedValuePath="key"
                                                   SelectionChanged="Cb_barcodeType_SelectionChanged"
                                               />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="3*"  Header="Barcode">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox  Text="{Binding Path=Barcode, Mode=TwoWay}"
+                                                  BorderThickness="0"
+                                                  LostFocus="tb_barcode_LostFocus"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

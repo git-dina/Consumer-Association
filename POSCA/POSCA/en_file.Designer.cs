@@ -8414,6 +8414,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item should have one barcode al least.
+        /// </summary>
+        internal static string trItemBarcodError {
+            get {
+                return ResourceManager.GetString("trItemBarcodError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لا يمكن حذف المادة.
         /// </summary>
         internal static string trItemCannotDelete {

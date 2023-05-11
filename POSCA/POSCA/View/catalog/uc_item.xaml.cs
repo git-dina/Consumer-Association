@@ -397,7 +397,12 @@ namespace POSCA.View.catalog
                 item.ItemId = 0;
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
-                    if (!tb_Factor.Text.Equals("0"))
+                    if (tb_Factor.Text.Equals("0"))
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
+                    else if(item.ItemUnits.Where(x =>x.Barcode == "").FirstOrDefault() != null)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemBarcodError"), animation: ToasterAnimation.FadeIn);
+
+                    else
                     {
                         item.Name = tb_Name.Text;
                         item.ShortName = tb_ShortName.Text;
@@ -431,8 +436,7 @@ namespace POSCA.View.catalog
                             await Search();
                         }
                     }
-                    else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
+            
 
                 }
                 HelpClass.EndAwait(grid_main);
@@ -606,6 +610,7 @@ namespace POSCA.View.catalog
                 {
                     item = dg_item.SelectedItem as Item;
                     this.DataContext = item;
+                    tb_Code.Text = item.Code.ToString();
                     tb_Factor.Text = item.Factor.ToString();
                     tb_ShortName.Text = item.ShortName;
                     tb_ConsumerProfitPerc.Text = item.ConsumerProfitPerc.ToString();
@@ -691,6 +696,7 @@ namespace POSCA.View.catalog
         {
             this.DataContext = new Item();
             tb_ShortName.Clear();
+            tb_Code.Text = "";
             tb_Factor.Text = "";
             tb_ConsumerProfitPerc.Text = "0";
             tb_ConsumerDiscPerc.Text = "0";
@@ -950,16 +956,16 @@ namespace POSCA.View.catalog
         {
             try
             {
-                //if (cb_UnitId.SelectedIndex == -1)
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
-                //if (tb_Factor.Text.Equals("") || tb_Factor.Text.Equals("0"))
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterFactorError"), animation: ToasterAnimation.FadeIn);
-                //else if (cb_CategoryId.SelectedIndex == -1)
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
-                //else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
-                if (item.ItemId == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSaveItemFirstError"), animation: ToasterAnimation.FadeIn);
+                if (cb_UnitId.SelectedIndex == -1)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplyUnitError"), animation: ToasterAnimation.FadeIn);
+                if (tb_Factor.Text.Equals("") || tb_Factor.Text.Equals("0"))
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterFactorError"), animation: ToasterAnimation.FadeIn);
+                else if (cb_CategoryId.SelectedIndex == -1)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
+                else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
+                //if (item.ItemId == 0)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSaveItemFirstError"), animation: ToasterAnimation.FadeIn);
                 else
                 {
                     HelpClass.StartAwait(grid_main);
@@ -1047,13 +1053,26 @@ namespace POSCA.View.catalog
                 cb_SupSectorId.SelectedValuePath = "SupSectorId";
                 cb_SupSectorId.DisplayMemberPath = "SupSectorName";
                 cb_SupSectorId.SelectedIndex = -1;
+
+                //generate item number
+                if(item.ItemId == 0 || supplier.SupId != item.SupId)
+                    tb_Code.Text= generateItemCode(supplier.SupId);
             }
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        private string generateItemCode(long supId)
+        {
+            long maxId = 0;
+            if (FillCombo.itemList.Count > 0)
+                maxId = FillCombo.itemList.Select(x => x.ItemId).Max();
+            maxId++;
+            var itemCode = supId.ToString().PadLeft(4, '0') + maxId.ToString().PadLeft(4, '0');
 
+            return itemCode;
+        }
         private void Cb_UnitId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
