@@ -318,7 +318,7 @@
                     </Grid>
                 </Border>
 
-                <ScrollViewer Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto" Margin="0,30,0,98" Grid.RowSpan="3"   >
+                <ScrollViewer Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto"  Grid.RowSpan="3"   >
                     <StackPanel>
                         <DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_baseInformation" Text="Base Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
@@ -417,6 +417,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="EngName..."  
                                      Foreground="#4E4E4E"  
+                                     PreviewTextInput="Code_PreviewTextInput" 
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
