@@ -257,8 +257,28 @@
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
                     <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
+                            <TextBox x:Name="tb_InvStatus" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding InvStatus, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="InvStatus..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_InvStatus" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                            </Path>
+
+                        </Grid>
+                    </Border>
+                    <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
                             <TextBox x:Name="tb_InvNumber" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding InvNumber, Mode=OneWay}"
+                                         Text="{Binding InvNumber, Mode=TwoWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="InvNumber..."    
                                         Foreground="#4E4E4E"    
@@ -277,7 +297,7 @@
                     </Border>
                     <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
-                            <ComboBox x:Name="cb_SupplierId"    SelectedValue="{Binding SupplierId, Mode=OneWay}"
+                            <ComboBox x:Name="cb_SupplierId"    SelectedValue="{Binding SupplierId, Mode=TwoWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
                                   materialDesign:HintAssist.Hint="SupplierId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
@@ -295,9 +315,9 @@
                         <Grid   >
                             <DatePicker  x:Name="dp_OrderDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                         BorderBrush="#737373"   BorderThickness="0" Margin="0"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="#4E4E4E"
-                                         SelectedDate="{Binding OrderDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                         SelectedDate="{Binding OrderDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="OrderDate..."  
                                         Foreground="#4E4E4E"   Height="40"    />
@@ -312,9 +332,9 @@
                         <Grid   >
                             <DatePicker  x:Name="dp_OrderRecieveDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                         BorderBrush="#737373"   BorderThickness="0" Margin="0"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="#4E4E4E"
-                                         SelectedDate="{Binding OrderRecieveDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                         SelectedDate="{Binding OrderRecieveDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="OrderRecieveDate..."  
                                         Foreground="#4E4E4E"   Height="40"    />
@@ -329,7 +349,7 @@
 
                     <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
-                            <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
+                            <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -339,9 +359,9 @@
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                         </Grid>
                     </Border>
-                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
-                            <TextBox  x:Name="tb_Notes1" Text="{Binding Notes1, Mode=OneWay}"
+                            <TextBox  x:Name="tb_Notes1" Text="{Binding Notes1, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -350,10 +370,10 @@
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                         </Grid>
-                    </Border>
-                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    </Border>-->
+                    <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
-                            <TextBox  x:Name="tb_Notes2" Text="{Binding Notes2, Mode=OneWay}"
+                            <TextBox  x:Name="tb_Notes2" Text="{Binding Notes2, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -362,7 +382,7 @@
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                         </Grid>
-                    </Border>
+                    </Border>-->
 
 
 
