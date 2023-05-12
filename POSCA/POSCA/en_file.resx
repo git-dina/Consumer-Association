@@ -361,7 +361,7 @@
     <value>Free Markets%</value>
   </data>
   <data name="FreePercentag" xml:space="preserve">
-    <value>Free Percentag</value>
+    <value>Free Percentage</value>
   </data>
   <data name="FreePercentagHint" xml:space="preserve">
     <value>Free Percentag...</value>
@@ -2939,7 +2939,7 @@ Main Documents</value>
     <value>صافي المبيعات</value>
   </data>
   <data name="trNew" xml:space="preserve">
-    <value>جديد</value>
+    <value>New</value>
   </data>
   <data name="trNewDraft" xml:space="preserve">
     <value>مسودة جديدة</value>
@@ -4545,7 +4545,7 @@ Main Documents</value>
     <value>الإجمالي</value>
   </data>
   <data name="trTotalPrice" xml:space="preserve">
-    <value>إجمالي السعر</value>
+    <value>Total Price</value>
   </data>
   <data name="trTotalPurchases" xml:space="preserve">
     <value>إجمالي المشتريات</value>
@@ -5327,5 +5327,38 @@ Main Documents</value>
   </data>
   <data name="trParentGroupHint" xml:space="preserve">
     <value>Parent Group...</value>
+  </data>
+  <data name="ConsumerDiscount" xml:space="preserve">
+    <value>Consumer Discount</value>
+  </data>
+  <data name="CostAfterDiscount" xml:space="preserve">
+    <value>Cost After Discount</value>
+  </data>
+  <data name="DocumentDateHint" xml:space="preserve">
+    <value>Document Date...</value>
+  </data>
+  <data name="EnterpriseDiscount" xml:space="preserve">
+    <value>Enterprise Discount</value>
+  </data>
+  <data name="NetCost" xml:space="preserve">
+    <value>Net Cost</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>Order Details</value>
+  </data>
+  <data name="OrderNumberHint" xml:space="preserve">
+    <value>Order Number...</value>
+  </data>
+  <data name="OrderStatusHint" xml:space="preserve">
+    <value>Order Status...</value>
+  </data>
+  <data name="ProcurementRequest" xml:space="preserve">
+    <value>Procurement Request</value>
+  </data>
+  <data name="RequestedReceiptDateHint" xml:space="preserve">
+    <value>Requested Receipt Date...</value>
+  </data>
+  <data name="TotalCost" xml:space="preserve">
+    <value>Total Cost</value>
   </data>
 </root>

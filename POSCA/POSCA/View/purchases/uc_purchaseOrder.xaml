@@ -82,7 +82,7 @@
                         
                     Click="Btn_search_Click">
                     <StackPanel Orientation="Horizontal" Margin="5 0" >
-                        <TextBlock Text="search"  Foreground="White" Margin="5"/>
+                        <TextBlock x:Name="txt_search" Text="search"  Foreground="White" Margin="5"/>
 
                         <!--<Path Fill="{StaticResource White}" Margin="5"
                               Stretch="Fill" Height="20"  Width="20" x:Name="path_search"

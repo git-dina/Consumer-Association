@@ -98,7 +98,32 @@ namespace POSCA.View.purchases
         private void translate()
         {
 
-           
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
+
+            chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
+            chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
+
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
+            txt_newDraft.Text = AppSettings.resourcemanager.GetString("trNew");
+            txt_payInvoice.Text = AppSettings.resourcemanager.GetString("ProcurementRequest");
+            txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
+            txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
+            txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
+            txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
+            txt_CostAfterDiscountTitle.Text = AppSettings.resourcemanager.GetString("CostAfterDiscount");
+            txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
+            txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
+            txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupplierId, AppSettings.resourcemanager.GetString("SupplierHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderDate, AppSettings.resourcemanager.GetString("DocumentDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderRecieveDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNotesHint"));
+
+
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
 

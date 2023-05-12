@@ -3880,12 +3880,6 @@
   <data name="sections" xml:space="preserve">
     <value>الاقسام</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="String2" xml:space="preserve">
-    <value />
-  </data>
   <data name="internalOrders" xml:space="preserve">
     <value>طلبات داخلية</value>
   </data>
@@ -5581,5 +5575,38 @@
   </data>
   <data name="trParentGroupHint" xml:space="preserve">
     <value>المجموعة الأب...</value>
+  </data>
+  <data name="ConsumerDiscount" xml:space="preserve">
+    <value>خصم المستهلك</value>
+  </data>
+  <data name="CostAfterDiscount" xml:space="preserve">
+    <value>التكلفة بعد الخصم</value>
+  </data>
+  <data name="DocumentDateHint" xml:space="preserve">
+    <value>تاريخ السند...</value>
+  </data>
+  <data name="EnterpriseDiscount" xml:space="preserve">
+    <value>خصم الجمعية</value>
+  </data>
+  <data name="NetCost" xml:space="preserve">
+    <value>صافي التكلفة</value>
+  </data>
+  <data name="OrderDetails" xml:space="preserve">
+    <value>تفاصيل الطلب</value>
+  </data>
+  <data name="OrderNumberHint" xml:space="preserve">
+    <value>رقم الطلب...</value>
+  </data>
+  <data name="OrderStatusHint" xml:space="preserve">
+    <value>حالة الطلب...</value>
+  </data>
+  <data name="ProcurementRequest" xml:space="preserve">
+    <value>طلب تزويد</value>
+  </data>
+  <data name="RequestedReceiptDateHint" xml:space="preserve">
+    <value>تاريخ الاستلام المطلوب...</value>
+  </data>
+  <data name="TotalCost" xml:space="preserve">
+    <value>إجمالي التكلفة</value>
   </data>
 </root>
