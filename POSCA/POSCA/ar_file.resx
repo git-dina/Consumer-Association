@@ -5579,4 +5579,7 @@
   <data name="trItemBarcodError" xml:space="preserve">
     <value>يجب أن يكون للعنصر باركود واحد على الأقل</value>
   </data>
+  <data name="trParentGroupHint" xml:space="preserve">
+    <value>المجموعة الأب...</value>
+  </data>
 </root>

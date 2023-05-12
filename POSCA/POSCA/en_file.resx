@@ -5325,4 +5325,7 @@ Main Documents</value>
   <data name="trItemBarcodError" xml:space="preserve">
     <value>Item should have one barcode al least</value>
   </data>
+  <data name="trParentGroupHint" xml:space="preserve">
+    <value>Parent Group...</value>
+  </data>
 </root>

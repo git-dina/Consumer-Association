@@ -38,6 +38,24 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
+        
+        static public async Task fillSupplierGroupsWithDefault(ComboBox combo)
+        {
+            if (supplierGroupList is null)
+                await RefreshSupplierGroups();
+
+           var listWithDefault = supplierGroupList.ToList();
+
+            SupplierGroup sup = new SupplierGroup();
+            sup.Name = "-";
+            sup.SupplierGroupId = 0;
+            listWithDefault.Insert(0, sup);
+
+            combo.ItemsSource = listWithDefault;
+            combo.SelectedValuePath = "SupplierGroupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         #endregion
         #region Assistant Supplier
         static public AssistantSupplier assistantSupplier = new AssistantSupplier();

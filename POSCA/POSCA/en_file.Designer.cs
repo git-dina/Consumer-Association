@@ -10251,6 +10251,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parent Group....
+        /// </summary>
+        internal static string trParentGroupHint {
+            get {
+                return ResourceManager.GetString("trParentGroupHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اسم الأب.
         /// </summary>
         internal static string trParentName {
