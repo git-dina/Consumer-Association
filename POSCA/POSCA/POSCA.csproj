@@ -181,6 +181,7 @@
     <Compile Include="Classes\ApiClasses\LocationType.cs" />
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
+    <Compile Include="Classes\ApiClasses\PurchaseInvDetails.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
@@ -438,12 +439,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Thumb\tmp0.txt" />
-    <Resource Include="Thumb\tmp1.txt" />
-    <Resource Include="Thumb\tmp2.txt" />
-    <Resource Include="Thumb\tmp3.txt" />
-    <Resource Include="Thumb\tmp4.txt" />
-    <Resource Include="Thumb\tmp5.txt" />
-    <Resource Include="Thumb\tmp6.txt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Thumb\SupDocuments\tmp.txt">

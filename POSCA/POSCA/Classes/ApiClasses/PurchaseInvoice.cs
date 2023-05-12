@@ -21,7 +21,7 @@ namespace POSCA.Classes
         public string SupplierPurchaseNotes { get; set; }
         public Nullable<decimal> TotalCost { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
-        public Nullable<decimal> EnterpriseDiscount { get; set; }
+        public Nullable<decimal> CoopDiscount { get; set; }
         public Nullable<decimal> CostAfterDiscount { get; set; }
         public Nullable<decimal> FreePercentage { get; set; }
         public Nullable<decimal> ConsumerDiscount { get; set; }
