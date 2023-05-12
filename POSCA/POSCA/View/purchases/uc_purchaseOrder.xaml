@@ -54,19 +54,19 @@
                     </Grid>
                 </Border>
                 <Border Grid.Column="2"  Margin="5" Background="White" CornerRadius="16" Height="40">
-
                     <CheckBox x:Name="chk_barcode"  IsChecked="True"
                               Background="{StaticResource MainColor}"
                               Content="barcode" 
                               Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
                                Margin="0" Height="35"
-                              />
+                              Checked="searchType_check"
+                              Unchecked="searchType_uncheck"/>
                 </Border>
                 <Border Grid.Column="3"  Margin="5" Background="White" CornerRadius="16" Height="40">
 
                     <CheckBox x:Name="chk_itemNum" 
                               Background="{StaticResource MainColor}"
-                              Content="shipping companies"
+                              Content="itemNum"
                               Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
                                Margin="0" Height="35"
                               />

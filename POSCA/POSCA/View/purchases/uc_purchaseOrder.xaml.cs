@@ -208,9 +208,59 @@ namespace POSCA.View.purchases
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+
+        private async void searchType_check(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CheckBox cb = sender as CheckBox;
+                if (cb.IsFocused)
+                {
+                    //HelpClass.StartAwait(grid_main);
+                    if (cb.IsChecked == true)
+                    {
+                        if (cb.Name == "chk_barcode")
+                        {
+                            chk_itemNum.IsChecked = false;
+                        }
+                        else if (cb.Name == "chk_itemNum")
+                        {
+                            chk_barcode.IsChecked = false;
+                        }
+                    }
+                    //HelpClass.EndAwait(grid_main);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        private void searchType_uncheck(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CheckBox cb = sender as CheckBox;
+                if (cb.IsFocused)
+                {
+                    if (cb.Name == "chk_barcode")
+                        chk_barcode.IsChecked = true;
+                    else if (cb.Name == "chk_itemNum")
+                        chk_itemNum.IsChecked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
         #endregion
         #region Refresh & Search
-       
+
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
