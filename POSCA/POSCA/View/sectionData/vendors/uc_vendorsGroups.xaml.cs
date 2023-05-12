@@ -102,12 +102,6 @@ namespace POSCA.View.sectionData.vendors
         private void translate()
         {
 
-            //// Title
-            //if (!string.IsNullOrWhiteSpace(FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate))
-            //    txt_title.Text = AppSettings.resourcemanager.GetString(
-            //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
-            //   );
-
             txt_title.Text = AppSettings.resourcemanager.GetString("SupplierGroups");
 
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
@@ -376,6 +370,7 @@ namespace POSCA.View.sectionData.vendors
             s.Name.ToLower().Contains(searchText) 
             ).ToList();
             */
+            supplierGroupsQuery = FillCombo.supplierGroupList.ToList();
             RefreshGroupsView();
         }
         async Task<IEnumerable<SupplierGroup>> RefreshGroupsList()
@@ -541,9 +536,16 @@ namespace POSCA.View.sectionData.vendors
                 unExpandTreeViewItem();
                 setSelectedStyleTreeViewItem();
                 supplierGroup = FillCombo.supplierGroupList.Where(x => x.SupplierGroupId == long.Parse(treeViewItem.Tag.ToString())).FirstOrDefault();
-                this.DataContext = supplierGroup;
-                //MessageBox.Show($"SupplierGroup Id is: {treeViewItem.Tag}, SupplierGroup Name: {treeViewItem.Header}");
+              
+                var lst = FillCombo.supplierGroupList.Where(x => x.SupplierGroupId != supplierGroup.SupplierGroupId).ToList();
+                SupplierGroup sup = new SupplierGroup();
+                sup.Name = "-";
+                sup.SupplierGroupId = 0;
+                lst.Insert(0, sup);
 
+                cb_ParentGroupId.ItemsSource = lst;
+
+                this.DataContext = supplierGroup;
             }
             treeViewItem.IsExpanded = true;
         }
@@ -591,7 +593,7 @@ namespace POSCA.View.sectionData.vendors
             {
                 var tb = cb_ParentGroupId.Template.FindName("PART_EditableTextBox", cb_ParentGroupId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-               var lst = FillCombo.supplierGroupList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+               var lst = FillCombo.supplierGroupList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) && p.SupplierGroupId != supplierGroup.SupplierGroupId).ToList();
                 SupplierGroup sup = new SupplierGroup();
                 sup.Name = "-";
                 sup.SupplierGroupId = 0;
