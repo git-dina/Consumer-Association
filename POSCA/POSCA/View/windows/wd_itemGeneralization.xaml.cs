@@ -319,6 +319,46 @@ namespace POSCA.View.windows
             }
         }
 
+        private void Tb_GeneralizationNo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+       
+                var gen = (ItemGeneralization)dg_itemGeneralization.SelectedItem;
+
+                gen.GeneralizationNo = Convert.ToInt32(txt.Text);
+
+                RefreshItemGeneralizationDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Tb_GeneralizationYear_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+
+                var gen = (ItemGeneralization)dg_itemGeneralization.SelectedItem;
+
+                gen.GeneralizationYear = Convert.ToInt32(txt.Text);
+
+                RefreshItemGeneralizationDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
         //private void Tb_GeneralizationYear_PreviewTextInput(object sender, TextCompositionEventArgs e)
         //{
         //    try

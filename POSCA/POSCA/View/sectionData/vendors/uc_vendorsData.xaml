@@ -132,10 +132,10 @@
                                 <DataGridTextColumn Width="*"  Header="ShortName" Binding="{Binding Path=ShortName}"/>
                                 <DataGridTextColumn Width="*"  Header="SupplierGroup" Binding="{Binding Path=SupplierGroup}"/>
                                 <DataGridTextColumn Width="*"  Header="SupplierType" Binding="{Binding Path=SupplierType}"/>
-                                <DataGridTemplateColumn  Header="IsActive"   >
+                                <DataGridTemplateColumn  Header="IsBlocked"   >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsBlocked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

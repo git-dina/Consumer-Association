@@ -112,12 +112,6 @@ namespace POSCA.View.sectionData
         private void translate()
         {
 
-            //// Title
-            //if (!string.IsNullOrWhiteSpace(FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate))
-            //    txt_title.Text = AppSettings.resourcemanager.GetString(
-            //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
-            //   );
-
             txt_title.Text = AppSettings.resourcemanager.GetString("Supplier");
             txt_Notes.Text = AppSettings.resourcemanager.GetString("trNote");
             txt_contactDataButton.Text = AppSettings.resourcemanager.GetString("ContactData");
@@ -139,15 +133,18 @@ namespace POSCA.View.sectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseOrderNotes, AppSettings.resourcemanager.GetString("PurchaseOrderNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
+            
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            btn_updateGrid.Content = AppSettings.resourcemanager.GetString("trUpdate");
 
             dg_supplier.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
             dg_supplier.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
             dg_supplier.Columns[2].Header = AppSettings.resourcemanager.GetString("ShortName");
             dg_supplier.Columns[3].Header = AppSettings.resourcemanager.GetString("Group");
             dg_supplier.Columns[4].Header = AppSettings.resourcemanager.GetString("trType");
+            dg_supplier.Columns[5].Header = AppSettings.resourcemanager.GetString("IsBlocked");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -589,130 +586,7 @@ namespace POSCA.View.sectionData
         }
 
         #endregion
-        /*
-        #region Phone
-        int? countryid;
-        private async void Cb_areaPhone_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (cb_areaPhone.SelectedValue != null)
-                {
-                    if (cb_areaPhone.SelectedIndex >= 0)
-                    {
-                        countryid = int.Parse(cb_areaPhone.SelectedValue.ToString());
-                        await FillCombo.fillCountriesLocal(cb_areaPhoneLocal, (long)countryid, brd_areaPhoneLocal);
-                    }
-                }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Cb_areaFax_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (cb_areaFax.SelectedValue != null)
-                {
-                    if (cb_areaFax.SelectedIndex >= 0)
-                    {
-                        countryid = int.Parse(cb_areaFax.SelectedValue.ToString());
-                        await FillCombo.fillCountriesLocal(cb_areaFaxLocal, (long)countryid, brd_areaFaxLocal);
-                    }
-                }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        #endregion
-        */
-        #region Image
-        /*
-
-        string imgFileName = "pic/no-image-icon-125x125.png";
-        bool isImgPressed = false;
-        OpenFileDialog openFileDialog = new OpenFileDialog();
-        SaveFileDialog saveFileDialog = new SaveFileDialog();
-        private void Btn_image_Click(object sender, RoutedEventArgs e)
-        {
-            //select image
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                isImgPressed = true;
-                openFileDialog.Filter = "Images|*.png;*.jpg;*.bmp;*.jpeg;*.jfif";
-                if (openFileDialog.ShowDialog() == true)
-                {
-                    HelpClass.imageBrush = new ImageBrush();
-                    HelpClass.imageBrush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
-                    btn_image.Background = HelpClass.imageBrush;
-                    imgFileName = openFileDialog.FileName;
-                }
-                else
-                { }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-private async Task getImg()
-{
-try
-{
-HelpClass.StartAwait(grid_image, "forImage");
-if (string.IsNullOrEmpty(supplier.image))
-{
-HelpClass.clearImg(btn_image);
-}
-else
-{
-byte[] imageBuffer = await supplier.downloadImage(supplier.image); // read this as BLOB from your DB
-
-var bitmapImage = new BitmapImage();
-if (imageBuffer != null)
-{
-using (var memoryStream = new MemoryStream(imageBuffer))
-{
-bitmapImage.BeginInit();
-bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-bitmapImage.StreamSource = memoryStream;
-bitmapImage.EndInit();
-}
-
-btn_image.Background = new ImageBrush(bitmapImage);
-// configure trmporary path
-string dir = Directory.GetCurrentDirectory();
-string tmpPath = System.IO.Path.Combine(dir, Global.TMPSuppliersFolder, supplier.image);
-openFileDialog.FileName = tmpPath;
-}
-else
-HelpClass.clearImg(btn_image);
-}
-HelpClass.EndAwait(grid_image, "forImage");
-}
-catch
-{
-HelpClass.EndAwait(grid_image, "forImage");
-}
-}
-*/
-
-        #endregion
+     
 
         private async void Btn_contactDataButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1148,9 +1022,38 @@ HelpClass.EndAwait(grid_image, "forImage");
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
-        private void btn_updateGrid_Click(object sender, RoutedEventArgs e)
+        private async void btn_updateGrid_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
+                {
+                    HelpClass.StartAwait(grid_main);
 
+                 var lst = (List<Supplier>)dg_supplier.ItemsSource;
+                    FillCombo.suppliersList = await supplier.editBlocked(lst,MainWindow.userLogin.userId);
+                    if (FillCombo.suppliersList == null)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                    else
+                    {
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                        Clear();
+                        await Search();
+
+                    }
+                    HelpClass.EndAwait(grid_main);
+                }
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+
+            }
+            catch (Exception ex)
+            {
+
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

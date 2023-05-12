@@ -1170,7 +1170,14 @@ namespace POSCA.View.catalog
             {
                 var tb = cb_BrandId.Template.FindName("PART_EditableTextBox", cb_BrandId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-                cb_BrandId.ItemsSource = FillCombo.brandList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+                var lst = FillCombo.brandList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+
+                Brand sup = new Brand();
+                sup.Name = "-";
+                sup.BrandId = 0;
+                lst.Insert(0, sup);
+
+                cb_BrandId.ItemsSource = lst;
             }
             catch (Exception ex)
             {

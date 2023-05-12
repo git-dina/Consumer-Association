@@ -100,6 +100,7 @@
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=GeneralizationYear, Mode=TwoWay}"
                                                  PreviewTextInput="Tb_GeneralizationNo_PreviewTextInput" 
+                                                  LostFocus="Tb_GeneralizationYear_LostFocus"
                                                   MaxLength="4"
                                                   BorderThickness="0"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
@@ -113,6 +114,7 @@
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=GeneralizationNo, Mode=TwoWay}"
                                                  PreviewTextInput="Tb_GeneralizationNo_PreviewTextInput" 
+                                                  LostFocus="Tb_GeneralizationNo_LostFocus"
                                                   BorderThickness="0"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"/>
                                     </DataTemplate>

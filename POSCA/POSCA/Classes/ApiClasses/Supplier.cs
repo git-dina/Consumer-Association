@@ -187,6 +187,27 @@ namespace POSCA.Classes
             }
             return result;
         }
+        
+        public async Task<List<Supplier>> editBlocked(List<Supplier> suppliers,long userId)
+        {
+            var result = new List<Supplier>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Supplier/EditBlocked";
+
+            var myContent = JsonConvert.SerializeObject(suppliers);
+            parameters.Add("itemObject", myContent);
+            parameters.Add("userId", userId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                }
+            }
+            return result;
+        }
         public async Task<string> uploadDocument(string documentPath, string documentName)
         {
             if (documentPath != "")
