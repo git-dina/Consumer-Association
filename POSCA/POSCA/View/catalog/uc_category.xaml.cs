@@ -85,23 +85,10 @@ namespace POSCA.View.catalog
                 translate();
 
 
-                //categorys = new List<Category>()
-                //{
-                //    new Category(){CategoryId = 1, Name= "root", CategoryParentId = null, CategoryParentName = "" },
-                //    new Category(){CategoryId = 2, Name= "son1-1", CategoryParentId = 1, CategoryParentName = "root" },
-                //    new Category(){CategoryId = 3, Name= "son1-2", CategoryParentId = 1, CategoryParentName = "root"},
-                //    new Category(){CategoryId = 4, Name= "son2-1", CategoryParentId = 2, CategoryParentName = "son1-1" },
-                //    new Category(){CategoryId = 5, Name= "son2-2", CategoryParentId = 3, CategoryParentName = "son1-2" },
-                //};
-                //tv_categorys.Items.Clear();
-                //categorysQuery = categorys.ToList();
-                //buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
-
-
                 Keyboard.Focus(tb_Name);
 
                 await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
-                Clear();
+                await Clear();
                 await Search();
                 
                 HelpClass.EndAwait(grid_main);
