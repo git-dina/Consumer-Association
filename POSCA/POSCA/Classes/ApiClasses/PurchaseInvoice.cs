@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using POSCA.Classes.ApiClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -33,9 +36,32 @@ namespace POSCA.Classes
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        //extra
+        public string LocationName { get; set; }
+        public List<PurchaseInvDetails> PurchaseDetails { get; set; }
         #endregion
 
         #region Methods
+
+        public async Task<List<PurchaseInvoice>> get(string invType)
+        {
+            var result = new List<PurchaseInvoice>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/Get";
+
+            parameters.Add("invType", invType);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value));
+                }
+            }
+            return result;
+        }
         #endregion
     }
 }
