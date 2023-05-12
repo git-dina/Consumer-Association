@@ -86,6 +86,7 @@ namespace POSCA.View.sectionData.vendors
 
                 Keyboard.Focus(tb_Name);
 
+                await FillCombo.fillSupplierGroupsWithDefault(cb_ParentGroupId);
                 await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
@@ -114,6 +115,7 @@ namespace POSCA.View.sectionData.vendors
             txt_HasSuppliers.Text = AppSettings.resourcemanager.GetString("HasSuppliers");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ParentGroupId, AppSettings.resourcemanager.GetString("trParentGroupHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
@@ -147,6 +149,9 @@ namespace POSCA.View.sectionData.vendors
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         supplierGroup.Name = tb_Name.Text;
+                    if (cb_ParentGroupId.SelectedIndex > 0)
+                        supplierGroup.ParentGroupId =(int) cb_ParentGroupId.SelectedValue;
+
                         if (tgl_IsBlocked.IsChecked == true)
                             supplierGroup.IsBlocked = true;
                         else
@@ -192,6 +197,11 @@ namespace POSCA.View.sectionData.vendors
                         {
 
                             supplierGroup.Name = tb_Name.Text;
+                            if (cb_ParentGroupId.SelectedIndex > 0)
+                                supplierGroup.ParentGroupId = (int)cb_ParentGroupId.SelectedValue;
+                            else
+                                supplierGroup.ParentGroupId = null;
+
                             if (tgl_IsBlocked.IsChecked == true)
                                 supplierGroup.IsBlocked = true;
                             else
@@ -474,5 +484,23 @@ namespace POSCA.View.sectionData.vendors
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
+        private void cb_ParentGroupId_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                var tb = cb_ParentGroupId.Template.FindName("PART_EditableTextBox", cb_ParentGroupId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+               var lst = FillCombo.supplierGroupList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+                SupplierGroup sup = new SupplierGroup();
+                sup.Name = "-";
+                sup.SupplierGroupId = 0;
+                lst.Insert(0, sup);
+                cb_ParentGroupId.ItemsSource = lst;
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }
