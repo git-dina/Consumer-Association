@@ -88,7 +88,7 @@ namespace POSCA.View.sectionData.vendors
 
                 await FillCombo.fillSupplierGroupsWithDefault(cb_ParentGroupId);
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -110,7 +110,7 @@ namespace POSCA.View.sectionData.vendors
 
             txt_title.Text = AppSettings.resourcemanager.GetString("SupplierGroups");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
+            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_HasSuppliers.Text = AppSettings.resourcemanager.GetString("HasSuppliers");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
@@ -121,8 +121,8 @@ namespace POSCA.View.sectionData.vendors
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_supplierGroup.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_supplierGroup.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            //dg_supplierGroup.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
+            //dg_supplierGroup.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -132,7 +132,7 @@ namespace POSCA.View.sectionData.vendors
             //tt_excel.Content = AppSettings.resourcemanager.GetString("trExcel");
             //tt_preview.Content = AppSettings.resourcemanager.GetString("trPreview");
             //tt_pieChart.Content = AppSettings.resourcemanager.GetString("trPieChart");
-            tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
+            //tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
 
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
@@ -317,6 +317,7 @@ namespace POSCA.View.sectionData.vendors
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        /*
         private async void Dg_supplierGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -340,6 +341,7 @@ namespace POSCA.View.sectionData.vendors
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        */
         private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
         {//refresh
             try
@@ -347,7 +349,7 @@ namespace POSCA.View.sectionData.vendors
 
                 HelpClass.StartAwait(grid_main);
 
-                tb_search.Text = "";
+                //tb_search.Text = "";
                 searchText = "";
                 await RefreshGroupsList();
                 await Search();
@@ -368,10 +370,12 @@ namespace POSCA.View.sectionData.vendors
             //search
             if (FillCombo.supplierGroupList is null)
                 await RefreshGroupsList();
+            /*
             searchText = tb_search.Text.ToLower();
             supplierGroupsQuery = FillCombo.supplierGroupList.Where(s =>
             s.Name.ToLower().Contains(searchText) 
             ).ToList();
+            */
             RefreshGroupsView();
         }
         async Task<IEnumerable<SupplierGroup>> RefreshGroupsList()
@@ -382,15 +386,29 @@ namespace POSCA.View.sectionData.vendors
         }
         void RefreshGroupsView()
         {
-            dg_supplierGroup.ItemsSource = supplierGroupsQuery;
-            txt_count.Text = supplierGroupsQuery.Count().ToString();
+            //dg_supplierGroup.ItemsSource = supplierGroupsQuery;
+            //txt_count.Text = supplierGroupsQuery.Count().ToString();
+
+            tv_supplierGroups.Items.Clear();
+            if (supplierGroupsQuery.Where(x => x.ParentGroupId is null).Count() > 0)
+            {
+                buildTreeViewList(supplierGroupsQuery.Where(x => x.ParentGroupId is null).ToList(), tv_supplierGroups);
+
+            }
+            else
+            {
+                buildTreeViewList(supplierGroupsQuery.Where(x => x.ParentGroupId is null).ToList(), tv_supplierGroups);
+
+            }
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new SupplierGroup();
-            dg_supplierGroup.SelectedIndex = -1;
+            //dg_supplierGroup.SelectedIndex = -1;
+
+            await FillCombo.fillSupplierGroupsWithDefault(cb_ParentGroupId);
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -474,6 +492,89 @@ namespace POSCA.View.sectionData.vendors
 
         #endregion
 
+        #region TreeView
+
+        void buildTreeViewList(List<SupplierGroup> _categories, TreeView treeViewItemParent)
+        {
+            foreach (var item in _categories)
+            {
+                TreeViewItem treeViewItem = new TreeViewItem();
+                treeViewItem.Tag = item.SupplierGroupId.ToString();
+                treeViewItem.Header = item.Name;
+                treeViewItem.FontSize = 16;
+                treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
+                treeViewItem.Selected += TreeViewItem_Selected;
+
+                treeViewItemParent.Items.Add(treeViewItem);
+                if (supplierGroupsQuery.Where(x => x.ParentGroupId == item.SupplierGroupId).ToList().Count() > 0)
+                {
+                    buildTreeViewList(supplierGroupsQuery.Where(x => x.ParentGroupId == item.SupplierGroupId).ToList(), treeViewItem);
+                }
+
+
+            }
+        }
+        void buildTreeViewList(List<SupplierGroup> _categories, TreeViewItem treeViewItemParent)
+        {
+            foreach (var item in _categories)
+            {
+                TreeViewItem treeViewItem = new TreeViewItem();
+                treeViewItem.Tag = item.SupplierGroupId.ToString();
+                treeViewItem.Header = item.Name;
+                treeViewItem.FontSize = 16;
+                treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
+                treeViewItem.Selected += TreeViewItem_Selected;
+
+                treeViewItemParent.Items.Add(treeViewItem);
+                if (supplierGroupsQuery.Where(x => x.ParentGroupId == item.SupplierGroupId).ToList().Count() > 0)
+                {
+                    buildTreeViewList(supplierGroupsQuery.Where(x => x.ParentGroupId == item.SupplierGroupId).ToList(), treeViewItem);
+                }
+            }
+        }
+        private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+
+            TreeViewItem treeViewItem = sender as TreeViewItem;
+            if (treeViewItem.IsSelected)
+            {
+                unExpandTreeViewItem();
+                setSelectedStyleTreeViewItem();
+                supplierGroup = FillCombo.supplierGroupList.Where(x => x.SupplierGroupId == long.Parse(treeViewItem.Tag.ToString())).FirstOrDefault();
+                this.DataContext = supplierGroup;
+                //MessageBox.Show($"SupplierGroup Id is: {treeViewItem.Tag}, SupplierGroup Name: {treeViewItem.Header}");
+
+            }
+            treeViewItem.IsExpanded = true;
+        }
+        void unExpandTreeViewItem()
+        {
+            List<TreeViewItem> list = FindControls.FindVisualChildren<TreeViewItem>(this).ToList();
+            foreach (var item in list)
+            {
+                if (!item.IsSelected)
+                    item.IsExpanded = false;
+            }
+        }
+        void setSelectedStyleTreeViewItem()
+        {
+            List<TreeViewItem> list = FindControls.FindVisualChildren<TreeViewItem>(this).ToList();
+            foreach (var item in list)
+            {
+                if (!item.IsSelected)
+                {
+                    item.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush;
+                    item.FontWeight = FontWeights.Regular;
+                }
+                else
+                {
+                    item.Foreground = Application.Current.Resources["SecondColor"] as SolidColorBrush;
+                    item.FontWeight = FontWeights.SemiBold;
+                }
+            }
+        }
+
+        #endregion
 
 
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
