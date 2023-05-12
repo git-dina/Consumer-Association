@@ -318,7 +318,7 @@
                     </Grid>
                 </Border>
 
-                <ScrollViewer Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto"  Grid.RowSpan="3"   >
+                <ScrollViewer Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto"    >
                     <StackPanel>
                         <DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_baseInformation" Text="Base Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
