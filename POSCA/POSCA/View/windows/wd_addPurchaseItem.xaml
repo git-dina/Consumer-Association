@@ -1,0 +1,418 @@
+﻿<Window x:Class="POSCA.View.windows.wd_addPurchaseItem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POSCA.Classes"
+        mc:Ignorable="d" KeyDown="HandleKeyPress"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Margin="0"
+         Height="545" Width="800"  Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown"
+        Loaded="Window_Loaded" Closing="Window_Closing" >
+    <Grid Grid.Column="1" Grid.Row="1"    x:Name="grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid   >
+            <Border  BorderThickness="0" Grid.Row="0" 
+                    CornerRadius="7,7,0,0"  Background="{StaticResource MainColor}">
+                <Grid>
+
+                    <Button   IsCancel="true"  HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" 
+                             BorderBrush="{x:Null}"  Foreground="White" Margin="7.5,0"  x:Name="btn_colse" Click="Btn_colse_Click"
+                             FontWeight="SemiBold" Width="24" Padding="0" ToolTip="Close"  FontSize="14">
+                        <materialDesign:PackIcon Foreground="White" Kind="Close" 
+                                         Width="20" Height="20"/>
+                    </Button>
+                    <Grid  HorizontalAlignment="Center"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Fill="White" Stretch="Fill" Margin="5,0" FlowDirection="LeftToRight"
+                              HorizontalAlignment="Right" Grid.Column="0"  
+                         VerticalAlignment="Center"  Width="20" Height="20"
+                              Data="{StaticResource Items}"/>
+                        <TextBlock Text="Item" x:Name="txt_title" Foreground="White" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="5,0"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Border BorderThickness="1,0,1,1"  Grid.Row="1"
+                    CornerRadius="0,0,7,7" BorderBrush="#999999"  Background="White">
+            <Grid  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ScrollViewer Background="White"  Grid.Row="0"   VerticalScrollBarVisibility="Auto"   >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                    <StackPanel>
+                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
+                                <TextBlock  Text="itemDetails"   x:Name="txt_itemDetails"
+                                  Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                            <Separator Background="{StaticResource SecondColor}"    Margin="5,0,5,0"
+                                      Grid.Column="1" VerticalAlignment="Center" />
+
+                        </DockPanel>
+                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_Barcode" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding Barcode, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="Barcode..."    
+                                        Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                     BorderThickness="0" 
+                                 BorderBrush="AliceBlue" MaxLength="100" 
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Barcode" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_ItemCode" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding ItemCode, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="ItemCode..."    
+                                        Foreground="#4E4E4E"    
+                                         IsReadOnly="True"
+                                     BorderThickness="0"
+                                 BorderBrush="AliceBlue" MaxLength="100" 
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0" 
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ItemCode" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_ItemName"  Text="{Binding ItemName, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="ItemName..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ItemName" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                                <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_ItemUnit" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding ItemUnit, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="ItemUnit..."    
+                                        Foreground="#4E4E4E"    
+                                         IsReadOnly="True"
+                                     BorderThickness="0" 
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                 BorderBrush="AliceBlue" MaxLength="100" 
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ItemUnit" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_Factor"  Text="{Binding Factor, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Factor..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Factor" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_Balance" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding Balance, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="Balance..."    
+                                        Foreground="#4E4E4E"    
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     BorderThickness="0"  
+                                 BorderBrush="AliceBlue" MaxLength="100"  
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Balance" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                            </Border>
+
+                        </Grid>
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_MinQty"  Text="{Binding MinQty, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="MinQty..."  
+                                     Foreground="#4E4E4E"  
+                                             Tag="int"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MinQty" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                        <TextBox x:Name="tb_MaxQty" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding MaxQty, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="MaxQty..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MaxQty" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="8" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_FreeQty"  Text="{Binding FreeQty, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="FreeQty..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                             Tag="int"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FreeQty" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                            </Border>
+                            <Border Grid.Row="8" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_Cost"  Text="{Binding Cost, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Cost..."  
+                                     Foreground="#4E4E4E" 
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Cost" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                    
+                            </Border>
+
+                        </Grid>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="8" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_CoopDiscount"  Text="{Binding CoopDiscount, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CoopDiscount..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CoopDiscount" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Row="8" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_ConsumerDiscount"  Text="{Binding ConsumerDiscount, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="ConsumerDiscount..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ConsumerDiscount" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <!--<ColumnDefinition Width="*"/>-->
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_Price"  Text="{Binding Price, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Price..."  
+                                     Foreground="#4E4E4E"  
+                                         IsReadOnly="True"
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Price" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <!--<Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_MainCost" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding MainCost, Mode=TwoWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="MainCost..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" 
+                                             Tag="decimal"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                 BorderBrush="AliceBlue" MaxLength="100" 
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MainCost" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+
+                                </Border>-->
+
+                        </Grid>
+                        
+                    </StackPanel>
+                    <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
+                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
+                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+                    </Grid>
+                </ScrollViewer>
+
+            </Grid>
+
+        </Border>
+
+
+    </Grid>
+</Window>
