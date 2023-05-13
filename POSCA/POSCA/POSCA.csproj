@@ -188,6 +188,9 @@
     <Compile Include="Classes\ApiClasses\User.cs" />
     <Compile Include="Classes\ApiClasses\SupplierDocType.cs" />
     <Compile Include="Classes\ApiClasses\PurchaseInvoice.cs" />
+    <Compile Include="View\windows\wd_addPurchaseItem.xaml.cs">
+      <DependentUpon>wd_addPurchaseItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="en_file.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -265,6 +268,10 @@
     <Compile Include="View\windows\wd_supplyingItem.xaml.cs">
       <DependentUpon>wd_supplyingItem.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\windows\wd_addPurchaseItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
