@@ -15,6 +15,10 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> PurchaseId { get; set; }
         public string ItemCode { get; set; }
         public string Barcode { get; set; }
+        //
+        public string ItemName { get; set; }
+        public string ItemUnit { get; set; }
+        //
         public string ItemNotes { get; set; }
         public Nullable<int> Factor { get; set; }
         public decimal MainCost { get; set; }
@@ -22,8 +26,8 @@ namespace POSCA.Classes.ApiClasses
         public decimal MainPrice { get; set; }
         public decimal Price { get; set; }
         public decimal Balance { get; set; }
-        public int MaxQty { get; set; }
         public int MinQty { get; set; }
+        public int MaxQty { get; set; }
         public int FreeQty { get; set; }
         public Nullable<decimal> CoopDiscount { get; set; }
         public Nullable<decimal> ConsumerDiscount { get; set; }
