@@ -105,7 +105,7 @@ namespace POSCA.View.purchases
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            txt_newDraft.Text = AppSettings.resourcemanager.GetString("trNew");
+            //txt_newDraft.Text = AppSettings.resourcemanager.GetString("trNew");
             txt_payInvoice.Text = AppSettings.resourcemanager.GetString("ProcurementRequest");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
@@ -387,6 +387,31 @@ namespace POSCA.View.purchases
         private void Btn_search_Click(object sender, RoutedEventArgs e)
         {
 
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_addPurchaseItem w = new wd_addPurchaseItem();
+                w.newPurchaseItem = new PurchaseInvDetails();
+                w.ShowDialog();
+
+                if (w.isOk)
+                {
+                    //w.newPurchaseItem
+
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

@@ -10,7 +10,7 @@
     <Grid x:Name="grid_main" Margin="20 10" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition   Height="60" />
@@ -79,7 +79,6 @@
                         x:Name="btn_search" 
                         materialDesign:ButtonAssist.CornerRadius="15"
                         Padding="0"  
-                        
                     Click="Btn_search_Click">
                     <StackPanel Orientation="Horizontal" Margin="5 0" >
                         <TextBlock x:Name="txt_search" Text="search"  Foreground="White" Margin="5"/>
@@ -147,11 +146,11 @@
                     Background="{x:Null}" x:Name="btn_newDraft" Padding="0" Margin="5,0,5,0" Height="40"
                     Click="Btn_newDraft_Click">
                     <StackPanel>
-                        <Path Fill="#4E4E4E" Stretch="Fill" Height="30"  Width="30" x:Name="path_newDraft"
+                        <Path Fill="#4E4E4E" Stretch="Fill" Height="35"  Width="35" x:Name="path_newDraft"
                           Data="{StaticResource plusCircle}"  />
-                        <TextBlock Text="clear" x:Name="txt_newDraft" Foreground="#178DD2" 
+                        <!--<TextBlock Text="clear" x:Name="txt_newDraft" Foreground="#178DD2" 
                                            FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
-                                           HorizontalAlignment="Center"/>
+                                           HorizontalAlignment="Center"/>-->
                     </StackPanel>
                 </Button>
                 <!--<materialDesign:Badged VerticalAlignment="Center" Margin="5,10,5,0" 
@@ -228,10 +227,22 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn IsReadOnly="True" Header="Num"  Binding="{Binding Path=ID}"/>
-                        <DataGridTextColumn IsReadOnly="True"  Width="*"   Header="Item" Binding="{Binding Path=Product}"/>
-                        
-                        <DataGridTextColumn  Header="Amount"  Width="*"  Binding="{Binding Path=Count}"/>
+
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemNotes" Binding="{Binding Path=ItemNotes, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>
+                        <DataGridTextColumn  Width="*"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn  Width="*"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="CoopDiscount" Binding="{Binding Path=CoopDiscount, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
+
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Margin="5,0" Grid.Row="2"  Background="#DFDFDF" VerticalAlignment="Center" Width="auto" />
