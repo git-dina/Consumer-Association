@@ -94,15 +94,25 @@ namespace POSCA.View.windows
         {
             //
 
-            /*
+          
             txt_title.Text = AppSettings.resourcemanager.GetString("ContactData");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BOX, AppSettings.resourcemanager.GetString("BOXHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankAccount, AppSettings.resourcemanager.GetString("BankAccountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
-            */
+            txt_itemDetails.Text = AppSettings.resourcemanager.GetString("ItemDetails");
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Barcode, AppSettings.resourcemanager.GetString("trBarcodeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ItemCode, AppSettings.resourcemanager.GetString("ItemNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ItemName, AppSettings.resourcemanager.GetString("itemNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ItemUnit, AppSettings.resourcemanager.GetString("trUnit"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Factor, AppSettings.resourcemanager.GetString("FactorHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Balance, AppSettings.resourcemanager.GetString("trBalanceHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MinQty, AppSettings.resourcemanager.GetString("PiecesQuantityHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MaxQty, AppSettings.resourcemanager.GetString("BoxQuantityHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreeQty, AppSettings.resourcemanager.GetString("CostHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CoopDiscount, AppSettings.resourcemanager.GetString("EnterpriseDiscountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ConsumerDiscount, AppSettings.resourcemanager.GetString("ConsumerDiscountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Price, AppSettings.resourcemanager.GetString("trPriceHint"));
+
+
+            btn_save.Content = AppSettings.resourcemanager.GetString("trAdd");
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)

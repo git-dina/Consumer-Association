@@ -88,9 +88,11 @@ namespace POSCA.View.purchases
 
                 loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
                 loadingList.Add(new keyValueBool { key = "loading_RefrishLocations", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishItems", value = false });
 
                 loading_RefrishSuppliers();
                 loading_RefrishLocations();
+                loading_RefrishItems();
 
                 do
                 {
@@ -227,6 +229,47 @@ namespace POSCA.View.purchases
                         break;
                     }
                 }
+        } 
+        
+        bool loadingSuccess_RefrishItems = false;
+        async void loading_RefrishItems()
+        {
+            try
+            {
+                if (FillCombo.itemList is null)
+                    await RefreshItemsList();
+                else
+                    loadingSuccess_RefrishItems = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishItems");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishItems = true;
+                }
+                else
+                    loading_RefrishItems();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishItems)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishItems"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }
+
+        async Task<IEnumerable<Item>> RefreshItemsList()
+        {
+
+            await FillCombo.RefreshItems();
+            return FillCombo.itemList;
+
         }
         #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
@@ -497,6 +540,10 @@ namespace POSCA.View.purchases
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_addPurchaseItem w = new wd_addPurchaseItem();
+
+                Item item1 = new Item();
+                if(chk_barcode.IsChecked == true)
+                    item1 = FillCombo.itemList.Where(x => x.Code == )
                 w.newPurchaseItem = new PurchaseInvDetails();
                 w.ShowDialog();
 

@@ -441,7 +441,7 @@
   <data name="IsBlocked" xml:space="preserve">
     <value>Is Blocked</value>
   </data>
-  <data name="itemDetails" xml:space="preserve">
+  <data name="ItemDetails" xml:space="preserve">
     <value>Item details</value>
   </data>
   <data name="itemInfo" xml:space="preserve">
@@ -1397,7 +1397,7 @@ Main Documents</value>
     <value>مبيعات,مشتريات,تقارير</value>
   </data>
   <data name="trCost" xml:space="preserve">
-    <value>التكلفة</value>
+    <value>Cost</value>
   </data>
   <data name="trCostPercentage" xml:space="preserve">
     <value>النسبة المئوية للكلفة</value>
@@ -4629,7 +4629,7 @@ Main Documents</value>
     <value>غير مؤكدة</value>
   </data>
   <data name="trUnit" xml:space="preserve">
-    <value>الوحدة</value>
+    <value>Unit</value>
   </data>
   <data name="trUnitConversion" xml:space="preserve">
     <value>تحويل الوحدات</value>
@@ -5338,7 +5338,7 @@ Main Documents</value>
     <value>Document Date...</value>
   </data>
   <data name="EnterpriseDiscount" xml:space="preserve">
-    <value>Enterprise Discount</value>
+    <value>Association Discount</value>
   </data>
   <data name="NetCost" xml:space="preserve">
     <value>Net Cost</value>
@@ -5361,11 +5361,35 @@ Main Documents</value>
   <data name="TotalCost" xml:space="preserve">
     <value>Total Cost</value>
   </data>
+  <data name="BoxQuantityHint" xml:space="preserve">
+    <value>Box Quantity...</value>
+  </data>
+  <data name="CostHint" xml:space="preserve">
+    <value>Cost...</value>
+  </data>
+  <data name="EnterpriseDiscountHint" xml:space="preserve">
+    <value>Association Discount...</value>
+  </data>
   <data name="EntierReceived" xml:space="preserve">
     <value>Received</value>
   </data>
+  <data name="FreeQtyHint" xml:space="preserve">
+    <value>Free...</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="itemNameHint" xml:space="preserve">
+    <value>item Name...</value>
+  </data>
+  <data name="ItemNumberHint" xml:space="preserve">
+    <value>Item No...</value>
+  </data>
   <data name="Opened" xml:space="preserve">
     <value>Opened</value>
+  </data>
+  <data name="PiecesQuantityHint" xml:space="preserve">
+    <value>Pieces Quantity...</value>
   </data>
   <data name="PurchaseOrderPlaced" xml:space="preserve">
     <value>Purchase Order Placed</value>

@@ -4408,8 +4408,8 @@
   <data name="invoiceStatus" xml:space="preserve">
     <value>حالات الفاتورة</value>
   </data>
-  <data name="itemDetails" xml:space="preserve">
-    <value>تفاصيل المادة</value>
+  <data name="ItemDetails" xml:space="preserve">
+    <value>تفاصيل الصنف</value>
   </data>
   <data name="itemInfo" xml:space="preserve">
     <value>معلومات المادة</value>
@@ -5609,8 +5609,32 @@
   <data name="TotalCost" xml:space="preserve">
     <value>إجمالي التكلفة</value>
   </data>
+  <data name="BoxQuantityHint" xml:space="preserve">
+    <value>كمية الكرتون...</value>
+  </data>
+  <data name="CostHint" xml:space="preserve">
+    <value>التكلفة...</value>
+  </data>
+  <data name="EnterpriseDiscountHint" xml:space="preserve">
+    <value>خصم الجمعية...</value>
+  </data>
   <data name="EntierReceived" xml:space="preserve">
     <value>مستلم كلّي</value>
+  </data>
+  <data name="FreeQtyHint" xml:space="preserve">
+    <value>مجاني...</value>
+  </data>
+  <data name="Item" xml:space="preserve">
+    <value>الصنف</value>
+  </data>
+  <data name="itemNameHint" xml:space="preserve">
+    <value>اسم الصنف...</value>
+  </data>
+  <data name="ItemNumberHint" xml:space="preserve">
+    <value>رقم الصنف...</value>
+  </data>
+  <data name="PiecesQuantityHint" xml:space="preserve">
+    <value>كمية الحبات...</value>
   </data>
   <data name="PurchaseOrderPlaced" xml:space="preserve">
     <value>تم عمل طلب شراء</value>

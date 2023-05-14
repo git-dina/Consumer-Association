@@ -14,7 +14,6 @@ namespace POSCA.Classes
         #region Attributes
         public long PurchaseId { get; set; }
         public string InvNumber { get; set; }
-        public Nullable<long> SupplierId { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> SupId { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
