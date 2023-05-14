@@ -564,5 +564,37 @@ namespace POSCA.View.purchases
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        private void Btn_invoices_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_draft_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return)
+                {
+                    Btn_search_Click(btn_search, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        
     }
 }
