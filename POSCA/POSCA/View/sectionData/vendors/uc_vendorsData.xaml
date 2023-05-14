@@ -393,12 +393,13 @@
                             <Grid   >
                                 <TextBox  x:Name="tb_Name" Text="{Binding Name, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  Padding="10,0,5,0"  
+                                  Padding="10,0,5,0" 
+                                  MaxLength="35"
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="Name..."  
                                   Foreground="#4E4E4E"
                                  Margin="0,0"  BorderThickness="0"
-                            Grid.Column="1"  Height="70" TextWrapping="Wrap"
+                            Grid.Column="1"  Height="40" TextWrapping="Wrap"
                                           TextChanged="Tb_Name_TextChanged"/>
                                 <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
                                   HorizontalAlignment="Right" Grid.Column="2"  Visibility="Collapsed"   
@@ -414,7 +415,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ShortName..."  
                                      Foreground="#4E4E4E"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="35" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
