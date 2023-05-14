@@ -80,7 +80,7 @@ namespace POSCA.View.windows
                 #endregion
                 fillBarcodeTypeCombo();
 
-                await FillCombo.fillUnits(cb_unit);
+                await FillCombo.fillSmallUnits(cb_unit,item.ItemUnit);
                 setItemUnitsData();
 
 
