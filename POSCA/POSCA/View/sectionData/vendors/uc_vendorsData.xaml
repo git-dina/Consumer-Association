@@ -582,7 +582,7 @@
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
                                         TextBlock.Foreground="#4E4E4E"
-                                         SelectedDate="{Binding LicenseDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                         SelectedDate="{Binding AssistantStartDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="LicenseDate..."  
                                         Foreground="#4E4E4E"   Height="40"    />
@@ -596,7 +596,7 @@
 
                         <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <TextBox  x:Name="tb_address" Text="{Binding address, Mode=OneWay}"
+                                <TextBox  x:Name="tb_address" Text="{Binding Address, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"

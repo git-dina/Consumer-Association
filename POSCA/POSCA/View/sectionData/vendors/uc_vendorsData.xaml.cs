@@ -189,7 +189,15 @@ namespace POSCA.View.sectionData
                         supplier.FreePercentag =decimal.Parse( tb_FreePercentag.Text);
                         supplier.DiscountPercentage =decimal.Parse( tb_DiscountPercentage.Text);
                         supplier.Address = tb_address.Text;
-                       
+                        supplier.LicenseId = tb_LicenseId.Text;
+                        supplier.Notes = tb_Notes.Text;
+                        supplier.PurchaseOrderNotes = tb_PurchaseOrderNotes.Text;
+
+                        if (dp_AssistantStartDate.SelectedDate != null)
+                            supplier.AssistantStartDate = (DateTime)dp_AssistantStartDate.SelectedDate;
+                        else
+                            supplier.AssistantStartDate = null;
+
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
                        FillCombo.suppliersList = await supplier.save(supplier);
@@ -248,7 +256,14 @@ namespace POSCA.View.sectionData
                         supplier.FreePercentag = decimal.Parse(tb_FreePercentag.Text);
                         supplier.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
                         supplier.Address = tb_address.Text;
+                        supplier.LicenseId = tb_LicenseId.Text;
+                        supplier.Notes = tb_Notes.Text;
+                        supplier.PurchaseOrderNotes = tb_PurchaseOrderNotes.Text;
 
+                        if (dp_AssistantStartDate.SelectedDate != null)
+                            supplier.AssistantStartDate = (DateTime)dp_AssistantStartDate.SelectedDate;
+                        else
+                            supplier.AssistantStartDate = null;
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.suppliersList = await supplier.save(supplier);
@@ -262,6 +277,7 @@ namespace POSCA.View.sectionData
                             if (dg_supplier.SelectedIndex != -1)
                             {
                                 supplier = dg_supplier.SelectedItem as Supplier;
+                               
                             }
                         }
                     }
