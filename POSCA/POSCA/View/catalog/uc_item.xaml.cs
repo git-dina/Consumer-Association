@@ -1081,9 +1081,14 @@ namespace POSCA.View.catalog
                 tb_Factor.Text = "";
                 if (cb_UnitId.SelectedIndex > -1)
                 {
+                    long oldId = 0;
+                    if (item.UnitId != null)
+                        oldId = (long)item.UnitId;
+
                     item.UnitId = (long)cb_UnitId.SelectedValue;
 
                     var unit = FillCombo.unitList.Where(x => x.UnitId == (long)cb_UnitId.SelectedValue).FirstOrDefault();
+                    item.ItemUnit = unit.Name;
                     if (unit.Name.ToLower().Trim().Equals(AppSettings.resourcemanager.GetString("piece")))
                     {
                         tb_Factor.Text = "1";
@@ -1095,8 +1100,9 @@ namespace POSCA.View.catalog
                     }
 
                     calculatePeicePrice();
-                    if(item.ItemUnits == null || item.ItemUnits.Count == 0)
+                    if(item.ItemUnits == null || item.ItemUnits.Count == 0 || oldId != item.UnitId)
                     {
+                        item.ItemUnits = new List<ItemUnit>();
                         item.ItemUnits.Add(new ItemUnit()
                         {
 

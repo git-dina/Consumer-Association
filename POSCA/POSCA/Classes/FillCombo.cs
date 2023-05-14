@@ -396,6 +396,31 @@ namespace POSCA.Classes
             combo.SelectedValuePath = "UnitId";
             combo.DisplayMemberPath = "Name";
            // combo.SelectedIndex = -1;
+        } 
+        
+        static public async Task fillSmallUnits(DataGridComboBoxColumn combo, string itemUnit)
+        {
+            if (unitList is null)
+                await RefreshUnits();
+
+            List<Unit> unitsLst = new List<Unit>();
+            switch(itemUnit)
+            {
+                case "حبة":
+                    unitsLst.Add(unitList.Where(x => x.Name == "حبة").FirstOrDefault());
+                    break;
+                case "باكيت":
+                    unitsLst.Add(unitList.Where(x => x.Name == "حبة").FirstOrDefault());
+                    unitsLst.Add(unitList.Where(x => x.Name == "باكيت").FirstOrDefault());
+                    break;
+                default:
+                    unitsLst = unitList.ToList();
+                    break;
+            }
+            combo.ItemsSource = unitsLst;
+            combo.SelectedValuePath = "UnitId";
+            combo.DisplayMemberPath = "Name";
+           // combo.SelectedIndex = -1;
         }
         static public async Task fillUnitsWithDefault(ComboBox combo)
         {
