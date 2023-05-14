@@ -652,5 +652,33 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+
+        #region Purchase
+
+        #region purchase order status
+        static public List<keyValueString> PurchaseOrderStatusList;
+        static public IEnumerable<keyValueString> RefreshPurchaseOrderStatus()
+        {
+            PurchaseOrderStatusList = new List<keyValueString>() {
+                new keyValueString(){key="opened", value=AppSettings.resourcemanager.GetString("Opened") },
+                new keyValueString(){key="orderPlaced", value=AppSettings.resourcemanager.GetString("PurchaseOrderPlaced") },
+                new keyValueString(){key="recieved", value=AppSettings.resourcemanager.GetString("EntierReceived") },
+            };
+
+            return PurchaseOrderStatusList;
+        }
+
+        static public void fillPurchaseOrderStatus(ComboBox combo)
+        {
+            if (PurchaseOrderStatusList is null)
+                RefreshPurchaseOrderStatus();
+
+            combo.ItemsSource = PurchaseOrderStatusList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        #endregion
     }
 }

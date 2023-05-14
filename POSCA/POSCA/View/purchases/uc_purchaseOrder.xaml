@@ -266,18 +266,45 @@
                     <TextBlock Tag="invoiceDetails"   Text="invoiceDetails" x:Name="txt_invoiceDetails" Foreground="{StaticResource SecondColor}" 
                                                 FontWeight="Bold" FontSize="12"  
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
-                    <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
-                            <TextBox x:Name="tb_InvStatus" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding InvStatus, Mode=TwoWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="InvStatus..."    
-                                        Foreground="#4E4E4E"    
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                            <ComboBox x:Name="cb_LocationId"    SelectedValue="{Binding LocationId, Mode=TwoWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  materialDesign:HintAssist.Hint="LocationId..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"  />
+                            <Path Fill="#E81123" x:Name="p_error_LocationId" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <ComboBox x:Name="cb_SupId"    SelectedValue="{Binding SupId, Mode=TwoWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  materialDesign:HintAssist.Hint="SupplierId..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"  />
+                            <Path Fill="#E81123" x:Name="p_error_SupplierId" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                        </Grid>
+                    </Border> 
+                    <Border  Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <ComboBox x:Name="cb_InvStatus"    SelectedValue="{Binding InvStatus, Mode=TwoWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  materialDesign:HintAssist.Hint="InvStatus..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"
+                                      IsEnabled="False"/>
                             <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_InvStatus" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -286,7 +313,7 @@
 
                         </Grid>
                     </Border>
-                    <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border  Grid.Row="4" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <TextBox x:Name="tb_InvNumber" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding InvNumber, Mode=TwoWay}"
@@ -306,23 +333,9 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <ComboBox x:Name="cb_SupplierId"    SelectedValue="{Binding SupplierId, Mode=TwoWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
-                                  materialDesign:HintAssist.Hint="SupplierId..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
-                            <Path Fill="#E81123" x:Name="p_error_SupplierId" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
+                   
 
-                        </Grid>
-                    </Border>
-
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <DatePicker  x:Name="dp_OrderDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -339,7 +352,7 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <DatePicker  x:Name="dp_OrderRecieveDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"

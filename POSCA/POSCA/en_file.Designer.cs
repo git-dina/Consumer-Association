@@ -943,6 +943,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Received.
+        /// </summary>
+        internal static string EntierReceived {
+            get {
+                return ResourceManager.GetString("EntierReceived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exchange And Transfer.
         /// </summary>
         internal static string ExchangeAndTransfer {
@@ -1979,6 +1988,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opened.
+        /// </summary>
+        internal static string Opened {
+            get {
+                return ResourceManager.GetString("Opened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order.
         /// </summary>
         internal static string order {
@@ -2425,6 +2443,15 @@ namespace POSCA {
         internal static string PurchaseOrderNotesHint {
             get {
                 return ResourceManager.GetString("PurchaseOrderNotesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Order Placed.
+        /// </summary>
+        internal static string PurchaseOrderPlaced {
+            get {
+                return ResourceManager.GetString("PurchaseOrderPlaced", resourceCulture);
             }
         }
         

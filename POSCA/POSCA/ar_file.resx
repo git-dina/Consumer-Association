@@ -3409,8 +3409,8 @@
   <data name="empty" xml:space="preserve">
     <value>فارغة</value>
   </data>
-  <data name="opened" xml:space="preserve">
-    <value>مفتوحة</value>
+  <data name="Opened" xml:space="preserve">
+    <value>مفتوح</value>
   </data>
   <data name="openedReserved" xml:space="preserve">
     <value>مفتوحة</value>
@@ -5608,5 +5608,11 @@
   </data>
   <data name="TotalCost" xml:space="preserve">
     <value>إجمالي التكلفة</value>
+  </data>
+  <data name="EntierReceived" xml:space="preserve">
+    <value>مستلم كلّي</value>
+  </data>
+  <data name="PurchaseOrderPlaced" xml:space="preserve">
+    <value>تم عمل طلب شراء</value>
   </data>
 </root>

@@ -67,7 +67,7 @@ namespace POSCA.View.purchases
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "LocationId", "SupplierId" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -80,9 +80,38 @@ namespace POSCA.View.purchases
                 }
                 translate();
 
+                dp_OrderDate.SelectedDate = DateTime.Now;
+                dp_OrderRecieveDate.SelectedDate = DateTime.Now;
+                #region loading
+                loadingList = new List<keyValueBool>();
+                bool isDone = true;
 
-                //Keyboard.Focus(tb_BankName);
+                loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
+                loadingList.Add(new keyValueBool { key = "loading_RefrishLocations", value = false });
 
+                loading_RefrishSuppliers();
+                loading_RefrishLocations();
+
+                do
+                {
+                    isDone = true;
+                    foreach (var item in loadingList)
+                    {
+                        if (item.value == false)
+                        {
+                            isDone = false;
+                            break;
+                        }
+                    }
+                    if (!isDone)
+                    {
+                        await Task.Delay(0500);
+                    }
+                }
+                while (!isDone);
+                #endregion
+
+                FillCombo.fillPurchaseOrderStatus(cb_InvStatus);
                 //await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
@@ -116,15 +145,90 @@ namespace POSCA.View.purchases
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_InvStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupplierId, AppSettings.resourcemanager.GetString("SupplierHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderDate, AppSettings.resourcemanager.GetString("DocumentDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderRecieveDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
 
         }
+
+        #region Loading
+        List<keyValueBool> loadingList;
+        List<string> catchError = new List<string>();
+        int catchErrorCount = 0;
+
+        bool loadingSuccess_RefrishSuppliers = false;
+        async void loading_RefrishSuppliers()
+        {
+            try
+            {
+                await FillCombo.fillSuppliers(cb_SupId);
+                if (FillCombo.suppliersList is null)
+                    loading_RefrishSuppliers();
+                else
+                    loadingSuccess_RefrishSuppliers = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishSuppliers");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishSuppliers = true;
+                }
+                else
+                    loading_RefrishSuppliers();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishSuppliers)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishSuppliers"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }   
+        
+        bool loadingSuccess_RefrishLocations = false;
+        async void loading_RefrishLocations()
+        {
+            try
+            {
+                await FillCombo.fillLocations(cb_LocationId);
+                if (FillCombo.locationsList is null)
+                    loading_RefrishLocations();
+                else
+                    loadingSuccess_RefrishLocations = true;
+            }
+            catch (Exception ex)
+            {
+                catchError.Add("loading_RefrishLocations");
+                catchErrorCount++;
+                if (catchErrorCount > 50)
+                {
+                    loadingSuccess_RefrishLocations = true;
+                }
+                else
+                    loading_RefrishLocations();
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+            if (loadingSuccess_RefrishLocations)
+                foreach (var item in loadingList)
+                {
+                    if (item.key.Equals("loading_RefrishLocations"))
+                    {
+                        item.value = true;
+                        break;
+                    }
+                }
+        }
+        #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
 
 

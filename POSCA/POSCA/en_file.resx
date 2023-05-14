@@ -5361,4 +5361,13 @@ Main Documents</value>
   <data name="TotalCost" xml:space="preserve">
     <value>Total Cost</value>
   </data>
+  <data name="EntierReceived" xml:space="preserve">
+    <value>Received</value>
+  </data>
+  <data name="Opened" xml:space="preserve">
+    <value>Opened</value>
+  </data>
+  <data name="PurchaseOrderPlaced" xml:space="preserve">
+    <value>Purchase Order Placed</value>
+  </data>
 </root>
