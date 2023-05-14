@@ -542,8 +542,8 @@ namespace POSCA.View.purchases
                 wd_addPurchaseItem w = new wd_addPurchaseItem();
 
                 Item item1 = new Item();
-                if(chk_barcode.IsChecked == true)
-                    item1 = FillCombo.itemList.Where(x => x.Code == )
+                if (chk_itemNum.IsChecked == true)
+                    item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text).FirstOrDefault();
                 w.newPurchaseItem = new PurchaseInvDetails();
                 w.ShowDialog();
 
