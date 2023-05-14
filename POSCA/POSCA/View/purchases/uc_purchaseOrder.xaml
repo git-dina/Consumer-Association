@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:POSCA.View.purchases"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" Tag="purchaseOrder"  Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignHeight="870" d:DesignWidth="950">
@@ -34,7 +35,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" MinWidth="75"/>
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="7 0 0 7"
                            Background="{StaticResource SecondColor}"
@@ -46,6 +47,7 @@
                                          Padding="10,0,5,0"    BorderThickness="0" 
                                          materialDesign:HintAssist.Hint="Enter Here To Start Search ...." 
                                          Foreground="#4E4E4E"
+                                  KeyDown="tb_search_KeyDown"
                                   Height="40"   Margin="0" 
                               VerticalAlignment="Center"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" 
@@ -69,7 +71,8 @@
                               Content="itemNum"
                               Style="{StaticResource MaterialDesignFilterChipPrimaryOutlineCheckBox}"
                                Margin="0" Height="35"
-                              />
+                              Checked="searchType_check"
+                              Unchecked="searchType_uncheck"/>
                 </Border>
                 <Border Grid.Column="4" Height="50" 
                         CornerRadius="0 7 7 0"
@@ -127,17 +130,18 @@
                                            HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button>-->
-                <!--<Button Grid.Column="1" DockPanel.Dock="Right" BorderBrush="{x:Null}" Padding="0" Margin="5,10,5,0" Height="auto"
+                <Button Grid.Column="1" DockPanel.Dock="Right" BorderBrush="{x:Null}" Padding="0"
+                        Margin="5,0,5,0" Height="auto"
                     Background="{x:Null}" x:Name="btn_printInvoice" Click="btn_printInvoice_Click"  >
                     <StackPanel>
                         <Path Fill="#4E4E4E" Stretch="Fill"  
                        Height="30" Width="30"
                            Data="{StaticResource printer}" />
-                        <TextBlock Text="print" x:Name="txt_printInvoice" Foreground="#178DD2" 
+                        <!--<TextBlock Text="print" x:Name="txt_printInvoice" Foreground="#178DD2" 
                                            FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
-                                           HorizontalAlignment="Center"/>
+                                           HorizontalAlignment="Center"/>-->
                     </StackPanel>
-                </Button>-->
+                </Button>
                 <!--<Border   DockPanel.Dock="Right" 
                     Margin="7.5"  CornerRadius="0,0,0,0"  
                            Width="2" BorderThickness="0" Background="{StaticResource SecondColor}" />-->
@@ -146,7 +150,7 @@
                     Background="{x:Null}" x:Name="btn_newDraft" Padding="0" Margin="5,0,5,0" Height="40"
                     Click="Btn_newDraft_Click">
                     <StackPanel>
-                        <Path Fill="#4E4E4E" Stretch="Fill" Height="35"  Width="35" x:Name="path_newDraft"
+                        <Path Fill="#4E4E4E" Stretch="Fill" Height="30"  Width="30" x:Name="path_newDraft"
                           Data="{StaticResource plusCircle}"  />
                         <!--<TextBlock Text="clear" x:Name="txt_newDraft" Foreground="#178DD2" 
                                            FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
@@ -154,19 +158,34 @@
                     </StackPanel>
                 </Button>
                 <!--<materialDesign:Badged VerticalAlignment="Center" Margin="5,10,5,0" 
-                      BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  Name="md_draft">
-                    <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"    Height="auto"
+                      BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  Name="md_draft">-->
+                    <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
+                            Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
                     Background="{x:Null}" x:Name="btn_drafts"  Click="Btn_draft_Click" >
                         <StackPanel>
                             <Path Fill="#4E4E4E" Stretch="Fill"  
                           Width="30" Height="30"  
-                          Data="{StaticResource dolarsList}" />
-                            <TextBlock Text="drafts" x:Name="txt_drafts" Foreground="#178DD2" 
+                              FlowDirection="LeftToRight"
+                          Data="{StaticResource dolarListCheck}" />
+                            <!--<TextBlock Text="drafts" x:Name="txt_drafts" Foreground="#178DD2" 
                                            FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
-                                           HorizontalAlignment="Center"/>
+                                           HorizontalAlignment="Center"/>-->
                         </StackPanel>
                     </Button>
-                </materialDesign:Badged>-->
+                <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
+                            Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
+                    Background="{x:Null}" x:Name="btn_invoices"  Click="Btn_invoices_Click" >
+                    <StackPanel>
+                        <Path Fill="#4E4E4E" Stretch="Fill"  
+                          Width="30" Height="30"  
+                              FlowDirection="LeftToRight"
+                          Data="{StaticResource invoice}" />
+                        <!--<TextBlock Text="invoices" x:Name="txt_invoices" Foreground="#178DD2" 
+                                           FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
+                                           HorizontalAlignment="Center"/>-->
+                    </StackPanel>
+                </Button>
+                <!--</materialDesign:Badged>-->
 
 
             </DockPanel>
@@ -337,13 +356,16 @@
 
                     <Border Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
+                            <!--DisplayDateStart="{x:Static sys:DateTime.Today}"-->
                             <DatePicker  x:Name="dp_OrderDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="#4E4E4E"
+                                         DisplayDateStart="{x:Static sys:DateTime.Today}"
                                          SelectedDate="{Binding OrderDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="OrderDate..."  
+                                         
                                         Foreground="#4E4E4E"   Height="40"    />
                             <Path Fill="#E81123" x:Name="p_error_OrderDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
@@ -358,6 +380,7 @@
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="#4E4E4E"
+                                         DisplayDateStart="{Binding ElementName=dp_OrderDate, Path=SelectedDate}"
                                          SelectedDate="{Binding OrderRecieveDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="OrderRecieveDate..."  
@@ -383,6 +406,17 @@
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                         </Grid>
                     </Border>
+                    <StackPanel x:Name="sp_isApproved" Visibility="Visible" Orientation="Horizontal" Grid.Row="3"  Margin="5,0,0,0">
+                        <TextBlock  x:Name="txt_isApproved"
+                               Margin="5,5,15,5" Text="Approved" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                        <ToggleButton Grid.Column="1"  x:Name="tgl_isApproved"  
+                                 VerticalAlignment="Center" Padding="10,15,5,5"
+                                 Margin="0" Height="13" Width="28" 
+                                   />
+                    </StackPanel>
+
                     <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <TextBox  x:Name="tb_Notes1" Text="{Binding Notes1, Mode=TwoWay}"
