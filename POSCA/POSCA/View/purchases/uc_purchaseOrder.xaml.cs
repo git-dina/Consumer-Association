@@ -162,6 +162,12 @@ namespace POSCA.View.purchases
             dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trCost");
             dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
             dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
+            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("Free");
+            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
+            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("trBalance");
+            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("TotalCost");
+            dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
 
         }
 
@@ -243,6 +249,7 @@ namespace POSCA.View.purchases
         {
             try
             {
+                await RefreshItemsList();
                 if (FillCombo.itemList is null)
                     await RefreshItemsList();
                 else
@@ -543,25 +550,61 @@ namespace POSCA.View.purchases
 
             try
             {
-
-                HelpClass.StartAwait(grid_main);
-                Window.GetWindow(this).Opacity = 0.2;
-                wd_addPurchaseItem w = new wd_addPurchaseItem();
-
-                Item item1 = new Item();
-                if (chk_itemNum.IsChecked == true)
-                    item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text).FirstOrDefault();
-                w.newPurchaseItem = new PurchaseInvDetails();
-                w.ShowDialog();
-
-                if (w.isOk)
+                if (location == null)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
+                else if (supplier == null)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplierError"), animation: ToasterAnimation.FadeIn);
+                else
                 {
-                    //w.newPurchaseItem
+                    HelpClass.StartAwait(grid_main);
 
+                    Item item1 = new Item();
+                    string barcode = "";
+
+                    if (chk_itemNum.IsChecked == true)
+                    {
+                        item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text && x.SupId == supplier.SupId 
+                                        && x.ItemLocations.Any(u => u.LocationId == location.LocationId)).FirstOrDefault();
+                        barcode = item1.ItemUnits.FirstOrDefault().Barcode;
+                    }
+                    else
+                    {
+                        item1 = FillCombo.itemList.Where(m => m.ItemUnits.Any(u => u.Barcode.ToLower() == tb_search.Text.ToLower())).FirstOrDefault();
+                        barcode = tb_search.Text;
+                    }
+
+                    if (item1 != null)
+                    {
+                        Window.GetWindow(this).Opacity = 0.2;
+                        wd_addPurchaseItem w = new wd_addPurchaseItem();
+
+                        w.newPurchaseItem = new PurchaseInvDetails()
+                        {
+                            ItemId = item1.ItemId,
+                            ItemCode = item1.Code,
+                            ItemName = item1.Name,
+                            ItemUnit = item1.ItemUnit,
+                            Factor = item1.Factor,
+                            MainCost = item1.MainCost,
+                            CoopDiscount = supplier.DiscountPercentage,
+                            ConsumerDiscount = item1.ConsumerDiscPerc,
+                            Price = item1.Price,
+                            Barcode = barcode,
+                        };
+                        w.ShowDialog();
+
+                        if (w.isOk)
+                        {
+                            addItemToBill(w.newPurchaseItem);
+
+                        }
+                        Window.GetWindow(this).Opacity = 1;
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
+
+                    HelpClass.EndAwait(grid_main);
                 }
-                Window.GetWindow(this).Opacity = 1;
-
-                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
@@ -571,7 +614,30 @@ namespace POSCA.View.purchases
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        List<PurchaseInvDetails> billDetails = new List<PurchaseInvDetails>();
+        private async Task addItemToBill(PurchaseInvDetails purchaseInvDetails)
+        {
+            int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == purchaseInvDetails.ItemId).FirstOrDefault());          
 
+            if (index == -1)//item doesn't exist in bill
+            {
+                billDetails.Add(purchaseInvDetails);
+                refreshValues();
+            }
+            else // item exist prevoiusly in list
+            {
+
+            }
+        }
+
+        decimal _Sum = 0;
+        private void refreshValues()
+        {
+            foreach(var row in billDetails)
+            {
+
+            }
+        }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)
         {
 
@@ -610,6 +676,64 @@ namespace POSCA.View.purchases
                     if (dp_OrderDate.SelectedDate.Value.Date > dp_OrderRecieveDate.SelectedDate.Value.Date)
                         dp_OrderRecieveDate.SelectedDate = dp_OrderDate.SelectedDate.Value.Date;
 
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void cb_SupId_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            try
+            {
+                var tb = cb_SupId.Template.FindName("PART_EditableTextBox", cb_SupId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.SupId.ToString().Contains(tb.Text)).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        Supplier supplier;
+        private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();  
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void cb_LocationId_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            try
+            {
+                var tb = cb_LocationId.Template.FindName("PART_EditableTextBox", cb_LocationId) as TextBox;
+                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
+                cb_LocationId.ItemsSource = FillCombo.locationsList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.LocationId.ToString().Contains(tb.Text)).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        Location location;
+        private void cb_LocationId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+
+                location = FillCombo.locationsList.Where(x => x.LocationId == (long)cb_LocationId.SelectedValue).FirstOrDefault();
             }
             catch (Exception ex)
             {

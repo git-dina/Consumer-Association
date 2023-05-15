@@ -106,7 +106,8 @@ namespace POSCA.View.windows
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Balance, AppSettings.resourcemanager.GetString("trBalanceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MinQty, AppSettings.resourcemanager.GetString("PiecesQuantityHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MaxQty, AppSettings.resourcemanager.GetString("BoxQuantityHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreeQty, AppSettings.resourcemanager.GetString("CostHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreeQty, AppSettings.resourcemanager.GetString("FreeQtyHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Cost, AppSettings.resourcemanager.GetString("CostHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CoopDiscount, AppSettings.resourcemanager.GetString("EnterpriseDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ConsumerDiscount, AppSettings.resourcemanager.GetString("ConsumerDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Price, AppSettings.resourcemanager.GetString("trPriceHint"));

@@ -5403,4 +5403,19 @@ Main Documents</value>
   <data name="MaxFactorQty" xml:space="preserve">
     <value>Higher Factor Qty</value>
   </data>
+  <data name="ConsumerDiscountTitle" xml:space="preserve">
+    <value>Consumer Discount%</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="trItemNotFoundError" xml:space="preserve">
+    <value>Item not found</value>
+  </data>
+  <data name="trSelectLocationError" xml:space="preserve">
+    <value>Select a location</value>
+  </data>
+  <data name="trSelectSupplierError" xml:space="preserve">
+    <value>Select a supplier</value>
+  </data>
 </root>

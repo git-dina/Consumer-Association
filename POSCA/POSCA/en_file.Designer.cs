@@ -520,6 +520,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consumer Discount%.
+        /// </summary>
+        internal static string ConsumerDiscountTitle {
+            get {
+                return ResourceManager.GetString("ConsumerDiscountTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contact Data.
         /// </summary>
         internal static string ContactData {
@@ -1128,6 +1137,15 @@ namespace POSCA {
         internal static string ForStorageAndBranch {
             get {
                 return ResourceManager.GetString("ForStorageAndBranch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free.
+        /// </summary>
+        internal static string Free {
+            get {
+                return ResourceManager.GetString("Free", resourceCulture);
             }
         }
         
@@ -8711,6 +8729,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item not found.
+        /// </summary>
+        internal static string trItemNotFoundError {
+            get {
+                return ResourceManager.GetString("trItemNotFoundError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to المواد.
         /// </summary>
         internal static string trItems {
@@ -13086,6 +13113,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a location.
+        /// </summary>
+        internal static string trSelectLocationError {
+            get {
+                return ResourceManager.GetString("trSelectLocationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اختيار المواقع.
         /// </summary>
         internal static string trSelectLocations {
@@ -13172,6 +13208,15 @@ namespace POSCA {
         internal static string trSelectStoreHint {
             get {
                 return ResourceManager.GetString("trSelectStoreHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a supplier.
+        /// </summary>
+        internal static string trSelectSupplierError {
+            get {
+                return ResourceManager.GetString("trSelectSupplierError", resourceCulture);
             }
         }
         

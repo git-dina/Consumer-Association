@@ -5648,4 +5648,19 @@
   <data name="MaxFactorQty" xml:space="preserve">
     <value>كمية أعلى شد</value>
   </data>
+  <data name="ConsumerDiscountTitle" xml:space="preserve">
+    <value>خصم المستهلك%</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+    <value>المجاني</value>
+  </data>
+  <data name="trItemNotFoundError" xml:space="preserve">
+    <value>الصنف غير موجود</value>
+  </data>
+  <data name="trSelectLocationError" xml:space="preserve">
+    <value>اختر الموقع</value>
+  </data>
+  <data name="trSelectSupplierError" xml:space="preserve">
+    <value>اختر مورد</value>
+  </data>
 </root>

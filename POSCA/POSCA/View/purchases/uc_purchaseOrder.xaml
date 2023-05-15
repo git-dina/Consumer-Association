@@ -254,11 +254,11 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="CoopDiscount" Binding="{Binding Path=CoopDiscount, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
+                        <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="CoopDiscount" Binding="{Binding Path=CoopDiscount, Mode=TwoWay}"/>-->
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=TwoWay}"/>
                     </DataGrid.Columns>
@@ -291,7 +291,12 @@
                                   materialDesign:HintAssist.Hint="LocationId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
+                                  BorderBrush="#737373" BorderThickness="0"
+                                  KeyUp="cb_LocationId_KeyUp"
+                                  SelectionChanged="cb_LocationId_SelectionChanged"
+                                  IsTextSearchEnabled ="False"
+                                  IsEditable="True"
+                                  StaysOpenOnEdit="true"/>
                             <Path Fill="#E81123" x:Name="p_error_LocationId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -306,7 +311,12 @@
                                   materialDesign:HintAssist.Hint="SupplierId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
+                                  BorderBrush="#737373" BorderThickness="0"
+                                  KeyUp="cb_SupId_KeyUp"
+                                  SelectionChanged="Cb_SupId_SelectionChanged"
+                                  IsTextSearchEnabled ="False"
+                                  IsEditable="True"
+                                  StaysOpenOnEdit="true"/>
                             <Path Fill="#E81123" x:Name="p_error_SupplierId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
