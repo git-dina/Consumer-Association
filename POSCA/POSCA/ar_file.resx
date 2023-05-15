@@ -5648,6 +5648,9 @@
   <data name="MaxFactorQty" xml:space="preserve">
     <value>كمية أعلى شد</value>
   </data>
+  <data name="Approval" xml:space="preserve">
+    <value>اعتماد</value>
+  </data>
   <data name="ConsumerDiscountTitle" xml:space="preserve">
     <value>خصم المستهلك%</value>
   </data>

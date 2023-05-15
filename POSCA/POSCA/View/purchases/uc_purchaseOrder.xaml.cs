@@ -573,13 +573,16 @@ namespace POSCA.View.purchases
                             MainCost = item1.MainCost,
                             CoopDiscount = supplier.DiscountPercentage,
                             ConsumerDiscount = item1.ConsumerDiscPerc,
-                            Price = item1.Price,
+                            MainPrice = item1.Price,
                             Barcode = barcode,
                         };
                         w.ShowDialog();
 
                         if (w.isOk)
                         {
+                            w.newPurchaseItem.Cost = (w.newPurchaseItem.MaxQty - w.newPurchaseItem.MinQty) * w.newPurchaseItem.MainCost;
+                            w.newPurchaseItem.Price = (w.newPurchaseItem.MaxQty - w.newPurchaseItem.MinQty) * w.newPurchaseItem.MainPrice;
+                            
                             addItemToBill(w.newPurchaseItem);
 
                         }
@@ -617,13 +620,20 @@ namespace POSCA.View.purchases
             }
         }
 
-        decimal _Sum = 0;
+        decimal _TotalCost = 0;
+        decimal _TotalPrice = 0;
         private void refreshValues()
         {
+            _TotalCost = 0;
+            _TotalPrice = 0;
             foreach(var row in billDetails)
             {
-
+                _TotalCost += row.Cost;
+                _TotalPrice += row.Price;
             }
+
+            txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);
+            txt_TotalPrice.Text = HelpClass.DecTostring(_TotalPrice);
         }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)
         {
@@ -691,7 +701,9 @@ namespace POSCA.View.purchases
             try
             {
 
-                supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();  
+                supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
+                
+                txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
             }
             catch (Exception ex)
             {

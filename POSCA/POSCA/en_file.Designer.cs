@@ -187,6 +187,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approval.
+        /// </summary>
+        internal static string Approval {
+            get {
+                return ResourceManager.GetString("Approval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arabic information.
         /// </summary>
         internal static string arabicInformation {

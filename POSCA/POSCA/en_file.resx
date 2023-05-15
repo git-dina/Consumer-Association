@@ -5403,6 +5403,9 @@ Main Documents</value>
   <data name="MaxFactorQty" xml:space="preserve">
     <value>Higher Factor Qty</value>
   </data>
+  <data name="Approval" xml:space="preserve">
+    <value>Approval</value>
+  </data>
   <data name="ConsumerDiscountTitle" xml:space="preserve">
     <value>Consumer Discount%</value>
   </data>
