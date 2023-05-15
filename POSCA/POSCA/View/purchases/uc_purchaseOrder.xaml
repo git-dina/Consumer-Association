@@ -364,7 +364,7 @@
                                          SelectedDate="{Binding OrderDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="OrderDate..."  
-                                         
+                                         SelectedDateChanged="dp_OrderDate_SelectedDateChanged"
                                         Foreground="#4E4E4E"   Height="40"    />
                             <Path Fill="#E81123" x:Name="p_error_OrderDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   

@@ -602,6 +602,19 @@ namespace POSCA.View.purchases
             }
         }
 
-        
+        private void dp_OrderDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dp_OrderDate.SelectedDate != null && dp_OrderRecieveDate.SelectedDate != null)
+                    if (dp_OrderDate.SelectedDate.Value.Date > dp_OrderRecieveDate.SelectedDate.Value.Date)
+                        dp_OrderRecieveDate.SelectedDate = dp_OrderDate.SelectedDate.Value.Date;
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }
