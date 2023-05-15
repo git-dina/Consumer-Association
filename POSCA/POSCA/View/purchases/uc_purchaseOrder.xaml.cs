@@ -155,19 +155,19 @@ namespace POSCA.View.purchases
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderRecieveDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            dg_invoiceDetails.Columns[0].Header = AppSettings.resourcemanager.GetString("ItemNumber");
-            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("Barcode");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("ItemDescription");
-            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
-            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trCost");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
-            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
-            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("Free");
-            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
-            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("trPrice");
-            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("trBalance");
-            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("TotalCost");
-            dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
+            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("Barcode");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("ItemDescription");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trCost");
+            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
+            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
+            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("Free");
+            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
+            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("trBalance");
+            dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("TotalCost");
+            dg_invoiceDetails.Columns[13].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
 
         }
 
@@ -305,36 +305,21 @@ namespace POSCA.View.purchases
         void deleteRowFromInvoiceItems(object sender, RoutedEventArgs e)
         {
             try
-            {
-                /*
+            { 
                 for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
                     if (vis is DataGridRow)
                     {
-                        BillDetails row = (BillDetails)dg_billDetails.SelectedItems[0];
-                        int index = dg_billDetails.SelectedIndex;
-                        // calculate new sum
-                        _Count -= row.Count;
-                        _Sum -= row.Total;
+                        PurchaseInvDetails row = (PurchaseInvDetails)dg_invoiceDetails.SelectedItems[0];
+                        int index = dg_invoiceDetails.SelectedIndex;
 
                         // remove item from bill
                         billDetails.RemoveAt(index);
 
-                        ObservableCollection<BillDetails> data = (ObservableCollection<BillDetails>)dg_billDetails.ItemsSource;
-                        data.Remove(row);
-
+                        dg_invoiceDetails.Items.Clear();
+                        dg_invoiceDetails.ItemsSource = billDetails;
                         // calculate new total
-                        refreshTotalValue();
-                    }
-                _SequenceNum = 0;
-                _Sum = 0;
-                for (int i = 0; i < billDetails.Count; i++)
-                {
-                    _SequenceNum++;
-                    _Sum += billDetails[i].Total;
-                    billDetails[i].ID = _SequenceNum;
-                }
-                refrishBillDetails();
-                */
+                        refreshValues();
+                    }       
             }
             catch (Exception ex)
             {
@@ -622,6 +607,8 @@ namespace POSCA.View.purchases
             if (index == -1)//item doesn't exist in bill
             {
                 billDetails.Add(purchaseInvDetails);
+                dg_invoiceDetails.Items.Clear();
+                dg_invoiceDetails.ItemsSource = billDetails;
                 refreshValues();
             }
             else // item exist prevoiusly in list
