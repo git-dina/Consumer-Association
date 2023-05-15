@@ -123,7 +123,7 @@ namespace POSCA.View.catalog
             txt_CanContainItems.Text = AppSettings.resourcemanager.GetString("ContainItems");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
+            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");

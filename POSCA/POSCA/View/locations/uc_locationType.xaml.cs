@@ -100,12 +100,6 @@ namespace POSCA.View.locations
         private void translate()
         {
 
-            //// Title
-            //if (!string.IsNullOrWhiteSpace(FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate))
-            //    txt_title.Text = AppSettings.resourcemanager.GetString(
-            //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
-            //   );
-
             txt_title.Text = AppSettings.resourcemanager.GetString("LocationTypes");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
@@ -114,7 +108,7 @@ namespace POSCA.View.locations
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
            // MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
+            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             dg_locationType.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");

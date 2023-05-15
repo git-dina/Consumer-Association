@@ -101,12 +101,6 @@ namespace POSCA.View.catalog
         private void translate()
         {
 
-            //// Title
-            //if (!string.IsNullOrWhiteSpace(FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate))
-            //    txt_title.Text = AppSettings.resourcemanager.GetString(
-            //   FillCombo.objectsList.Where(x => x.name == this.Tag.ToString()).FirstOrDefault().translate
-            //   );
-
             txt_title.Text = AppSettings.resourcemanager.GetString("Units");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
@@ -119,7 +113,7 @@ namespace POSCA.View.catalog
 
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
+            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             dg_unit.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");

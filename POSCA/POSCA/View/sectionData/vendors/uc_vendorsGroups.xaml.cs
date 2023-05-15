@@ -112,7 +112,7 @@ namespace POSCA.View.sectionData.vendors
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ParentGroupId, AppSettings.resourcemanager.GetString("trParentGroupHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
+            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             //dg_supplierGroup.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
