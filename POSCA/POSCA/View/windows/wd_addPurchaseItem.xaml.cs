@@ -95,7 +95,7 @@ namespace POSCA.View.windows
             //
 
           
-            txt_title.Text = AppSettings.resourcemanager.GetString("ContactData");
+            txt_title.Text = AppSettings.resourcemanager.GetString("Item");
             txt_itemDetails.Text = AppSettings.resourcemanager.GetString("ItemDetails");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Barcode, AppSettings.resourcemanager.GetString("trBarcodeHint"));

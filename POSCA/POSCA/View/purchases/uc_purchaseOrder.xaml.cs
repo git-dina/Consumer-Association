@@ -155,6 +155,13 @@ namespace POSCA.View.purchases
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderRecieveDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
+            dg_invoiceDetails.Columns[0].Header = AppSettings.resourcemanager.GetString("ItemNumber");
+            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("Barcode");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("ItemDescription");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trCost");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
+            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
 
         }
 

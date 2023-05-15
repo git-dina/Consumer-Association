@@ -5394,4 +5394,13 @@ Main Documents</value>
   <data name="PurchaseOrderPlaced" xml:space="preserve">
     <value>Purchase Order Placed</value>
   </data>
+  <data name="ItemDescription" xml:space="preserve">
+    <value>Item Description</value>
+  </data>
+  <data name="LessFactorQty" xml:space="preserve">
+    <value>Less Factor Qty</value>
+  </data>
+  <data name="MaxFactorQty" xml:space="preserve">
+    <value>Higher Factor Qty</value>
+  </data>
 </root>

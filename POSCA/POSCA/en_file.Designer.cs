@@ -1474,6 +1474,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Description.
+        /// </summary>
+        internal static string ItemDescription {
+            get {
+                return ResourceManager.GetString("ItemDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item details.
         /// </summary>
         internal static string ItemDetails {
@@ -1654,6 +1663,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Less Factor Qty.
+        /// </summary>
+        internal static string LessFactorQty {
+            get {
+                return ResourceManager.GetString("LessFactorQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location.
         /// </summary>
         internal static string Location {
@@ -1759,6 +1777,15 @@ namespace POSCA {
         internal static string maxDiscount {
             get {
                 return ResourceManager.GetString("maxDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Higher Factor Qty.
+        /// </summary>
+        internal static string MaxFactorQty {
+            get {
+                return ResourceManager.GetString("MaxFactorQty", resourceCulture);
             }
         }
         

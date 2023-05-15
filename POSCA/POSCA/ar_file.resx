@@ -5639,4 +5639,13 @@
   <data name="PurchaseOrderPlaced" xml:space="preserve">
     <value>تم عمل طلب شراء</value>
   </data>
+  <data name="ItemDescription" xml:space="preserve">
+    <value>وصف الصنف</value>
+  </data>
+  <data name="LessFactorQty" xml:space="preserve">
+    <value>كمية أقل شد</value>
+  </data>
+  <data name="MaxFactorQty" xml:space="preserve">
+    <value>كمية أعلى شد</value>
+  </data>
 </root>

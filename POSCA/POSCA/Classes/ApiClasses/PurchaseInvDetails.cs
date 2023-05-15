@@ -28,7 +28,7 @@ namespace POSCA.Classes.ApiClasses
         public decimal Balance { get; set; }
         public int MinQty { get; set; }
         public int MaxQty { get; set; }
-        public int FreeQty { get; set; }
+        public int FreeQty { get; set; } = 0;
         public Nullable<decimal> CoopDiscount { get; set; }
         public Nullable<decimal> ConsumerDiscount { get; set; }
         public bool IsActive { get; set; }
