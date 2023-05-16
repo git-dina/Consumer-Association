@@ -10,8 +10,8 @@
              d:DesignHeight="870" d:DesignWidth="950">
     <Grid x:Name="grid_main" Margin="20 10" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition x:Name="cd_gridMain1" Width="5*"/>
+            <ColumnDefinition x:Name="cd_gridMain2" Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition   Height="60" />
@@ -277,7 +277,17 @@
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Margin="5,0" Grid.Row="2"  Background="#DFDFDF" VerticalAlignment="Center" Width="auto" />
-               
+                <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource SecondColor}" Margin="10,0,10,10" Width="auto"
+                     Grid.RowSpan="2"   HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                    <StackPanel  Orientation="Horizontal" >
+                        <Button   x:Name="btn_columnSwap" Click="btn_columnSwap_Click" Grid.Column="3" Padding="0" 
+                               VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}"   >
+                            <Path Fill="{StaticResource SecondColor}" Stretch="Fill" 
+                         Width="25" Height="25" 
+                              Data="{StaticResource twoWayArrow}"/>
+                        </Button>
+                    </StackPanel >
+                </Border>
             </Grid>
         </Border>
         <Border Grid.Row="1" Grid.Column="1" 
@@ -621,8 +631,8 @@
                         <TextBox  Text="0.00" Grid.Row="1" Grid.Column="1"
                             x:Name="tb_FreePercentage" 
                             Foreground="{StaticResource textColor}" 
-                             FontSize="12"  
-                            Margin="5 5 0 5"
+                             FontSize="12"
+                            Margin="5 1 0 1"
                             Tag="decimal" PreviewTextInput="Number_PreviewTextInput"
                             TextChanged="tb_FreePercentage_TextChanged"/>
                     <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
@@ -631,7 +641,26 @@
                                                              HorizontalAlignment="Right" VerticalAlignment="Center" />
                     </StackPanel>
 
-                    <Border BorderThickness="0 0 0 0"  Grid.Column="2"
+                    
+                     <Border BorderThickness="0 0 0 0"  Grid.Column="2"
+                        BorderBrush="{StaticResource SecondColor}"
+                        Margin="5">
+                        <TextBlock  Text="FreeValue" 
+                            x:Name="txt_FreeValueTitle" 
+                            Foreground="{StaticResource SecondColor}" 
+                            FontWeight="Bold" FontSize="12" 
+                            />
+                    </Border>
+                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="3"
+                            x:Name="txt_FreeValue" 
+                            Foreground="{StaticResource textColor}" 
+                             FontSize="12"  
+                            Margin="5"/>
+                    <Border   Grid.RowSpan="2" Grid.Column="4" 
+                    Margin="5"  CornerRadius="0,0,0,0"  
+                           Width="1" BorderThickness="0" Background="{StaticResource SecondColor}" />
+
+                    <Border BorderThickness="0 0 0 0"  Grid.Column="5"
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5">
                         <TextBlock  Text="ConsumerDiscount" 
@@ -640,13 +669,13 @@
                             FontWeight="Bold" FontSize="12" 
                             />
                     </Border>
-                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="3"
+                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="6"
                             x:Name="txt_ConsumerDiscount" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
                             Margin="5"/>
 
-                    <Border BorderThickness="0 0 0 0"  Grid.Column="4"
+                    <Border BorderThickness="0 0 0 0"  Grid.Column="7"
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5 5 5 2.5">
                         <TextBlock  Text="CostNet" 
@@ -655,7 +684,7 @@
                             FontWeight="Bold" FontSize="12" 
                             />
                     </Border>
-                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="5"
+                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="8"
                             x:Name="txt_CostNet" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
