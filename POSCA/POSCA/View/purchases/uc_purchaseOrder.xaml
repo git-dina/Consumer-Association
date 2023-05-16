@@ -267,7 +267,7 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn  Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>
@@ -618,11 +618,13 @@
                     </Border>
                     <StackPanel Grid.Row="1" Grid.Column="1"
                         Orientation="Horizontal">
-                        <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="1"
-                            x:Name="txt_FreePercentage" 
+                        <TextBox  Text="0.00" Grid.Row="1" Grid.Column="1"
+                            x:Name="tb_FreePercentage" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
-                            Margin="5 5 0 5"/>
+                            Margin="5 5 0 5"
+                            Tag="decimal" PreviewTextInput="Number_PreviewTextInput"
+                            TextChanged="tb_FreePercentage_TextChanged"/>
                     <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
                                                              Width="15" Height="15"
                                              Margin="0 0 5 0"

@@ -209,27 +209,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                    <Grid   >
-                                        <TextBox x:Name="tb_MinQty"  Text="{Binding MinQty, Mode=TwoWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="MinQty..."  
-                                     Foreground="#4E4E4E"  
-                                             Tag="int"
-                                             PreviewKeyDown="Spaces_PreviewKeyDown"
-                                             PreviewTextInput="Number_PreviewTextInput"
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MinQty" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                        </Path>
-                                    </Grid>
-                                </Border>
-                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                         <TextBox x:Name="tb_MaxQty" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding MaxQty, Mode=TwoWay}"
@@ -248,8 +229,27 @@
                                     </Path>
                                 </Grid>
                             </Border>
-
-                        </Grid>
+                                <Border Grid.Column="1" Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_MinQty"  Text="{Binding MinQty, Mode=TwoWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="MinQty..."  
+                                     Foreground="#4E4E4E"  Focusable="True"
+                                             Tag="int"
+                                             PreviewKeyDown="Spaces_PreviewKeyDown"
+                                             PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MinQty" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                            </Grid>
                             <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -261,7 +261,6 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="FreeQty..."  
                                      Foreground="#4E4E4E"  
-                                         IsReadOnly="True"
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 

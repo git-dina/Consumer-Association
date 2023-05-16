@@ -55,12 +55,6 @@ namespace POSCA.View.windows
                 //requiredControlList = new List<string> { "Name" };
                 requiredControlList = new List<string>();
 
-                //timer = new DispatcherTimer();
-                //timer.Interval = TimeSpan.FromSeconds(1);
-                //timer.Tick += timer_Tick;
-                //timer.Start();
-
-
                 #region translate
 
                 if (AppSettings.lang.Equals("en"))
@@ -76,9 +70,12 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
-
+               
                 this.DataContext = newPurchaseItem;
                 HelpClass.EndAwait(grid_main);
+
+                tb_MaxQty.Focus();
+
             }
             catch (Exception ex)
             {

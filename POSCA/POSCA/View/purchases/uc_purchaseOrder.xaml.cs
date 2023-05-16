@@ -88,11 +88,11 @@ namespace POSCA.View.purchases
 
                 loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
                 loadingList.Add(new keyValueBool { key = "loading_RefrishLocations", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefrishItems", value = false });
+               // loadingList.Add(new keyValueBool { key = "loading_RefrishItems", value = false });
 
                 loading_RefrishSuppliers();
                 loading_RefrishLocations();
-                loading_RefrishItems();
+                //loading_RefrishItems();
 
                 do
                 {
@@ -244,47 +244,47 @@ namespace POSCA.View.purchases
                 }
         } 
         
-        bool loadingSuccess_RefrishItems = false;
-        async void loading_RefrishItems()
-        {
-            try
-            {
-                await RefreshItemsList();
-                if (FillCombo.itemList is null)
-                    await RefreshItemsList();
-                else
-                    loadingSuccess_RefrishItems = true;
-            }
-            catch (Exception ex)
-            {
-                catchError.Add("loading_RefrishItems");
-                catchErrorCount++;
-                if (catchErrorCount > 50)
-                {
-                    loadingSuccess_RefrishItems = true;
-                }
-                else
-                    loading_RefrishItems();
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
-            }
-            if (loadingSuccess_RefrishItems)
-                foreach (var item in loadingList)
-                {
-                    if (item.key.Equals("loading_RefrishItems"))
-                    {
-                        item.value = true;
-                        break;
-                    }
-                }
-        }
+        //bool loadingSuccess_RefrishItems = false;
+        //async void loading_RefrishItems()
+        //{
+        //    try
+        //    {
+        //        await RefreshItemsList();
+        //        if (FillCombo.itemList is null)
+        //            await RefreshItemsList();
+        //        else
+        //            loadingSuccess_RefrishItems = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        catchError.Add("loading_RefrishItems");
+        //        catchErrorCount++;
+        //        if (catchErrorCount > 50)
+        //        {
+        //            loadingSuccess_RefrishItems = true;
+        //        }
+        //        else
+        //            loading_RefrishItems();
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+        //    }
+        //    if (loadingSuccess_RefrishItems)
+        //        foreach (var item in loadingList)
+        //        {
+        //            if (item.key.Equals("loading_RefrishItems"))
+        //            {
+        //                item.value = true;
+        //                break;
+        //            }
+        //        }
+        //}
 
-        async Task<IEnumerable<Item>> RefreshItemsList()
-        {
+        //async Task<IEnumerable<Item>> RefreshItemsList()
+        //{
 
-            await FillCombo.RefreshItems();
-            return FillCombo.itemList;
+        //    await FillCombo.RefreshItems();
+        //    return FillCombo.itemList;
 
-        }
+        //}
         #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
 
@@ -315,8 +315,9 @@ namespace POSCA.View.purchases
                         // remove item from bill
                         billDetails.RemoveAt(index);
 
-                        dg_invoiceDetails.Items.Clear();
+                        //dg_invoiceDetails.Items.Clear();
                         dg_invoiceDetails.ItemsSource = billDetails;
+                        dg_invoiceDetails.Items.Refresh();
                         // calculate new total
                         refreshValues();
                     }       
@@ -530,7 +531,7 @@ namespace POSCA.View.purchases
 
         #endregion
 
-        private void Btn_search_Click(object sender, RoutedEventArgs e)
+        private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
 
             try
@@ -548,13 +549,16 @@ namespace POSCA.View.purchases
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text && x.SupId == supplier.SupId 
-                                        && x.ItemLocations.Any(u => u.LocationId == location.LocationId)).FirstOrDefault();
-                        barcode = item1.ItemUnits.FirstOrDefault().Barcode;
+                        item1 =await  FillCombo.item.GetItemByCode(tb_search.Text, location.LocationId, supplier.SupId);
+                        //item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text && x.SupId == supplier.SupId 
+                        //                && x.ItemLocations.Any(u => u.LocationId == location.LocationId)).FirstOrDefault();
+                       if(item1 != null)
+                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                     }
                     else
                     {
-                        item1 = FillCombo.itemList.Where(m => m.ItemUnits.Any(u => u.Barcode.ToLower() == tb_search.Text.ToLower())).FirstOrDefault();
+                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId);
+                        //item1 = FillCombo.itemList.Where(m => m.ItemUnits.Any(u => u.Barcode.ToLower() == tb_search.Text.ToLower())).FirstOrDefault();
                         barcode = tb_search.Text;
                     }
 
@@ -603,7 +607,7 @@ namespace POSCA.View.purchases
             }
         }
         List<PurchaseInvDetails> billDetails = new List<PurchaseInvDetails>();
-        private async Task addItemToBill(PurchaseInvDetails purchaseInvDetails)
+        private void addItemToBill(PurchaseInvDetails purchaseInvDetails)
         {
             int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == purchaseInvDetails.ItemId).FirstOrDefault());          
 
@@ -616,24 +620,49 @@ namespace POSCA.View.purchases
             }
             else // item exist prevoiusly in list
             {
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemExistInOrderError"), animation: ToasterAnimation.FadeIn);
 
             }
         }
 
         decimal _TotalCost = 0;
         decimal _TotalPrice = 0;
+        decimal _CostAfterDiscount = 0;
+        decimal _ConsumerDiscount = 0;
+    
         private void refreshValues()
         {
             _TotalCost = 0;
             _TotalPrice = 0;
+            _CostAfterDiscount = 0;
+            _ConsumerDiscount = 0;
             foreach(var row in billDetails)
             {
                 _TotalCost += row.Cost;
                 _TotalPrice += row.Price;
+                _ConsumerDiscount += row.ConsumerDiscount;
             }
 
             txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);
             txt_TotalPrice.Text = HelpClass.DecTostring(_TotalPrice);
+            txt_ConsumerDiscount.Text = HelpClass.DecTostring(_ConsumerDiscount);
+
+            //cost after discount
+            var discount = HelpClass.calcPercentage(_TotalCost, 100 + supplier.DiscountPercentage);
+            _CostAfterDiscount = discount;
+            txt_CostAfterDiscount.Text = HelpClass.DecTostring(_CostAfterDiscount);
+
+            //free quantity
+            decimal freePercentage = 0;
+            decimal freeValue = 0;
+            if(tb_FreePercentage.Text !="")
+            {
+                freePercentage = decimal.Parse(tb_FreePercentage.Text);
+                freeValue = HelpClass.calcPercentage(_TotalCost, freePercentage);
+            }
+            tb_FreePercentage.Text = HelpClass.DecTostring(freeValue);
+
+            decimal netCost = _TotalCost - discount - freeValue;
         }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)
         {
@@ -733,6 +762,18 @@ namespace POSCA.View.purchases
             {
 
                 location = FillCombo.locationsList.Where(x => x.LocationId == (long)cb_LocationId.SelectedValue).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void tb_FreePercentage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                refreshValues();
             }
             catch (Exception ex)
             {
