@@ -8711,6 +8711,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item already has been added to order.
+        /// </summary>
+        internal static string trItemExistInOrderError {
+            get {
+                return ResourceManager.GetString("trItemExistInOrderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to انتهت الصلاحية منذ.
         /// </summary>
         internal static string trItemExpiredSince {

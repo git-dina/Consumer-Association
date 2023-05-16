@@ -30,7 +30,7 @@ namespace POSCA.Classes.ApiClasses
         public int MaxQty { get; set; }
         public int FreeQty { get; set; } = 0;
         public Nullable<decimal> CoopDiscount { get; set; }
-        public Nullable<decimal> ConsumerDiscount { get; set; }
+        public decimal ConsumerDiscount { get; set; } = 0;
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
