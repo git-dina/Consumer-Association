@@ -90,14 +90,16 @@ namespace POSCA.View.sectionData
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
+                swapToData();
 
-               
+
                 await FillCombo.fillAssistantWithDefault(cb_AssistantSupId);
                 await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
                 await FillCombo.fillSupplierGroups(cb_SupplierGroupId);
                 Keyboard.Focus(tb_Name);
 
-                await Search();
+                swapToData();
+                //await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -432,9 +434,11 @@ namespace POSCA.View.sectionData
         {
             try
             {
-                //HelpClass.StartAwait(grid_main);
+                HelpClass.StartAwait(grid_main);
                 //selection
-           
+
+                
+
                 if (dg_supplier.SelectedIndex != -1)
                 {
                     supplier = dg_supplier.SelectedItem as Supplier;
@@ -1037,7 +1041,6 @@ namespace POSCA.View.sectionData
             cd_gridMain1.Width = cd_gridMain2.Width;
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
-
         private async void btn_updateGrid_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -1070,6 +1073,25 @@ namespace POSCA.View.sectionData
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+        }
+
+        private async void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
+        {
+            cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
+
+            await Search();
+        }
+        void swapToData()
+        {
+            cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+        }
+
+        
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            swapToData();
         }
     }
 }
