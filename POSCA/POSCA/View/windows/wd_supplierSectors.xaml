@@ -90,10 +90,14 @@
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="#BADAEF" />
+                                <Setter Property="Background" Value="#e7f3fa" />
                                 <Setter Property="BorderBrush" Value="White"/>
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                                 <Setter Property="Foreground" Value="{StaticResource textColor}"/>
+                                <Setter Property="FontSize" Value="9"/>
+                                <Setter Property="Padding" Value="1"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
                                 <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
                                 <Setter Property="ContentTemplate">
                                     <Setter.Value>
@@ -166,10 +170,14 @@
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
                             <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="#BADAEF" />
+                                <Setter Property="Background" Value="#e7f3fa" />
                                 <Setter Property="BorderBrush" Value="White"/>
                                 <Setter Property="BorderThickness" Value="0 0 1 0"/>
                                 <Setter Property="Foreground" Value="{StaticResource textColor}"/>
+                                <Setter Property="FontSize" Value="10"/>
+                                <Setter Property="Padding" Value="1"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                <Setter Property="VerticalContentAlignment" Value="Center"/>
                                 <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
                                 <Setter Property="ContentTemplate">
                                     <Setter.Value>

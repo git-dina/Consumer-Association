@@ -371,6 +371,7 @@
                                 </Grid>
                             </Border>
                             <Button Grid.Column="1"  Padding="0"    
+                                TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
                                             x:Name="btn_addLocationType" Click="Btn_addLocationType_Click"  
                                 Margin="5 5 10 5" IsEnabled="True">
