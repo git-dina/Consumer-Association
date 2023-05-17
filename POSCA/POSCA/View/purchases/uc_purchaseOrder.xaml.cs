@@ -142,8 +142,9 @@ namespace POSCA.View.purchases
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
             txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
-            txt_CostAfterDiscountTitle.Text = AppSettings.resourcemanager.GetString("CostAfterDiscount");
+            txt_CostAfterDiscountTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
             txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
+            txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
 
