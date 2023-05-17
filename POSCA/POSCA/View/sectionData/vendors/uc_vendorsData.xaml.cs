@@ -96,6 +96,8 @@ namespace POSCA.View.sectionData
                 await FillCombo.fillAssistantWithDefault(cb_AssistantSupId);
                 await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
                 await FillCombo.fillSupplierGroups(cb_SupplierGroupId);
+                await FillCombo.fillBanksWithDefault(cb_BankId);
+
                 Keyboard.Focus(tb_Name);
 
                 swapToData();
@@ -120,6 +122,8 @@ namespace POSCA.View.sectionData
             txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
             txt_supplierSectorButton.Text = AppSettings.resourcemanager.GetString("SupplierSectors");
             txt_documentsButton.Text = AppSettings.resourcemanager.GetString("MainDocuments");
+            txt_contactData.Text = AppSettings.resourcemanager.GetString("ContactData");
+            txt_bankData.Text = AppSettings.resourcemanager.GetString("BankData");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -135,7 +139,13 @@ namespace POSCA.View.sectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseOrderNotes, AppSettings.resourcemanager.GetString("PurchaseOrderNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
-            
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BOX, AppSettings.resourcemanager.GetString("BOXHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankAccount, AppSettings.resourcemanager.GetString("BankAccountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
+
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -192,6 +202,17 @@ namespace POSCA.View.sectionData
                         supplier.DiscountPercentage =decimal.Parse( tb_DiscountPercentage.Text);
                         supplier.Address = tb_address.Text;
                         supplier.LicenseId = tb_LicenseId.Text;
+
+                        if (cb_BankId.SelectedIndex > 0)
+                            supplier.BankId = (long)cb_BankId.SelectedValue;
+
+                        supplier.BankAccount = tb_BankAccount.Text;
+                        if (tb_SupNODays.Text != "")
+                            supplier.SupNODays = int.Parse(tb_SupNODays.Text);
+
+                        supplier.Email = tb_Email.Text;
+                        supplier.BOX = tb_BOX.Text;
+
                         supplier.Notes = tb_Notes.Text;
                         supplier.PurchaseOrderNotes = tb_PurchaseOrderNotes.Text;
 
@@ -259,6 +280,15 @@ namespace POSCA.View.sectionData
                         supplier.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
                         supplier.Address = tb_address.Text;
                         supplier.LicenseId = tb_LicenseId.Text;
+                        if (cb_BankId.SelectedIndex > 0)
+                            supplier.BankId = (long)cb_BankId.SelectedValue;
+
+                        supplier.BankAccount = tb_BankAccount.Text;
+                        if (tb_SupNODays.Text != "")
+                            supplier.SupNODays = int.Parse(tb_SupNODays.Text);
+
+                        supplier.Email = tb_Email.Text;
+                        supplier.BOX = tb_BOX.Text;
                         supplier.Notes = tb_Notes.Text;
                         supplier.PurchaseOrderNotes = tb_PurchaseOrderNotes.Text;
 
@@ -526,6 +556,8 @@ namespace POSCA.View.sectionData
             lastSupId++;
             tb_Code.Text = lastSupId.ToString();
             // last 
+            p_error_Email.Visibility = Visibility.Collapsed;
+
             HelpClass.clearValidate(requiredControlList, this);
         }
         string input;
@@ -805,7 +837,10 @@ namespace POSCA.View.sectionData
         {
 
         }
+        private void Btn_addBank_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
         private void Tb_Name_TextChanged(object sender, TextChangedEventArgs e)
         {
             if(supplier.SupId == 0)

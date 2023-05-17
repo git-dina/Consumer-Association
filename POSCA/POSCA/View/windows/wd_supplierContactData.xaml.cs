@@ -84,7 +84,7 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-                await FillCombo.fillBanksWithDefault(cb_BankId);
+               // await FillCombo.fillBanksWithDefault(cb_BankId);
                 await fillPhoneCombo();
 
                 setContactData();
@@ -112,23 +112,13 @@ namespace POSCA.View.windows
             //
 
             txt_title.Text = AppSettings.resourcemanager.GetString("ContactData");
-            txt_contactData.Text = AppSettings.resourcemanager.GetString("ContactData");
-            txt_bankData.Text = AppSettings.resourcemanager.GetString("BankData");
+           
             txt_phonesData.Text = AppSettings.resourcemanager.GetString("Phones");
             
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BOX, AppSettings.resourcemanager.GetString("BOXHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankAccount, AppSettings.resourcemanager.GetString("BankAccountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodetHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupNODays, AppSettings.resourcemanager.GetString("SupNODaysHint"));
-
             dg_supplierPhone.Columns[0].Header = AppSettings.resourcemanager.GetString("PhoneType");
             dg_supplierPhone.Columns[1].Header = AppSettings.resourcemanager.GetString("PhoneNumber");
             dg_supplierPhone.Columns[2].Header = AppSettings.resourcemanager.GetString("ContactName");
-            //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            //txt_updateButton.Text = AppSettings.resourcemanager.GetString("trUpdate");
-            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+
         }
         private async Task fillPhoneCombo()
         {
@@ -141,17 +131,17 @@ namespace POSCA.View.windows
         }
         private void setContactData()
         {
-            if (BankId != null)
-                cb_BankId.SelectedValue = (long)BankId;
+            //if (BankId != null)
+            //    cb_BankId.SelectedValue = (long)BankId;
 
-            tb_BankAccount.Text = BankAccount;
-            if(AccountCode != 0)
-                tb_AccountCode.Text = AccountCode.ToString();
-            if(SupNODays != null)
-                tb_SupNODays.Text = SupNODays.ToString();
+            //tb_BankAccount.Text = BankAccount;
+            //if(AccountCode != 0)
+            //    tb_AccountCode.Text = AccountCode.ToString();
+            //if(SupNODays != null)
+            //    tb_SupNODays.Text = SupNODays.ToString();
 
-            tb_Email.Text = Email;
-            tb_BOX.Text = BOX;
+            //tb_Email.Text = Email;
+            //tb_BOX.Text = BOX;
 
             dg_supplierPhone.ItemsSource = SupplierPhones;
         }
@@ -350,7 +340,6 @@ namespace POSCA.View.windows
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
-            p_error_Email.Visibility = Visibility.Collapsed;
         }
         string input;
         decimal _decimal = 0;
@@ -463,16 +452,16 @@ namespace POSCA.View.windows
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
 
-                    if (cb_BankId.SelectedIndex > 0)
-                        BankId = (long)cb_BankId.SelectedValue;
+                    //if (cb_BankId.SelectedIndex > 0)
+                    //    BankId = (long)cb_BankId.SelectedValue;
 
-                    BankAccount = tb_BankAccount.Text;
-                    // AccountCode = int.Parse( tb_AccountCode.Text);
-                    if (tb_SupNODays.Text != "")
-                        SupNODays = int.Parse(tb_SupNODays.Text);
+                    //BankAccount = tb_BankAccount.Text;
+                    //// AccountCode = int.Parse( tb_AccountCode.Text);
+                    //if (tb_SupNODays.Text != "")
+                    //    SupNODays = int.Parse(tb_SupNODays.Text);
 
-                    Email = tb_Email.Text;
-                    BOX = tb_BOX.Text;
+                    //Email = tb_Email.Text;
+                    //BOX = tb_BOX.Text;
                     SupplierPhones = (List<SupplierPhone>)dg_supplierPhone.ItemsSource;
                     isOk = true;
                     this.Close();
@@ -485,11 +474,6 @@ namespace POSCA.View.windows
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-        }
-
-        private void Btn_addBank_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void Btn_addSupplierPhone_Click(object sender, RoutedEventArgs e)

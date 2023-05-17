@@ -53,44 +53,45 @@
                 </Grid.ColumnDefinitions>
                 <ScrollViewer Background="White"  Grid.Row="0"   VerticalScrollBarVisibility="Auto"   >
                     <StackPanel>
-                    <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
-                        <TextBlock  Text="BankData"   x:Name="txt_bankData"
+                        <!--<DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
+                            <TextBlock  Text="BankData"   x:Name="txt_bankData"
                                   Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator Background="{StaticResource SecondColor}"    Margin="5,0,5,0"
                                       Grid.Column="1" VerticalAlignment="Center" />
 
-                    </DockPanel>
+                        </DockPanel>
                         <Grid >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="69*"/>
+                                <ColumnDefinition Width="679*"/>
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
-                          
-                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
+
+                            <Border CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}" Grid.ColumnSpan="2">
+                                <Grid   >
+                                    <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
                                   materialDesign:HintAssist.Hint="BankId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0"  />
-                            <Path Fill="#E81123" x:Name="p_error_BankId" Stretch="Fill" Margin="5,5,20,5"
+                                    <Path Fill="#E81123" x:Name="p_error_BankId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                        </Grid>
-                    </Border>
-                        <Button Grid.Column="1"  Padding="0" 
+                                </Grid>
+                            </Border>
+                            <Button Grid.Column="2"  Padding="0" 
                                 TabIndex="-1"
-                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" 
                                             x:Name="btn_addBank" Click="Btn_addBank_Click"  
-                                Margin="5 5 10 5" IsEnabled="True">
-                            <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                                Margin="4,10,0,9" IsEnabled="True">
+                                <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource addFile}" />
-                        </Button>
-            </Grid>
+                            </Button>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -135,8 +136,8 @@
 
                         </Grid>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <TextBox x:Name="tb_SupNODays" Grid.Row="8"  Padding="10,0,5,0"  
+                            <Grid   >
+                                <TextBox x:Name="tb_SupNODays" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding SupNODays, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="SupNODays..."    
@@ -146,18 +147,18 @@
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SupNODays" 
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SupNODays" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                            </Path>
-                        </Grid>
-                    </Border>
+                                </Path>
+                            </Grid>
+                        </Border>
 
-                    <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="2">
-                        <TextBlock  Text="ContactData"   x:Name="txt_contactData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="2">
+                            <TextBlock  Text="ContactData"   x:Name="txt_contactData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
-                    </DockPanel>
+                        </DockPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -198,7 +199,7 @@
                                 </Grid>
                             </Border>
 
-                        </Grid>
+                        </Grid>-->
                         <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="2">
                             <TextBlock  Text="phonesData"   x:Name="txt_phonesData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Button  Padding="0"     Width="35" Height="35"
@@ -213,9 +214,9 @@
                             <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
                         </DockPanel>
                         <Grid  Grid.Row="1" MinHeight="190" MaxHeight="190">
-                        <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
+                            <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
                             Background="White"/>
-                            
+
                             <DataGrid x:Name="dg_supplierPhone" 
                             Margin="10" Grid.Row="1" 
                                    CanUserAddRows="False" IsReadOnly="False" 
@@ -225,11 +226,11 @@
                        AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
-                            <DataGrid.OpacityMask>
-                                <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid}"/>
-                            </DataGrid.OpacityMask>
-                            <DataGrid.Resources>
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
+                                <DataGrid.OpacityMask>
+                                    <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid}"/>
+                                </DataGrid.OpacityMask>
+                                <DataGrid.Resources>
+                                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
                                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                                         <Setter Property="Background" Value="#BADAEF" />
                                         <Setter Property="BorderBrush" Value="White"/>
@@ -238,11 +239,11 @@
                                         <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
                                     </Style>
                                 </DataGrid.Resources>
-                            <DataGrid.Columns>
+                                <DataGrid.Columns>
                                     <DataGridComboBoxColumn Width="*"  Header="phoneType"
                                                             x:Name="cb_phoneType" 
                                         SelectedValueBinding="{Binding PhoneTypeId, Mode=TwoWay}"  
-                                                            />     
+                                                            />
                                     <DataGridTextColumn Width="*"  Header="PhoneNumber" Binding="{Binding Path=PhoneNumber, Mode=TwoWay}"/>
                                     <DataGridTextColumn Width="*"  Header="PersonName" Binding="{Binding Path=PersonName, Mode=TwoWay}"/>
                                     <DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >
@@ -259,8 +260,8 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
-                        </DataGrid>
-                           
+                            </DataGrid>
+
 
                         </Grid>
                         <!--<Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">

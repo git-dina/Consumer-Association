@@ -397,9 +397,14 @@
 
 
                         </Grid>-->
-                        <Border Grid.ColumnSpan="2"   CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox  x:Name="tb_Name" Text="{Binding Name, Mode=OneWay}"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2"   CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox  x:Name="tb_Name" Text="{Binding Name, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0" 
                                   MaxLength="35"
@@ -409,17 +414,17 @@
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="40" TextWrapping="Wrap"
                                           TextChanged="Tb_Name_TextChanged"/>
-                                <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
+                                    <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
                                   HorizontalAlignment="Right" Grid.Column="2"  Visibility="Collapsed"   
                              VerticalAlignment="Center" Width="15"  Height="15"
                                  Data="{StaticResource infoCircle}">
-                                </Path>
+                                    </Path>
 
-                            </Grid>
-                        </Border>
-                        <Border  Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_ShortName"  Text="{Binding ShortName, Mode=OneWay}" Padding="10,0,5,0" 
+                                </Grid>
+                            </Border>
+                            <Border   Grid.Column="1" Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_ShortName"  Text="{Binding ShortName, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ShortName..."  
                                      Foreground="#4E4E4E"  
@@ -427,17 +432,19 @@
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ShortName" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ShortName" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                                </Path>
-                            </Grid>
-                        </Border>
+                                    </Path>
+                                </Grid>
+                            </Border>
+                        </Grid>
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                         <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
@@ -463,41 +470,47 @@
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource addFile}" />
                         </Button>
+
+                        <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <ComboBox x:Name="cb_SupplierGroupId"    SelectedValue="{Binding SupplierGroupId, Mode=OneWay}"
+                                Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                materialDesign:HintAssist.Hint="SupplierGroupId..."  
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                Grid.Column="0" Height="40"  Margin="0,0"
+                                BorderBrush="#737373" BorderThickness="0"  />
+                            <Path Fill="#E81123" x:Name="p_error_SupplierGroupId" Stretch="Fill" Margin="5,5,20,5"
+                            HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                        VerticalAlignment="Center" Width="15"  Height="15" 
+                            Data="{StaticResource infoCircle}"/>
+
+                        </Grid>
+                        </Border>
                         </Grid>
 
-                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <ComboBox x:Name="cb_SupplierGroupId"    SelectedValue="{Binding SupplierGroupId, Mode=OneWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
-                                  materialDesign:HintAssist.Hint="SupplierGroupId..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"  />
-                                <Path Fill="#E81123" x:Name="p_error_SupplierGroupId" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                            </Grid>
-                        </Border>
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <ComboBox x:Name="cb_AssistantSupId"    SelectedValue="{Binding AssistantSupId, Mode=OneWay}"
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <ComboBox x:Name="cb_AssistantSupId"    SelectedValue="{Binding AssistantSupId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
                                   materialDesign:HintAssist.Hint="AssistantSupId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0"  />
-                                <Path Fill="#E81123" x:Name="p_error_AssistantSupId" Stretch="Fill" Margin="5,5,20,5"
+                                    <Path Fill="#E81123" x:Name="p_error_AssistantSupId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                            </Grid>
-                        </Border>
-                           <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <DatePicker  x:Name="dp_AssistantStartDate" 
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <DatePicker  x:Name="dp_AssistantStartDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
                                         TextBlock.Foreground="#4E4E4E"
@@ -505,13 +518,14 @@
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="AssistantStartDate..."  
                                         Foreground="#4E4E4E"   Height="40"    />
-                                <Path Fill="#E81123" x:Name="p_error_AssistantStartDate" Stretch="Fill" Margin="5,5,20,5"
+                                    <Path Fill="#E81123" x:Name="p_error_AssistantStartDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                            </Grid>
-                        </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -565,9 +579,15 @@
                                                              Width="20" Height="20" Margin="0 5 10 5"
                                                              HorizontalAlignment="Right" VerticalAlignment="Center" />
                         </Grid>
-                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_LicenseId" Grid.Row="8"  Padding="10,0,5,0"  
+
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_LicenseId" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding LicenseId, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="LicenseId..."    
@@ -577,17 +597,17 @@
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_LicenseId" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_LicenseId" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                                </Path>
+                                    </Path>
 
-                            </Grid>
-                        </Border>
-                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <DatePicker  x:Name="dp_LicenseDate" 
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <DatePicker  x:Name="dp_LicenseDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
                                         TextBlock.Foreground="#4E4E4E"
@@ -595,14 +615,14 @@
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="LicenseDate..."  
                                         Foreground="#4E4E4E"   Height="40"    />
-                                <Path Fill="#E81123" x:Name="p_error_LicenseDate" Stretch="Fill" Margin="5,5,20,5"
+                                    <Path Fill="#E81123" x:Name="p_error_LicenseDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                            </Grid>
-                        </Border>
-
+                                </Grid>
+                            </Border>
+                        </Grid>
                         <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox  x:Name="tb_address" Text="{Binding Address, Mode=OneWay}"
@@ -622,15 +642,166 @@
                             </Grid>
                         </Border>
                         <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
+                            <TextBlock  Text="BankData"   x:Name="txt_bankData"
+                                  Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                            <Separator Background="{StaticResource SecondColor}"    Margin="5,0,5,0"
+                                      Grid.Column="1" VerticalAlignment="Center" />
+
+                        </DockPanel>
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}" Grid.ColumnSpan="2">
+                                <Grid   >
+                                    <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  materialDesign:HintAssist.Hint="BankId..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"  />
+                                    <Path Fill="#E81123" x:Name="p_error_BankId" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                                </Grid>
+                            </Border>
+                            <Button Grid.Column="1"  Padding="0" 
+                                TabIndex="-1"
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" 
+                                            x:Name="btn_addBank" Click="Btn_addBank_Click"  
+                                Margin="4,10,0,9" IsEnabled="True">
+                                <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                    Width="25.5" Height="27.5" FlowDirection="LeftToRight"
+                           Data="{StaticResource addFile}" />
+                            </Button>
+                            <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_BankAccount"  Text="{Binding BankAccount, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="BankAccount..."  
+                                     Foreground="#4E4E4E"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_BankAccount" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_AccountCode" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding AccountCode, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="AccountCode..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_AccountCode" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_SupNODays" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding SupNODays, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="SupNODays..."    
+                                        Foreground="#4E4E4E"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SupNODays" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="2">
+                            <TextBlock  Text="ContactData"   x:Name="txt_contactData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                            <Separator Background="{StaticResource SecondColor}"   Margin="5"  VerticalAlignment="Center" />
+                        </DockPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="8" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_Email"  Text="{Binding Email, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Email..."  
+                                     Foreground="#4E4E4E"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Email" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <Border Grid.Row="8" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_BOX"  Text="{Binding BOX, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="BOX..."  
+                                     Foreground="#4E4E4E"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_BOX" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
                             <TextBlock  Text="Notes"   x:Name="txt_Notes"
                                   Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Separator Background="{StaticResource SecondColor}"    Margin="5,0,5,0"
                                       Grid.Column="1" VerticalAlignment="Center" />
 
                         </DockPanel>
-                        <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox  x:Name="tb_PurchaseOrderNotes" Text="{Binding PurchaseOrderNotes, Mode=OneWay}"
+                        
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox  x:Name="tb_PurchaseOrderNotes" Text="{Binding PurchaseOrderNotes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -638,11 +809,11 @@
                                   Foreground="#4E4E4E"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
-                            </Grid>
-                        </Border>
-                        <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -650,11 +821,11 @@
                                   Foreground="#4E4E4E"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
-                            </Grid>
-                        </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
 
-                        
-                     
+
                         <!--<DockPanel Margin="10 0" LastChildFill="True" Grid.Row="4">
                             <TextBlock  Text="AllowedOperations"   x:Name="txt_AllowedOperations"
                                   Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
