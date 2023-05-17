@@ -5666,11 +5666,17 @@
   <data name="trSelectSupplierError" xml:space="preserve">
     <value>اختر مورد</value>
   </data>
+  <data name="Approved" xml:space="preserve">
+    <value>معتمد</value>
+  </data>
   <data name="DiscountValue" xml:space="preserve">
     <value>قيمة الخصم</value>
   </data>
   <data name="FreeValue" xml:space="preserve">
     <value>قيمة المجاني</value>
+  </data>
+  <data name="NotApproved" xml:space="preserve">
+    <value>غير معتمد</value>
   </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>الصنف مضاف مسبقاً إلى الطلب</value>

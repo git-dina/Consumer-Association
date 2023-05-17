@@ -3462,10 +3462,10 @@ Main Documents</value>
     <value>التكلفة الأولية</value>
   </data>
   <data name="trPrint" xml:space="preserve">
-    <value>طباعة</value>
+    <value>Print</value>
   </data>
   <data name="trPrintBarcode" xml:space="preserve">
-    <value>طباعة باركود</value>
+    <value>Print Barcode</value>
   </data>
   <data name="trPrintCount" xml:space="preserve">
     <value>النسخ المتاحة</value>
@@ -5421,11 +5421,17 @@ Main Documents</value>
   <data name="trSelectSupplierError" xml:space="preserve">
     <value>Select a supplier</value>
   </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Approved</value>
+  </data>
   <data name="DiscountValue" xml:space="preserve">
     <value>Discount Value</value>
   </data>
   <data name="FreeValue" xml:space="preserve">
     <value>Free Value</value>
+  </data>
+  <data name="NotApproved" xml:space="preserve">
+    <value>Not Approved</value>
   </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>Item already has been added to order</value>

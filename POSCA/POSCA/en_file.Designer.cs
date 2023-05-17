@@ -196,6 +196,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approved.
+        /// </summary>
+        internal static string Approved {
+            get {
+                return ResourceManager.GetString("Approved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arabic information.
         /// </summary>
         internal static string arabicInformation {
@@ -2011,6 +2020,15 @@ namespace POSCA {
         internal static string notActive {
             get {
                 return ResourceManager.GetString("notActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Approved.
+        /// </summary>
+        internal static string NotApproved {
+            get {
+                return ResourceManager.GetString("NotApproved", resourceCulture);
             }
         }
         
@@ -11322,7 +11340,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طباعة.
+        ///   Looks up a localized string similar to Print.
         /// </summary>
         internal static string trPrint {
             get {
@@ -11331,7 +11349,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طباعة باركود.
+        ///   Looks up a localized string similar to Print Barcode.
         /// </summary>
         internal static string trPrintBarcode {
             get {

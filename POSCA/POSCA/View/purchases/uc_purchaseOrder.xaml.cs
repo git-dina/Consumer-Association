@@ -56,6 +56,7 @@ namespace POSCA.View.purchases
 
         string searchText = "";
         public static List<string> requiredControlList;
+        private PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -170,6 +171,11 @@ namespace POSCA.View.purchases
             dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("TotalCost");
             dg_invoiceDetails.Columns[13].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
 
+
+            btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
+            btn_drafts.ToolTip = AppSettings.resourcemanager.GetString("NotApproved");
+            btn_invoices.ToolTip = AppSettings.resourcemanager.GetString("Approved");
+            btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
         #region Loading
@@ -288,7 +294,13 @@ namespace POSCA.View.purchases
         //}
         #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
-
+        private void ControlsEditable()
+        {
+            if(purchaseInvoice.PurchaseId.Equals(0))
+            {
+                btn_printInvoice.IsEnabled = false;
+            }
+        }
 
         #endregion
         #region events
@@ -438,8 +450,9 @@ namespace POSCA.View.purchases
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
         {
-            //this.DataContext = new Bank();
-            //dg_bank.SelectedIndex = -1;
+            this.DataContext = new PurchaseInvoice();
+
+            ControlsEditable();
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
