@@ -57,7 +57,7 @@ namespace POSCA.View.purchases
         string searchText = "";
         public static List<string> requiredControlList;
         private PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
-
+        private string _InvType = "sod";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
@@ -71,18 +71,15 @@ namespace POSCA.View.purchases
                 requiredControlList = new List<string> { "LocationId", "SupplierId" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
 
-                dp_OrderDate.SelectedDate = DateTime.Now;
-                dp_OrderRecieveDate.SelectedDate = DateTime.Now;
+              
                 #region loading
                 loadingList = new List<keyValueBool>();
                 bool isDone = true;
@@ -296,24 +293,116 @@ namespace POSCA.View.purchases
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-            if(purchaseInvoice.PurchaseId.Equals(0))
+           
+            switch(_InvType)
+            {
+                case "sod":
+                    tgl_isApproved.IsEnabled = true;
+                    btn_save.IsEnabled = true;
+                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    break;
+                case "soa": //supplying order is approved
+                    tgl_isApproved.IsEnabled = false;
+                    btn_save.IsEnabled = true;
+                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    break;
+                case "so"://purchase order done
+                    tgl_isApproved.IsEnabled = false;
+                    btn_save.IsEnabled = false;
+                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    break;
+            }
+
+            if (purchaseInvoice.PurchaseId.Equals(0))
             {
                 btn_printInvoice.IsEnabled = false;
+                tgl_isApproved.IsEnabled = false;
             }
         }
 
         #endregion
         #region events
-        private void Btn_newDraft_Click(object sender, RoutedEventArgs e)
+        private async void Btn_newDraft_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
 
+                if (billDetails.Count > 0 && (_InvType == "sod" || _InvType == "soa"))
+                {
+                    #region Accept
+                    MainWindow.mainWindow.Opacity = 0.2;
+                    wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                    w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
+                    w.ShowDialog();
+                    MainWindow.mainWindow.Opacity = 1;
+                    #endregion
+                    if (w.isOk)
+                    {
+                        await addInvoice();
+                    }
+                }
+                Clear();
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
-        private void Btn_save_Click(object sender, RoutedEventArgs e)
+        private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+               
+                if (HelpClass.validate(requiredControlList, this) )
+                {
+                    await addInvoice();
+                  
+                }
+               
+                
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
+        private async Task addInvoice()
+        {
+            purchaseInvoice.LocationId = (long)cb_LocationId.SelectedValue;
+            purchaseInvoice.SupId = (long)cb_SupId.SelectedValue;
+            purchaseInvoice.InvStatus = cb_InvStatus.SelectedValue.ToString();
+            purchaseInvoice.InvType = _InvType;
+            purchaseInvoice.OrderDate = (DateTime)dp_OrderDate.SelectedDate;
+            purchaseInvoice.OrderRecieveDate = (DateTime)dp_OrderRecieveDate.SelectedDate;
+            purchaseInvoice.Notes = tb_Notes.Text;
+            purchaseInvoice.SupplierNotes = supplier.Notes;
+            purchaseInvoice.SupplierPurchaseNotes = supplier.PurchaseOrderNotes;
+
+            purchaseInvoice.CreateUserId = MainWindow.userLogin.userId;
+
+            purchaseInvoice.PurchaseDetails = billDetails;
+            purchaseInvoice = await purchaseInvoice.SaveSupplyingOrder(purchaseInvoice);
+
+            if (purchaseInvoice.PurchaseId == 0)
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+            else
+            {
+                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                this.DataContext = purchaseInvoice;
+                ControlsEditable();
+            }
+        }
         #region datagrid events
         void deleteRowFromInvoiceItems(object sender, RoutedEventArgs e)
         {
@@ -452,6 +541,14 @@ namespace POSCA.View.purchases
         {
             this.DataContext = new PurchaseInvoice();
 
+            billDetails = new List<PurchaseInvDetails>();
+            dg_invoiceDetails.ItemsSource = billDetails;
+            dg_invoiceDetails.Items.Refresh();
+
+            dp_OrderDate.SelectedDate = DateTime.Now;
+            dp_OrderRecieveDate.SelectedDate = DateTime.Now;
+
+            _InvType = "sod";
             ControlsEditable();
 
             // last 
@@ -630,6 +727,7 @@ namespace POSCA.View.purchases
                 billDetails.Add(purchaseInvDetails);
                 dg_invoiceDetails.Items.Clear();
                 dg_invoiceDetails.ItemsSource = billDetails;
+                dg_invoiceDetails.Items.Refresh();
                 refreshValues();
             }
             else // item exist prevoiusly in list
@@ -662,7 +760,7 @@ namespace POSCA.View.purchases
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(_ConsumerDiscount);
 
             //cost after discount
-            var discount = HelpClass.calcPercentage(_TotalCost, 100 + supplier.DiscountPercentage);
+            var discount = HelpClass.calcPercentage(_TotalCost, supplier.DiscountPercentage);
             _CostAfterDiscount = discount;
             txt_CostAfterDiscount.Text = HelpClass.DecTostring(_CostAfterDiscount);
 
@@ -674,9 +772,10 @@ namespace POSCA.View.purchases
                 freePercentage = decimal.Parse(tb_FreePercentage.Text);
                 freeValue = HelpClass.calcPercentage(_TotalCost, freePercentage);
             }
-            tb_FreePercentage.Text = HelpClass.DecTostring(freeValue);
+            txt_FreeValue.Text = HelpClass.DecTostring(freeValue);
 
             decimal netCost = _TotalCost - discount - freeValue;
+            txt_CostNet.Text = HelpClass.DecTostring(netCost);
         }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)
         {
@@ -801,6 +900,39 @@ namespace POSCA.View.purchases
             cd_gridMain3.Width = cd_gridMain1.Width;
             cd_gridMain1.Width = cd_gridMain2.Width;
             cd_gridMain2.Width = cd_gridMain3.Width;
+        }
+
+        private async void tgl_isApproved_Checked(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxApproveOrder");
+
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
+                {
+                   var res =await purchaseInvoice.approveSupplyingOrder(purchaseInvoice.PurchaseId,MainWindow.userLogin.userId);
+
+                    if(res != 0)
+                    {
+                        _InvType = "soa";
+
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopSave"), animation: ToasterAnimation.FadeIn);
+                        ControlsEditable();
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

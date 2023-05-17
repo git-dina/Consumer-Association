@@ -370,7 +370,8 @@
                                          Text="{Binding InvNumber, Mode=TwoWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="InvNumber..."    
-                                        Foreground="#4E4E4E"    
+                                        Foreground="#4E4E4E" 
+                                     IsEnabled="False"
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -446,7 +447,7 @@
                         <ToggleButton Grid.Column="1"  x:Name="tgl_isApproved"  
                                  VerticalAlignment="Center" Padding="10,15,5,5"
                                  Margin="0" Height="13" Width="28" 
-                                   />
+                                  Checked="tgl_isApproved_Checked" />
                     </StackPanel>
 
                     <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">

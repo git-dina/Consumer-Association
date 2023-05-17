@@ -49,8 +49,6 @@ namespace POSCA.View.windows
 
             try
             {
-
-
                 HelpClass.StartAwait(grid_main);
                 //requiredControlList = new List<string> { "Name" };
                 requiredControlList = new List<string>();
