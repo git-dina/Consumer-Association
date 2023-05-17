@@ -5666,6 +5666,12 @@
   <data name="trSelectSupplierError" xml:space="preserve">
     <value>اختر مورد</value>
   </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>قيمة الخصم</value>
+  </data>
+  <data name="FreeValue" xml:space="preserve">
+    <value>قيمة المجاني</value>
+  </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>الصنف مضاف مسبقاً إلى الطلب</value>
   </data>

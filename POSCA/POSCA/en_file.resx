@@ -5421,6 +5421,12 @@ Main Documents</value>
   <data name="trSelectSupplierError" xml:space="preserve">
     <value>Select a supplier</value>
   </data>
+  <data name="DiscountValue" xml:space="preserve">
+    <value>Discount Value</value>
+  </data>
+  <data name="FreeValue" xml:space="preserve">
+    <value>Free Value</value>
+  </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>Item already has been added to order</value>
   </data>

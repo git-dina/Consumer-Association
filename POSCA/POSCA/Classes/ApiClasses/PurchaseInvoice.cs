@@ -24,12 +24,14 @@ namespace POSCA.Classes
         public Nullable<decimal> TotalCost { get; set; }
         public Nullable<decimal> TotalPrice { get; set; }
         public Nullable<decimal> CoopDiscount { get; set; }
-        public Nullable<decimal> CostAfterDiscount { get; set; }
+        public Nullable<decimal> DiscountValue { get; set; }
         public Nullable<decimal> FreePercentage { get; set; }
         public Nullable<decimal> ConsumerDiscount { get; set; }
         public Nullable<decimal> CostNet { get; set; }
         public string InvType { get; set; }
         public string InvStatus { get; set; }
+        public bool IsApproved { get; set; }
+
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
@@ -57,6 +59,26 @@ namespace POSCA.Classes
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<List<Supplier>> SaveSupplyingOrder(PurchaseInvoice invoice)
+        {
+            var result = new List<Supplier>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/SaveSupplyingOrder";
+
+            var myContent = JsonConvert.SerializeObject(invoice);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
                 }
             }
             return result;

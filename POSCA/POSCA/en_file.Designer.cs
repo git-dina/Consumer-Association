@@ -835,6 +835,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Discount Value.
+        /// </summary>
+        internal static string DiscountValue {
+            get {
+                return ResourceManager.GetString("DiscountValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want save the quotation in drafts?.
         /// </summary>
         internal static string Do_you_want_save_the_quotation_in_drafts_ {
@@ -1218,6 +1227,15 @@ namespace POSCA {
         internal static string FreeStores {
             get {
                 return ResourceManager.GetString("FreeStores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free Value.
+        /// </summary>
+        internal static string FreeValue {
+            get {
+                return ResourceManager.GetString("FreeValue", resourceCulture);
             }
         }
         
