@@ -916,7 +916,7 @@ namespace POSCA.View.purchases
                 #endregion
                 if (w.isOk)
                 {
-                   var res =await purchaseInvoice.approveSupplyingOrder(purchaseInvoice.PurchaseId,MainWindow.userLogin.userId);
+                    var res = await purchaseInvoice.approveSupplyingOrder(purchaseInvoice.PurchaseId, MainWindow.userLogin.userId);
 
                     if(res != 0)
                     {
@@ -933,6 +933,11 @@ namespace POSCA.View.purchases
             {
 
             }
+        }
+
+        private void Btn_deleteInvoice_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
