@@ -104,9 +104,9 @@
                                     <DataTemplate>
                                         <DatePicker  
                                         Margin="0" 
-                                        TextBlock.Foreground="#4E4E4E"
+                                        TextBlock.Foreground="{StaticResource textColor}"
                                          SelectedDate="{Binding StartDate, Mode=TwoWay}"
-                                        Foreground="#4E4E4E"    />
+                                        Foreground="{StaticResource textColor}"    />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -115,9 +115,9 @@
                                     <DataTemplate>
                                         <DatePicker  
                                         Margin="0"
-                                        TextBlock.Foreground="#4E4E4E"
+                                        TextBlock.Foreground="{StaticResource textColor}"
                                          SelectedDate="{Binding EndDate, Mode=TwoWay}"
-                                        Foreground="#4E4E4E"    />
+                                        Foreground="{StaticResource textColor}"    />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

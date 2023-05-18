@@ -45,7 +45,7 @@
                             <!--<TextBox x:Name="tb_search" Grid.Column="1"    Padding="10,0,5,0" 
                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                       materialDesign:HintAssist.Hint="Enter Here To Start Search ...."  
-                                     Foreground="#4E4E4E"  TextChanged="Tb_search_TextChanged"
+                                     Foreground="{StaticResource textColor}"  TextChanged="Tb_search_TextChanged"
                                       MaxLength="50" Height="40"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      BorderBrush="#737373"   BorderThickness="0" Margin="0,0"
@@ -53,7 +53,7 @@
                             <TextBox Margin="0,0" x:Name="tb_search"  
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                          Padding="10,0,5,0"   BorderThickness="0" 
-                                         materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="#4E4E4E"
+                                         materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="{StaticResource textColor}"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" Height="40" 
                                        />
                         </Grid>
@@ -338,7 +338,7 @@
                                 <TextBox x:Name="tb_LocationNumber"  Text="{Binding LocationNumber, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Location No..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -358,7 +358,7 @@
                             <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_LocationTypeId"    SelectedValue="{Binding LocationTypeId, Mode=OneWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="LocationTypeId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
@@ -386,7 +386,7 @@
                                 <TextBox x:Name="tb_Name"  Text="{Binding Name, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Name..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -405,7 +405,7 @@
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="address..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                                 <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
@@ -432,7 +432,7 @@
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="Notes..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                             </Grid>
