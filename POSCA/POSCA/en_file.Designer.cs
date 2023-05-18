@@ -9512,7 +9512,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to هل أنت متأكد من رغبتك في حذف هذا؟.
+        ///   Looks up a localized string similar to Are you sure you want to delete this?.
         /// </summary>
         internal static string trMessageBoxDelete {
             get {
@@ -11043,7 +11043,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to حدث خطأ.
+        ///   Looks up a localized string similar to An error occured.
         /// </summary>
         internal static string trPopError {
             get {

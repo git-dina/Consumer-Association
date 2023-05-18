@@ -17,7 +17,7 @@ namespace POSCA.Classes
         public static ResourceManager resourcemanagerAr;
 
        
-        public static string APIUri = "http://192.168.43.37:7473/api/";
+        public static string APIUri = "http://localhost:7473/api/";
 
 
         #region folders Paths
@@ -28,6 +28,17 @@ namespace POSCA.Classes
         //general info
         internal static string accuracy = "3";
 
+        #region company info
+        //default system info
+        internal static string companyName;
+        internal static string Address;
+
+        internal static string Email;
+        internal static string Mobile;
+        internal static string Phone;
+        internal static string Fax;
+        internal static string logoImage;
+        #endregion
         // app version
         //static public string CurrentVersion
         //{
