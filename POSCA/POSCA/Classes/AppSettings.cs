@@ -31,13 +31,13 @@ namespace POSCA.Classes
         #region company info
         //default system info
         internal static string companyName;
-        internal static string Address;
+        internal static string companyAddress;
 
-        internal static string Email;
-        internal static string Mobile;
-        internal static string Phone;
-        internal static string Fax;
-        internal static string logoImage;
+        internal static string companyEmail;
+        internal static string companyMobile;
+        internal static string companyPhone;
+        internal static string companyFax;
+        internal static string companylogoImage;
         #endregion
         // app version
         //static public string CurrentVersion

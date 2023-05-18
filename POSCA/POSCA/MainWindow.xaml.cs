@@ -92,6 +92,9 @@ namespace POSCA
 
                 }
                 translate();
+
+                //should be moved to login page
+                await FillCombo.RefreshCompanySettings();
                 //try
                 //{
                 //    tb_version.Text = AppSettings.CurrentVersion;
@@ -207,7 +210,7 @@ namespace POSCA
                 //MessageBox.Show(catchError + " and count: " + catchErrorCount);
                 #endregion
                 */
-             
+
 
                 #region Permision
                 permission();

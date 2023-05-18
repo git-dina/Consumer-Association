@@ -705,5 +705,23 @@ namespace POSCA.Classes
         }
         #endregion
         #endregion
+
+        #region company settings
+        static public CompanySettings companySettings = new CompanySettings();
+        static public List<CompanySettings> companySettingsList = new List<CompanySettings>();
+        static public async Task<IEnumerable<CompanySettings>> RefreshCompanySettings()
+        {
+            companySettingsList = await companySettings.Get();
+            AppSettings.companyName = companySettingsList.Where(x => x.Name.Equals("com_name")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyAddress = companySettingsList.Where(x => x.Name.Equals("com_address")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyEmail = companySettingsList.Where(x => x.Name.Equals("com_email")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyMobile = companySettingsList.Where(x => x.Name.Equals("com_mobile")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyPhone = companySettingsList.Where(x => x.Name.Equals("com_phone")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_fax")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_logo")).Select(x => x.Value).FirstOrDefault();
+
+                return companySettingsList;
+        }
+        #endregion
     }
 }
