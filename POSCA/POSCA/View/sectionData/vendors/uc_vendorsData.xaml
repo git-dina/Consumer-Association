@@ -27,14 +27,14 @@
                           Opacity="0.3"
                          BlurRadius="10"/>
                     </Border.Effect>
-                <Grid Margin="0 0 10 0"  >
+                <Grid Margin="0 0 0 0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition  Width="auto"  />
                         <ColumnDefinition  Width="auto"  />
-                        <ColumnDefinition  Width="auto"  />
+                        <ColumnDefinition  Width="auto" MinWidth="75"  />
                     </Grid.ColumnDefinitions>
                     
                         <Path Fill="{StaticResource SecondColor}" Stretch="Fill" 
@@ -43,18 +43,11 @@
                               Data="{StaticResource magnifying}"/>
                     <Border Background="White" Grid.Column="1" Height="40" CornerRadius="0" Margin="15,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
                         <Grid   >
-                            <!--<TextBox x:Name="tb_search" Grid.Column="1"    Padding="10,0,5,0" 
-                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                      materialDesign:HintAssist.Hint="Enter Here To Start Search ...."  
-                                     Foreground="#4E4E4E"  TextChanged="Tb_search_TextChanged"
-                                      MaxLength="50" Height="40"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     BorderBrush="#737373"   BorderThickness="0" Margin="0,0"
-                                      VerticalAlignment="Center"/>-->
+                          
                             <TextBox Margin="0,0" x:Name="tb_search"  
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                          Padding="10,0,5,0"   BorderThickness="0" 
-                                         materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="#4E4E4E"
+                                         materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="{StaticResource textColor}"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" Height="40" 
                                        TextChanged="Tb_search_TextChanged"/>
                         </Grid>
@@ -66,7 +59,7 @@
                     <!--<ToggleButton Grid.Column="4" Background="{StaticResource MainColor}"   x:Name="tgl_isActive"   Checked="Tgl_isActive_Checked" Unchecked="Tgl_isActive_Unchecked"
                              VerticalAlignment="Center" Padding="10,15,5,5"  IsChecked="True" 
                                           Margin="0" Height="13" Width="28" />-->
-                    <Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
+                    <!--<Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
                             materialDesign:ButtonAssist.CornerRadius="15" Cursor="Hand"
                           Background="{x:Null}" BorderBrush="{x:Null}"   Style="{StaticResource SmallButtonCircleRotate}"
                                RenderTransformOrigin="0.5,0.5"
@@ -86,7 +79,26 @@
                                               PlacementRectangle="50,0,0,0"
                                               VerticalOffset="25"/>
                         </Button.ToolTip>
-                    </Button>
+                    </Button>-->
+                    <Border Grid.Column="5" Height="50" 
+                        CornerRadius="0 22.5 22.5 0" 
+                        Margin="0" Padding="0" Background="{StaticResource SecondColor}">
+                        <Button  BorderBrush="{x:Null}"  
+                    Background="{x:Null}" 
+                        x:Name="btn_search" 
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Padding="0"  
+                    Click="Btn_search_Click">
+                            <StackPanel Orientation="Horizontal" Margin="5 0" >
+                                <TextBlock x:Name="txt_search" Text="search"  Foreground="White" Margin="5"/>
+
+                                <!--<Path Fill="{StaticResource White}" Margin="5"
+                              Stretch="Fill" Height="20"  Width="20" x:Name="path_search"
+                          Data="{StaticResource magnifying}"  />-->
+                            </StackPanel>
+
+                        </Button>
+                    </Border>
 
                 </Grid>
             </Border>
@@ -355,7 +367,7 @@
                                     IsReadOnly="True"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Code..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -402,7 +414,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.ColumnSpan="2"   CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border   CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox  x:Name="tb_Name" Text="{Binding Name, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -410,7 +422,7 @@
                                   MaxLength="35"
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="Name..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="40" TextWrapping="Wrap"
                                           TextChanged="Tb_Name_TextChanged"/>
@@ -422,12 +434,12 @@
 
                                 </Grid>
                             </Border>
-                            <Border   Grid.Column="1" Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border   Grid.Column="1" Grid.Row="2" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_ShortName"  Text="{Binding ShortName, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ShortName..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="35" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -439,42 +451,50 @@
                                     </Path>
                                 </Grid>
                             </Border>
+
                         </Grid>
+
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <ComboBox x:Name="cb_SupplierTypeId"    SelectedValue="{Binding SupplierTypeId, Mode=OneWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <ComboBox x:Name="cb_SupplierTypeId"    SelectedValue="{Binding SupplierTypeId, Mode=OneWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="SupplierTypeId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0"  />
-                                <Path Fill="#E81123" x:Name="p_error_SupplierTypeId" Stretch="Fill" Margin="5,5,20,5"
+                                        <Path Fill="#E81123" x:Name="p_error_SupplierTypeId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                            </Grid>
-                        </Border>
-                        <Button Grid.Column="1"  Padding="0"   
+                                    </Grid>
+                                </Border>
+                                <Button Grid.Column="1"  Padding="0"   
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
                                             x:Name="btn_addSupplierType" Click="Btn_addSupplierType_Click"  
-                                Margin="5 5 10 5" IsEnabled="True">
-                            <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                                Margin="5 5 5 5" IsEnabled="True">
+                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource addFile}" />
-                        </Button>
-
-                        <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                </Button>
+                            </Grid>
+                            <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <ComboBox x:Name="cb_SupplierGroupId"    SelectedValue="{Binding SupplierGroupId, Mode=OneWay}"
-                                Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                 materialDesign:HintAssist.Hint="SupplierGroupId..."  
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                 Grid.Column="0" Height="40"  Margin="0,0"
@@ -493,10 +513,10 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_AssistantSupId"    SelectedValue="{Binding AssistantSupId, Mode=OneWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="AssistantSupId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
@@ -508,16 +528,16 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <DatePicker  x:Name="dp_AssistantStartDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
-                                        TextBlock.Foreground="#4E4E4E"
+                                        TextBlock.Foreground="{StaticResource textColor}"
                                          SelectedDate="{Binding AssistantStartDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="AssistantStartDate..."  
-                                        Foreground="#4E4E4E"   Height="40"    />
+                                        Foreground="{StaticResource textColor}"   Height="40"    />
                                     <Path Fill="#E81123" x:Name="p_error_AssistantStartDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -539,7 +559,7 @@
                                          Text="{Binding DiscountPercentage, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="DiscountPercentage..."    
-                                        Foreground="#4E4E4E"    
+                                        Foreground="{StaticResource textColor}"    
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -562,7 +582,7 @@
                                          Text="{Binding FreePercentag, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="FreePercentag..."    
-                                        Foreground="#4E4E4E"    
+                                        Foreground="{StaticResource textColor}"    
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -585,13 +605,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_LicenseId" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding LicenseId, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="LicenseId..."    
-                                        Foreground="#4E4E4E"    
+                                        Foreground="{StaticResource textColor}"    
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -605,16 +625,16 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <DatePicker  x:Name="dp_LicenseDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
-                                        TextBlock.Foreground="#4E4E4E"
+                                        TextBlock.Foreground="{StaticResource textColor}"
                                          SelectedDate="{Binding AssistantStartDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="LicenseDate..."  
-                                        Foreground="#4E4E4E"   Height="40"    />
+                                        Foreground="{StaticResource textColor}"   Height="40"    />
                                     <Path Fill="#E81123" x:Name="p_error_LicenseDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -630,7 +650,7 @@
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="address..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                                 <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
@@ -651,40 +671,45 @@
                         <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Border CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}" Grid.ColumnSpan="2">
-                                <Grid   >
-                                    <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="#4E4E4E"
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}" >
+                                    <Grid   >
+                                        <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="BankId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0"  />
-                                    <Path Fill="#E81123" x:Name="p_error_BankId" Stretch="Fill" Margin="5,5,20,5"
+                                        <Path Fill="#E81123" x:Name="p_error_BankId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                                </Grid>
-                            </Border>
-                            <Button Grid.Column="1"  Padding="0" 
+                                    </Grid>
+                                </Border>
+                                <Button Grid.Column="1"  Padding="0" 
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" 
                                             x:Name="btn_addBank" Click="Btn_addBank_Click"  
-                                Margin="4,10,0,9" IsEnabled="True">
-                                <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                                Margin="5 5 5 5" IsEnabled="True">
+                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource addFile}" />
-                            </Button>
-                            <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                </Button>
+                            </Grid>
+                            <Border  Grid.Column="2" Grid.Row="3"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_BankAccount"  Text="{Binding BankAccount, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="BankAccount..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -702,13 +727,13 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_AccountCode" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding AccountCode, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="AccountCode..."    
-                                       IsEnabled="False" Foreground="#4E4E4E"    
+                                       IsEnabled="False" Foreground="{StaticResource textColor}"    
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -721,13 +746,13 @@
                                     </Path>
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="1" Grid.Row="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_SupNODays" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding SupNODays, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="SupNODays..."    
-                                        Foreground="#4E4E4E"    
+                                        Foreground="{StaticResource textColor}"    
                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -755,7 +780,7 @@
                                     <TextBox x:Name="tb_Email"  Text="{Binding Email, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Email..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -772,7 +797,7 @@
                                     <TextBox x:Name="tb_BOX"  Text="{Binding BOX, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="BOX..."  
-                                     Foreground="#4E4E4E"  
+                                     Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
@@ -799,26 +824,26 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border Grid.Row="10" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox  x:Name="tb_PurchaseOrderNotes" Text="{Binding PurchaseOrderNotes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="PurchaseOrderNotes..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="1" Grid.Row="10" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="Notes..."  
-                                  Foreground="#4E4E4E"
+                                  Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
                                 </Grid>

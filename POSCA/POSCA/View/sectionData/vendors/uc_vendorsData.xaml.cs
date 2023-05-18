@@ -159,7 +159,7 @@ namespace POSCA.View.sectionData
             dg_supplier.Columns[5].Header = AppSettings.resourcemanager.GetString("IsBlocked");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
+            //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
             btn_swapToSearch.ToolTip = AppSettings.resourcemanager.GetString("trSearch");
             //tt_report.Content = AppSettings.resourcemanager.GetString("trPdf");
@@ -1128,6 +1128,11 @@ namespace POSCA.View.sectionData
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             swapToData();
+        }
+
+        private void Btn_search_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
