@@ -102,7 +102,7 @@ namespace POSCA.View.sectionData
 
                 swapToData();
                 //await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -231,7 +231,7 @@ namespace POSCA.View.sectionData
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            Clear();
+                           await Clear();
                            // await Search();
 
                         }
@@ -361,7 +361,7 @@ namespace POSCA.View.sectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 //await Search();
-                                Clear();
+                               await Clear();
                             }
                         }
                     }
@@ -396,12 +396,12 @@ namespace POSCA.View.sectionData
         //    }
         //}
        
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -494,7 +494,7 @@ namespace POSCA.View.sectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new Supplier();
             dg_supplier.SelectedIndex = -1;
@@ -502,11 +502,14 @@ namespace POSCA.View.sectionData
             dp_AssistantStartDate.Text = DateTime.Now.ToString();
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
             tb_FreePercentag.Text = HelpClass.DecTostring(0);
-            long lastSupId = 0;
-            if(FillCombo.suppliersList != null && FillCombo.suppliersList.Count > 0)
-                lastSupId = FillCombo.suppliersList.Select(x => x.SupId).Max();
-            lastSupId++;
-            tb_Code.Text = lastSupId.ToString();
+
+            //long lastSupId = 0;
+            //if(FillCombo.suppliersList != null && FillCombo.suppliersList.Count > 0)
+            //    lastSupId = FillCombo.suppliersList.Select(x => x.SupId).Max();
+            //lastSupId++;
+            //tb_Code.Text = lastSupId.ToString();
+            tb_Code.Text = await FillCombo.supplier.getMaxSupplierId();
+            dp_AssistantStartDate.SelectedDate = DateTime.Now;
             // last 
             p_error_Email.Visibility = Visibility.Collapsed;
 
@@ -1043,7 +1046,7 @@ namespace POSCA.View.sectionData
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                        Clear();
+                        await Clear();
                         await Search();
 
                     }

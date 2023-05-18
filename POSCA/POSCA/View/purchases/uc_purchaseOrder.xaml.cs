@@ -300,16 +300,19 @@ namespace POSCA.View.purchases
                 case "sod":
                     tgl_isApproved.IsEnabled = true;
                     btn_save.IsEnabled = true;
+                    btn_deleteInvoice.Visibility = Visibility.Visible;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     break;
                 case "soa": //supplying order is approved
                     tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = true;
+                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     break;
                 case "so"://purchase order done
                     tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = false;
+                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
                     break;
             }
@@ -938,9 +941,36 @@ namespace POSCA.View.purchases
             }
         }
 
-        private void Btn_deleteInvoice_Click(object sender, RoutedEventArgs e)
+        private async void Btn_deleteInvoice_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
 
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
+                {
+                    var res = await purchaseInvoice.deletePurchaseInv(purchaseInvoice.PurchaseId, MainWindow.userLogin.userId);
+
+                    if (res != 0)
+                    {
+
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
+                        Clear();
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }
