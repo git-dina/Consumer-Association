@@ -1861,7 +1861,7 @@
             <SolidColorBrush x:Key="LightMainColor" Color="#7D9EB1"/>
             <!--<SolidColorBrush x:Key="SecondColor" Color="#1FBDF4"/>-->
             <SolidColorBrush x:Key="SecondColor" Color="#2980B9"/>
-            <SolidColorBrush x:Key="textColor" Color="#4E4E4E"/>
+            <SolidColorBrush x:Key="textColor" Color="#333333"/>
             <SolidColorBrush x:Key="lightTextColor" Color="#707070"/>
 
 
