@@ -393,8 +393,19 @@ namespace POSCA.View.catalog
                 {
                     if (tb_Factor.Text.Equals("0"))
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
-                    else if(item.ItemUnits.Where(x =>x.Barcode == "").FirstOrDefault() != null)
+                    else if(item.ItemUnits.Count == 0 ||item.ItemUnits.Where(x =>x.Barcode == "" || x.Barcode == null).FirstOrDefault() != null)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemBarcodError"), animation: ToasterAnimation.FadeIn);
+                    else if (item.ItemLocations == null || item.ItemLocations.Count() == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("GoToItemTransactionsError"), animation: ToasterAnimation.FadeIn);
+                    
+                    else if(item.ItemStatus =="" || item.ItemStatus == null
+                            || item.ItemReceiptType =="" || item.ItemReceiptType == null
+                            || item.ItemType =="" || item.ItemType == null
+                            || item.ItemTransactionType == "" || item.ItemTransactionType == null
+                            || item.PackageWeight == null
+                            || item.PackageUnit == null)
+
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("AdditionalInfoError"), animation: ToasterAnimation.FadeIn);
 
                     else
                     {
@@ -688,6 +699,7 @@ namespace POSCA.View.catalog
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void Clear()
         {
+            item = new Item();
             this.DataContext = new Item();
             tb_ShortName.Clear();
             tb_Code.Text = "";
@@ -876,7 +888,9 @@ namespace POSCA.View.catalog
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_itemAllowedOperations w = new wd_itemAllowedOperations();
 
-                w.itemAllowedTransactions = item.ItemAllowedTransactions.ToList();
+                if(item.ItemAllowedTransactions != null)
+                    w.itemAllowedTransactions = item.ItemAllowedTransactions.ToList();
+                if (item.ItemLocations != null)
                 w.itemLocations = item.ItemLocations.ToList();
                 w.ShowDialog();
                 if (w.isOk)
@@ -1030,7 +1044,7 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async  void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
@@ -1050,22 +1064,23 @@ namespace POSCA.View.catalog
 
                 //generate item number
                 if(item.ItemId == 0 || supplier.SupId != item.SupId)
-                    tb_Code.Text= generateItemCode(supplier.SupId);
+                    tb_Code.Text= await generateItemCode(supplier.SupId);
             }
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private string generateItemCode(long supId)
+        private async Task<string> generateItemCode(long supId)
         {
-            long maxId = 0;
-            if (FillCombo.itemList.Count > 0)
-                maxId = FillCombo.itemList.Select(x => x.ItemId).Max();
-            maxId++;
-            var itemCode = supId.ToString().PadLeft(4, '0') + maxId.ToString().PadLeft(4, '0');
+            return await FillCombo.item.generateItemCode(supId);
+            //long maxId = 0;
+            //if (FillCombo.itemList.Count > 0)
+            //    maxId = FillCombo.itemList.Select(x => x.ItemId).Max();
+            //maxId++;
+            //var itemCode = supId.ToString().PadLeft(4, '0') + maxId.ToString().PadLeft(4, '0');
 
-            return itemCode;
+            //return itemCode;
         }
         private void Cb_UnitId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -1097,6 +1112,9 @@ namespace POSCA.View.catalog
                     if(item.ItemUnits == null || item.ItemUnits.Count == 0 || oldId != item.UnitId)
                     {
                         item.ItemUnits = new List<ItemUnit>();
+                        int factor = 0;
+                        if (tb_Factor.Text != "")
+                            factor =int.Parse( tb_Factor.Text);
                         item.ItemUnits.Add(new ItemUnit()
                         {
 
@@ -1104,9 +1122,9 @@ namespace POSCA.View.catalog
                             ItemId = item.ItemId,
                             Barcode = "",
                             BarcodeType = "",
-                            Factor = (int)item.Factor,
+                            Factor = factor,
                             Cost = item.Cost,
-                            SalePrice = item.Price * (int)item.Factor,
+                            SalePrice = item.Price *factor,
                             CreateUserId= MainWindow.userLogin.userId,
                             UpdateUserId = MainWindow.userLogin.userId,
                         }) ;
@@ -1191,6 +1209,12 @@ namespace POSCA.View.catalog
                 if (tb_Factor.IsFocused)
                 {
                     ValidateEmpty_TextChange(sender, e);
+                    if(cb_UnitId.SelectedValue != null && tb_Factor.Text != "") 
+                    foreach(var row in item.ItemUnits)
+                    {
+                        if (row.UnitId == (long)cb_UnitId.SelectedValue)
+                            row.Factor = int.Parse(tb_Factor.Text);
+                    }
                     calculatePeicePrice();
                 }
             }

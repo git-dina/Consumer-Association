@@ -64,9 +64,9 @@ namespace POSCA.Classes
             return result;
         }
 
-        public async Task<List<Supplier>> SaveSupplyingOrder(PurchaseInvoice invoice)
+        public async Task<PurchaseInvoice> SaveSupplyingOrder(PurchaseInvoice invoice)
         {
-            var result = new List<Supplier>();
+            var result = new PurchaseInvoice();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Purchase/SaveSupplyingOrder";
 
@@ -78,10 +78,36 @@ namespace POSCA.Classes
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                    result = JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value);
                 }
             }
             return result;
+        } 
+        
+        public async Task<long> approveSupplyingOrder(long purchaseId,long userId)
+        {
+            var result = new PurchaseInvoice();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/ApproveSupplyingOrder";
+
+            parameters.Add("purchaseId", purchaseId.ToString());
+            parameters.Add("userId", userId.ToString());
+
+           return  await APIResult.post(method, parameters);
+            
+        } 
+        
+        public async Task<long> deletePurchaseInv(long purchaseId,long userId)
+        {
+            var result = new PurchaseInvoice();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/DeletePurchaseInv";
+
+            parameters.Add("purchaseId", purchaseId.ToString());
+            parameters.Add("userId", userId.ToString());
+
+           return  await APIResult.post(method, parameters);
+            
         }
         #endregion
     }

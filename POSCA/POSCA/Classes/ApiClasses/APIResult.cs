@@ -146,7 +146,7 @@ namespace POSCA.Classes
  
             return filePath;
         }
-        public static async Task<int> post(string method, Dictionary<string,string> parameters)
+        public static async Task<long> post(string method, Dictionary<string,string> parameters)
         {
             byte[] key = Convert.FromBase64String(Secret);
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(key);
@@ -218,7 +218,7 @@ namespace POSCA.Classes
                         {
                             if (c.Type == "scopes")
                             {
-                                return int.Parse(c.Value);
+                                return long.Parse(c.Value);
                             }
                         }
                     }

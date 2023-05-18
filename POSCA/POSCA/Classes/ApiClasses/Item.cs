@@ -126,6 +126,24 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+          public async Task<String> generateItemCode(long supId)
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/generateItemCode";
+
+            parameters.Add("supId", supId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
+        }
 
         public async Task<List<Item>> save(Item group)
         {

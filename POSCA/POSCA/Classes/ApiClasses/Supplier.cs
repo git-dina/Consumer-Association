@@ -167,10 +167,28 @@ namespace POSCA.Classes
             }
             return result;
         }
-
-        public async Task<List<Supplier>> save(Supplier group)
+        public async Task<List<Supplier>> searchSuppliers(string textSearch)
         {
             var result = new List<Supplier>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Supplier/SearchSuppliers";
+
+            parameters.Add("textSearch", textSearch.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<Supplier> save(Supplier group)
+        {
+            var result = new Supplier();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Supplier/Save";
 
@@ -182,7 +200,7 @@ namespace POSCA.Classes
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
+                    result = JsonConvert.DeserializeObject<Supplier>(c.Value);
                 }
             }
             return result;

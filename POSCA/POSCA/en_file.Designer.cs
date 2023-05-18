@@ -142,6 +142,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fill aditional information.
+        /// </summary>
+        internal static string AdditionalInfoError {
+            get {
+                return ResourceManager.GetString("AdditionalInfoError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert days.
         /// </summary>
         internal static string alertDays {
@@ -1290,6 +1299,15 @@ namespace POSCA {
         internal static string GeneralNotesHint {
             get {
                 return ResourceManager.GetString("GeneralNotesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to item transactions window and specify one location at least.
+        /// </summary>
+        internal static string GoToItemTransactionsError {
+            get {
+                return ResourceManager.GetString("GoToItemTransactionsError", resourceCulture);
             }
         }
         
@@ -9458,6 +9476,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure to approve this order?.
+        /// </summary>
+        internal static string trMessageBoxApproveOrder {
+            get {
+                return ResourceManager.GetString("trMessageBoxApproveOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to هل أنت متأكد من إتمام العملية؟.
         /// </summary>
         internal static string trMessageBoxConfirm {
@@ -10386,6 +10413,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Order can&apos;t be created without items.
+        /// </summary>
+        internal static string trOrderWithoutItemsError {
+            get {
+                return ResourceManager.GetString("trOrderWithoutItemsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to أخرى.
         /// </summary>
         internal static string trOthers {
@@ -10935,7 +10971,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تمت الإضافة بنجاح.
+        ///   Looks up a localized string similar to Added Successfully.
         /// </summary>
         internal static string trPopAdd {
             get {
@@ -10998,7 +11034,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم الحذف بنجاح.
+        ///   Looks up a localized string similar to Deleted Successfully.
         /// </summary>
         internal static string trPopDelete {
             get {
@@ -11061,7 +11097,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم الحفظ بنجاح.
+        ///   Looks up a localized string similar to Saved Successfully.
         /// </summary>
         internal static string trPopSave {
             get {
@@ -12816,7 +12852,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to هل تريد حفظ الطلبية في المسودات؟.
+        ///   Looks up a localized string similar to Do you want save the order?.
         /// </summary>
         internal static string trSaveOrderNotification {
             get {
@@ -12861,7 +12897,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to بحث.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string trSearch {
             get {

@@ -3327,7 +3327,7 @@ Main Documents</value>
     <value>تم التفعيل بنجاح</value>
   </data>
   <data name="trPopAdd" xml:space="preserve">
-    <value>تمت الإضافة بنجاح</value>
+    <value>Added Successfully</value>
   </data>
   <data name="trPopAddValidate" xml:space="preserve">
     <value>لا يمكن الإضافة بدون الكود و الاسم و رقم الجوال</value>
@@ -3348,7 +3348,7 @@ Main Documents</value>
     <value>تم تأكيد العملية</value>
   </data>
   <data name="trPopDelete" xml:space="preserve">
-    <value>تم الحذف بنجاح</value>
+    <value>Deleted Successfully</value>
   </data>
   <data name="trPopError" xml:space="preserve">
     <value>حدث خطأ</value>
@@ -3369,7 +3369,7 @@ Main Documents</value>
     <value>الخاصية موجودة سابقاً</value>
   </data>
   <data name="trPopSave" xml:space="preserve">
-    <value>تم الحفظ بنجاح</value>
+    <value>Saved Successfully</value>
   </data>
   <data name="trPopSliceExist" xml:space="preserve">
     <value>الفئة موجودة سابقاً</value>
@@ -3951,7 +3951,7 @@ Main Documents</value>
     <value>احفظ الفاتورة قبل المعاينة</value>
   </data>
   <data name="trSaveOrderNotification" xml:space="preserve">
-    <value>هل تريد حفظ الطلبية في المسودات؟</value>
+    <value>Do you want save the order?</value>
   </data>
   <data name="trSaveProcessDraft" xml:space="preserve">
     <value>هل تريد حفظ العملية في المسودات؟</value>
@@ -3966,7 +3966,7 @@ Main Documents</value>
     <value>مسح</value>
   </data>
   <data name="trSearch" xml:space="preserve">
-    <value>بحث</value>
+    <value>Search</value>
   </data>
   <data name="trSearchHint" xml:space="preserve">
     <value>أدخل هنا للبدء بالبحث...</value>
@@ -5435,5 +5435,17 @@ Main Documents</value>
   </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>Item already has been added to order</value>
+  </data>
+  <data name="trMessageBoxApproveOrder" xml:space="preserve">
+    <value>Are you sure to approve this order?</value>
+  </data>
+  <data name="AdditionalInfoError" xml:space="preserve">
+    <value>Fill aditional information</value>
+  </data>
+  <data name="GoToItemTransactionsError" xml:space="preserve">
+    <value>Go to item transactions window and specify one location at least</value>
+  </data>
+  <data name="trOrderWithoutItemsError" xml:space="preserve">
+    <value>Order can't be created without items</value>
   </data>
 </root>

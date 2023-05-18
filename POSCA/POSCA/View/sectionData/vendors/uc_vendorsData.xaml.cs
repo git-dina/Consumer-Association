@@ -169,7 +169,6 @@ namespace POSCA.View.sectionData
             //tt_pieChart.Content = AppSettings.resourcemanager.GetString("trPieChart");
             //tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
 
-            //txt_active.Text = AppSettings.resourcemanager.GetString("trActive_");
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
@@ -224,7 +223,8 @@ namespace POSCA.View.sectionData
 
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
-                       FillCombo.suppliersList = await supplier.save(supplier);
+                       //FillCombo.suppliersList = await supplier.save(supplier);
+                      supplier = await supplier.save(supplier);
                         if (FillCombo.suppliersList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -232,7 +232,7 @@ namespace POSCA.View.sectionData
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
                             Clear();
-                            await Search();
+                           // await Search();
 
                         }
                     }
@@ -299,19 +299,20 @@ namespace POSCA.View.sectionData
                             supplier.AssistantStartDate = null;
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
-                        FillCombo.suppliersList = await supplier.save(supplier);
+                       // FillCombo.suppliersList = await supplier.save(supplier);
+                       supplier = await supplier.save(supplier);
                         if (FillCombo.suppliersList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            await Search();
-                            if (dg_supplier.SelectedIndex != -1)
-                            {
-                                supplier = dg_supplier.SelectedItem as Supplier;
+                            //await Search();
+                            //if (dg_supplier.SelectedIndex != -1)
+                            //{
+                            //    supplier = dg_supplier.SelectedItem as Supplier;
                                
-                            }
+                            //}
                         }
                     }
                 }
@@ -359,7 +360,7 @@ namespace POSCA.View.sectionData
                                 supplier.SupId = 0;
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
-                                await Search();
+                                //await Search();
                                 Clear();
                             }
                         }
@@ -377,75 +378,24 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        //private async Task activate()
-        //{//activate
-        //    supplier.isActive = 1;
-        //    var s = await supplier.save(supplier);
-        //    if (s <= 0)
-        //        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-        //    else
-        //    {
-        //        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopActive"), animation: ToasterAnimation.FadeIn);
-        //        await RefreshCustomersList();
-        //        await Search();
-        //    }
-        //}
+
         #endregion
         #region events
-        private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        /*
-        private async void Tgl_isActive_Checked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-
-                if (FillCombo.suppliersListAll != null)
-                    suppliers = FillCombo.suppliersListAll.ToList();
-                if (suppliers is null)
-                    await RefreshCustomersList();
-                tgl_supplierState = 1;
-                await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Tgl_isActive_Unchecked(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                if (suppliers is null)
-                    await RefreshCustomersList();
-                tgl_supplierState = 0;
-                await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        */
+        //private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        HelpClass.StartAwait(grid_main);
+        //        await Search();
+        //        HelpClass.EndAwait(grid_main);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.EndAwait(grid_main);
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
+       
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -489,27 +439,27 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        {//refresh
-            try
-            {
+        //private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
+        //{//refresh
+        //    try
+        //    {
 
-                HelpClass.StartAwait(grid_main);
+        //        HelpClass.StartAwait(grid_main);
 
-                tb_search.Text = "";
-                searchText = "";
-                await RefreshSuppliersList();
-                await Search();
+        //        tb_search.Text = "";
+        //        searchText = "";
+        //        await RefreshSuppliersList();
+        //        await Search();
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+        //        HelpClass.EndAwait(grid_main);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+        //        HelpClass.EndAwait(grid_main);
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
         #endregion
         #region Refresh & Search
         async Task Search()
@@ -538,8 +488,9 @@ namespace POSCA.View.sectionData
         void RefreshSuppliersView()
         {
             dg_supplier.ItemsSource = null;
-            dg_supplier.ItemsSource = suppliersQuery;
-            txt_count.Text = suppliersQuery.Count().ToString();
+            dg_supplier.ItemsSource = suppliers;
+            //dg_supplier.ItemsSource = suppliersQuery;
+            txt_count.Text = suppliers.Count().ToString();
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
@@ -671,14 +622,14 @@ namespace POSCA.View.sectionData
 
                     if (supplier.SupId != 0)
                     {
-                        FillCombo.suppliersList = await supplier.save(supplier);
+                        supplier = await supplier.save(supplier);
                         
-                        await Search();
-                        if (dg_supplier.SelectedIndex != -1)
-                        {
-                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+                        //await Search();
+                        //if (dg_supplier.SelectedIndex != -1)
+                        //{
+                            //supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
 
-                        }
+                        //}
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -718,14 +669,14 @@ namespace POSCA.View.sectionData
 
                     if (supplier.SupId != 0)
                     {
-                        FillCombo.suppliersList = await supplier.save(supplier);
+                        supplier = await supplier.save(supplier);
                         
-                        await Search();
-                        if (dg_supplier.SelectedIndex != -1)
-                        {
-                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+                       // await Search();
+                        //if (dg_supplier.SelectedIndex != -1)
+                        //{
+                        //    supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
 
-                        }
+                        //}
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -760,13 +711,13 @@ namespace POSCA.View.sectionData
                     supplier.supplierSectorSpecifies = w.SupplierSectorSpecifies;
                     if (supplier.SupId != 0)
                     {
-                        FillCombo.suppliersList = await supplier.save(supplier);
-                        await Search();
-                        if (dg_supplier.SelectedIndex != -1)
-                        {
-                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+                        supplier = await supplier.save(supplier);
+                        //await Search();
+                        //if (dg_supplier.SelectedIndex != -1)
+                        //{
+                           // supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
 
-                        }
+                        //}
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -811,14 +762,13 @@ namespace POSCA.View.sectionData
                                 row.DocName = row.DocName +  ext;
                             }
                         }
-                        FillCombo.suppliersList = await supplier.save(supplier);
+                        supplier = await supplier.save(supplier);
                         
-                        await Search();
-                        if (dg_supplier.SelectedIndex != -1)
-                        {
-                            supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
-                            //supplier = dg_supplier.SelectedItem as Supplier;
-                        }
+                       // await Search();
+                       // if (dg_supplier.SelectedIndex != -1)
+                       // {
+                           // supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
+                       // }
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -1116,7 +1066,7 @@ namespace POSCA.View.sectionData
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
-            await Search();
+           // await Search();
         }
         void swapToData()
         {
@@ -1130,9 +1080,35 @@ namespace POSCA.View.sectionData
             swapToData();
         }
 
-        private void Btn_search_Click(object sender, RoutedEventArgs e)
+        private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (tb_search.Text != "")
+                {
+                    suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
+                    RefreshSuppliersView();
+                }
+            }
+            catch
+            {
 
+            }
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return)
+                {
+                    Btn_search_Click(btn_search, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

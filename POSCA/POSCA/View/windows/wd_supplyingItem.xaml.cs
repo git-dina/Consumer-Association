@@ -57,7 +57,8 @@ namespace POSCA.View.windows
 
 
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "ItemStatus", "ItemReceiptType", "ItemType",
+                                            "ItemTransactionType" ,"PackageWeight","PackageUnit"};
 
                 #region translate
 

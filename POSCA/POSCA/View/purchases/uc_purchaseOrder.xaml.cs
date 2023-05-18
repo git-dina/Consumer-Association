@@ -145,6 +145,7 @@ namespace POSCA.View.purchases
             txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
+            txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_InvStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
@@ -362,6 +363,8 @@ namespace POSCA.View.purchases
                
                 if (HelpClass.validate(requiredControlList, this) )
                 {
+                    if(billDetails.Count == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
                     await addInvoice();
                   
                 }

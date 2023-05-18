@@ -2021,7 +2021,7 @@
     <value>احفظ الفاتورة قبل المعاينة</value>
   </data>
   <data name="trSaveOrderNotification" xml:space="preserve">
-    <value>هل تريد حفظ الطلبية في المسودات؟</value>
+    <value>هل تريد حفظ الطلبية؟</value>
   </data>
   <data name="trSendEmail" xml:space="preserve">
     <value>إرسال ايميل</value>
@@ -5680,5 +5680,17 @@
   </data>
   <data name="trItemExistInOrderError" xml:space="preserve">
     <value>الصنف مضاف مسبقاً إلى الطلب</value>
+  </data>
+  <data name="trMessageBoxApproveOrder" xml:space="preserve">
+    <value>هل أنت متأكد من اعتماد الطلب؟</value>
+  </data>
+  <data name="AdditionalInfoError" xml:space="preserve">
+    <value>املأ المعلومات الإضافية</value>
+  </data>
+  <data name="GoToItemTransactionsError" xml:space="preserve">
+    <value>اذهب إلى نافذة حركات الأصناف وحدد موقع على الأقل</value>
+  </data>
+  <data name="trOrderWithoutItemsError" xml:space="preserve">
+    <value>لا يمكن إنشاء طلب لا يحوي أصناف</value>
   </data>
 </root>
