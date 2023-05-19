@@ -5693,6 +5693,9 @@
   <data name="trOrderWithoutItemsError" xml:space="preserve">
     <value>لا يمكن إنشاء طلب لا يحوي أصناف</value>
   </data>
+  <data name="DocumentDate" xml:space="preserve">
+    <value>تاريخ السند</value>
+  </data>
   <data name="LocationName" xml:space="preserve">
     <value>اسم الموقع</value>
   </data>

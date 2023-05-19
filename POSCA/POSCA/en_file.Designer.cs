@@ -871,6 +871,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document Date.
+        /// </summary>
+        internal static string DocumentDate {
+            get {
+                return ResourceManager.GetString("DocumentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document Date....
         /// </summary>
         internal static string DocumentDateHint {

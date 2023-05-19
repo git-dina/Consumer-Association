@@ -5448,6 +5448,9 @@ Main Documents</value>
   <data name="trOrderWithoutItemsError" xml:space="preserve">
     <value>Order can't be created without items</value>
   </data>
+  <data name="DocumentDate" xml:space="preserve">
+    <value>Document Date</value>
+  </data>
   <data name="LocationName" xml:space="preserve">
     <value>Location Name</value>
   </data>

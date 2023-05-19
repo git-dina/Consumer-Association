@@ -102,7 +102,7 @@ namespace POSCA.View.windows
             dg_purchaseInvoice.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
             dg_purchaseInvoice.Columns[1].Header = AppSettings.resourcemanager.GetString("Location");
             dg_purchaseInvoice.Columns[2].Header = AppSettings.resourcemanager.GetString("Supplier");
-            dg_purchaseInvoice.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDateHint");
+            dg_purchaseInvoice.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
 
         }
 
