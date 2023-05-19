@@ -15,6 +15,7 @@ namespace POSCA.Classes
         public static ResourceManager resourcemanager;
         public static ResourceManager resourcemanagerreport;
         public static ResourceManager resourcemanagerAr;
+        public static ResourceManager resourcemanagerEn;
 
        
         public static string APIUri = "http://localhost:7473/api/";
