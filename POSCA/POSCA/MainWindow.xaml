@@ -712,6 +712,45 @@
 
                         </StackPanel>
                     </Expander>
+                    <!--#region  settings-->
+                    <Expander  x:Name="exp_settings" Tag="settings" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconSettings" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource settings}"/>
+                                <TextBlock Text="settings" Foreground="White" x:Name="txt_settings"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <StackPanel>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="generalSettings" 
+                          x:Name="btn_generalSettings"  Click="Btn_generalSettings_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="generalSettings" Foreground="White" x:Name="txt_generalSettings"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
+
+
                 </StackPanel>
             </Grid>
             <Grid  Grid.Row="3" Grid.Column="0"   Grid.ColumnSpan="2"

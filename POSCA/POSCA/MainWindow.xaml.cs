@@ -4,6 +4,7 @@ using POSCA.View.locations;
 using POSCA.View.purchases;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
+using POSCA.View.settings;
 //using POSCA.View.sectionData.vendors;
 using System;
 using System.Collections.Generic;
@@ -607,6 +608,12 @@ namespace POSCA
             grid_main.Children.Add(uc_locationType.Instance);
         }
 
+
+        private void Btn_generalSettings_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_generalSettings.Instance);
+        }
         private void Btn_lang_Click(object sender, RoutedEventArgs e)
         {
             if (AppSettings.lang.Equals("en"))
@@ -639,6 +646,6 @@ namespace POSCA
             }
         }
 
-      
+        
     }
 }
