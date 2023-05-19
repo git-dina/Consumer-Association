@@ -785,7 +785,31 @@ namespace POSCA.View.purchases
         }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_purchaseInv w = new wd_purchaseInv();
+
+             
+
+                w.ShowDialog();
+                if (w.isOk)
+                {
+                   
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_draft_Click(object sender, RoutedEventArgs e)
