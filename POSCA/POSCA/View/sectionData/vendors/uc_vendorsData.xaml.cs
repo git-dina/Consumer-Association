@@ -381,6 +381,38 @@ namespace POSCA.View.sectionData
 
         #endregion
         #region events
+
+        private async void Btn_search_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (tb_search.Text != "")
+                {
+                    suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
+                    RefreshSuppliersView();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return)
+                {
+                    Btn_search_Click(btn_search, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
         //private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
         //{
         //    try
@@ -395,7 +427,7 @@ namespace POSCA.View.sectionData
         //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
         //    }
         //}
-       
+
         private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -510,9 +542,8 @@ namespace POSCA.View.sectionData
             //tb_Code.Text = lastSupId.ToString();
             tb_Code.Text = await FillCombo.supplier.getMaxSupplierId();
             dp_AssistantStartDate.SelectedDate = DateTime.Now;
-            // last 
             p_error_Email.Visibility = Visibility.Collapsed;
-
+            // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
         string input;
@@ -1083,35 +1114,6 @@ namespace POSCA.View.sectionData
             swapToData();
         }
 
-        private async void Btn_search_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (tb_search.Text != "")
-                {
-                    suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                    RefreshSuppliersView();
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void tb_search_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.Return)
-                {
-                    Btn_search_Click(btn_search, null);
-                }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+      
     }
 }
