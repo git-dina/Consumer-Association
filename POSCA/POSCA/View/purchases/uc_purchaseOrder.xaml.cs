@@ -1,4 +1,5 @@
-﻿using netoaster;
+﻿using Microsoft.Reporting.WinForms;
+using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using POSCA.View.windows;
@@ -9,6 +10,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -908,11 +910,85 @@ namespace POSCA.View.purchases
             dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
             dg_invoiceDetails.Items.Refresh();
         }
+
+        #region print
         private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (sender != null)
+                    HelpClass.StartAwait(grid_main);
 
+                ////////////////
+                Thread t1 = new Thread(async () =>
+                {
+                    string msg = "";
+                    msg = await printInvoice(purchaseInvoice);
+                    if (msg == "")
+                    {
+
+                    }
+                    else
+                    {
+                        this.Dispatcher.Invoke(() =>
+                        {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString(msg), animation: ToasterAnimation.FadeIn);
+                        });
+                    }
+                });
+                t1.Start();
+                /////////////////
+
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
+        LocalReport rep = new LocalReport();
+        public async Task<string> printInvoice(PurchaseInvoice prInvoice)
+        {
+            string msg = "";
+            try
+            {
+                ReportsConfig reportConfig = new ReportsConfig();
+
+
+                    List<ReportParameter> paramarr = new List<ReportParameter>();
+
+
+                ReportsConfig.setReportLanguage(paramarr);
+                ReportsConfig.InvoiceHeader(paramarr);
+                        paramarr.Add(new ReportParameter("isSaved", "y"));
+                        //paramarr = reportclass.fillSaleInvReport(prInvoice, paramarr, shippingcom);
+                        //rep = reportclass.AddDataset(rep, prInvoice.invoiceTaxes);
+
+
+                        rep.SetParameters(paramarr);
+
+                        rep.Refresh();
+                        //copy count
+
+                       
+            }
+            catch (Exception ex)
+            {
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
+
+                //});
+                msg = "trNotCompleted";
+            }
+            return msg;
+
+        }
+        #endregion
         private void tb_search_KeyDown(object sender, KeyEventArgs e)
         {
             try
