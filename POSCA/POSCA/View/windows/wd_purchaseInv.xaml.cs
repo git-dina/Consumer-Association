@@ -47,8 +47,9 @@ namespace POSCA.View.windows
         public bool isOk { get; set; }
 
         public string invoiceType { get; set; }
+        public bool? isApproved { get; set; }
 
-        PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
+       public PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -93,8 +94,15 @@ namespace POSCA.View.windows
 
         private void translate()
         {
+            txt_title.Text = AppSettings.resourcemanager.GetString("trOrders");
+           
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("SupplyingOrderNum"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("SupplyingOrderNumHint"));
+
+            dg_purchaseInvoice.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
+            dg_purchaseInvoice.Columns[1].Header = AppSettings.resourcemanager.GetString("Location");
+            dg_purchaseInvoice.Columns[2].Header = AppSettings.resourcemanager.GetString("Supplier");
+            dg_purchaseInvoice.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDateHint");
 
         }
 
@@ -116,7 +124,8 @@ namespace POSCA.View.windows
         {
             try
             {
-                await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType);
+                if(cb_LocationId.SelectedValue != null && tb_searchInvNumber.Text != "")
+                    await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType,isApproved);
             }
             catch
             {
@@ -138,16 +147,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, string invoiceType)
+        private async Task searchInvoices(long locationId, string invNumber, string invoiceType,bool? isApproved)
         {
-            var invoices = await purchaseInvoice.searchOrders(locationId, invNumber,invoiceType);
+            var invoices = await purchaseInvoice.searchOrders(locationId, invNumber,invoiceType,isApproved);
             dg_purchaseInvoice.ItemsSource = invoices;
             dg_purchaseInvoice.Items.Refresh();
         }
-        private void Dg_purchaseInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
 
-        }
 
         private void Btn_save_Click(object sender, RoutedEventArgs e)
         {
@@ -287,6 +293,25 @@ namespace POSCA.View.windows
                 var tb = cb_LocationId.Template.FindName("PART_EditableTextBox", cb_LocationId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
                 cb_LocationId.ItemsSource = FillCombo.locationsList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.LocationId.ToString().Contains(tb.Text)).ToList();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void dg_purchaseInvoice_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void Dg_purchaseInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                purchaseInvoice = dg_purchaseInvoice.SelectedItem as PurchaseInvoice;
+                isOk = true;
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -190,6 +190,7 @@
     <Compile Include="Classes\ApiClasses\User.cs" />
     <Compile Include="Classes\ApiClasses\SupplierDocType.cs" />
     <Compile Include="Classes\ApiClasses\PurchaseInvoice.cs" />
+    <Compile Include="Classes\ReportsConfig.cs" />
     <Compile Include="View\settings\uc_generalSettings.xaml.cs">
       <DependentUpon>uc_generalSettings.xaml</DependentUpon>
     </Compile>

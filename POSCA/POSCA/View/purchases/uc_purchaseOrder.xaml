@@ -590,8 +590,8 @@
                     <Border BorderThickness="0 0 0 0"  Grid.Column="7"
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5">
-                    <TextBlock  Text="CostAfterDiscount" 
-                            x:Name="txt_CostAfterDiscountTitle" 
+                    <TextBlock  Text="DiscountValue" 
+                            x:Name="txt_DiscountValueTitle" 
                             Foreground="{StaticResource SecondColor}" 
                             FontWeight="Bold" FontSize="12" 
                             />

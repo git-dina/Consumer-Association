@@ -140,7 +140,7 @@ namespace POSCA.View.purchases
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
             txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
-            txt_CostAfterDiscountTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
+            txt_DiscountValueTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
             txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
             txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
@@ -323,6 +323,11 @@ namespace POSCA.View.purchases
                 tgl_isApproved.IsEnabled = false;
                 btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
+            if (purchaseInvoice.IsApproved == true)
+                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approved");
+            else
+                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
+
         }
 
         #endregion
@@ -361,8 +366,11 @@ namespace POSCA.View.purchases
                 {
                     await addInvoice();
                 }
+                else
+                    Clear();
             }
-            Clear();
+            else
+                Clear();
         }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
@@ -398,6 +406,17 @@ namespace POSCA.View.purchases
             purchaseInvoice.Notes = tb_Notes.Text;
             purchaseInvoice.SupplierNotes = supplier.Notes;
             purchaseInvoice.SupplierPurchaseNotes = supplier.PurchaseOrderNotes;
+
+            purchaseInvoice.TotalCost = decimal.Parse(txt_TotalCost.Text);
+            purchaseInvoice.TotalPrice = decimal.Parse(txt_TotalPrice.Text);
+            purchaseInvoice.CoopDiscount = decimal.Parse(txt_EnterpriseDiscount.Text);
+            purchaseInvoice.DiscountValue = decimal.Parse(txt_DiscountValue.Text);
+            if(tb_FreePercentage.Text != "")
+                purchaseInvoice.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
+            purchaseInvoice.FreeValue = decimal.Parse(txt_FreeValue.Text);
+            purchaseInvoice.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
+            purchaseInvoice.CostNet = decimal.Parse(txt_CostNet.Text);
+
 
             purchaseInvoice.CreateUserId = MainWindow.userLogin.userId;
 
@@ -551,6 +570,8 @@ namespace POSCA.View.purchases
         void Clear()
         {
             this.DataContext = new PurchaseInvoice();
+
+            purchaseInvoice = new PurchaseInvoice();
 
             billDetails = new List<PurchaseInvDetails>();
             dg_invoiceDetails.ItemsSource = billDetails;
@@ -803,17 +824,20 @@ namespace POSCA.View.purchases
         {
             try
             {
-
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_purchaseInv w = new wd_purchaseInv();
 
-             
+                string invoiceType = "soa";
+                w.invoiceType = invoiceType;
+                w.isApproved = true;
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                   
+                    _InvType = "soa";
+                    purchaseInvoice = w.purchaseInvoice;
+                    fillOrderInputs(purchaseInvoice);
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -837,16 +861,19 @@ namespace POSCA.View.purchases
 
                 string invoiceType = "sod";
                 w.invoiceType = invoiceType;
+                w.isApproved = false;
 
                 w.ShowDialog();
-            if (w.isOk)
-            {
-
-            }
+                if (w.isOk)
+                {
+                    _InvType = "sod";
+                    purchaseInvoice = w.purchaseInvoice;
+                    fillOrderInputs(purchaseInvoice);
+                }
             Window.GetWindow(this).Opacity = 1;
 
             HelpClass.EndAwait(grid_main);
-        }
+            }
             catch (Exception ex)
             {
 
@@ -856,6 +883,31 @@ namespace POSCA.View.purchases
         }
     }
 
+        public void fillOrderInputs(PurchaseInvoice invoice)
+        {
+
+            this.DataContext = invoice;
+
+            txt_TotalCost.Text =HelpClass.DecTostring( purchaseInvoice.TotalCost);
+            txt_TotalPrice.Text = HelpClass.DecTostring(purchaseInvoice.TotalPrice);
+            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(purchaseInvoice.CoopDiscount );
+            txt_DiscountValue.Text = HelpClass.DecTostring(purchaseInvoice.DiscountValue);
+            tb_FreePercentage.Text= HelpClass.DecTostring(purchaseInvoice.FreePercentage);
+            txt_FreeValue.Text= HelpClass.DecTostring(purchaseInvoice.FreeValue);
+            txt_ConsumerDiscount.Text = HelpClass.DecTostring(purchaseInvoice.ConsumerDiscount);
+            txt_CostNet.Text = HelpClass.DecTostring(purchaseInvoice.CostNet);
+
+            buildInvoiceDetails(purchaseInvoice);
+
+            ControlsEditable();
+            //refreshValues();
+        }
+
+        private void buildInvoiceDetails(PurchaseInvoice invoice)
+        {
+            dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
+            dg_invoiceDetails.Items.Refresh();
+        }
         private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
         {
 

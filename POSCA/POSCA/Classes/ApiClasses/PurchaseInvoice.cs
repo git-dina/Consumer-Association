@@ -26,6 +26,7 @@ namespace POSCA.Classes
         public Nullable<decimal> CoopDiscount { get; set; }
         public Nullable<decimal> DiscountValue { get; set; }
         public Nullable<decimal> FreePercentage { get; set; }
+        public Nullable<decimal> FreeValue { get; set; }
         public Nullable<decimal> ConsumerDiscount { get; set; }
         public Nullable<decimal> CostNet { get; set; }
         public string InvType { get; set; }
@@ -40,6 +41,7 @@ namespace POSCA.Classes
 
         //extra
         public string LocationName { get; set; }
+        public string SupplierName { get; set; }
         public List<PurchaseInvDetails> PurchaseDetails { get; set; }
         #endregion
 
@@ -63,7 +65,7 @@ namespace POSCA.Classes
             }
             return result;
         }
-        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType)
+        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType, bool? isApproved)
         {
             var result = new List<PurchaseInvoice>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -72,6 +74,7 @@ namespace POSCA.Classes
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("invNumber", invNumber);
             parameters.Add("invType", invType);
+            parameters.Add("isApproved", isApproved.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)

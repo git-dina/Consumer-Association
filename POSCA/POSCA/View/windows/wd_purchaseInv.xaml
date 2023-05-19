@@ -141,6 +141,7 @@
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
                        HeadersVisibility="Column" Background="White"
+                                   MouseDoubleClick="dg_purchaseInvoice_MouseDoubleClick"
                        SelectionChanged="Dg_purchaseInvoice_SelectionChanged"  
                        AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
@@ -163,13 +164,13 @@
                                     <DataGridTextColumn Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=TwoWay}"/>
                                     <DataGridTextColumn Width="*"  Header="SupplierName" Binding="{Binding Path=SupplierName, Mode=TwoWay}"/>
                                     <DataGridTextColumn Width="*"  Header="OrderDate" Binding="{Binding Path=OrderDate, Mode=TwoWay}"/>
-                                    <DataGridTemplateColumn  Header="IsApproved"   >
+                                    <!--<DataGridTemplateColumn  Header="IsApproved"   >
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsApproved, Mode=TwoWay}" />
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
+                                    </DataGridTemplateColumn>-->
 
                                 </DataGrid.Columns>
                             </DataGrid>

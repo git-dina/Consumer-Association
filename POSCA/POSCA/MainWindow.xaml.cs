@@ -221,7 +221,7 @@ namespace POSCA
 
                 //SelectAllText
                 EventManager.RegisterClassHandler(typeof(System.Windows.Controls.TextBox), System.Windows.Controls.TextBox.GotKeyboardFocusEvent, new RoutedEventHandler(SelectAllText));
-                txt_rightReserved.Text = DateTime.Now.Date.Year + " © All Right Reserved for Increase";
+                txt_rightReserved.Text = DateTime.Now.Date.Year + " © All Right Reserved for ";
 
                 HelpClass.EndAwait(grid_mainWindow, "mainWindow_loaded");
             }

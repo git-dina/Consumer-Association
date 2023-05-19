@@ -1753,6 +1753,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location Name.
+        /// </summary>
+        internal static string LocationName {
+            get {
+                return ResourceManager.GetString("LocationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location No....
         /// </summary>
         internal static string LocationNumHint {
@@ -2182,6 +2191,15 @@ namespace POSCA {
         internal static string OrderDetails {
             get {
                 return ResourceManager.GetString("OrderDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order No.
+        /// </summary>
+        internal static string OrderNum {
+            get {
+                return ResourceManager.GetString("OrderNum", resourceCulture);
             }
         }
         
@@ -3304,9 +3322,9 @@ namespace POSCA {
         /// <summary>
         ///   Looks up a localized string similar to Supplying Order No....
         /// </summary>
-        internal static string SupplyingOrderNum {
+        internal static string SupplyingOrderNumHint {
             get {
-                return ResourceManager.GetString("SupplyingOrderNum", resourceCulture);
+                return ResourceManager.GetString("SupplyingOrderNumHint", resourceCulture);
             }
         }
         
