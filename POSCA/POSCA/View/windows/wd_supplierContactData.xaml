@@ -58,7 +58,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="2">
+                        <DockPanel Margin="10 0" LastChildFill="True" Grid.Row="0">
                             <TextBlock  Text="phonesData"   x:Name="txt_phonesData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Button  Padding="0"     Width="35" Height="35"
                                      DockPanel.Dock="Right"
