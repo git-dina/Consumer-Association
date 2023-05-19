@@ -5693,4 +5693,7 @@
   <data name="trOrderWithoutItemsError" xml:space="preserve">
     <value>لا يمكن إنشاء طلب لا يحوي أصناف</value>
   </data>
+  <data name="SupplyingOrderNum" xml:space="preserve">
+    <value>رقم طلب التزويد...</value>
+  </data>
 </root>

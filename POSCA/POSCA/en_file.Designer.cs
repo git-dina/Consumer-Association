@@ -3302,6 +3302,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplying Order No....
+        /// </summary>
+        internal static string SupplyingOrderNum {
+            get {
+                return ResourceManager.GetString("SupplyingOrderNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supply Unit....
         /// </summary>
         internal static string SupplyUnitHint {

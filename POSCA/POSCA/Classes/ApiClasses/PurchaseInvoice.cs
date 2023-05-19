@@ -63,6 +63,26 @@ namespace POSCA.Classes
             }
             return result;
         }
+        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType)
+        {
+            var result = new List<PurchaseInvoice>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/SearchOrders";
+
+            parameters.Add("locationId", locationId.ToString());
+            parameters.Add("invNumber", invNumber);
+            parameters.Add("invType", invType);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value));
+                }
+            }
+            return result;
+        }
 
         public async Task<PurchaseInvoice> SaveSupplyingOrder(PurchaseInvoice invoice)
         {

@@ -321,6 +321,7 @@ namespace POSCA.View.purchases
             {
                 btn_printInvoice.IsEnabled = false;
                 tgl_isApproved.IsEnabled = false;
+                btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -332,21 +333,7 @@ namespace POSCA.View.purchases
             {
                 HelpClass.StartAwait(grid_main);
 
-                if (billDetails.Count > 0 && (_InvType == "sod" || _InvType == "soa"))
-                {
-                    #region Accept
-                    MainWindow.mainWindow.Opacity = 0.2;
-                    wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                    w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
-                    w.ShowDialog();
-                    MainWindow.mainWindow.Opacity = 1;
-                    #endregion
-                    if (w.isOk)
-                    {
-                        await addInvoice();
-                    }
-                }
-                Clear();
+                await addDraft();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -358,17 +345,35 @@ namespace POSCA.View.purchases
             }
         }
 
+        private async Task addDraft()
+        {
+
+            if (billDetails.Count > 0 && (_InvType == "sod" || _InvType == "soa"))
+            {
+                #region Accept
+                MainWindow.mainWindow.Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
+                w.ShowDialog();
+                MainWindow.mainWindow.Opacity = 1;
+                #endregion
+                if (w.isOk)
+                {
+                    await addInvoice();
+                }
+            }
+            Clear();
+        }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-               
-                if (HelpClass.validate(requiredControlList, this) )
-                {
-                    if(billDetails.Count == 0)
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
-                    await addInvoice();
+                if (billDetails.Count == 0)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
+                else if (HelpClass.validate(requiredControlList, this) )
+                {                
+                        await addInvoice();
                   
                 }
                
@@ -554,6 +559,17 @@ namespace POSCA.View.purchases
             dp_OrderDate.SelectedDate = DateTime.Now;
             dp_OrderRecieveDate.SelectedDate = DateTime.Now;
 
+            txt_TotalCost.Text = HelpClass.DecTostring(0);
+            txt_TotalPrice.Text = HelpClass.DecTostring(0);
+            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
+            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
+            txt_DiscountValue.Text = HelpClass.DecTostring(0);
+            tb_FreePercentage.Text = HelpClass.DecTostring(0);
+            txt_FreeValue.Text = HelpClass.DecTostring(0);
+            txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
+            txt_CostNet.Text = HelpClass.DecTostring(0);
+
+            cb_InvStatus.SelectedValue = "opened";
             _InvType = "sod";
             ControlsEditable();
 
@@ -731,7 +747,7 @@ namespace POSCA.View.purchases
             if (index == -1)//item doesn't exist in bill
             {
                 billDetails.Add(purchaseInvDetails);
-                dg_invoiceDetails.Items.Clear();
+
                 dg_invoiceDetails.ItemsSource = billDetails;
                 dg_invoiceDetails.Items.Refresh();
                 refreshValues();
@@ -745,14 +761,14 @@ namespace POSCA.View.purchases
 
         decimal _TotalCost = 0;
         decimal _TotalPrice = 0;
-        decimal _CostAfterDiscount = 0;
+        decimal _DiscountValue = 0;
         decimal _ConsumerDiscount = 0;
     
         private void refreshValues()
         {
             _TotalCost = 0;
             _TotalPrice = 0;
-            _CostAfterDiscount = 0;
+            _DiscountValue = 0;
             _ConsumerDiscount = 0;
             foreach(var row in billDetails)
             {
@@ -767,8 +783,8 @@ namespace POSCA.View.purchases
 
             //cost after discount
             var discount = HelpClass.calcPercentage(_TotalCost, supplier.DiscountPercentage);
-            _CostAfterDiscount = discount;
-            txt_CostAfterDiscount.Text = HelpClass.DecTostring(_CostAfterDiscount);
+            _DiscountValue = discount;
+            txt_DiscountValue.Text = HelpClass.DecTostring(_DiscountValue);
 
             //free quantity
             decimal freePercentage = 0;
@@ -814,8 +830,31 @@ namespace POSCA.View.purchases
 
         private void Btn_draft_Click(object sender, RoutedEventArgs e)
         {
+            try { 
+            HelpClass.StartAwait(grid_main);
+            Window.GetWindow(this).Opacity = 0.2;
+            wd_purchaseInv w = new wd_purchaseInv();
 
+                string invoiceType = "sod";
+                w.invoiceType = invoiceType;
+
+                w.ShowDialog();
+            if (w.isOk)
+            {
+
+            }
+            Window.GetWindow(this).Opacity = 1;
+
+            HelpClass.EndAwait(grid_main);
         }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+        HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        }
+    }
 
         private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
         {
