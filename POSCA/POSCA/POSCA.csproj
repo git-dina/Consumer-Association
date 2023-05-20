@@ -477,9 +477,6 @@
     <Folder Include="converters\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Thumb\tmp0.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Thumb\SupDocuments\tmp.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

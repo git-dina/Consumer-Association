@@ -5705,4 +5705,13 @@
   <data name="SupplyingOrderNumHint" xml:space="preserve">
     <value>رقم طلب التزويد...</value>
   </data>
+  <data name="AssociationInfo" xml:space="preserve">
+    <value>بيانات الجمعية</value>
+  </data>
+  <data name="AssociationNameHint" xml:space="preserve">
+    <value>اسم المؤسسة...</value>
+  </data>
+  <data name="GeneralSettings" xml:space="preserve">
+    <value>إعدادات عامة</value>
+  </data>
 </root>

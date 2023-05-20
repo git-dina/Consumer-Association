@@ -27,7 +27,16 @@ namespace POSCA.View.settings
     /// </summary>
     public partial class uc_generalSettings : UserControl
     {
-
+        CompanySettings setVName = new CompanySettings();
+        CompanySettings setVAddress = new CompanySettings();
+        CompanySettings setVEmail = new CompanySettings();
+        CompanySettings setVArabicName = new CompanySettings(); 
+        CompanySettings setVArabicAddress = new CompanySettings();
+        CompanySettings setVMobile = new CompanySettings();
+        CompanySettings setVPhone = new CompanySettings();
+        CompanySettings setVFax = new CompanySettings();
+        CompanySettings setVLogo = new CompanySettings();
+        CompanySettings valueModel = new CompanySettings();
         public uc_generalSettings()
         {
             try
@@ -80,6 +89,16 @@ namespace POSCA.View.settings
                 }
                 translate();
 
+                #region get settings Ids
+
+                setVName = await FillCombo.getSettingBySetName("com_name");
+                setVAddress = await FillCombo.getSettingBySetName("com_address");
+                setVEmail = await FillCombo.getSettingBySetName("com_email");
+                setVMobile = await FillCombo.getSettingBySetName("com_mobile");
+                setVPhone = await FillCombo.getSettingBySetName("com_phone");
+                setVFax = await FillCombo.getSettingBySetName("com_fax");
+                setVLogo = await FillCombo.getSettingBySetName("com_logo");
+                #endregion
 
                 Keyboard.Focus(tb_companyName);
 
@@ -96,14 +115,20 @@ namespace POSCA.View.settings
 
         private void translate()
         {
-            /*
-            txt_title.Text = AppSettings.resourcemanager.GetString("Banks");
+            
+            txt_title.Text = AppSettings.resourcemanager.GetString("GeneralSettings");
 
-            txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankName, AppSettings.resourcemanager.GetString("trNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
-            txt_saveButton.Text = AppSettings.resourcemanager.GetString("trAdd");
-            */
+            txt_companyInfo.Text = AppSettings.resourcemanager.GetString("AssociationInfo");
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyName, AppSettings.resourcemanager.GetString("AssociationNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyAddress, AppSettings.resourcemanager.GetString("trAddress"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyEmail, AppSettings.resourcemanager.GetString("trEmail"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyMobile, AppSettings.resourcemanager.GetString("trMobileHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyPhone, AppSettings.resourcemanager.GetString("trPhoneHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyFax, AppSettings.resourcemanager.GetString("trFaxHint"));
+          
+            txt_saveButton.Text = AppSettings.resourcemanager.GetString("trSave");
+       
 
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh

@@ -241,6 +241,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Association Information.
+        /// </summary>
+        internal static string AssociationInfo {
+            get {
+                return ResourceManager.GetString("AssociationInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association Name....
+        /// </summary>
+        internal static string AssociationNameHint {
+            get {
+                return ResourceManager.GetString("AssociationNameHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backup data.
         /// </summary>
         internal static string backupData {
@@ -1308,6 +1326,15 @@ namespace POSCA {
         internal static string GeneralNotesHint {
             get {
                 return ResourceManager.GetString("GeneralNotesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Settings.
+        /// </summary>
+        internal static string GeneralSettings {
+            get {
+                return ResourceManager.GetString("GeneralSettings", resourceCulture);
             }
         }
         
@@ -6326,7 +6353,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to البريد الالكتروني.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string trEmail {
             get {
@@ -6335,7 +6362,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to البريد الالكتروني....
+        ///   Looks up a localized string similar to Email....
         /// </summary>
         internal static string trEmailHint {
             get {
@@ -6425,7 +6452,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to فارغة.
+        ///   Looks up a localized string similar to Empty.
         /// </summary>
         internal static string trEmpty {
             get {
@@ -7955,7 +7982,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الفاكس.
+        ///   Looks up a localized string similar to Fax.
         /// </summary>
         internal static string trFax {
             get {
@@ -7964,7 +7991,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to فاكس....
+        ///   Looks up a localized string similar to Fax....
         /// </summary>
         internal static string trFaxHint {
             get {
@@ -10971,7 +10998,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الهاتف.
+        ///   Looks up a localized string similar to Phone.
         /// </summary>
         internal static string trPhone {
             get {
@@ -10980,7 +11007,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الهاتف....
+        ///   Looks up a localized string similar to Phone....
         /// </summary>
         internal static string trPhoneHint {
             get {

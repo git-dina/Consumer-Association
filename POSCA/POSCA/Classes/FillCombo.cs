@@ -711,7 +711,8 @@ namespace POSCA.Classes
         static public List<CompanySettings> companySettingsList = new List<CompanySettings>();
         static public async Task<IEnumerable<CompanySettings>> RefreshCompanySettings()
         {
-            companySettingsList = await companySettings.Get();
+            if(companySettingsList == null)
+                companySettingsList = await companySettings.Get();
             AppSettings.companyName = companySettingsList.Where(x => x.Name.Equals("com_name")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyAddress = companySettingsList.Where(x => x.Name.Equals("com_address")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyEmail = companySettingsList.Where(x => x.Name.Equals("com_email")).Select(x => x.Value).FirstOrDefault();
@@ -721,6 +722,20 @@ namespace POSCA.Classes
             AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_logo")).Select(x => x.Value).FirstOrDefault();
 
                 return companySettingsList;
+        }
+
+        public static async Task<CompanySettings> getSettingBySetName(string setName)
+        {
+            CompanySettings set = new CompanySettings();
+            long setId = 0;
+
+            if (FillCombo.companySettingsList is null)
+                await FillCombo.RefreshCompanySettings();
+
+            set = FillCombo.companySettingsList.Where(s => s.Name == setName).FirstOrDefault<CompanySettings>();
+            setId = set.SettingId;
+
+            return set;
         }
         #endregion
     }

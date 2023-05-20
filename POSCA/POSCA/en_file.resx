@@ -1796,10 +1796,10 @@ Main Documents</value>
     <value>موجود سابقاً</value>
   </data>
   <data name="trEmail" xml:space="preserve">
-    <value>البريد الالكتروني</value>
+    <value>Email</value>
   </data>
   <data name="trEmailHint" xml:space="preserve">
-    <value>البريد الالكتروني...</value>
+    <value>Email...</value>
   </data>
   <data name="trEmailOnSavePurchase" xml:space="preserve">
     <value>إرسال إيميل عند حفظ فاتورة مشتريات</value>
@@ -1829,7 +1829,7 @@ Main Documents</value>
     <value>موظف</value>
   </data>
   <data name="trEmpty" xml:space="preserve">
-    <value>فارغة</value>
+    <value>Empty</value>
   </data>
   <data name="trEmptyAccNumberToolTip" xml:space="preserve">
     <value>رقم الحساب لا يمكن أن يكون فارغ</value>
@@ -2327,10 +2327,10 @@ Main Documents</value>
     <value>المفضلة</value>
   </data>
   <data name="trFax" xml:space="preserve">
-    <value>الفاكس</value>
+    <value>Fax</value>
   </data>
   <data name="trFaxHint" xml:space="preserve">
-    <value>فاكس...</value>
+    <value>Fax...</value>
   </data>
   <data name="trFilterInvoicesBy" xml:space="preserve">
     <value>فلترة الفواتير حسب</value>
@@ -3315,10 +3315,10 @@ Main Documents</value>
     <value>عدد الأشخاص...</value>
   </data>
   <data name="trPhone" xml:space="preserve">
-    <value>الهاتف</value>
+    <value>Phone</value>
   </data>
   <data name="trPhoneHint" xml:space="preserve">
-    <value>الهاتف...</value>
+    <value>Phone...</value>
   </data>
   <data name="trPieChart" xml:space="preserve">
     <value>مخطط دائري</value>
@@ -5459,5 +5459,14 @@ Main Documents</value>
   </data>
   <data name="SupplyingOrderNumHint" xml:space="preserve">
     <value>Supplying Order No...</value>
+  </data>
+  <data name="AssociationInfo" xml:space="preserve">
+    <value>Association Information</value>
+  </data>
+  <data name="AssociationNameHint" xml:space="preserve">
+    <value>Association Name...</value>
+  </data>
+  <data name="GeneralSettings" xml:space="preserve">
+    <value>General Settings</value>
   </data>
 </root>

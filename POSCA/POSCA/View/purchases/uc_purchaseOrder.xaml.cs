@@ -325,6 +325,11 @@ namespace POSCA.View.purchases
                 tgl_isApproved.IsEnabled = false;
                 btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                btn_printInvoice.IsEnabled = true;
+
+            }
             if (purchaseInvoice.IsApproved == true)
                 txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approved");
             else
