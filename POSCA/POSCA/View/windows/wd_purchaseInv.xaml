@@ -160,10 +160,10 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*"  Header="InvNumber" Binding="{Binding Path=InvNumber, Mode=TwoWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=TwoWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="SupplierName" Binding="{Binding Path=SupplierName, Mode=TwoWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="OrderDate" Binding="{Binding Path=OrderDate, Mode=TwoWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="InvNumber" Binding="{Binding Path=InvNumber, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="SupplierName" Binding="{Binding Path=SupplierName, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="OrderDate" Binding="{Binding Path=OrderDate, Mode=OneWay, Converter={StaticResource dateFrameConverter }}"/>
                                     <!--<DataGridTemplateColumn  Header="IsApproved"   >
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>

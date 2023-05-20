@@ -207,6 +207,7 @@
     <Compile Include="Classes\ApiClasses\PurchaseInvoice.cs" />
     <Compile Include="Classes\ReportCls.cs" />
     <Compile Include="Classes\ReportsConfig.cs" />
+    <Compile Include="converters\dateFrameConverter.cs" />
     <Compile Include="View\settings\uc_generalSettings.xaml.cs">
       <DependentUpon>uc_generalSettings.xaml</DependentUpon>
     </Compile>
@@ -473,9 +474,7 @@
     <Resource Include="pic\no-image-icon-512x512.png" />
     <Resource Include="pic\no-image-icon-90x90.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="converters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Thumb\SupDocuments\tmp.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

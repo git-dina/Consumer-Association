@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:POSCA"
           xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converters="clr-namespace:POSCA.converters"
              Startup="Application_Startup">
     <!--StartupUri="MainWindow.xaml"-->
-    <!--xmlns:converters="clr-namespace:POSCA.converters"-->
     <Application.Resources>
         <ResourceDictionary>
-            <!--<converters:netProfitColorConverter x:Key="netProfitColorConverter"/>-->
+
+            <converters:dateFrameConverter x:Key="dateFrameConverter"/>
             <!--#region Fonts-->
             <FontFamily x:Key="BarcodeFont" >IDAHC39M Code 39 Barcode, /POSCA;component/fonts/#IDAHC39M Code 39 Barcode, Arial</FontFamily>
             <FontFamily x:Key="Font-cairo-light" >cairo light, /POSCA;component/fonts/cairo-font/#cairo light, Arial</FontFamily>
