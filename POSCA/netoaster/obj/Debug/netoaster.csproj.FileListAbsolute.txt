@@ -295,3 +295,18 @@ E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\netoaster
 E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.csproj.CoreCompileInputs.cache
 E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.dll
 E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.pdb
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\bin\Debug\netoaster.dll
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\bin\Debug\netoaster.pdb
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\ToasterWindow.g.cs
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster_MarkupCompile.cache
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster_MarkupCompile.lref
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\Themes\Generic.baml
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\ToasterWindow.baml
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.g.resources
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.Properties.Resources.resources
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.csproj.GenerateResource.cache
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.csproj.CoreCompileInputs.cache
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.dll
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.pdb
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\netoaster\obj\Debug\netoaster.csproj.AssemblyReference.cache

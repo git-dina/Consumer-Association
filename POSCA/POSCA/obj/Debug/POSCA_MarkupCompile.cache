@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\obj\Debug\
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\obj\Debug\
 POSCA
 none
 false
 DEBUG;TRACE
-E:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\App.xaml
-21850772717
+D:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\App.xaml
+28-2038475529
+1-352324917
+661237380753
+46-92447150
+View\settings\uc_generalSettings.xaml;View\windows\wd_addPurchaseItem.xaml;MainWindow.xaml;View\catalog\uc_category.xaml;View\catalog\uc_item.xaml;View\catalog\uc_unit.xaml;View\locations\uc_locationsData.xaml;View\locations\uc_locationType.xaml;View\purchases\uc_purchaseOrder.xaml;View\sectionData\uc_bank.xaml;View\sectionData\uc_brand.xaml;View\sectionData\uc_country.xaml;View\sectionData\uc_phoneType.xaml;View\sectionData\vendors\uc_supplierDocType.xaml;View\sectionData\vendors\uc_supportVendors.xaml;View\sectionData\vendors\uc_vendorsData.xaml;View\sectionData\vendors\uc_vendorsGroups.xaml;View\sectionData\vendors\uc_vendorsType.xaml;View\windows\wd_acceptCancelPopup.xaml;View\windows\wd_itemAllowedOperations.xaml;View\windows\wd_itemGeneralization.xaml;View\windows\wd_ItemUnits.xaml;View\windows\wd_purchaseInv.xaml;View\windows\wd_supplierAllowedOperations.xaml;View\windows\wd_supplierContactData.xaml;View\windows\wd_supplierDoc.xaml;View\windows\wd_supplierSectors.xaml;View\windows\wd_supplyingItem.xaml;
 
-172099517649
-27410356127
-MainWindow.xaml;View\sectionData\vendors\uc_vendorsData.xaml;
-
-False
+True
 

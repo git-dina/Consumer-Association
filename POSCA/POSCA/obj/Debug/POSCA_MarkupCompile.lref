@@ -1,5 +1,31 @@
 ﻿
-FE:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\App.xaml;;
-FE:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\MainWindow.xaml;;
-FE:\job with Dina\ConsumerAssociation\github\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_vendorsData.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\App.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\settings\uc_generalSettings.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_addPurchaseItem.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\MainWindow.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\catalog\uc_category.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\catalog\uc_item.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\catalog\uc_unit.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\locations\uc_locationsData.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\locations\uc_locationType.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\purchases\uc_purchaseOrder.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\uc_bank.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\uc_brand.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\uc_country.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\uc_phoneType.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_supplierDocType.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_supportVendors.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_vendorsData.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_vendorsGroups.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\sectionData\vendors\uc_vendorsType.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_acceptCancelPopup.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_itemAllowedOperations.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_itemGeneralization.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_ItemUnits.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_purchaseInv.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_supplierAllowedOperations.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_supplierContactData.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_supplierDoc.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_supplierSectors.xaml;;
+FD:\Kuwait Tech\الجمعية\client\Consumer-Association\POSCA\POSCA\View\windows\wd_supplyingItem.xaml;;
 

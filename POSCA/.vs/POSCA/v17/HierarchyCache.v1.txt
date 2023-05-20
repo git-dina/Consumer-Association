@@ -1,0 +1,427 @@
+﻿++Solution 'POSCA' ‎(2 of 2 projects)
+i:{00000000-0000-0000-0000-000000000000}:POSCA.sln
+++netoaster
+i:{00000000-0000-0000-0000-000000000000}:netoaster
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Properties
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\
+++AssemblyInfo.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\assemblyinfo.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\assemblyinfo.cs
+++Resources.resx
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\resources.resx
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\resources.resx
+++Settings.settings
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\settings.settings
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\settings.settings
+++References
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Themes
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\themes\
+++ThemeKeys.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\themekeys.cs
+++Toaster.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\toaster.cs
+++ToasterWindow.xaml
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\toasterwindow.xaml
+++ToastSupport.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\toastsupport.cs
+++Resources.Designer.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\resources.designer.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\resources.designer.cs
+++Settings.Designer.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\properties\settings.designer.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\properties\settings.designer.cs
+++Microsoft.CSharp
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++PresentationCore
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++PresentationFramework
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Core
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Data
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Data.DataSetExtensions
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Drawing
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+++System.Windows.Forms
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+++System.Xaml
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Xml
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Xml.Linq
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++WindowsBase
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Generic.xaml
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\themes\generic.xaml
+++ToasterWindow.xaml.cs
+i:{211d37ef-74f8-4e4f-9ed0-da4566f423f5}:d:\kuwait tech\الجمعية\client\consumer-association\posca\netoaster\toasterwindow.xaml.cs
+++POSCA
+i:{00000000-0000-0000-0000-000000000000}:POSCA
+++bin
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\
+++Classes
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\
+++ApiClasses
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\
+++APIResult.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\apiresult.cs
+++AssistantSupplier.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\assistantsupplier.cs
+++Bank.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\bank.cs
+++Branch.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\branch.cs
+++Brand.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\brand.cs
+++Category.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\category.cs
+++Country.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\country.cs
+++Item.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\item.cs
+++ItemUnit.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\itemunit.cs
+++Location.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\location.cs
+++LocationType.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\locationtype.cs
+++PhoneType.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\phonetype.cs
+++Pos.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\pos.cs
+++Supplier.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\supplier.cs
+++SupplierDocType.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\supplierdoctype.cs
+++SupplierGroup.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\suppliergroup.cs
+++SupplierType.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\suppliertype.cs
+++Unit.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\unit.cs
+++User.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\apiclasses\user.cs
+++AppSettings.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\appsettings.cs
+++FillCombo.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\fillcombo.cs
+++FindVisualChildren.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\findvisualchildren.cs
+++HelpClass.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\helpclass.cs
+++KeyValue.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\keyvalue.cs
+++Md5Encription.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\classes\md5encription.cs
+++converters
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\converters\
+++fonts
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\
+++obj
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\
+++pic
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\pic\
+++Thumb
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\
+++View
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\
+++catalog
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\catalog\
+++uc_category.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_category.xaml
+++uc_category.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_category.xaml.cs
+++uc_item.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_item.xaml
+++uc_item.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_item.xaml.cs
+++uc_unit.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_unit.xaml
+++uc_unit.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\catalog\uc_unit.xaml.cs
+++sectionData
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\
+++vendors
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\
+++uc_supplierDocType.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_supplierdoctype.xaml
+++uc_supportVendors.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_supportvendors.xaml
+++uc_vendorsData.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorsdata.xaml
+++uc_vendorsGroups.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorsgroups.xaml
+++uc_vendorsType.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorstype.xaml
+++uc_bank.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_bank.xaml
+++uc_brand.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_brand.xaml
+++uc_country.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_country.xaml
+++uc_phoneType.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_phonetype.xaml
+++windows
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\
+++wd_acceptCancelPopup.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_acceptcancelpopup.xaml
+++wd_itemAllowedOperations.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemallowedoperations.xaml
+++wd_itemGeneralization.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemgeneralization.xaml
+++wd_ItemUnits.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemunits.xaml
+++wd_supplierAllowedOperations.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplierallowedoperations.xaml
+++wd_supplierContactData.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_suppliercontactdata.xaml
+++wd_supplierDoc.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplierdoc.xaml
+++wd_supplierDoc.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplierdoc.xaml.cs
+++wd_supplierSectors.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_suppliersectors.xaml
+++wd_supplyingItem.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplyingitem.xaml
+++wd_supplyingItem.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplyingitem.xaml.cs
+++App.config
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\app.config
+++App.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\app.xaml
+++ar_file.Designer.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\ar_file.designer.cs
+++ar_file.resx
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\ar_file.resx
+++en_file.resx
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\en_file.resx
+++MainWindow.xaml
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\mainwindow.xaml
+++MainWindow.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\mainwindow.xaml.cs
+++packages.config
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\packages.config
+++ControlzEx
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++De.TorstenMandelkow.MetroChart
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++LiveCharts
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++LiveCharts.Wpf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++MahApps.Metro
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++MaterialDesignColors
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++MaterialDesignThemes.Wpf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.Bcl.AsyncInterfaces
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.IdentityModel.Abstractions
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.IdentityModel.JsonWebTokens
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.IdentityModel.Logging
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.IdentityModel.Tokens
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Microsoft.Xaml.Behaviors
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Newtonsoft.Json
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Panteam.MetroChart
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Buffers
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Configuration.ConfigurationManager
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.IdentityModel.Tokens.Jwt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Management
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Memory
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Net.Http
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Numerics
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Numerics.Vectors
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Runtime.CompilerServices.Unsafe
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Text.Encodings.Web
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Text.Json
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.Threading.Tasks.Extensions
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++System.ValueTuple
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:
+++Debug
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\debug\
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\
+++Release
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\release\
+++cairo-font
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\cairo-font\
+++barcodeFont.ttf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\barcodefont.ttf
+++no-image-icon-125x125.png
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\pic\no-image-icon-125x125.png
+++no-image-icon-40x40.png
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\pic\no-image-icon-40x40.png
+++no-image-icon-512x512.png
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\pic\no-image-icon-512x512.png
+++no-image-icon-90x90.png
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\pic\no-image-icon-90x90.png
+++SupDocuments
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\supdocuments\
+++tmp0.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp0.txt
+++tmp1.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp1.txt
+++tmp10.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp10.txt
+++tmp11.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp11.txt
+++tmp2.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp2.txt
+++tmp3.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp3.txt
+++tmp4.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp4.txt
+++tmp5.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp5.txt
+++tmp6.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp6.txt
+++tmp7.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp7.txt
+++tmp8.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp8.txt
+++tmp9.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\tmp9.txt
+++uc_supplierDocType.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_supplierdoctype.xaml.cs
+++uc_supportVendors.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_supportvendors.xaml.cs
+++uc_vendorsData.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorsdata.xaml.cs
+++uc_vendorsGroups.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorsgroups.xaml.cs
+++uc_vendorsType.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\vendors\uc_vendorstype.xaml.cs
+++uc_bank.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_bank.xaml.cs
+++uc_brand.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_brand.xaml.cs
+++uc_country.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_country.xaml.cs
+++uc_phoneType.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\sectiondata\uc_phonetype.xaml.cs
+++wd_acceptCancelPopup.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_acceptcancelpopup.xaml.cs
+++wd_itemAllowedOperations.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemallowedoperations.xaml.cs
+++wd_itemGeneralization.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemgeneralization.xaml.cs
+++wd_ItemUnits.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_itemunits.xaml.cs
+++wd_supplierAllowedOperations.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_supplierallowedoperations.xaml.cs
+++wd_supplierContactData.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_suppliercontactdata.xaml.cs
+++wd_supplierSectors.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\view\windows\wd_suppliersectors.xaml.cs
+++App.xaml.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\app.xaml.cs
+++en_file.Designer.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\en_file.designer.cs
+++POSCA.exe
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\debug\posca.exe
+++POSCA.exe.config
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\debug\posca.exe.config
+++POSCA.pdb
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\bin\debug\posca.pdb
+++cairo-light.ttf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\cairo-font\cairo-light.ttf
+++cairo bold.ttf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\cairo-font\cairo bold.ttf
+++Cairo Regular 400.ttf
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\fonts\cairo-font\cairo regular 400.ttf
+++.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\.netframework,version=v4.7.2.assemblyattributes.cs
+++App.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\app.g.i.cs
+++MainWindow.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\mainwindow.g.i.cs
+++POSCA_Content.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\posca_content.g.i.cs
+++tmp.txt
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\thumb\supdocuments\tmp.txt
+++uc_category.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\catalog\uc_category.g.i.cs
+++uc_item.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\catalog\uc_item.g.i.cs
+++uc_unit.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\catalog\uc_unit.g.i.cs
+++uc_bank.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\uc_bank.g.i.cs
+++uc_brand.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\uc_brand.g.i.cs
+++uc_country.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\uc_country.g.i.cs
+++uc_phoneType.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\uc_phonetype.g.i.cs
+++wd_acceptCancelPopup.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_acceptcancelpopup.g.i.cs
+++wd_itemAllowedOperations.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_itemallowedoperations.g.i.cs
+++wd_itemGeneralization.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_itemgeneralization.g.i.cs
+++wd_ItemUnits.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_itemunits.g.i.cs
+++wd_supplierAllowedOperations.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_supplierallowedoperations.g.i.cs
+++wd_supplierContactData.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_suppliercontactdata.g.i.cs
+++wd_supplierDoc.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_supplierdoc.g.i.cs
+++wd_supplierSectors.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_suppliersectors.g.i.cs
+++wd_supplyingItem.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\windows\wd_supplyingitem.g.i.cs
+++uc_supplierDocType.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\uc_supplierdoctype.g.i.cs
+++uc_supportVendors.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\uc_supportvendors.g.i.cs
+++uc_vendorsData.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\uc_vendorsdata.g.i.cs
+++uc_vendorsGroups.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\uc_vendorsgroups.g.i.cs
+++uc_vendorsType.g.i.cs
+i:{b8222034-73df-4791-8ff4-a5360ebeca78}:d:\kuwait tech\الجمعية\client\consumer-association\posca\posca\obj\debug\view\sectiondata\vendors\uc_vendorstype.g.i.cs
