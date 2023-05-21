@@ -229,10 +229,11 @@
                       materialDesign:DataGridAssist.CornerRadius="5" Visibility="Visible"
                          IsReadOnly="False" CanUserAddRows="False"   
                         AutoGenerateColumns="False"
-                                  CanUserReorderColumns="False"
+                        CanUserReorderColumns="False"
                         ColumnWidth="SizeToHeader"   CanUserSortColumns="False" 
-                                  VirtualizingStackPanel.IsVirtualizing="False"  
-                                  EnableRowVirtualization="True" EnableColumnVirtualization="True">
+                        VirtualizingStackPanel.IsVirtualizing="False"  
+                        EnableRowVirtualization="True" EnableColumnVirtualization="True"
+                        CellEditEnding="dg_invoiceDetails_CellEditEnding">
                     <DataGrid.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">

@@ -3659,7 +3659,7 @@
     <value>وقت التحضير</value>
   </data>
   <data name="itemName" xml:space="preserve">
-    <value>اسم المادة</value>
+    <value>اسم الصنف</value>
   </data>
   <data name="trItemLocationCollect" xml:space="preserve">
     <value>مادة, موقع, تجميع...</value>
