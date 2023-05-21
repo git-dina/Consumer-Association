@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sqlserverspatial160.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sqlserverspatial160.dll")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("reports/ar/supplyingorder.rdlc")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("thumb/supdocuments/tmp.txt")]
 
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.Reporting.WinForms;
+﻿using Microsoft.Reporting.WebForms;
+using Microsoft.Reporting.WinForms;
+using Microsoft.Win32;
 using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
@@ -956,30 +958,46 @@ namespace POSCA.View.purchases
         }
 
         LocalReport rep = new LocalReport();
+        ReportCls reportclass = new ReportCls();
+        SaveFileDialog saveFileDialog = new SaveFileDialog();
         public async Task<string> printInvoice(PurchaseInvoice prInvoice)
         {
             string msg = "";
+            reportSize repInfo = new reportSize();
             try
             {
-                ReportsConfig reportConfig = new ReportsConfig();
-
-
-                    List<ReportParameter> paramarr = new List<ReportParameter>();
-
-
+                //ReportsConfig reportConfig = new ReportsConfig();
+                List<ReportParameter> paramarr = new List<ReportParameter>();
+            
+                repInfo = reportclass.GetSupplyingOrderRdlcpath(prInvoice, prInvoice.PurchaseDetails.Count, AppSettings.supplyingOrderPaperSize);
+                rep.ReportPath = repInfo.reppath;
                 ReportsConfig.setReportLanguage(paramarr);
                 ReportsConfig.InvoiceHeader(paramarr);
-                        paramarr.Add(new ReportParameter("isSaved", "y"));
-                        //paramarr = reportclass.fillSaleInvReport(prInvoice, paramarr, shippingcom);
-                        //rep = reportclass.AddDataset(rep, prInvoice.invoiceTaxes);
+                reportclass.fillSupplyingOrderReport(prInvoice, paramarr);
+
+                rep.EnableExternalImages = true;
+                rep.DataSources.Clear();
+                rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", purchaseInvoice.PurchaseDetails));
+
+                rep.EnableExternalImages = true;
+
+                 rep.Refresh();
+
+                //copy count
+                saveFileDialog.Filter = "PDF|*.pdf;";
+
+                this.Dispatcher.Invoke(() =>
+                {
+
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+
+                        string filepath = saveFileDialog.FileName;
+                        ReportsConfig.ExportToPDF(rep, filepath);
+                    }
+                });
 
 
-                        rep.SetParameters(paramarr);
-
-                        rep.Refresh();
-                        //copy count
-
-                       
             }
             catch (Exception ex)
             {

@@ -28,6 +28,7 @@ namespace POSCA.Classes
 
         //general info
         internal static string accuracy = "3";
+        public static string dateFormat = "ShortDatePattern";
 
         #region company info
         //default system info
@@ -39,6 +40,10 @@ namespace POSCA.Classes
         internal static string companyPhone;
         internal static string companyFax;
         internal static string companylogoImage;
+        #endregion
+
+        #region report settings
+        public static string supplyingOrderPaperSize = "5.7cm";
         #endregion
         // app version
         //static public string CurrentVersion

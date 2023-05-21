@@ -924,7 +924,38 @@ namespace POSCA.Classes
                 return "";
             }
         }
-      
+        public static string DateToString(DateTime? date)
+        {
+            string sdate = "";
+            if (date != null)
+            {
+                //DateTime ts = DateTime.Parse(date.ToString());
+                // @"hh\:mm\:ss"
+                //sdate = ts.ToString(@"d/M/yyyy");
+                DateTimeFormatInfo dtfi = DateTimeFormatInfo.CurrentInfo;
+
+                switch (AppSettings.dateFormat)
+                {
+                    case "ShortDatePattern":
+                        sdate = date.Value.ToString(dtfi.ShortDatePattern);
+                        break;
+                    case "LongDatePattern":
+                        sdate = date.Value.ToString(dtfi.LongDatePattern);
+                        break;
+                    case "MonthDayPattern":
+                        sdate = date.Value.ToString(dtfi.MonthDayPattern);
+                        break;
+                    case "YearMonthPattern":
+                        sdate = date.Value.ToString(dtfi.YearMonthPattern);
+                        break;
+                    default:
+                        sdate = date.Value.ToString(dtfi.ShortDatePattern);
+                        break;
+                }
+            }
+
+            return sdate;
+        }
 
     }
 }

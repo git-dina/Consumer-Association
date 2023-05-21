@@ -7,14 +7,14 @@
     <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="POSCA.exe.manifest" size="22653">
+    <dependentAssembly dependencyType="install" codebase="POSCA.exe.manifest" size="82383">
       <assemblyIdentity name="POSCA.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>P98KdfvO/7dVffTPbBaBXdouWReLXc2djS+P+JFg9F4=</dsig:DigestValue>
+        <dsig:DigestValue>5rbSXumDrJc1Qrb/jiDfqnCX/2d7hS8bK2UCBojfUdg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
