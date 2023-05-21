@@ -270,15 +270,17 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemNotes" Binding="{Binding Path=ItemNotes, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn  Width="*"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
+                       
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="CoopDiscount" Binding="{Binding Path=CoopDiscount, Mode=TwoWay}"/>-->
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=TwoWay}"/>

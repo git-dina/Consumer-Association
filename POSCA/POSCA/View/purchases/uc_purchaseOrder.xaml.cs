@@ -160,18 +160,19 @@ namespace POSCA.View.purchases
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
             dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("Barcode");
-            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("ItemDescription");
-            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("Factor");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trCost");
-            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
-            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
-            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("Free");
-            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
-            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("trPrice");
-            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("trBalance");
-            dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("TotalCost");
-            dg_invoiceDetails.Columns[13].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("ItemName");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Barcode");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("ItemDescription");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("trCost");
+            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
+            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
+            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("Free");
+            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
+            dg_invoiceDetails.Columns[12].Header = AppSettings.resourcemanager.GetString("trBalance");
+            dg_invoiceDetails.Columns[13].Header = AppSettings.resourcemanager.GetString("TotalCost");
+            dg_invoiceDetails.Columns[14].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
 
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
@@ -747,8 +748,14 @@ namespace POSCA.View.purchases
 
                         if (w.isOk)
                         {
-                            w.newPurchaseItem.Cost = (w.newPurchaseItem.MaxQty - w.newPurchaseItem.MinQty) * w.newPurchaseItem.MainCost;
-                            w.newPurchaseItem.Price = (w.newPurchaseItem.MaxQty - w.newPurchaseItem.MinQty) * w.newPurchaseItem.MainPrice;
+                            int maxQty = 0;
+                            int minQty = 0;
+                            if (w.newPurchaseItem.MaxQty != null)
+                                maxQty = (int)w.newPurchaseItem.MaxQty;
+                            if(w.newPurchaseItem.MinQty != null)
+                                minQty = (int) w.newPurchaseItem.MinQty;
+                            w.newPurchaseItem.Cost = (maxQty - minQty) * w.newPurchaseItem.MainCost;
+                            w.newPurchaseItem.Price = (maxQty - minQty) * w.newPurchaseItem.MainPrice;
                             
                             addItemToBill(w.newPurchaseItem);
 
