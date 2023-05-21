@@ -3944,7 +3944,7 @@
     <value>موافقة</value>
   </data>
   <data name="trApproved" xml:space="preserve">
-    <value>مصادق</value>
+    <value>معتمد</value>
   </data>
   <data name="trApproveOrderNotification" xml:space="preserve">
     <value>هل تريد تأكيد الطلبية؟</value>
@@ -5713,5 +5713,8 @@
   </data>
   <data name="GeneralSettings" xml:space="preserve">
     <value>إعدادات عامة</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>الإعدادات</value>
   </data>
 </root>

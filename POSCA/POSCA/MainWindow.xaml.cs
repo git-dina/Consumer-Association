@@ -391,7 +391,8 @@ namespace POSCA
             txt_supportVendors.Text = AppSettings.resourcemanager.GetString("AssistantSuppliers");
             txt_supplierDocType.Text = AppSettings.resourcemanager.GetString("SupplierDocTypes");
 
-          
+          txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 
+          txt_generalSettings.Text = AppSettings.resourcemanager.GetString("GeneralSettings"); 
             /*
             tt_menu.Content = AppSettings.resourcemanager.GetString("trMenu");
             tt_home.Content = AppSettings.resourcemanager.GetString("trHome");

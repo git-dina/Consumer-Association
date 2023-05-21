@@ -4984,10 +4984,10 @@ Main Documents</value>
     <value>مع موظف التوصيل</value>
   </data>
   <data name="without" xml:space="preserve">
-    <value>بدون</value>
+    <value>without</value>
   </data>
   <data name="writing" xml:space="preserve">
-    <value>كتابة</value>
+    <value>writing</value>
   </data>
   <data name="WrongSerial" xml:space="preserve">
     <value>سيريال خاطئ</value>
@@ -5468,5 +5468,8 @@ Main Documents</value>
   </data>
   <data name="GeneralSettings" xml:space="preserve">
     <value>General Settings</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
 </root>
