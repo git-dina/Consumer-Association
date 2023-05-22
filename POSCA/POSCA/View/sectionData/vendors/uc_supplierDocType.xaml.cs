@@ -265,6 +265,7 @@ namespace POSCA.View.sectionData.vendors
                 if (tb_search.Text != "")
                 {
                     //dina search
+                    await Search();
                     //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
                     //RefreshSuppliersView();
                 }

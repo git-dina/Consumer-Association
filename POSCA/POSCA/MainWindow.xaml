@@ -353,22 +353,6 @@
                         <StackPanel>
                             <Button   Height="50"
                                   Grid.Row="1"
-                           Tag="purchaseInvoice" 
-                          x:Name="btn_purchaseInvoice"  Click="Btn_purchaseInvoice_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
-                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="purchaseInvoice" Foreground="White" x:Name="txt_purchaseInvoice"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
-                                </Grid>
-                            </Button>
-
-                            <Button   Height="50"
-                                  Grid.Row="1"
                            Tag="purchaseOrder" 
                           x:Name="btn_purchaseOrder"  Click="Btn_purchaseOrder_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}"   
@@ -378,6 +362,21 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="purchaseOrder" Foreground="White" x:Name="txt_purchaseOrder"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="purchaseInvoice" 
+                          x:Name="btn_purchaseInvoice"  Click="Btn_purchaseInvoice_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="purchaseInvoice" Foreground="White" x:Name="txt_purchaseInvoice"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>

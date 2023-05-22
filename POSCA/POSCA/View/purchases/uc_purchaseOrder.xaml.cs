@@ -333,10 +333,7 @@ namespace POSCA.View.purchases
                 btn_printInvoice.IsEnabled = true;
 
             }
-            if (purchaseInvoice.IsApproved == true)
-                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approved");
-            else
-                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
+            
 
         }
 
@@ -740,20 +737,26 @@ namespace POSCA.View.purchases
 
                         if (w.isOk)
                         {
-                            int maxQty = 0;
-                            int minQty = 0;
-                            if (w.newPurchaseItem.MaxQty != null)
-                                maxQty = (int)w.newPurchaseItem.MaxQty;
-                            if(w.newPurchaseItem.MinQty != null)
-                                minQty = (int) w.newPurchaseItem.MinQty;
-                            w.newPurchaseItem.Cost = ( w.newPurchaseItem.MainCost * maxQty) + ((w.newPurchaseItem.MainCost/ (int)w.newPurchaseItem.Factor) * minQty);
-                            w.newPurchaseItem.Price = ((int) w.newPurchaseItem.Factor * w.newPurchaseItem.MainPrice * maxQty ) +(w.newPurchaseItem.MainPrice * minQty);
+                            //check billDetails count
+                            if (billDetails.Count < 20)
+                            {
+                                int maxQty = 0;
+                                int minQty = 0;
+                                if (w.newPurchaseItem.MaxQty != null)
+                                    maxQty = (int)w.newPurchaseItem.MaxQty;
+                                if (w.newPurchaseItem.MinQty != null)
+                                    minQty = (int)w.newPurchaseItem.MinQty;
+                                w.newPurchaseItem.Cost = (w.newPurchaseItem.MainCost * maxQty) + ((w.newPurchaseItem.MainCost / (int)w.newPurchaseItem.Factor) * minQty);
+                                w.newPurchaseItem.Price = ((int)w.newPurchaseItem.Factor * w.newPurchaseItem.MainPrice * maxQty) + (w.newPurchaseItem.MainPrice * minQty);
 
-                            if (w.newPurchaseItem.MinQty == null)
-                                w.newPurchaseItem.MinQty = 0;
-                            if (w.newPurchaseItem.FreeQty == null)
-                                w.newPurchaseItem.FreeQty = 0;
-                            addItemToBill(w.newPurchaseItem);
+                                if (w.newPurchaseItem.MinQty == null)
+                                    w.newPurchaseItem.MinQty = 0;
+                                if (w.newPurchaseItem.FreeQty == null)
+                                    w.newPurchaseItem.FreeQty = 0;
+                                addItemToBill(w.newPurchaseItem);
+                            }
+                            else
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
 
                         }
                         Window.GetWindow(this).Opacity = 1;
@@ -909,6 +912,10 @@ namespace POSCA.View.purchases
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(purchaseInvoice.ConsumerDiscount);
             txt_CostNet.Text = HelpClass.DecTostring(purchaseInvoice.CostNet);
 
+            if (purchaseInvoice.IsApproved == true)
+                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approved");
+            else
+                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
             buildInvoiceDetails(purchaseInvoice);
 
             ControlsEditable();

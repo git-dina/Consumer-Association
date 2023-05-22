@@ -9755,6 +9755,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The order can&apos;t contain more than 20 items.
+        /// </summary>
+        internal static string trMoreTwentyItemsError {
+            get {
+                return ResourceManager.GetString("trMoreTwentyItemsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الأكثر شراء.
         /// </summary>
         internal static string trMostPurchased {
@@ -11817,20 +11826,11 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طلبيات الشراء.
+        ///   Looks up a localized string similar to Purchase Orders.
         /// </summary>
         internal static string trPurchaseOrders {
             get {
                 return ResourceManager.GetString("trPurchaseOrders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to طلبات الشراء.
-        /// </summary>
-        internal static string trPurchaseOrdersBill {
-            get {
-                return ResourceManager.GetString("trPurchaseOrdersBill", resourceCulture);
             }
         }
         

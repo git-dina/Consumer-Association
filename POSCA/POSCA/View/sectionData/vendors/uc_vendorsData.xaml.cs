@@ -225,7 +225,7 @@ namespace POSCA.View.sectionData
 
                        //FillCombo.suppliersList = await supplier.save(supplier);
                       supplier = await supplier.save(supplier);
-                        if (FillCombo.suppliersList == null)
+                        if (supplier.SupId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
@@ -301,18 +301,12 @@ namespace POSCA.View.sectionData
 
                        // FillCombo.suppliersList = await supplier.save(supplier);
                        supplier = await supplier.save(supplier);
-                        if (FillCombo.suppliersList == null)
+                        if (supplier.SupId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            //await Search();
-                            //if (dg_supplier.SelectedIndex != -1)
-                            //{
-                            //    supplier = dg_supplier.SelectedItem as Supplier;
-                               
-                            //}
                         }
                     }
                 }

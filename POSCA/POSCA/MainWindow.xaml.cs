@@ -373,6 +373,7 @@ namespace POSCA
 
             txt_purchases.Text = AppSettings.resourcemanager.GetString("trPurchase");
             txt_purchaseOrder.Text = AppSettings.resourcemanager.GetString("ProcurementRequests");
+            txt_purchaseInvoice.Text = AppSettings.resourcemanager.GetString("trPurchaseOrders");
 
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");

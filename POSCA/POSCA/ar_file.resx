@@ -2063,7 +2063,7 @@
     <value>الجرد</value>
   </data>
   <data name="trPurchaseOrders" xml:space="preserve">
-    <value>طلبيات الشراء</value>
+    <value>طلبات الشراء</value>
   </data>
   <data name="trStocktakingDetails" xml:space="preserve">
     <value>تفاصيل الجرد</value>
@@ -5716,5 +5716,8 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
+  </data>
+  <data name="trMoreTwentyItemsError" xml:space="preserve">
+    <value>لا يمكن أن يحوي الطلب أكثر من 20 صنف</value>
   </data>
 </root>

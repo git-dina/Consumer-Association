@@ -177,8 +177,8 @@ namespace POSCA.View.purchases
 
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
-            btn_drafts.ToolTip = AppSettings.resourcemanager.GetString("NotApproved");
-            btn_invoices.ToolTip = AppSettings.resourcemanager.GetString("Approved");
+            btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
+            btn_supplyingOrders.ToolTip = AppSettings.resourcemanager.GetString("ProcurementRequests");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -750,16 +750,26 @@ namespace POSCA.View.purchases
 
                         if (w.isOk)
                         {
-                            int maxQty = 0;
-                            int minQty = 0;
-                            if (w.newPurchaseItem.MaxQty != null)
-                                maxQty = (int)w.newPurchaseItem.MaxQty;
-                            if (w.newPurchaseItem.MinQty != null)
-                                minQty = (int)w.newPurchaseItem.MinQty;
-                            w.newPurchaseItem.Cost = (maxQty - minQty) * w.newPurchaseItem.MainCost;
-                            w.newPurchaseItem.Price = (maxQty - minQty) * w.newPurchaseItem.MainPrice;
+                            //check billDetails count
+                            if (billDetails.Count < 20)
+                            {
+                                int maxQty = 0;
+                                int minQty = 0;
+                                if (w.newPurchaseItem.MaxQty != null)
+                                    maxQty = (int)w.newPurchaseItem.MaxQty;
+                                if (w.newPurchaseItem.MinQty != null)
+                                    minQty = (int)w.newPurchaseItem.MinQty;
+                                w.newPurchaseItem.Cost = (w.newPurchaseItem.MainCost * maxQty) + ((w.newPurchaseItem.MainCost / (int)w.newPurchaseItem.Factor) * minQty);
+                                w.newPurchaseItem.Price = ((int)w.newPurchaseItem.Factor * w.newPurchaseItem.MainPrice * maxQty) + (w.newPurchaseItem.MainPrice * minQty);
 
-                            addItemToBill(w.newPurchaseItem);
+                                if (w.newPurchaseItem.MinQty == null)
+                                    w.newPurchaseItem.MinQty = 0;
+                                if (w.newPurchaseItem.FreeQty == null)
+                                    w.newPurchaseItem.FreeQty = 0;
+                                addItemToBill(w.newPurchaseItem);
+                            }
+                            else
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
 
                         }
                         Window.GetWindow(this).Opacity = 1;
@@ -838,7 +848,7 @@ namespace POSCA.View.purchases
             decimal netCost = _TotalCost - discount - freeValue;
             txt_CostNet.Text = HelpClass.DecTostring(netCost);
         }
-        private void Btn_invoices_Click(object sender, RoutedEventArgs e)
+        private void Btn_supplyingOrders_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -870,7 +880,7 @@ namespace POSCA.View.purchases
             }
         }
 
-        private void Btn_draft_Click(object sender, RoutedEventArgs e)
+        private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -1194,6 +1204,59 @@ namespace POSCA.View.purchases
             catch
             {
 
+            }
+        }
+
+        private void dg_invoiceDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            try
+            {
+                TextBox t = e.EditingElement as TextBox;  // Assumes columns are all TextBoxes
+                int textValue = 0;
+                if (t.Text != "")
+                    textValue = int.Parse(t.Text);
+
+                var columnName = e.Column.Header.ToString();
+
+                PurchaseInvDetails row = e.Row.Item as PurchaseInvDetails;
+                int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == row.ItemId).FirstOrDefault());
+
+                int maxQty = 0;
+                int minQty = 0;
+                int freeQty = 0;
+
+                if (columnName == AppSettings.resourcemanager.GetString("MaxFactorQty") && !t.Text.Equals(""))
+                    maxQty = textValue;
+                else
+                    maxQty = (int)row.MaxQty;
+
+                if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
+                    minQty = textValue;
+                else
+                    minQty = (int)row.MinQty;
+
+                if (columnName == AppSettings.resourcemanager.GetString("Free") && !t.Text.Equals(""))
+                    freeQty = textValue;
+                else
+                    freeQty = (int)row.FreeQty;
+
+                decimal cost = (row.MainCost * maxQty) + ((row.MainCost / (int)row.Factor) * minQty);
+                decimal price = ((int)row.Factor * row.MainPrice * maxQty) + (row.MainPrice * minQty);
+
+                billDetails[index].MinQty = minQty;
+                billDetails[index].MaxQty = maxQty;
+                billDetails[index].FreeQty = freeQty;
+                billDetails[index].Cost = cost;
+                billDetails[index].Price = price;
+
+                refreshValues();
+
+                dg_invoiceDetails.ItemsSource = billDetails;
+                dg_invoiceDetails.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
     }

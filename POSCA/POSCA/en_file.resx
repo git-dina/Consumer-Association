@@ -3588,10 +3588,7 @@ Main Documents</value>
     <value>طلب شراء</value>
   </data>
   <data name="trPurchaseOrders" xml:space="preserve">
-    <value>طلبيات الشراء</value>
-  </data>
-  <data name="trPurchaseOrdersBill" xml:space="preserve">
-    <value>طلبات الشراء</value>
+    <value>Purchase Orders</value>
   </data>
   <data name="trPurchaseOrdersEmailTemplate" xml:space="preserve">
     <value>قالب بريد طلبات الشراء</value>
@@ -5471,5 +5468,8 @@ Main Documents</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="trMoreTwentyItemsError" xml:space="preserve">
+    <value>The order can't contain more than 20 items</value>
   </data>
 </root>
