@@ -26,14 +26,14 @@
                           Opacity="0.3"
                          BlurRadius="10"/>
                 </Border.Effect>
-                <Grid Margin="0 0 10 0"  >
+                <Grid Margin="0 0 0 0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition  Width="auto"  />
                         <ColumnDefinition  Width="auto"  />
-                        <ColumnDefinition  Width="auto"  />
+                        <ColumnDefinition  Width="auto" MinWidth="75"  />
                     </Grid.ColumnDefinitions>
 
                     <Path Fill="{StaticResource SecondColor}" Stretch="Fill" 
@@ -42,20 +42,14 @@
                               Data="{StaticResource magnifying}"/>
                     <Border Background="White" Grid.Column="1" Height="40" CornerRadius="0" Margin="15,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
                         <Grid   >
-                            <!--<TextBox x:Name="tb_search" Grid.Column="1"    Padding="10,0,5,0" 
-                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                      materialDesign:HintAssist.Hint="Enter Here To Start Search ...."  
-                                     Foreground="{StaticResource textColor}"  TextChanged="Tb_search_TextChanged"
-                                      MaxLength="50" Height="40"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     BorderBrush="#737373"   BorderThickness="0" Margin="0,0"
-                                      VerticalAlignment="Center"/>-->
+
                             <TextBox Margin="0,0" x:Name="tb_search"  
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                                          Padding="10,0,5,0"   BorderThickness="0" 
                                          materialDesign:HintAssist.Hint="Enter Here To Start Search ...."   Foreground="{StaticResource textColor}"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" Height="40" 
-                                       />
+                                         KeyDown="tb_search_KeyDown"
+                                     />
                         </Grid>
                     </Border>
                     <!--<TextBlock    x:Name="txt_active" Grid.Column="3"
@@ -65,7 +59,7 @@
                     <!--<ToggleButton Grid.Column="4" Background="{StaticResource MainColor}"   x:Name="tgl_isActive"   Checked="Tgl_isActive_Checked" Unchecked="Tgl_isActive_Unchecked"
                              VerticalAlignment="Center" Padding="10,15,5,5"  IsChecked="True" 
                                           Margin="0" Height="13" Width="28" />-->
-                    <Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
+                    <!--<Button   FlowDirection="LeftToRight"  Width="40" Height="40" x:Name="btn_refresh" Click="Btn_refresh_Click" Grid.Row="0" Grid.Column="5" Padding="0" 
                             materialDesign:ButtonAssist.CornerRadius="15" Cursor="Hand"
                           Background="{x:Null}" BorderBrush="{x:Null}"   Style="{StaticResource SmallButtonCircleRotate}"
                                RenderTransformOrigin="0.5,0.5"
@@ -85,7 +79,27 @@
                                               PlacementRectangle="50,0,0,0"
                                               VerticalOffset="25"/>
                         </Button.ToolTip>
-                    </Button>
+                    </Button>-->
+                    <Border Grid.Column="5" Height="50" 
+                        CornerRadius="0 22.5 22.5 0" 
+                        Margin="0" Padding="0" Background="{StaticResource SecondColor}">
+                        <Button  BorderBrush="{x:Null}"  
+                    Background="{x:Null}" 
+                        x:Name="btn_search" 
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                        Padding="0"  
+                     
+                    Click="Btn_search_Click">
+                            <StackPanel Orientation="Horizontal" Margin="5 0" >
+                                <TextBlock x:Name="txt_search" Text="search"  Foreground="White" Margin="5"/>
+
+                                <!--<Path Fill="{StaticResource White}" Margin="5"
+                              Stretch="Fill" Height="20"  Width="20" x:Name="path_search"
+                          Data="{StaticResource magnifying}"  />-->
+                            </StackPanel>
+
+                        </Button>
+                    </Border>
 
                 </Grid>
             </Border>

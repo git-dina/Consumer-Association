@@ -114,7 +114,7 @@ namespace POSCA.View.sectionData.vendors
             dg_supplierDocType.Columns[2].Header = AppSettings.resourcemanager.GetString("DocumentsNumber");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
+            //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
             //tt_report.Content = AppSettings.resourcemanager.GetString("trPdf");
             //tt_print.Content = AppSettings.resourcemanager.GetString("trPrint");
@@ -257,20 +257,52 @@ namespace POSCA.View.sectionData.vendors
 
         #endregion
         #region events
-        private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
+
+        private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                await Search();
-                HelpClass.EndAwait(grid_main);
+                if (tb_search.Text != "")
+                {
+                    //dina search
+                    //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
+                    //RefreshSuppliersView();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return)
+                {
+                    Btn_search_Click(btn_search, null);
+                }
             }
             catch (Exception ex)
             {
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        //private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        HelpClass.StartAwait(grid_main);
+        //        await Search();
+        //        HelpClass.EndAwait(grid_main);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.EndAwait(grid_main);
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
 
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
