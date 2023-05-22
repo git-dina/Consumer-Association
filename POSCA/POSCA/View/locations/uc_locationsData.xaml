@@ -124,6 +124,7 @@
                             Background="White"/>
                         <DataGrid  Margin="5,5,5,45" Grid.Row="1"  IsReadOnly="True"   HeadersVisibility="Column"
                        x:Name="dg_location" SelectionChanged="Dg_location_SelectionChanged"  AutoGenerateColumns="False"   Background="White"
+                                   MouseDoubleClick="DataGrid_MouseDoubleClick"
                         ColumnWidth="SizeToHeader"    AlternatingRowBackground="#f3f3f3" AlternationCount="2">
                             <DataGrid.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid}"/>
@@ -311,8 +312,9 @@
                     <Grid  Height="40" Margin="10 0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
-                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <!--<Path x:Name="path_title" 
@@ -328,7 +330,14 @@
                                VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}"   >
                             <materialDesign:PackIcon Foreground="White" Kind="RefreshCircle"   Width="30" Height="30"/>
                         </Button>
-
+                        <Button   x:Name="btn_swapToSearch" Click="Btn_swapToSearch_Click" Grid.Column="2" Padding="0" 
+                               VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}"   >
+                            <Path Fill="{StaticResource White}" Stretch="Fill" 
+                              Margin="5 0"
+                                  FlowDirection="LeftToRight"
+                         Width="25" Height="25" 
+                              Data="{StaticResource search}"/>
+                        </Button>
                     </Grid>
                 </Border>
 

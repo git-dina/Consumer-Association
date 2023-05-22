@@ -100,7 +100,7 @@ namespace POSCA.View.sectionData
 
                 Keyboard.Focus(tb_Name);
 
-                swapToData();
+                //swapToData();
                 //await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
@@ -1050,13 +1050,7 @@ namespace POSCA.View.sectionData
          #endregion
          */
 
-        private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
-        {
-            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
-            cd_gridMain3.Width = cd_gridMain1.Width;
-            cd_gridMain1.Width = cd_gridMain2.Width;
-            cd_gridMain2.Width = cd_gridMain3.Width;
-        }
+        
         private async void btn_updateGrid_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -1090,13 +1084,20 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        #region swap
+        private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
+        {
+            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
+            cd_gridMain3.Width = cd_gridMain1.Width;
+            cd_gridMain1.Width = cd_gridMain2.Width;
+            cd_gridMain2.Width = cd_gridMain3.Width;
+        }
 
-        private async void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
+        private void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
-           // await Search();
         }
         void swapToData()
         {
@@ -1110,6 +1111,7 @@ namespace POSCA.View.sectionData
             swapToData();
         }
 
-      
+        #endregion
+
     }
 }

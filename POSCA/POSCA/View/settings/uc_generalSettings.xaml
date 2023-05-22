@@ -85,6 +85,7 @@
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
+                                         PreviewTextInput="Code_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                 <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_companyName" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   

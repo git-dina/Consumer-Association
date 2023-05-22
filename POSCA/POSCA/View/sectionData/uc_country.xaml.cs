@@ -82,6 +82,7 @@ namespace POSCA.View.sectionData
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
+                swapToData();
 
 
                 //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
@@ -261,12 +262,17 @@ namespace POSCA.View.sectionData
         {
             try
             {
-                if (tb_search.Text != "")
-                {
-                    //dina search
-                    //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                    //RefreshSuppliersView();
-                }
+                //if (tb_search.Text != "")
+                //{
+                //dina search
+                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
+                //RefreshSuppliersView();
+
+                Btn_refresh_Click(new Button(), null);
+                Tb_search_TextChanged(tb_search, null);
+
+
+                //}
             }
             catch
             {
@@ -289,20 +295,20 @@ namespace POSCA.View.sectionData
             }
         }
 
-        //private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        HelpClass.StartAwait(grid_main);
-        //        await Search();
-        //        HelpClass.EndAwait(grid_main);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        HelpClass.EndAwait(grid_main);
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-        //    }
-        //}
+        private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                await Search();
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
 
         private void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
@@ -348,8 +354,8 @@ namespace POSCA.View.sectionData
 
                 HelpClass.StartAwait(grid_main);
 
-                tb_search.Text = "";
-                searchText = "";
+                //tb_search.Text = "";
+                //searchText = "";
                 await RefreshCountriesList();
                 await Search();
 
@@ -477,6 +483,8 @@ namespace POSCA.View.sectionData
 
 
 
+       
+        #region swap
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
             ColumnDefinition cd_gridMain3 = new ColumnDefinition();
@@ -485,5 +493,24 @@ namespace POSCA.View.sectionData
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
+        private void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
+        {
+            cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
+
+        }
+        void swapToData()
+        {
+            cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+        }
+
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            swapToData();
+        }
+
+        #endregion
     }
 }

@@ -82,6 +82,7 @@ namespace POSCA.View.sectionData.vendors
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
+                swapToData();
 
 
                 //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
@@ -498,7 +499,8 @@ namespace POSCA.View.sectionData.vendors
         #endregion
 
 
-
+ 
+        #region swap
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
             ColumnDefinition cd_gridMain3 = new ColumnDefinition();
@@ -507,5 +509,24 @@ namespace POSCA.View.sectionData.vendors
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
+        private void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
+        {
+            cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
+
+        }
+        void swapToData()
+        {
+            cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
+            cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+        }
+
+
+        private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            swapToData();
+        }
+
+        #endregion
     }
 }
