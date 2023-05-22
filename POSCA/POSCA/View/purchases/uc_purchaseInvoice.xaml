@@ -658,7 +658,7 @@
                     <StackPanel Grid.Row="1" Grid.Column="1"
                         Orientation="Horizontal">
                         <TextBox  Text="0.00" Grid.Row="1" Grid.Column="1"
-                            x:Name="tb_FreePercentage" 
+                            x:Name="tb_FreePercentage"  Height="17" Padding="0"
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"
                             Margin="5 1 0 1"
