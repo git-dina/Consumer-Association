@@ -714,6 +714,7 @@ namespace POSCA.Classes
             if(companySettingsList == null)
                 companySettingsList = await companySettings.Get();
             AppSettings.companyName = companySettingsList.Where(x => x.Name.Equals("com_name")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companyNameAr = companySettingsList.Where(x => x.Name.Equals("com_nameAr")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyAddress = companySettingsList.Where(x => x.Name.Equals("com_address")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyEmail = companySettingsList.Where(x => x.Name.Equals("com_email")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyMobile = companySettingsList.Where(x => x.Name.Equals("com_mobile")).Select(x => x.Value).FirstOrDefault();
@@ -721,7 +722,7 @@ namespace POSCA.Classes
             AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_fax")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_logo")).Select(x => x.Value).FirstOrDefault();
 
-                return companySettingsList;
+            return companySettingsList;
         }
 
         public static async Task<CompanySettings> getSettingBySetName(string setName)

@@ -5717,6 +5717,9 @@
   <data name="Settings" xml:space="preserve">
     <value>الإعدادات</value>
   </data>
+  <data name="AssociationNameArHint" xml:space="preserve">
+    <value>اسم المؤسسة بالعربية...</value>
+  </data>
   <data name="trMoreTwentyItemsError" xml:space="preserve">
     <value>لا يمكن أن يحوي الطلب أكثر من 20 صنف</value>
   </data>

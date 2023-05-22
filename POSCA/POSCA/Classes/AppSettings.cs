@@ -24,6 +24,7 @@ namespace POSCA.Classes
         #region folders Paths
         public const string TMPFolder = "Thumb";
         public const string TMPSupFolder = "Thumb/SupDocuments";
+        public const string TMPSettingFolder = "Thumb/setting"; // folder to save Logo photos locally 
         #endregion
 
         //general info
@@ -33,6 +34,7 @@ namespace POSCA.Classes
         #region company info
         //default system info
         internal static string companyName;
+        internal static string companyNameAr;
         internal static string companyAddress;
 
         internal static string companyEmail;

@@ -1,4 +1,5 @@
-﻿using netoaster;
+﻿using Microsoft.Win32;
+using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using POSCA.View.windows;
@@ -37,6 +38,11 @@ namespace POSCA.View.settings
         CompanySettings setVFax = new CompanySettings();
         CompanySettings setVLogo = new CompanySettings();
         CompanySettings valueModel = new CompanySettings();
+
+        bool isImgPressed = false;
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        string imgFileName = "pic/no-image-icon-125x125.png";
+        ImageBrush brush = new ImageBrush();
         public uc_generalSettings()
         {
             try
@@ -76,7 +82,7 @@ namespace POSCA.View.settings
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "companyName", "companyNameAr" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -121,6 +127,7 @@ namespace POSCA.View.settings
             txt_companyInfo.Text = AppSettings.resourcemanager.GetString("AssociationInfo");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyName, AppSettings.resourcemanager.GetString("AssociationNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyNameAr, AppSettings.resourcemanager.GetString("AssociationNameArHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyAddress, AppSettings.resourcemanager.GetString("trAddress"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyEmail, AppSettings.resourcemanager.GetString("trEmail"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_companyMobile, AppSettings.resourcemanager.GetString("trMobileHint"));
@@ -140,25 +147,108 @@ namespace POSCA.View.settings
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    //bank = new Bank();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                        /*
-                        bank.BankName = tb_BankName.Text;
-                        bank.Notes = tb_Notes.Text;
-                        bank.CreateUserId = MainWindow.userLogin.userId;
-
-                        FillCombo.bankList = await bank.save(bank);
-                        if (FillCombo.bankList == null)
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                        else
+                        List<CompanySettings> vlst = new List<CompanySettings>();
+                        #region name
+                        if ( !tb_companyName.Text.Equals(AppSettings.companyName))
                         {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            setVName.Value = tb_companyName.Text;
+                            setVName.SettingId = setVName.SettingId;
 
-                            Clear();
-                            await Search();
+                            vlst.Add(setVName);
                         }
-                        */
+                        #endregion
+                        #region arabic name
+                        if (!tb_companyNameAr.Text.Equals(AppSettings.companyNameAr))
+                        {
+                            setVArabicName.Value = tb_companyNameAr.Text;
+                            setVArabicName.SettingId = setVArabicName.SettingId;
+
+                            vlst.Add(setVArabicName);
+                        }
+                        #endregion
+                        #region address
+                        if (!tb_companyAddress.Text.Equals(AppSettings.companyAddress))
+                        {
+                            setVAddress.Value = tb_companyAddress.Text;
+                            setVAddress.SettingId = setVAddress.SettingId;
+
+                            vlst.Add(setVAddress);
+                        }
+                        #endregion
+                       
+                        #region email
+                        if ( !tb_companyEmail.Text.Equals(AppSettings.companyEmail))
+                        {
+                            setVEmail.Value = tb_companyEmail.Text;
+                            setVEmail.SettingId = setVEmail.SettingId;
+
+                            vlst.Add(setVEmail);
+                        }
+                        #endregion
+                        #region mobile
+                        if (!tb_companyMobile.Text.Equals(AppSettings.companyMobile))
+                        {
+                            setVMobile.Value =  tb_companyMobile.Text;
+                            setVMobile.SettingId = setVMobile.SettingId;
+
+                            vlst.Add(setVMobile);
+                        }
+                        #endregion
+                        #region phone
+                        if (!tb_companyPhone.Text.Equals(AppSettings.companyPhone))
+                        {
+                            setVPhone.Value =  tb_companyPhone.Text;
+                            setVMobile.SettingId = setVMobile.SettingId;
+
+                            vlst.Add(setVPhone);
+                        }
+                        #endregion
+                        #region fax
+                        if (!tb_companyFax.Text.Equals(AppSettings.companyFax))
+                        {
+                            setVFax.Value =tb_companyFax.Text;
+                            setVMobile.SettingId = setVMobile.SettingId;
+
+                            vlst.Add(setVFax);
+                        }
+                        #endregion
+                        #region logo
+                        int sLogo = 0;
+                        if (isImgPressed)
+                        {
+
+                            setVLogo.Value = sLogo.ToString();
+                            setVMobile.SettingId = setVMobile.SettingId;
+
+
+                            vlst.Add(setVLogo);
+                        }
+                        #endregion
+
+                        int res = (int)await valueModel.SaveList(vlst);
+                        if (!res.Equals(0))
+                        {
+                            AppSettings.companyName = tb_companyName.Text;
+                            AppSettings.companyNameAr = tb_companyNameAr.Text;
+                            AppSettings.companyAddress = tb_companyAddress.Text;
+                            AppSettings.companyEmail = tb_companyEmail.Text;
+                            AppSettings.companyMobile = tb_companyMobile.Text;
+                            AppSettings.companyPhone = tb_companyPhone.Text;
+                            AppSettings.companyFax = tb_companyFax.Text;
+                            AppSettings.companylogoImage = setVLogo.Value;
+
+                            if (isImgPressed)
+                            {
+                                string b = await setVLogo.uploadImage(imgFileName, Md5Encription.MD5Hash("Inc-m" + sLogo), setVLogo.SettingId);
+                                setVLogo.Value = b;
+                                AppSettings.companylogoImage = b;
+                                isImgPressed = false;
+
+                            }
+
+                        }
                     }
                     HelpClass.EndAwait(grid_main);
                 }
@@ -176,7 +266,28 @@ namespace POSCA.View.settings
 
         private void Btn_image_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (sender != null)
+                    HelpClass.StartAwait(grid_main);
 
+                isImgPressed = true;
+                openFileDialog.Filter = "Images|*.png;*.jpg;*.bmp;*.jpeg;*.jfif";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    brush.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName, UriKind.Relative));
+                    btn_image.Background = brush;
+                    imgFileName = openFileDialog.FileName;
+                }
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         #endregion
         #region events

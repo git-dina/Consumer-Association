@@ -5469,6 +5469,9 @@ Main Documents</value>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="AssociationNameArHint" xml:space="preserve">
+    <value>Arabic Association Name...</value>
+  </data>
   <data name="trMoreTwentyItemsError" xml:space="preserve">
     <value>The order can't contain more than 20 items</value>
   </data>

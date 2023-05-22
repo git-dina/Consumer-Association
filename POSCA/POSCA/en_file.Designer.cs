@@ -250,6 +250,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arabic Association Name....
+        /// </summary>
+        internal static string AssociationNameArHint {
+            get {
+                return ResourceManager.GetString("AssociationNameArHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Association Name....
         /// </summary>
         internal static string AssociationNameHint {
