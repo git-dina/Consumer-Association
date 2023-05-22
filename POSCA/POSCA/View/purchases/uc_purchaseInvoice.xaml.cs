@@ -62,7 +62,7 @@ namespace POSCA.View.purchases
         string searchText = "";
         public static List<string> requiredControlList;
         private PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
-        private string _InvType = "sod";
+        private string _InvType = "pod";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
@@ -91,11 +91,9 @@ namespace POSCA.View.purchases
 
                 loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
                 loadingList.Add(new keyValueBool { key = "loading_RefrishLocations", value = false });
-                // loadingList.Add(new keyValueBool { key = "loading_RefrishItems", value = false });
 
                 loading_RefrishSuppliers();
                 loading_RefrishLocations();
-                //loading_RefrishItems();
 
                 do
                 {
@@ -139,7 +137,6 @@ namespace POSCA.View.purchases
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            //txt_newDraft.Text = AppSettings.resourcemanager.GetString("trNew");
             txt_payInvoice.Text = AppSettings.resourcemanager.GetString("ProcurementRequest");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
@@ -303,19 +300,20 @@ namespace POSCA.View.purchases
 
             switch (_InvType)
             {
-                case "sod":
-                    tgl_isApproved.IsEnabled = true;
-                    btn_save.IsEnabled = true;
-                    btn_deleteInvoice.Visibility = Visibility.Visible;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                    break;
+
                 case "soa": //supplying order is approved
                     tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = true;
                     btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     break;
-                case "so"://purchase order done
+                case "pod":
+                    tgl_isApproved.IsEnabled = true;
+                    btn_save.IsEnabled = true;
+                    btn_deleteInvoice.Visibility = Visibility.Visible;
+                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    break;
+                case "po"://purchase order done
                     tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = false;
                     btn_deleteInvoice.Visibility = Visibility.Collapsed;
@@ -364,7 +362,7 @@ namespace POSCA.View.purchases
         private async Task addDraft()
         {
 
-            if (billDetails.Count > 0 && (_InvType == "sod" || _InvType == "soa"))
+            if (billDetails.Count > 0 && _InvType == "pod" )
             {
                 #region Accept
                 MainWindow.mainWindow.Opacity = 0.2;
@@ -503,28 +501,7 @@ namespace POSCA.View.purchases
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        {//refresh
-            try
-            {
-
-                HelpClass.StartAwait(grid_main);
-
-                //tb_search.Text = "";
-                //searchText = "";
-                //await RefreshBanksList();
-                //await Search();
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
+       
 
         private async void searchType_check(object sender, RoutedEventArgs e)
         {
@@ -533,7 +510,6 @@ namespace POSCA.View.purchases
                 CheckBox cb = sender as CheckBox;
                 if (cb.IsFocused)
                 {
-                    //HelpClass.StartAwait(grid_main);
                     if (cb.IsChecked == true)
                     {
                         if (cb.Name == "chk_barcode")
@@ -545,13 +521,11 @@ namespace POSCA.View.purchases
                             chk_barcode.IsChecked = false;
                         }
                     }
-                    //HelpClass.EndAwait(grid_main);
 
                 }
             }
             catch (Exception ex)
             {
-                //HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -602,8 +576,7 @@ namespace POSCA.View.purchases
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
             txt_CostNet.Text = HelpClass.DecTostring(0);
 
-            cb_InvStatus.SelectedValue = "opened";
-            _InvType = "sod";
+            _InvType = "pod";
             ControlsEditable();
 
             // last 
@@ -716,15 +689,12 @@ namespace POSCA.View.purchases
                     if (chk_itemNum.IsChecked == true)
                     {
                         item1 = await FillCombo.item.GetItemByCode(tb_search.Text, location.LocationId, supplier.SupId);
-                        //item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text && x.SupId == supplier.SupId 
-                        //                && x.ItemLocations.Any(u => u.LocationId == location.LocationId)).FirstOrDefault();
                         if (item1 != null)
                             barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                     }
                     else
                     {
                         item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId);
-                        //item1 = FillCombo.itemList.Where(m => m.ItemUnits.Any(u => u.Barcode.ToLower() == tb_search.Text.ToLower())).FirstOrDefault();
                         barcode = tb_search.Text;
                     }
 
@@ -888,14 +858,14 @@ namespace POSCA.View.purchases
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_purchaseInv w = new wd_purchaseInv();
 
-                string invoiceType = "sod";
+                string invoiceType = "pod,po";
                 w.invoiceType = invoiceType;
                 w.isApproved = false;
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                    _InvType = "sod";
+                    _InvType = w.purchaseInvoice.InvType;
                     purchaseInvoice = w.purchaseInvoice;
                     fillOrderInputs(purchaseInvoice);
                 }
