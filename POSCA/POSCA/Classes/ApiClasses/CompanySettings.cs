@@ -124,7 +124,7 @@ namespace POSCA.Classes.ApiClasses
             byte[] byteImg = null;
             if (imageName != "")
             {
-                byteImg = await APIResult.getDocument("companySettings/GetImage", imageName);
+                byteImg = await APIResult.getImage("companySettings/GetImage", imageName);
 
                 string dir = Directory.GetCurrentDirectory();
                 string tmpPath = Path.Combine(dir, AppSettings.TMPSettingFolder);

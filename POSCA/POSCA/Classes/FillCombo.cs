@@ -720,7 +720,7 @@ namespace POSCA.Classes
             AppSettings.companyMobile = companySettingsList.Where(x => x.Name.Equals("com_mobile")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyPhone = companySettingsList.Where(x => x.Name.Equals("com_phone")).Select(x => x.Value).FirstOrDefault();
             AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_fax")).Select(x => x.Value).FirstOrDefault();
-            AppSettings.companyFax = companySettingsList.Where(x => x.Name.Equals("com_logo")).Select(x => x.Value).FirstOrDefault();
+            AppSettings.companylogoImage = companySettingsList.Where(x => x.Name.Equals("com_logo")).Select(x => x.Value).FirstOrDefault();
 
             return companySettingsList;
         }

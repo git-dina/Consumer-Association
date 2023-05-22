@@ -360,6 +360,144 @@ namespace POSCA.Classes
             }
 
         }
+        public static async Task<byte[]> getImage(string method, string imageName)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(AppSettings.APIUri);
+                client.Timeout = System.TimeSpan.FromSeconds(3600);
+ 
+
+                Dictionary<string, string> parameters = new Dictionary<string, string>();
+                parameters.Add("imageName", imageName);
+
+                #region generate token to send it to api
+                byte[] key = Convert.FromBase64String(Secret);
+                SymmetricSecurityKey securityKey = new SymmetricSecurityKey(key);
+
+                var credentials = new Microsoft.IdentityModel.Tokens.SigningCredentials
+                                (securityKey, SecurityAlgorithms.HmacSha256Signature);
+
+                //  Finally create a Token
+                var header = new JwtHeader(credentials);
+                var nbf = DateTime.UtcNow.AddSeconds(-1);
+                var exp = DateTime.UtcNow.AddSeconds(60);
+                var payload = new JwtPayload(null, "", new List<Claim>(), nbf, exp);
+
+                if (parameters != null)
+                    for (int i = 0; i < parameters.Count; i++)
+                    {
+                        payload.Add(parameters.Keys.ToList()[i], parameters.Values.ToList()[i]);
+                    }
+
+
+                // add request token to parameters
+                var requestToken = generateRequestToken();
+                payload.Add("requestToken", requestToken);
+                var token = new JwtSecurityToken(header, payload);
+                var handler = new JwtSecurityTokenHandler();
+
+                // Token to String so you can use post it to api
+                string getToken = handler.WriteToken(token);
+                var encryptedToken = EncryptThenCompress(getToken);
+
+                //encryptedToken = HttpUtility.UrlPathEncode(encryptedToken);
+
+                string tmpPath = writeToTmpFile(encryptedToken);
+                //string dir = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName;
+                //string tmpPath = Path.Combine(dir, Global.TMPFolder);
+                // tmpPath = Path.Combine(tmpPath, "tmp.txt");
+                FileStream fs = new FileStream(tmpPath, FileMode.Open, FileAccess.Read);
+                #endregion
+                ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
+                ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+
+                string boundary = string.Format("----WebKitFormBoundary{0}", DateTime.Now.Ticks.ToString("x"));
+                MultipartFormDataContent form = new MultipartFormDataContent();
+                HttpContent content = new StreamContent(fs);
+
+                content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+                {
+                    FileName = "tmp.txt"
+                };
+                content.Headers.Add("client", "true");
+
+                form.Add(content, "fileToUpload");
+
+
+
+                var response = await client.PostAsync(@method + "?token=" + "null", form);
+                byte[] byteImg = null;
+                if (response.IsSuccessStatusCode)
+                {
+
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    var Sresponse = JsonConvert.DeserializeObject<string>(jsonString);
+                    try
+                    {
+                        fs.Dispose();
+                        File.Delete(tmpPath);
+                    }
+                    catch { }
+                    if (Sresponse != "")
+                    {
+                        var decryptedToken = DeCompressThenDecrypt(Sresponse);
+                        var jwtToken = new JwtSecurityToken(decryptedToken);
+                        var s = jwtToken.Claims.ToArray();
+                        IEnumerable<Claim> claims = jwtToken.Claims;
+                        string validAuth = claims.Where(f => f.Type == "scopes").Select(x => x.Value).FirstOrDefault();
+                        if (validAuth != null && s[2].Value == "-7") // invalid authintication
+                            return null;
+                        //else if (validAuth != null && s[2].Value == "-8")
+                        //{
+                        //    MainWindow.go_out = true;
+                        //    //MessageBox.Show("logOut");
+                        //}
+
+                        foreach (Claim c in claims)
+                        {
+                            if (c.Type == "scopes")
+                            {
+                                string imageStr = c.Value;
+                                if (!imageStr.Equals(""))
+                                    byteImg = Convert.FromBase64String(imageStr);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        fs.Dispose();
+                        File.Delete(tmpPath);
+                    }
+                    catch { }
+
+                    //numOfRequest++;
+                    //if (numOfRequest < 10)
+                    //    goto RequestBody;
+                    //else
+                    //{
+                    //    if (!isPoorConnection)
+                    //    {
+                    //        isPoorConnection = true;
+
+                    //        wd_messageBoxWithIcon w = new wd_messageBoxWithIcon();
+                    //        w.contentText1 = MainWindow.resourcemanager.GetString("PoorConnection");
+                    //        w.ShowDialog();
+
+                    //        Application.Current.Shutdown();
+
+                    //    }
+                    //}
+                }
+                return byteImg;
+            }
+
+        }
         #region encryption & decryption
         public static string Encrypt(string Text)
         {

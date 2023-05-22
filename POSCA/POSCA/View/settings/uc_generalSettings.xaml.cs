@@ -177,6 +177,9 @@ namespace POSCA.View.settings
                         // configure trmporary path
                         string dir = Directory.GetCurrentDirectory();
                         string tmpPath = System.IO.Path.Combine(dir, AppSettings.TMPSettingFolder);
+                        if (!Directory.Exists(tmpPath))
+                            Directory.CreateDirectory(tmpPath);
+                        
                         tmpPath = System.IO.Path.Combine(tmpPath, setVLogo.Value);
                         openFileDialog.FileName = tmpPath;
                     }
