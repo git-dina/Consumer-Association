@@ -708,7 +708,7 @@ namespace POSCA.Classes
 
         #region company settings
         static public CompanySettings companySettings = new CompanySettings();
-        static public List<CompanySettings> companySettingsList = new List<CompanySettings>();
+        static public List<CompanySettings> companySettingsList ;
         static public async Task<IEnumerable<CompanySettings>> RefreshCompanySettings()
         {
             if(companySettingsList == null)

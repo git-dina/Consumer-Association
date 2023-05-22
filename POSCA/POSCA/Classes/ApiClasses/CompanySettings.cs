@@ -67,6 +67,9 @@ namespace POSCA.Classes.ApiClasses
                     string dir = Directory.GetCurrentDirectory();
                     string tmpPath = Path.Combine(dir, AppSettings.TMPSettingFolder);
 
+                    if (!Directory.Exists(tmpPath))
+                        Directory.CreateDirectory(tmpPath);
+
                     string[] files = System.IO.Directory.GetFiles(tmpPath, imageName + ".*");
                     foreach (string f in files)
                     {
@@ -81,7 +84,7 @@ namespace POSCA.Classes.ApiClasses
                         //imageP.ScaleImage(tmpPath);
 
                         // read image file
-                        var stream = new FileStream(tmpPath, FileMode.Open, FileAccess.Read);
+                        var stream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
 
                         // create http client request
                         using (var client = new HttpClient())
@@ -116,7 +119,33 @@ namespace POSCA.Classes.ApiClasses
             }
             return "";
         }
+        public async Task<byte[]> downloadImage(string imageName)
+        {
+            byte[] byteImg = null;
+            if (imageName != "")
+            {
+                byteImg = await APIResult.getDocument("companySettings/GetImage", imageName);
 
+                string dir = Directory.GetCurrentDirectory();
+                string tmpPath = Path.Combine(dir, AppSettings.TMPSettingFolder);
+                if (!Directory.Exists(tmpPath))
+                    Directory.CreateDirectory(tmpPath);
+                tmpPath = Path.Combine(tmpPath, imageName);
+                if (System.IO.File.Exists(tmpPath))
+                {
+                    System.IO.File.Delete(tmpPath);
+                }
+                if (byteImg != null)
+                {
+                    using (FileStream fs = new FileStream(tmpPath, FileMode.Create, FileAccess.ReadWrite))
+                    {
+                        fs.Write(byteImg, 0, byteImg.Length);
+                    }
+                }
+
+            }
+            return byteImg;
+        }
         public async Task<decimal> updateImage(CompanySettings setValues)
         {
             Dictionary<string, string> parameters = new Dictionary<string, string>();

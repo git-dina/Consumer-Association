@@ -5,6 +5,7 @@ using POSCA.Classes.ApiClasses;
 using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -32,7 +33,6 @@ namespace POSCA.View.settings
         CompanySettings setVAddress = new CompanySettings();
         CompanySettings setVEmail = new CompanySettings();
         CompanySettings setVArabicName = new CompanySettings(); 
-        CompanySettings setVArabicAddress = new CompanySettings();
         CompanySettings setVMobile = new CompanySettings();
         CompanySettings setVPhone = new CompanySettings();
         CompanySettings setVFax = new CompanySettings();
@@ -98,6 +98,7 @@ namespace POSCA.View.settings
                 #region get settings Ids
 
                 setVName = await FillCombo.getSettingBySetName("com_name");
+                setVArabicName = await FillCombo.getSettingBySetName("com_nameAr");
                 setVAddress = await FillCombo.getSettingBySetName("com_address");
                 setVEmail = await FillCombo.getSettingBySetName("com_email");
                 setVMobile = await FillCombo.getSettingBySetName("com_mobile");
@@ -106,6 +107,17 @@ namespace POSCA.View.settings
                 setVLogo = await FillCombo.getSettingBySetName("com_logo");
                 #endregion
 
+                #region set values
+                tb_companyName.Text = AppSettings.companyName;
+                tb_companyNameAr.Text = AppSettings.companyNameAr;
+                tb_companyAddress.Text = AppSettings.companyAddress;
+                tb_companyEmail.Text = AppSettings.companyEmail;
+                tb_companyFax.Text = AppSettings.companyFax;
+                tb_companyPhone.Text = AppSettings.companyPhone;
+                tb_companyMobile.Text = AppSettings.companyMobile;
+
+                await getImg();
+                #endregion
                 Keyboard.Focus(tb_companyName);
 
                 Clear();
@@ -137,6 +149,42 @@ namespace POSCA.View.settings
             txt_saveButton.Text = AppSettings.resourcemanager.GetString("trSave");
        
 
+        }
+        private async Task getImg()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(setVLogo.Value))
+                {
+                    HelpClass.clearImg(btn_image);
+                }
+                else
+                {
+                    byte[] imageBuffer = await setVLogo.downloadImage(setVLogo.Value); // read this as BLOB from your DB
+
+                    var bitmapImage = new BitmapImage();
+                    if (imageBuffer != null)
+                    {
+                        using (var memoryStream = new MemoryStream(imageBuffer))
+                        {
+                            bitmapImage.BeginInit();
+                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                            bitmapImage.StreamSource = memoryStream;
+                            bitmapImage.EndInit();
+                        }
+
+                        btn_image.Background = new ImageBrush(bitmapImage);
+                        // configure trmporary path
+                        string dir = Directory.GetCurrentDirectory();
+                        string tmpPath = System.IO.Path.Combine(dir, AppSettings.TMPSettingFolder);
+                        tmpPath = System.IO.Path.Combine(tmpPath, setVLogo.Value);
+                        openFileDialog.FileName = tmpPath;
+                    }
+                    else
+                        HelpClass.clearImg(btn_image);
+                }
+            }
+            catch { }
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
@@ -318,7 +366,7 @@ namespace POSCA.View.settings
             this.DataContext = new Bank();
 
 
-            p_error_companyEmail.Visibility = Visibility.Collapsed;
+            p_error_email.Visibility = Visibility.Collapsed;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
 
