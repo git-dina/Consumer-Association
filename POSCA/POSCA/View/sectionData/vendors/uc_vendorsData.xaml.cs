@@ -346,12 +346,11 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.suppliersList = await supplier.delete(supplier.SupId, MainWindow.userLogin.userId);
-                            if (FillCombo.suppliersList == null)
+                            var res = await supplier.delete(supplier.SupId, MainWindow.userLogin.userId);
+                            if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
-                                supplier.SupId = 0;
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 //await Search();
@@ -382,8 +381,6 @@ namespace POSCA.View.sectionData
             {
                 if (tb_search.Text != "")
                 {
-
-
                     suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
                     RefreshSuppliersView();
                 }
@@ -525,6 +522,7 @@ namespace POSCA.View.sectionData
         async Task Clear()
         {
             this.DataContext = new Supplier();
+            supplier = new Supplier();
             dg_supplier.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
             dp_AssistantStartDate.Text = DateTime.Now.ToString();
@@ -1097,7 +1095,7 @@ namespace POSCA.View.sectionData
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-
+            Btn_search_Click(null, null);
         }
         void swapToData()
         {

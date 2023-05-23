@@ -85,6 +85,23 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
+        }   public async Task<List<Item>> searchItems(string searchText)
+        {
+            var result = new List<Item>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/Search";
+
+            parameters.Add("searchText", searchText);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
+                }
+            }
+            return result;
         }
          public async Task<Item> GetItemByCode(string code, long locationId, long supId)
         {
@@ -145,9 +162,9 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<Item>> save(Item group)
+        public async Task<Item> save(Item group)
         {
-            var result = new List<Item>();
+            var result = new Item();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Item/Save";
 
@@ -159,14 +176,14 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
+                    result = JsonConvert.DeserializeObject<Item>(c.Value);
                 }
             }
             return result;
         }
        
 
-        public async Task<List<Item>> delete(long supGroupId, long userId)
+        public async Task<long> delete(long supGroupId, long userId)
         {
             var result = new List<Item>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -174,15 +191,8 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("userId", userId.ToString());
             string method = "Item/delete";
 
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
-                }
-            }
-            return result;
+           return await APIResult.post(method, parameters);
+           
         }
         #endregion
     }

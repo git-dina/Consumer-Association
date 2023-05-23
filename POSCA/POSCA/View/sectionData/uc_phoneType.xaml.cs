@@ -259,17 +259,7 @@ namespace POSCA.View.sectionData
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
-                //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
-
-                Btn_refresh_Click(new Button(), null);
-                Tb_search_TextChanged(tb_search, null);
-
-
-                //}
+                await Search();
             }
             catch
             {

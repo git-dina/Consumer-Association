@@ -263,21 +263,14 @@ namespace POSCA.View.sectionData.vendors
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
-                //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
-
-                Btn_refresh_Click(new Button(), null);
-                Tb_search_TextChanged(tb_search, null);
-
-
-                //}
+                HelpClass.StartAwait(grid_main);
+                await Search();
+                HelpClass.EndAwait(grid_main);
             }
-            catch
+            catch (Exception ex)
             {
-
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 

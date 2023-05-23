@@ -38,15 +38,13 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-
-        internal async Task<List<AssistantSupplier>> save(AssistantSupplier assistantSupplier)
+        internal async Task<List<AssistantSupplier>> search(string searchText)
         {
             var result = new List<AssistantSupplier>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "AssistantSup/Save";
+            string method = "AssistantSup/Search";
 
-            var myContent = JsonConvert.SerializeObject(assistantSupplier);
-            parameters.Add("itemObject", myContent);
+            parameters.Add("searchText", searchText);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
@@ -59,7 +57,27 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        internal async Task<List<AssistantSupplier>> delete(long assistantSupId, long userId)
+        internal async Task<AssistantSupplier> save(AssistantSupplier assistantSupplier)
+        {
+            var result = new AssistantSupplier();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "AssistantSup/Save";
+
+            var myContent = JsonConvert.SerializeObject(assistantSupplier);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<AssistantSupplier>(c.Value);
+                }
+            }
+            return result;
+        }
+
+        internal async Task<long> delete(long assistantSupId, long userId)
         {
             var result = new List<AssistantSupplier>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -67,15 +85,8 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("userId", userId.ToString());
             string method = "AssistantSup/delete";
 
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result.Add(JsonConvert.DeserializeObject<AssistantSupplier>(c.Value));
-                }
-            }
-            return result;
+            return await APIResult.post(method, parameters);
+            
         }
     }
 }

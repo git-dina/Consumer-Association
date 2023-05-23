@@ -330,7 +330,7 @@ namespace POSCA.Classes
             }
             return byteImg;
         }
-        public async Task<List<Supplier>> delete(long supGroupId, long userId)
+        public async Task<long> delete(long supGroupId, long userId)
         {
             var result = new List<Supplier>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -338,15 +338,8 @@ namespace POSCA.Classes
             parameters.Add("userId", userId.ToString());
             string method = "Supplier/delete";
 
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result.Add(JsonConvert.DeserializeObject<Supplier>(c.Value));
-                }
-            }
-            return result;
+            return await APIResult.post(method, parameters);
+            
         }
         #endregion
 

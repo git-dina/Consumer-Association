@@ -432,11 +432,12 @@ namespace POSCA.View.catalog
                         item.Notes = tb_Notes.Text;
                         item.CreateUserId = MainWindow.userLogin.userId;
 
-                        FillCombo.itemList = await item.save(item);
-                        if (FillCombo.itemList == null)
+                        var item1 = await item.save(item);
+                        if (item1 == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
+
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
                              Clear();
                             //await Search();
@@ -494,8 +495,8 @@ namespace POSCA.View.catalog
                                 item.Notes = tb_Notes.Text;
                                 item.CreateUserId = MainWindow.userLogin.userId;
 
-                                FillCombo.itemList = await item.save(item);
-                                if (FillCombo.itemList == null)
+                                var item1 = await item.save(item);
+                                if (item1 == null)
                                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                                 else
                                 {
@@ -543,19 +544,17 @@ namespace POSCA.View.catalog
 
                         if (w.isOk)
                         {
-                            /*
-                            FillCombo.itemList = await item.delete(item.ItemId, MainWindow.userLogin.userId);
-                            if (FillCombo.itemList == null)
+                           
+                            var res = await item.delete(item.ItemId, MainWindow.userLogin.userId);
+                            if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
-                                item.ItemId = 0;
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
-                                await Search();
+                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
                                 Clear();
                             }
-                            */
+                         
                         }
 
                     }
@@ -894,12 +893,8 @@ namespace POSCA.View.catalog
                     item.PackageUnit = w.packageUnit;
                     if(item.ItemId != 0)
                     {
-                        FillCombo.itemList = await item.save(item);
-                       // await Search();
-                        if (dg_item.SelectedIndex != -1)
-                        {
-                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
-                        }
+                        item = await item.save(item);
+                      
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -934,12 +929,8 @@ namespace POSCA.View.catalog
                     item.ItemLocations = w.itemLocations;
                     if (item.ItemId != 0)
                     {
-                        FillCombo.itemList = await item.save(item);
-                        //await Search();
-                        if (dg_item.SelectedIndex != -1)
-                        {
-                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
-                        }
+                       item = await item.save(item);
+
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -973,13 +964,8 @@ namespace POSCA.View.catalog
 
                     if (item.ItemId != 0)
                     {
-                        FillCombo.itemList = await item.save(item);
-                       
-                       // await Search();
-                        if (dg_item.SelectedIndex != -1)
-                        {
-                            item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
-                        }
+                        item = await item.save(item);
+
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -1039,12 +1025,8 @@ namespace POSCA.View.catalog
 
                         if (item.ItemId != 0)
                         {
-                            FillCombo.itemList = await item.save(item);
-                            //await Search();
-                            if (dg_item.SelectedIndex != -1)
-                            {
-                                item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
-                            }
+                           item = await item.save(item);
+                          
                         }
                     }
                     Window.GetWindow(this).Opacity = 1;
@@ -1337,7 +1319,7 @@ namespace POSCA.View.catalog
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-
+            Btn_search_Click(null, null);
         }
         void swapToData()
         {

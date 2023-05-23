@@ -84,16 +84,9 @@ namespace POSCA.View.sectionData.vendors
                 translate();
                 swapToData();
 
-
-                //FillCombo.FillDefaultPayType_cashBalanceCardMultiple(cb_payType);
                 Keyboard.Focus(tb_Name);
-                /*
-                if (FillCombo.assistantSuppliersListAll is null)
-                    await RefreshCustomersList();
-                else
-                    assistantSuppliers = FillCombo.assistantSuppliersListAll.ToList();
-                */
-                await Search();
+
+               // await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -156,14 +149,14 @@ namespace POSCA.View.sectionData.vendors
                     assistantSupplier.Notes = tb_Notes.Text;
                     assistantSupplier.CreateUserId = MainWindow.userLogin.userId;
 
-                    FillCombo.assistantSupplierList = await assistantSupplier.save(assistantSupplier);
-                    if (FillCombo.assistantSupplierList == null)
+                   assistantSupplier = await assistantSupplier.save(assistantSupplier);
+                    if (assistantSupplier.AssistantSupId == 0)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                     else
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
                         Clear();
-                        await Search();
+   
                     }
                 }
                 HelpClass.EndAwait(grid_main);
@@ -201,14 +194,13 @@ namespace POSCA.View.sectionData.vendors
                             assistantSupplier.Notes = tb_Notes.Text;
                             assistantSupplier.UpdateUserId = MainWindow.userLogin.userId;
 
-                            FillCombo.assistantSupplierList = await assistantSupplier.save(assistantSupplier);
-                            if (FillCombo.assistantSupplierList == null)
+                            assistantSupplier= await assistantSupplier.save(assistantSupplier);
+                            if (assistantSupplier.AssistantSupId == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
 
-                                await Search();
 
                             }
                         }
@@ -248,15 +240,14 @@ namespace POSCA.View.sectionData.vendors
 
                         if (w.isOk)
                         {
-                            FillCombo.assistantSupplierList = await assistantSupplier.delete(assistantSupplier.AssistantSupId, MainWindow.userLogin.userId);
-                            if (FillCombo.assistantSupplierList == null)
+                           var res = await assistantSupplier.delete(assistantSupplier.AssistantSupId, MainWindow.userLogin.userId);
+                            if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
-                                assistantSupplier.AssistantSupId = 0;
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
-                                await Search();
+
                                 Clear();
                             }
                         }
@@ -285,9 +276,8 @@ namespace POSCA.View.sectionData.vendors
             {
                 if (tb_search.Text != "")
                 {
-                    //dina search
-                    //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                    //RefreshSuppliersView();
+                    assistantSuppliersQuery = await FillCombo.assistantSupplier.search(tb_search.Text);
+                    RefreshGroupsView();
                 }
             }
             catch
@@ -414,7 +404,7 @@ namespace POSCA.View.sectionData.vendors
         void Clear()
         {
             this.DataContext = new AssistantSupplier();
-
+            assistantSupplier = new AssistantSupplier();
             dg_assistantSupplier.SelectedIndex = -1;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -513,7 +503,7 @@ namespace POSCA.View.sectionData.vendors
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-
+            Btn_search_Click(null, null);
         }
         void swapToData()
         {
