@@ -410,6 +410,7 @@ namespace POSCA.View.catalog
 
                     else
                     {
+                        item.Code = tb_Code.Text;
                         item.Name = tb_Name.Text;
                         item.ShortName = tb_ShortName.Text;
                         item.EngName = tb_EngName.Text;
@@ -473,6 +474,7 @@ namespace POSCA.View.catalog
                         {
                             if (!tb_Factor.Text.Equals("0"))
                             {
+                                item.Code = tb_Code.Text;
                                 item.Name = tb_Name.Text;
                                 item.ShortName = tb_ShortName.Text;
                                 item.EngName = tb_EngName.Text;
