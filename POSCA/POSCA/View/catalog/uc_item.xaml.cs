@@ -129,7 +129,7 @@ namespace POSCA.View.catalog
                 //await FillCombo.fillSuppliers(cb_SupId);
                 //await FillCombo.fillUnits(cb_UnitId);
 
-                await Search();
+                //await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -439,7 +439,7 @@ namespace POSCA.View.catalog
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
                              Clear();
-                            await Search();
+                            //await Search();
                         }
                     }
             
@@ -501,7 +501,7 @@ namespace POSCA.View.catalog
                                 {
                                     Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
                                     Clear();
-                                    await Search();
+                                    //await Search();
                                 }
                             }
                             else
@@ -580,17 +580,14 @@ namespace POSCA.View.catalog
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
                 //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
-
-                Btn_refresh_Click(new Button(), null);
-                Tb_search_TextChanged(tb_search, null);
+                if (tb_search.Text != "")
+                {
 
 
-                //}
+                    itemsQuery = await FillCombo.item.searchItems(tb_search.Text);
+                    RefreshItemsView();
+                }
             }
             catch
             {
@@ -898,7 +895,7 @@ namespace POSCA.View.catalog
                     if(item.ItemId != 0)
                     {
                         FillCombo.itemList = await item.save(item);
-                        await Search();
+                       // await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
                             item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
@@ -938,7 +935,7 @@ namespace POSCA.View.catalog
                     if (item.ItemId != 0)
                     {
                         FillCombo.itemList = await item.save(item);
-                        await Search();
+                        //await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
                             item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
@@ -978,7 +975,7 @@ namespace POSCA.View.catalog
                     {
                         FillCombo.itemList = await item.save(item);
                        
-                        await Search();
+                       // await Search();
                         if (dg_item.SelectedIndex != -1)
                         {
                             item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
@@ -1043,7 +1040,7 @@ namespace POSCA.View.catalog
                         if (item.ItemId != 0)
                         {
                             FillCombo.itemList = await item.save(item);
-                            await Search();
+                            //await Search();
                             if (dg_item.SelectedIndex != -1)
                             {
                                 item = FillCombo.itemList.Where(x => x.ItemId == item.ItemId).FirstOrDefault();
