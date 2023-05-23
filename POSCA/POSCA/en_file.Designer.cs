@@ -1852,6 +1852,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Locations Types.
+        /// </summary>
+        internal static string LocationTypes {
+            get {
+                return ResourceManager.GetString("LocationTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You are logged out because you haven&apos;t done any process for 15 minutes.
         /// </summary>
         internal static string LoggedOutBecauseDidNotDoneAnyProcess {

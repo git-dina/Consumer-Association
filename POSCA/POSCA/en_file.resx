@@ -5475,4 +5475,7 @@ Main Documents</value>
   <data name="trMoreTwentyItemsError" xml:space="preserve">
     <value>The order can't contain more than 20 items</value>
   </data>
+  <data name="LocationTypes" xml:space="preserve">
+    <value>Locations Types</value>
+  </data>
 </root>

@@ -5723,4 +5723,7 @@
   <data name="trMoreTwentyItemsError" xml:space="preserve">
     <value>لا يمكن أن يحوي الطلب أكثر من 20 صنف</value>
   </data>
+  <data name="LocationTypes" xml:space="preserve">
+    <value>أنواع المواقع</value>
+  </data>
 </root>
