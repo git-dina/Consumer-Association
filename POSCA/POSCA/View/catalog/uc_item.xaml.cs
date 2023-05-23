@@ -390,7 +390,7 @@ namespace POSCA.View.catalog
                 HelpClass.StartAwait(grid_main);
 
                 item.ItemId = 0;
-                if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                if (HelpClass.validate(requiredControlList, this) )
                 {
                     if (tb_Factor.Text.Equals("0"))
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
@@ -995,8 +995,6 @@ namespace POSCA.View.catalog
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectCategoryError"), animation: ToasterAnimation.FadeIn);
                 else if (tb_MainCost.Text.Equals("0") || tb_MainCost.Text.Equals(""))
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEnterSupplyCostError"), animation: ToasterAnimation.FadeIn);
-                //if (item.ItemId == 0)
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSaveItemFirstError"), animation: ToasterAnimation.FadeIn);
                 else
                 {
                     HelpClass.StartAwait(grid_main);
