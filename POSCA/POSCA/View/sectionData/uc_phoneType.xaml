@@ -10,7 +10,7 @@
     <Grid x:Name="grid_main" Margin="20 10"  >
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="cd_gridMain1" Width="1.8*"/>
-            <ColumnDefinition x:Name="cd_gridMain2" Width="*" MinWidth="225"/>
+            <ColumnDefinition x:Name="cd_gridMain2" Width="*" />
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions >
@@ -88,7 +88,6 @@
                         x:Name="btn_search" 
                         materialDesign:ButtonAssist.CornerRadius="15"
                         Padding="0"  
-                     
                     Click="Btn_search_Click">
                             <StackPanel Orientation="Horizontal" Margin="5 0" >
                                 <TextBlock x:Name="txt_search" Text="search"  Foreground="White" Margin="5"/>
