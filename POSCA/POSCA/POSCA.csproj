@@ -305,6 +305,9 @@
     <Compile Include="View\windows\wd_supplyingItem.xaml.cs">
       <DependentUpon>wd_supplyingItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_userControl.xaml.cs">
+      <DependentUpon>wd_userControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\purchases\uc_purchaseInvoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -435,6 +438,10 @@
     <Page Include="View\windows\wd_supplyingItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_userControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
