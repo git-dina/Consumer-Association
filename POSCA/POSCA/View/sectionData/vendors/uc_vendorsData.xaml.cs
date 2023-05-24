@@ -139,7 +139,7 @@ namespace POSCA.View.sectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_address, AppSettings.resourcemanager.GetString("trAdressHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseOrderNotes, AppSettings.resourcemanager.GetString("PurchaseOrderNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Email, AppSettings.resourcemanager.GetString("trEmailHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_email, AppSettings.resourcemanager.GetString("trEmailHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BOX, AppSettings.resourcemanager.GetString("BOXHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankAccount, AppSettings.resourcemanager.GetString("BankAccountHint"));
@@ -179,7 +179,7 @@ namespace POSCA.View.sectionData
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    supplier = new Supplier();
+                    supplier.SupId = 0;
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         supplier.ShortName = tb_ShortName.Text;
@@ -210,7 +210,7 @@ namespace POSCA.View.sectionData
                         if (tb_SupNODays.Text != "")
                             supplier.SupNODays = int.Parse(tb_SupNODays.Text);
 
-                        supplier.Email = tb_Email.Text;
+                        supplier.Email = tb_email.Text;
                         supplier.BOX = tb_BOX.Text;
 
                         supplier.Notes = tb_Notes.Text;
@@ -288,7 +288,7 @@ namespace POSCA.View.sectionData
                         if (tb_SupNODays.Text != "")
                             supplier.SupNODays = int.Parse(tb_SupNODays.Text);
 
-                        supplier.Email = tb_Email.Text;
+                        supplier.Email = tb_email.Text;
                         supplier.BOX = tb_BOX.Text;
                         supplier.Notes = tb_Notes.Text;
                         supplier.PurchaseOrderNotes = tb_PurchaseOrderNotes.Text;
@@ -525,15 +525,12 @@ namespace POSCA.View.sectionData
             supplier = new Supplier();
             dg_supplier.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            tb_ShortName.Text = "";
             dp_AssistantStartDate.Text = DateTime.Now.ToString();
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
             tb_FreePercentag.Text = HelpClass.DecTostring(0);
 
-            //long lastSupId = 0;
-            //if(FillCombo.suppliersList != null && FillCombo.suppliersList.Count > 0)
-            //    lastSupId = FillCombo.suppliersList.Select(x => x.SupId).Max();
-            //lastSupId++;
-            //tb_Code.Text = lastSupId.ToString();
+
             tb_Code.Text = await FillCombo.supplier.getMaxSupplierId();
             dp_AssistantStartDate.SelectedDate = DateTime.Now;
             p_error_Email.Visibility = Visibility.Collapsed;
@@ -633,9 +630,10 @@ namespace POSCA.View.sectionData
                 w.BankAccount = supplier.BankAccount;
                 w.AccountCode = supplier.AccountCode;
                 w.SupNODays = supplier.SupNODays;
-                w.Email = supplier.Email;
-                w.BOX = supplier.BOX;
-                w.SupplierPhones = supplier.SupplierPhones.ToList();
+                //w.Email = supplier.Email;
+                //w.BOX = supplier.BOX;
+                if(supplier.SupplierPhones != null)
+                    w.SupplierPhones = supplier.SupplierPhones.ToList();
 
                 w.ShowDialog();
                 if(w.isOk)
@@ -644,20 +642,14 @@ namespace POSCA.View.sectionData
                     supplier.BankAccount = w.BankAccount;
                     supplier.AccountCode = w.AccountCode;
                     supplier.SupNODays = w.SupNODays;
-                    supplier.Email = w.Email;
-                    supplier.BOX = w.BOX;
+                    //supplier.Email = w.Email;
+                    //supplier.BOX = w.BOX;
                     supplier.SupplierPhones = w.SupplierPhones;
 
                     if (supplier.SupId != 0)
                     {
                         supplier = await supplier.save(supplier);
                         
-                        //await Search();
-                        //if (dg_supplier.SelectedIndex != -1)
-                        //{
-                            //supplier = FillCombo.suppliersList.Where(x => x.SupId == supplier.SupId).FirstOrDefault();
-
-                        //}
                     }
                 }
                 Window.GetWindow(this).Opacity = 1;

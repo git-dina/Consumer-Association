@@ -88,5 +88,22 @@ namespace POSCA.Classes.ApiClasses
             return await APIResult.post(method, parameters);
             
         }
+
+        public async Task<String> getMaxSupplierId()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "AssistantSup/GetMaxSupplierId";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
+        }
     }
 }

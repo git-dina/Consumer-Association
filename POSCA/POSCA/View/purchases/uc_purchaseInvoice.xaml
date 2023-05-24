@@ -444,9 +444,24 @@
 
                     <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
+                            <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=TwoWay}"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                  Padding="10,0,5,0"
+                                   IsEnabled="False"
+                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                  materialDesign:HintAssist.Hint="Notes..."  
+                                  Foreground="{StaticResource textColor}"
+                                 Margin="0,0"  BorderThickness="0"
+                            Grid.Column="1"  Height="70" TextWrapping="Wrap"
+                             />
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
                             <TextBox  x:Name="tb_SupplierNotes" Text="{Binding SupplierNotes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  Padding="10,0,5,0"  
+                                  Padding="10,0,5,0"
+                                  IsEnabled="False"
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="SupplierNotes..."  
                                   Foreground="{StaticResource textColor}"
@@ -459,7 +474,8 @@
                         <Grid   >
                             <TextBox  x:Name="tb_SupplierPurchaseNotes" Text="{Binding SupplierPurchaseNotes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                  Padding="10,0,5,0"  
+                                  Padding="10,0,5,0" 
+                                   IsEnabled="False"
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="SupplierPurchaseNotes..."  
                                   Foreground="{StaticResource textColor}"

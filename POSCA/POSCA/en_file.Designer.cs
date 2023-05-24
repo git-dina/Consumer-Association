@@ -3284,11 +3284,29 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplier Notes....
+        /// </summary>
+        internal static string SupplierNotesHint {
+            get {
+                return ResourceManager.GetString("SupplierNotesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supplier No..
         /// </summary>
         internal static string SupplierNumber {
             get {
                 return ResourceManager.GetString("SupplierNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier Notes (Purchase Orders)....
+        /// </summary>
+        internal static string SupplierOrderNotesHint {
+            get {
+                return ResourceManager.GetString("SupplierOrderNotesHint", resourceCulture);
             }
         }
         

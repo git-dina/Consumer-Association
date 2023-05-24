@@ -155,7 +155,7 @@ namespace POSCA.View.sectionData.vendors
                     else
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                        Clear();
+                        await Clear();
    
                     }
                 }
@@ -248,7 +248,7 @@ namespace POSCA.View.sectionData.vendors
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
 
-                                Clear();
+                                await Clear();
                             }
                         }
 
@@ -401,11 +401,12 @@ namespace POSCA.View.sectionData.vendors
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new AssistantSupplier();
             assistantSupplier = new AssistantSupplier();
             dg_assistantSupplier.SelectedIndex = -1;
+            tb_Number.Text = await FillCombo.assistantSupplier.getMaxSupplierId();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

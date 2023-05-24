@@ -5478,4 +5478,10 @@ Main Documents</value>
   <data name="LocationTypes" xml:space="preserve">
     <value>Locations Types</value>
   </data>
+  <data name="SupplierNotesHint" xml:space="preserve">
+    <value>Supplier Notes...</value>
+  </data>
+  <data name="SupplierOrderNotesHint" xml:space="preserve">
+    <value>Supplier Notes (Purchase Orders)...</value>
+  </data>
 </root>

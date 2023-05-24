@@ -5726,4 +5726,10 @@
   <data name="LocationTypes" xml:space="preserve">
     <value>أنواع المواقع</value>
   </data>
+  <data name="SupplierNotesHint" xml:space="preserve">
+    <value>ملاحظات المورد...</value>
+  </data>
+  <data name="SupplierOrderNotesHint" xml:space="preserve">
+    <value>ملاحظات المورد (طلبات الشراء)...</value>
+  </data>
 </root>

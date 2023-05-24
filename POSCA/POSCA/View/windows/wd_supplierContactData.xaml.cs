@@ -50,8 +50,8 @@ namespace POSCA.View.windows
         public string BankAccount { get; set; }
         public Nullable<int> SupNODays { get; set; }
         public int? AccountCode { get; set; }
-        public string Email { get; set; }
-        public string BOX { get; set; }
+        //public string Email { get; set; }
+        //public string BOX { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
