@@ -59,23 +59,20 @@ namespace POSCA.Classes
 
             ReportCls rep = new ReportCls();
 
-            paramarr.Add(new ReportParameter("companyName", AppSettings.companyName == null? "-": AppSettings.companyName));
-            paramarr.Add(new ReportParameter("Address", AppSettings.companyAddress == null? "-": AppSettings.companyAddress));
-           
-            paramarr.Add(new ReportParameter("trcomAddress", AppSettings.resourcemanager.GetString("trAddress")));
-            paramarr.Add(new ReportParameter("trcomTel", AppSettings.resourcemanager.GetString("tel")));
-            paramarr.Add(new ReportParameter("trcomFax", AppSettings.resourcemanager.GetString("fax")));
-            paramarr.Add(new ReportParameter("trcomEmail", AppSettings.resourcemanager.GetString("email")));
+            paramarr.Add(new ReportParameter("CompanyName", AppSettings.companyName == null? "-": AppSettings.companyName));
+            paramarr.Add(new ReportParameter("CompanyNameAr", AppSettings.companyName == null? "-": AppSettings.companyNameAr));
+          
             //
             paramarr.Add(new ReportParameter("Fax", AppSettings.companyFax == null? "-" : AppSettings.companyFax.Replace("--", "")));
             paramarr.Add(new ReportParameter("Tel", AppSettings.companyPhone == null? "-" : AppSettings.companyPhone.Replace("--", "")));
 
-            paramarr.Add(new ReportParameter("Email", AppSettings.companyEmail == null? "-" : AppSettings.companyEmail));
             paramarr.Add(new ReportParameter("logoImage", "file:\\" + rep.GetLogoImagePath()));
+            paramarr.Add(new ReportParameter("com_tel_icon", "file:\\" + rep.GetIconImagePath("phone")));
+            paramarr.Add(new ReportParameter("com_fax_icon", "file:\\" + rep.GetIconImagePath("fax")));
+
 
             string iconname = AppSettings.companylogoImage;//temp value
 
-            paramarr.Add(new ReportParameter("com_mobile", AppSettings.companyMobile == null ? "-": AppSettings.companyMobile.Replace("--", "")));
         }
 
        

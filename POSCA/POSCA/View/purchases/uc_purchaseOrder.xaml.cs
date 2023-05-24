@@ -976,18 +976,21 @@ namespace POSCA.View.purchases
             reportSize repInfo = new reportSize();
             try
             {
-                //ReportsConfig reportConfig = new ReportsConfig();
+               // ReportViewer reportViewer = new ReportViewer();
                 List<ReportParameter> paramarr = new List<ReportParameter>();
             
                 repInfo = reportclass.GetSupplyingOrderRdlcpath(prInvoice, prInvoice.PurchaseDetails.Count, AppSettings.supplyingOrderPaperSize);
                 rep.ReportPath = repInfo.reppath;
+               // reportViewer.LocalReport.ReportPath = repInfo.reppath;
+               // reportViewer.ProcessingMode = ProcessingMode.Local;
                 ReportsConfig.setReportLanguage(paramarr);
                 ReportsConfig.InvoiceHeader(paramarr);
                 reportclass.fillSupplyingOrderReport(prInvoice, paramarr);
 
                 rep.EnableExternalImages = true;
                 rep.DataSources.Clear();
-                rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", purchaseInvoice.PurchaseDetails));
+               // rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", purchaseInvoice.PurchaseDetails));
+               // rep.DataSources.Add(new ReportDataSource("DataSetPurchaseInv", purchaseInvoice));
 
                 rep.EnableExternalImages = true;
 

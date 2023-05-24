@@ -47,6 +47,34 @@ namespace POSCA.Classes
                 return Path.Combine(Directory.GetCurrentDirectory(), @"Thumb\setting\emptylogo.png");
             }
         }
+        public string GetIconImagePath(string iconName)
+        {
+            try
+            {
+                string imageName = iconName + ".png";
+                string dir = Directory.GetCurrentDirectory();
+                string tmpPath = Path.Combine(dir, @"pic");
+                tmpPath = Path.Combine(tmpPath, imageName);
+                if (File.Exists(tmpPath))
+                {
+
+                    return tmpPath;
+                }
+                else
+                {
+                    return Path.Combine(Directory.GetCurrentDirectory(), @"Thumb\setting\emptylogo.png");
+                }
+
+
+
+                //string addpath = @"\Thumb\setting\" ;
+
+            }
+            catch
+            {
+                return Path.Combine(Directory.GetCurrentDirectory(), @"Thumb\setting\emptylogo.png");
+            }
+        }
         public int GetpageHeight(int itemcount, int repheight)
         {
             // int repheight = 457;
@@ -88,16 +116,26 @@ namespace POSCA.Classes
         {
 
             paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
+            paramarr.Add(new ReportParameter("OrderDate", HelpClass.DateToString(invoice.OrderDate)));
+            paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
+            paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
+            paramarr.Add(new ReportParameter("SupplierNumber",AppSettings.resourcemanager.GetString("SupplierNumber")+": "+ invoice.supplier.SupId.ToString()));
+            paramarr.Add(new ReportParameter("SupplierName", AppSettings.resourcemanager.GetString("SupplierName") +": "+ invoice.supplier.Name.ToString()));
 
             paramarr.Add(new ReportParameter("title", AppSettings.resourcemanager.GetString("ProcurementRequest")));
-            paramarr.Add(new ReportParameter("trLocation", AppSettings.resourcemanager.GetString("Location")));
-            paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")));
-            paramarr.Add(new ReportParameter("trDocumentDate",AppSettings.resourcemanager.GetString("DocumentDate")));
+            paramarr.Add(new ReportParameter("trDate", AppSettings.resourcemanager.GetString("trDate")));
+            paramarr.Add(new ReportParameter("TheProcurementRequest", AppSettings.resourcemanager.GetString("trTheProcurementRequest")));
+            paramarr.Add(new ReportParameter("trToBranch", AppSettings.resourcemanager.GetString("trToBranch")));
+            paramarr.Add(new ReportParameter("trDeliveryDate", AppSettings.resourcemanager.GetString("DeliveryDate")));
+            paramarr.Add(new ReportParameter("trOrderDescription", AppSettings.resourcemanager.GetString("SupplymentOrderDescription")));
+            paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
+            paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
+            paramarr.Add(new ReportParameter("trAmount", AppSettings.resourcemanager.GetString("trQuantity")));
+            paramarr.Add(new ReportParameter("trItemCode", AppSettings.resourcemanager.GetString("ItemNumber")));
+            paramarr.Add(new ReportParameter("trUnit", AppSettings.resourcemanager.GetString("trUnit")));
+
             paramarr.Add(new ReportParameter("trItemNum", AppSettings.resourcemanager.GetString("ItemNumber")));
 
-            paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
-            paramarr.Add(new ReportParameter("SupplierName", invoice.SupplierName == null ? "-" : invoice.SupplierName.ToString()));
-            paramarr.Add(new ReportParameter("DocumentDate", HelpClass.DateToString(invoice.OrderDate) == null ? "-" : HelpClass.DateToString(invoice.OrderDate)));
            
             return paramarr;
         }

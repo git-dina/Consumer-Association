@@ -463,6 +463,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="pic\fax.png" />
+    <Resource Include="pic\phone.png" />
     <Content Include="Reports\ar\supplyingOrder.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -475,6 +477,7 @@
     <None Include="Properties\DataSources\POSCA.Classes.ApiClasses.Item.datasource" />
     <None Include="Properties\DataSources\POSCA.Classes.ApiClasses.Location.datasource" />
     <None Include="Properties\DataSources\POSCA.Classes.ApiClasses.PurchaseInvDetails.datasource" />
+    <None Include="Properties\DataSources\POSCA.Classes.ApiClasses.PurchaseInvoice.datasource" />
     <None Include="Properties\DataSources\POSCA.Classes.Supplier.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

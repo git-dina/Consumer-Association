@@ -1496,7 +1496,7 @@ Main Documents</value>
     <value>يومي,أسبوعي,...</value>
   </data>
   <data name="trDate" xml:space="preserve">
-    <value>التاريخ</value>
+    <value>Date</value>
   </data>
   <data name="trDateForm" xml:space="preserve">
     <value>صيغة التاريخ</value>
@@ -4512,7 +4512,7 @@ Main Documents</value>
     <value>إلى</value>
   </data>
   <data name="trToBranch" xml:space="preserve">
-    <value>إلى الفرع</value>
+    <value>To Branch</value>
   </data>
   <data name="trToBranch/Store" xml:space="preserve">
     <value>إلى فرع/مخزن</value>
@@ -5483,5 +5483,23 @@ Main Documents</value>
   </data>
   <data name="SupplierOrderNotesHint" xml:space="preserve">
     <value>Supplier Notes (Purchase Orders)...</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>Delivery Date</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>Supplier Name</value>
+  </data>
+  <data name="SupplymentOrderDescription" xml:space="preserve">
+    <value>Please provide us with the goods shown below, and credit the value to our current account with you, and notify us of that, and thank you</value>
+  </data>
+  <data name="TheProcurementRequest" xml:space="preserve">
+    <value>Procurement Request</value>
+  </data>
+  <data name="trTotalPurchase" xml:space="preserve">
+    <value>Total Purchase</value>
+  </data>
+  <data name="trTotalSale" xml:space="preserve">
+    <value>Total Sale</value>
   </data>
 </root>

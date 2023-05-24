@@ -736,6 +736,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delivery Date.
+        /// </summary>
+        internal static string DeliveryDate {
+            get {
+                return ResourceManager.GetString("DeliveryDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delivery list.
         /// </summary>
         internal static string deliveryList {
@@ -3284,6 +3293,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supplier Name.
+        /// </summary>
+        internal static string SupplierName {
+            get {
+                return ResourceManager.GetString("SupplierName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supplier Notes....
         /// </summary>
         internal static string SupplierNotesHint {
@@ -3410,6 +3428,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please provide us with the goods shown below, and credit the value to our current account with you, and notify us of that, and thank you.
+        /// </summary>
+        internal static string SupplymentOrderDescription {
+            get {
+                return ResourceManager.GetString("SupplymentOrderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supply Unit....
         /// </summary>
         internal static string SupplyUnitHint {
@@ -3442,6 +3469,15 @@ namespace POSCA {
         internal static string theItemHasExpired {
             get {
                 return ResourceManager.GetString("theItemHasExpired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procurement Request.
+        /// </summary>
+        internal static string TheProcurementRequest {
+            get {
+                return ResourceManager.GetString("TheProcurementRequest", resourceCulture);
             }
         }
         
@@ -5498,7 +5534,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to التاريخ.
+        ///   Looks up a localized string similar to Date.
         /// </summary>
         internal static string trDate {
             get {
@@ -14688,7 +14724,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إلى الفرع.
+        ///   Looks up a localized string similar to To Branch.
         /// </summary>
         internal static string trToBranch {
             get {
@@ -14787,6 +14823,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Purchase.
+        /// </summary>
+        internal static string trTotalPurchase {
+            get {
+                return ResourceManager.GetString("trTotalPurchase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to إجمالي المشتريات.
         /// </summary>
         internal static string trTotalPurchases {
@@ -14801,6 +14846,15 @@ namespace POSCA {
         internal static string trTotalReturn {
             get {
                 return ResourceManager.GetString("trTotalReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Sale.
+        /// </summary>
+        internal static string trTotalSale {
+            get {
+                return ResourceManager.GetString("trTotalSale", resourceCulture);
             }
         }
         

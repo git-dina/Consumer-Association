@@ -42,6 +42,7 @@ namespace POSCA.Classes.ApiClasses
         public string LocationName { get; set; }
         public string SupplierName { get; set; }
         public List<PurchaseInvDetails> PurchaseDetails { get; set; }
+        public Supplier supplier { get; set; }
         #endregion
 
         #region Methods

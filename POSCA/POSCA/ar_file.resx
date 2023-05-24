@@ -3803,7 +3803,7 @@
     <value>موظف التوصيل</value>
   </data>
   <data name="deliveryTime" xml:space="preserve">
-    <value>وقت التوصيل</value>
+    <value>وقت التسليم</value>
   </data>
   <data name="onTheWay" xml:space="preserve">
     <value>على الطريق</value>
@@ -5731,5 +5731,23 @@
   </data>
   <data name="SupplierOrderNotesHint" xml:space="preserve">
     <value>ملاحظات المورد (طلبات الشراء)...</value>
+  </data>
+  <data name="TheProcurementRequest" xml:space="preserve">
+    <value>طلب التزويد</value>
+  </data>
+  <data name="DeliveryDate" xml:space="preserve">
+    <value>موعد التسليم</value>
+  </data>
+  <data name="SupplierName" xml:space="preserve">
+    <value>اسم المورد</value>
+  </data>
+  <data name="SupplymentOrderDescription" xml:space="preserve">
+    <value>يرجى تزويدنا بالبضاعة المبينة أدناه وقيدو القيمة على حسابنا الجاري طرفكم واشعارنا بذلك و شكرا</value>
+  </data>
+  <data name="trTotalPurchase" xml:space="preserve">
+    <value>إجمالي الشراء</value>
+  </data>
+  <data name="trTotalSale" xml:space="preserve">
+    <value>إجمالي البيع</value>
   </data>
 </root>
