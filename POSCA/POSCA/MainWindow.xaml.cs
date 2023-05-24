@@ -5,7 +5,6 @@ using POSCA.View.purchases;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 using POSCA.View.settings;
-//using POSCA.View.sectionData.vendors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
