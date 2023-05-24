@@ -20,6 +20,7 @@ using System.Windows.Shapes;
 using Microsoft.Win32;
 using System.IO;
 using POSCA.View.windows;
+using POSCA.View.sectionData.vendors;
 //using POSCA.View.windows;
 
 //using Microsoft.Reporting.WinForms;
@@ -804,9 +805,38 @@ namespace POSCA.View.sectionData
             }
         }
 
-        private void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)
+
+        private async void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)
         {
 
+
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_vendorsType.Instance);
+                w.ShowDialog();
+                uc_vendorsType.Instance.UserControl_Unloaded(uc_vendorsType.Instance, null);
+                await FillCombo.RefreshSupplierTypes();
+                await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_addBank_Click(object sender, RoutedEventArgs e)
         {
