@@ -59,8 +59,8 @@ namespace POSCA.Classes
 
             ReportCls rep = new ReportCls();
 
-            paramarr.Add(new ReportParameter("CompanyName", AppSettings.companyName == null? "-": AppSettings.companyName));
-            paramarr.Add(new ReportParameter("CompanyNameAr", AppSettings.companyName == null? "-": AppSettings.companyNameAr));
+            paramarr.Add(new ReportParameter("companyName", AppSettings.companyName == null? "-": AppSettings.companyName));
+            paramarr.Add(new ReportParameter("companyNameAr", AppSettings.companyNameAr == null? "-": AppSettings.companyNameAr));
           
             //
             paramarr.Add(new ReportParameter("Fax", AppSettings.companyFax == null? "-" : AppSettings.companyFax.Replace("--", "")));

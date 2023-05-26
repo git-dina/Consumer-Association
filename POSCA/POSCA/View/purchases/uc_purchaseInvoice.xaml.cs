@@ -954,17 +954,17 @@ namespace POSCA.View.purchases
         public async Task<string> printInvoice(PurchaseInvoice prInvoice)
         {
             string msg = "";
-            reportSize repInfo = new reportSize();
+    
             try
             {
                 //ReportsConfig reportConfig = new ReportsConfig();
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
-                repInfo = reportclass.GetSupplyingOrderRdlcpath(prInvoice, prInvoice.PurchaseDetails.Count, AppSettings.supplyingOrderPaperSize);
-                rep.ReportPath = repInfo.reppath;
+                rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
+      
                 ReportsConfig.setReportLanguage(paramarr);
                 ReportsConfig.InvoiceHeader(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice, paramarr);
+                reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
 
                 rep.EnableExternalImages = true;
                 rep.DataSources.Clear();

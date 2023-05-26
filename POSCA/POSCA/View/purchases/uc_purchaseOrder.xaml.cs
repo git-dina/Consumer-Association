@@ -973,27 +973,18 @@ namespace POSCA.View.purchases
         public async Task<string> printInvoice(PurchaseInvoice prInvoice)
         {
             string msg = "";
-            reportSize repInfo = new reportSize();
-            try
+            //try
             {
-               // ReportViewer reportViewer = new ReportViewer();
                 List<ReportParameter> paramarr = new List<ReportParameter>();
-            
-                repInfo = reportclass.GetSupplyingOrderRdlcpath(prInvoice, prInvoice.PurchaseDetails.Count, AppSettings.supplyingOrderPaperSize);
-                rep.ReportPath = repInfo.reppath;
-               // reportViewer.LocalReport.ReportPath = repInfo.reppath;
-               // reportViewer.ProcessingMode = ProcessingMode.Local;
-                ReportsConfig.setReportLanguage(paramarr);
+
+                rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
+             
+               // ReportsConfig.setReportLanguage(paramarr);
+                rep.EnableExternalImages = true;
                 ReportsConfig.InvoiceHeader(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice, paramarr);
+                reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
 
-                rep.EnableExternalImages = true;
-                rep.DataSources.Clear();
-               // rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", purchaseInvoice.PurchaseDetails));
-               // rep.DataSources.Add(new ReportDataSource("DataSetPurchaseInv", purchaseInvoice));
-
-                rep.EnableExternalImages = true;
-
+                rep.SetParameters(paramarr);
                  rep.Refresh();
 
                 //copy count
@@ -1012,15 +1003,15 @@ namespace POSCA.View.purchases
 
 
             }
-            catch (Exception ex)
-            {
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
+            //catch (Exception ex)
+            //{
+            //    //this.Dispatcher.Invoke(() =>
+            //    //{
+            //    //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
 
-                //});
-                msg = "trNotCompleted";
-            }
+            //    //});
+            //    msg = "trNotCompleted";
+            //}
             return msg;
 
         }

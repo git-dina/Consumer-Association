@@ -12,15 +12,7 @@ using System.Threading.Tasks;
 
 namespace POSCA.Classes
 {
-    public class reportSize
-    {
-
-        public string reppath { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
-        public string printerName { get; set; }
-        public string paperSize { get; set; }
-    }
+  
     class ReportCls
     {
         public string GetLogoImagePath()
@@ -86,18 +78,17 @@ namespace POSCA.Classes
 
         }
 
-        public reportSize GetSupplyingOrderRdlcpath(PurchaseInvoice invoice, int itemscount, string PaperSize)
+        public string GetSupplyingOrderRdlcpath( )
         {
             string addpath;
-            reportSize rs = new reportSize();
-            rs.width = 224;//224 =5.7cm
-            rs.height = GetpageHeight(itemscount, 500);
+            //rs.width = 224;//224 =5.7cm
+            //rs.height = GetpageHeight(itemscount, 500);
 
             if (AppSettings.lang == "ar")
             {
 
                 //order Ar
-                addpath = @"\Reports\ar\supplyingOrder.rdlc";              
+                addpath = @"\Reports\ar\Report1.rdlc";              
                 
             }
             else 
@@ -107,36 +98,48 @@ namespace POSCA.Classes
           
             //
             string reppath = PathUp(addpath);
-            rs.reppath = reppath;
-            rs.paperSize = PaperSize;
-            return rs;
+  
+            return reppath;
         }
 
-        public List<ReportParameter> fillSupplyingOrderReport(PurchaseInvoice invoice, List<ReportParameter> paramarr)
+        public List<ReportParameter> fillSupplyingOrderReport(PurchaseInvoice invoice, LocalReport rep, List<ReportParameter> paramarr)
         {
+            rep.EnableExternalImages = true;
+            rep.DataSources.Clear();
 
-            paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("OrderDate", HelpClass.DateToString(invoice.OrderDate)));
-            paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
+            paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
+            paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
             paramarr.Add(new ReportParameter("SupplierNumber",AppSettings.resourcemanager.GetString("SupplierNumber")+": "+ invoice.supplier.SupId.ToString()));
-            paramarr.Add(new ReportParameter("SupplierName", AppSettings.resourcemanager.GetString("SupplierName") +": "+ invoice.supplier.Name.ToString()));
+            paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
 
-            paramarr.Add(new ReportParameter("title", AppSettings.resourcemanager.GetString("ProcurementRequest")));
+            paramarr.Add(new ReportParameter("Title", AppSettings.resourcemanager.GetString("ProcurementRequest")));
             paramarr.Add(new ReportParameter("trDate", AppSettings.resourcemanager.GetString("trDate")));
-            paramarr.Add(new ReportParameter("TheProcurementRequest", AppSettings.resourcemanager.GetString("trTheProcurementRequest")));
+            paramarr.Add(new ReportParameter("trTheProcurementRequest", AppSettings.resourcemanager.GetString("TheProcurementRequest")));
             paramarr.Add(new ReportParameter("trToBranch", AppSettings.resourcemanager.GetString("trToBranch")));
             paramarr.Add(new ReportParameter("trDeliveryDate", AppSettings.resourcemanager.GetString("DeliveryDate")));
             paramarr.Add(new ReportParameter("trOrderDescription", AppSettings.resourcemanager.GetString("SupplymentOrderDescription")));
+            paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")+":"));
             paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
             paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
-            paramarr.Add(new ReportParameter("trAmount", AppSettings.resourcemanager.GetString("trQuantity")));
+            paramarr.Add(new ReportParameter("trSeuenceAbbrevation", AppSettings.resourcemanager.GetString("SeuenceAbbrevation")));
             paramarr.Add(new ReportParameter("trItemCode", AppSettings.resourcemanager.GetString("ItemNumber")));
+            paramarr.Add(new ReportParameter("trBarcode", AppSettings.resourcemanager.GetString("trBarcode")));
+            paramarr.Add(new ReportParameter("trDescription", AppSettings.resourcemanager.GetString("trDescription")));
+            paramarr.Add(new ReportParameter("trQTR", AppSettings.resourcemanager.GetString("trQTR")));
             paramarr.Add(new ReportParameter("trUnit", AppSettings.resourcemanager.GetString("trUnit")));
+            paramarr.Add(new ReportParameter("trFactor", AppSettings.resourcemanager.GetString("Factor")));
+            paramarr.Add(new ReportParameter("trBalance", AppSettings.resourcemanager.GetString("trBalance")));
+            paramarr.Add(new ReportParameter("trPurchasePrice", AppSettings.resourcemanager.GetString("PurchasePrice")));
+            paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
 
-            paramarr.Add(new ReportParameter("trItemNum", AppSettings.resourcemanager.GetString("ItemNumber")));
+            //paramarr.Add(new ReportParameter("trItemNum", AppSettings.resourcemanager.GetString("ItemNumber")));
 
-           
+
+            //dataSet
+            rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", invoice.PurchaseDetails));
+
             return paramarr;
         }
         public string PathUp( string addtopath)
@@ -160,5 +163,7 @@ namespace POSCA.Classes
             catch { }
             return newPath;
         }
+
+        
     }
 }

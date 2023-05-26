@@ -2726,6 +2726,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchase Price.
+        /// </summary>
+        internal static string PurchasePrice {
+            get {
+                return ResourceManager.GetString("PurchasePrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase Return Invoice.
         /// </summary>
         internal static string PurchaseReturnInvTitle {
@@ -3073,6 +3082,15 @@ namespace POSCA {
         internal static string Settlements {
             get {
                 return ResourceManager.GetString("Settlements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seq..
+        /// </summary>
+        internal static string SeuenceAbbrevation {
+            get {
+                return ResourceManager.GetString("SeuenceAbbrevation", resourceCulture);
             }
         }
         
@@ -12033,7 +12051,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الكمية.
+        ///   Looks up a localized string similar to Quantity.
         /// </summary>
         internal static string trQTR {
             get {

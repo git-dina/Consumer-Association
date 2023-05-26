@@ -44,9 +44,7 @@ namespace POSCA.Classes
         internal static string companylogoImage;
         #endregion
 
-        #region report settings
-        public static string supplyingOrderPaperSize = "5.7cm";
-        #endregion
+    
         // app version
         //static public string CurrentVersion
         //{

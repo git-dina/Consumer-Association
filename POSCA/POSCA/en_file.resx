@@ -3633,7 +3633,7 @@ Main Documents</value>
     <value>فاتورة مشتريات - معدّلة</value>
   </data>
   <data name="trQTR" xml:space="preserve">
-    <value>الكمية</value>
+    <value>Quantity</value>
   </data>
   <data name="trQTReport" xml:space="preserve">
     <value>عروض الاسعار</value>
@@ -5501,5 +5501,11 @@ Main Documents</value>
   </data>
   <data name="trTotalSale" xml:space="preserve">
     <value>Total Sale</value>
+  </data>
+  <data name="PurchasePrice" xml:space="preserve">
+    <value>Purchase Price</value>
+  </data>
+  <data name="SeuenceAbbrevation" xml:space="preserve">
+    <value>seq.</value>
   </data>
 </root>

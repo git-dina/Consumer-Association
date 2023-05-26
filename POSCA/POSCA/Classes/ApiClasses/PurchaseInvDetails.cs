@@ -37,5 +37,9 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
         #endregion
+
+        #region extra
+        public int Sequence { get; set; }
+        #endregion
     }
 }
