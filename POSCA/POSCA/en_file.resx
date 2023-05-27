@@ -4374,7 +4374,7 @@ Main Documents</value>
     <value>المجموع</value>
   </data>
   <data name="trSum" xml:space="preserve">
-    <value>المجموع</value>
+    <value>Sum</value>
   </data>
   <data name="trSunday" xml:space="preserve">
     <value>الأحد</value>
@@ -5507,5 +5507,11 @@ Main Documents</value>
   </data>
   <data name="SeuenceAbbrevation" xml:space="preserve">
     <value>seq.</value>
+  </data>
+  <data name="ItemsDiscount" xml:space="preserve">
+    <value>Items Discount</value>
+  </data>
+  <data name="trOnly" xml:space="preserve">
+    <value>trOnly</value>
   </data>
 </root>

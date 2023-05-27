@@ -1708,6 +1708,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Items Discount.
+        /// </summary>
+        internal static string ItemsDiscount {
+            get {
+                return ResourceManager.GetString("ItemsDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Status.
         /// </summary>
         internal static string ItemStatus {
@@ -10422,6 +10431,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to trOnly.
+        /// </summary>
+        internal static string trOnly {
+            get {
+                return ResourceManager.GetString("trOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to فتح.
         /// </summary>
         internal static string trOpen {
@@ -14328,7 +14346,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المجموع.
+        ///   Looks up a localized string similar to Sum.
         /// </summary>
         internal static string trSum {
             get {

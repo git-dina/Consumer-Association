@@ -88,7 +88,7 @@ namespace POSCA.Classes
             {
 
                 //order Ar
-                addpath = @"\Reports\ar\Report1.rdlc";              
+                addpath = @"\Reports\ar\supplyingOrder.rdlc";              
                 
             }
             else 
@@ -107,12 +107,18 @@ namespace POSCA.Classes
             rep.EnableExternalImages = true;
             rep.DataSources.Clear();
 
+            string discount = "(" + HelpClass.DecTostring(invoice.CoopDiscount) + " %)";
+
             paramarr.Add(new ReportParameter("OrderDate", HelpClass.DateToString(invoice.OrderDate)));
             paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
             paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
             paramarr.Add(new ReportParameter("SupplierNumber",AppSettings.resourcemanager.GetString("SupplierNumber")+": "+ invoice.supplier.SupId.ToString()));
             paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
+            paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
+            paramarr.Add(new ReportParameter("DiscountValue",HelpClass.DecTostring( invoice.DiscountValue)));
+            paramarr.Add(new ReportParameter("Currency",AppSettings.currency));
+            paramarr.Add(new ReportParameter("ConsumerDiscount", HelpClass.DecTostring(invoice.ConsumerDiscount)));
 
             paramarr.Add(new ReportParameter("Title", AppSettings.resourcemanager.GetString("ProcurementRequest")));
             paramarr.Add(new ReportParameter("trDate", AppSettings.resourcemanager.GetString("trDate")));
@@ -133,8 +139,14 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trBalance", AppSettings.resourcemanager.GetString("trBalance")));
             paramarr.Add(new ReportParameter("trPurchasePrice", AppSettings.resourcemanager.GetString("PurchasePrice")));
             paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
+            paramarr.Add(new ReportParameter("trSum", AppSettings.resourcemanager.GetString("trSum")));
+            paramarr.Add(new ReportParameter("trOnly", AppSettings.resourcemanager.GetString("trOnly")));
+            
+            paramarr.Add(new ReportParameter("trEnterpriseDiscount", AppSettings.resourcemanager.GetString("EnterpriseDiscount")));
+            paramarr.Add(new ReportParameter("trItemsDiscount", AppSettings.resourcemanager.GetString("ItemsDiscount")));
 
-            //paramarr.Add(new ReportParameter("trItemNum", AppSettings.resourcemanager.GetString("ItemNumber")));
+            string orderStatus = FillCombo.PurchaseOrderStatusList.Where(x => x.key == invoice.InvStatus).FirstOrDefault().value;
+            paramarr.Add(new ReportParameter("OrderStatus", orderStatus));
 
 
             //dataSet

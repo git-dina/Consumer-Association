@@ -5756,4 +5756,10 @@
   <data name="SeuenceAbbrevation" xml:space="preserve">
     <value>م</value>
   </data>
+  <data name="ItemsDiscount" xml:space="preserve">
+    <value>خصم الأصناف</value>
+  </data>
+  <data name="trOnly" xml:space="preserve">
+    <value>فقط</value>
+  </data>
 </root>
