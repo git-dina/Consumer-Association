@@ -582,13 +582,11 @@ namespace POSCA.View.catalog
             try
             {
                 //dina search
-                if (tb_search.Text != "")
-                {
 
 
-                    itemsQuery = await FillCombo.item.searchItems(tb_search.Text);
-                    RefreshItemsView();
-                }
+                itemsQuery = await FillCombo.item.searchItems(tb_search.Text);
+                RefreshItemsView();
+
             }
             catch
             {

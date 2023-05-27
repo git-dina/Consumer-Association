@@ -5541,4 +5541,10 @@ Main Documents</value>
   <data name="trPrintDone" xml:space="preserve">
     <value>Print Done</value>
   </data>
+  <data name="MerchandisingTeamLeader" xml:space="preserve">
+    <value>Merchandising Team Leader</value>
+  </data>
+  <data name="StoresManager" xml:space="preserve">
+    <value>Stores Manager</value>
+  </data>
 </root>

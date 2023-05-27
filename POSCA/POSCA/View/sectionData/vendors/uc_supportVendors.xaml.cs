@@ -274,11 +274,8 @@ namespace POSCA.View.sectionData.vendors
         {
             try
             {
-                if (tb_search.Text != "")
-                {
-                    assistantSuppliersQuery = await FillCombo.assistantSupplier.search(tb_search.Text);
-                    RefreshGroupsView();
-                }
+                assistantSuppliersQuery = await FillCombo.assistantSupplier.search(tb_search.Text);
+                RefreshGroupsView();
             }
             catch
             {

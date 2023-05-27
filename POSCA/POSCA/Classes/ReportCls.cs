@@ -163,6 +163,9 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trPage", AppSettings.resourcemanager.GetString("trPage")));
             paramarr.Add(new ReportParameter("trPrintDone", AppSettings.resourcemanager.GetString("trPrintDone")));
             paramarr.Add(new ReportParameter("trBy", AppSettings.resourcemanager.GetString("By")));
+            paramarr.Add(new ReportParameter("trProcurementOfficer", AppSettings.resourcemanager.GetString("ProcurementOfficer")));
+            paramarr.Add(new ReportParameter("trMerchandisingTeamLeader", AppSettings.resourcemanager.GetString("MerchandisingTeamLeader")));
+            paramarr.Add(new ReportParameter("trStoresManager", AppSettings.resourcemanager.GetString("StoresManager")));
 
 
             //dataSet

@@ -5789,4 +5789,10 @@
   <data name="trPrintDone" xml:space="preserve">
     <value>تمت الطباعة</value>
   </data>
+  <data name="MerchandisingTeamLeader" xml:space="preserve">
+    <value>رئيس قسم المشتريات</value>
+  </data>
+  <data name="StoresManager" xml:space="preserve">
+    <value>مدير المخازن</value>
+  </data>
 </root>

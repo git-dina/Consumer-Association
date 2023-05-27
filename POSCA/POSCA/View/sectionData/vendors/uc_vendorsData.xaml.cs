@@ -380,11 +380,8 @@ namespace POSCA.View.sectionData
         {
             try
             {
-                if (tb_search.Text != "")
-                {
-                    suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                    RefreshSuppliersView();
-                }
+                suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
+                RefreshSuppliersView();
             }
             catch
             {

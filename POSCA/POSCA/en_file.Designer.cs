@@ -1970,6 +1970,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Merchandising Team Leader.
+        /// </summary>
+        internal static string MerchandisingTeamLeader {
+            get {
+                return ResourceManager.GetString("MerchandisingTeamLeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Message details.
         /// </summary>
         internal static string messageDetails {
@@ -3253,6 +3262,15 @@ namespace POSCA {
         internal static string Stopped {
             get {
                 return ResourceManager.GetString("Stopped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stores Manager.
+        /// </summary>
+        internal static string StoresManager {
+            get {
+                return ResourceManager.GetString("StoresManager", resourceCulture);
             }
         }
         
