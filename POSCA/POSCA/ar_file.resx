@@ -4277,7 +4277,7 @@
     <value>رقم السند</value>
   </data>
   <data name="By" xml:space="preserve">
-    <value>المنشئ</value>
+    <value>بواسطة</value>
   </data>
   <data name="cashAmount" xml:space="preserve">
     <value>المبلغ</value>
@@ -5761,5 +5761,32 @@
   </data>
   <data name="trOnly" xml:space="preserve">
     <value>فقط</value>
+  </data>
+  <data name="ProcurementOfficer" xml:space="preserve">
+    <value>موظف المشتريات</value>
+  </data>
+  <data name="SupplyingOrderFooterStr1" xml:space="preserve">
+    <value>البضاعة المجانية من حق الجمعية ولا تحتسب ضمن المرتجعات أو فروق السعار.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr2" xml:space="preserve">
+    <value>البضاعة التي لا تباع و التالفة ترد للمورد.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr3" xml:space="preserve">
+    <value>يعتبر هذا الطلب لاغياً إذا مر عليه شهر من تاريخ طلب الشراء.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr4" xml:space="preserve">
+    <value>البضاعة الجديدة تعرض برسم البيع ولا يصرف الا قيمة المبيع منها .</value>
+  </data>
+  <data name="SupplyingOrderFooterStr5" xml:space="preserve">
+    <value>البضاعة التالفة و التي تعدم من قبل البلدية تخصم من حساب المورد.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr6" xml:space="preserve">
+    <value>من حق الجمعية إرجاع أي بضاعة يزيد استهلاكها عن الحد المقرر من قبل الادارة.</value>
+  </data>
+  <data name="trPage" xml:space="preserve">
+    <value>صفحة</value>
+  </data>
+  <data name="trPrintDone" xml:space="preserve">
+    <value>تمت الطباعة</value>
   </data>
 </root>

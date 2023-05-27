@@ -119,6 +119,8 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("DiscountValue",HelpClass.DecTostring( invoice.DiscountValue)));
             paramarr.Add(new ReportParameter("Currency",AppSettings.currency));
             paramarr.Add(new ReportParameter("ConsumerDiscount", HelpClass.DecTostring(invoice.ConsumerDiscount)));
+            paramarr.Add(new ReportParameter("UserName", "دينا نعمة"));
+            paramarr.Add(new ReportParameter("CreateUserId", invoice.CreateUserId.ToString()));
 
             paramarr.Add(new ReportParameter("Title", AppSettings.resourcemanager.GetString("ProcurementRequest")));
             paramarr.Add(new ReportParameter("trDate", AppSettings.resourcemanager.GetString("trDate")));
@@ -126,7 +128,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trToBranch", AppSettings.resourcemanager.GetString("trToBranch")));
             paramarr.Add(new ReportParameter("trDeliveryDate", AppSettings.resourcemanager.GetString("DeliveryDate")));
             paramarr.Add(new ReportParameter("trOrderDescription", AppSettings.resourcemanager.GetString("SupplymentOrderDescription")));
-            paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")+":"));
+            paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")));
             paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
             paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
             paramarr.Add(new ReportParameter("trSeuenceAbbrevation", AppSettings.resourcemanager.GetString("SeuenceAbbrevation")));
@@ -147,6 +149,20 @@ namespace POSCA.Classes
 
             string orderStatus = FillCombo.PurchaseOrderStatusList.Where(x => x.key == invoice.InvStatus).FirstOrDefault().value;
             paramarr.Add(new ReportParameter("OrderStatus", orderStatus));
+            paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));
+
+            
+           //report footer 
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr1", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr1")));
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr2", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr2")));
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr3", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr3")));
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr4", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr4")));
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr5", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr5")));
+            paramarr.Add(new ReportParameter("trSupplyingOrderFooterStr6", AppSettings.resourcemanager.GetString("SupplyingOrderFooterStr6")));
+            paramarr.Add(new ReportParameter("trFrom", AppSettings.resourcemanager.GetString("trFrom")));
+            paramarr.Add(new ReportParameter("trPage", AppSettings.resourcemanager.GetString("trPage")));
+            paramarr.Add(new ReportParameter("trPrintDone", AppSettings.resourcemanager.GetString("trPrintDone")));
+            paramarr.Add(new ReportParameter("trBy", AppSettings.resourcemanager.GetString("By")));
 
 
             //dataSet

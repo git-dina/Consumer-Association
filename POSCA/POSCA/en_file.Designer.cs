@@ -2663,6 +2663,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procurement Officer.
+        /// </summary>
+        internal static string ProcurementOfficer {
+            get {
+                return ResourceManager.GetString("ProcurementOfficer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procurement Request.
         /// </summary>
         internal static string ProcurementRequest {
@@ -3442,6 +3451,60 @@ namespace POSCA {
         internal static string SupplyCostHint {
             get {
                 return ResourceManager.GetString("SupplyCostHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free goods are the right of the association and are not counted among returns or price differences..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr1 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods that are not sold and damaged are returned to the supplier..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr2 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This order is considered null if a month has passed since the date of the purchase request..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr3 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The new goods are presented for sale and only the value of the sale is paid..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr4 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Damaged goods that are destroyed by the municipality will be deducted from the supplier&apos;s account..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr5 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The association has the right to return any merchandise whose consumption exceeds the limit set by the administration..
+        /// </summary>
+        internal static string SupplyingOrderFooterStr6 {
+            get {
+                return ResourceManager.GetString("SupplyingOrderFooterStr6", resourceCulture);
             }
         }
         
@@ -10719,6 +10782,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Page.
+        /// </summary>
+        internal static string trPage {
+            get {
+                return ResourceManager.GetString("trPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to تم الدفع.
         /// </summary>
         internal static string trPaid {
@@ -11588,6 +11660,15 @@ namespace POSCA {
         internal static string trPrintCount {
             get {
                 return ResourceManager.GetString("trPrintCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Print Done.
+        /// </summary>
+        internal static string trPrintDone {
+            get {
+                return ResourceManager.GetString("trPrintDone", resourceCulture);
             }
         }
         

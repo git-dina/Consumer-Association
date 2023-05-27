@@ -159,7 +159,7 @@ namespace POSCA.View.purchases
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierPurchaseNotes, AppSettings.resourcemanager.GetString("SupplierOrderNotesHint"));
 
             dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("ItemName");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("itemName");
             dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Barcode");
             dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("ItemDescription");
             dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("Factor");

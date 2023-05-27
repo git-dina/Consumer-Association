@@ -5514,4 +5514,31 @@ Main Documents</value>
   <data name="trOnly" xml:space="preserve">
     <value>trOnly</value>
   </data>
+  <data name="ProcurementOfficer" xml:space="preserve">
+    <value>Procurement Officer</value>
+  </data>
+  <data name="SupplyingOrderFooterStr1" xml:space="preserve">
+    <value>Free goods are the right of the association and are not counted among returns or price differences.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr2" xml:space="preserve">
+    <value>Goods that are not sold and damaged are returned to the supplier.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr3" xml:space="preserve">
+    <value>This order is considered null if a month has passed since the date of the purchase request.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr4" xml:space="preserve">
+    <value>The new goods are presented for sale and only the value of the sale is paid.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr5" xml:space="preserve">
+    <value>Damaged goods that are destroyed by the municipality will be deducted from the supplier's account.</value>
+  </data>
+  <data name="SupplyingOrderFooterStr6" xml:space="preserve">
+    <value>The association has the right to return any merchandise whose consumption exceeds the limit set by the administration.</value>
+  </data>
+  <data name="trPage" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="trPrintDone" xml:space="preserve">
+    <value>Print Done</value>
+  </data>
 </root>
