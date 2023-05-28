@@ -59,7 +59,7 @@ namespace POSCA.View.sectionData
         string searchText = "";
         public static List<string> requiredControlList;
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        public void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
             GC.Collect();

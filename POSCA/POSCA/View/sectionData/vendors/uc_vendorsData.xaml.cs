@@ -66,7 +66,7 @@ namespace POSCA.View.sectionData
         string searchText = "";
         public static List<string> requiredControlList;
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        public void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
             GC.Collect();
@@ -805,8 +805,6 @@ namespace POSCA.View.sectionData
 
         private async void Btn_addSupplierType_Click(object sender, RoutedEventArgs e)
         {
-
-
             try
             {
 
@@ -835,9 +833,35 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private void Btn_addBank_Click(object sender, RoutedEventArgs e)
+        private async void Btn_addBank_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_bank.Instance);
+                w.ShowDialog();
+                uc_bank.Instance.UserControl_Unloaded(uc_bank.Instance, null);
+                await FillCombo.RefreshBanks();
+                await FillCombo.fillBanksWithDefault(cb_BankId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Tb_Name_TextChanged(object sender, TextChangedEventArgs e)
         {

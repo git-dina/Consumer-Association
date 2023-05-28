@@ -2,6 +2,7 @@
 using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
+using POSCA.View.sectionData;
 using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
@@ -846,20 +847,141 @@ namespace POSCA.View.catalog
 
         #endregion
 
-        private void Btn_addCountry_Click(object sender, RoutedEventArgs e)
-        {
 
+        private async void Btn_addCategory_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_category.Instance);
+                w.ShowDialog();
+                uc_category.Instance.UserControl_Unloaded(uc_category.Instance, null);
+                await FillCombo.RefreshCategorys();
+                await FillCombo.fillCategorys(cb_CategoryId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
-        private void Btn_addBrand_Click(object sender, RoutedEventArgs e)
-        {
 
+
+        private async void Btn_addSup_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_vendorsData.Instance);
+                w.ShowDialog();
+                uc_vendorsData.Instance.UserControl_Unloaded(uc_vendorsData.Instance, null);
+                await FillCombo.RefreshSuppliers();
+                await FillCombo.fillSuppliers(cb_SupId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
-        private void Btn_addSup_Click(object sender, RoutedEventArgs e)
-        {
 
+        private async void Btn_addBrand_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_brand.Instance);
+                w.ShowDialog();
+                uc_brand.Instance.UserControl_Unloaded(uc_brand.Instance, null);
+                await FillCombo.RefreshBrands();
+                await FillCombo.fillBrandsWithDefault(cb_BrandId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
+
+
+
+
+        private async void Btn_addCountry_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_country.Instance);
+                w.ShowDialog();
+                uc_country.Instance.UserControl_Unloaded(uc_country.Instance, null);
+                await FillCombo.RefreshCountrys();
+                await FillCombo.fillCountrys(cb_CountryId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+
+
+        
+        
 
         private void Btn_addSupSectorId_Click(object sender, RoutedEventArgs e)
         {
@@ -1042,10 +1164,7 @@ namespace POSCA.View.catalog
             }
         }
 
-        private void Btn_addCategory_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
         private void cb_SupId_KeyUp(object sender, KeyEventArgs e)
         {
             try

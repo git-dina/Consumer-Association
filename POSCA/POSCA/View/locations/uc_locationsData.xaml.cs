@@ -672,9 +672,35 @@ HelpClass.EndAwait(grid_image, "forImage");
 
        
 
-        private void Btn_addLocationType_Click(object sender, RoutedEventArgs e)
+        private async void Btn_addLocationType_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_locationType.Instance);
+                w.ShowDialog();
+                uc_locationType.Instance.UserControl_Unloaded(uc_locationType.Instance, null);
+                await FillCombo.RefreshLocationTypes();
+                await FillCombo.fillLocationTypes(cb_LocationTypeId);
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Tb_Name_TextChanged(object sender, TextChangedEventArgs e)
