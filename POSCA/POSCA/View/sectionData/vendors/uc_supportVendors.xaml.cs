@@ -501,7 +501,13 @@ namespace POSCA.View.sectionData.vendors
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-            Btn_search_Click(null, null);
+            if (tb_search.Text != "")
+                Btn_search_Click(null, null);
+            else
+            {
+                assistantSuppliersQuery = new List<AssistantSupplier>();
+                RefreshGroupsView();
+            }
         }
         void swapToData()
         {

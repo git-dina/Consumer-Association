@@ -1114,7 +1114,13 @@ namespace POSCA.View.sectionData
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-            Btn_search_Click(null, null);
+            if (tb_search.Text != "")
+                Btn_search_Click(null, null);
+            else
+            {
+                suppliers = new List<Supplier>();
+                RefreshSuppliersView();
+            }
         }
         void swapToData()
         {
