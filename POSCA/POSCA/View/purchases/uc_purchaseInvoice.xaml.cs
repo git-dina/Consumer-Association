@@ -138,7 +138,7 @@ namespace POSCA.View.purchases
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            txt_payInvoice.Text = AppSettings.resourcemanager.GetString("ProcurementRequest");
+            txt_payInvoice.Text = AppSettings.resourcemanager.GetString("trPurchaseOrder");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");

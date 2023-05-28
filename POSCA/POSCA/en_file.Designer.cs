@@ -12024,7 +12024,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طلب شراء.
+        ///   Looks up a localized string similar to Purchase Order.
         /// </summary>
         internal static string trPurchaseOrder {
             get {

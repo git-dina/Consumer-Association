@@ -3585,7 +3585,7 @@ Main Documents</value>
     <value>فاتورة مشتريات بانتظار التخزين</value>
   </data>
   <data name="trPurchaseOrder" xml:space="preserve">
-    <value>طلب شراء</value>
+    <value>Purchase Order</value>
   </data>
   <data name="trPurchaseOrders" xml:space="preserve">
     <value>Purchase Orders</value>
