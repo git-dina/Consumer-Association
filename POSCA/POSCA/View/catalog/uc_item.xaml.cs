@@ -1052,7 +1052,8 @@ namespace POSCA.View.catalog
             {
                 var tb = cb_SupId.Template.FindName("PART_EditableTextBox", cb_SupId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) ||  p.SupId.ToString().Contains(tb.Text)).ToList();
+                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) 
+                                        ||  p.SupCode.ToString().Contains(tb.Text)).ToList();
             }
             catch (Exception ex)
             {
@@ -1076,7 +1077,7 @@ namespace POSCA.View.catalog
                 cb_SupSectorId.SelectedValuePath = "SupSectorId";
                 cb_SupSectorId.DisplayMemberPath = "SupSectorName";
                 cb_SupSectorId.SelectedIndex = -1;
-
+                cb_SupSectorId.Items.Refresh();
                 //generate item number
                 if(item.ItemId == 0 || supplier.SupId != item.SupId)
                     tb_Code.Text= await generateItemCode(supplier.SupId);

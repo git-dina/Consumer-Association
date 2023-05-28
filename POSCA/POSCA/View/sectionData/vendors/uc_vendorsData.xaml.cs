@@ -528,8 +528,8 @@ namespace POSCA.View.sectionData
             tb_DiscountPercentage.Text = HelpClass.DecTostring(0);
             tb_FreePercentag.Text = HelpClass.DecTostring(0);
 
-
-            tb_Code.Text = await FillCombo.supplier.getMaxSupplierId();
+            var maxId = await FillCombo.supplier.getMaxSupplierId();
+            tb_Code.Text = maxId.PadLeft(4, '0');
             dp_AssistantStartDate.SelectedDate = DateTime.Now;
             p_error_Email.Visibility = Visibility.Collapsed;
             // last 

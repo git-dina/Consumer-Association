@@ -1053,7 +1053,7 @@ namespace POSCA.View.purchases
             {
                 var tb = cb_SupId.Template.FindName("PART_EditableTextBox", cb_SupId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.SupId.ToString().Contains(tb.Text)).ToList();
+                cb_SupId.ItemsSource = FillCombo.suppliersList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.SupCode.ToString().Contains(tb.Text)).ToList();
             }
             catch (Exception ex)
             {

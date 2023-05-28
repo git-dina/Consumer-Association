@@ -100,6 +100,7 @@ namespace POSCA.Classes
     {
         #region Attributes
         public long SupId { get; set; }
+        public string SupCode { get; set; }
         public string SupRef { get; set; }
         public string Name { get; set; }
         public string ShortName { get; set; }
