@@ -117,8 +117,9 @@ namespace POSCA.View.purchases
 
                 FillCombo.fillPurchaseOrderStatus(cb_InvStatus);
                 //await Search();
-                Clear();
                 HelpClass.EndAwait(grid_main);
+                Clear();
+
             }
             catch (Exception ex)
             {

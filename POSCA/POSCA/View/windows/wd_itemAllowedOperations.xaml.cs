@@ -348,17 +348,35 @@ namespace POSCA.View.windows
 
         private void tgl_connectAllLocation_Checked(object sender, RoutedEventArgs e)
         {
-
+            tgl_connectAllMarketsAndBranches.IsChecked = false;
+            foreach (var row in listItemLocations)
+            {
+                if (row.LocationName.Contains("موقع"))
+                    row.IsAllowed = true;
+                else
+                    row.IsAllowed = false;
+            }
+            dg_itemLocation.ItemsSource = listItemLocations;
+            dg_itemLocation.Items.Refresh();
         }
 
         private void tgl_connectAllLocation_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void tgl_connectAllMarketsAndBranches_Checked(object sender, RoutedEventArgs e)
         {
-
+            tgl_connectAllLocation.IsChecked = false;
+            foreach (var row in listItemLocations)
+            {
+                if (row.LocationName.Contains("سوق") || row.LocationName.Contains("فرع"))
+                    row.IsAllowed = true;
+                else
+                    row.IsAllowed = false;
+            }
+            dg_itemLocation.ItemsSource = listItemLocations;
+            dg_itemLocation.Items.Refresh();
         }
 
         private void tgl_connectAllMarketsAndBranches_Unchecked(object sender, RoutedEventArgs e)

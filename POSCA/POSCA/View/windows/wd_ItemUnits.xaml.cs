@@ -452,7 +452,7 @@ namespace POSCA.View.windows
                     if (barcodeNum != null && barcodeNum != "")
                         num = int.Parse(barcodeNum.Substring(0, 4));
                     num++;
-                    barcode = "1000"+num.ToString().PadLeft(4, '0') + item.ItemId.ToString().PadLeft(4, '0');
+                    barcode = "1000"+num.ToString().PadLeft(4, '0') + item.Code.ToString().PadLeft(4, '0');
                     break;
                 case "isWeight":
                      lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
