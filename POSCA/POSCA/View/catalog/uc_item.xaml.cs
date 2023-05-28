@@ -1261,8 +1261,10 @@ namespace POSCA.View.catalog
         {
             try
             {
-                if (!tb_Factor.Text.Equals(""))
-                {
+                if (tb_Factor.Text.Equals(""))
+                    tb_Factor.Text = "0";
+                //if (!tb_Factor.Text.Equals(""))
+               // {
                     int factor = int.Parse(tb_Factor.Text);
                     if (factor != 0)
                     {
@@ -1298,7 +1300,20 @@ namespace POSCA.View.catalog
                         item.WholesalePrice = wholesalePrice;
 
                     }
+                if (item.ItemUnits != null && item.ItemUnits.Count > 0 )
+                {
+                    foreach(var row in item.ItemUnits)
+                    {
+                        if(row.UnitId == item.UnitId)
+                        {
+                            row.Factor = factor;
+                            row.Cost = item.Cost;
+                            row.SalePrice = item.Price * factor;
+                        }
+                    }                 
                 }
+                // }
+
             }
             catch { }
         }

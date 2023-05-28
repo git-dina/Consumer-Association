@@ -47,11 +47,8 @@ namespace POSCA.View.windows
             this.Close();
         }
 
-        //List<ItemUnit> listItemUnit = new List<ItemUnit>();
        public List<ItemUnit> itemUnits = new List<ItemUnit>();
         List<Unit> listUnit = new List<Unit>();
-
-       // public List<ItemUnit> ItemUnits { get; set; }
 
         public Item item { get; set; }      
         public bool isOk { get; set; }
@@ -484,9 +481,18 @@ namespace POSCA.View.windows
                     {
                         int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
                         var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+                        
                         int unitId = int.Parse(cmb.SelectedValue.ToString());
                         itemUnit.UnitId = unitId;
                         var _unit = (Unit)cmb.SelectedItem;
+
+                        if (_unit.Name.ToLower().Trim().Equals(AppSettings.resourcemanager.GetString("piece")))
+                            itemUnit.Factor = 1;
+                        else if (unitId == item.UnitId)
+                            itemUnit.Factor =(int) item.Factor;
+                        else
+                            itemUnit.Factor = 0;
+
                         var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
                         if (itemUnit.BarcodeType != "external" && itemUnit.BarcodeType != "")
                         {
@@ -549,7 +555,7 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             try
@@ -619,6 +625,7 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+       
         private void chk_isBlocked_Changed(object sender, RoutedEventArgs e)
         {
             try
@@ -661,6 +668,6 @@ namespace POSCA.View.windows
             }
         }
 
-       
+
     }
 }

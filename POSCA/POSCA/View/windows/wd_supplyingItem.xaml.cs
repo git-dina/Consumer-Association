@@ -117,9 +117,9 @@ namespace POSCA.View.windows
             cb_ItemReceiptType.SelectedValue = itemRecieptType;
             cb_ItemStatus.SelectedValue = itemStatus;
             cb_ItemType.SelectedValue = itemType;
-            if (itemTransactionType == null || itemTransactionType.Equals(""))
-                cb_ItemTransactionType.SelectedValue = "new_committee";
-            else
+            //if (itemTransactionType == null || itemTransactionType.Equals("")) 
+            //    cb_ItemTransactionType.SelectedValue = "new_committee";
+            //else
                 cb_ItemTransactionType.SelectedValue = itemTransactionType;
 
             cb_PackageUnit.SelectedValue = packageUnit;
@@ -252,7 +252,7 @@ namespace POSCA.View.windows
                 itemType = cb_ItemType.SelectedValue.ToString();
                 itemTransactionType = cb_ItemTransactionType.SelectedValue.ToString();
                 if (!tb_PackageWeight.Text.Equals(""))
-                    packageWeight = int.Parse(tb_PackageWeight.Text);
+                    packageWeight = decimal.Parse(tb_PackageWeight.Text);
                 if(cb_PackageUnit.SelectedIndex != -1)
                     packageUnit = int.Parse(cb_PackageUnit.SelectedValue.ToString());
                

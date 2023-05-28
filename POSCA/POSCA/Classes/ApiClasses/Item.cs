@@ -17,9 +17,9 @@ namespace POSCA.Classes.ApiClasses
         public string ShortName { get; set; }
         public string EngName { get; set; }
         public string ItemStatus { get; set; } = "normal";
-        public string ItemReceiptType { get; set; }
+        public string ItemReceiptType { get; set; } = "orders";
         public string ItemType { get; set; } = "general";
-        public string ItemTransactionType { get; set; }
+        public string ItemTransactionType { get; set; } = "new_committee";
         public Nullable<long> CategoryId { get; set; }
         public Nullable<int> BrandId { get; set; }
         public Nullable<long> SupId { get; set; }
