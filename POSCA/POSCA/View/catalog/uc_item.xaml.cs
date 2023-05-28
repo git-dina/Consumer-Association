@@ -583,14 +583,14 @@ namespace POSCA.View.catalog
             {
                 //dina search
 
-
+                HelpClass.StartAwait(grid_main);
                 itemsQuery = await FillCombo.item.searchItems(tb_search.Text);
                 RefreshItemsView();
-
+                HelpClass.EndAwait(grid_main);
             }
             catch
             {
-
+                HelpClass.EndAwait(grid_main);
             }
         }
 
