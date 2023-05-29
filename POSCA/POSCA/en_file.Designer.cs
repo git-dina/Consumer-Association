@@ -1042,6 +1042,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter at least one of the two values (Box quantity or Peice quantity).
+        /// </summary>
+        internal static string EnterMaxOrMinError {
+            get {
+                return ResourceManager.GetString("EnterMaxOrMinError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Association Discount.
         /// </summary>
         internal static string EnterpriseDiscount {

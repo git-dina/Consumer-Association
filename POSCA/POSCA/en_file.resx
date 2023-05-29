@@ -5547,4 +5547,7 @@ Main Documents</value>
   <data name="StoresManager" xml:space="preserve">
     <value>Stores Manager</value>
   </data>
+  <data name="EnterMaxOrMinError" xml:space="preserve">
+    <value>Enter at least one of the two values (Box quantity or Peice quantity)</value>
+  </data>
 </root>

@@ -5795,4 +5795,7 @@
   <data name="StoresManager" xml:space="preserve">
     <value>مدير المخازن</value>
   </data>
+  <data name="EnterMaxOrMinError" xml:space="preserve">
+    <value>حدد إحدى القيمتين (كمية الكرتون أو كمية الحبات)</value>
+  </data>
 </root>

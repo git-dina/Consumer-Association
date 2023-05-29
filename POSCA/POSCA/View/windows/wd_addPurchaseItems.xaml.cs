@@ -45,8 +45,10 @@ namespace POSCA.View.windows
         }
 
         public bool isOk { get; set; }
-
-
+        public List<Item> items { get; set; }
+        public Item item { get; set; }
+        public long supId { get; set; }
+        public long locationId { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -72,7 +74,7 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-
+                RefreshItemsView();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -101,7 +103,11 @@ namespace POSCA.View.windows
             dg_item.Columns[6].Header = AppSettings.resourcemanager.GetString("Category");
 
         }
-
+        void RefreshItemsView()
+        {
+            dg_item.ItemsSource = items;
+            dg_item.Items.Refresh();
+        }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -120,11 +126,13 @@ namespace POSCA.View.windows
         {
             try
             {
-                /*
-                if (cb_LocationId.SelectedValue != null && tb_searchInvNumber.Text != "")
-                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text, invoiceType, isApproved);
+
+                if (tb_search.Text != "")
+                {
+                    items = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, locationId, supId);
+                    RefreshItemsView();
+                }
            
-                */
             }
             catch
             {
@@ -146,15 +154,6 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, string invoiceType, bool? isApproved)
-        {
-            /*
-            var invoices = await purchaseInvoice.searchOrders(locationId, invNumber, invoiceType, isApproved);
-            dg_item.ItemsSource = invoices;
-            dg_item.Items.Refresh();
-            */
-        
-        }
 
 
         private void Btn_save_Click(object sender, RoutedEventArgs e)
@@ -162,16 +161,13 @@ namespace POSCA.View.windows
             try
             {
 
-                // HelpClass.StartAwait(grid_main);
-                if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                if (dg_item.SelectedIndex > -1)
                 {
-
-
-
+                    item = dg_item.SelectedItem as Item;
                     isOk = true;
                     this.Close();
                 }
-                // HelpClass.EndAwait(grid_main);
+
             }
             catch (Exception ex)
             {
@@ -182,88 +178,7 @@ namespace POSCA.View.windows
         }
 
         #endregion
-        /*
-        #region validate - clearValidate - textChange - lostFocus - . . . . 
 
-        string input;
-        decimal _decimal = 0;
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            try
-            {
-
-
-                //only  digits
-                TextBox textBox = sender as TextBox;
-                HelpClass.InputJustNumber(ref textBox);
-                if (textBox.Tag.ToString() == "int")
-                {
-                    Regex regex = new Regex("[^0-9]");
-                    e.Handled = regex.IsMatch(e.Text);
-                }
-                else if (textBox.Tag.ToString() == "decimal")
-                {
-                    input = e.Text;
-                    e.Handled = !decimal.TryParse(textBox.Text + input, out _decimal);
-
-                }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private void Code_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            try
-            {
-                //only english and digits
-                Regex regex = new Regex("^[a-zA-Z0-9. -_?]*$");
-                if (!regex.IsMatch(e.Text))
-                    e.Handled = true;
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-
-        }
-        private void Spaces_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                e.Handled = e.Key == Key.Space;
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private void ValidateEmpty_TextChange(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.validate(requiredControlList, this);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private void validateEmpty_LostFocus(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HelpClass.validate(requiredControlList, this);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        #endregion
-        */
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
@@ -287,22 +202,7 @@ namespace POSCA.View.windows
             }
             catch { }
         }
-        /*
-        private void cb_LocationId_KeyUp(object sender, KeyEventArgs e)
-        {
 
-            try
-            {
-                var tb = cb_LocationId.Template.FindName("PART_EditableTextBox", cb_LocationId) as TextBox;
-                tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-                cb_LocationId.ItemsSource = FillCombo.locationsList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower()) || p.LocationId.ToString().Contains(tb.Text)).ToList();
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        */
        
         private void Dg_item_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -318,6 +218,13 @@ namespace POSCA.View.windows
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+        }
+
+        private void dg_item_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            item = dg_item.SelectedItem as Item;
+            isOk = true;
+            this.Close();
         }
     }
 }

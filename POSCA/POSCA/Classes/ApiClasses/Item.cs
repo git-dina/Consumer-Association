@@ -103,13 +103,13 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-         public async Task<Item> GetItemByCode(string code, long locationId, long supId)
+         public async Task<List<Item>> GetItemByCodeOrName(string textSearch, long locationId, long supId)
         {
-            var result = new Item();
+            var result = new List<Item>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Item/GetItemByCode";
+            string method = "Item/GetItemByCodeOrName";
 
-            parameters.Add("code", code);
+            parameters.Add("textSearch", textSearch);
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("supId", supId.ToString());
 
@@ -118,7 +118,7 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result = JsonConvert.DeserializeObject<Item>(c.Value);
+                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
                 }
             }
             return result;

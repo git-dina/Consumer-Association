@@ -255,47 +255,7 @@ namespace POSCA.View.purchases
                 }
         } 
         
-        //bool loadingSuccess_RefrishItems = false;
-        //async void loading_RefrishItems()
-        //{
-        //    try
-        //    {
-        //        await RefreshItemsList();
-        //        if (FillCombo.itemList is null)
-        //            await RefreshItemsList();
-        //        else
-        //            loadingSuccess_RefrishItems = true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        catchError.Add("loading_RefrishItems");
-        //        catchErrorCount++;
-        //        if (catchErrorCount > 50)
-        //        {
-        //            loadingSuccess_RefrishItems = true;
-        //        }
-        //        else
-        //            loading_RefrishItems();
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
-        //    }
-        //    if (loadingSuccess_RefrishItems)
-        //        foreach (var item in loadingList)
-        //        {
-        //            if (item.key.Equals("loading_RefrishItems"))
-        //            {
-        //                item.value = true;
-        //                break;
-        //            }
-        //        }
-        //}
 
-        //async Task<IEnumerable<Item>> RefreshItemsList()
-        //{
-
-        //    await FillCombo.RefreshItems();
-        //    return FillCombo.itemList;
-
-        //}
         #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
@@ -698,23 +658,42 @@ namespace POSCA.View.purchases
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    Item item1 = new Item();
+                    List<Item> itemLst = new List<Item>();
+                    Item item1 = null;
                     string barcode = "";
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        item1 =await  FillCombo.item.GetItemByCode(tb_search.Text, location.LocationId, supplier.SupId);
-                        //item1 = FillCombo.itemList.Where(x => x.Code == tb_search.Text && x.SupId == supplier.SupId 
-                        //                && x.ItemLocations.Any(u => u.LocationId == location.LocationId)).FirstOrDefault();
-                       if(item1 != null)
+                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId);
+                        if (itemLst.Count == 1)
+                        {
+                            item1 = itemLst[0];
                             barcode = item1.ItemUnits.FirstOrDefault().Barcode;
+                        }
+
                     }
                     else
                     {
                         item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId);
-                        //item1 = FillCombo.itemList.Where(m => m.ItemUnits.Any(u => u.Barcode.ToLower() == tb_search.Text.ToLower())).FirstOrDefault();
                         barcode = tb_search.Text;
                     }
+
+                    if (itemLst.Count > 1)
+                    {
+                        Window.GetWindow(this).Opacity = 0.2;
+                        wd_addPurchaseItems w = new wd_addPurchaseItems();
+                        w.items = itemLst.ToList();
+                        w.supId = (long)cb_SupId.SelectedValue;
+                        w.locationId = (long)cb_LocationId.SelectedValue;
+
+                        w.ShowDialog();
+                        if (w.isOk)
+                        {
+                            item1 = w.item;
+                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
+                        }
+                    }
+
 
                     if (item1 != null)
                     {
@@ -829,11 +808,11 @@ namespace POSCA.View.purchases
             if(tb_FreePercentage.Text !="")
             {
                 freePercentage = decimal.Parse(tb_FreePercentage.Text);
-                freeValue = HelpClass.calcPercentage(_TotalCost, freePercentage);
+                freeValue = HelpClass.calcPercentage(_TotalPrice, freePercentage);
             }
             txt_FreeValue.Text = HelpClass.DecTostring(freeValue);
 
-            decimal netCost = _TotalCost - discount - freeValue;
+            decimal netCost = _TotalCost - discount ;
             txt_CostNet.Text = HelpClass.DecTostring(netCost);
         }
         private void Btn_invoices_Click(object sender, RoutedEventArgs e)

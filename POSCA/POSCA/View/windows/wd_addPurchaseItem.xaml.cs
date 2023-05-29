@@ -1,4 +1,5 @@
-﻿using POSCA.Classes;
+﻿using netoaster;
+using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
@@ -247,9 +248,13 @@ namespace POSCA.View.windows
                 // HelpClass.StartAwait(grid_main);
                 if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                 {
-                    
-                    isOk = true;
-                    this.Close();
+                    if ((tb_MaxQty.Text == "" || tb_MaxQty.Text.Equals("0")) && (tb_MinQty.Text == "" || tb_MinQty.Text.Equals("0")))
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("EnterMaxOrMinError"), animation: ToasterAnimation.FadeIn);
+                    else
+                    {
+                        isOk = true;
+                        this.Close();
+                    }
                 }
                 // HelpClass.EndAwait(grid_main);
             }

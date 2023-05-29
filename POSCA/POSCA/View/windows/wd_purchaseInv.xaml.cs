@@ -302,11 +302,6 @@ namespace POSCA.View.windows
 
         private void dg_purchaseInvoice_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
-        }
-
-        private void Dg_purchaseInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
             try
             {
                 purchaseInvoice = dg_purchaseInvoice.SelectedItem as PurchaseInvoice;
@@ -316,6 +311,20 @@ namespace POSCA.View.windows
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Dg_purchaseInvoice_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                //purchaseInvoice = dg_purchaseInvoice.SelectedItem as PurchaseInvoice;
+                //isOk = true;
+                //this.Close();
+            }
+            catch (Exception ex)
+            {
+               // HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
     }

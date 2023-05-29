@@ -126,7 +126,7 @@
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
                        HeadersVisibility="Column" Background="White"
-                       SelectionChanged="Dg_item_SelectionChanged"  
+                       MouseDoubleClick="dg_item_MouseDoubleClick"  
                        AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
@@ -144,13 +144,13 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=Code}"/>
-                                    <DataGridTextColumn Width="*"  Header="SupId" Binding="{Binding Path=SupCode}"/>
-                                    <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
-                                    <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor}"/>
-                                    <DataGridTextColumn Width="*"  Header="Price" Binding="{Binding Path=Price}"/>
-                                    <DataGridTextColumn Width="*"  Header="Cost" Binding="{Binding Path=Cost}"/>
-                                    <DataGridTextColumn Width="*"  Header="Category" Binding="{Binding Path=CategoryName}"/>
+                                    <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=Code, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="SupId" Binding="{Binding Path=SupCode, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Category" Binding="{Binding Path=CategoryName, Mode=OneWay}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
 
