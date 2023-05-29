@@ -62,7 +62,7 @@ namespace POSCA.View.purchases
         string searchText = "";
         public static List<string> requiredControlList;
         private PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
-        private string _InvType = "pod";
+        private string _InvType = "po";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
@@ -148,14 +148,16 @@ namespace POSCA.View.purchases
             txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
-            txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
+            //txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_InvStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_RefId, AppSettings.resourcemanager.GetString("SupplyingOrderNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderDate, AppSettings.resourcemanager.GetString("DocumentDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_OrderRecieveDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierNotes, AppSettings.resourcemanager.GetString("SupplierNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierPurchaseNotes, AppSettings.resourcemanager.GetString("SupplierOrderNotesHint"));
 
@@ -264,29 +266,34 @@ namespace POSCA.View.purchases
             {
 
                 case "soa": //supplying order is approved
-                    tgl_isApproved.IsEnabled = false;
+                    //tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = true;
                     btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    brd_RefId.Visibility = Visibility.Visible;
                     break;
-                case "pod":
-                    tgl_isApproved.IsEnabled = true;
-                    btn_save.IsEnabled = true;
-                    btn_deleteInvoice.Visibility = Visibility.Visible;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                    break;
+                //case "pod":
+                //   // tgl_isApproved.IsEnabled = true;
+                //    btn_save.IsEnabled = true;
+                //    btn_deleteInvoice.Visibility = Visibility.Visible;
+                //    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                //    brd_RefId.Visibility = Visibility.Collapsed;
+
+                //    break;
                 case "po"://purchase order done
-                    tgl_isApproved.IsEnabled = false;
+                    //tgl_isApproved.IsEnabled = false;
                     btn_save.IsEnabled = false;
                     btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    brd_RefId.Visibility = Visibility.Collapsed;
+
                     break;
             }
 
             if (purchaseInvoice.PurchaseId.Equals(0))
             {
                 btn_printInvoice.IsEnabled = false;
-                tgl_isApproved.IsEnabled = false;
+               // tgl_isApproved.IsEnabled = false;
                 btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
             else
@@ -294,10 +301,7 @@ namespace POSCA.View.purchases
                 btn_printInvoice.IsEnabled = true;
 
             }
-            if (purchaseInvoice.IsApproved == true)
-                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approved");
-            else
-                txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
+           
 
         }
 
@@ -324,7 +328,7 @@ namespace POSCA.View.purchases
         private async Task addDraft()
         {
 
-            if (billDetails.Count > 0 && _InvType == "pod" )
+            if (billDetails.Count > 0 && _InvType == "po" )
             {
                 #region Accept
                 MainWindow.mainWindow.Opacity = 0.2;
@@ -368,9 +372,12 @@ namespace POSCA.View.purchases
 
         private async Task addInvoice()
         {
+            _InvType = "po";
             purchaseInvoice.LocationId = (long)cb_LocationId.SelectedValue;
-            purchaseInvoice.SupId = (long)cb_SupId.SelectedValue;
-            purchaseInvoice.InvStatus = cb_InvStatus.SelectedValue.ToString();
+            purchaseInvoice.SupId = (long)cb_SupId.SelectedValue;          
+
+            purchaseInvoice.InvStatus = "orderPlaced";
+
             purchaseInvoice.InvType = _InvType;
             purchaseInvoice.OrderDate = (DateTime)dp_OrderDate.SelectedDate;
             purchaseInvoice.OrderRecieveDate = (DateTime)dp_OrderRecieveDate.SelectedDate;
@@ -393,7 +400,7 @@ namespace POSCA.View.purchases
             purchaseInvoice.CreateUserId = MainWindow.userLogin.userId;
 
             purchaseInvoice.PurchaseDetails = billDetails;
-            purchaseInvoice = await purchaseInvoice.SaveSupplyingOrder(purchaseInvoice);
+            purchaseInvoice = await purchaseInvoice.SavePurchaseOrder(purchaseInvoice);
 
             if (purchaseInvoice.PurchaseId == 0)
                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
@@ -401,8 +408,7 @@ namespace POSCA.View.purchases
             {
                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                this.DataContext = purchaseInvoice;
-                ControlsEditable();
+                fillOrderInputs(purchaseInvoice);
             }
         }
         #region datagrid events
@@ -538,7 +544,7 @@ namespace POSCA.View.purchases
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
             txt_CostNet.Text = HelpClass.DecTostring(0);
 
-            _InvType = "pod";
+            _InvType = "po";
             ControlsEditable();
 
             // last 
@@ -812,6 +818,7 @@ namespace POSCA.View.purchases
 
                 string invoiceType = "soa";
                 w.invoiceType = invoiceType;
+                w.invoiceStatus = "opened";
                 w.isApproved = true;
 
                 w.ShowDialog();
@@ -819,6 +826,10 @@ namespace POSCA.View.purchases
                 {
                     _InvType = "soa";
                     purchaseInvoice = w.purchaseInvoice;
+                    purchaseInvoice.SupplyingOrderNum = purchaseInvoice.InvNumber;
+                    purchaseInvoice.InvNumber = "";
+                    purchaseInvoice.RefId = purchaseInvoice.PurchaseId;
+                    purchaseInvoice.PurchaseId = 0;
                     fillOrderInputs(purchaseInvoice);
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -842,7 +853,7 @@ namespace POSCA.View.purchases
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_purchaseInv w = new wd_purchaseInv();
 
-                string invoiceType = "pod,po";
+                string invoiceType = "po";
                 w.invoiceType = invoiceType;
                 w.isApproved = false;
 
@@ -888,6 +899,7 @@ namespace POSCA.View.purchases
 
         private void buildInvoiceDetails(PurchaseInvoice invoice)
         {
+            billDetails = invoice.PurchaseDetails.ToList();
             dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
             dg_invoiceDetails.Items.Refresh();
         }

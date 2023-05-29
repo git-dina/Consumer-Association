@@ -397,8 +397,8 @@ namespace POSCA.View.purchases
             {
                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                this.DataContext = purchaseInvoice;
-                ControlsEditable();
+                fillOrderInputs(purchaseInvoice);
+
             }
         }
         #region datagrid events
@@ -645,7 +645,7 @@ namespace POSCA.View.purchases
 
         #endregion
 
-        private async void Btn_search_Click(object sender, RoutedEventArgs e)
+      private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
 
             try
@@ -659,7 +659,7 @@ namespace POSCA.View.purchases
                     HelpClass.StartAwait(grid_main);
 
                     List<Item> itemLst = new List<Item>();
-                    Item item1 = null;
+                    Item item1=null;
                     string barcode = "";
 
                     if (chk_itemNum.IsChecked == true)
@@ -678,7 +678,7 @@ namespace POSCA.View.purchases
                         barcode = tb_search.Text;
                     }
 
-                    if (itemLst.Count > 1)
+                    if(itemLst.Count > 1)
                     {
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItems w = new wd_addPurchaseItems();
@@ -693,8 +693,8 @@ namespace POSCA.View.purchases
                             barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                         }
                     }
-
-
+                   
+                    
                     if (item1 != null)
                     {
                         Window.GetWindow(this).Opacity = 0.2;
@@ -899,11 +899,13 @@ namespace POSCA.View.purchases
             buildInvoiceDetails(purchaseInvoice);
 
             ControlsEditable();
-            //refreshValues();
+       
         }
 
         private void buildInvoiceDetails(PurchaseInvoice invoice)
         {
+            billDetails = invoice.PurchaseDetails.ToList();
+
             dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
             dg_invoiceDetails.Items.Refresh();
         }

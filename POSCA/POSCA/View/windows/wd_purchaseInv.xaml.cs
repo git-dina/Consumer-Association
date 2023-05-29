@@ -47,6 +47,7 @@ namespace POSCA.View.windows
         public bool isOk { get; set; }
 
         public string invoiceType { get; set; }
+        public string invoiceStatus { get; set; }
         public bool? isApproved { get; set; }
 
        public PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
@@ -124,8 +125,8 @@ namespace POSCA.View.windows
         {
             try
             {
-                if(cb_LocationId.SelectedValue != null && tb_searchInvNumber.Text != "")
-                    await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType,isApproved);
+                if(cb_LocationId.SelectedValue != null )
+                    await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType,invoiceStatus,isApproved);
             }
             catch
             {
@@ -147,11 +148,20 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, string invoiceType,bool? isApproved)
+        private async Task searchInvoices(long locationId, string invNumber, string invoiceType,string invoiceStatus,bool? isApproved)
         {
-            var invoices = await purchaseInvoice.searchOrders(locationId, invNumber,invoiceType,isApproved);
-            dg_purchaseInvoice.ItemsSource = invoices;
-            dg_purchaseInvoice.Items.Refresh();
+            try
+            {
+
+               HelpClass.StartAwait(grid_main);
+                var invoices = await purchaseInvoice.searchOrders(locationId, invNumber, invoiceType, invoiceStatus, isApproved);
+                dg_purchaseInvoice.ItemsSource = invoices;
+                dg_purchaseInvoice.Items.Refresh();
+                HelpClass.EndAwait(grid_main);
+            }
+            catch{
+                HelpClass.EndAwait(grid_main);
+            }
         }
 
 
@@ -160,16 +170,12 @@ namespace POSCA.View.windows
             try
             {
 
-                // HelpClass.StartAwait(grid_main);
-                if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                if(dg_purchaseInvoice.SelectedIndex > -1)
                 {
-
-
-
+                    purchaseInvoice = dg_purchaseInvoice.SelectedItem as PurchaseInvoice;
                     isOk = true;
                     this.Close();
                 }
-                // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {

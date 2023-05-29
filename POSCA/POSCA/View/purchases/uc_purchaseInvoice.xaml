@@ -358,8 +358,32 @@
                              Data="{StaticResource infoCircle}"/>
 
                         </Grid>
+                    </Border> 
+                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   
+                            Name="brd_RefId" 
+                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+
+                            <TextBox x:Name="tb_RefId" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding SupplyingOrderNum, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="SupllyingOrderId..."    
+                                        Foreground="{StaticResource textColor}" 
+                                     IsEnabled="False"
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_RefId" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                            </Path>
+                        </Grid>
                     </Border>
-                    <Border  Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                    <Border  Grid.Row="4" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <ComboBox x:Name="cb_InvStatus"    SelectedValue="{Binding InvStatus, Mode=TwoWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
@@ -376,7 +400,7 @@
 
                         </Grid>
                     </Border>
-                    <Border  Grid.Row="4" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                    <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox x:Name="tb_InvNumber" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding InvNumber, Mode=TwoWay}"
@@ -400,7 +424,7 @@
                     </Border>
 
 
-                    <Border Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <!--DisplayDateStart="{x:Static sys:DateTime.Today}"-->
                             <DatePicker  x:Name="dp_OrderDate" 
@@ -422,7 +446,7 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="7" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <DatePicker  x:Name="dp_OrderRecieveDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -442,12 +466,11 @@
                     </Border>
 
 
-                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="8" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"
-                                   IsEnabled="False"
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                   materialDesign:HintAssist.Hint="Notes..."  
                                   Foreground="{StaticResource textColor}"
@@ -456,7 +479,7 @@
                              />
                         </Grid>
                     </Border>
-                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <TextBox  x:Name="tb_SupplierNotes" Text="{Binding SupplierNotes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -484,7 +507,7 @@
                              />
                         </Grid>
                     </Border>
-                    <StackPanel x:Name="sp_isApproved" Visibility="Visible" Orientation="Horizontal" Grid.Row="3"  Margin="5,0,0,0">
+                    <!--<StackPanel x:Name="sp_isApproved" Visibility="Visible" Orientation="Horizontal" Grid.Row="3"  Margin="5,0,0,0">
                         <TextBlock  x:Name="txt_isApproved"
                                Margin="5,5,15,5" Text="Approved" Foreground="#6e6e6e"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -493,7 +516,7 @@
                                  VerticalAlignment="Center" Padding="10,15,5,5"
                                  Margin="0" Height="13" Width="28" 
                                   Checked="tgl_isApproved_Checked" />
-                    </StackPanel>
+                    </StackPanel>-->
 
                     <!--<Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >

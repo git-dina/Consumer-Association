@@ -12,7 +12,9 @@ namespace POSCA.Classes.ApiClasses
     {
         #region Attributes
         public long PurchaseId { get; set; }
+        public long RefId { get; set; }
         public string InvNumber { get; set; }
+        public string SupplyingOrderNum { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> SupId { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
@@ -65,7 +67,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType, bool? isApproved)
+        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType,string invStatus, bool? isApproved)
         {
             var result = new List<PurchaseInvoice>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -74,6 +76,7 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("invNumber", invNumber);
             parameters.Add("invType", invType);
+            parameters.Add("invStatus", invStatus);
             parameters.Add("isApproved", isApproved.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
@@ -92,6 +95,25 @@ namespace POSCA.Classes.ApiClasses
             var result = new PurchaseInvoice();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Purchase/SaveSupplyingOrder";
+
+            var myContent = JsonConvert.SerializeObject(invoice);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value);
+                }
+            }
+            return result;
+        } 
+         public async Task<PurchaseInvoice> SavePurchaseOrder(PurchaseInvoice invoice)
+        {
+            var result = new PurchaseInvoice();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/SavePurchaseOrder";
 
             var myContent = JsonConvert.SerializeObject(invoice);
             parameters.Add("itemObject", myContent);
