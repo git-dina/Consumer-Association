@@ -352,7 +352,7 @@ namespace POSCA.View.purchases
         private async Task addDraft()
         {
 
-            if (billDetails.Count > 0 && (_InvType == "sod" || _InvType == "soa"))
+            if (billDetails.Count > 0 && (_InvType == "sod" || (_InvType == "soa" && purchaseInvoice.InvStatus =="opened")))
             {
                 #region Accept
                 MainWindow.mainWindow.Opacity = 0.2;
@@ -1249,7 +1249,7 @@ namespace POSCA.View.purchases
                 refreshValues();
 
                 dg_invoiceDetails.ItemsSource = billDetails;
-                dg_invoiceDetails.Items.Refresh();
+                //dg_invoiceDetails.Items.Refresh();
             }
             catch (Exception ex)
             {
