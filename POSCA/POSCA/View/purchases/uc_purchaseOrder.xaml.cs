@@ -264,23 +264,54 @@ namespace POSCA.View.purchases
             switch(_InvType)
             {
                 case "sod":
+                    cb_LocationId.IsEnabled = true;
+                    cb_SupId.IsEnabled = true;
                     tgl_isApproved.IsEnabled = true;
+                    tb_FreePercentage.IsEnabled = true;
                     btn_save.IsEnabled = true;
+                    dp_OrderDate.IsEnabled = true;
+                    dp_OrderRecieveDate.IsEnabled = true;
                     btn_deleteInvoice.Visibility = Visibility.Visible;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    dg_invoiceDetails.Columns[8].IsReadOnly = false;
+                    dg_invoiceDetails.Columns[9].IsReadOnly = false;
+                    dg_invoiceDetails.Columns[10].IsReadOnly = false;
                     break;
                 case "soa": //supplying order is approved
-                    tgl_isApproved.IsEnabled = false;
-                    btn_save.IsEnabled = true;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    if (purchaseInvoice.InvStatus == "opened")
+                    {
+                        cb_LocationId.IsEnabled = true;
+                        cb_SupId.IsEnabled = true;
+                        tgl_isApproved.IsEnabled = false;
+                        tb_FreePercentage.IsEnabled = true;
+                        btn_save.IsEnabled = true;
+                        dp_OrderDate.IsEnabled = true;
+                        dp_OrderRecieveDate.IsEnabled = true;
+                        btn_deleteInvoice.Visibility = Visibility.Visible;
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                        dg_invoiceDetails.Columns[8].IsReadOnly = false;
+                        dg_invoiceDetails.Columns[9].IsReadOnly = false;
+                        dg_invoiceDetails.Columns[10].IsReadOnly = false;
+
+                    }
+                    else
+                    {
+                        cb_LocationId.IsEnabled = false;
+                        cb_SupId.IsEnabled = false;
+                        tgl_isApproved.IsEnabled = false;
+                        tb_FreePercentage.IsEnabled = false;
+                        btn_save.IsEnabled = false;
+                        dp_OrderDate.IsEnabled = false;
+                        dp_OrderRecieveDate.IsEnabled = false;
+                        btn_deleteInvoice.Visibility = Visibility.Collapsed;
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                        dg_invoiceDetails.Columns[8].IsReadOnly = true;
+                        dg_invoiceDetails.Columns[9].IsReadOnly = true;
+                        dg_invoiceDetails.Columns[10].IsReadOnly = true;
+
+                    }
                     break;
-                case "so"://purchase order done
-                    tgl_isApproved.IsEnabled = false;
-                    btn_save.IsEnabled = false;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
-                    break;
+
             }
 
             if (purchaseInvoice.PurchaseId.Equals(0))
