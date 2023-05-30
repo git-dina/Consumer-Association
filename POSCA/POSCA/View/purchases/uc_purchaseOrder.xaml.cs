@@ -117,8 +117,9 @@ namespace POSCA.View.purchases
 
                 FillCombo.fillPurchaseOrderStatus(cb_InvStatus);
                 //await Search();
+                await Clear();
+
                 HelpClass.EndAwait(grid_main);
-                Clear();
 
             }
             catch (Exception ex)
@@ -366,10 +367,10 @@ namespace POSCA.View.purchases
                     await addInvoice();
                 }
                 else
-                    Clear();
+                    await Clear();
             }
             else
-                Clear();
+                await Clear();
         }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
@@ -475,12 +476,12 @@ namespace POSCA.View.purchases
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -566,8 +567,9 @@ namespace POSCA.View.purchases
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
+            await Task.Delay(0050);
             this.DataContext = new PurchaseInvoice();
 
             purchaseInvoice = new PurchaseInvoice();
@@ -576,6 +578,7 @@ namespace POSCA.View.purchases
             dg_invoiceDetails.ItemsSource = billDetails;
             dg_invoiceDetails.Items.Refresh();
 
+            await Task.Delay(0050);
             dp_OrderDate.SelectedDate = DateTime.Now;
             dp_OrderRecieveDate.SelectedDate = DateTime.Now;
 
@@ -1192,7 +1195,7 @@ namespace POSCA.View.purchases
                     {
 
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-                        Clear();
+                        await Clear();
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
