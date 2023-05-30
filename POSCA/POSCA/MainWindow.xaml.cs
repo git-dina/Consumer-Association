@@ -2,6 +2,7 @@
 using POSCA.View.catalog;
 using POSCA.View.locations;
 using POSCA.View.purchases;
+using POSCA.View.receipts;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 using POSCA.View.settings;
@@ -606,6 +607,11 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_purchaseOrder.Instance);
         }
+        private void Btn_receiptInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_receiptInvoice.Instance);
+        }
         private void Btn_brand_Click(object sender, RoutedEventArgs e)
         {
             grid_main.Children.Clear();
@@ -703,6 +709,6 @@ namespace POSCA
             }
         }
 
-      
+       
     }
 }
