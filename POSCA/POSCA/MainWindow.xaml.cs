@@ -18,6 +18,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -498,16 +499,6 @@ namespace POSCA
             try
             {
                 var Sender = sender as Expander;
-                //List<Expander> expanderList = new List<Expander>();
-                //if (Sender.Tag.ToString() == "vendors")
-                //    expanderList = FindControls.FindVisualChildren<Expander>(this)
-                //        .Where(x => x.Tag != null && x.Tag.ToString() != "sectionData").ToList();
-                //else if (Sender.Tag.ToString() == "sectionData")
-                //    expanderList = FindControls.FindVisualChildren<Expander>(this)
-                //        .Where(x => x.Tag != null && x.Tag.ToString() != "vendors").ToList();
-                //else
-                //    expanderList = FindControls.FindVisualChildren<Expander>(this).ToList();
-
                 foreach (var control in FindControls.FindVisualChildren<Expander>(this).ToList())
                 {
 
@@ -517,13 +508,31 @@ namespace POSCA
                             expander.IsExpanded = false;
                 }
 
+                try
+                {
+                    if (!menuState)
+                    {
+                        Storyboard sb = this.FindResource("Storyboard1") as Storyboard;
+                        sb.Begin();
+                        txt_companyName.Visibility = Visibility.Visible;
+                        menuState = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                }
+
             }
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        
+        private void Btn_dashboard_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
             grid_main.Children.Clear();
@@ -653,6 +662,47 @@ namespace POSCA
             }
         }
 
-       
+        bool menuState = false;
+        private void BTN_Menu_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                if (!menuState)
+                {
+                    Storyboard sb = this.FindResource("Storyboard1") as Storyboard;
+                    sb.Begin();
+                    txt_companyName.Visibility = Visibility.Visible;
+                    menuState = true;
+                }
+                else
+                {
+                    try
+                    {
+                        foreach (var control in FindControls.FindVisualChildren<Expander>(this).ToList())
+                        {
+                            var expander = control as Expander;
+                            expander.IsExpanded = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    }
+                    txt_companyName.Visibility = Visibility.Collapsed;
+                    Storyboard sb = this.FindResource("Storyboard2") as Storyboard;
+                    sb.Begin();
+                    menuState = false;
+                }
+             
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+      
     }
 }

@@ -10,6 +10,67 @@
         d:DesignHeight="768" d:DesignWidth="1024"
         WindowStartupLocation="CenterScreen"  WindowStyle="None"
         WindowState="Maximized"  Loaded="Window_Loaded" Unloaded="Window_Unloaded">
+    <Window.Resources>
+        <Storyboard x:Key="Storyboard1">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="43.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-43.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="225"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="125"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="225"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rectangle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="43.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-43.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="rectangle2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
+                    <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                    <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="125"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+        <Storyboard x:Key="Storyboard3">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="125"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard3}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Grid Margin="0" x:Name="grid_mainWindow"  >
         <Grid >
             <Grid.RowDefinitions>
@@ -19,7 +80,8 @@
                 <RowDefinition Height="3"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="225"/>
+                <!--<ColumnDefinition x:Name="cd_menu" Width="225"/>-->
+                <ColumnDefinition  Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid  Grid.Row="0" Grid.Column="1" Background="{StaticResource White}"  >
@@ -189,16 +251,18 @@
                 <Separator Margin="5 0" Background="{StaticResource veryLightGrey}" VerticalAlignment="Bottom" Width="auto" 
                            Grid.ColumnSpan="25"/>
             </Grid>
-            <Grid Grid.Row="0" Grid.Column="0" 
+            <Grid  x:Name="grid_logo" Grid.Row="0" Grid.Column="0"  Width="125"
                   Background="{StaticResource MainColor}" >
                 <StackPanel Orientation="Horizontal"  Margin="5 0 0 0 ">
                     <Path   Fill="White"  Stretch="Fill"   FlowDirection="LeftToRight"
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="30" Height="30"
                       Data="{StaticResource StarIconGeometry}" />
-                    <TextBlock Text="Consumer Association" FontSize="16" FontWeight="Bold" 
+                    <TextBlock x:Name="txt_companyName" Visibility="Collapsed"
+                        Text="Consumer Association" FontSize="16" FontWeight="Bold" 
                            Foreground="White" Grid.Column="1"
-                       VerticalAlignment="Center" Margin="5,5,5,5"/>
+                       VerticalAlignment="Center" Margin="5,5,5,5"
+                               />
                 </StackPanel>
             </Grid>
             <Grid  Background="#EEF2F3" x:Name="grid_main" Grid.Row="1" Grid.Column="1"/>
@@ -225,7 +289,7 @@
 
             <!--Width="75"-->
             <!--Width="200"-->
-            <Grid x:Name="grid" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"  
+            <Grid x:Name="grid_menu" Width="125" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0"  
               Background="{StaticResource MainColor}" RenderTransformOrigin="0.5,0.5" >
                 <Grid.RenderTransform>
                     <TransformGroup>
@@ -236,31 +300,80 @@
                     </TransformGroup>
                 </Grid.RenderTransform>
                 <StackPanel   HorizontalAlignment="Left" >
+                    <Button x:Name="BTN_menu" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Margin="0,0,7,0" Height="50"
+                            Click="BTN_Menu_Click" >
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <Rectangle x:Name="rectangle" Width="22" Height="3" Margin="0 0 0 0" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5" Grid.ColumnSpan="2">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle1" Width="22" Height="3" Margin="0 15 0 0 " Fill="White" HorizontalAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="-0,0.5" Grid.ColumnSpan="2">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                            <Rectangle x:Name="rectangle2" Width="22" Height="3" Margin="0 7.5 0 0" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                        </Grid>
+                        <Button.ToolTip>
+                            <ToolTip Content="Menu"  Visibility="Visible" x:Name="tt_menu"/>
+                        </Button.ToolTip>
+                    </Button>
 
                     <!--Height="40" Width="40"-->
-                    <Grid>
-                        <Button   Height="50"
-                                  Grid.Row="1"
-                           Tag="home" 
-                          x:Name="btn_home"  Click="Btn_home_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="0" >
-                            <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+
+                    <!--#region  home-->
+                    <Expander  x:Name="exp_home" Tag="home" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <Path Fill="White" x:Name="path_iconHome" Stretch="Fill"  
-                              HorizontalAlignment="Right" Grid.Column="0"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
                               Data="{StaticResource home}"/>
-                                <TextBlock Text="Home" Foreground="White" x:Name="txt_home"
+                                <TextBlock Text="home" Foreground="White" x:Name="txt_home"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="15,0,0,0"/>
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
-                        </Button>
-                      
-                    </Grid>
+                        </Expander.Header>
+                        <!--#region  dashboard-->
+                        <StackPanel>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="dashboard" 
+                          x:Name="btn_dashboard"  Click="Btn_dashboard_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="dashboard" Foreground="White" x:Name="txt_dashboard"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
                     <!--#region  catalog-->
                     <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
@@ -353,21 +466,6 @@
                         <StackPanel>
                             <Button   Height="50"
                                   Grid.Row="1"
-                           Tag="purchaseOrder" 
-                          x:Name="btn_purchaseOrder"  Click="Btn_purchaseOrder_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
-                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Text="purchaseOrder" Foreground="White" x:Name="txt_purchaseOrder"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
-                                </Grid>
-                            </Button>
-                            <Button   Height="50"
-                                  Grid.Row="1"
                            Tag="purchaseInvoice" 
                           x:Name="btn_purchaseInvoice"  Click="Btn_purchaseInvoice_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}"   
@@ -381,6 +479,22 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="purchaseOrder" 
+                          x:Name="btn_purchaseOrder"  Click="Btn_purchaseOrder_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="purchaseOrder" Foreground="White" x:Name="txt_purchaseOrder"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                            
                         </StackPanel>
                     </Expander>
 
