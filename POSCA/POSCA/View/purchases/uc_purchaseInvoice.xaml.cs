@@ -959,16 +959,9 @@ namespace POSCA.View.purchases
 
                 rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
       
-                ReportsConfig.setReportLanguage(paramarr);
-                ReportsConfig.InvoiceHeader(paramarr);
+               // ReportsConfig.setReportLanguage(paramarr);
                 reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
-
-                rep.EnableExternalImages = true;
-                rep.DataSources.Clear();
-                rep.DataSources.Add(new ReportDataSource("DataSetPurchaseDetails", purchaseInvoice.PurchaseDetails));
-
-                rep.EnableExternalImages = true;
-
+                rep.SetParameters(paramarr);
                 rep.Refresh();
 
                 //copy count

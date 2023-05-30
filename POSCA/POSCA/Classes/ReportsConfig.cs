@@ -54,26 +54,7 @@ namespace POSCA.Classes
             catch { }
 
         }
-        public static void InvoiceHeader(List<ReportParameter> paramarr)
-        {
-
-            ReportCls rep = new ReportCls();
-
-            paramarr.Add(new ReportParameter("companyName", AppSettings.companyName == null? "-": AppSettings.companyName));
-            paramarr.Add(new ReportParameter("companyNameAr", AppSettings.companyNameAr == null? "-": AppSettings.companyNameAr));
-          
-            //
-            paramarr.Add(new ReportParameter("Fax", AppSettings.companyFax == null? "-" : AppSettings.companyFax.Replace("--", "")));
-            paramarr.Add(new ReportParameter("Tel", AppSettings.companyPhone == null? "-" : AppSettings.companyPhone.Replace("--", "")));
-
-            paramarr.Add(new ReportParameter("logoImage", "file:\\" + rep.GetLogoImagePath()));
-            paramarr.Add(new ReportParameter("com_tel_icon", "file:\\" + rep.GetIconImagePath("phone")));
-            paramarr.Add(new ReportParameter("com_fax_icon", "file:\\" + rep.GetIconImagePath("fax")));
-
-
-            string iconname = AppSettings.companylogoImage;//temp value
-
-        }
+      
 
        
     }

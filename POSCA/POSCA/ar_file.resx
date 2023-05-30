@@ -5600,8 +5600,8 @@
   <data name="OrderStatusHint" xml:space="preserve">
     <value>حالة الطلب...</value>
   </data>
-  <data name="ProcurementRequest" xml:space="preserve">
-    <value>طلـــــب تزويـــــد</value>
+  <data name="ProcurementRequestTitle" xml:space="preserve">
+    <value>طلـــــــب تزويــــــــد</value>
   </data>
   <data name="RequestedReceiptDateHint" xml:space="preserve">
     <value>تاريخ الاستلام المطلوب...</value>
@@ -5766,13 +5766,13 @@
     <value>موظف المشتريات</value>
   </data>
   <data name="SupplyingOrderFooterStr1" xml:space="preserve">
-    <value>البضاعة المجانية من حق الجمعية ولا تحتسب ضمن المرتجعات أو فروق السعار.</value>
+    <value>البضاعة المجانية من حق الجمعية ولا تحتسب ضمن المرتجعات أو فروق الأسعار</value>
   </data>
   <data name="SupplyingOrderFooterStr2" xml:space="preserve">
-    <value>البضاعة التي لا تباع و التالفة ترد للمورد.</value>
+    <value>البضاعة التي لا تباع و التالفة ترد للمورد</value>
   </data>
   <data name="SupplyingOrderFooterStr3" xml:space="preserve">
-    <value>يعتبر هذا الطلب لاغياً إذا مر عليه شهر من تاريخ طلب الشراء.</value>
+    <value>يعتبر هذا الطلب لاغياً إذا مر عليه شهر من تاريخ طلب الشراء</value>
   </data>
   <data name="SupplyingOrderFooterStr4" xml:space="preserve">
     <value>البضاعة الجديدة تعرض برسم البيع ولا يصرف الا قيمة المبيع منها .</value>

@@ -2708,20 +2708,20 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Procurement Request.
-        /// </summary>
-        internal static string ProcurementRequest {
-            get {
-                return ResourceManager.GetString("ProcurementRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Procurement Requests.
         /// </summary>
         internal static string ProcurementRequests {
             get {
                 return ResourceManager.GetString("ProcurementRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Procurement Request.
+        /// </summary>
+        internal static string ProcurementRequestTitle {
+            get {
+                return ResourceManager.GetString("ProcurementRequestTitle", resourceCulture);
             }
         }
         
@@ -2753,6 +2753,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It is not approved without the seal and signature.
+        /// </summary>
+        internal static string PurchaseOrderDescription {
+            get {
+                return ResourceManager.GetString("PurchaseOrderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase Order Notes....
         /// </summary>
         internal static string PurchaseOrderNotesHint {
@@ -2776,6 +2785,15 @@ namespace POSCA {
         internal static string PurchaseOrders {
             get {
                 return ResourceManager.GetString("PurchaseOrders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LOCAL PURCHASE ORDER.
+        /// </summary>
+        internal static string PurchaseOrderTitle {
+            get {
+                return ResourceManager.GetString("PurchaseOrderTitle", resourceCulture);
             }
         }
         
