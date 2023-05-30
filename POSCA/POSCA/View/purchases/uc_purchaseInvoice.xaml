@@ -7,7 +7,7 @@
              mc:Ignorable="d"  Tag="purchaseInvoice"  Loaded="UserControl_Loaded" Unloaded="UserControl_Unloaded"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             d:DesignHeight="650" d:DesignWidth="950">
+             d:DesignHeight="1100" d:DesignWidth="950">
     <Grid x:Name="grid_main" Margin="20 10" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="cd_gridMain1" Width="5*"/>
@@ -362,7 +362,7 @@
                     </Border> 
                     <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   
                             Name="brd_RefId" 
-                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
 
                             <TextBox x:Name="tb_RefId" Grid.Row="8"  Padding="10,0,5,0"  
@@ -480,7 +480,7 @@
                              />
                         </Grid>
                     </Border>
-                    <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="9" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox  x:Name="tb_SupplierNotes" Text="{Binding SupplierNotes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -494,7 +494,7 @@
                              />
                         </Grid>
                     </Border>
-                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox  x:Name="tb_SupplierPurchaseNotes" Text="{Binding SupplierPurchaseNotes, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
