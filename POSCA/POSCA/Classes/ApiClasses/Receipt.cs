@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POSCA.Classes.ApiClasses
 {
-    public class Reciept
+    public class Receipt
     {
         #region Attributes
         public long ReceiptId { get; set; }
