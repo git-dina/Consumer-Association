@@ -206,7 +206,7 @@
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />
     <Compile Include="Classes\ApiClasses\Pos.cs" />
     <Compile Include="Classes\ApiClasses\PurchaseInvDetails.cs" />
-    <Compile Include="Classes\ApiClasses\Reciept.cs" />
+    <Compile Include="Classes\ApiClasses\Receipt.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
@@ -219,6 +219,9 @@
     <Compile Include="converters\dateFrameConverter.cs" />
     <Compile Include="View\purchases\uc_purchaseInvoice.xaml.cs">
       <DependentUpon>uc_purchaseInvoice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\receipts\uc_receiptInvoice.xaml.cs">
+      <DependentUpon>uc_receiptInvoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\settings\uc_generalSettings.xaml.cs">
       <DependentUpon>uc_generalSettings.xaml</DependentUpon>
@@ -313,6 +316,10 @@
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\purchases\uc_purchaseInvoice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\receipts\uc_receiptInvoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

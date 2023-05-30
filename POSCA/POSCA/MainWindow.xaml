@@ -497,6 +497,44 @@
                             
                         </StackPanel>
                     </Expander>
+                    <!--#region  receipts-->
+                    <Expander  x:Name="exp_receipts" Tag="receipts" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconReceipts" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource shoppingCart}"/>
+                                <TextBlock Text="receipts" Foreground="White" x:Name="txt_receipts"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <!--#region  receipts-->
+                        <StackPanel>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="receiptInvoice" 
+                          x:Name="btn_receiptInvoice"  Click="Btn_receiptInvoice_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="receiptInvoice" Foreground="White" x:Name="txt_receiptInvoice"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
 
                     <!--#region  vendors-->
                     <Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
