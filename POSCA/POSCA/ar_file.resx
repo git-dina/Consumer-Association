@@ -5798,4 +5798,13 @@
   <data name="EnterMaxOrMinError" xml:space="preserve">
     <value>حدد إحدى القيمتين (كمية الكرتون أو كمية الحبات)</value>
   </data>
+  <data name="CustomFree" xml:space="preserve">
+    <value>مجاني مخصص</value>
+  </data>
+  <data name="FreeVegetables" xml:space="preserve">
+    <value>مجاني خضار</value>
+  </data>
+  <data name="Receipts" xml:space="preserve">
+    <value>الاستلامات</value>
+  </data>
 </root>

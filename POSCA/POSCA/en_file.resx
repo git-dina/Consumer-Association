@@ -5550,4 +5550,13 @@ Main Documents</value>
   <data name="EnterMaxOrMinError" xml:space="preserve">
     <value>Enter at least one of the two values (Box quantity or Peice quantity)</value>
   </data>
+  <data name="CustomFree" xml:space="preserve">
+    <value>Custom Free</value>
+  </data>
+  <data name="FreeVegetables" xml:space="preserve">
+    <value>Free Vegetables</value>
+  </data>
+  <data name="Receipts" xml:space="preserve">
+    <value>Receipts</value>
+  </data>
 </root>

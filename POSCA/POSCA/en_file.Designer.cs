@@ -700,6 +700,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Free.
+        /// </summary>
+        internal static string CustomFree {
+            get {
+                return ResourceManager.GetString("CustomFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to days.
         /// </summary>
         internal static string Days {
@@ -1308,6 +1317,15 @@ namespace POSCA {
         internal static string FreeValue {
             get {
                 return ResourceManager.GetString("FreeValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free Vegetables.
+        /// </summary>
+        internal static string FreeVegetables {
+            get {
+                return ResourceManager.GetString("FreeVegetables", resourceCulture);
             }
         }
         
@@ -2821,6 +2839,15 @@ namespace POSCA {
         internal static string Receipt {
             get {
                 return ResourceManager.GetString("Receipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipts.
+        /// </summary>
+        internal static string Receipts {
+            get {
+                return ResourceManager.GetString("Receipts", resourceCulture);
             }
         }
         

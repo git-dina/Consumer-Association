@@ -739,5 +739,23 @@ namespace POSCA.Classes
             return set;
         }
         #endregion
+
+        #region receipts
+        static public List<keyValueString> ReceiptsTypesList;
+        static public IEnumerable<keyValueString> RefreshReceiptsTypes()
+        {
+            ReceiptsTypesList = new List<keyValueString>() {
+                new keyValueString(){key="purchaseOrders", value=AppSettings.resourcemanager.GetString("PurchaseOrders") },
+                new keyValueString(){key="direct", value=AppSettings.resourcemanager.GetString("Direct") },
+                new keyValueString(){key="vegetable", value=AppSettings.resourcemanager.GetString("Vegetable") },
+                new keyValueString(){key="service", value=AppSettings.resourcemanager.GetString("Service") },
+                new keyValueString(){key="free", value=AppSettings.resourcemanager.GetString("trFree") },
+                new keyValueString(){key="freeVegetables", value=AppSettings.resourcemanager.GetString("FreeVegetables") },
+                new keyValueString(){key="customFree", value=AppSettings.resourcemanager.GetString("CustomFree") },
+            };
+
+            return ReceiptsTypesList;
+        }
+        #endregion
     }
 }
