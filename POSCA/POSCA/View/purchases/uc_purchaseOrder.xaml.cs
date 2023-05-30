@@ -996,12 +996,10 @@ namespace POSCA.View.purchases
                 rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
              
                // ReportsConfig.setReportLanguage(paramarr);
-                rep.EnableExternalImages = true;
-                ReportsConfig.InvoiceHeader(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
 
+                reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
                 rep.SetParameters(paramarr);
-                 rep.Refresh();
+                rep.Refresh();
 
                 //copy count
                 saveFileDialog.Filter = "PDF|*.pdf;";

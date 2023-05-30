@@ -5349,7 +5349,7 @@ Main Documents</value>
   <data name="OrderStatusHint" xml:space="preserve">
     <value>Order Status...</value>
   </data>
-  <data name="ProcurementRequest" xml:space="preserve">
+  <data name="ProcurementRequestTitle" xml:space="preserve">
     <value>Procurement Request</value>
   </data>
   <data name="RequestedReceiptDateHint" xml:space="preserve">
@@ -5555,6 +5555,12 @@ Main Documents</value>
   </data>
   <data name="FreeVegetables" xml:space="preserve">
     <value>Free Vegetables</value>
+  </data>
+  <data name="PurchaseOrderDescription" xml:space="preserve">
+    <value>It is not approved without the seal and signature</value>
+  </data>
+  <data name="PurchaseOrderTitle" xml:space="preserve">
+    <value>LOCAL PURCHASE ORDER</value>
   </data>
   <data name="Receipts" xml:space="preserve">
     <value>Receipts</value>
