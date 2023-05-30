@@ -2969,6 +2969,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Required Quantities.
+        /// </summary>
+        internal static string RequiredQuantities {
+            get {
+                return ResourceManager.GetString("RequiredQuantities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return period.
         /// </summary>
         internal static string returnPeriod {

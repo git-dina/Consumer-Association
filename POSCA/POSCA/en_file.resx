@@ -5565,4 +5565,7 @@ Main Documents</value>
   <data name="Receipts" xml:space="preserve">
     <value>Receipts</value>
   </data>
+  <data name="RequiredQuantities" xml:space="preserve">
+    <value>Required Quantities</value>
+  </data>
 </root>

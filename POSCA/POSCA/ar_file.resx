@@ -5804,7 +5804,16 @@
   <data name="FreeVegetables" xml:space="preserve">
     <value>مجاني خضار</value>
   </data>
+  <data name="PurchaseOrderDescription" xml:space="preserve">
+    <value>لا يعتمد بدون الختم والتوقيع</value>
+  </data>
+  <data name="PurchaseOrderTitle" xml:space="preserve">
+    <value>طلـــــــــب شـــــــراء</value>
+  </data>
   <data name="Receipts" xml:space="preserve">
     <value>الاستلامات</value>
+  </data>
+  <data name="RequiredQuantities" xml:space="preserve">
+    <value>الكميات المطلوبة</value>
   </data>
 </root>

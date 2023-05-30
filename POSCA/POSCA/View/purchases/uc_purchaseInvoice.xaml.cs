@@ -957,10 +957,10 @@ namespace POSCA.View.purchases
                 //ReportsConfig reportConfig = new ReportsConfig();
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
-                rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
+                rep.ReportPath = reportclass.GetPurchaseOrderRdlcpath();
       
                // ReportsConfig.setReportLanguage(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice,rep, paramarr);
+                reportclass.fillPurchaseOrderReport(prInvoice,rep, paramarr);
                 rep.SetParameters(paramarr);
                 rep.Refresh();
 
