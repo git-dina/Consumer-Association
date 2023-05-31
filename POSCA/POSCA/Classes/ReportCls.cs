@@ -124,7 +124,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
             paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
-            paramarr.Add(new ReportParameter("SupplierNumber",AppSettings.resourcemanager.GetString("SupplierNumber")+": "+ invoice.supplier.SupId.ToString()));
+            paramarr.Add(new ReportParameter("SupplierNumber",AppSettings.resourcemanager.GetString("SupplierNumber")+": "+ invoice.supplier.SupCode.ToString()));
             paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
             paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
             paramarr.Add(new ReportParameter("DiscountValue",HelpClass.DecTostring( invoice.DiscountValue)));
@@ -230,7 +230,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("SupplyingOrderNum", invoice.InvNumber == null ? "-" : invoice.SupplyingOrderNum.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
             paramarr.Add(new ReportParameter("OrderRecieveDate", HelpClass.DateToString(invoice.OrderRecieveDate)));
-            paramarr.Add(new ReportParameter("SupplierNumber", AppSettings.resourcemanager.GetString("SupplierNumber") + ": " + invoice.supplier.SupId.ToString()));
+            paramarr.Add(new ReportParameter("SupplierNumber", AppSettings.resourcemanager.GetString("SupplierNumber") + ": " + invoice.supplier.SupCode.ToString()));
             paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
             paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
             paramarr.Add(new ReportParameter("DiscountValue", HelpClass.DecTostring(invoice.DiscountValue)));

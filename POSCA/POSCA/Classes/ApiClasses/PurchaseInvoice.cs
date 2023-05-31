@@ -12,7 +12,7 @@ namespace POSCA.Classes.ApiClasses
     {
         #region Attributes
         public long PurchaseId { get; set; }
-        public long RefId { get; set; }
+        public long? RefId { get; set; }
         public string InvNumber { get; set; }
         public string SupplyingOrderNum { get; set; }
         public Nullable<long> LocationId { get; set; }

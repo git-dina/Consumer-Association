@@ -48,6 +48,7 @@ namespace POSCA.View.windows
 
         public string invoiceType { get; set; }
         public string invoiceStatus { get; set; }
+        public string windowTitle { get; set; }
         public bool? isApproved { get; set; }
 
        public PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
@@ -95,10 +96,10 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("trOrders");
+            txt_title.Text = windowTitle;
            
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("SupplyingOrderNumHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
 
             dg_purchaseInvoice.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
             dg_purchaseInvoice.Columns[1].Header = AppSettings.resourcemanager.GetString("Location");

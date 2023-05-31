@@ -861,7 +861,7 @@ namespace POSCA.View.purchases
                 string invoiceType = "soa";
                 w.invoiceType = invoiceType;
                 w.isApproved = true;
-
+                w.windowTitle = AppSettings.resourcemanager.GetString("ProcurementRequests");
                 w.ShowDialog();
                 if (w.isOk)
                 {
@@ -892,6 +892,7 @@ namespace POSCA.View.purchases
                 string invoiceType = "sod";
                 w.invoiceType = invoiceType;
                 w.isApproved = false;
+                w.windowTitle = AppSettings.resourcemanager.GetString("ProcurementRequests");
 
                 w.ShowDialog();
                 if (w.isOk)

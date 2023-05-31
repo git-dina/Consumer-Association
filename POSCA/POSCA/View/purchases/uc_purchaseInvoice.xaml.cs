@@ -290,10 +290,9 @@ namespace POSCA.View.purchases
                     break;
             }
 
-            if (purchaseInvoice.PurchaseId.Equals(0))
+            if (purchaseInvoice.PurchaseId.Equals(0) || purchaseInvoice.InvType =="soa")
             {
                 btn_printInvoice.IsEnabled = false;
-               // tgl_isApproved.IsEnabled = false;
                 btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
             else
@@ -823,6 +822,7 @@ namespace POSCA.View.purchases
                 w.invoiceType = invoiceType;
                 w.invoiceStatus = "opened";
                 w.isApproved = true;
+                w.windowTitle = AppSettings.resourcemanager.GetString("ProcurementRequests");
 
                 w.ShowDialog();
                 if (w.isOk)
@@ -858,6 +858,7 @@ namespace POSCA.View.purchases
 
                 string invoiceType = "po";
                 w.invoiceType = invoiceType;
+                w.windowTitle = AppSettings.resourcemanager.GetString("PurchaseOrders");
 
                 w.ShowDialog();
                 if (w.isOk)
@@ -952,7 +953,7 @@ namespace POSCA.View.purchases
         {
             string msg = "";
     
-           // try
+           //try
             {
                 int sequence = 0;
                 foreach (var row in prInvoice.PurchaseDetails)
@@ -963,7 +964,7 @@ namespace POSCA.View.purchases
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
                 rep.ReportPath = reportclass.GetPurchaseOrderRdlcpath();
-      
+
                // ReportsConfig.setReportLanguage(paramarr);
                 reportclass.fillPurchaseOrderReport(prInvoice,rep, paramarr);
                 rep.SetParameters(paramarr);
