@@ -106,7 +106,6 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                           
                             <DataGridTemplateColumn  Width="4*" Header="BarcodeType"   >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -119,11 +118,14 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTemplateColumn Width="3*"  Header="Barcode">
+                            <DataGridTemplateColumn x:Name="dgc_Barcode" Width="3*"  Header="Barcode">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox  Text="{Binding Path=Barcode, Mode=TwoWay}"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                                   BorderThickness="0"
+                                                  IsEnabled="{Binding ElementName=tb_barcode, Path=IsEnabled}"
+                                                  MaxLength="{Binding ElementName=tb_barcode, Path=MaxLength}"
                                                   LostFocus="tb_barcode_LostFocus"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -174,7 +176,9 @@
                                                      Visibility="Collapsed"       />
                         </DataGrid.Columns>
                     </DataGrid>
-
+                    <TextBox x:Name="tb_barcode"
+                             Visibility="Collapsed"
+                             MaxLength="13"/>
                 </Grid>
                 <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
                        Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"

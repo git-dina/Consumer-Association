@@ -418,6 +418,19 @@ namespace POSCA.View.windows
                                 }
                             }
                         }
+
+                        if(barcodeTypeValue == "external")
+                        {
+                            tb_barcode.MaxLength = 13;
+                            tb_barcode.IsEnabled = true;
+                            dgc_Barcode.IsReadOnly = false;
+                        }
+                        else
+                        {
+                            tb_barcode.MaxLength = 100;
+                            tb_barcode.IsEnabled = false;
+                            dgc_Barcode.IsReadOnly = true;
+                        }
                         if (valid)
                         {
                             itemUnit.BarcodeType = barcodeTypeValue;
