@@ -283,7 +283,7 @@
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"
                            Margin="5,5,25,5"
                 x:Name="txt_rightReserved"
-                           Text="2021 © All Right Reserved for Increase"/>
+                           Text="2023 © All Right Reserved for Increase"/>
             </Grid>
 
 
