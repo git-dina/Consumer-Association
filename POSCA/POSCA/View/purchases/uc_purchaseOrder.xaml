@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Grid.Column="0" 
+        <Border x:Name="brd_grid0_0" Grid.Row="0" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -96,7 +96,7 @@
 
             </Grid>
         </Border>
-        <Border Grid.Row="0" Grid.Column="1" 
+        <Border x:Name="brd_grid0_1" Grid.Row="0" Grid.Column="1" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -190,7 +190,7 @@
 
             </DockPanel>
         </Border>
-        <Border Grid.Row="1" Grid.Column="0" 
+        <Border x:Name="brd_grid1_0" Grid.Row="1" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -302,7 +302,7 @@
                 </Border>
             </Grid>
         </Border>
-        <Border Grid.Row="1" Grid.Column="1" 
+        <Border x:Name="brd_grid1_1" Grid.Row="1" Grid.Column="1" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -498,7 +498,7 @@
                 <!--#endregion-->
             </StackPanel>
         </Border>
-        <Border Grid.Row="2" Grid.Column="0" 
+        <Border x:Name="brd_grid2_0" Grid.Row="2" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -710,14 +710,7 @@
 
             </Grid>
         </Border>
-        <!--<Border Grid.Row="2" Grid.Column="1" 
-            BorderThickness="0"  
-                    CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
-            <StackPanel   Margin="10,0" >
-
-            </StackPanel>
-        </Border>-->
-        <Border Grid.Row="2" Grid.Column="1" 
+        <Border x:Name="brd_grid2_1" Grid.Row="2" Grid.Column="1" 
                 BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black"
                 Background="{StaticResource SecondColor}" Padding="0" Margin="5"

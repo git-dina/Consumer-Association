@@ -1142,10 +1142,31 @@ namespace POSCA.View.purchases
 
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
-            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
-            cd_gridMain3.Width = cd_gridMain1.Width;
-            cd_gridMain1.Width = cd_gridMain2.Width;
-            cd_gridMain2.Width = cd_gridMain3.Width;
+            //ColumnDefinition cd_gridMain3 = new ColumnDefinition();
+            //cd_gridMain3.Width = cd_gridMain1.Width;
+            //cd_gridMain1.Width = cd_gridMain2.Width;
+            //cd_gridMain2.Width = cd_gridMain3.Width;
+
+            if (Grid.GetColumn(brd_grid0_0) == 0)
+            {
+                Grid.SetColumn(brd_grid0_0, 1);
+                Grid.SetColumn(brd_grid1_0, 1);
+                Grid.SetColumn(brd_grid2_0, 1);
+
+                Grid.SetColumn(brd_grid0_1, 0);
+                Grid.SetColumn(brd_grid1_1, 0);
+                Grid.SetColumn(brd_grid2_1, 0);
+            }
+            else
+            {
+                Grid.SetColumn(brd_grid0_0, 0);
+                Grid.SetColumn(brd_grid1_0, 0);
+                Grid.SetColumn(brd_grid2_0, 0);
+
+                Grid.SetColumn(brd_grid0_1, 1);
+                Grid.SetColumn(brd_grid1_1, 1);
+                Grid.SetColumn(brd_grid2_1, 1);
+            }
         }
 
         private async void tgl_isApproved_Checked(object sender, RoutedEventArgs e)
