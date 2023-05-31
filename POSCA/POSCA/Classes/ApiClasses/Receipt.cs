@@ -42,6 +42,10 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        public string LocationName { get; set; }
+        public Supplier supplier { get; set; }
+        public List<RecieptDetails> ReceiptDetails { get; set; }
         #endregion
     }
     public class RecieptDetails
@@ -70,5 +74,8 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
         #endregion
+
+        //extra
+        public decimal Balance { get; set; }
     }
 }

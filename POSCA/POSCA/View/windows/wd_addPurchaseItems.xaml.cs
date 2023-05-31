@@ -49,6 +49,7 @@ namespace POSCA.View.windows
         public Item item { get; set; }
         public long supId { get; set; }
         public long locationId { get; set; }
+        public string itemsFor { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -129,7 +130,7 @@ namespace POSCA.View.windows
 
                 if (tb_search.Text != "")
                 {
-                    items = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, locationId, supId);
+                    items = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, locationId, supId, itemsFor);
                     RefreshItemsView();
                 }
            

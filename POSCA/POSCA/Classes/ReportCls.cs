@@ -234,6 +234,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
             paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
             paramarr.Add(new ReportParameter("DiscountValue", HelpClass.DecTostring(invoice.DiscountValue)));
+            paramarr.Add(new ReportParameter("netCost", HelpClass.DecTostring(invoice.CostNet)));
             paramarr.Add(new ReportParameter("Currency", AppSettings.currency));
             paramarr.Add(new ReportParameter("ConsumerDiscount", HelpClass.DecTostring(invoice.ConsumerDiscount)));
             paramarr.Add(new ReportParameter("UserName", "دينا نعمة"));
@@ -246,6 +247,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trToBranch", AppSettings.resourcemanager.GetString("trToBranch")));
             paramarr.Add(new ReportParameter("trDeliveryDate", AppSettings.resourcemanager.GetString("DeliveryDate")));
             paramarr.Add(new ReportParameter("trOrderDescription", AppSettings.resourcemanager.GetString("PurchaseOrderDescription")));
+            paramarr.Add(new ReportParameter("trOrderDescription2", AppSettings.resourcemanager.GetString("SupplymentOrderDescription")));
             paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")));
             paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
             paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
@@ -265,7 +267,6 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trOnly", AppSettings.resourcemanager.GetString("trOnly")));
 
             paramarr.Add(new ReportParameter("trEnterpriseDiscount", AppSettings.resourcemanager.GetString("EnterpriseDiscount")));
-            paramarr.Add(new ReportParameter("trItemsDiscount", AppSettings.resourcemanager.GetString("ItemsDiscount")));
 
             string orderStatus = FillCombo.PurchaseOrderStatusList.Where(x => x.key == invoice.InvStatus).FirstOrDefault().value;
             paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));

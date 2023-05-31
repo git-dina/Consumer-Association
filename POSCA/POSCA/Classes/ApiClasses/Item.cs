@@ -103,7 +103,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-         public async Task<List<Item>> GetItemByCodeOrName(string textSearch, long locationId, long supId)
+         public async Task<List<Item>> GetItemByCodeOrName(string textSearch, long locationId, long supId,string itemsFor)
         {
             var result = new List<Item>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -112,6 +112,7 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("textSearch", textSearch);
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("supId", supId.ToString());
+            parameters.Add("itemsFor", itemsFor);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
@@ -123,7 +124,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-         public async Task<Item> GetItemByBarcode(string barcode, long locationId, long supId)
+         public async Task<Item> GetItemByBarcode(string barcode, long locationId, long supId, string itemsFor)
         {
             var result = new Item();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -132,6 +133,7 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("barcode", barcode);
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("supId", supId.ToString());
+            parameters.Add("itemsFor", itemsFor);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)

@@ -523,7 +523,7 @@ namespace POSCA.Classes
         {
             itemTransTypeList = new List<keyValueString>() {
                 new keyValueString(){key="new_committee", value=AppSettings.resourcemanager.GetString("NewAndCommittee") },
-                new keyValueString(){key="isPurchased", value=AppSettings.resourcemanager.GetString("IsPurchased") },
+                new keyValueString(){key="orderPlaced", value=AppSettings.resourcemanager.GetString("IsPurchased") },
                 new keyValueString(){key="recieved", value=AppSettings.resourcemanager.GetString("ItemRecieved") },
             };
 

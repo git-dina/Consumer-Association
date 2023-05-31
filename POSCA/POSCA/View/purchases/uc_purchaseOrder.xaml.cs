@@ -698,7 +698,7 @@ namespace POSCA.View.purchases
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId);
+                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId,"orders");
                         if (itemLst.Count == 1)
                         {
                             item1 = itemLst[0];
@@ -708,7 +708,7 @@ namespace POSCA.View.purchases
                     }
                     else
                     {
-                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId);
+                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId, "orders");
                         barcode = tb_search.Text;
                     }
 
@@ -719,6 +719,7 @@ namespace POSCA.View.purchases
                         w.items = itemLst.ToList();
                         w.supId = (long)cb_SupId.SelectedValue;
                         w.locationId = (long)cb_LocationId.SelectedValue;
+                        w.itemsFor = "orders";
 
                         w.ShowDialog();
                         if (w.isOk)
@@ -989,8 +990,14 @@ namespace POSCA.View.purchases
         public async Task<string> printInvoice(PurchaseInvoice prInvoice)
         {
             string msg = "";
-            //try
+            try
             {
+                int sequence = 0;
+                foreach(var row in prInvoice.PurchaseDetails)
+                {
+                    row.Sequence = sequence++;
+                }
+
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
                 rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
@@ -1017,15 +1024,15 @@ namespace POSCA.View.purchases
 
 
             }
-            //catch (Exception ex)
-            //{
-            //    //this.Dispatcher.Invoke(() =>
-            //    //{
-            //    //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
+            catch (Exception ex)
+            {
+                //this.Dispatcher.Invoke(() =>
+                //{
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
 
-            //    //});
-            //    msg = "trNotCompleted";
-            //}
+                //});
+                msg = "trNotCompleted";
+            }
             return msg;
 
         }
