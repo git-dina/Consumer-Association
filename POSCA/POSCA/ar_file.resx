@@ -5816,4 +5816,31 @@
   <data name="RequiredQuantities" xml:space="preserve">
     <value>الكميات المطلوبة</value>
   </data>
+  <data name="ChairmanPurchasingCommittee" xml:space="preserve">
+    <value>رئيس لجنة المشتريات</value>
+  </data>
+  <data name="ManagingDirector" xml:space="preserve">
+    <value>المدير العام</value>
+  </data>
+  <data name="PurchaseOrderFooterStr3" xml:space="preserve">
+    <value>لسرعة الاستلام يرجى مراعاة تسلسل الأصناف بفاتورتكم مع طلب الشراء</value>
+  </data>
+  <data name="PurchaseOrderFooterStr4" xml:space="preserve">
+    <value>لا يحق للمورد المطالبة بالبضاعة المجانية عند إرجاع البضاعة المستلمة</value>
+  </data>
+  <data name="PurchaseOrderFooterStr5" xml:space="preserve">
+    <value>يعتبر الطلب لاغي في حالة عدم تسليم البضاعة خلال 30 يوم من تاريخه</value>
+  </data>
+  <data name="PurchseOrderFooterStr1" xml:space="preserve">
+    <value>رفع الرواكد والتوالف قبل الاستلام</value>
+  </data>
+  <data name="PurchseOrderFooterStr2" xml:space="preserve">
+    <value>البضاعة المطلوبة أعلاه برسم البيع</value>
+  </data>
+  <data name="PurchaseOrderFooterStr1" xml:space="preserve">
+    <value>رفع الرواكد والتوالف قبل الاستلام</value>
+  </data>
+  <data name="PurchaseOrderFooterStr2" xml:space="preserve">
+    <value>البضاعة المطلوبة أعلاه برسم البيع</value>
+  </data>
 </root>

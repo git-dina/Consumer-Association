@@ -491,7 +491,7 @@
                   <Width>0.63424in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.42785in</Width>
+                  <Width>0.38618in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.94329in</Width>
@@ -500,7 +500,7 @@
                   <Width>0.49537in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.28396in</Width>
+                  <Width>1.40529in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.6748in</Width>
@@ -515,7 +515,7 @@
                   <Width>0.64736in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.31598in</Width>
+                  <Width>0.23632in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -636,7 +636,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!trFactor.Value</Value>
+                                  <Value>=Parameters!trRequiredQuantities.Value</Value>
                                   <Style>
                                     <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
@@ -1372,7 +1372,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.52788in</Width>
+                  <Width>3.60754in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.72917in</Width>
@@ -1642,7 +1642,7 @@
             <Top>1.1932in</Top>
             <Left>0.2175in</Left>
             <Height>0.20833in</Height>
-            <Width>7.00685in</Width>
+            <Width>7.08651in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -1653,14 +1653,14 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>2.79386in</Height>
+        <Height>2.93947in</Height>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Body>
-      <Width>8.22435in</Width>
+      <Width>7.79648in</Width>
       <Page>
         <PageHeader>
           <Height>1.40625in</Height>
@@ -2272,7 +2272,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.93317in</Height>
+          <Height>1.22305in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2292,9 +2292,9 @@
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
               <Top>0.04167in</Top>
-              <Left>5.28358in</Left>
+              <Left>5.12498in</Left>
               <Height>0.97786in</Height>
-              <Width>2.31378in</Width>
+              <Width>2.41535in</Width>
               <Style>
                 <Border>
                   <Color>DimGray</Color>
@@ -2322,10 +2322,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox47</rd:DefaultName>
-              <Top>0.74154in</Top>
-              <Left>0.1934in</Left>
-              <Height>0.7702in</Height>
-              <Width>4.84733in</Width>
+              <Top>0.40697in</Top>
+              <Left>0.21508in</Left>
+              <Height>0.61256in</Height>
+              <Width>4.88212in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
@@ -2335,7 +2335,6 @@
                 </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
@@ -2346,7 +2345,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!trProcurementOfficer.Value</Value>
+                      <Value>=Parameters!trManagingDirector.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2360,10 +2359,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.74154in</Top>
-              <Left>3.8375in</Left>
+              <Top>0.53197in</Top>
+              <Left>2.17011in</Left>
               <Height>0.20766in</Height>
-              <Width>0.88378in</Width>
+              <Width>1.05786in</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -2376,10 +2375,10 @@
               </Style>
             </Textbox>
             <Line Name="Line1">
-              <Top>1.28377in</Top>
-              <Left>4.93298in</Left>
+              <Top>0.9492in</Top>
+              <Left>4.80731in</Left>
               <Height>0in</Height>
-              <Width>-1.28125in</Width>
+              <Width>-1.10717in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -2408,10 +2407,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.74154in</Top>
-              <Left>1.97435in</Left>
+              <Top>0.53197in</Top>
+              <Left>3.49933in</Left>
               <Height>0.20766in</Height>
-              <Width>1.28125in</Width>
+              <Width>1.45533in</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -2424,10 +2423,10 @@
               </Style>
             </Textbox>
             <Line Name="Line2">
-              <Top>1.28377in</Top>
-              <Left>3.2556in</Left>
+              <Top>0.9492in</Top>
+              <Left>3.27728in</Left>
               <Height>0in</Height>
-              <Width>-1.28125in</Width>
+              <Width>-1.10717in</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -2442,7 +2441,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Parameters!trStoresManager.Value</Value>
+                      <Value>=Parameters!trChairmanPurchasingCommittee.Value</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2456,10 +2455,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.74154in</Top>
-              <Left>0.5994in</Left>
+              <Top>0.53197in</Top>
+              <Left>0.30646in</Left>
               <Height>0.20766in</Height>
-              <Width>0.88378in</Width>
+              <Width>1.42628in</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <Border>
@@ -2472,10 +2471,10 @@
               </Style>
             </Textbox>
             <Line Name="Line3">
-              <Top>1.28377in</Top>
-              <Left>1.70759in</Left>
+              <Top>0.9492in</Top>
+              <Left>1.59491in</Left>
               <Height>0in</Height>
-              <Width>-1.28125in</Width>
+              <Width>-1.10717in</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -2505,9 +2504,9 @@
               </Paragraphs>
               <rd:DefaultName>agentTitle</rd:DefaultName>
               <Top>0.07056cm</Top>
-              <Left>5.64496cm</Left>
+              <Left>4.91134cm</Left>
               <Height>0.83256cm</Height>
-              <Width>7.59894cm</Width>
+              <Width>8.03554cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <Border>
@@ -2529,7 +2528,7 @@
                     <TextRun>
                       <Value>=Parameters!trPage.Value + " " + Globals!PageNumber.ToString + " " + Parameters!trFrom.Value + " " + Globals!TotalPages.ToString</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -2540,19 +2539,18 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.04167in</Top>
-              <Left>0.21508in</Left>
-              <Height>0.16666in</Height>
+              <Top>0.01389in</Top>
+              <Left>0.21855in</Left>
+              <Height>0.1in</Height>
               <Width>1.51419in</Width>
               <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
             <Textbox Name="Textbox26">
@@ -2565,7 +2563,7 @@
                       <Value>=Parameters!trPrintDone.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
+                        <FontWeight>Normal</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2576,10 +2574,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.23611in</Top>
-              <Left>1.43586in</Left>
-              <Height>0.15in</Height>
-              <Width>0.60426in</Width>
+              <Top>0.12847in</Top>
+              <Left>1.42197in</Left>
+              <Height>0.1in</Height>
+              <Width>0.48138in</Width>
               <ZIndex>10</ZIndex>
               <Style>
                 <Border>
@@ -2599,7 +2597,7 @@
                       <Value>=Parameters!trBy.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
+                        <FontWeight>Normal</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -2610,10 +2608,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.42778in</Top>
-              <Left>1.43586in</Left>
-              <Height>0.15in</Height>
-              <Width>0.60426in</Width>
+              <Top>0.23753in</Top>
+              <Left>1.42197in</Left>
+              <Height>0.1in</Height>
+              <Width>0.48138in</Width>
               <ZIndex>11</ZIndex>
               <Style>
                 <Border>
@@ -2644,9 +2642,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.42778in</Top>
-              <Left>0.21855in</Left>
-              <Height>0.15in</Height>
+              <Top>0.24236in</Top>
+              <Left>0.20466in</Left>
+              <Height>0.1in</Height>
               <Width>1.10691in</Width>
               <ZIndex>12</ZIndex>
               <Style>
@@ -2679,9 +2677,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.23611in</Top>
-              <Left>1.35324in</Left>
-              <Height>0.15in</Height>
+              <Top>0.12847in</Top>
+              <Left>1.33935in</Left>
+              <Height>0.1in</Height>
               <Width>0.06577in</Width>
               <ZIndex>13</ZIndex>
               <Style>
@@ -2713,9 +2711,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.42778in</Top>
+              <Top>0.24236in</Top>
               <Left>1.33935in</Left>
-              <Height>0.15in</Height>
+              <Height>0.1in</Height>
               <Width>0.06577in</Width>
               <ZIndex>14</ZIndex>
               <Style>
@@ -2746,15 +2744,327 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox10</rd:DefaultName>
-              <Top>0.23611in</Top>
-              <Left>0.21855in</Left>
-              <Height>0.15in</Height>
+              <Top>0.12847in</Top>
+              <Left>0.20466in</Left>
+              <Height>0.1in</Height>
               <Width>1.10691in</Width>
               <ZIndex>15</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox51">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!trPurchaseOrderFooterStr1.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.05556in</Top>
+              <Left>5.35649in</Left>
+              <Height>0.16599in</Height>
+              <Width>2.00001in</Width>
+              <ZIndex>16</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox38">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="* "</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.24933in</Top>
+              <Left>7.43289in</Left>
+              <Height>0.12221in</Height>
+              <Width>0.10744in</Width>
+              <ZIndex>17</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox29">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!trPurchaseOrderFooterStr2.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.24933in</Top>
+              <Left>5.16664in</Left>
+              <Height>0.12221in</Height>
+              <Width>2.25236in</Width>
+              <ZIndex>18</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox54">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="* "</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.37154in</Top>
+              <Left>7.43289in</Left>
+              <Height>0.10812in</Height>
+              <Width>0.10744in</Width>
+              <ZIndex>19</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox33">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!trPurchaseOrderFooterStr3.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.37154in</Top>
+              <Left>5.16664in</Left>
+              <Height>0.10812in</Height>
+              <Width>2.25236in</Width>
+              <ZIndex>20</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox60">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="* "</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.49356in</Top>
+              <Left>7.43289in</Left>
+              <Height>0.09444in</Height>
+              <Width>0.10744in</Width>
+              <ZIndex>21</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox61">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!trPurchaseOrderFooterStr4.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.47967in</Top>
+              <Left>5.16664in</Left>
+              <Height>0.10833in</Height>
+              <Width>2.25236in</Width>
+              <ZIndex>22</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox62">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="* "</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.78266in</Top>
+              <Left>7.43289in</Left>
+              <Height>0.15in</Height>
+              <Width>0.10744in</Width>
+              <ZIndex>23</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox63">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!trPurchaseOrderFooterStr5.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                    <Direction>RTL</Direction>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox10</rd:DefaultName>
+              <Top>0.78266in</Top>
+              <Left>5.16664in</Left>
+              <Height>0.15in</Height>
+              <Width>2.25236in</Width>
+              <ZIndex>24</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
               </Style>
@@ -2979,27 +3289,23 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr1">
+    <ReportParameter Name="trPurchaseOrderFooterStr1">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr2">
+    <ReportParameter Name="trPurchaseOrderFooterStr2">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr3">
+    <ReportParameter Name="trPurchaseOrderFooterStr3">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr4">
+    <ReportParameter Name="trPurchaseOrderFooterStr4">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr5">
-      <DataType>String</DataType>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="trSupplyingOrderFooterStr6">
+    <ReportParameter Name="trPurchaseOrderFooterStr5">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -3037,7 +3343,7 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trProcurementOfficer">
+    <ReportParameter Name="trManagingDirector">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -3045,7 +3351,7 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="trStoresManager">
+    <ReportParameter Name="trChairmanPurchasingCommittee">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -3284,32 +3590,27 @@
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>10</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr1</ParameterName>
+          <ParameterName>trPurchaseOrderFooterStr1</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>10</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr2</ParameterName>
+          <ParameterName>trPurchaseOrderFooterStr2</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>10</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr3</ParameterName>
+          <ParameterName>trPurchaseOrderFooterStr3</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>11</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr4</ParameterName>
+          <ParameterName>trPurchaseOrderFooterStr4</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>11</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr5</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>2</ColumnIndex>
-          <RowIndex>11</RowIndex>
-          <ParameterName>trSupplyingOrderFooterStr6</ParameterName>
+          <ParameterName>trPurchaseOrderFooterStr5</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
@@ -3349,7 +3650,7 @@
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>13</RowIndex>
-          <ParameterName>trProcurementOfficer</ParameterName>
+          <ParameterName>trManagingDirector</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
@@ -3359,7 +3660,7 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>14</RowIndex>
-          <ParameterName>trStoresManager</ParameterName>
+          <ParameterName>trChairmanPurchasingCommittee</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
@@ -3561,7 +3862,6 @@
         FractionAsCurrency = Fractions + " " + Currency
 
     End Function</Code>
-  <Language>ar-SA</Language>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>b342ef79-c4e7-45e4-ba74-c7c5f30e31a9</rd:ReportID>
 </Report>

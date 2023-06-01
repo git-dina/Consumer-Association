@@ -448,6 +448,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chairman of the Purchasing Committee.
+        /// </summary>
+        internal static string ChairmanPurchasingCommittee {
+            get {
+                return ResourceManager.GetString("ChairmanPurchasingCommittee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charts.
         /// </summary>
         internal static string charts {
@@ -1952,6 +1961,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Managing Director.
+        /// </summary>
+        internal static string ManagingDirector {
+            get {
+                return ResourceManager.GetString("ManagingDirector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max Discount.
         /// </summary>
         internal static string maxDiscount {
@@ -2758,6 +2776,51 @@ namespace POSCA {
         internal static string PurchaseOrderDescription {
             get {
                 return ResourceManager.GetString("PurchaseOrderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raising stagnants and tuning before receiving.
+        /// </summary>
+        internal static string PurchaseOrderFooterStr1 {
+            get {
+                return ResourceManager.GetString("PurchaseOrderFooterStr1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The goods requested above are for sale.
+        /// </summary>
+        internal static string PurchaseOrderFooterStr2 {
+            get {
+                return ResourceManager.GetString("PurchaseOrderFooterStr2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For speedy receipt, keep the order of the items in your invoice as it in purchase order.
+        /// </summary>
+        internal static string PurchaseOrderFooterStr3 {
+            get {
+                return ResourceManager.GetString("PurchaseOrderFooterStr3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supplier is not entitled to claim the free goods when returning the received goods.
+        /// </summary>
+        internal static string PurchaseOrderFooterStr4 {
+            get {
+                return ResourceManager.GetString("PurchaseOrderFooterStr4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The order is considered void if the goods are not delivered within 30 days of its date.
+        /// </summary>
+        internal static string PurchaseOrderFooterStr5 {
+            get {
+                return ResourceManager.GetString("PurchaseOrderFooterStr5", resourceCulture);
             }
         }
         
