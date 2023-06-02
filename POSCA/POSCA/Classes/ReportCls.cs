@@ -226,7 +226,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("com_fax_icon", "file:\\" + GetIconImagePath("fax")));
 
             paramarr.Add(new ReportParameter("OrderDate", HelpClass.DateToString(invoice.OrderDate)));
-            paramarr.Add(new ReportParameter("Title", AppSettings.resourcemanager.GetString("ProcurementRequestTitle")));
+            paramarr.Add(new ReportParameter("Title", AppSettings.resourcemanager.GetString("PurchaseOrderTitle")));
 
             paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
             paramarr.Add(new ReportParameter("SupplyingOrderNum", invoice.InvNumber == null ? "-" : invoice.SupplyingOrderNum.ToString()));//paramarr[6]

@@ -5568,4 +5568,25 @@ Main Documents</value>
   <data name="RequiredQuantities" xml:space="preserve">
     <value>Required Quantities</value>
   </data>
+  <data name="ChairmanPurchasingCommittee" xml:space="preserve">
+    <value>Chairman of the Purchasing Committee</value>
+  </data>
+  <data name="ManagingDirector" xml:space="preserve">
+    <value>Managing Director</value>
+  </data>
+  <data name="PurchaseOrderFooterStr1" xml:space="preserve">
+    <value>Raising stagnants and tuning before receiving</value>
+  </data>
+  <data name="PurchaseOrderFooterStr2" xml:space="preserve">
+    <value>The goods requested above are for sale</value>
+  </data>
+  <data name="PurchaseOrderFooterStr3" xml:space="preserve">
+    <value>For speedy receipt, keep the order of the items in your invoice as it in purchase order</value>
+  </data>
+  <data name="PurchaseOrderFooterStr4" xml:space="preserve">
+    <value>Supplier is not entitled to claim the free goods when returning the received goods</value>
+  </data>
+  <data name="PurchaseOrderFooterStr5" xml:space="preserve">
+    <value>The order is considered void if the goods are not delivered within 30 days of its date</value>
+  </data>
 </root>
