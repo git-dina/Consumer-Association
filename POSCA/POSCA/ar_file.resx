@@ -5849,19 +5849,31 @@
   <data name="ReceiptTypeHint" xml:space="preserve">
     <value>نوع الاستلام...</value>
   </data>
+  <data name="AccountingTransfer" xml:space="preserve">
+    <value>مرحل محاسبياً</value>
+  </data>
   <data name="ApproximateVariancesHint" xml:space="preserve">
     <value>الفروقات التقريبية...</value>
   </data>
   <data name="InvoiceAmountHint" xml:space="preserve">
     <value>قيمة الفاتورة...</value>
   </data>
+  <data name="LocationTransfer" xml:space="preserve">
+    <value>مرحل مواقع</value>
+  </data>
   <data name="NetInvoiceHint" xml:space="preserve">
     <value>صافي الفاتورة...</value>
+  </data>
+  <data name="NotCarriedOver" xml:space="preserve">
+    <value>غير مرحل</value>
   </data>
   <data name="ReceiptAll" xml:space="preserve">
     <value>استلام الكل</value>
   </data>
   <data name="ReceiptDateHint" xml:space="preserve">
     <value>تاريخ الاستلام</value>
+  </data>
+  <data name="PurchaseOrderNumHint" xml:space="preserve">
+    <value>رقم طلب الشراء...</value>
   </data>
 </root>

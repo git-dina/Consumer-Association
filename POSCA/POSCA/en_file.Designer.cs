@@ -133,6 +133,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Accounting Transfer.
+        /// </summary>
+        internal static string AccountingTransfer {
+            get {
+                return ResourceManager.GetString("AccountingTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to activate.
         /// </summary>
         internal static string activate {
@@ -1924,6 +1933,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Location Transfer.
+        /// </summary>
+        internal static string LocationTransfer {
+            get {
+                return ResourceManager.GetString("LocationTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Location Type....
         /// </summary>
         internal static string LocationTypeHint {
@@ -2218,6 +2236,15 @@ namespace POSCA {
         internal static string NotApproved {
             get {
                 return ResourceManager.GetString("NotApproved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Carried Over.
+        /// </summary>
+        internal static string NotCarriedOver {
+            get {
+                return ResourceManager.GetString("NotCarriedOver", resourceCulture);
             }
         }
         
@@ -2866,6 +2893,15 @@ namespace POSCA {
         internal static string PurchaseOrderNotesHint {
             get {
                 return ResourceManager.GetString("PurchaseOrderNotesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purchase Order Num....
+        /// </summary>
+        internal static string PurchaseOrderNumHint {
+            get {
+                return ResourceManager.GetString("PurchaseOrderNumHint", resourceCulture);
             }
         }
         

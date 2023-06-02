@@ -741,6 +741,33 @@ namespace POSCA.Classes
         #endregion
 
         #region receipts
+        #region receipts status
+        static public List<keyValueString> ReceiptStatusList;
+        static public IEnumerable<keyValueString> RefreshReceiptStatusList()
+        {
+            ReceiptStatusList = new List<keyValueString>() {
+                new keyValueString(){key="new", value=AppSettings.resourcemanager.GetString("trNew") },
+                new keyValueString(){key="notCarriedOver", value=AppSettings.resourcemanager.GetString("NotCarriedOver") },
+                new keyValueString(){key="accountingTransfer", value=AppSettings.resourcemanager.GetString("AccountingTransfer") },
+                new keyValueString(){key="locationTransfer", value=AppSettings.resourcemanager.GetString("LocationTransfer") },
+            };
+
+            return ReceiptStatusList;
+        }
+
+        static public void fillReceiptStatus(ComboBox combo)
+        {
+            if (ReceiptStatusList is null)
+                RefreshReceiptStatusList();
+
+            combo.ItemsSource = ReceiptStatusList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+
+        #region receipts Types
         static public List<keyValueString> ReceiptsTypesList;
         static public IEnumerable<keyValueString> RefreshReceiptsTypes()
         {
@@ -759,14 +786,16 @@ namespace POSCA.Classes
 
         static public void fillReceiptsTypes(ComboBox combo)
         {
+       
             if (ReceiptsTypesList is null)
                 RefreshReceiptsTypes();
 
             combo.ItemsSource = ReceiptsTypesList;
             combo.SelectedValuePath = "key";
             combo.DisplayMemberPath = "value";
-            combo.SelectedIndex = 0;
+
         }
+        #endregion
         #endregion
     }
 }

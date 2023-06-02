@@ -5595,19 +5595,31 @@ Main Documents</value>
   <data name="ReceiptTypeHint" xml:space="preserve">
     <value>Receipt Type...</value>
   </data>
+  <data name="AccountingTransfer" xml:space="preserve">
+    <value>Accounting Transfer</value>
+  </data>
   <data name="ApproximateVariancesHint" xml:space="preserve">
     <value>Approximate Variances...</value>
   </data>
   <data name="InvoiceAmountHint" xml:space="preserve">
     <value>Invoice Amount...</value>
   </data>
+  <data name="LocationTransfer" xml:space="preserve">
+    <value>Location Transfer</value>
+  </data>
   <data name="NetInvoiceHint" xml:space="preserve">
     <value>Net Invoice...</value>
+  </data>
+  <data name="NotCarriedOver" xml:space="preserve">
+    <value>Not Carried Over</value>
   </data>
   <data name="ReceiptAll" xml:space="preserve">
     <value>Receipt All</value>
   </data>
   <data name="ReceiptDateHint" xml:space="preserve">
     <value>Receipt Date...</value>
+  </data>
+  <data name="PurchaseOrderNumHint" xml:space="preserve">
+    <value>Purchase Order Num...</value>
   </data>
 </root>

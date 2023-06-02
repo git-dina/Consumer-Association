@@ -44,6 +44,7 @@ namespace POSCA.View.windows
             this.Close();
         }
         public PurchaseInvDetails newPurchaseItem = new PurchaseInvDetails();
+        public RecieptDetails newReceiptItem = new RecieptDetails();
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -69,8 +70,11 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
-               
-                this.DataContext = newPurchaseItem;
+
+                if (newPurchaseItem.ItemId != null)
+                    this.DataContext = newPurchaseItem;
+                else
+                    this.DataContext = newReceiptItem;
                 HelpClass.EndAwait(grid_main);
 
                 tb_MaxQty.Focus();
