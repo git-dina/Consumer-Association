@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Border x:Name="brd_grid0_0" Grid.Row="0" Grid.Column="0" 
+        <Border x:Name="brd_grid0_0" IsEnabled="True"  Grid.Row="0" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
