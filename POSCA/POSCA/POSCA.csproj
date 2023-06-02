@@ -297,6 +297,9 @@
     <Compile Include="View\windows\wd_purchaseInv.xaml.cs">
       <DependentUpon>wd_purchaseInv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_receiptInv.xaml.cs">
+      <DependentUpon>wd_receiptInv.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_supplierAllowedOperations.xaml.cs">
       <DependentUpon>wd_supplierAllowedOperations.xaml</DependentUpon>
     </Compile>
@@ -431,6 +434,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_purchaseInv.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_receiptInv.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
