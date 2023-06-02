@@ -5843,4 +5843,7 @@
   <data name="PurchaseOrderFooterStr2" xml:space="preserve">
     <value>البضاعة المطلوبة أعلاه برسم البيع</value>
   </data>
+  <data name="ReceiptTypeHint" xml:space="preserve">
+    <value>نوع الاستلام...</value>
+  </data>
 </root>

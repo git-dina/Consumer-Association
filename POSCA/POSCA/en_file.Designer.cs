@@ -970,6 +970,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document Status....
+        /// </summary>
+        internal static string DocumentStatusHint {
+            get {
+                return ResourceManager.GetString("DocumentStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document Type.
         /// </summary>
         internal static string DocumentType {
@@ -2929,6 +2938,15 @@ namespace POSCA {
         internal static string Receipts {
             get {
                 return ResourceManager.GetString("Receipts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt Type....
+        /// </summary>
+        internal static string ReceiptTypeHint {
+            get {
+                return ResourceManager.GetString("ReceiptTypeHint", resourceCulture);
             }
         }
         
@@ -8981,7 +8999,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الفاتورة....
+        ///   Looks up a localized string similar to Invoice Num....
         /// </summary>
         internal static string trInvoiceNumberHint {
             get {

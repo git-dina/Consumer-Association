@@ -151,10 +151,11 @@ namespace POSCA.View.receipts
             //txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("OrderStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("DocumentStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptType, AppSettings.resourcemanager.GetString("ReceiptTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupInvoiceNum, AppSettings.resourcemanager.GetString("SupplyingOrderNumHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupInvoiceNum, AppSettings.resourcemanager.GetString("trInvoiceNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptDate, AppSettings.resourcemanager.GetString("DocumentDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SupInvoiceDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
@@ -1059,21 +1060,7 @@ namespace POSCA.View.receipts
             }
         }
 
-        Supplier supplier;
-        private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
 
-                supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
-
-                txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
 
         private void cb_LocationId_KeyUp(object sender, KeyEventArgs e)
         {
