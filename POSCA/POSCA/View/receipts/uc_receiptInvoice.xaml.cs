@@ -1159,10 +1159,10 @@ namespace POSCA.View.receipts
 
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
-            //ColumnDefinition cd_gridMain3 = new ColumnDefinition();
-            //cd_gridMain3.Width = cd_gridMain1.Width;
-            //cd_gridMain1.Width = cd_gridMain2.Width;
-            //cd_gridMain2.Width = cd_gridMain3.Width;
+            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
+            cd_gridMain3.Width = cd_gridMain1.Width;
+            cd_gridMain1.Width = cd_gridMain2.Width;
+            cd_gridMain2.Width = cd_gridMain3.Width;
 
             if (Grid.GetColumn(brd_grid0_0) == 0)
             {

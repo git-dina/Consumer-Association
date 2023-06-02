@@ -1098,16 +1098,16 @@ namespace POSCA.View.purchases
 
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
-            //ColumnDefinition cd_gridMain3 = new ColumnDefinition();
-            //cd_gridMain3.Width = cd_gridMain1.Width;
-            //cd_gridMain1.Width = cd_gridMain2.Width;
-            //cd_gridMain2.Width = cd_gridMain3.Width;
+            ColumnDefinition cd_gridMain3 = new ColumnDefinition();
+            cd_gridMain3.Width = cd_gridMain1.Width;
+            cd_gridMain1.Width = cd_gridMain2.Width;
+            cd_gridMain2.Width = cd_gridMain3.Width;
 
             //if (grid_main.FlowDirection == FlowDirection.LeftToRight)
             //    grid_main.FlowDirection = FlowDirection.RightToLeft;
             //else
             //    grid_main.FlowDirection = FlowDirection.LeftToRight;
-           if(Grid.GetColumn( brd_grid0_0 ) == 0)
+            if (Grid.GetColumn( brd_grid0_0 ) == 0)
             {
                 Grid.SetColumn(brd_grid0_0, 1);
                 Grid.SetColumn(brd_grid1_0, 1);
