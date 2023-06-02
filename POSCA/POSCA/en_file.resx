@@ -2543,10 +2543,10 @@ Main Documents</value>
     <value>تاريخ الفاتورة</value>
   </data>
   <data name="trInvoiceDateHint" xml:space="preserve">
-    <value>تاريخ الفاتورة...</value>
+    <value>Invoice Date...</value>
   </data>
   <data name="trInvoiceHint" xml:space="preserve">
-    <value>الفاتورة...</value>
+    <value>Invoice...</value>
   </data>
   <data name="trInvoiceItemHint" xml:space="preserve">
     <value>فاتورة, المادة,...</value>
@@ -5594,5 +5594,20 @@ Main Documents</value>
   </data>
   <data name="ReceiptTypeHint" xml:space="preserve">
     <value>Receipt Type...</value>
+  </data>
+  <data name="ApproximateVariancesHint" xml:space="preserve">
+    <value>Approximate Variances...</value>
+  </data>
+  <data name="InvoiceAmountHint" xml:space="preserve">
+    <value>Invoice Amount...</value>
+  </data>
+  <data name="NetInvoiceHint" xml:space="preserve">
+    <value>Net Invoice...</value>
+  </data>
+  <data name="ReceiptAll" xml:space="preserve">
+    <value>Receipt All</value>
+  </data>
+  <data name="ReceiptDateHint" xml:space="preserve">
+    <value>Receipt Date...</value>
   </data>
 </root>

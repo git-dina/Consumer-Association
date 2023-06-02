@@ -161,7 +161,7 @@
                       BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  Name="md_draft">-->
                 <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
                             Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
-                    Background="{x:Null}" x:Name="btn_supplyingOrders"  Click="Btn_supplyingOrders_Click" >
+                    Background="{x:Null}" x:Name="btn_purchaseOrders"  Click="Btn_purchaseOrders_Click" >
                     <StackPanel>
                         <Path Fill="#4E4E4E" Stretch="Fill"  
                           Width="30" Height="30"  
@@ -369,7 +369,8 @@
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0"
-                                  IsTextSearchEnabled ="False"
+                                  SelectionChanged="cb_ReceiptType_SelectionChanged"
+                                      IsTextSearchEnabled ="False"
                                   IsEditable="True"
                                   StaysOpenOnEdit="true"/>
                             <Path Fill="#E81123" x:Name="p_error_ReceiptType" Stretch="Fill" Margin="5,5,20,5"

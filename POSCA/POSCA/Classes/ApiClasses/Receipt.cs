@@ -45,6 +45,8 @@ namespace POSCA.Classes.ApiClasses
 
         public string LocationName { get; set; }
         public Supplier supplier { get; set; }
+        public string PurchaseInvNumber { get; set; }
+
         public List<RecieptDetails> ReceiptDetails { get; set; }
         #endregion
     }

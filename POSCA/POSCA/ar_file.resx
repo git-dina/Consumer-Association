@@ -5849,4 +5849,19 @@
   <data name="ReceiptTypeHint" xml:space="preserve">
     <value>نوع الاستلام...</value>
   </data>
+  <data name="ApproximateVariancesHint" xml:space="preserve">
+    <value>الفروقات التقريبية...</value>
+  </data>
+  <data name="InvoiceAmountHint" xml:space="preserve">
+    <value>قيمة الفاتورة...</value>
+  </data>
+  <data name="NetInvoiceHint" xml:space="preserve">
+    <value>صافي الفاتورة...</value>
+  </data>
+  <data name="ReceiptAll" xml:space="preserve">
+    <value>استلام الكل</value>
+  </data>
+  <data name="ReceiptDateHint" xml:space="preserve">
+    <value>تاريخ الاستلام</value>
+  </data>
 </root>

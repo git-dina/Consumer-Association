@@ -112,9 +112,9 @@ namespace POSCA.View.receipts
                 }
                 while (!isDone);
                 #endregion
-                /*
-                FillCombo.fillReceiptOrderStatus(cb_ReceiptStatus);
-                */
+              
+                FillCombo.fillReceiptsTypes(cb_ReceiptType);
+              
                 //await Search();
                 await Clear();
 
@@ -148,7 +148,7 @@ namespace POSCA.View.receipts
             txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
-            //txt_isApproved.Text = AppSettings.resourcemanager.GetString("Approval");
+            txt_IsRecieveAll.Text = AppSettings.resourcemanager.GetString("ReceiptAll");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("DocumentStatusHint"));
@@ -156,8 +156,10 @@ namespace POSCA.View.receipts
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupInvoiceNum, AppSettings.resourcemanager.GetString("trInvoiceNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptDate, AppSettings.resourcemanager.GetString("DocumentDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SupInvoiceDate, AppSettings.resourcemanager.GetString("RequestedReceiptDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptDate, AppSettings.resourcemanager.GetString("ReceiptDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SupInvoiceDate, AppSettings.resourcemanager.GetString("trInvoiceDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceAmount, AppSettings.resourcemanager.GetString("InvoiceAmountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_NetInvoice, AppSettings.resourcemanager.GetString("NetInvoiceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierNotes, AppSettings.resourcemanager.GetString("SupplierNotesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierPurchaseNotes, AppSettings.resourcemanager.GetString("SupplierOrderNotesHint"));
@@ -180,7 +182,7 @@ namespace POSCA.View.receipts
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("ReceiptOrders");
-            btn_supplyingOrders.ToolTip = AppSettings.resourcemanager.GetString("ProcurementRequests");
+            btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -816,30 +818,29 @@ namespace POSCA.View.receipts
             txt_CostNet.Text = HelpClass.DecTostring(netCost);
             */
         }
-        private void Btn_supplyingOrders_Click(object sender, RoutedEventArgs e)
+        private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
         {
-            /*
+        
             try
             {
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
-                wd_receiptInv w = new wd_receiptInv();
+                wd_purchaseInv w = new wd_purchaseInv();
 
-                string invoiceType = "soa";
+                string invoiceType = "po";
                 w.invoiceType = invoiceType;
-                w.invoiceStatus = "opened";
-                w.isApproved = true;
+                w.invoiceStatus = "orderPlaced";
 
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                    _InvType = "soa";
-                    receipt = w.receipt;
-                    receipt.SupplyingOrderNum = receipt.InvNumber;
-                    receipt.InvNumber = "";
-                    receipt.SupInvoiceNum = receipt.ReceiptId;
-                    receipt.ReceiptId = 0;
-                    fillOrderInputs(receipt);
+                    //_InvType = "soa";
+                    //receipt = w.receipt;
+                    //receipt.SupplyingOrderNum = receipt.InvNumber;
+                    //receipt.InvNumber = "";
+                    //receipt.SupInvoiceNum = receipt.ReceiptId;
+                    //receipt.ReceiptId = 0;
+                    //fillOrderInputs(receipt);
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -852,7 +853,7 @@ namespace POSCA.View.receipts
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
+           
         }
 
         private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
@@ -1226,6 +1227,17 @@ namespace POSCA.View.receipts
 
         }
 
+        private void cb_ReceiptType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(cb_ReceiptType.SelectedValue.ToString() == "purchaseOrders")
+            {
+                sp_IsRecieveAll.Visibility = Visibility.Visible;
+                //رقم طلب الشراء
+            }
+            else
+            {
 
+            }
+        }
     }
 }

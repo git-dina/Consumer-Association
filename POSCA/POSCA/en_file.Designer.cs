@@ -214,6 +214,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approximate Variances....
+        /// </summary>
+        internal static string ApproximateVariancesHint {
+            get {
+                return ResourceManager.GetString("ApproximateVariancesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arabic information.
         /// </summary>
         internal static string arabicInformation {
@@ -1465,6 +1474,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Amount....
+        /// </summary>
+        internal static string InvoiceAmountHint {
+            get {
+                return ResourceManager.GetString("InvoiceAmountHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice class.
         /// </summary>
         internal static string invoiceClass {
@@ -2101,6 +2119,15 @@ namespace POSCA {
         internal static string NetCostHint {
             get {
                 return ResourceManager.GetString("NetCostHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Invoice....
+        /// </summary>
+        internal static string NetInvoiceHint {
+            get {
+                return ResourceManager.GetString("NetInvoiceHint", resourceCulture);
             }
         }
         
@@ -2929,6 +2956,24 @@ namespace POSCA {
         internal static string Receipt {
             get {
                 return ResourceManager.GetString("Receipt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt All.
+        /// </summary>
+        internal static string ReceiptAll {
+            get {
+                return ResourceManager.GetString("ReceiptAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt Date....
+        /// </summary>
+        internal static string ReceiptDateHint {
+            get {
+                return ResourceManager.GetString("ReceiptDateHint", resourceCulture);
             }
         }
         
@@ -8963,7 +9008,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ الفاتورة....
+        ///   Looks up a localized string similar to Invoice Date....
         /// </summary>
         internal static string trInvoiceDateHint {
             get {
@@ -8972,7 +9017,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الفاتورة....
+        ///   Looks up a localized string similar to Invoice....
         /// </summary>
         internal static string trInvoiceHint {
             get {

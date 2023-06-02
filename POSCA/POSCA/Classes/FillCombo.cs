@@ -756,6 +756,17 @@ namespace POSCA.Classes
 
             return ReceiptsTypesList;
         }
+
+        static public void fillReceiptsTypes(ComboBox combo)
+        {
+            if (ReceiptsTypesList is null)
+                RefreshReceiptsTypes();
+
+            combo.ItemsSource = ReceiptsTypesList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
         #endregion
     }
 }
