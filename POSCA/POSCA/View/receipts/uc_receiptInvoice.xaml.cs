@@ -1225,5 +1225,7 @@ namespace POSCA.View.receipts
         {
 
         }
+
+
     }
 }

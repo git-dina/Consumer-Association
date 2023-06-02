@@ -2555,7 +2555,7 @@ Main Documents</value>
     <value>رقم الفاتورة</value>
   </data>
   <data name="trInvoiceNumberHint" xml:space="preserve">
-    <value>رقم الفاتورة...</value>
+    <value>Invoice Num...</value>
   </data>
   <data name="trInvoices" xml:space="preserve">
     <value>الفواتير</value>
@@ -5588,5 +5588,11 @@ Main Documents</value>
   </data>
   <data name="PurchaseOrderFooterStr5" xml:space="preserve">
     <value>The order is considered void if the goods are not delivered within 30 days of its date</value>
+  </data>
+  <data name="DocumentStatusHint" xml:space="preserve">
+    <value>Document Status...</value>
+  </data>
+  <data name="ReceiptTypeHint" xml:space="preserve">
+    <value>Receipt Type...</value>
   </data>
 </root>
