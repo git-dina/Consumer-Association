@@ -157,21 +157,7 @@
                                            HorizontalAlignment="Center"/>-->
                     </StackPanel>
                 </Button>
-                <!--<materialDesign:Badged VerticalAlignment="Center" Margin="5,10,5,0" 
-                      BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  Name="md_draft">-->
-                <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
-                            Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
-                    Background="{x:Null}" x:Name="btn_purchaseOrders"  Click="Btn_purchaseOrders_Click" >
-                    <StackPanel>
-                        <Path Fill="#4E4E4E" Stretch="Fill"  
-                          Width="30" Height="30"  
-                              FlowDirection="LeftToRight"
-                          Data="{StaticResource dolarListCheck}" />
-                        <!--<TextBlock Text="drafts" x:Name="txt_drafts" Foreground="#178DD2" 
-                                           FontWeight="Regular" FontSize="8" TextAlignment="Center" Width="35"
-                                           HorizontalAlignment="Center"/>-->
-                    </StackPanel>
-                </Button>
+               
                 <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
                             Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
                     Background="{x:Null}" x:Name="btn_receiptOrders"  Click="Btn_receiptOrders_Click" >
@@ -362,9 +348,14 @@
                                  Checked="tgl_IsRecieveAll_Checked"
                                  Unchecked="tgl_IsRecieveAll_Unchecked"/>
                     </StackPanel>
-                    <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <ComboBox x:Name="cb_ReceiptType"   
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <ComboBox x:Name="cb_ReceiptType"   
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="ReceiptType..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
@@ -374,13 +365,24 @@
                                       IsTextSearchEnabled ="False"
                                   IsEditable="True"
                                   StaysOpenOnEdit="true"/>
-                            <Path Fill="#E81123" x:Name="p_error_ReceiptType" Stretch="Fill" Margin="5,5,20,5"
+                                <Path Fill="#E81123" x:Name="p_error_ReceiptType" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                        </Grid>
-                    </Border>
+                            </Grid>
+                        </Border>
+
+                        <Button Grid.Column="1"  Padding="0"    
+                                TabIndex="-1"
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
+                                            x:Name="btn_purchaseOrders" Click="Btn_purchaseOrders_Click"  
+                                Margin="5 5 10 5">
+                            <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                    Width="25.5" Height="27.5" FlowDirection="LeftToRight"
+                           Data="{StaticResource dolarListCheck}" />
+                        </Button>
+                    </Grid>
                     
                     <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
