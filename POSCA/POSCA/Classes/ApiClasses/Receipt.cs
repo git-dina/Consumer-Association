@@ -13,15 +13,15 @@ namespace POSCA.Classes.ApiClasses
         #region Attributes
         public long ReceiptId { get; set; }
         public string ReceiptStatus { get; set; } = "new";
-        public bool IsRecieveAll { get; set; }
+        public bool IsRecieveAll { get; set; } = true;
         public string InvNumber { get; set; }
         public string ReceiptType { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> PurchaseId { get; set; }
-        public Nullable<System.DateTime> ReceiptDate { get; set; }
+        public Nullable<System.DateTime> ReceiptDate { get; set; } = DateTime.Now;
         public Nullable<long> SupId { get; set; }
         public string SupInvoiceNum { get; set; }
-        public System.DateTime SupInvoiceDate { get; set; }
+        public System.DateTime SupInvoiceDate { get; set; } = DateTime.Now;
         public Nullable<decimal> InvoiceAmount { get; set; }
         public Nullable<decimal> AmountDifference { get; set; } = 0;
         public string Notes { get; set; }
@@ -37,6 +37,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<decimal> TotalPrice { get; set; }
 
         //////////////////// extra
+       public decimal? NetInvoice { get; set; }
         public bool IsTransfer { get; set; }
         public Nullable<long> TransferBy { get; set; }
         public Nullable<System.DateTime> TransferDate { get; set; }
@@ -62,7 +63,7 @@ namespace POSCA.Classes.ApiClasses
         {
             var result = new Receipt();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Receipt/SaveReceiptOrder";
+            string method = "Receipts/SaveReceiptOrder";
 
             var myContent = JsonConvert.SerializeObject(invoice);
             parameters.Add("itemObject", myContent);

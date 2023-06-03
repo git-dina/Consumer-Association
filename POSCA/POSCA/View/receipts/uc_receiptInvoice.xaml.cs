@@ -274,7 +274,10 @@ namespace POSCA.View.receipts
 
                 case "purchaseOrders": //supplying order is approved
                     btn_save.IsEnabled = true;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    if(tgl_IsRecieveAll.IsChecked == true)
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    else
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
 
                     btn_purchaseOrders.Visibility = Visibility.Visible;
                     brd_SupInvoiceNum.Visibility = Visibility.Visible;
@@ -398,9 +401,18 @@ namespace POSCA.View.receipts
 
             receipt.InvoiceAmount = decimal.Parse( tb_InvoiceAmount.Text);
             receipt.AmountDifference = decimal.Parse( tb_AmountDifference.Text);
+
+            receipt.TotalCost = decimal.Parse(txt_TotalCost.Text);
+            receipt.TotalPrice = decimal.Parse(txt_TotalPrice.Text);
+
             receipt.CoopDiscount = supplier.DiscountPercentage;
             receipt.DiscountValue = decimal.Parse(txt_DiscountValue.Text);
 
+            if (tb_FreePercentage.Text != "")
+                receipt.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
+            receipt.FreeValue = decimal.Parse(txt_FreeValue.Text);
+            receipt.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
+            receipt.CostNet = decimal.Parse(txt_CostNet.Text);
 
             receipt.CreateUserId = MainWindow.userLogin.userId;
 
@@ -539,9 +551,9 @@ namespace POSCA.View.receipts
             dg_invoiceDetails.ItemsSource = billDetails;
             dg_invoiceDetails.Items.Refresh();
 
-            await Task.Delay(0050);
-            dp_ReceiptDate.SelectedDate = DateTime.Now;
-            dp_SupInvoiceDate.SelectedDate = DateTime.Now;
+            //await Task.Delay(0050);
+            //dp_ReceiptDate.SelectedDate = DateTime.Now;
+            //dp_SupInvoiceDate.SelectedDate = DateTime.Now;
 
             txt_TotalCost.Text = HelpClass.DecTostring(0);
             txt_TotalPrice.Text = HelpClass.DecTostring(0);
@@ -847,6 +859,8 @@ namespace POSCA.View.receipts
                     receipt.SupId = purchaseOrder.SupId;
                     receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
                    
+                  receipt.NetInvoice= purchaseOrder.CostNet;
+
                     fillOrderInputs(purchaseOrder);
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -943,7 +957,7 @@ namespace POSCA.View.receipts
                 {
                     Balance = row.Balance,
                     Barcode = row.Barcode,
-                    ConsumerDiscount = row.CoopDiscount,
+                    ConsumerDiscount = row.ConsumerDiscount,
                     CoopDiscount = row.CoopDiscount,
                     Cost = row.Cost,
                     Factor = row.Factor,
@@ -1243,7 +1257,7 @@ namespace POSCA.View.receipts
 
                 if (columnName == AppSettings.resourcemanager.GetString("MaxFactorQty") && !t.Text.Equals(""))
                 {                 
-                    if(_ReceiptType == "purchaseOrder")
+                    if(_ReceiptType == "purchaseOrders")
                     {
                         var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
                         if(it.MaxQty < textValue)
@@ -1260,7 +1274,7 @@ namespace POSCA.View.receipts
 
                 if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
                 {
-                    if (_ReceiptType == "purchaseOrder")
+                    if (_ReceiptType == "purchaseOrders")
                     {
                         var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
                         if (it.MaxQty < textValue)
