@@ -470,30 +470,6 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   
-                            Name="brd_SupInvoiceNum" 
-                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
-                        <Grid   >
-
-                            <TextBox x:Name="tb_SupInvoiceNum" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding SupInvoiceNum, Mode=TwoWay}"
-                                     
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="SupInvoiceNum..."    
-                                        Foreground="{StaticResource textColor}" 
-                                   
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SupInvoiceNum" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                            </Path>
-                        </Grid>
-                    </Border>
                     <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox x:Name="tb_InvNumber" Grid.Row="8"  Padding="10,0,5,0"  
@@ -517,6 +493,58 @@
                         </Grid>
                     </Border>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   
+                            Name="brd_SupInvoiceNum" 
+                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Grid   >
+
+                                <TextBox x:Name="tb_SupInvoiceNum" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding SupInvoiceNum, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="SupInvoiceNum..."    
+                                        Foreground="{StaticResource textColor}" 
+                                   
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SupInvoiceNum" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+
+                        <Border  Grid.Row="5" Grid.Column="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_InvoiceAmount" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding InvoiceAmount, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="InvoiceAmount..."    
+                                        Foreground="{StaticResource textColor}" 
+                                      BorderThickness="0" Tag="decimal"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_InvoiceAmount" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <!--<Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
@@ -563,35 +591,15 @@
                             </Grid>
                         </Border>
 
-                    </Grid>
+                    </Grid>-->
 
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_InvoiceAmount" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding InvoiceAmount, Mode=TwoWay}"
-                                     
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="InvoiceAmount..."    
-                                        Foreground="{StaticResource textColor}" 
-                                      BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_InvoiceAmount" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                </Path>
-
-                            </Grid>
-                        </Border>
-                        <Border  Grid.Row="5" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                       
+                        <Border  Grid.Row="5" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox x:Name="tb_AmountDifference" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding AmountDifference, Mode=TwoWay}"
@@ -599,7 +607,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="AmountDifference..."    
                                         Foreground="{StaticResource textColor}" 
-                                      BorderThickness="0" Tag="decimal"
+                                      BorderThickness="0" Tag="int"
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
@@ -612,13 +620,11 @@
 
                             </Grid>
                         </Border>
-
-                    </Grid>
-                    <Border  Grid.Row="5" Grid.Column="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
-                        <Grid   >
-                            <TextBox x:Name="tb_NetInvoice" Grid.Row="8"  Padding="10,0,5,0"  
+                        <Border  Grid.Row="6" Grid.Column="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_NetInvoice" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding NetInvoice, Mode=TwoWay}"
-                                            IsEnabled="True"
+                                            IsEnabled="False"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="NetInvoice..."    
                                         Foreground="{StaticResource textColor}" 
@@ -627,14 +633,16 @@
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_NetInvoice" 
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_NetInvoice" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                            </Path>
+                                </Path>
 
-                        </Grid>
-                    </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                  
                     <Border Grid.Row="7" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <DatePicker  x:Name="dp_SupInvoiceDate" 

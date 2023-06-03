@@ -5625,4 +5625,10 @@ Main Documents</value>
   <data name="ProcurementRequest" xml:space="preserve">
     <value>Procurement Request</value>
   </data>
+  <data name="trAmountDifferenceError" xml:space="preserve">
+    <value>Approximate spreads cannot be greater than 50 fils</value>
+  </data>
+  <data name="trExceedOrderqauntityError" xml:space="preserve">
+    <value>The quantity specified in the order cannot be exceeded</value>
+  </data>
 </root>

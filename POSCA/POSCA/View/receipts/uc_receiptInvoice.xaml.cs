@@ -164,6 +164,7 @@ namespace POSCA.View.receipts
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptDate, AppSettings.resourcemanager.GetString("ReceiptDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SupInvoiceDate, AppSettings.resourcemanager.GetString("trInvoiceDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceAmount, AppSettings.resourcemanager.GetString("InvoiceAmountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AmountDifference, AppSettings.resourcemanager.GetString("ApproximateVariancesHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_NetInvoice, AppSettings.resourcemanager.GetString("NetInvoiceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierNotes, AppSettings.resourcemanager.GetString("SupplierNotesHint"));
@@ -552,6 +553,10 @@ namespace POSCA.View.receipts
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
             txt_CostNet.Text = HelpClass.DecTostring(0);
 
+            col_freeQty.IsReadOnly = false;
+            col_maxQty.IsReadOnly = false;
+            col_minQty.IsReadOnly = false;
+
             _ReceiptType = "purchaseOrders";
             ControlsEditable();
 
@@ -817,6 +822,7 @@ namespace POSCA.View.receipts
 
             decimal netCost = _TotalCost - discount;
             txt_CostNet.Text = HelpClass.DecTostring(netCost);
+            tb_NetInvoice.Text = HelpClass.DecTostring(netCost);
           
         }
         private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
@@ -840,6 +846,7 @@ namespace POSCA.View.receipts
                     receipt.LocationId = purchaseOrder.LocationId;
                     receipt.SupId = purchaseOrder.SupId;
                     receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
+                   
                     fillOrderInputs(purchaseOrder);
                 }
                 Window.GetWindow(this).Opacity = 1;
@@ -1235,12 +1242,36 @@ namespace POSCA.View.receipts
                 int freeQty = 0;
 
                 if (columnName == AppSettings.resourcemanager.GetString("MaxFactorQty") && !t.Text.Equals(""))
+                {                 
+                    if(_ReceiptType == "purchaseOrder")
+                    {
+                        var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
+                        if(it.MaxQty < textValue)
+                        {
+
+                            textValue = (int)it.MaxQty;
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
+                        }
+                    }
                     maxQty = textValue;
+                }
                 else
                     maxQty = (int)row.MaxQty;
 
                 if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
+                {
+                    if (_ReceiptType == "purchaseOrder")
+                    {
+                        var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
+                        if (it.MaxQty < textValue)
+                        {
+
+                            textValue = (int)it.MinQty;
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
+                        }
+                    }
                     minQty = textValue;
+                }
                 else
                     minQty = (int)row.MinQty;
 
@@ -1315,6 +1346,26 @@ namespace POSCA.View.receipts
             col_freeQty.IsReadOnly = false;
             col_maxQty.IsReadOnly = false;
             col_minQty.IsReadOnly = false;
+        }
+
+        private void tb_AmountDifference_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ValidateEmpty_TextChange(sender, e);
+              
+                if(tb_AmountDifference.Text != "")
+                {
+                    var diff = decimal.Parse(tb_AmountDifference.Text);
+                    if (diff > 50)
+                    {
+                        tb_AmountDifference.Text = "0";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trAmountDifferenceError"), animation: ToasterAnimation.FadeIn);
+                    }
+                }
+
+            }
+            catch { }
         }
     }
 }

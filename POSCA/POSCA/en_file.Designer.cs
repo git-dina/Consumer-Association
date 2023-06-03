@@ -4301,6 +4301,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approximate spreads cannot be greater than 50 fils.
+        /// </summary>
+        internal static string trAmountDifferenceError {
+            get {
+                return ResourceManager.GetString("trAmountDifferenceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It is not possible to pay an amount greater than the   invoice value.
         /// </summary>
         internal static string trAmountGreaterInvoiceValue {
@@ -8158,6 +8167,15 @@ namespace POSCA {
         internal static string trExceedMinLimitAlertTilte {
             get {
                 return ResourceManager.GetString("trExceedMinLimitAlertTilte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The quantity specified in the order cannot be exceeded.
+        /// </summary>
+        internal static string trExceedOrderqauntityError {
+            get {
+                return ResourceManager.GetString("trExceedOrderqauntityError", resourceCulture);
             }
         }
         
