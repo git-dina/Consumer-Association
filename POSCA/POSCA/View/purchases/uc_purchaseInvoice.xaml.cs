@@ -1048,6 +1048,8 @@ namespace POSCA.View.purchases
                 supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
                 txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
+                tb_SupplierNotes.Text = supplier.Notes;
+                tb_SupplierPurchaseNotes.Text = supplier.PurchaseOrderNotes;
             }
             catch (Exception ex)
             {

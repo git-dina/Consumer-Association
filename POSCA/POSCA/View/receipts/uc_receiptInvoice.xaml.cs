@@ -73,7 +73,8 @@ namespace POSCA.View.receipts
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "LocationId", "SupplierId", "InvoiceAmount", "AmountDifference" };
+                requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
+                                                "InvoiceAmount", "AmountDifference" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
@@ -274,24 +275,42 @@ namespace POSCA.View.receipts
 
                 case "purchaseOrders": //supplying order is approved
                     btn_save.IsEnabled = true;
-                    if(tgl_IsRecieveAll.IsChecked == true)
+                    if (tgl_IsRecieveAll.IsChecked == true)
+                    {
                         dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                        col_freeQty.IsReadOnly = true;
+                        col_maxQty.IsReadOnly = true;
+                        col_minQty.IsReadOnly = true;
+                    }
                     else
+                    {
                         dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                        col_freeQty.IsReadOnly = false;
+                        col_maxQty.IsReadOnly = false;
+                        col_minQty.IsReadOnly = false;
+                    }
 
                     btn_purchaseOrders.Visibility = Visibility.Visible;
-                    brd_SupInvoiceNum.Visibility = Visibility.Visible;
                     sp_IsRecieveAll.Visibility = Visibility.Visible;
 
                     brd_grid0_0.IsEnabled = false;
+                    cb_LocationId.IsEnabled = false;
+                    cb_SupId.IsEnabled = false;
                     break;
                 default:
+                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+
+                    col_freeQty.IsReadOnly = false;
+                    col_maxQty.IsReadOnly = false;
+                    col_minQty.IsReadOnly = false;
+
                     btn_purchaseOrders.Visibility = Visibility.Collapsed;
-                    brd_SupInvoiceNum.Visibility = Visibility.Collapsed;
+                  
                     sp_IsRecieveAll.Visibility = Visibility.Collapsed;
 
                     brd_grid0_0.IsEnabled = true;
-
+                    cb_LocationId.IsEnabled = true;
+                    cb_SupId.IsEnabled = true;
                     break;
 
             }
@@ -569,7 +588,8 @@ namespace POSCA.View.receipts
             col_maxQty.IsReadOnly = false;
             col_minQty.IsReadOnly = false;
 
-            _ReceiptType = "purchaseOrders";
+            
+           // _ReceiptType = "purchaseOrders";
             ControlsEditable();
 
             // last 
@@ -879,23 +899,18 @@ namespace POSCA.View.receipts
 
         private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
         {
-            /*
+           
             try
             {
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_receiptInv w = new wd_receiptInv();
 
-                string invoiceType = "po";
-                w.invoiceType = invoiceType;
-                w.isApproved = false;
-
                 w.ShowDialog();
                 if (w.isOk)
                 {
-                    _InvType = w.receipt.InvType;
                     receipt = w.receipt;
-                    fillOrderInputs(receipt);
+                    fillReceiptInputs(receipt);
                 }
                 Window.GetWindow(this).Opacity = 1;
 
@@ -908,7 +923,7 @@ namespace POSCA.View.receipts
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
+           
         }
 
         public void fillOrderInputs(PurchaseInvoice invoice)
@@ -1306,7 +1321,7 @@ namespace POSCA.View.receipts
                 refreshValues();
 
                 dg_invoiceDetails.ItemsSource = billDetails;
-                dg_invoiceDetails.Items.Refresh();
+                //dg_invoiceDetails.Items.Refresh();
             }
             catch (Exception ex)
             {
@@ -1339,6 +1354,8 @@ namespace POSCA.View.receipts
                 supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
                 txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
+                tb_SupplierNotes.Text = supplier.Notes;
+                tb_SupplierPurchaseNotes.Text = supplier.PurchaseOrderNotes;
             }
             catch (Exception ex)
             {
@@ -1347,19 +1364,14 @@ namespace POSCA.View.receipts
         }
 
         private void tgl_IsRecieveAll_Checked(object sender, RoutedEventArgs e)
-        {        
-            dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
-            col_freeQty.IsReadOnly = true;
-            col_maxQty.IsReadOnly = true;
-            col_minQty.IsReadOnly = true;
+        {
+            ControlsEditable();
         }
 
         private void tgl_IsRecieveAll_Unchecked(object sender, RoutedEventArgs e)
         {
-            dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-            col_freeQty.IsReadOnly = false;
-            col_maxQty.IsReadOnly = false;
-            col_minQty.IsReadOnly = false;
+            ControlsEditable();
+      
         }
 
         private void tb_AmountDifference_TextChanged(object sender, TextChangedEventArgs e)

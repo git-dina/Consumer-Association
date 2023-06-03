@@ -687,7 +687,8 @@ namespace POSCA.Classes
             PurchaseOrderStatusList = new List<keyValueString>() {
                 new keyValueString(){key="opened", value=AppSettings.resourcemanager.GetString("Opened") },
                 new keyValueString(){key="orderPlaced", value=AppSettings.resourcemanager.GetString("PurchaseOrderPlaced") },
-                new keyValueString(){key="recieved", value=AppSettings.resourcemanager.GetString("EntierReceived") },
+                new keyValueString(){key="entireReceipt", value=AppSettings.resourcemanager.GetString("EntierReceived") },
+                new keyValueString(){key="receipt", value=AppSettings.resourcemanager.GetString("Received") },
             };
 
             return PurchaseOrderStatusList;

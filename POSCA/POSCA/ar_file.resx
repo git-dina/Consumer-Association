@@ -5879,6 +5879,9 @@
   <data name="ProcurementRequest" xml:space="preserve">
     <value>طلب تزويد</value>
   </data>
+  <data name="Received" xml:space="preserve">
+    <value>مستلم</value>
+  </data>
   <data name="trAmountDifferenceError" xml:space="preserve">
     <value>الفروقات التقريبية لا يمكن أن تكون أكبر من 50 فلس</value>
   </data>

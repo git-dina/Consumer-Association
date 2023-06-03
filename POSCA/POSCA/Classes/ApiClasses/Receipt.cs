@@ -78,6 +78,26 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+
+        public async Task<List<Receipt>> searchOrders(long locationId, string invNumber)
+        {
+            var result = new List<Receipt>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Receipts/SearchOrders";
+
+            parameters.Add("locationId", locationId.ToString());
+            parameters.Add("invNumber", invNumber);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Receipt>(c.Value));
+                }
+            }
+            return result;
+        }
         #endregion
     }
     public class RecieptDetails

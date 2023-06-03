@@ -46,10 +46,6 @@ namespace POSCA.View.windows
 
         public bool isOk { get; set; }
 
-        public string invoiceType { get; set; }
-        public string invoiceStatus { get; set; }
-        public string windowTitle { get; set; }
-        public bool? isApproved { get; set; }
 
         public Receipt receipt = new Receipt();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -96,7 +92,7 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = windowTitle;
+            txt_title.Text = AppSettings.resourcemanager.GetString("Receipts");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
@@ -126,7 +122,7 @@ namespace POSCA.View.windows
             try
             {
                 if (cb_LocationId.SelectedValue != null)
-                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text, invoiceType, invoiceStatus, isApproved);
+                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text);
             }
             catch
             {
@@ -148,17 +144,17 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, string invoiceType, string invoiceStatus, bool? isApproved)
+        private async Task searchInvoices(long locationId, string invNumber)
         {
             try
             {
-                /*
+              
                 HelpClass.StartAwait(grid_main);
-                var invoices = await receipt.searchOrders(locationId, invNumber, invoiceType, invoiceStatus, isApproved);
+                var invoices = await receipt.searchOrders(locationId, invNumber);
                 dg_receipt.ItemsSource = invoices;
                 dg_receipt.Items.Refresh();
                 HelpClass.EndAwait(grid_main);
-                */
+              
             }
             catch
             {

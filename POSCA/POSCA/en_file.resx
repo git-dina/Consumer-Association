@@ -5625,6 +5625,9 @@ Main Documents</value>
   <data name="ProcurementRequest" xml:space="preserve">
     <value>Procurement Request</value>
   </data>
+  <data name="Received" xml:space="preserve">
+    <value>Received</value>
+  </data>
   <data name="trAmountDifferenceError" xml:space="preserve">
     <value>Approximate spreads cannot be greater than 50 fils</value>
   </data>
