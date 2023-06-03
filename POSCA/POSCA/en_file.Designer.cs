@@ -2789,6 +2789,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Procurement Request.
+        /// </summary>
+        internal static string ProcurementRequest {
+            get {
+                return ResourceManager.GetString("ProcurementRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Procurement Requests.
         /// </summary>
         internal static string ProcurementRequests {

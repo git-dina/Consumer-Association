@@ -5876,4 +5876,7 @@
   <data name="PurchaseOrderNumHint" xml:space="preserve">
     <value>رقم طلب الشراء...</value>
   </data>
+  <data name="ProcurementRequest" xml:space="preserve">
+    <value>طلب تزويد</value>
+  </data>
 </root>

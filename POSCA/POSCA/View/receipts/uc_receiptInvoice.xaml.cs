@@ -142,7 +142,7 @@ namespace POSCA.View.receipts
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            txt_payInvoice.Text = AppSettings.resourcemanager.GetString("trReceiptOrder");
+            txt_payInvoice.Text = AppSettings.resourcemanager.GetString("Receipt");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
@@ -267,40 +267,34 @@ namespace POSCA.View.receipts
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-
+            //check receipt status first
             switch (_ReceiptType)
             {
 
-                case "soa": //supplying order is approved
-                    //tgl_isApproved.IsEnabled = false;
+                case "purchaseOrders": //supplying order is approved
                     btn_save.IsEnabled = true;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+
+                    btn_purchaseOrders.Visibility = Visibility.Visible;
                     brd_SupInvoiceNum.Visibility = Visibility.Visible;
-                    break;
-                //case "pod":
-                //   // tgl_isApproved.IsEnabled = true;
-                //    btn_save.IsEnabled = true;
-                //    btn_deleteInvoice.Visibility = Visibility.Visible;
-                //    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                //    brd_SupInvoiceNum.Visibility = Visibility.Collapsed;
+                    sp_IsRecieveAll.Visibility = Visibility.Visible;
 
-                //    break;
-                case "po"://receipt order done
-                    //tgl_isApproved.IsEnabled = false;
-                    btn_save.IsEnabled = false;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    brd_grid0_0.IsEnabled = false;
+                    break;
+                default:
+                    btn_purchaseOrders.Visibility = Visibility.Collapsed;
                     brd_SupInvoiceNum.Visibility = Visibility.Collapsed;
+                    sp_IsRecieveAll.Visibility = Visibility.Collapsed;
+
+                    brd_grid0_0.IsEnabled = true;
 
                     break;
+
             }
 
             if (receipt.ReceiptId.Equals(0))
             {
                 btn_printInvoice.IsEnabled = false;
-                // tgl_isApproved.IsEnabled = false;
-                btn_deleteInvoice.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -1286,16 +1280,7 @@ namespace POSCA.View.receipts
             {
                 await Clear();
                 _ReceiptType = cb_ReceiptType.SelectedValue.ToString();
-                if (cb_ReceiptType.SelectedValue.ToString() == "purchaseOrders")
-                {
-                    brd_search.IsEnabled = false;
-                    sp_IsRecieveAll.Visibility = Visibility.Visible;
-                    //رقم طلب الشراء
-                }
-                else
-                {
-                    brd_search.IsEnabled = true;
-                }
+                ControlsEditable();
             }
             catch { }
         }

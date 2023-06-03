@@ -5622,4 +5622,7 @@ Main Documents</value>
   <data name="PurchaseOrderNumHint" xml:space="preserve">
     <value>Purchase Order Num...</value>
   </data>
+  <data name="ProcurementRequest" xml:space="preserve">
+    <value>Procurement Request</value>
+  </data>
 </root>
