@@ -217,6 +217,7 @@
     <Compile Include="Classes\ReportCls.cs" />
     <Compile Include="Classes\ReportsConfig.cs" />
     <Compile Include="converters\dateFrameConverter.cs" />
+    <Compile Include="converters\receiptTypeConverter.cs" />
     <Compile Include="View\purchases\uc_purchaseInvoice.xaml.cs">
       <DependentUpon>uc_purchaseInvoice.xaml</DependentUpon>
     </Compile>
