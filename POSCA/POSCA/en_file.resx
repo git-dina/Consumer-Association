@@ -5634,4 +5634,7 @@ Main Documents</value>
   <data name="trExceedOrderqauntityError" xml:space="preserve">
     <value>The quantity specified in the order cannot be exceeded</value>
   </data>
+  <data name="trMinQtyMoreFactorError" xml:space="preserve">
+    <value>Minimum quantity can't be equal to or greater than the factor</value>
+  </data>
 </root>

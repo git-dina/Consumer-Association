@@ -737,6 +737,7 @@ namespace POSCA.View.receipts
                     {
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItem w = new wd_addPurchaseItem();
+                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
 
                         w.newReceiptItem = new RecieptDetails()
                         {
@@ -750,6 +751,7 @@ namespace POSCA.View.receipts
                             ConsumerDiscount = item1.ConsumerDiscPerc,
                             MainPrice = item1.Price,
                             Barcode = barcode,
+                            Balance = balance,
                         };
                         w.ShowDialog();
 
@@ -781,6 +783,8 @@ namespace POSCA.View.receipts
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
+
+                    tb_search.Text = "";
 
                     HelpClass.EndAwait(grid_main);
                 }
@@ -1291,6 +1295,11 @@ namespace POSCA.View.receipts
                 {
                     if (_ReceiptType == "purchaseOrders")
                     {
+                        if (textValue >= row.Factor)
+                        {
+                            textValue = 0;
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMinQtyMoreFactorError"), animation: ToasterAnimation.FadeIn);
+                        }
                         var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
                         if (it.MaxQty < textValue)
                         {

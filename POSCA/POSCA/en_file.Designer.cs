@@ -10097,6 +10097,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Minimum quantity can&apos;t be equal to or greater than the factor.
+        /// </summary>
+        internal static string trMinQtyMoreFactorError {
+            get {
+                return ResourceManager.GetString("trMinQtyMoreFactorError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to أدنى مخزون.
         /// </summary>
         internal static string trMinStock {

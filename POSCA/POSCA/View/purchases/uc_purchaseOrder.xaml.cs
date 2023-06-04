@@ -254,8 +254,8 @@ namespace POSCA.View.purchases
                         break;
                     }
                 }
-        } 
-        
+        }
+
 
         #endregion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
@@ -491,28 +491,7 @@ namespace POSCA.View.purchases
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        {//refresh
-            try
-            {
-
-                HelpClass.StartAwait(grid_main);
-
-                //tb_search.Text = "";
-                //searchText = "";
-                //await RefreshBanksList();
-                //await Search();
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
+      
 
         private async void searchType_check(object sender, RoutedEventArgs e)
         {
@@ -735,6 +714,7 @@ namespace POSCA.View.purchases
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItem w = new wd_addPurchaseItem();
 
+                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
                         w.newPurchaseItem = new PurchaseInvDetails()
                         {
                             ItemId = item1.ItemId,
@@ -747,6 +727,7 @@ namespace POSCA.View.purchases
                             ConsumerDiscount = item1.ConsumerDiscPerc,
                             MainPrice = item1.Price,
                             Barcode = barcode,
+                            Balance = balance,
                         };
                         w.ShowDialog();
 
@@ -778,6 +759,8 @@ namespace POSCA.View.purchases
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
+
+                    tb_search.Text = "";
 
                     HelpClass.EndAwait(grid_main);
                 }
@@ -1188,9 +1171,9 @@ namespace POSCA.View.purchases
                     if(res != 0)
                     {
                         _InvType = "soa";
-
+                        purchaseInvoice.IsApproved = true;
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopSave"), animation: ToasterAnimation.FadeIn);
-                        ControlsEditable();
+                        fillOrderInputs(purchaseInvoice);
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
@@ -1258,7 +1241,14 @@ namespace POSCA.View.purchases
                     maxQty = (int)row.MaxQty;
 
                 if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
+                {
+                    if (textValue >= row.Factor)
+                    {
+                        textValue = 0;
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMinQtyMoreFactorError"), animation: ToasterAnimation.FadeIn);
+                    }
                     minQty = textValue;
+                }
                 else
                     minQty = (int)row.MinQty;
 
@@ -1279,7 +1269,7 @@ namespace POSCA.View.purchases
                 refreshValues();
 
                 dg_invoiceDetails.ItemsSource = billDetails;
-                //dg_invoiceDetails.Items.Refresh();
+               dg_invoiceDetails.Items.Refresh();
             }
             catch (Exception ex)
             {

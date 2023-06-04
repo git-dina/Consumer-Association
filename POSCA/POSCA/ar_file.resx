@@ -5888,4 +5888,7 @@
   <data name="trExceedOrderqauntityError" xml:space="preserve">
     <value>لا يمكن تجاوز الكمية المحدد في الطلب</value>
   </data>
+  <data name="trMinQtyMoreFactorError" xml:space="preserve">
+    <value>كمية أقل شد لا يمكن أن تكون مساوية أو أكبر من الشد</value>
+  </data>
 </root>

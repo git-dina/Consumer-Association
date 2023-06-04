@@ -13,8 +13,8 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> ItemId { get; set; }
         public Nullable<long> LocationId { get; set; }
         public string LocationName { get; set; }
-        public int Min_Qty { get; set; }
-        public int Max_Qty { get; set; }
+        public long Balance { get; set; }
+
         public bool IsActive { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
@@ -22,9 +22,11 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
 
         #region extra attributes
-
-
         public bool IsAllowed { get; set; }
+
+
+        public int Min_Qty { get; set; }
+        public int Max_Qty { get; set; }
         #endregion
         #endregion
     }

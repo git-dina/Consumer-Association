@@ -266,25 +266,36 @@ namespace POSCA.View.purchases
             {
 
                 case "soa": //supplying order is approved
-                    //tgl_isApproved.IsEnabled = false;
+                    cb_LocationId.IsEnabled = false;
+                    cb_SupId.IsEnabled = false;
+                    dp_OrderDate.IsEnabled = false;
                     btn_save.IsEnabled = true;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
+                   // btn_deleteInvoice.Visibility = Visibility.Collapsed;
                     dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     brd_RefId.Visibility = Visibility.Visible;
                     break;
-                //case "pod":
-                //   // tgl_isApproved.IsEnabled = true;
-                //    btn_save.IsEnabled = true;
-                //    btn_deleteInvoice.Visibility = Visibility.Visible;
-                //    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                //    brd_RefId.Visibility = Visibility.Collapsed;
 
-                //    break;
                 case "po"://purchase order done
-                    //tgl_isApproved.IsEnabled = false;
-                    btn_save.IsEnabled = false;
-                    btn_deleteInvoice.Visibility = Visibility.Collapsed;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    if (purchaseInvoice.PurchaseId != 0 && (purchaseInvoice.InvStatus == "entireReceipt" || purchaseInvoice.InvStatus == "receipt"))
+                    {
+                        cb_LocationId.IsEnabled = false;
+                        cb_SupId.IsEnabled = false;
+                        dp_OrderDate.IsEnabled = false;
+                        btn_save.IsEnabled = false;
+
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                    }
+                    else
+                    {
+                        cb_LocationId.IsEnabled = true;
+                        cb_SupId.IsEnabled = true;
+                        dp_OrderDate.IsEnabled = true;
+                        btn_save.IsEnabled = true;
+
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                    }
+                    //btn_deleteInvoice.Visibility = Visibility.Collapsed;
+                    
                     brd_RefId.Visibility = Visibility.Collapsed;
 
                     break;
@@ -694,6 +705,7 @@ namespace POSCA.View.purchases
                     {
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItem w = new wd_addPurchaseItem();
+                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
 
                         w.newPurchaseItem = new PurchaseInvDetails()
                         {
@@ -707,6 +719,7 @@ namespace POSCA.View.purchases
                             ConsumerDiscount = item1.ConsumerDiscPerc,
                             MainPrice = item1.Price,
                             Barcode = barcode,
+                            Balance = balance,
                         };
                         w.ShowDialog();
 
@@ -738,6 +751,8 @@ namespace POSCA.View.purchases
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
+
+                    tb_search.Text = "";
 
                     HelpClass.EndAwait(grid_main);
                 }
@@ -1220,7 +1235,14 @@ namespace POSCA.View.purchases
                     maxQty = (int)row.MaxQty;
 
                 if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
+                {
+                    if (textValue >= row.Factor)
+                    {
+                        textValue = 0;
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMinQtyMoreFactorError"), animation: ToasterAnimation.FadeIn);
+                    }
                     minQty = textValue;
+                }
                 else
                     minQty = (int)row.MinQty;
 
