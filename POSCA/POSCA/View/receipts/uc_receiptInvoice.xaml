@@ -414,8 +414,12 @@
 
                         </Grid>
                     </Border>
-
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   
                             BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox x:Name="tb_PurchaseInvNumber" Grid.Row="8"  Padding="10,0,5,0"  
@@ -437,10 +441,14 @@
                             </Path>
                         </Grid>
                     </Border>
-                
-                    <StackPanel x:Name="sp_IsRecieveAll" Visibility="Visible" Orientation="Horizontal" Grid.Row="3"  Margin="5,0,0,0">
+                   
+
+                    <StackPanel x:Name="sp_IsRecieveAll" 
+                                Visibility="Visible" 
+                                Grid.Column="1"
+                                Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
                         <TextBlock  x:Name="txt_IsRecieveAll"
-                               Margin="5,5,15,5" Text="RecieveAll" Foreground="#6e6e6e"
+                               Margin="5,5,5,5" Text="RecieveAll" Foreground="#6e6e6e"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                   FontSize="12"/>
                         <ToggleButton Grid.Column="1"  x:Name="tgl_IsRecieveAll"  IsChecked="{Binding IsRecieveAll, Mode=TwoWay}"
@@ -449,6 +457,8 @@
                                  Checked="tgl_IsRecieveAll_Checked"
                                  Unchecked="tgl_IsRecieveAll_Unchecked"/>
                     </StackPanel>
+                    </Grid>
+
                     <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <ComboBox x:Name="cb_SupId"    SelectedValue="{Binding SupId, Mode=TwoWay}"
