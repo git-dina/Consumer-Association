@@ -5634,7 +5634,13 @@ Main Documents</value>
   <data name="trExceedOrderqauntityError" xml:space="preserve">
     <value>The quantity specified in the order cannot be exceeded</value>
   </data>
+  <data name="trInvoiceAmountError" xml:space="preserve">
+    <value>Invoice amount is wrong</value>
+  </data>
   <data name="trMinQtyMoreFactorError" xml:space="preserve">
     <value>Minimum quantity can't be equal to or greater than the factor</value>
+  </data>
+  <data name="VouchernoHint" xml:space="preserve">
+    <value>Document Num...</value>
   </data>
 </root>

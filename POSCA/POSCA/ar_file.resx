@@ -5888,7 +5888,13 @@
   <data name="trExceedOrderqauntityError" xml:space="preserve">
     <value>لا يمكن تجاوز الكمية المحدد في الطلب</value>
   </data>
+  <data name="trInvoiceAmountError" xml:space="preserve">
+    <value>قيمة الفاتورة خاطئة</value>
+  </data>
   <data name="trMinQtyMoreFactorError" xml:space="preserve">
     <value>كمية أقل شد لا يمكن أن تكون مساوية أو أكبر من الشد</value>
+  </data>
+  <data name="VouchernoHint" xml:space="preserve">
+    <value>رقم السند...</value>
   </data>
 </root>

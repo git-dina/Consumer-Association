@@ -9026,6 +9026,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice amount is wrong.
+        /// </summary>
+        internal static string trInvoiceAmountError {
+            get {
+                return ResourceManager.GetString("trInvoiceAmountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to رقم الفاتورة.
         /// </summary>
         internal static string trInvoiceCharp {
@@ -16467,6 +16476,15 @@ namespace POSCA {
         internal static string Voucherno {
             get {
                 return ResourceManager.GetString("Voucherno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Num....
+        /// </summary>
+        internal static string VouchernoHint {
+            get {
+                return ResourceManager.GetString("VouchernoHint", resourceCulture);
             }
         }
         

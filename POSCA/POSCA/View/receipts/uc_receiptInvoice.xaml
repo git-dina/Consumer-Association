@@ -519,8 +519,8 @@
                                          materialDesign:HintAssist.Hint="SupInvoiceNum..."    
                                         Foreground="{StaticResource textColor}" 
                                    
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                     BorderThickness="0"
+                                 BorderBrush="AliceBlue" MaxLength="100" 
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>

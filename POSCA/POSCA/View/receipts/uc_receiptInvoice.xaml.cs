@@ -158,7 +158,7 @@ namespace POSCA.View.receipts
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("DocumentStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptType, AppSettings.resourcemanager.GetString("ReceiptTypeHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("VouchernoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseInvNumber, AppSettings.resourcemanager.GetString("PurchaseOrderNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupInvoiceNum, AppSettings.resourcemanager.GetString("trInvoiceNumberHint"));
@@ -370,6 +370,18 @@ namespace POSCA.View.receipts
             else
                 await Clear();
         }
+
+        private bool canAddInvoice()
+        {
+            bool canAdd = true;
+            decimal invoiceAmount = decimal.Parse(tb_InvoiceAmount.Text);
+            decimal diff = decimal.Parse(tb_AmountDifference.Text);
+            decimal costNet = decimal.Parse(txt_CostNet.Text);
+
+            if (costNet != (invoiceAmount + diff))
+                return false;
+            return canAdd;
+        }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -379,7 +391,10 @@ namespace POSCA.View.receipts
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
                 else if (HelpClass.validate(requiredControlList, this))
                 {
+                   if( canAddInvoice())
                     await addInvoice();
+                   else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trInvoiceAmountError"), animation: ToasterAnimation.FadeIn);
 
                 }
 
