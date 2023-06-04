@@ -10,6 +10,7 @@
         <ResourceDictionary>
 
             <converters:dateFrameConverter x:Key="dateFrameConverter"/>
+            <converters:receiptTypeConverter x:Key="receiptTypeConverter"/>
             <!--#region Fonts-->
             <FontFamily x:Key="BarcodeFont" >IDAHC39M Code 39 Barcode, /POSCA;component/fonts/#IDAHC39M Code 39 Barcode, Arial</FontFamily>
             <FontFamily x:Key="Font-cairo-light" >cairo light, /POSCA;component/fonts/cairo-font/#cairo light, Arial</FontFamily>
