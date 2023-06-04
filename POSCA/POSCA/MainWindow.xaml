@@ -453,6 +453,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Path Fill="White" x:Name="path_iconPurchases" Stretch="Fill"  
                               HorizontalAlignment="Center" Grid.Column="0"  
+                                      FlowDirection="LeftToRight"
                          VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
                               Data="{StaticResource purchases}"/>
