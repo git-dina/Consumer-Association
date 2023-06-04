@@ -436,8 +436,13 @@ namespace POSCA.View.purchases
                         billDetails.RemoveAt(index);
 
                         //dg_invoiceDetails.Items.Clear();
-                        dg_invoiceDetails.ItemsSource = billDetails;
-                        dg_invoiceDetails.Items.Refresh();
+                        //dg_invoiceDetails.ItemsSource = billDetails;
+                        //dg_invoiceDetails.Items.Refresh();
+                        if (!forceCancelEdit)
+                        {
+                            dg_invoiceDetails.IsEnabled = false;
+                            RefreshInvoiceDetailsDataGrid();
+                        }
                         // calculate new total
                         refreshValues();
                     }
@@ -539,8 +544,13 @@ namespace POSCA.View.purchases
             purchaseInvoice = new PurchaseInvoice();
 
             billDetails = new List<PurchaseInvDetails>();
-            dg_invoiceDetails.ItemsSource = billDetails;
-            dg_invoiceDetails.Items.Refresh();
+            //dg_invoiceDetails.ItemsSource = billDetails;
+            //dg_invoiceDetails.Items.Refresh();
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
+            }
 
             await Task.Delay(0050);
             dp_OrderDate.SelectedDate = DateTime.Now;
@@ -774,8 +784,13 @@ namespace POSCA.View.purchases
             {
                 billDetails.Add(purchaseInvDetails);
 
-                dg_invoiceDetails.ItemsSource = billDetails;
-                dg_invoiceDetails.Items.Refresh();
+                //dg_invoiceDetails.ItemsSource = billDetails;
+                //dg_invoiceDetails.Items.Refresh();
+                if (!forceCancelEdit)
+                {
+                    dg_invoiceDetails.IsEnabled = false;
+                    RefreshInvoiceDetailsDataGrid();
+                }
                 refreshValues();
             }
             else // item exist prevoiusly in list
@@ -918,8 +933,13 @@ namespace POSCA.View.purchases
         private void buildInvoiceDetails(PurchaseInvoice invoice)
         {
             billDetails = invoice.PurchaseDetails.ToList();
-            dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
-            dg_invoiceDetails.Items.Refresh();
+            //dg_invoiceDetails.ItemsSource = invoice.PurchaseDetails;
+            //dg_invoiceDetails.Items.Refresh();
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
+            }
         }
 
         #region print
@@ -1262,12 +1282,39 @@ namespace POSCA.View.purchases
 
                 refreshValues();
 
-                dg_invoiceDetails.ItemsSource = billDetails;
-                dg_invoiceDetails.Items.Refresh();
+                //dg_invoiceDetails.ItemsSource = billDetails;
+                //dg_invoiceDetails.Items.Refresh();
+                if (!forceCancelEdit)
+                {
+                    dg_invoiceDetails.IsEnabled = false;
+                    RefreshInvoiceDetailsDataGrid();
+                }
             }
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        bool forceCancelEdit = false;
+        public void RefreshInvoiceDetailsDataGrid()
+        {
+            try
+            {
+                forceCancelEdit = true;
+                dg_invoiceDetails.CancelEdit();
+                dg_invoiceDetails.ItemsSource = billDetails;
+                dg_invoiceDetails.Items.Refresh();
+
+                dg_invoiceDetails.IsEnabled = true;
+                forceCancelEdit = false;
+
+            }
+            catch (Exception ex)
+            {
+                dg_invoiceDetails.IsEnabled = true;
+                forceCancelEdit = false;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
     }
