@@ -76,6 +76,7 @@ namespace POSCA.View.windows
                 #endregion
 
                 await FillCombo.fillLocations(cb_LocationId);
+                FillCombo.fillReceiptsTypes(cb_ReceiptType);
 
 
                 HelpClass.EndAwait(grid_main);
@@ -97,9 +98,10 @@ namespace POSCA.View.windows
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
 
-            dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
-            dg_receipt.Columns[1].Header = AppSettings.resourcemanager.GetString("Location");
-            dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("DocumentDate");
+            //dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
+            dg_receipt.Columns[1].Header = AppSettings.resourcemanager.GetString("OrderNum");
+            dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("Location");
+            dg_receipt.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
 
         }
 
