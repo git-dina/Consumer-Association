@@ -73,6 +73,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                     <ColumnDefinition  Width="auto"  />
                                     <ColumnDefinition  Width="auto"  />
                                     <ColumnDefinition  Width="auto" MinWidth="75"  />
@@ -82,7 +84,7 @@
                               Margin="20 0 0 0"
                          Width="17.5" Height="17.5" FlowDirection="RightToLeft"
                               Data="{StaticResource magnifying}"/>
-                                <Border Background="White" Grid.Column="1" Height="40" CornerRadius="0" Margin="15,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
+                                <Border Background="White" Grid.Column="1" Height="40" CornerRadius="0" Margin="15,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                     <Grid   >
 
                                         <ComboBox x:Name="cb_LocationId"    SelectedValue="{Binding LocationId, Mode=TwoWay}"
@@ -97,7 +99,7 @@
                                           StaysOpenOnEdit="true"/>
                                     </Grid>
                                 </Border>
-                                <Border Background="White" Grid.Column="2" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
+                                <Border Background="White" Grid.Column="2" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                     <Grid   >
 
                                         <TextBox Margin="0,0" x:Name="tb_searchInvNumber"  
@@ -109,7 +111,7 @@
                                      />
                                     </Grid>
                                 </Border>
-                                <Border Background="White" Grid.Column="3" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource SecondColor}">
+                                <Border Background="White" Grid.Column="3" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                     <Grid   >
 
                                         <ComboBox x:Name="cb_ReceiptType"    SelectedValue="{Binding ReceiptType, Mode=TwoWay}"
@@ -124,8 +126,43 @@
                                           StaysOpenOnEdit="true"-->
                                     </Grid>
                                 </Border>
+                                <Border  Grid.Column="4" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <DatePicker  x:Name="dp_FromDate" 
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
+                                        TextBlock.Foreground="{StaticResource textColor}"
+                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                        materialDesign:HintAssist.Hint="FromDate..."  
+                                        Foreground="{StaticResource textColor}"   Height="40" 
+                                         />
+                                        <!--<Path Fill="#E81123" x:Name="p_error_FromDate" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>-->
 
-                                <Border Grid.Column="6" Height="50" 
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Column="5" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <DatePicker  x:Name="dp_ToDate" 
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
+                                        TextBlock.Foreground="{StaticResource textColor}"
+                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                        materialDesign:HintAssist.Hint="ToDate..."  
+                                        Foreground="{StaticResource textColor}"   Height="40" 
+                                         
+                                         />
+                                        <!--<Path Fill="#E81123" x:Name="p_error_ToDate" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>-->
+
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="8" Height="50" 
                         CornerRadius="0 22.5 22.5 0" 
                         Margin="0" Padding="0" Background="{StaticResource SecondColor}">
                                     <Button  BorderBrush="{x:Null}"  
