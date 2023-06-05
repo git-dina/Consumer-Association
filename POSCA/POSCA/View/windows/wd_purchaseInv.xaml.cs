@@ -94,12 +94,14 @@ namespace POSCA.View.windows
         }
 
 
-        private void translate()
+        private void translate() 
         {
             txt_title.Text = windowTitle;
            
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_FromDate, AppSettings.resourcemanager.GetString("trFrom"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ToDate, AppSettings.resourcemanager.GetString("trTo"));
 
             dg_purchaseInvoice.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
             dg_purchaseInvoice.Columns[1].Header = AppSettings.resourcemanager.GetString("Location");
@@ -127,7 +129,8 @@ namespace POSCA.View.windows
             try
             {
                 if(cb_LocationId.SelectedValue != null )
-                    await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType,invoiceStatus,isApproved);
+                    await searchInvoices((long)cb_LocationId.SelectedValue,tb_searchInvNumber.Text,invoiceType,invoiceStatus,isApproved,
+                        dp_FromDate.SelectedDate,dp_ToDate.SelectedDate);
             }
             catch
             {
@@ -149,13 +152,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, string invoiceType,string invoiceStatus,bool? isApproved)
+        private async Task searchInvoices(long locationId, string invNumber, string invoiceType,string invoiceStatus,bool? isApproved,DateTime? fromDate=null,DateTime? toDate=null)
         {
             try
             {
 
                HelpClass.StartAwait(grid_main);
-                var invoices = await purchaseInvoice.searchOrders(locationId, invNumber, invoiceType, invoiceStatus, isApproved);
+                var invoices = await purchaseInvoice.searchOrders(locationId, invNumber, invoiceType, invoiceStatus, isApproved,fromDate,toDate);
                 dg_purchaseInvoice.ItemsSource = invoices;
                 dg_purchaseInvoice.Items.Refresh();
                 HelpClass.EndAwait(grid_main);

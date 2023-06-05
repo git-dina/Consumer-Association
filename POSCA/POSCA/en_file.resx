@@ -2357,7 +2357,7 @@ Main Documents</value>
     <value>الجمعة</value>
   </data>
   <data name="trFrom" xml:space="preserve">
-    <value>من</value>
+    <value>From</value>
   </data>
   <data name="trFromBranch" xml:space="preserve">
     <value>من الفرع</value>
@@ -4509,7 +4509,7 @@ Main Documents</value>
     <value>العنوان</value>
   </data>
   <data name="trTo" xml:space="preserve">
-    <value>إلى</value>
+    <value>To</value>
   </data>
   <data name="trToBranch" xml:space="preserve">
     <value>To Branch</value>
@@ -5642,5 +5642,8 @@ Main Documents</value>
   </data>
   <data name="VouchernoHint" xml:space="preserve">
     <value>Document Num...</value>
+  </data>
+  <data name="ReceiptType" xml:space="preserve">
+    <value>Receipt Type</value>
   </data>
 </root>

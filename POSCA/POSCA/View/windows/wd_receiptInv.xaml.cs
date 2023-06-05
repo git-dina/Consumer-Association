@@ -97,8 +97,10 @@ namespace POSCA.View.windows
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
-
-            //dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("OrderNum");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_FromDate, AppSettings.resourcemanager.GetString("trFrom"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ToDate, AppSettings.resourcemanager.GetString("trTo"));
+          
+            dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("ReceiptType");
             dg_receipt.Columns[1].Header = AppSettings.resourcemanager.GetString("OrderNum");
             dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("Location");
             dg_receipt.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
@@ -124,7 +126,8 @@ namespace POSCA.View.windows
             try
             {
                 if (cb_LocationId.SelectedValue != null)
-                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text);
+                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text,
+                                        dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
             }
             catch
             {
@@ -146,13 +149,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber)
+        private async Task searchInvoices(long locationId, string invNumber, DateTime? fromDate = null, DateTime? toDate = null)
         {
             try
             {
               
                 HelpClass.StartAwait(grid_main);
-                var invoices = await receipt.searchOrders(locationId, invNumber);
+                var invoices = await receipt.searchOrders(locationId, invNumber, fromDate, toDate);
                 dg_receipt.ItemsSource = invoices;
                 dg_receipt.Items.Refresh();
                 HelpClass.EndAwait(grid_main);

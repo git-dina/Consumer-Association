@@ -3032,6 +3032,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receipt Type.
+        /// </summary>
+        internal static string ReceiptType {
+            get {
+                return ResourceManager.GetString("ReceiptType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipt Type....
         /// </summary>
         internal static string ReceiptTypeHint {
@@ -8522,7 +8531,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to من.
+        ///   Looks up a localized string similar to From.
         /// </summary>
         internal static string trFrom {
             get {
@@ -15129,7 +15138,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إلى.
+        ///   Looks up a localized string similar to To.
         /// </summary>
         internal static string trTo {
             get {

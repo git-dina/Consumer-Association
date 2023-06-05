@@ -79,7 +79,7 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<Receipt>> searchOrders(long locationId, string invNumber)
+        public async Task<List<Receipt>> searchOrders(long locationId, string invNumber, DateTime? fromDate = null, DateTime? toDate = null)
         {
             var result = new List<Receipt>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -87,6 +87,8 @@ namespace POSCA.Classes.ApiClasses
 
             parameters.Add("locationId", locationId.ToString());
             parameters.Add("invNumber", invNumber);
+            parameters.Add("fromDate", fromDate.ToString());
+            parameters.Add("toDate", toDate.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)

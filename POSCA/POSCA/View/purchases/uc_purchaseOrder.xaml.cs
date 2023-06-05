@@ -808,7 +808,7 @@ namespace POSCA.View.purchases
             {
                 _TotalCost += row.Cost;
                 _TotalPrice += row.Price;
-                _ConsumerDiscount += row.ConsumerDiscount;
+                _ConsumerDiscount = row.ConsumerDiscount;
             }
 
             txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);

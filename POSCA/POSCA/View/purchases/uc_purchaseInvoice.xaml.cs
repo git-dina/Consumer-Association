@@ -269,10 +269,24 @@ namespace POSCA.View.purchases
                     cb_LocationId.IsEnabled = false;
                     cb_SupId.IsEnabled = false;
                     dp_OrderDate.IsEnabled = false;
-                    btn_save.IsEnabled = true;
-                   // btn_deleteInvoice.Visibility = Visibility.Collapsed;
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     brd_RefId.Visibility = Visibility.Visible;
+
+                    if (purchaseInvoice.InvStatus == "opened")
+                    {
+                        tb_FreePercentage.IsEnabled = true;
+                        btn_save.IsEnabled = true;
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                        brd_grid0_0.IsEnabled = true;
+                        dp_OrderRecieveDate.IsEnabled = true;
+                    }
+                    else
+                    {
+                        dp_OrderRecieveDate.IsEnabled = false;
+                        tb_FreePercentage.IsEnabled = false;
+                        btn_save.IsEnabled = false;
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                        brd_grid0_0.IsEnabled = false;
+                    }
                     break;
 
                 case "po"://purchase order done
@@ -281,8 +295,10 @@ namespace POSCA.View.purchases
                         cb_LocationId.IsEnabled = false;
                         cb_SupId.IsEnabled = false;
                         dp_OrderDate.IsEnabled = false;
+                        dp_OrderRecieveDate.IsEnabled = false;
+                        tb_FreePercentage.IsEnabled = false;
                         btn_save.IsEnabled = false;
-
+                        brd_grid0_0.IsEnabled = false;
                         dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
                     }
                     else
@@ -290,8 +306,10 @@ namespace POSCA.View.purchases
                         cb_LocationId.IsEnabled = true;
                         cb_SupId.IsEnabled = true;
                         dp_OrderDate.IsEnabled = true;
+                        dp_OrderRecieveDate.IsEnabled = true;
+                        tb_FreePercentage.IsEnabled = true;
                         btn_save.IsEnabled = true;
-
+                        brd_grid0_0.IsEnabled = true;
                         dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                     }
                     //btn_deleteInvoice.Visibility = Visibility.Collapsed;
@@ -815,7 +833,7 @@ namespace POSCA.View.purchases
             {
                 _TotalCost += row.Cost;
                 _TotalPrice += row.Price;
-                _ConsumerDiscount += row.ConsumerDiscount;
+                _ConsumerDiscount = row.ConsumerDiscount;
             }
 
             txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);
@@ -850,7 +868,7 @@ namespace POSCA.View.purchases
 
                 string invoiceType = "soa";
                 w.invoiceType = invoiceType;
-                w.invoiceStatus = "opened";
+                //w.invoiceStatus = "opened";
                 w.isApproved = true;
                 w.windowTitle = AppSettings.resourcemanager.GetString("ProcurementRequests");
 

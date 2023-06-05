@@ -849,7 +849,7 @@ namespace POSCA.View.receipts
             {
                 _TotalCost += row.Cost;
                 _TotalPrice += row.Price;
-                _ConsumerDiscount += (decimal)row.ConsumerDiscount;
+                _ConsumerDiscount = (decimal)row.ConsumerDiscount;
             }
 
             txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);

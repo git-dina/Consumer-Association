@@ -67,7 +67,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType,string invStatus, bool? isApproved)
+        public async Task<List<PurchaseInvoice>> searchOrders(long locationId, string invNumber,string invType,string invStatus, bool? isApproved, DateTime? fromDate = null, DateTime? toDate = null)
         {
             var result = new List<PurchaseInvoice>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -78,6 +78,8 @@ namespace POSCA.Classes.ApiClasses
             parameters.Add("invType", invType);
             parameters.Add("invStatus", invStatus);
             parameters.Add("isApproved", isApproved.ToString());
+            parameters.Add("fromDate", fromDate.ToString());
+            parameters.Add("toDate", toDate.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
