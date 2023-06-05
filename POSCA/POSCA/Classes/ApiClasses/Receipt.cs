@@ -16,6 +16,7 @@ namespace POSCA.Classes.ApiClasses
         public bool IsRecieveAll { get; set; } = true;
         public string InvNumber { get; set; }
         public string ReceiptType { get; set; }
+        public string CustomFreeType { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> PurchaseId { get; set; }
         public Nullable<System.DateTime> ReceiptDate { get; set; } = DateTime.Now;
