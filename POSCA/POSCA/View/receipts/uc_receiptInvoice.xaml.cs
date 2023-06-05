@@ -951,7 +951,7 @@ namespace POSCA.View.receipts
            
         }
 
-        public void fillOrderInputs(PurchaseInvoice invoice)
+        public async Task fillOrderInputs(PurchaseInvoice invoice)
         {
            
             this.DataContext = receipt;
@@ -965,7 +965,7 @@ namespace POSCA.View.receipts
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(invoice.ConsumerDiscount);
             txt_CostNet.Text = HelpClass.DecTostring(invoice.CostNet);
 
-            buildPurchaseOrderDetails(invoice);
+            await buildPurchaseOrderDetails(invoice);
 
             ControlsEditable();
 
@@ -989,9 +989,10 @@ namespace POSCA.View.receipts
             ControlsEditable();
         
         }
-        private void buildPurchaseOrderDetails(PurchaseInvoice invoice)
+        private async Task buildPurchaseOrderDetails(PurchaseInvoice invoice)
         {
-            foreach(var row in invoice.PurchaseDetails)
+            billDetails = new List<RecieptDetails>();
+            foreach (var row in invoice.PurchaseDetails)
             {
                 billDetails.Add(new RecieptDetails()
                 {
@@ -1016,7 +1017,13 @@ namespace POSCA.View.receipts
             }
           
             dg_invoiceDetails.ItemsSource = billDetails;
+            HelpClass.StartAwait(grid_main);
+            dg_invoiceDetails.IsEnabled = false;
+            await Task.Delay(1000);
             dg_invoiceDetails.Items.Refresh();
+            dg_invoiceDetails.IsEnabled = true;
+            HelpClass.EndAwait(grid_main);
+           
 
         }
         private void buildInvoiceDetails(Receipt invoice)
@@ -1431,6 +1438,8 @@ namespace POSCA.View.receipts
                 if (e.Key == Key.Return && tb_PurchaseInvNumber.Text!= "")
                 {
                     purchaseOrder = await FillCombo.purchaseInvoice.getPurchaseOrderByNum(tb_PurchaseInvNumber.Text);
+
+                    receipt = new Receipt();
                     receipt.LocationId = purchaseOrder.LocationId;
                     receipt.SupId = purchaseOrder.SupId;
                     receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
@@ -1438,8 +1447,9 @@ namespace POSCA.View.receipts
                     receipt.NetInvoice = purchaseOrder.CostNet;
 
                     // doesn't have any receipt
+                    
                     if(purchaseOrder.ReceiptDocuments == null)
-                        fillOrderInputs(purchaseOrder);
+                        await fillOrderInputs(purchaseOrder);
                     else
                     {
                         foreach(var row in purchaseOrder.PurchaseDetails)
@@ -1450,8 +1460,11 @@ namespace POSCA.View.receipts
                             {
                                 foreach (var item in row1.ReceiptDetails)
                                 {
-                                    minQty +=(int)item.MinQty;
-                                    maxQty += (int)item.MaxQty;
+                                    if (item.ItemId == row.ItemId)
+                                    {
+                                        minQty += (int)item.MinQty;
+                                        maxQty += (int)item.MaxQty;
+                                    }
                                 }
                             }
 
@@ -1459,13 +1472,14 @@ namespace POSCA.View.receipts
                             int breakNum = 0;
                             if (diffMin < 0)
                             {
-                                 breakNum = (int)Math.Ceiling((decimal)diffMin / (decimal)row.Factor);
+                                 breakNum = 1+(int)Math.Ceiling((decimal)diffMin / (decimal)row.Factor);
                                 row.MinQty = row.Factor + diffMin;
                             }
                             else
                                 row.MinQty = row.Factor - diffMin;
 
                             row.MaxQty = row.MaxQty - maxQty - breakNum;
+                            await fillOrderInputs(purchaseOrder);
                         }
                     }
      
