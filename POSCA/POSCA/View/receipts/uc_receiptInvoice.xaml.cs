@@ -420,7 +420,7 @@ namespace POSCA.View.receipts
             receipt.LocationId = (long)cb_LocationId.SelectedValue;
             receipt.SupId = (long)cb_SupId.SelectedValue;
             receipt.ReceiptType = _ReceiptType;
-
+            receipt.InvType = "receipt";
             if (purchaseOrder.PurchaseId != 0)
                 receipt.PurchaseId = purchaseOrder.PurchaseId;
 

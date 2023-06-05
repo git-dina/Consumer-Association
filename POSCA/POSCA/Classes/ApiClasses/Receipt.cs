@@ -12,6 +12,7 @@ namespace POSCA.Classes.ApiClasses
     {
         #region Attributes
         public long ReceiptId { get; set; }
+        public string InvType { get; set; } 
         public string ReceiptStatus { get; set; } = "new";
         public bool IsRecieveAll { get; set; } = true;
         public string InvNumber { get; set; }
