@@ -187,7 +187,7 @@ namespace POSCA.View.receipts
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("ReceiptOrders");
-            btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
+           // btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -290,7 +290,8 @@ namespace POSCA.View.receipts
                         col_minQty.IsReadOnly = false;
                     }
 
-                    btn_purchaseOrders.Visibility = Visibility.Visible;
+                    // btn_purchaseOrders.Visibility = Visibility.Visible;
+                    grd_purchaseNum.Visibility = Visibility.Visible;
                     sp_IsRecieveAll.Visibility = Visibility.Visible;
 
                     brd_grid0_0.IsEnabled = false;
@@ -304,13 +305,18 @@ namespace POSCA.View.receipts
                     col_maxQty.IsReadOnly = false;
                     col_minQty.IsReadOnly = false;
 
-                    btn_purchaseOrders.Visibility = Visibility.Collapsed;
+                    //btn_purchaseOrders.Visibility = Visibility.Collapsed;
                   
                     sp_IsRecieveAll.Visibility = Visibility.Collapsed;
 
                     brd_grid0_0.IsEnabled = true;
                     cb_LocationId.IsEnabled = true;
                     cb_SupId.IsEnabled = true;
+                    if(receipt.PurchaseId != null)
+                        grd_purchaseNum.Visibility = Visibility.Visible;
+                    else
+                        grd_purchaseNum.Visibility = Visibility.Collapsed;
+
                     break;
 
             }
@@ -876,45 +882,45 @@ namespace POSCA.View.receipts
             tb_NetInvoice.Text = HelpClass.DecTostring(netCost);
           
         }
-        private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
-        {
+        //private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
+        //{
         
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                Window.GetWindow(this).Opacity = 0.2;
-                wd_purchaseInv w = new wd_purchaseInv();
+        //    try
+        //    {
+        //        HelpClass.StartAwait(grid_main);
+        //        Window.GetWindow(this).Opacity = 0.2;
+        //        wd_purchaseInv w = new wd_purchaseInv();
 
-                string invoiceType = "po";
-                w.invoiceType = invoiceType;
-                w.invoiceStatus = "orderPlaced";
+        //        string invoiceType = "po";
+        //        w.invoiceType = invoiceType;
+        //        w.invoiceStatus = "orderPlaced";
 
-                w.ShowDialog();
-                if (w.isOk)
-                {
-                    purchaseOrder = w.purchaseInvoice;
+        //        w.ShowDialog();
+        //        if (w.isOk)
+        //        {
+        //            purchaseOrder = w.purchaseInvoice;
 
-                    receipt.LocationId = purchaseOrder.LocationId;
-                    receipt.SupId = purchaseOrder.SupId;
-                    receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
+        //            receipt.LocationId = purchaseOrder.LocationId;
+        //            receipt.SupId = purchaseOrder.SupId;
+        //            receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
                    
-                  receipt.NetInvoice= purchaseOrder.CostNet;
+        //          receipt.NetInvoice= purchaseOrder.CostNet;
 
-                    fillOrderInputs(purchaseOrder);
-                }
-                Window.GetWindow(this).Opacity = 1;
+        //            fillOrderInputs(purchaseOrder);
+        //        }
+        //        Window.GetWindow(this).Opacity = 1;
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+        //        HelpClass.EndAwait(grid_main);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+        //        Window.GetWindow(this).Opacity = 1;
+        //        HelpClass.EndAwait(grid_main);
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
            
-        }
+        //}
 
         private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
         {
@@ -1416,6 +1422,59 @@ namespace POSCA.View.receipts
 
             }
             catch { }
+        }
+
+        private async void tb_PurchaseInvNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_PurchaseInvNumber.Text!= "")
+                {
+                    purchaseOrder = await FillCombo.purchaseInvoice.getPurchaseOrderByNum(tb_PurchaseInvNumber.Text);
+                    receipt.LocationId = purchaseOrder.LocationId;
+                    receipt.SupId = purchaseOrder.SupId;
+                    receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
+
+                    receipt.NetInvoice = purchaseOrder.CostNet;
+
+                    // doesn't have any receipt
+                    if(purchaseOrder.ReceiptDocuments == null)
+                        fillOrderInputs(purchaseOrder);
+                    else
+                    {
+                        foreach(var row in purchaseOrder.PurchaseDetails)
+                        {
+                            var minQty = 0;
+                            var maxQty = 0;
+                            foreach(var row1 in purchaseOrder.ReceiptDocuments)
+                            {
+                                foreach (var item in row1.ReceiptDetails)
+                                {
+                                    minQty +=(int)item.MinQty;
+                                    maxQty += (int)item.MaxQty;
+                                }
+                            }
+
+                            var diffMin = row.MinQty - minQty;
+                            int breakNum = 0;
+                            if (diffMin < 0)
+                            {
+                                 breakNum = (int)Math.Ceiling((decimal)diffMin / (decimal)row.Factor);
+                                row.MinQty = row.Factor + diffMin;
+                            }
+                            else
+                                row.MinQty = row.Factor - diffMin;
+
+                            row.MaxQty = row.MaxQty - maxQty - breakNum;
+                        }
+                    }
+     
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

@@ -45,6 +45,8 @@ namespace POSCA.Classes.ApiClasses
         public string SupplierName { get; set; }
         public IEnumerable<PurchaseInvDetails> PurchaseDetails { get; set; }
         public Supplier supplier { get; set; }
+        public List<Receipt> ReceiptDocuments { get; set; }
+
         #endregion
 
         #region Methods
@@ -87,6 +89,24 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value));
+                }
+            }
+            return result;
+        }
+         public async Task<PurchaseInvoice> getPurchaseOrderByNum(string invNumber)
+        {
+            var result = new PurchaseInvoice();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Purchase/getPurchaseOrderByNum";
+
+            parameters.Add("invNumber", invNumber);        
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result= JsonConvert.DeserializeObject<PurchaseInvoice>(c.Value);
                 }
             }
             return result;

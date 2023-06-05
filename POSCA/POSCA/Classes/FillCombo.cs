@@ -679,7 +679,7 @@ namespace POSCA.Classes
         #endregion
 
         #region Purchase
-
+        static public PurchaseInvoice purchaseInvoice = new PurchaseInvoice();
         #region purchase order status
         static public List<keyValueString> PurchaseOrderStatusList;
         static public IEnumerable<keyValueString> RefreshPurchaseOrderStatus()

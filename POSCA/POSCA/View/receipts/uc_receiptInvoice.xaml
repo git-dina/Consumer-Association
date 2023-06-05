@@ -330,7 +330,7 @@
                             </Grid>
                         </Border>
 
-                        <Button Grid.Column="1"  Padding="0"    
+                        <!--<Button Grid.Column="1"  Padding="0"    
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
                                             x:Name="btn_purchaseOrders" Click="Btn_purchaseOrders_Click"  
@@ -338,9 +338,54 @@
                             <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
                            Data="{StaticResource dolarListCheck}" />
-                        </Button>
+                        </Button>-->
                     </Grid>
 
+                    <Grid x:Name="grd_purchaseNum">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   
+                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_PurchaseInvNumber" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding PurchaseInvNumber, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="PurchaseInvNumber..."    
+                                        Foreground="{StaticResource textColor}" 
+                                    KeyDown="tb_PurchaseInvNumber_KeyDown"
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PurchaseInvNumber" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+
+
+                        <StackPanel x:Name="sp_IsRecieveAll" 
+                                Visibility="Visible" 
+                                Grid.Column="1"
+                                Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
+                            <TextBlock  x:Name="txt_IsRecieveAll"
+                               Margin="5,5,5,5" Text="RecieveAll" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                            <ToggleButton Grid.Column="1"  x:Name="tgl_IsRecieveAll"  IsChecked="{Binding IsRecieveAll, Mode=TwoWay}"
+                                 VerticalAlignment="Center" Padding="10,15,5,5"
+                                 Margin="0" Height="13" Width="28" 
+                                 Checked="tgl_IsRecieveAll_Checked"
+                                 Unchecked="tgl_IsRecieveAll_Unchecked"/>
+                        </StackPanel>
+                    </Grid>
+                    
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -395,70 +440,6 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <DatePicker  x:Name="dp_ReceiptDate" 
-                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
-                                        TextBlock.Foreground="{StaticResource textColor}"
-                                         SelectedDate="{Binding ReceiptDate, Mode=TwoWay}" Padding="10,0,5,0"  
-                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                        materialDesign:HintAssist.Hint="ReceiptDate..."  
-                                        Foreground="{StaticResource textColor}"   Height="40" 
-                                         
-                                         />
-                            <Path Fill="#E81123" x:Name="p_error_ReceiptDate" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                        </Grid>
-                    </Border>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="auto"/>
-                        </Grid.ColumnDefinitions>
-                    <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   
-                            BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
-                        <Grid   >
-                            <TextBox x:Name="tb_PurchaseInvNumber" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding PurchaseInvNumber, Mode=TwoWay}"
-                                     
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="PurchaseInvNumber..."    
-                                        Foreground="{StaticResource textColor}" 
-                                     IsEnabled="False"
-                                     BorderThickness="0" Tag="int"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PurchaseInvNumber" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                            </Path>
-                        </Grid>
-                    </Border>
-                   
-
-                    <StackPanel x:Name="sp_IsRecieveAll" 
-                                Visibility="Visible" 
-                                Grid.Column="1"
-                                Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
-                        <TextBlock  x:Name="txt_IsRecieveAll"
-                               Margin="5,5,5,5" Text="RecieveAll" Foreground="#6e6e6e"
-                            HorizontalAlignment="Left" VerticalAlignment="Center"
-                                  FontSize="12"/>
-                        <ToggleButton Grid.Column="1"  x:Name="tgl_IsRecieveAll"  IsChecked="{Binding IsRecieveAll, Mode=TwoWay}"
-                                 VerticalAlignment="Center" Padding="10,15,5,5"
-                                 Margin="0" Height="13" Width="28" 
-                                 Checked="tgl_IsRecieveAll_Checked"
-                                 Unchecked="tgl_IsRecieveAll_Unchecked"/>
-                    </StackPanel>
-                    </Grid>
-
                     <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <ComboBox x:Name="cb_SupId"    SelectedValue="{Binding SupId, Mode=TwoWay}"
@@ -480,6 +461,28 @@
 
                         </Grid>
                     </Border>
+                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <DatePicker  x:Name="dp_ReceiptDate" 
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
+                                        TextBlock.Foreground="{StaticResource textColor}"
+                                         SelectedDate="{Binding ReceiptDate, Mode=TwoWay}" Padding="10,0,5,0"  
+                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                        materialDesign:HintAssist.Hint="ReceiptDate..."  
+                                        Foreground="{StaticResource textColor}"   Height="40" 
+                                         
+                                         />
+                            <Path Fill="#E81123" x:Name="p_error_ReceiptDate" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                        </Grid>
+                    </Border>
+                   
+
+                  
                     <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                         <Grid   >
                             <TextBox x:Name="tb_InvNumber" Grid.Row="8"  Padding="10,0,5,0"  
