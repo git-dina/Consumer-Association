@@ -1427,5 +1427,15 @@ namespace POSCA.View.receipts
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
+
+        private void tgl_ReturnType_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void tgl_ReturnType_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

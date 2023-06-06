@@ -305,25 +305,21 @@
                     <TextBlock Tag="invoiceDetails"   Text="invoiceDetails" x:Name="txt_invoiceDetails" Foreground="{StaticResource SecondColor}" 
                                                 FontWeight="Bold" FontSize="12"  
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
-                    <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <ComboBox x:Name="cb_ReturnType"   
-                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="ReturnType..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"
-                                  IsTextSearchEnabled ="False"
-                                  IsEditable="True"
-                                  StaysOpenOnEdit="true"/>
-                            <Path Fill="#E81123" x:Name="p_error_ReturnType" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                        </Grid>
-                    </Border>
-
+                    <StackPanel x:Name="sp_ReturnType" 
+                                Visibility="Visible" 
+                                Grid.Column="1"
+                                Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
+                        <TextBlock  x:Name="txt_ReturnType"
+                               Margin="5,5,5,5" Text="RecieveAll" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                        <ToggleButton Grid.Column="1"  x:Name="tgl_ReturnType"  IsChecked="{Binding ReturnType, Mode=TwoWay}"
+                                 VerticalAlignment="Center" Padding="10,15,5,5"
+                                 Margin="0" Height="13" Width="28" 
+                                 Checked="tgl_ReturnType_Checked"
+                                 Unchecked="tgl_ReturnType_Unchecked"/>
+                    </StackPanel>
+ 
 
 
                     <Grid>
