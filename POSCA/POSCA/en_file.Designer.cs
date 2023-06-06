@@ -13140,7 +13140,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المرتجعات.
+        ///   Looks up a localized string similar to Returns.
         /// </summary>
         internal static string trReturns {
             get {
