@@ -615,6 +615,12 @@ namespace POSCA
             grid_main.Children.Clear();
             grid_main.Children.Add(uc_receiptInvoice.Instance);
         }
+
+        private void Btn_returnReceiptInv_Click(object sender, RoutedEventArgs e)
+        {
+            grid_main.Children.Clear();
+            grid_main.Children.Add(uc_returnReceiptInv.Instance);
+        }
         private void Btn_brand_Click(object sender, RoutedEventArgs e)
         {
             grid_main.Children.Clear();
@@ -712,6 +718,6 @@ namespace POSCA
             }
         }
 
-       
+        
     }
 }

@@ -534,6 +534,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="returnReceiptInv" 
+                          x:Name="btn_returnReceiptInv"  Click="Btn_returnReceiptInv_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="returnReceiptInv" Foreground="White" x:Name="txt_returnReceiptInv"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
                         </StackPanel>
                     </Expander>
 
