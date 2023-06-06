@@ -115,11 +115,8 @@ namespace POSCA.View.receipts
                 while (!isDone);
                 #endregion
 
-                FillCombo.fillReceiptsTypes(cb_ReceiptType);
                 FillCombo.fillReceiptStatus(cb_ReceiptStatus);
 
-                cb_ReceiptType.SelectedIndex = 0;
-                cb_ReceiptType.SelectedValue = "purchaseOrders";
                 //await Search();
                 await Clear();
 
@@ -149,27 +146,15 @@ namespace POSCA.View.receipts
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
             txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
             txt_DiscountValueTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
-            txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
-            txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
-            txt_IsRecieveAll.Text = AppSettings.resourcemanager.GetString("ReceiptAll");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("DocumentStatusHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptType, AppSettings.resourcemanager.GetString("ReceiptTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("VouchernoHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseInvNumber, AppSettings.resourcemanager.GetString("PurchaseOrderNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupInvoiceNum, AppSettings.resourcemanager.GetString("trInvoiceNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptDate, AppSettings.resourcemanager.GetString("ReceiptDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SupInvoiceDate, AppSettings.resourcemanager.GetString("trInvoiceDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceAmount, AppSettings.resourcemanager.GetString("InvoiceAmountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AmountDifference, AppSettings.resourcemanager.GetString("ApproximateVariancesHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_NetInvoice, AppSettings.resourcemanager.GetString("NetInvoiceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierNotes, AppSettings.resourcemanager.GetString("SupplierNotesHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SupplierPurchaseNotes, AppSettings.resourcemanager.GetString("SupplierOrderNotesHint"));
 
             dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
             dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("itemName");
@@ -290,9 +275,6 @@ namespace POSCA.View.receipts
                         col_minQty.IsReadOnly = false;
                     }
 
-                    // btn_purchaseOrders.Visibility = Visibility.Visible;
-                    grd_purchaseNum.Visibility = Visibility.Visible;
-                    sp_IsRecieveAll.Visibility = Visibility.Visible;
 
                     brd_grid0_0.IsEnabled = false;
                     cb_LocationId.IsEnabled = false;
@@ -305,17 +287,11 @@ namespace POSCA.View.receipts
                     col_maxQty.IsReadOnly = false;
                     col_minQty.IsReadOnly = false;
 
-                    //btn_purchaseOrders.Visibility = Visibility.Collapsed;
 
-                    sp_IsRecieveAll.Visibility = Visibility.Collapsed;
 
                     brd_grid0_0.IsEnabled = true;
                     cb_LocationId.IsEnabled = true;
                     cb_SupId.IsEnabled = true;
-                    if (receipt.PurchaseId != null)
-                        grd_purchaseNum.Visibility = Visibility.Visible;
-                    else
-                        grd_purchaseNum.Visibility = Visibility.Collapsed;
 
                     break;
 
@@ -427,10 +403,6 @@ namespace POSCA.View.receipts
             receipt.ReceiptStatus = "notCarriedOver";
 
             receipt.ReceiptDate = (DateTime)dp_ReceiptDate.SelectedDate;
-            receipt.SupInvoiceDate = (DateTime)dp_SupInvoiceDate.SelectedDate;
-            receipt.SupInvoiceNum = tb_SupInvoiceNum.Text;
-            receipt.SupplierNotes = tb_SupplierNotes.Text;
-            receipt.SupplierPurchaseNotes = tb_SupplierPurchaseNotes.Text;
             receipt.SupplierNotes = supplier.Notes;
             receipt.SupplierPurchaseNotes = supplier.PurchaseOrderNotes;
 
@@ -439,8 +411,6 @@ namespace POSCA.View.receipts
             else
                 receipt.IsRecieveAll = false;
 
-            receipt.InvoiceAmount = decimal.Parse(tb_InvoiceAmount.Text);
-            receipt.AmountDifference = decimal.Parse(tb_AmountDifference.Text);
 
             receipt.TotalCost = decimal.Parse(txt_TotalCost.Text);
             receipt.TotalPrice = decimal.Parse(txt_TotalPrice.Text);
@@ -448,9 +418,6 @@ namespace POSCA.View.receipts
             receipt.CoopDiscount = supplier.DiscountPercentage;
             receipt.DiscountValue = decimal.Parse(txt_DiscountValue.Text);
 
-            if (tb_FreePercentage.Text != "")
-                receipt.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
-            receipt.FreeValue = decimal.Parse(txt_FreeValue.Text);
             receipt.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
             receipt.CostNet = decimal.Parse(txt_CostNet.Text);
 
@@ -609,8 +576,6 @@ namespace POSCA.View.receipts
             txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
             txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
             txt_DiscountValue.Text = HelpClass.DecTostring(0);
-            tb_FreePercentage.Text = HelpClass.DecTostring(0);
-            txt_FreeValue.Text = HelpClass.DecTostring(0);
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
             txt_CostNet.Text = HelpClass.DecTostring(0);
 
@@ -896,45 +861,6 @@ namespace POSCA.View.receipts
             tb_NetInvoice.Text = HelpClass.DecTostring(netCost);
 
         }
-        //private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    try
-        //    {
-        //        HelpClass.StartAwait(grid_main);
-        //        Window.GetWindow(this).Opacity = 0.2;
-        //        wd_purchaseInv w = new wd_purchaseInv();
-
-        //        string invoiceType = "po";
-        //        w.invoiceType = invoiceType;
-        //        w.invoiceStatus = "orderPlaced";
-
-        //        w.ShowDialog();
-        //        if (w.isOk)
-        //        {
-        //            purchaseOrder = w.purchaseInvoice;
-
-        //            receipt.LocationId = purchaseOrder.LocationId;
-        //            receipt.SupId = purchaseOrder.SupId;
-        //            receipt.PurchaseInvNumber = purchaseOrder.InvNumber;
-
-        //          receipt.NetInvoice= purchaseOrder.CostNet;
-
-        //            fillOrderInputs(purchaseOrder);
-        //        }
-        //        Window.GetWindow(this).Opacity = 1;
-
-        //        HelpClass.EndAwait(grid_main);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Window.GetWindow(this).Opacity = 1;
-        //        HelpClass.EndAwait(grid_main);
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-        //    }
-
-        //}
 
         private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
         {
@@ -974,8 +900,6 @@ namespace POSCA.View.receipts
             txt_TotalPrice.Text = HelpClass.DecTostring(invoice.TotalPrice);
             txt_EnterpriseDiscount.Text = HelpClass.DecTostring(invoice.CoopDiscount);
             txt_DiscountValue.Text = HelpClass.DecTostring(invoice.DiscountValue);
-            tb_FreePercentage.Text = HelpClass.DecTostring(invoice.FreePercentage);
-            txt_FreeValue.Text = HelpClass.DecTostring(invoice.FreeValue);
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(invoice.ConsumerDiscount);
             txt_CostNet.Text = HelpClass.DecTostring(invoice.CostNet);
 
@@ -993,8 +917,6 @@ namespace POSCA.View.receipts
             txt_TotalPrice.Text = HelpClass.DecTostring(receipt.TotalPrice);
             txt_EnterpriseDiscount.Text = HelpClass.DecTostring(receipt.CoopDiscount);
             txt_DiscountValue.Text = HelpClass.DecTostring(receipt.DiscountValue);
-            tb_FreePercentage.Text = HelpClass.DecTostring(receipt.FreePercentage);
-            txt_FreeValue.Text = HelpClass.DecTostring(receipt.FreeValue);
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(receipt.ConsumerDiscount);
             txt_CostNet.Text = HelpClass.DecTostring(receipt.CostNet);
 
@@ -1030,13 +952,6 @@ namespace POSCA.View.receipts
                 });
             }
 
-            //dg_invoiceDetails.ItemsSource = billDetails;
-            //HelpClass.StartAwait(grid_main);
-            //dg_invoiceDetails.IsEnabled = false;
-            //await Task.Delay(1000);
-            //dg_invoiceDetails.Items.Refresh();
-            //dg_invoiceDetails.IsEnabled = true;
-            //HelpClass.EndAwait(grid_main);
 
             if (!forceCancelEdit)
             {
@@ -1400,16 +1315,7 @@ namespace POSCA.View.receipts
 
         }
 
-        private async void cb_ReceiptType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                await Clear();
-                _ReceiptType = cb_ReceiptType.SelectedValue.ToString();
-                ControlsEditable();
-            }
-            catch { }
-        }
+       
 
         Supplier supplier;
         private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -1420,8 +1326,6 @@ namespace POSCA.View.receipts
                 supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
                 txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
-                tb_SupplierNotes.Text = supplier.Notes;
-                tb_SupplierPurchaseNotes.Text = supplier.PurchaseOrderNotes;
             }
             catch (Exception ex)
             {
@@ -1440,25 +1344,7 @@ namespace POSCA.View.receipts
 
         }
 
-        private void tb_AmountDifference_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                ValidateEmpty_TextChange(sender, e);
-
-                if (tb_AmountDifference.Text != "")
-                {
-                    var diff = decimal.Parse(tb_AmountDifference.Text);
-                    if (diff > 50)
-                    {
-                        tb_AmountDifference.Text = "0";
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trAmountDifferenceError"), animation: ToasterAnimation.FadeIn);
-                    }
-                }
-
-            }
-            catch { }
-        }
+     
 
         private async void tb_PurchaseInvNumber_KeyDown(object sender, KeyEventArgs e)
         {
