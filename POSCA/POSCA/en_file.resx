@@ -5646,4 +5646,19 @@ Main Documents</value>
   <data name="ReceiptType" xml:space="preserve">
     <value>Receipt Type</value>
   </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="CustomHint" xml:space="preserve">
+    <value>Custom...</value>
+  </data>
+  <data name="PriceDifferences" xml:space="preserve">
+    <value>Price Differences</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>Rent</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Support</value>
+  </data>
 </root>

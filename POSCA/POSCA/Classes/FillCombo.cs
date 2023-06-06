@@ -797,6 +797,31 @@ namespace POSCA.Classes
 
         }
         #endregion
+
+        #region CustomFreeTypes
+        static public List<keyValueString> CustomFreeTypesList;
+        static public IEnumerable<keyValueString> RefreshCustomFreeTypesList()
+        {
+            ReceiptStatusList = new List<keyValueString>() {
+                new keyValueString(){key="priceDifferences", value=AppSettings.resourcemanager.GetString("PriceDifferences") },
+                new keyValueString(){key="rent", value=AppSettings.resourcemanager.GetString("Rent") },
+                new keyValueString(){key="support", value=AppSettings.resourcemanager.GetString("Support") },
+            };
+
+            return CustomFreeTypesList;
+        }
+
+        static public void fillCustomFreeTypes(ComboBox combo)
+        {
+            if (CustomFreeTypesList is null)
+                RefreshCustomFreeTypesList();
+
+            combo.ItemsSource = CustomFreeTypesList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
         #endregion
     }
 }

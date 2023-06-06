@@ -58,6 +58,7 @@ namespace POSCA.Classes.ApiClasses
         #region extra attributes
         public string CategoryName { get; set; }
         public string SupCode { get; set; }
+        public Category Category { get; set; }
         public Supplier Supplier { get; set; }
         public List<ItemGeneralization> ItemGeneralizations { get; set; }
         public List<ItemUnit> ItemUnits { get; set; }

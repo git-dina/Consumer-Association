@@ -261,7 +261,7 @@
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemNotes" Binding="{Binding Path=ItemNotes, Mode=TwoWay}"/>-->
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
+                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*" x:Name="col_maxQty"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*" x:Name="col_minQty"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
@@ -346,7 +346,7 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   
+                        <Border x:Name="brd_purchaseNumber" Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   
                             BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                             <Grid   >
                                 <TextBox x:Name="tb_PurchaseInvNumber" Grid.Row="8"  Padding="10,0,5,0"  
@@ -439,7 +439,7 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                    <Border x:Name="brd_CustomFreeType" Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <ComboBox x:Name="cb_CustomFreeType"    SelectedValue="{Binding CustomFreeType, Mode=TwoWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"

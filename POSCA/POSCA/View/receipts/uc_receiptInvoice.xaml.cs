@@ -73,8 +73,7 @@ namespace POSCA.View.receipts
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
-                                                "InvoiceAmount", "AmountDifference" };
+               
                 if (AppSettings.lang.Equals("en"))
                 {
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
@@ -117,6 +116,7 @@ namespace POSCA.View.receipts
               
                 FillCombo.fillReceiptsTypes(cb_ReceiptType);
                 FillCombo.fillReceiptStatus(cb_ReceiptStatus);
+                FillCombo.fillCustomFreeTypes(cb_CustomFreeType);
 
                 cb_ReceiptType.SelectedIndex = 0;
                 cb_ReceiptType.SelectedValue = "purchaseOrders";
@@ -158,6 +158,7 @@ namespace POSCA.View.receipts
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptStatus, AppSettings.resourcemanager.GetString("DocumentStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptType, AppSettings.resourcemanager.GetString("ReceiptTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CustomFreeType, AppSettings.resourcemanager.GetString("CustomHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvNumber, AppSettings.resourcemanager.GetString("VouchernoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PurchaseInvNumber, AppSettings.resourcemanager.GetString("PurchaseOrderNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SupId, AppSettings.resourcemanager.GetString("SupplierHint"));
@@ -175,7 +176,7 @@ namespace POSCA.View.receipts
             dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("itemName");
      
             dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
-            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trCost");
+            col_mainCost.Header = AppSettings.resourcemanager.GetString("trCost");
             dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trPrice");
             dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
             dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
@@ -269,64 +270,137 @@ namespace POSCA.View.receipts
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-            //check receipt status first
-            switch (_ReceiptType)
-            {
-
-                case "purchaseOrders": //supplying order is approved
-                    btn_save.IsEnabled = true;
-                    if (tgl_IsRecieveAll.IsChecked == true)
-                    {
-                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
-                        col_freeQty.IsReadOnly = true;
-                        col_maxQty.IsReadOnly = true;
-                        col_minQty.IsReadOnly = true;
-                    }
-                    else
-                    {
-                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                        col_freeQty.IsReadOnly = false;
-                        col_maxQty.IsReadOnly = false;
-                        col_minQty.IsReadOnly = false;
-                    }
-
-                    // btn_purchaseOrders.Visibility = Visibility.Visible;
-                    grd_purchaseNum.Visibility = Visibility.Visible;
-                    sp_IsRecieveAll.Visibility = Visibility.Visible;
-
-                    brd_grid0_0.IsEnabled = false;
-                    cb_LocationId.IsEnabled = false;
-                    cb_SupId.IsEnabled = false;
-                    break;
-                default:
-                    dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-
-                    col_freeQty.IsReadOnly = false;
-                    col_maxQty.IsReadOnly = false;
-                    col_minQty.IsReadOnly = false;
-
-                    //btn_purchaseOrders.Visibility = Visibility.Collapsed;
-                  
-                    sp_IsRecieveAll.Visibility = Visibility.Collapsed;
-
-                    brd_grid0_0.IsEnabled = true;
-                    cb_LocationId.IsEnabled = true;
-                    cb_SupId.IsEnabled = true;
-                    if(receipt.PurchaseId != null)
-                        grd_purchaseNum.Visibility = Visibility.Visible;
-                    else
-                        grd_purchaseNum.Visibility = Visibility.Collapsed;
-
-                    break;
-
-            }
-
             if (receipt.ReceiptId.Equals(0))
             {
                 btn_printInvoice.IsEnabled = false;
+                tb_InvoiceAmount.IsEnabled = true;
+                tb_AmountDifference.IsEnabled = true;
+                tb_SupInvoiceNum.IsEnabled = true;
+                tb_FreePercentage.IsEnabled = true;
+                dp_ReceiptDate.IsEnabled = true;
+                dp_SupInvoiceDate.IsEnabled = true;
+                cb_ReceiptType.IsEnabled = true;
+                //check receipt status first
+                switch (_ReceiptType)
+                {
+
+                    case "purchaseOrders": //supplying order is approved
+                        btn_save.IsEnabled = true;
+                        col_mainCost.IsReadOnly = true;
+
+                        if (tgl_IsRecieveAll.IsChecked == true)
+                        {
+                            dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                            col_freeQty.IsReadOnly = true;
+                            col_maxQty.IsReadOnly = true;
+                            col_minQty.IsReadOnly = true;
+                        }
+                        else
+                        {
+                            dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                            col_freeQty.IsReadOnly = false;
+                            col_maxQty.IsReadOnly = false;
+                            col_minQty.IsReadOnly = false;
+                        }
+
+                        grd_purchaseNum.IsEnabled = true;
+                        sp_IsRecieveAll.Visibility = Visibility.Visible;
+                        brd_purchaseNumber.Visibility = Visibility.Visible;
+                        brd_CustomFreeType.Visibility = Visibility.Collapsed;
+
+                        brd_grid0_0.IsEnabled = false;
+                        cb_LocationId.IsEnabled = false;
+                        cb_SupId.IsEnabled = false;
+                        break;
+                    default:
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+
+                        col_freeQty.IsReadOnly = false;
+                        col_maxQty.IsReadOnly = false;
+                        col_minQty.IsReadOnly = false;
+
+                        //grd_purchaseNum.Visibility = Visibility.Collapsed;
+
+                      
+                        brd_grid0_0.IsEnabled = true;
+                        cb_LocationId.IsEnabled = true;
+                        cb_SupId.IsEnabled = true;
+
+                        if (_ReceiptType == "customFree")
+                            brd_CustomFreeType.Visibility = Visibility.Visible;
+                        else
+                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
+
+                        if(_ReceiptType == "vegetable" || _ReceiptType == "freeVegetables")
+                            col_mainCost.IsReadOnly = false;
+                        else
+                            col_mainCost.IsReadOnly = true;
+
+                        if (receipt.PurchaseId != null)
+                        {
+                            //grd_purchaseNum.Visibility = Visibility.Visible;
+                            sp_IsRecieveAll.Visibility = Visibility.Visible;
+                            brd_purchaseNumber.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            //grd_purchaseNum.Visibility = Visibility.Collapsed;
+                            sp_IsRecieveAll.Visibility = Visibility.Collapsed;
+                            brd_purchaseNumber.Visibility = Visibility.Collapsed;
+                        }
+
+                        break;
+
+                }
             }
             else
             {
+                switch (_ReceiptType)
+                {
+
+                    case "purchaseOrders": //supplying order is approved
+
+                        sp_IsRecieveAll.Visibility = Visibility.Visible;
+                        brd_purchaseNumber.Visibility = Visibility.Visible;
+                        brd_CustomFreeType.Visibility = Visibility.Collapsed;
+                        break;
+                    default:
+
+                        sp_IsRecieveAll.Visibility = Visibility.Collapsed;
+                        brd_purchaseNumber.Visibility = Visibility.Collapsed;
+
+                        if (_ReceiptType == "customFree")
+                            brd_CustomFreeType.Visibility = Visibility.Visible;
+                        else
+                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
+
+
+                        break;
+
+                }
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+
+                col_freeQty.IsReadOnly = true;
+                col_maxQty.IsReadOnly = true;
+                col_minQty.IsReadOnly = true;
+                col_mainCost.IsReadOnly = true;
+                grd_purchaseNum.IsEnabled = false;
+
+                brd_grid0_0.IsEnabled = false;
+
+                cb_ReceiptType.IsEnabled = false;
+                cb_LocationId.IsEnabled = false;
+                cb_SupId.IsEnabled = false;
+                cb_CustomFreeType.IsEnabled = false;
+                tb_InvoiceAmount.IsEnabled = false;
+                tb_AmountDifference.IsEnabled = false;
+                tb_SupInvoiceNum.IsEnabled = false;
+                tb_FreePercentage.IsEnabled = false;
+                dp_ReceiptDate.IsEnabled = false;
+                dp_SupInvoiceDate.IsEnabled = false;
+                grd_purchaseNum.IsEnabled = false;
+
+                btn_save.IsEnabled = false;
                 btn_printInvoice.IsEnabled = true;
 
             }
@@ -1308,14 +1382,16 @@ namespace POSCA.View.receipts
             }
         }
 
-        private void dg_invoiceDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private async void dg_invoiceDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             try
             {
+                HelpClass.StartAwait(grid_main);
+
                 TextBox t = e.EditingElement as TextBox;  // Assumes columns are all TextBoxes
-                int textValue = 0;
+                decimal textValue = 0;
                 if (t.Text != "")
-                    textValue = int.Parse(t.Text);
+                    textValue = decimal.Parse(t.Text);
 
                 var columnName = e.Column.Header.ToString();
 
@@ -1325,6 +1401,8 @@ namespace POSCA.View.receipts
                 int maxQty = 0;
                 int minQty = 0;
                 int freeQty = 0;
+                decimal mainCost = 0;
+                decimal mainPrice = 0;
 
                 if (columnName == AppSettings.resourcemanager.GetString("MaxFactorQty") && !t.Text.Equals(""))
                 {                 
@@ -1338,7 +1416,7 @@ namespace POSCA.View.receipts
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
                         }
                     }
-                    maxQty = textValue;
+                    maxQty =(int) textValue;
                 }
                 else
                     maxQty = (int)row.MaxQty;
@@ -1360,19 +1438,34 @@ namespace POSCA.View.receipts
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
                         }
                     }
-                    minQty = textValue;
+                    minQty = (int)textValue;
                 }
                 else
                     minQty = (int)row.MinQty;
 
                 if (columnName == AppSettings.resourcemanager.GetString("Free") && !t.Text.Equals(""))
-                    freeQty = textValue;
+                    freeQty = (int)textValue;
                 else
                     freeQty = (int)row.FreeQty;
 
-                decimal cost = (row.MainCost * maxQty) + ((row.MainCost / (int)row.Factor) * minQty);
-                decimal price = ((int)row.Factor * row.MainPrice * maxQty) + (row.MainPrice * minQty);
 
+                if (columnName == AppSettings.resourcemanager.GetString("trCost") && !t.Text.Equals(""))
+                {
+                    var item = await FillCombo.item.GetItemByCodeOrName(row.ItemCode, (long)cb_LocationId.SelectedValue, (long)cb_SupId.SelectedValue, _ReceiptType);
+                    mainCost = textValue;
+                    mainPrice = mainCost / (int)row.Factor * (1 + HelpClass.calcPercentage(1, item[0].Category.ProfitPercentage));
+                }
+                else
+                {
+                    mainCost = (decimal)row.MainCost;
+                    mainPrice = (decimal)row.MainPrice;
+                }
+
+                decimal cost = (mainCost * maxQty) + ((mainCost / (int)row.Factor) * minQty);
+                decimal price = ((int)row.Factor * mainPrice * maxQty) + (mainPrice * minQty);
+
+                billDetails[index].MainCost = mainCost;
+                billDetails[index].MainPrice = mainPrice;
                 billDetails[index].MinQty = minQty;
                 billDetails[index].MaxQty = maxQty;
                 billDetails[index].FreeQty = freeQty;
@@ -1388,9 +1481,11 @@ namespace POSCA.View.receipts
                     dg_invoiceDetails.IsEnabled = false;
                     RefreshInvoiceDetailsDataGrid();
                 }
+                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
+                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -1406,6 +1501,12 @@ namespace POSCA.View.receipts
             {
                 await Clear();
                 _ReceiptType = cb_ReceiptType.SelectedValue.ToString();
+                if(_ReceiptType =="customFree")
+                requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
+                                                "InvoiceAmount", "AmountDifference","CustomFreeType" };
+                else
+                    requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
+                                                "InvoiceAmount", "AmountDifference" };
                 ControlsEditable();
             }
             catch { }
@@ -1466,6 +1567,7 @@ namespace POSCA.View.receipts
             {
                 if (e.Key == Key.Return && tb_PurchaseInvNumber.Text!= "")
                 {
+                    HelpClass.StartAwait(grid_main);
                     purchaseOrder = await FillCombo.purchaseInvoice.getPurchaseOrderByNum(tb_PurchaseInvNumber.Text);
 
                     receipt = new Receipt();
@@ -1511,11 +1613,13 @@ namespace POSCA.View.receipts
                             await fillOrderInputs(purchaseOrder);
                         }
                     }
-     
+                    HelpClass.EndAwait(grid_main);
                 }
             }
             catch (Exception ex)
             {
+                HelpClass.EndAwait(grid_main);
+
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }

@@ -5900,4 +5900,19 @@
   <data name="ReceiptType" xml:space="preserve">
     <value>نوع الاستلام</value>
   </data>
+  <data name="Custom" xml:space="preserve">
+    <value>مخصص</value>
+  </data>
+  <data name="CustomHint" xml:space="preserve">
+    <value>مخصص...</value>
+  </data>
+  <data name="PriceDifferences" xml:space="preserve">
+    <value>فروق أسعار</value>
+  </data>
+  <data name="Rent" xml:space="preserve">
+    <value>إيجار</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>دعم</value>
+  </data>
 </root>

@@ -727,11 +727,29 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        internal static string Custom {
+            get {
+                return ResourceManager.GetString("Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom Free.
         /// </summary>
         internal static string CustomFree {
             get {
                 return ResourceManager.GetString("CustomFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom....
+        /// </summary>
+        internal static string CustomHint {
+            get {
+                return ResourceManager.GetString("CustomHint", resourceCulture);
             }
         }
         
@@ -2708,6 +2726,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Price Differences.
+        /// </summary>
+        internal static string PriceDifferences {
+            get {
+                return ResourceManager.GetString("PriceDifferences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prices.
         /// </summary>
         internal static string prices {
@@ -3118,6 +3145,15 @@ namespace POSCA {
         internal static string RemainIsZero {
             get {
                 return ResourceManager.GetString("RemainIsZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rent.
+        /// </summary>
+        internal static string Rent {
+            get {
+                return ResourceManager.GetString("Rent", resourceCulture);
             }
         }
         
@@ -3802,6 +3838,15 @@ namespace POSCA {
         internal static string SupplyUnitHint {
             get {
                 return ResourceManager.GetString("SupplyUnitHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Support.
+        /// </summary>
+        internal static string Support {
+            get {
+                return ResourceManager.GetString("Support", resourceCulture);
             }
         }
         
