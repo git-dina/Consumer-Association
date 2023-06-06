@@ -484,8 +484,13 @@ namespace POSCA.View.receipts
                         billDetails.RemoveAt(index);
 
                         //dg_invoiceDetails.Items.Clear();
-                        dg_invoiceDetails.ItemsSource = billDetails;
-                        dg_invoiceDetails.Items.Refresh();
+                        //dg_invoiceDetails.ItemsSource = billDetails;
+                        //dg_invoiceDetails.Items.Refresh();
+                        if (!forceCancelEdit)
+                        {
+                            dg_invoiceDetails.IsEnabled = false;
+                            RefreshInvoiceDetailsDataGrid();
+                        }
                         // calculate new total
                         refreshValues();
                     }
@@ -588,9 +593,13 @@ namespace POSCA.View.receipts
             purchaseOrder = new PurchaseInvoice();
 
             billDetails = new List<RecieptDetails>();
-            dg_invoiceDetails.ItemsSource = billDetails;
-            dg_invoiceDetails.Items.Refresh();
-
+            //dg_invoiceDetails.ItemsSource = billDetails;
+            //dg_invoiceDetails.Items.Refresh();
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
+            }
             //await Task.Delay(0050);
             //dp_ReceiptDate.SelectedDate = DateTime.Now;
             //dp_SupInvoiceDate.SelectedDate = DateTime.Now;
@@ -828,8 +837,13 @@ namespace POSCA.View.receipts
             {
                 billDetails.Add(recieptDetails);
 
-                dg_invoiceDetails.ItemsSource = billDetails;
-                dg_invoiceDetails.Items.Refresh();
+                //dg_invoiceDetails.ItemsSource = billDetails;
+                //dg_invoiceDetails.Items.Refresh();
+                if (!forceCancelEdit)
+                {
+                    dg_invoiceDetails.IsEnabled = false;
+                    RefreshInvoiceDetailsDataGrid();
+                }
                 refreshValues();
             }
             else // item exist prevoiusly in list
@@ -1015,24 +1029,34 @@ namespace POSCA.View.receipts
                     CreateUserId = MainWindow.userLogin.userId,
                 });
             }
-          
-            dg_invoiceDetails.ItemsSource = billDetails;
-            HelpClass.StartAwait(grid_main);
-            dg_invoiceDetails.IsEnabled = false;
-            await Task.Delay(1000);
-            dg_invoiceDetails.Items.Refresh();
-            dg_invoiceDetails.IsEnabled = true;
-            HelpClass.EndAwait(grid_main);
-           
+
+            //dg_invoiceDetails.ItemsSource = billDetails;
+            //HelpClass.StartAwait(grid_main);
+            //dg_invoiceDetails.IsEnabled = false;
+            //await Task.Delay(1000);
+            //dg_invoiceDetails.Items.Refresh();
+            //dg_invoiceDetails.IsEnabled = true;
+            //HelpClass.EndAwait(grid_main);
+
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
+            }
+
 
         }
         private void buildInvoiceDetails(Receipt invoice)
         {
             
             billDetails = invoice.ReceiptDetails.ToList();
-            dg_invoiceDetails.ItemsSource = invoice.ReceiptDetails;
-            dg_invoiceDetails.Items.Refresh();
-          
+            //dg_invoiceDetails.ItemsSource = invoice.ReceiptDetails;
+            //dg_invoiceDetails.Items.Refresh();
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
+            }
         }
 
         #region print
@@ -1357,8 +1381,13 @@ namespace POSCA.View.receipts
 
                 refreshValues();
 
-                dg_invoiceDetails.ItemsSource = billDetails;
+                //dg_invoiceDetails.ItemsSource = billDetails;
                 //dg_invoiceDetails.Items.Refresh();
+                if (!forceCancelEdit)
+                {
+                    dg_invoiceDetails.IsEnabled = false;
+                    RefreshInvoiceDetailsDataGrid();
+                }
             }
             catch (Exception ex)
             {
@@ -1488,6 +1517,28 @@ namespace POSCA.View.receipts
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        bool forceCancelEdit = false;
+        public void RefreshInvoiceDetailsDataGrid()
+        {
+            try
+            {
+                forceCancelEdit = true;
+                dg_invoiceDetails.CancelEdit();
+                dg_invoiceDetails.ItemsSource = billDetails;
+                dg_invoiceDetails.Items.Refresh();
+
+                dg_invoiceDetails.IsEnabled = true;
+                forceCancelEdit = false;
+
+            }
+            catch (Exception ex)
+            {
+                dg_invoiceDetails.IsEnabled = true;
+                forceCancelEdit = false;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
     }

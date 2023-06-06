@@ -351,7 +351,6 @@
                             <Grid   >
                                 <TextBox x:Name="tb_PurchaseInvNumber" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding PurchaseInvNumber, Mode=TwoWay}"
-                                     
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="PurchaseInvNumber..."    
                                         Foreground="{StaticResource textColor}" 
@@ -442,6 +441,26 @@
                     </Border>
                     <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
+                            <ComboBox x:Name="cb_CustomFreeType"    SelectedValue="{Binding CustomFreeType, Mode=TwoWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
+                                  materialDesign:HintAssist.Hint="CustomFreeType..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"
+                                  IsTextSearchEnabled ="False"
+                                  IsEditable="True"
+                                  StaysOpenOnEdit="true"
+                                      />
+                            <Path Fill="#E81123" x:Name="p_error_CustomFreeType" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
                             <ComboBox x:Name="cb_SupId"    SelectedValue="{Binding SupId, Mode=TwoWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="SupplierId..."  
@@ -461,7 +480,7 @@
 
                         </Grid>
                     </Border>
-                    <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                   <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                         <Grid   >
                             <DatePicker  x:Name="dp_ReceiptDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -620,7 +639,7 @@
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="AmountDifference..."    
                                         Foreground="{StaticResource textColor}" 
-                                      BorderThickness="0" Tag="int"
+                                      BorderThickness="0" Tag="decimal" 
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
