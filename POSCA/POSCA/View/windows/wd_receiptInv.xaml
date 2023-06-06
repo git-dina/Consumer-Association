@@ -135,6 +135,7 @@
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="FromDate..."  
                                         Foreground="{StaticResource textColor}"   Height="40" 
+                                         SelectedDateChanged="dp_FromDate_SelectedDateChanged"
                                          />
                                         <!--<Path Fill="#E81123" x:Name="p_error_FromDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
@@ -147,6 +148,7 @@
                                     <Grid   >
                                         <DatePicker  x:Name="dp_ToDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         DisplayDateStart="{Binding ElementName=dp_FromDate, Path=SelectedDate}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="{StaticResource textColor}"
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"

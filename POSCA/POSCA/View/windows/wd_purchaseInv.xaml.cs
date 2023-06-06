@@ -337,5 +337,20 @@ namespace POSCA.View.windows
                // HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        private void dp_FromDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dp_FromDate.SelectedDate != null && dp_ToDate.SelectedDate != null)
+                    if (dp_FromDate.SelectedDate.Value.Date > dp_ToDate.SelectedDate.Value.Date)
+                        dp_ToDate.SelectedDate = dp_FromDate.SelectedDate.Value.Date;
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }

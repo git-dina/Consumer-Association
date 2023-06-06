@@ -131,6 +131,7 @@
                                     <Grid   >
                                         <DatePicker  x:Name="dp_ToDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         DisplayDateStart="{Binding ElementName=dp_FromDate, Path=SelectedDate}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0 0 0 -1"
                                         TextBlock.Foreground="{StaticResource textColor}"
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
