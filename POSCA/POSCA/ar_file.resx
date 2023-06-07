@@ -5915,4 +5915,10 @@
   <data name="Support" xml:space="preserve">
     <value>دعم</value>
   </data>
+  <data name="vegetablesReturnOnly" xml:space="preserve">
+    <value>مرتجع خضار فقط</value>
+  </data>
+  <data name="DocDetails" xml:space="preserve">
+    <value>تفاصيل المستند</value>
+  </data>
 </root>

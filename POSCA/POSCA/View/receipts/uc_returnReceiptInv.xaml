@@ -195,7 +195,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Receipt Order" x:Name="txt_payInvoice" Foreground="{StaticResource SecondColor}" FontWeight="Bold" FontSize="18"  
+                <TextBlock Text="Return Order" x:Name="txt_payInvoice" Foreground="{StaticResource SecondColor}" FontWeight="Bold" FontSize="18"  
                                      VerticalAlignment="Center" 
                                        HorizontalAlignment="Left" Margin="10,10,5,5"/>
                 <StackPanel Orientation="Horizontal" Margin="5,5,10,0"  
@@ -257,15 +257,14 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="150"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="40"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=TwoWay}"/>
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemNotes" Binding="{Binding Path=ItemNotes, Mode=TwoWay}"/>-->
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="40"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="col_maxQty"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="col_minQty"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="col_freeQty"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
+                        <DataGridTextColumn  Width="40" x:Name="col_minQty"  Header="Quantity" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
 
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>-->
@@ -310,7 +309,7 @@
                                 Grid.Column="1"
                                 Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
                         <TextBlock  x:Name="txt_ReturnType"
-                               Margin="5,5,5,5" Text="RecieveAll" Foreground="#6e6e6e"
+                               Margin="5,5,5,5" Text="IsVegetableReturn" Foreground="#6e6e6e"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                   FontSize="12"/>
                         <ToggleButton Grid.Column="1"  x:Name="tgl_ReturnType"  IsChecked="{Binding ReturnType, Mode=TwoWay}"

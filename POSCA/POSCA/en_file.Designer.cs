@@ -961,6 +961,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Document Details.
+        /// </summary>
+        internal static string DocDetails {
+            get {
+                return ResourceManager.GetString("DocDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Document Date.
         /// </summary>
         internal static string DocumentDate {
@@ -16494,6 +16503,15 @@ namespace POSCA {
         internal static string Vegetable {
             get {
                 return ResourceManager.GetString("Vegetable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vegetables Return Only.
+        /// </summary>
+        internal static string vegetablesReturnOnly {
+            get {
+                return ResourceManager.GetString("vegetablesReturnOnly", resourceCulture);
             }
         }
         

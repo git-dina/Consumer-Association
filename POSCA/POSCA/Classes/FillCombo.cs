@@ -823,5 +823,56 @@ namespace POSCA.Classes
         }
         #endregion
         #endregion
+
+        #region returns
+        #region receipts status
+        static public List<keyValueString> ReturnStatusList;
+        static public IEnumerable<keyValueString> RefreshReturnStatusList()
+        {
+            ReturnStatusList = new List<keyValueString>() {
+                new keyValueString(){key="new", value=AppSettings.resourcemanager.GetString("trNew") },
+               // new keyValueString(){key="notCarriedOver", value=AppSettings.resourcemanager.GetString("NotCarriedOver") },
+               // new keyValueString(){key="accountingTransfer", value=AppSettings.resourcemanager.GetString("AccountingTransfer") },
+               // new keyValueString(){key="locationTransfer", value=AppSettings.resourcemanager.GetString("LocationTransfer") },
+            };
+
+            return ReturnStatusList;
+        }
+
+        static public void fillReturnStatus(ComboBox combo)
+        {
+            if (ReturnStatusList is null)
+                RefreshReturnStatusList();
+
+            combo.ItemsSource = ReturnStatusList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+        #region ReturnTypes
+        //static public List<keyValueString> ReturnTypesList;
+        //static public IEnumerable<keyValueString> RefreshReturnTypesList()
+        //{
+        //    ReturnTypesList = new List<keyValueString>() {
+        //        new keyValueString(){key="normalReturn", value=AppSettings.resourcemanager.GetString("NormalReturn") },
+        //        new keyValueString(){key="vegetablesReturn", value=AppSettings.resourcemanager.GetString("vegetablesReturnOnly") },
+        //    };
+
+        //    return ReturnTypesList;
+        //}
+
+        //static public void fillReturnTypes(ComboBox combo)
+        //{
+        //    if (ReturnTypesList is null)
+        //        RefreshReturnTypesList();
+
+        //    combo.ItemsSource = ReturnTypesList;
+        //    combo.SelectedValuePath = "key";
+        //    combo.DisplayMemberPath = "value";
+        //    combo.SelectedIndex = 0;
+        //}
+        #endregion
+        #endregion
     }
 }
