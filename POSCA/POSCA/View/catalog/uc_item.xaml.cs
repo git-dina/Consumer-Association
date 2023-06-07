@@ -317,6 +317,7 @@ namespace POSCA.View.catalog
         {
             try
             {
+                await FillCombo.RefreshSuppliers();
                 await FillCombo.fillSuppliers(cb_SupId);
                 if (FillCombo.suppliersList is null)
                     loading_RefrishSuppliers();
