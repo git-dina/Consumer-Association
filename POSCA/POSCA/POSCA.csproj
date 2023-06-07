@@ -289,6 +289,10 @@
     <Compile Include="View\windows\wd_addPurchaseItems.xaml.cs">
       <DependentUpon>wd_addPurchaseItems.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_addReturnItem.xaml.cs">
+      <DependentUpon>wd_addReturnItem.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="View\windows\wd_itemAllowedOperations.xaml.cs">
       <DependentUpon>wd_itemAllowedOperations.xaml</DependentUpon>
     </Compile>
@@ -428,6 +432,10 @@
     <Page Include="View\windows\wd_addPurchaseItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_addReturnItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="View\windows\wd_itemAllowedOperations.xaml">
       <SubType>Designer</SubType>
