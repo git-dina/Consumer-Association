@@ -412,6 +412,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel Posting.
+        /// </summary>
+        internal static string CancelPosting {
+            get {
+                return ResourceManager.GetString("CancelPosting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cartoon.
         /// </summary>
         internal static string cartoon {
@@ -2713,6 +2722,15 @@ namespace POSCA {
         internal static string popConfirmed {
             get {
                 return ResourceManager.GetString("popConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Posting.
+        /// </summary>
+        internal static string Posting {
+            get {
+                return ResourceManager.GetString("Posting", resourceCulture);
             }
         }
         

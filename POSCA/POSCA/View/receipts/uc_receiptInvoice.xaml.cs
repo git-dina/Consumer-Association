@@ -272,6 +272,7 @@ namespace POSCA.View.receipts
         {
             if (receipt.ReceiptId.Equals(0))
             {
+                btn_posting.Visibility = Visibility.Collapsed;
                 btn_printInvoice.IsEnabled = false;
                 tb_InvoiceAmount.IsEnabled = true;
                 tb_AmountDifference.IsEnabled = true;
@@ -403,6 +404,21 @@ namespace POSCA.View.receipts
                 btn_save.IsEnabled = false;
                 btn_printInvoice.IsEnabled = true;
 
+                //btn posting
+                if(receipt.ReceiptStatus == "notCarriedOver")
+                {
+                    btn_posting.Visibility = Visibility.Visible;
+                    btn_posting.Content = AppSettings.resourcemanager.GetString("Posting");
+                }
+                else if(receipt.ReceiptStatus == "locationTransfer")
+                {
+                    btn_posting.Visibility = Visibility.Visible;
+                    btn_posting.Content = AppSettings.resourcemanager.GetString("CancelPosting");
+                }
+                else 
+                {
+                    btn_posting.Visibility = Visibility.Collapsed;
+                }
             }
 
 
@@ -1490,9 +1506,41 @@ namespace POSCA.View.receipts
             }
         }
 
-        private void Btn_posting_Click(object sender, RoutedEventArgs e)
+        private async void Btn_posting_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
 
+                if (receipt.ReceiptStatus == "notCarriedOver")
+                {
+                    receipt = await receipt.SaveReceiptOrder(receipt);
+   
+                }
+                else if (receipt.ReceiptStatus == "locationTransfer")
+                {
+                    receipt = await receipt.SaveReceiptOrder(receipt);
+                }
+
+               
+
+                if (receipt.ReceiptId == 0)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                else
+                {
+                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                    fillReceiptInputs(receipt);
+                }
+
+                HelpClass.EndAwait(grid_main);
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private async void cb_ReceiptType_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -5664,7 +5664,13 @@ Main Documents</value>
   <data name="vegetablesReturnOnly" xml:space="preserve">
     <value>Vegetables Return Only</value>
   </data>
+  <data name="CancelPosting" xml:space="preserve">
+    <value>Cancel Posting</value>
+  </data>
   <data name="DocDetails" xml:space="preserve">
     <value>Document Details</value>
+  </data>
+  <data name="Posting" xml:space="preserve">
+    <value>Posting</value>
   </data>
 </root>

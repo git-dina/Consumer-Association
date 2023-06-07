@@ -5918,7 +5918,13 @@
   <data name="vegetablesReturnOnly" xml:space="preserve">
     <value>مرتجع خضار فقط</value>
   </data>
+  <data name="CancelPosting" xml:space="preserve">
+    <value>فك الترحيل</value>
+  </data>
   <data name="DocDetails" xml:space="preserve">
     <value>تفاصيل المستند</value>
+  </data>
+  <data name="Posting" xml:space="preserve">
+    <value>ترحيل</value>
   </data>
 </root>

@@ -802,7 +802,7 @@ namespace POSCA.Classes
         static public List<keyValueString> CustomFreeTypesList;
         static public IEnumerable<keyValueString> RefreshCustomFreeTypesList()
         {
-            ReceiptStatusList = new List<keyValueString>() {
+            CustomFreeTypesList = new List<keyValueString>() {
                 new keyValueString(){key="priceDifferences", value=AppSettings.resourcemanager.GetString("PriceDifferences") },
                 new keyValueString(){key="rent", value=AppSettings.resourcemanager.GetString("Rent") },
                 new keyValueString(){key="support", value=AppSettings.resourcemanager.GetString("Support") },
