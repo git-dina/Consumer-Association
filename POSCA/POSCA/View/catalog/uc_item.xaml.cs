@@ -736,6 +736,7 @@ namespace POSCA.View.catalog
         void Clear()
         {
             item = new Item();
+            supplier = new Supplier();
             this.DataContext = new Item();
             tb_ShortName.Clear();
             tb_Code.Text = "";
@@ -861,7 +862,7 @@ namespace POSCA.View.catalog
                 w.grid_uc.Children.Add(uc_category.Instance);
                 w.ShowDialog();
                 uc_category.Instance.UserControl_Unloaded(uc_category.Instance, null);
-                await FillCombo.RefreshCategorys();
+                //await FillCombo.RefreshCategorys();
                 await FillCombo.fillCategorys(cb_CategoryId);
                 //if (w.isOk)
                 //{
@@ -926,7 +927,7 @@ namespace POSCA.View.catalog
                 w.grid_uc.Children.Add(uc_brand.Instance);
                 w.ShowDialog();
                 uc_brand.Instance.UserControl_Unloaded(uc_brand.Instance, null);
-                await FillCombo.RefreshBrands();
+                //await FillCombo.RefreshBrands();
                 await FillCombo.fillBrandsWithDefault(cb_BrandId);
                 //if (w.isOk)
                 //{
@@ -960,7 +961,7 @@ namespace POSCA.View.catalog
                 w.grid_uc.Children.Add(uc_country.Instance);
                 w.ShowDialog();
                 uc_country.Instance.UserControl_Unloaded(uc_country.Instance, null);
-                await FillCombo.RefreshCountrys();
+                //await FillCombo.RefreshCountrys();
                 await FillCombo.fillCountrys(cb_CountryId);
                 //if (w.isOk)
                 //{
@@ -984,10 +985,48 @@ namespace POSCA.View.catalog
         
         
 
-        private void Btn_addSupSectorId_Click(object sender, RoutedEventArgs e)
+        private async void Btn_addSupSectorId_Click(object sender, RoutedEventArgs e)
         {
+            try 
+            {
+                if (cb_SupId.SelectedValue != null)
+                {
+                    HelpClass.StartAwait(grid_main);
+                    Window.GetWindow(this).Opacity = 0.2;
+                    wd_supplierSectors w = new wd_supplierSectors();
+                    w.SupplierSectors = supplier.SupplierSectors;
+                    w.SupplierSectorSpecifies = supplier.supplierSectorSpecifies;
 
+                    w.ShowDialog();
+
+                    if (w.isOk)
+                    {
+                        supplier.SupplierSectors = w.SupplierSectors;
+                        supplier.supplierSectorSpecifies = w.SupplierSectorSpecifies;
+                        supplier = await supplier.save(supplier);
+
+                        var lst = supplier.SupplierSectors.ToList();
+                        var sup = new SupplierSector();
+                        sup.SupSectorName = "-";
+                        sup.SupSectorId = 0;
+                        lst.Insert(0, sup);
+
+                        cb_SupSectorId.ItemsSource = lst;
+                        cb_SupSectorId.Items.Refresh();
+                    }
+                    Window.GetWindow(this).Opacity = 1;
+
+                    HelpClass.EndAwait(grid_main);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
         }
+    }
 
         private async void Btn_supplyingItemButton_Click(object sender, RoutedEventArgs e)
         {
@@ -1180,27 +1219,30 @@ namespace POSCA.View.catalog
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        Supplier supplier = new Supplier();
         private async  void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
+                if (cb_SupId.SelectedValue != null)
+                {
+                    supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
 
-                var supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
+                    var lst = supplier.SupplierSectors.ToList();
+                    var sup = new SupplierSector();
+                    sup.SupSectorName = "-";
+                    sup.SupSectorId = 0;
+                    lst.Insert(0, sup);
 
-                var lst = supplier.SupplierSectors.ToList();
-                var sup = new SupplierSector();
-                sup.SupSectorName = "-";
-                sup.SupSectorId = 0;
-                lst.Insert(0, sup);
-
-                cb_SupSectorId.ItemsSource = lst;
-                cb_SupSectorId.SelectedValuePath = "SupSectorId";
-                cb_SupSectorId.DisplayMemberPath = "SupSectorName";
-                cb_SupSectorId.SelectedIndex = -1;
-                cb_SupSectorId.Items.Refresh();
-                //generate item number
-                if(item.ItemId == 0 || supplier.SupId != item.SupId)
-                    tb_Code.Text= await generateItemCode(supplier.SupId);
+                    cb_SupSectorId.ItemsSource = lst;
+                    cb_SupSectorId.SelectedValuePath = "SupSectorId";
+                    cb_SupSectorId.DisplayMemberPath = "SupSectorName";
+                    cb_SupSectorId.SelectedIndex = -1;
+                    cb_SupSectorId.Items.Refresh();
+                    //generate item number
+                    if (item.ItemId == 0 || supplier.SupId != item.SupId)
+                        tb_Code.Text = await generateItemCode(supplier.SupId);
+                }
             }
             catch (Exception ex)
             {
