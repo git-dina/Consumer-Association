@@ -94,7 +94,7 @@ namespace POSCA.View.settings
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
-
+                fillAccuracy();
                 #region get settings Ids
 
                 setVName = await FillCombo.getSettingBySetName("com_name");
@@ -150,6 +150,22 @@ namespace POSCA.View.settings
        
 
         }
+        #region fill
+
+        private void fillAccuracy()
+        {
+            var list = new[] {
+                new { Text = "0"       , Value = "0" },
+                new { Text = "0.0"     , Value = "1" },
+                new { Text = "0.00"    , Value = "2" },
+                new { Text = "0.000"   , Value = "3" },
+                 };
+            cb_accuracy.DisplayMemberPath = "Text";
+            cb_accuracy.SelectedValuePath = "Value";
+            cb_accuracy.ItemsSource = list;
+        }
+        #endregion
+
         private async Task getImg()
         {
             try
