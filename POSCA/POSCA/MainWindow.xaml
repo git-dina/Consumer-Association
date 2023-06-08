@@ -551,6 +551,44 @@
                             </Button>
                         </StackPanel>
                     </Expander>
+                    <!--#region  promotion-->
+                    <Expander  x:Name="exp_promotion" Tag="promotion" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconPromotion" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource promotion}"/>
+                                <TextBlock Text="promotion" Foreground="White" x:Name="txt_promotion"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <!--#region  promotion-->
+                        <StackPanel>
+                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="promotionInvoice" 
+                          x:Name="btn_promotionInvoice"  Click="Btn_promotionInvoice_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="promotionInvoice" Foreground="White" x:Name="txt_promotionInvoice"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
 
                     <!--#region  vendors-->
                     <Expander  x:Name="exp_vendors" Tag="vendors" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
