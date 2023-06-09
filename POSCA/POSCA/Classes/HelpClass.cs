@@ -957,5 +957,58 @@ namespace POSCA.Classes
             return sdate;
         }
 
+        public static decimal Round(decimal v)
+        {
+            return Math.Ceiling(v * 1000) / 1000;
+        }
+        public static decimal CustomRound(decimal x,int digit)
+        {
+            var pointIndex = x.ToString().IndexOf(".");
+            var str = x.ToString().Substring(pointIndex+1);
+            var lastNum =int.Parse( str.Last().ToString());
+            switch (lastNum)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    lastNum = 0;
+                        break;
+
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    lastNum = 5;
+                    break;
+
+                case 8:
+                case 9:
+                    lastNum = 10;
+                    break;
+            }
+            var count = CountDigitsAfterDecimal(x);
+
+            return decimal.Round(x - 0.001m,count, MidpointRounding.ToEven);
+        }
+
+       static int CountDigitsAfterDecimal(decimal value)
+        {
+            bool start = false;
+            int count = 0;
+            foreach (var s in value.ToString())
+            {
+                if (s == '.')
+                {
+                    start = true;
+                }
+                else if (start)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }

@@ -1443,6 +1443,8 @@ namespace POSCA.View.catalog
                         {
                             var discount = peicePrice - HelpClass.calcPercentage(peicePrice, 100+ category.DiscountPercentage);
                             finalPrice = peicePrice - Math.Abs( discount);
+                        finalPrice = Math.Round(finalPrice, int.Parse(AppSettings.accuracy));
+                            finalPrice =(decimal) HelpClass.CustomRound(finalPrice,int.Parse(AppSettings.accuracy));
                         }
                         if (finalPrice < 0)
                             finalPrice = 0;
