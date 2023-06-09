@@ -5673,4 +5673,7 @@ Main Documents</value>
   <data name="Posting" xml:space="preserve">
     <value>Posting</value>
   </data>
+  <data name="saveNotDoneEmptyFields" xml:space="preserve">
+    <value>The save is not done. There are empty fields</value>
+  </data>
 </root>

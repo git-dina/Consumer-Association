@@ -5927,4 +5927,7 @@
   <data name="Posting" xml:space="preserve">
     <value>ترحيل</value>
   </data>
+  <data name="saveNotDoneEmptyFields" xml:space="preserve">
+    <value>لم تتم عملية الحفظ هناك حقول فارغة</value>
+  </data>
 </root>

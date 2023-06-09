@@ -3320,6 +3320,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The save is not done. There are empty fields.
+        /// </summary>
+        internal static string saveNotDoneEmptyFields {
+            get {
+                return ResourceManager.GetString("saveNotDoneEmptyFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sections.
         /// </summary>
         internal static string sections {
