@@ -121,7 +121,7 @@ namespace POSCA.View.receipts
                 cb_ReceiptType.SelectedIndex = 0;
                 cb_ReceiptType.SelectedValue = "purchaseOrders";
                 //await Search();
-                await Clear();
+                 Clear();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -477,46 +477,46 @@ namespace POSCA.View.receipts
 
         #endregion
         #region events
-        private async void Btn_newDraft_Click(object sender, RoutedEventArgs e)
+        private  void Btn_newDraft_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+               // HelpClass.StartAwait(grid_main);
+                 Clear();
+                //await addDraft();
 
-                await addDraft();
-
-                HelpClass.EndAwait(grid_main);
+                //HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
 
-                HelpClass.EndAwait(grid_main);
+                //HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
-        private async Task addDraft()
-        {
+        //private async Task addDraft()
+        //{
 
-            if (billDetails.Count > 0 && _ReceiptType == "po")
-            {
-                #region Accept
-                MainWindow.mainWindow.Opacity = 0.2;
-                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
-                w.ShowDialog();
-                MainWindow.mainWindow.Opacity = 1;
-                #endregion
-                if (w.isOk)
-                {
-                    await addInvoice();
-                }
-                else
-                    await Clear();
-            }
-            else
-                await Clear();
-        }
+        //    if (billDetails.Count > 0 && _ReceiptType == "po")
+        //    {
+        //        #region Accept
+        //        MainWindow.mainWindow.Opacity = 0.2;
+        //        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+        //        w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
+        //        w.ShowDialog();
+        //        MainWindow.mainWindow.Opacity = 1;
+        //        #endregion
+        //        if (w.isOk)
+        //        {
+        //            await addInvoice();
+        //        }
+        //        else
+        //            await Clear();
+        //    }
+        //    else
+        //        await Clear();
+        //}
 
         private bool canAddInvoice()
         {
@@ -658,18 +658,18 @@ namespace POSCA.View.receipts
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                await Clear();
-                HelpClass.EndAwait(grid_main);
+               // HelpClass.StartAwait(grid_main);
+                 Clear();
+               // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
 
-                HelpClass.EndAwait(grid_main);
+               // HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -725,7 +725,7 @@ namespace POSCA.View.receipts
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        void Clear()
         {
 
             this.DataContext = new Receipt();
@@ -1092,7 +1092,7 @@ namespace POSCA.View.receipts
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_receiptInv w = new wd_receiptInv();
-
+                w.invType = "receipt";
                 w.ShowDialog();
                 if (w.isOk)
                 {
@@ -1601,11 +1601,11 @@ namespace POSCA.View.receipts
             }
         }
 
-        private async void cb_ReceiptType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private  void cb_ReceiptType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                await Clear();
+                 Clear();
                 _ReceiptType = cb_ReceiptType.SelectedValue.ToString();
                 if(_ReceiptType =="customFree")
                 requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",

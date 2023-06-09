@@ -45,6 +45,7 @@ namespace POSCA.View.windows
         }
 
         public bool isOk { get; set; }
+        public string invType { get; set; }
 
 
         public Receipt receipt = new Receipt();
@@ -126,7 +127,7 @@ namespace POSCA.View.windows
             try
             {
                 if (cb_LocationId.SelectedValue != null)
-                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text,
+                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text,invType,
                                         dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
             }
             catch
@@ -149,13 +150,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber, DateTime? fromDate = null, DateTime? toDate = null)
+        private async Task searchInvoices(long locationId, string invNumber,string invType, DateTime? fromDate = null, DateTime? toDate = null)
         {
             try
             {
               
                 HelpClass.StartAwait(grid_main);
-                var invoices = await receipt.searchOrders(locationId, invNumber, fromDate, toDate);
+                var invoices = await receipt.searchOrders(locationId, invNumber, invType, fromDate, toDate);
                 dg_receipt.ItemsSource = invoices;
                 dg_receipt.Items.Refresh();
                 HelpClass.EndAwait(grid_main);

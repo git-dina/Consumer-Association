@@ -117,7 +117,7 @@ namespace POSCA.View.receipts
                 FillCombo.fillReturnStatus(cb_ReceiptStatus);
 
                 //await Search();
-                await Clear();
+                Clear();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -171,8 +171,7 @@ namespace POSCA.View.receipts
 
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
-            btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("ReceiptOrders");
-            // btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
+            btn_returnOrders.ToolTip = AppSettings.resourcemanager.GetString("Returns");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -256,9 +255,11 @@ namespace POSCA.View.receipts
         {
            if (returnOrder.ReceiptId.Equals(0))
             {
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                 btn_printInvoice.IsEnabled = false;
                 btn_save.IsEnabled = true;
                 col_minQty.IsReadOnly = false;
+                tgl_ReturnType.IsEnabled = true;
                 tb_Notes.IsEnabled = true;
                 cb_LocationId.IsEnabled = true;
                 cb_SupId.IsEnabled = true;
@@ -267,10 +268,11 @@ namespace POSCA.View.receipts
             }
             else
             {
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
                 btn_printInvoice.IsEnabled = true;
                 btn_save.IsEnabled = false;
                 col_minQty.IsReadOnly = true;
-                tb_Notes.IsEnabled = false;
+                tgl_ReturnType.IsEnabled = false;
                 tb_Notes.IsEnabled = false;
                 cb_LocationId.IsEnabled = false;
                 cb_SupId.IsEnabled = false;
@@ -278,52 +280,61 @@ namespace POSCA.View.receipts
                 brd_grid0_0.IsEnabled = false;
 
             }
-
+            //btn posting
+            if (returnOrder.ReceiptStatus == "notCarriedOver")
+            {
+                btn_posting.Visibility = Visibility.Visible;
+                btn_posting.Content = AppSettings.resourcemanager.GetString("Posting");
+            }
+            else if (returnOrder.ReceiptStatus == "locationTransfer")
+            {
+                btn_posting.Visibility = Visibility.Visible;
+                btn_posting.Content = AppSettings.resourcemanager.GetString("CancelPosting");
+            }
+            else
+            {
+                btn_posting.Visibility = Visibility.Collapsed;
+            }
 
         }
 
         #endregion
         #region events
-        private async void Btn_newDraft_Click(object sender, RoutedEventArgs e)
+        private  void Btn_newDraft_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-
-                await addDraft();
-
-                HelpClass.EndAwait(grid_main);
+                Clear();
             }
             catch (Exception ex)
             {
 
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
-        private async Task addDraft()
-        {
+        //private async Task addDraft()
+        //{
 
-            if (billDetails.Count > 0 && _ReturnType == "po")
-            {
-                #region Accept
-                MainWindow.mainWindow.Opacity = 0.2;
-                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
-                w.ShowDialog();
-                MainWindow.mainWindow.Opacity = 1;
-                #endregion
-                if (w.isOk)
-                {
-                    await addInvoice();
-                }
-                else
-                    await Clear();
-            }
-            else
-                await Clear();
-        }
+        //    if (billDetails.Count > 0 && _ReturnType == "po")
+        //    {
+        //        #region Accept
+        //        MainWindow.mainWindow.Opacity = 0.2;
+        //        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+        //        w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
+        //        w.ShowDialog();
+        //        MainWindow.mainWindow.Opacity = 1;
+        //        #endregion
+        //        if (w.isOk)
+        //        {
+        //            await addInvoice();
+        //        }
+        //        else
+        //            await Clear();
+        //    }
+        //    else
+        //        await Clear();
+        //}
 
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
@@ -436,18 +447,14 @@ namespace POSCA.View.receipts
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                await Clear();
-                HelpClass.EndAwait(grid_main);
+                 Clear();
             }
             catch (Exception ex)
             {
-
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -503,7 +510,7 @@ namespace POSCA.View.receipts
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        void Clear()
         {
 
             this.DataContext = new Receipt();
@@ -519,9 +526,6 @@ namespace POSCA.View.receipts
                 dg_invoiceDetails.IsEnabled = false;
                 RefreshInvoiceDetailsDataGrid();
             }
-            //await Task.Delay(0050);
-            //dp_ReceiptDate.SelectedDate = DateTime.Now;
-            //dp_SupInvoiceDate.SelectedDate = DateTime.Now;
 
             txt_TotalCost.Text = HelpClass.DecTostring(0);
             txt_TotalPrice.Text = HelpClass.DecTostring(0);
@@ -646,7 +650,7 @@ namespace POSCA.View.receipts
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, _ReturnType);
+                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, "");
                         if (itemLst.Count == 1)
                         {
                             item1 = itemLst[0];
@@ -656,7 +660,7 @@ namespace POSCA.View.receipts
                     }
                     else
                     {
-                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId, _ReturnType);
+                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId, "");
                         barcode = tb_search.Text;
                     }
 
@@ -802,7 +806,7 @@ namespace POSCA.View.receipts
 
         }
 
-        private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
+        private void Btn_returnOrders_Click(object sender, RoutedEventArgs e)
         {
 
             try
@@ -810,7 +814,7 @@ namespace POSCA.View.receipts
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
                 wd_receiptInv w = new wd_receiptInv();
-
+                w.invType = "return";
                 w.ShowDialog();
                 if (w.isOk)
                 {
