@@ -367,7 +367,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="dashboard" Foreground="White" x:Name="txt_dashboard"
+                                    <TextBlock Text="dashboard" Tag="secondMenuTitle_dashboard" Foreground="#A8AEC6" x:Name="txt_dashboard"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -406,7 +406,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="category" Foreground="White" x:Name="txt_category"
+                                    <TextBlock Text="category"  Tag="secondMenuTitle_category" Foreground="#A8AEC6" x:Name="txt_category"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -421,7 +421,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="item" Foreground="White" x:Name="txt_item"
+                                    <TextBlock Text="item"  Tag="secondMenuTitle_item" Foreground="#A8AEC6" x:Name="txt_item"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -475,7 +475,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="purchaseInvoice" Foreground="White" x:Name="txt_purchaseInvoice"
+                                    <TextBlock Text="purchaseInvoice" Tag="secondMenuTitle_purchaseInvoice" Foreground="#A8AEC6" x:Name="txt_purchaseInvoice"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -490,7 +490,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="purchaseOrder" Foreground="White" x:Name="txt_purchaseOrder"
+                                    <TextBlock Text="purchaseOrder" Tag="secondMenuTitle_purchaseOrder" Foreground="#A8AEC6" x:Name="txt_purchaseOrder"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -529,7 +529,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="receiptInvoice" Foreground="White" x:Name="txt_receiptInvoice"
+                                    <TextBlock Text="receiptInvoice" Tag="secondMenuTitle_receiptInvoice" Foreground="#A8AEC6" x:Name="txt_receiptInvoice"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -544,7 +544,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="returnReceiptInv" Foreground="White" x:Name="txt_returnReceiptInv"
+                                    <TextBlock Text="returnReceiptInv"  Tag="secondMenuTitle_returnReceiptInv" Foreground="#A8AEC6" x:Name="txt_returnReceiptInv"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -582,7 +582,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="promotionInvoice" Foreground="White" x:Name="txt_promotionInvoice"
+                                    <TextBlock Text="promotionInvoice" Tag="secondMenuTitle_promotionInvoice" Foreground="#A8AEC6" x:Name="txt_promotionInvoice"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -625,7 +625,7 @@
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
                               Data="{StaticResource vendor}"/>-->
-                                    <TextBlock Text="vendorsData" Foreground="White" x:Name="txt_vendorsData"
+                                    <TextBlock Text="vendorsData" Tag="secondMenuTitle_vendorsData" Foreground="#A8AEC6" x:Name="txt_vendorsData"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -640,7 +640,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="vendorsGroups" Foreground="White" x:Name="txt_vendorsGroups"
+                                    <TextBlock Text="vendorsGroups"  Tag="secondMenuTitle_vendorsGroups" Foreground="#A8AEC6" x:Name="txt_vendorsGroups"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -655,7 +655,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="vendorsType" Foreground="White" x:Name="txt_vendorsType"
+                                    <TextBlock Text="vendorsType"  Tag="secondMenuTitle_vendorsType" Foreground="#A8AEC6" x:Name="txt_vendorsType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -670,7 +670,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="supportVendors" Foreground="White" x:Name="txt_supportVendors"
+                                    <TextBlock Text="supportVendors" Tag="secondMenuTitle_supportVendors" Foreground="#A8AEC6" x:Name="txt_supportVendors"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -685,7 +685,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="supplierDocType" Foreground="White" x:Name="txt_supplierDocType"
+                                    <TextBlock Text="supplierDocType" Tag="secondMenuTitle_supplierDocType" Foreground="#A8AEC6" x:Name="txt_supplierDocType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -728,7 +728,7 @@
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
                               Data="{StaticResource vendor}"/>-->
-                                    <TextBlock Text="locationsData" Foreground="White" x:Name="txt_locationsData"
+                                    <TextBlock Text="locationsData"  Tag="secondMenuTitle_locationsData" Foreground="#A8AEC6" x:Name="txt_locationsData"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -743,7 +743,7 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="locationType" Foreground="White" x:Name="txt_locationType"
+                                    <TextBlock Text="locationType"  Tag="secondMenuTitle_locationType" Foreground="#A8AEC6" x:Name="txt_locationType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
@@ -782,7 +782,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                    <TextBlock Text="phoneType" Foreground="White" x:Name="txt_phoneType"
+                                    <TextBlock Text="phoneType"  Tag="secondMenuTitle_phoneType" Foreground="#A8AEC6" x:Name="txt_phoneType"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
@@ -797,7 +797,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                    <TextBlock Text="bank" Foreground="White" x:Name="txt_bank"
+                                    <TextBlock Text="bank" Tag="secondMenuTitle_bank" Foreground="#A8AEC6" x:Name="txt_bank"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
@@ -812,7 +812,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                    <TextBlock Text="country" Foreground="White" x:Name="txt_country"
+                                    <TextBlock Text="country" Tag="secondMenuTitle_country" Foreground="#A8AEC6" x:Name="txt_country"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
@@ -827,7 +827,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                    <TextBlock Text="brand" Foreground="White" x:Name="txt_brand"
+                                    <TextBlock Text="brand" Tag="secondMenuTitle_brand" Foreground="#A8AEC6" x:Name="txt_brand"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                             </Grid>
@@ -963,8 +963,8 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="generalSettings" Foreground="White" x:Name="txt_generalSettings"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                    <TextBlock Text="generalSettings"  Tag="secondMenuTitle_generalSettings" Foreground="#A8AEC6" x:Name="txt_generalSettings"
+                                   HorizontalAlignment="Left"  VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>

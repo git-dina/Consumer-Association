@@ -539,123 +539,351 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        void secondMenuTitleActivate(string active)
+        {
+
+            try
+            {
+                var list = FindControls.FindVisualChildren<TextBlock>(this)
+                    .Where(x => x.Tag != null && x.Tag.ToString().Contains("secondMenuTitle"))
+                    .ToList();
+                foreach (var control in list)
+                {
+                    if (control.Tag.ToString().Contains(active))
+                        control.Foreground = Application.Current.Resources["White"] as SolidColorBrush;
+                    else
+                        control.Foreground = (SolidColorBrush)(new BrushConverter().ConvertFrom("#A8AEC6"));
+
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+
+        }
         private void Btn_dashboard_Click(object sender, RoutedEventArgs e)
         {
 
         }
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
-            grid_main.Children.Add(uc_vendorsData.Instance);
+           
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_vendorsData.Instance);
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+
+
         }
 
         private void Btn_vendorsGroups_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
-            grid_main.Children.Add(uc_vendorsGroups.Instance);
+           
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_vendorsGroups.Instance);
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_vendorsType_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
-            grid_main.Children.Add(uc_vendorsType.Instance);
+           
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_vendorsType.Instance);
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_supportVendors_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
-            grid_main.Children.Add(uc_supportVendors.Instance);
+            
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_supportVendors.Instance);
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_phoneType_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_phoneType.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_bank_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_bank.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_country_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_country.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_supplierDocType_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_supplierDocType.Instance);
+          
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_category_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_category.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+
         }
         private void Btn_item_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_item.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_unit_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_unit.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_purchaseInvoice_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_purchaseInvoice.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_purchaseOrder_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_purchaseOrder.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_receiptInvoice_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_receiptInvoice.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_returnReceiptInv_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_returnReceiptInv.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_promotionInvoice_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_promotionInvoice.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_brand_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_brand.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_locationsData_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_locationsData.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_locationType_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_locationType.Instance);
+            
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
 
         private void Btn_generalSettings_Click(object sender, RoutedEventArgs e)
         {
-            grid_main.Children.Clear();
+            try
+            {
+                grid_main.Children.Clear();
             grid_main.Children.Add(uc_generalSettings.Instance);
+           
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_lang_Click(object sender, RoutedEventArgs e)
         {
