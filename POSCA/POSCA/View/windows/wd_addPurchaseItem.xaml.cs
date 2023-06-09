@@ -46,6 +46,7 @@ namespace POSCA.View.windows
         public PurchaseInvDetails newPurchaseItem = new PurchaseInvDetails();
         public RecieptDetails newReceiptItem = new RecieptDetails();
         public bool isOk { get; set; }
+        public string receiptType { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -77,6 +78,12 @@ namespace POSCA.View.windows
                     this.DataContext = newReceiptItem;
                 HelpClass.EndAwait(grid_main);
 
+                if(receiptType  != null &&(receiptType == "free" || receiptType == "freeVegetables" || receiptType == "customFree"))
+                {
+                    tb_MaxQty.IsEnabled = false;
+                    tb_MinQty.Focus();
+                }
+                else
                 tb_MaxQty.Focus();
 
             }

@@ -288,6 +288,7 @@ namespace POSCA.View.receipts
                     case "purchaseOrders": //supplying order is approved
                         btn_save.IsEnabled = true;
                         col_mainCost.IsReadOnly = true;
+                        col_maxQty.Visibility = Visibility.Visible;
 
                         if (tgl_IsRecieveAll.IsChecked == true)
                         {
@@ -313,8 +314,44 @@ namespace POSCA.View.receipts
                         cb_LocationId.IsEnabled = false;
                         cb_SupId.IsEnabled = false;
                         break;
+                    case "free":
+                    case "freeVegetables":
+                    case "customFree":
+                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+
+                        col_freeQty.IsReadOnly = false;
+                        col_maxQty.IsReadOnly = true;
+                        col_minQty.IsReadOnly = false;
+
+                        col_maxQty.Visibility = Visibility.Collapsed;
+                        brd_grid0_0.IsEnabled = true;
+                        cb_LocationId.IsEnabled = true;
+                        cb_SupId.IsEnabled = true;
+
+                        if (_ReceiptType == "customFree")
+                            brd_CustomFreeType.Visibility = Visibility.Visible;
+                        else
+                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
+
+                        if (_ReceiptType == "vegetable" || _ReceiptType == "freeVegetables")
+                            col_mainCost.IsReadOnly = false;
+                        else
+                            col_mainCost.IsReadOnly = true;
+
+                        if (receipt.PurchaseId != null)
+                        {
+                            sp_IsRecieveAll.Visibility = Visibility.Visible;
+                            brd_purchaseNumber.Visibility = Visibility.Visible;
+                        }
+                        else
+                        {
+                            sp_IsRecieveAll.Visibility = Visibility.Collapsed;
+                            brd_purchaseNumber.Visibility = Visibility.Collapsed;
+                        }
+                        break;
                     default:
                         dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
+                        col_maxQty.Visibility = Visibility.Visible;
 
                         col_freeQty.IsReadOnly = false;
                         col_maxQty.IsReadOnly = false;
@@ -364,8 +401,13 @@ namespace POSCA.View.receipts
                         sp_IsRecieveAll.Visibility = Visibility.Visible;
                         brd_purchaseNumber.Visibility = Visibility.Visible;
                         brd_CustomFreeType.Visibility = Visibility.Collapsed;
+                        col_maxQty.Visibility = Visibility.Visible;
+
                         break;
-                    default:
+                    case "free":
+                    case "freeVegetables":
+                    case "customFree":
+                        col_maxQty.Visibility = Visibility.Collapsed;
 
                         sp_IsRecieveAll.Visibility = Visibility.Collapsed;
                         brd_purchaseNumber.Visibility = Visibility.Collapsed;
@@ -374,8 +416,17 @@ namespace POSCA.View.receipts
                             brd_CustomFreeType.Visibility = Visibility.Visible;
                         else
                             brd_CustomFreeType.Visibility = Visibility.Collapsed;
+                        break;
+                    default:
+                        col_maxQty.Visibility = Visibility.Visible;
 
+                        sp_IsRecieveAll.Visibility = Visibility.Collapsed;
+                        brd_purchaseNumber.Visibility = Visibility.Collapsed;
 
+                        if (_ReceiptType == "customFree")
+                            brd_CustomFreeType.Visibility = Visibility.Visible;
+                        else
+                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
                         break;
 
                 }
@@ -856,7 +907,9 @@ namespace POSCA.View.receipts
                     if (item1 != null)
                     {
                         Window.GetWindow(this).Opacity = 0.2;
-                        wd_addPurchaseItem w = new wd_addPurchaseItem();
+                          wd_addPurchaseItem w = new wd_addPurchaseItem();
+                        w.receiptType = _ReceiptType;
+
                         long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
 
                         w.newReceiptItem = new RecieptDetails()
@@ -884,8 +937,13 @@ namespace POSCA.View.receipts
                                 int minQty = 0;
                                 if (w.newReceiptItem.MaxQty != null)
                                     maxQty = (int)w.newReceiptItem.MaxQty;
+                                else
+                                    w.newReceiptItem.MaxQty = 0;
+
                                 if (w.newReceiptItem.MinQty != null)
                                     minQty = (int)w.newReceiptItem.MinQty;
+                                else
+                                    w.newReceiptItem.MinQty = 0;
                                 w.newReceiptItem.Cost = (w.newReceiptItem.MainCost * maxQty) + ((w.newReceiptItem.MainCost / (int)w.newReceiptItem.Factor) * minQty);
                                 w.newReceiptItem.Price = ((int)w.newReceiptItem.Factor * w.newReceiptItem.MainPrice * maxQty) + (w.newReceiptItem.MainPrice * minQty);
 
