@@ -963,15 +963,20 @@ namespace POSCA.Classes
         }
         public static decimal CustomRound(decimal x,int digit)
         {
+            StringBuilder sb = new StringBuilder(x.ToString());
+            decimal newNum = 0;
+
             var pointIndex = x.ToString().IndexOf(".");
             var str = x.ToString().Substring(pointIndex+1);
+            var lastIndex = x.ToString().Count() - 1;
             var lastNum =int.Parse( str.Last().ToString());
             switch (lastNum)
             {
                 case 0:
                 case 1:
                 case 2:
-                    lastNum = 0;
+                    sb[lastIndex] = '0';
+                    newNum = decimal.Parse(sb.ToString());
                         break;
 
                 case 3:
@@ -979,17 +984,23 @@ namespace POSCA.Classes
                 case 5:
                 case 6:
                 case 7:
-                    lastNum = 5;
+                    sb[lastIndex] = '5';
+                    newNum = decimal.Parse(sb.ToString());
+
                     break;
 
                 case 8:
                 case 9:
-                    lastNum = 10;
+                    sb[lastIndex] = '0';
+                    var str2 = x.ToString().Substring(x.ToString().Count()-1);
+                    newNum = decimal.Parse(str2) + (decimal)0.01;
                     break;
             }
-            var count = CountDigitsAfterDecimal(x);
 
-            return decimal.Round(x - 0.001m,count, MidpointRounding.ToEven);
+            return newNum;
+            //var count = CountDigitsAfterDecimal(x);
+
+            //return decimal.Round(x - 0.001m,count, MidpointRounding.ToEven);
         }
 
        static int CountDigitsAfterDecimal(decimal value)
