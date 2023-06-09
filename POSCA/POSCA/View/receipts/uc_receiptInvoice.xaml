@@ -329,6 +329,7 @@
 
                             </Grid>
                         </Border>
+                       
 
                         <!--<Button Grid.Column="1"  Padding="0"    
                                 TabIndex="-1"
@@ -340,7 +341,25 @@
                            Data="{StaticResource dolarListCheck}" />
                         </Button>-->
                     </Grid>
+                    <Border x:Name="brd_CustomFreeType" Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <ComboBox x:Name="cb_CustomFreeType"    SelectedValue="{Binding CustomFreeType, Mode=TwoWay}"
+                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
+                                  materialDesign:HintAssist.Hint="CustomFreeType..."  
+                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  Grid.Column="0" Height="40"  Margin="0,0"
+                                  BorderBrush="#737373" BorderThickness="0"
+                                  IsTextSearchEnabled ="False"
+                                  IsEditable="True"
+                                  StaysOpenOnEdit="true"
+                                      />
+                            <Path Fill="#E81123" x:Name="p_error_CustomFreeType" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
 
+                        </Grid>
+                    </Border>
                     <Grid x:Name="grd_purchaseNum">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -441,25 +460,6 @@
                                   IsEditable="True"
                                   StaysOpenOnEdit="true"/>
                             <Path Fill="#E81123" x:Name="p_error_LocationId" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                        </Grid>
-                    </Border>
-                    <Border x:Name="brd_CustomFreeType" Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                        <Grid   >
-                            <ComboBox x:Name="cb_CustomFreeType"    SelectedValue="{Binding CustomFreeType, Mode=TwoWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="CustomFreeType..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"
-                                  IsTextSearchEnabled ="False"
-                                  IsEditable="True"
-                                  StaysOpenOnEdit="true"
-                                      />
-                            <Path Fill="#E81123" x:Name="p_error_CustomFreeType" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
