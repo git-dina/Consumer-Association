@@ -5676,4 +5676,7 @@ Main Documents</value>
   <data name="saveNotDoneEmptyFields" xml:space="preserve">
     <value>The save is not done. There are empty fields</value>
   </data>
+  <data name="PromotionalOffers" xml:space="preserve">
+    <value>Promotional Offers</value>
+  </data>
 </root>

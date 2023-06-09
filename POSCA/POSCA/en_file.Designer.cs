@@ -2888,6 +2888,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Promotional Offers.
+        /// </summary>
+        internal static string PromotionalOffers {
+            get {
+                return ResourceManager.GetString("PromotionalOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase.
         /// </summary>
         internal static string purchase {

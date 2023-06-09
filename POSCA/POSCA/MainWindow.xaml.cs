@@ -381,6 +381,10 @@ namespace POSCA
             txt_receiptInvoice.Text = AppSettings.resourcemanager.GetString("Receipt");
             txt_returnReceiptInv.Text = AppSettings.resourcemanager.GetString("Returns");
 
+
+            txt_promotion.Text = AppSettings.resourcemanager.GetString("Offers");
+            txt_promotionInvoice.Text = AppSettings.resourcemanager.GetString("PromotionalOffers");
+
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
             txt_bank.Text = AppSettings.resourcemanager.GetString("trBanks");

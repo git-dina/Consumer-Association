@@ -160,7 +160,7 @@
 
                 <Button Grid.Column="2" BorderBrush="{x:Null}" Padding="0"   
                             Height="auto" Margin="5,0,5,0" DockPanel.Dock="Right"
-                    Background="{x:Null}" x:Name="btn_receiptOrders"  Click="Btn_receiptOrders_Click" >
+                    Background="{x:Null}" x:Name="btn_returnOrders"  Click="Btn_returnOrders_Click" >
                     <StackPanel>
                         <Path Fill="#4E4E4E" Stretch="Fill"  
                           Width="30" Height="30"  
@@ -412,7 +412,7 @@
                                         TextBlock.Foreground="{StaticResource textColor}"
                                          SelectedDate="{Binding ReceiptDate, Mode=TwoWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                        materialDesign:HintAssist.Hint="ReceiptDate..."  
+                                        materialDesign:HintAssist.Hint="DocumentDate..."  
                                         Foreground="{StaticResource textColor}"   Height="40" 
                                          
                                          />

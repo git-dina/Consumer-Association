@@ -5930,4 +5930,7 @@
   <data name="saveNotDoneEmptyFields" xml:space="preserve">
     <value>لم تتم عملية الحفظ هناك حقول فارغة</value>
   </data>
+  <data name="PromotionalOffers" xml:space="preserve">
+    <value>عروض ترويجية</value>
+  </data>
 </root>

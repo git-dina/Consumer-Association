@@ -831,7 +831,7 @@ namespace POSCA.Classes
         {
             ReturnStatusList = new List<keyValueString>() {
                 new keyValueString(){key="new", value=AppSettings.resourcemanager.GetString("trNew") },
-               // new keyValueString(){key="notCarriedOver", value=AppSettings.resourcemanager.GetString("NotCarriedOver") },
+                new keyValueString(){key="notCarriedOver", value=AppSettings.resourcemanager.GetString("NotCarriedOver") },
                // new keyValueString(){key="accountingTransfer", value=AppSettings.resourcemanager.GetString("AccountingTransfer") },
                // new keyValueString(){key="locationTransfer", value=AppSettings.resourcemanager.GetString("LocationTransfer") },
             };
