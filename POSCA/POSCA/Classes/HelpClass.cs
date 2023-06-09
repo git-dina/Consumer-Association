@@ -183,6 +183,11 @@ namespace POSCA.Classes
 
             }
             catch { }
+            if (!isValid)
+            {
+                //saveNotDoneEmptyFields
+                Toaster.ShowWarning(Window.GetWindow(userControl), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+            }
             return isValid;
         }
         public static bool validate(List<string> requiredControlList, Window userControl)
