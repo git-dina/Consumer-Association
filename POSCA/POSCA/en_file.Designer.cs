@@ -2699,6 +2699,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pieces Quantity.
+        /// </summary>
+        internal static string PiecesQuantity {
+            get {
+                return ResourceManager.GetString("PiecesQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pieces Quantity....
         /// </summary>
         internal static string PiecesQuantityHint {
@@ -2969,6 +2978,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Purchase Order Num.
+        /// </summary>
+        internal static string PurchaseOrderNum {
+            get {
+                return ResourceManager.GetString("PurchaseOrderNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase Order Num....
         /// </summary>
         internal static string PurchaseOrderNumHint {
@@ -3077,6 +3095,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Free Receipt Doc.
+        /// </summary>
+        internal static string ReceiptCustomFreeTitle {
+            get {
+                return ResourceManager.GetString("ReceiptCustomFreeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipt Date....
         /// </summary>
         internal static string ReceiptDateHint {
@@ -3086,11 +3113,56 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Direct Receipt.
+        /// </summary>
+        internal static string ReceiptDirectTitle {
+            get {
+                return ResourceManager.GetString("ReceiptDirectTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free Receipt.
+        /// </summary>
+        internal static string ReceiptFreeTitle {
+            get {
+                return ResourceManager.GetString("ReceiptFreeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Free Vegetables Receipt.
+        /// </summary>
+        internal static string ReceiptFreeVegetablesTitle {
+            get {
+                return ResourceManager.GetString("ReceiptFreeVegetablesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Orders Receipt.
+        /// </summary>
+        internal static string ReceiptPurchaseOrderTitle {
+            get {
+                return ResourceManager.GetString("ReceiptPurchaseOrderTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipts.
         /// </summary>
         internal static string Receipts {
             get {
                 return ResourceManager.GetString("Receipts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Receipt.
+        /// </summary>
+        internal static string ReceiptServiceTitle {
+            get {
+                return ResourceManager.GetString("ReceiptServiceTitle", resourceCulture);
             }
         }
         
@@ -3109,6 +3181,15 @@ namespace POSCA {
         internal static string ReceiptTypeHint {
             get {
                 return ResourceManager.GetString("ReceiptTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vegetables Receipt.
+        /// </summary>
+        internal static string ReceiptVegetablesTitle {
+            get {
+                return ResourceManager.GetString("ReceiptVegetablesTitle", resourceCulture);
             }
         }
         
@@ -3680,6 +3761,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S I.
+        /// </summary>
+        internal static string SupplierInvNumberAbbrevation {
+            get {
+                return ResourceManager.GetString("SupplierInvNumberAbbrevation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Supplier Name.
         /// </summary>
         internal static string SupplierName {
@@ -3986,11 +4076,38 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Consumer Discount.
+        /// </summary>
+        internal static string TotalConsumerDiscount {
+            get {
+                return ResourceManager.GetString("TotalConsumerDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Coop Discount.
+        /// </summary>
+        internal static string TotalCoopDiscount {
+            get {
+                return ResourceManager.GetString("TotalCoopDiscount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Cost.
         /// </summary>
         internal static string TotalCost {
             get {
                 return ResourceManager.GetString("TotalCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Free.
+        /// </summary>
+        internal static string TotalFree {
+            get {
+                return ResourceManager.GetString("TotalFree", resourceCulture);
             }
         }
         
@@ -9179,7 +9296,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ الفاتورة.
+        ///   Looks up a localized string similar to Invoice Date.
         /// </summary>
         internal static string trInvoiceDate {
             get {

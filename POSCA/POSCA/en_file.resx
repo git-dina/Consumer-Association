@@ -2540,7 +2540,7 @@ Main Documents</value>
     <value>نقاط الفواتير...</value>
   </data>
   <data name="trInvoiceDate" xml:space="preserve">
-    <value>تاريخ الفاتورة</value>
+    <value>Invoice Date</value>
   </data>
   <data name="trInvoiceDateHint" xml:space="preserve">
     <value>Invoice Date...</value>
@@ -5678,5 +5678,44 @@ Main Documents</value>
   </data>
   <data name="PromotionalOffers" xml:space="preserve">
     <value>Promotional Offers</value>
+  </data>
+  <data name="PiecesQuantity" xml:space="preserve">
+    <value>Pieces Quantity</value>
+  </data>
+  <data name="PurchaseOrderNum" xml:space="preserve">
+    <value>Purchase Order Num</value>
+  </data>
+  <data name="ReceiptCustomFreeTitle" xml:space="preserve">
+    <value>Custom Free Receipt Doc</value>
+  </data>
+  <data name="ReceiptDirectTitle" xml:space="preserve">
+    <value>Direct Receipt</value>
+  </data>
+  <data name="ReceiptFreeTitle" xml:space="preserve">
+    <value>Free Receipt</value>
+  </data>
+  <data name="ReceiptFreeVegetablesTitle" xml:space="preserve">
+    <value>Free Vegetables Receipt</value>
+  </data>
+  <data name="ReceiptPurchaseOrderTitle" xml:space="preserve">
+    <value>Orders Receipt</value>
+  </data>
+  <data name="ReceiptServiceTitle" xml:space="preserve">
+    <value>Service Receipt</value>
+  </data>
+  <data name="ReceiptVegetablesTitle" xml:space="preserve">
+    <value>Vegetables Receipt</value>
+  </data>
+  <data name="SupplierInvNumberAbbrevation" xml:space="preserve">
+    <value>S I</value>
+  </data>
+  <data name="TotalConsumerDiscount" xml:space="preserve">
+    <value>Total Consumer Discount</value>
+  </data>
+  <data name="TotalCoopDiscount" xml:space="preserve">
+    <value>Total Coop Discount</value>
+  </data>
+  <data name="TotalFree" xml:space="preserve">
+    <value>Total Free</value>
   </data>
 </root>

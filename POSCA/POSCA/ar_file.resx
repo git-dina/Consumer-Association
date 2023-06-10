@@ -5933,4 +5933,43 @@
   <data name="PromotionalOffers" xml:space="preserve">
     <value>عروض ترويجية</value>
   </data>
+  <data name="PiecesQuantity" xml:space="preserve">
+    <value>كمية الحبات</value>
+  </data>
+  <data name="PurchaseOrderNum" xml:space="preserve">
+    <value>رقم طلب الشراء</value>
+  </data>
+  <data name="ReceiptCustomFreeTitle" xml:space="preserve">
+    <value>سند استلام مجاني مخصص</value>
+  </data>
+  <data name="ReceiptDirectTitle" xml:space="preserve">
+    <value>استلام مباشر</value>
+  </data>
+  <data name="ReceiptFreeTitle" xml:space="preserve">
+    <value>استلام مجاني</value>
+  </data>
+  <data name="ReceiptFreeVegetablesTitle" xml:space="preserve">
+    <value>استلام مجاني خضار</value>
+  </data>
+  <data name="ReceiptPurchaseOrderTitle" xml:space="preserve">
+    <value>استلام طلبات</value>
+  </data>
+  <data name="ReceiptServiceTitle" xml:space="preserve">
+    <value>استلام خدمي</value>
+  </data>
+  <data name="ReceiptVegetablesTitle" xml:space="preserve">
+    <value>استلام خضار</value>
+  </data>
+  <data name="SupplierInvNumberAbbrevation" xml:space="preserve">
+    <value>ف م</value>
+  </data>
+  <data name="TotalConsumerDiscount" xml:space="preserve">
+    <value>إجمالي خصم المستهلك</value>
+  </data>
+  <data name="TotalCoopDiscount" xml:space="preserve">
+    <value>إجمالي خصم الجمعية</value>
+  </data>
+  <data name="TotalFree" xml:space="preserve">
+    <value>إجمالي المجاني</value>
+  </data>
 </root>
