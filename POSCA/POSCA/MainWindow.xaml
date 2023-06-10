@@ -337,7 +337,7 @@
                     <!--Height="40" Width="40"-->
 
                     <!--#region  home-->
-                    <Expander  x:Name="exp_home" Tag="home" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                    <!--<Expander  x:Name="exp_home" Tag="home" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -354,26 +354,35 @@
                                            FontWeight="SemiBold" FontSize="14"
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
-                        </Expander.Header>
+                        </Expander.Header>-->
                         <!--#region  dashboard-->
-                        <StackPanel>
-                            <Button   Height="50"
-                                  Grid.Row="1"
+                        <!--<StackPanel>-->
+                    <Button   Height="50"
+                                  Grid.Row="1" 
                            Tag="dashboard" 
                           x:Name="btn_dashboard"  Click="Btn_dashboard_Click"
                     Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
-                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                    Padding="24 0 0 0" >
+                                <Grid  Height="50"  Width="245" >
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Text="dashboard" Tag="secondMenuTitle_dashboard" Foreground="#A8AEC6" x:Name="txt_dashboard"
+                            <Path Fill="#A8AEC6" Tag="secondMenuTitle_dashboard" 
+                                  x:Name="path_iconDashboard"
+                                  Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource applicationPlay}"/>
+                            <TextBlock Text="dashboard" Tag="secondMenuTitle_dashboard" Foreground="#A8AEC6" 
+                                       x:Name="txt_dashboard" Visibility="Collapsed"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
+                              Grid.Column="1"      Margin="10,0,0,0"/>
                                 </Grid>
                             </Button>
-                        </StackPanel>
-                    </Expander>
+                        <!--</StackPanel>-->
+                    <!--</Expander>-->
                     <!--#region  mainSection-->
                     <Expander  x:Name="exp_mainSection" Tag="mainSection_catalog_purchases_receipts_promotion_vendors_locations_sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
@@ -386,7 +395,7 @@
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
-                              Data="{StaticResource notes}"/>
+                              Data="{StaticResource home}"/>
                                 <TextBlock Text="mainSection" Foreground="White" x:Name="txt_mainSection"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                                            FontWeight="SemiBold" FontSize="14"

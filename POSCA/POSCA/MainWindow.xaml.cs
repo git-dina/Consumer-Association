@@ -533,6 +533,7 @@ namespace POSCA
                         Storyboard sb = this.FindResource("Storyboard1") as Storyboard;
                         sb.Begin();
                         txt_companyName.Visibility = Visibility.Visible;
+                        txt_dashboard.Visibility = Visibility.Visible;
                         menuState = true;
                     }
                 }
@@ -569,10 +570,26 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
+            if (active == "dashboard")
+                path_iconDashboard.Fill = Application.Current.Resources["White"] as SolidColorBrush;
+            else
+                path_iconDashboard.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#A8AEC6"));
+
+
         }
         private void Btn_dashboard_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                grid_main.Children.Clear();
+                //grid_main.Children.Add(uc_vendorsData.Instance);
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_vendorsData_Click(object sender, RoutedEventArgs e)
         {
@@ -935,6 +952,7 @@ namespace POSCA
                     Storyboard sb = this.FindResource("Storyboard1") as Storyboard;
                     sb.Begin();
                     txt_companyName.Visibility = Visibility.Visible;
+                    txt_dashboard.Visibility = Visibility.Visible;
                     menuState = true;
                 }
                 else
@@ -952,6 +970,7 @@ namespace POSCA
                         HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
                     }
                     txt_companyName.Visibility = Visibility.Collapsed;
+                    txt_dashboard.Visibility = Visibility.Collapsed;
                     Storyboard sb = this.FindResource("Storyboard2") as Storyboard;
                     sb.Begin();
                     menuState = false;
