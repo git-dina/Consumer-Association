@@ -79,6 +79,45 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
+        } 
+        
+        public async Task<Receipt> PostingReceiptOrder(long receiptId,long userId)
+        {
+            var result = new Receipt();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Receipts/PostingReceiptOrder";
+
+            parameters.Add("receiptId", receiptId.ToString());
+            parameters.Add("userId", userId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Receipt>(c.Value);
+                }
+            }
+            return result;
+        } 
+        public async Task<Receipt> CanclePostingReceiptOrder(long receiptId,long userId)
+        {
+            var result = new Receipt();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Receipts/CanclePostingReceiptOrder";
+
+            parameters.Add("receiptId", receiptId.ToString());
+            parameters.Add("userId", userId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Receipt>(c.Value);
+                }
+            }
+            return result;
         }
          public async Task<Receipt> SaveReturnOrder(Receipt invoice)
         {
@@ -152,9 +191,12 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         //extra
+    
+        #region extra
+        public int Sequence { get; set; }
         public decimal Balance { get; set; }
         public string ItemUnit { get; set; }
-
+        #endregion
 
     }
 }

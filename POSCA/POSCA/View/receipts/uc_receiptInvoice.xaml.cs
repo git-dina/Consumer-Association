@@ -1252,24 +1252,23 @@ namespace POSCA.View.receipts
         public async Task<string> printInvoice(Receipt prInvoice)
         {
             string msg = "";
-            /*
+            
             try
             {
-                //ReportsConfig reportConfig = new ReportsConfig();
+                int sequence = 0;
+                foreach (var row in prInvoice.ReceiptDetails)
+                {
+                    row.Sequence = sequence++;
+                }
+
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
-                rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
+                rep.ReportPath = reportclass.GetReceiptOrderRdlcpath();
 
-                ReportsConfig.setReportLanguage(paramarr);
-                ReportsConfig.InvoiceHeader(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice, rep, paramarr);
+                // ReportsConfig.setReportLanguage(paramarr);
 
-                rep.EnableExternalImages = true;
-                rep.DataSources.Clear();
-                rep.DataSources.Add(new ReportDataSource("DataSetReceiptDetails", receipt.ReceiptDetails));
-
-                rep.EnableExternalImages = true;
-
+                reportclass.fillReceiptOrderReport(prInvoice, rep, paramarr);
+                rep.SetParameters(paramarr);
                 rep.Refresh();
 
                 //copy count
@@ -1297,7 +1296,7 @@ namespace POSCA.View.receipts
                 //});
                 msg = "trNotCompleted";
             }
-            */
+           
             return msg;
 
         }
@@ -1572,12 +1571,12 @@ namespace POSCA.View.receipts
 
                 if (receipt.ReceiptStatus == "notCarriedOver")
                 {
-                    receipt = await receipt.SaveReceiptOrder(receipt);
+                    receipt = await receipt.PostingReceiptOrder(receipt.ReceiptId,MainWindow.userLogin.userId);
    
                 }
                 else if (receipt.ReceiptStatus == "locationTransfer")
                 {
-                    receipt = await receipt.SaveReceiptOrder(receipt);
+                    receipt = await receipt.CanclePostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
                 }
 
                

@@ -1254,9 +1254,41 @@ namespace POSCA.View.receipts
             }
         }
 
-        private void Btn_posting_Click(object sender, RoutedEventArgs e)
+        private async void Btn_posting_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
 
+                if (returnOrder.ReceiptStatus == "notCarriedOver")
+                {
+                    returnOrder = await returnOrder.PostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+
+                }
+                else if (returnOrder.ReceiptStatus == "locationTransfer")
+                {
+                    returnOrder = await returnOrder.CanclePostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+                }
+
+
+
+                if (returnOrder.ReceiptId == 0)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                else
+                {
+                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                    fillReceiptInputs(returnOrder);
+                }
+
+                HelpClass.EndAwait(grid_main);
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
        
