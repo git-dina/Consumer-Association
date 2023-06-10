@@ -367,7 +367,9 @@ namespace POSCA
         */
         public void translate()
         {
-            txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
+           // txt_home.Text = AppSettings.resourcemanager.GetString("trHome");
+
+            txt_mainSection.Text = AppSettings.resourcemanager.GetString("trHome");
             txt_catalog.Text = AppSettings.resourcemanager.GetString("trCatalog");
             txt_category.Text = AppSettings.resourcemanager.GetString("Categories");
             txt_item.Text = AppSettings.resourcemanager.GetString("Items");

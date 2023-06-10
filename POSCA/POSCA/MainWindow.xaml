@@ -349,7 +349,7 @@
                          VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
                               Data="{StaticResource home}"/>
-                                <TextBlock Text="home" Foreground="White" x:Name="txt_home"
+                                <TextBlock Text="dashboard" Foreground="White" x:Name="txt_home"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                                            FontWeight="SemiBold" FontSize="14"
                               Grid.Column="1"      Margin="10,0,0,0"/>
