@@ -26,11 +26,11 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="125"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="245"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
                 <EasingDoubleKeyFrame KeyTime="0" Value="125"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="245"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="Storyboard2">
@@ -47,21 +47,21 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
-                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="245"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="125"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
-                    <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                    <EasingDoubleKeyFrame KeyTime="0" Value="245"/>
                     <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="125"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
         <Storyboard x:Key="Storyboard3">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_logo">
-                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="245"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="125"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="grid_menu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="225"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="245"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="125"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -80,7 +80,7 @@
                 <RowDefinition Height="3"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <!--<ColumnDefinition x:Name="cd_menu" Width="225"/>-->
+                <!--<ColumnDefinition x:Name="cd_menu" Width="245"/>-->
                 <ColumnDefinition  Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -374,8 +374,30 @@
                             </Button>
                         </StackPanel>
                     </Expander>
+                    <!--#region  mainSection-->
+                    <Expander  x:Name="exp_mainSection" Tag="mainSection_catalog_purchases_receipts_promotion_vendors_locations_sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconMainSection" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource notes}"/>
+                                <TextBlock Text="mainSection" Foreground="White" x:Name="txt_mainSection"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <!--#region  mainSection-->
+                        <StackPanel Margin="20 0 0 0">
+                       
                     <!--#region  catalog-->
-                    <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                            <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -443,6 +465,7 @@
                             </Button>-->
                         </StackPanel>
                     </Expander>
+                   
                     <!--#region  purchases-->
                     <Expander  x:Name="exp_purchases" Tag="purchases" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
@@ -930,6 +953,9 @@
 
                             </StackPanel>
                         </Expander>-->
+
+                        </StackPanel>
+                    </Expander>
 
                         </StackPanel>
                     </Expander>

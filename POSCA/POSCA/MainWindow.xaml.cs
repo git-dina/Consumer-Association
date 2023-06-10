@@ -514,8 +514,14 @@ namespace POSCA
 
                     var expander = control as Expander;
                     if (expander.Tag != null && Sender.Tag != null)
-                        if (expander.Tag.ToString() != Sender.Tag.ToString() )
+                        //if (expander.Tag.ToString() != Sender.Tag.ToString() )
+                        if (!(expander.Tag.ToString().Contains(Sender.Tag.ToString()) 
+                            || Sender.Tag.ToString().Contains(expander.Tag.ToString())))
+                        {
+                            expander.Expanded -= Expander_Expanded;
                             expander.IsExpanded = false;
+                            expander.Expanded += Expander_Expanded;
+                        }
                 }
 
                 try
@@ -539,7 +545,6 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
         void secondMenuTitleActivate(string active)
         {
 
