@@ -352,6 +352,7 @@ namespace POSCA.View.windows
             try
             {
                 dg_itemUnit.CancelEdit();
+                dg_itemUnit.ItemsSource = null;
                 dg_itemUnit.ItemsSource = itemUnits;
                 dg_itemUnit.Items.Refresh();
 
