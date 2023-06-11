@@ -1015,8 +1015,8 @@ namespace POSCA.View.receipts
             _ConsumerDiscount = 0;
             foreach (var row in billDetails)
             {
-                _TotalCost += row.Cost;
-                _TotalPrice += row.Price;
+                _TotalCost += row.Cost *((int)row.MinQty +((int)row.MaxQty * (int)row.Factor));
+                _TotalPrice += row.Price * ((int)row.MinQty + ((int)row.MaxQty * (int)row.Factor));
                 _ConsumerDiscount = (decimal)row.ConsumerDiscount;
             }
 
@@ -1210,7 +1210,7 @@ namespace POSCA.View.receipts
         #region print
         private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
             {
                 if (sender != null)
                     HelpClass.StartAwait(grid_main);
@@ -1238,12 +1238,12 @@ namespace POSCA.View.receipts
                 if (sender != null)
                     HelpClass.EndAwait(grid_main);
             }
-            catch (Exception ex)
-            {
-                if (sender != null)
-                    HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+            //catch (Exception ex)
+            //{
+            //    if (sender != null)
+            //        HelpClass.EndAwait(grid_main);
+            //    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            //}
         }
 
         LocalReport rep = new LocalReport();
@@ -1253,7 +1253,7 @@ namespace POSCA.View.receipts
         {
             string msg = "";
             
-            try
+            //try
             {
                 int sequence = 0;
                 foreach (var row in prInvoice.ReceiptDetails)
@@ -1287,15 +1287,15 @@ namespace POSCA.View.receipts
 
 
             }
-            catch (Exception ex)
-            {
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
+            //catch (Exception ex)
+            //{
+            //    //this.Dispatcher.Invoke(() =>
+            //    //{
+            //    //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
 
-                //});
-                msg = "trNotCompleted";
-            }
+            //    //});
+            //    msg = "trNotCompleted";
+            //}
            
             return msg;
 

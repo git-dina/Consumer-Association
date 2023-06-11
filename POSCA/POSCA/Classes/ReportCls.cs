@@ -380,12 +380,10 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("SupInvNumber", AppSettings.resourcemanager.GetString("SupplierInvNumberAbbrevation") + ": " + invoice.SupInvoiceNum.ToString()));
             paramarr.Add(new ReportParameter("Notes", invoice.Notes));
             paramarr.Add(new ReportParameter("NetPrice", HelpClass.DecTostring(invoice.TotalPrice)));
-            paramarr.Add(new ReportParameter("TotalCost", HelpClass.DecTostring(invoice.TotalCost)));
             paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
             paramarr.Add(new ReportParameter("DiscountValue", HelpClass.DecTostring(invoice.DiscountValue)));
             paramarr.Add(new ReportParameter("Currency", AppSettings.currency));
             paramarr.Add(new ReportParameter("ConsumerDiscount", HelpClass.DecTostring(invoice.ConsumerDiscount)));
-            paramarr.Add(new ReportParameter("TotalCoopDiscount", HelpClass.DecTostring(invoice.CoopDiscount)));
             paramarr.Add(new ReportParameter("netCost", HelpClass.DecTostring(invoice.CostNet)));
 
             paramarr.Add(new ReportParameter("UserName", "دينا نعمة"));
