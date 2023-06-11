@@ -664,6 +664,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continual Offer.
+        /// </summary>
+        internal static string ContinualOffer {
+            get {
+                return ResourceManager.GetString("ContinualOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copies Count.
         /// </summary>
         internal static string copiesCount {
@@ -2357,11 +2366,74 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer Date....
+        /// </summary>
+        internal static string OfferDateHint {
+            get {
+                return ResourceManager.GetString("OfferDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Details.
+        /// </summary>
+        internal static string OfferDetails {
+            get {
+                return ResourceManager.GetString("OfferDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Locations.
+        /// </summary>
+        internal static string OfferLocations {
+            get {
+                return ResourceManager.GetString("OfferLocations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Nature....
+        /// </summary>
+        internal static string OfferNatureHint {
+            get {
+                return ResourceManager.GetString("OfferNatureHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Price.
+        /// </summary>
+        internal static string OfferPrice {
+            get {
+                return ResourceManager.GetString("OfferPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offers.
         /// </summary>
         internal static string Offers {
             get {
                 return ResourceManager.GetString("Offers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Type.
+        /// </summary>
+        internal static string OfferType {
+            get {
+                return ResourceManager.GetString("OfferType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Type....
+        /// </summary>
+        internal static string OfferTypeHint {
+            get {
+                return ResourceManager.GetString("OfferTypeHint", resourceCulture);
             }
         }
         
@@ -2659,6 +2731,15 @@ namespace POSCA {
         internal static string PaytoMr {
             get {
                 return ResourceManager.GetString("PaytoMr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage Offer.
+        /// </summary>
+        internal static string PercentageOffer {
+            get {
+                return ResourceManager.GetString("PercentageOffer", resourceCulture);
             }
         }
         
@@ -3073,6 +3154,15 @@ namespace POSCA {
         internal static string PurchasesInvoice {
             get {
                 return ResourceManager.GetString("PurchasesInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity Offer.
+        /// </summary>
+        internal static string QuantityOffer {
+            get {
+                return ResourceManager.GetString("QuantityOffer", resourceCulture);
             }
         }
         
@@ -4045,6 +4135,15 @@ namespace POSCA {
         internal static string tel {
             get {
                 return ResourceManager.GetString("tel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temporary Offer.
+        /// </summary>
+        internal static string TemporaryOffer {
+            get {
+                return ResourceManager.GetString("TemporaryOffer", resourceCulture);
             }
         }
         
@@ -7667,7 +7766,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ النهاية....
+        ///   Looks up a localized string similar to End Date....
         /// </summary>
         internal static string trEndDateHint {
             get {
@@ -7676,7 +7775,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ الانتهاء.
+        ///   Looks up a localized string similar to End Date.
         /// </summary>
         internal static string trEndTime {
             get {
@@ -7685,7 +7784,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to وقت الانتهاء....
+        ///   Looks up a localized string similar to End Time....
         /// </summary>
         internal static string trEndTimeHint {
             get {
@@ -14634,7 +14733,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ البداية....
+        ///   Looks up a localized string similar to Start Date....
         /// </summary>
         internal static string trStartDateHint {
             get {
@@ -14643,7 +14742,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تاريخ البدء.
+        ///   Looks up a localized string similar to Start Date.
         /// </summary>
         internal static string trStartTime {
             get {
@@ -14652,7 +14751,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to وقت البداية....
+        ///   Looks up a localized string similar to Start Time....
         /// </summary>
         internal static string trStartTimeHint {
             get {
@@ -14661,7 +14760,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الحالة.
+        ///   Looks up a localized string similar to State.
         /// </summary>
         internal static string trState {
             get {

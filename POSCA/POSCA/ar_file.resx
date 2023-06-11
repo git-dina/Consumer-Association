@@ -5972,6 +5972,9 @@
   <data name="TotalFree" xml:space="preserve">
     <value>إجمالي المجاني</value>
   </data>
+  <data name="ContinualOffer" xml:space="preserve">
+    <value>عرض مستمر</value>
+  </data>
   <data name="CustodyOfficial" xml:space="preserve">
     <value>مسؤول العهدة</value>
   </data>
@@ -5981,11 +5984,41 @@
   <data name="ItemsCount" xml:space="preserve">
     <value>عدد الأصناف</value>
   </data>
+  <data name="OfferDateHint" xml:space="preserve">
+    <value>تاريخ العرض...</value>
+  </data>
+  <data name="OfferDetails" xml:space="preserve">
+    <value>تفاصيل العرض</value>
+  </data>
+  <data name="OfferLocations" xml:space="preserve">
+    <value>مواقع العرض</value>
+  </data>
+  <data name="OfferNatureHint" xml:space="preserve">
+    <value>طبيعة العرض...</value>
+  </data>
+  <data name="OfferPrice" xml:space="preserve">
+    <value>سعر العرض</value>
+  </data>
+  <data name="OfferType" xml:space="preserve">
+    <value>نوع العرض</value>
+  </data>
+  <data name="OfferTypeHint" xml:space="preserve">
+    <value>نوع العرض...</value>
+  </data>
+  <data name="PercentageOffer" xml:space="preserve">
+    <value>عرض نسبة</value>
+  </data>
+  <data name="QuantityOffer" xml:space="preserve">
+    <value>عرض كمية</value>
+  </data>
   <data name="ReceivingOfficer" xml:space="preserve">
     <value>مسؤول الاستلام</value>
   </data>
   <data name="Reviewer" xml:space="preserve">
     <value>المراجع</value>
+  </data>
+  <data name="TemporaryOffer" xml:space="preserve">
+    <value>عرض مؤقت</value>
   </data>
   <data name="TotalQuantities" xml:space="preserve">
     <value>إجمالي كميات</value>

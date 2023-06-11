@@ -257,14 +257,13 @@
                         </DataGridTemplateColumn>
 
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
                         <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="PromotionPrice"  Header="MaxQty" Binding="{Binding Path=PromotionPrice, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="NetDeffirence"  Header="MinQty" Binding="{Binding Path=NetDeffirence, Mode=TwoWay}"/>
-                        <DataGridTextColumn  Width="*" x:Name="Qty"  Header="FreeQty" Binding="{Binding Path=Qty, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PromotionPercentage" Binding="{Binding Path=PromotionPercentage, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay}"/>
                         <!--<DataGridTemplateColumn  Header="IsItemStoped" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -272,7 +271,7 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>-->
-                        <DataGridCheckBoxColumn Header="IsItemStoped" Binding="{Binding IsItemStoped, Mode=TwoWay}"></DataGridCheckBoxColumn>
+                        <DataGridCheckBoxColumn Header="IsItemStoped" x:Name="col_IsItemStoped" Binding="{Binding IsItemStoped, Mode=TwoWay}"></DataGridCheckBoxColumn>
 
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemBy" Binding="{Binding Path=StoppedItemBy, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemDate" Binding="{Binding Path=StoppedItemDate, Mode=TwoWay}"/>
@@ -312,7 +311,7 @@
             <!--#region  invoiceDetails-->
             <ScrollViewer Margin="0,10" Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto"   >
                 <StackPanel   >
-                    <TextBlock Tag="invoiceDetails"   Text="invoiceDetails" x:Name="txt_invoiceDetails" Foreground="{StaticResource SecondColor}" 
+                    <TextBlock Tag="promotionDetails"   Text="PromotionDetails" x:Name="txt_invoiceDetails" Foreground="{StaticResource SecondColor}" 
                                                 FontWeight="Bold" FontSize="12"  
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
 
@@ -475,7 +474,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Tag="promotionLocations"   Text="promotionLocations" x:Name="txt_promotionLocations" Foreground="{StaticResource SecondColor}" 
+                    <TextBlock Tag="promotionLocations"   Text="offerLocations" x:Name="txt_offerLocations" Foreground="{StaticResource SecondColor}" 
                                                 FontWeight="Bold" FontSize="12"  
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
                     <Grid  Grid.Row="2" >

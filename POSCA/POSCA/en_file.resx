@@ -1997,13 +1997,13 @@ Main Documents</value>
     <value>تاريخ النهاية</value>
   </data>
   <data name="trEndDateHint" xml:space="preserve">
-    <value>تاريخ النهاية...</value>
+    <value>End Date...</value>
   </data>
   <data name="trEndTime" xml:space="preserve">
-    <value>تاريخ الانتهاء</value>
+    <value>End Date</value>
   </data>
   <data name="trEndTimeHint" xml:space="preserve">
-    <value>وقت الانتهاء...</value>
+    <value>End Time...</value>
   </data>
   <data name="trEnglish" xml:space="preserve">
     <value>English</value>
@@ -4254,16 +4254,16 @@ Main Documents</value>
     <value>تاريخ البداية</value>
   </data>
   <data name="trStartDateHint" xml:space="preserve">
-    <value>تاريخ البداية...</value>
+    <value>Start Date...</value>
   </data>
   <data name="trStartTime" xml:space="preserve">
-    <value>تاريخ البدء</value>
+    <value>Start Date</value>
   </data>
   <data name="trStartTimeHint" xml:space="preserve">
-    <value>وقت البداية...</value>
+    <value>Start Time...</value>
   </data>
   <data name="trState" xml:space="preserve">
-    <value>الحالة</value>
+    <value>State</value>
   </data>
   <data name="trStateHint" xml:space="preserve">
     <value>الحالة...</value>
@@ -5718,6 +5718,9 @@ Main Documents</value>
   <data name="TotalFree" xml:space="preserve">
     <value>Total Free</value>
   </data>
+  <data name="ContinualOffer" xml:space="preserve">
+    <value>Continual Offer</value>
+  </data>
   <data name="CustodyOfficial" xml:space="preserve">
     <value>Custody Official</value>
   </data>
@@ -5727,11 +5730,41 @@ Main Documents</value>
   <data name="ItemsCount" xml:space="preserve">
     <value>Items Count</value>
   </data>
+  <data name="OfferDateHint" xml:space="preserve">
+    <value>Offer Date...</value>
+  </data>
+  <data name="OfferDetails" xml:space="preserve">
+    <value>Offer Details</value>
+  </data>
+  <data name="OfferLocations" xml:space="preserve">
+    <value>Offer Locations</value>
+  </data>
+  <data name="OfferNatureHint" xml:space="preserve">
+    <value>Offer Nature...</value>
+  </data>
+  <data name="OfferPrice" xml:space="preserve">
+    <value>Offer Price</value>
+  </data>
+  <data name="OfferType" xml:space="preserve">
+    <value>Offer Type</value>
+  </data>
+  <data name="OfferTypeHint" xml:space="preserve">
+    <value>Offer Type...</value>
+  </data>
+  <data name="PercentageOffer" xml:space="preserve">
+    <value>Percentage Offer</value>
+  </data>
+  <data name="QuantityOffer" xml:space="preserve">
+    <value>Quantity Offer</value>
+  </data>
   <data name="ReceivingOfficer" xml:space="preserve">
     <value>Receiving Officer</value>
   </data>
   <data name="Reviewer" xml:space="preserve">
     <value>Reviewer</value>
+  </data>
+  <data name="TemporaryOffer" xml:space="preserve">
+    <value>Temporary Offer</value>
   </data>
   <data name="TotalQuantities" xml:space="preserve">
     <value>Total Quantities</value>

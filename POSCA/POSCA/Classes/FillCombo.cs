@@ -874,5 +874,56 @@ namespace POSCA.Classes
         //}
         #endregion
         #endregion
+
+        #region Promotion
+
+        #region PromotionType
+        static public List<keyValueString> PromotionTypesList;
+        static public IEnumerable<keyValueString> RefreshPromotionTypesList()
+        {
+            PromotionTypesList = new List<keyValueString>() {
+                new keyValueString(){key="quantity", value=AppSettings.resourcemanager.GetString("QuantityOffer") },
+                new keyValueString(){key="percentage", value=AppSettings.resourcemanager.GetString("PercentageOffer") },
+            };
+
+            return PromotionTypesList;
+        }
+
+        static public void fillPromotionTypes(ComboBox combo)
+        {
+            if (PromotionTypesList is null)
+                RefreshPromotionTypesList();
+
+            combo.ItemsSource = PromotionTypesList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion 
+        
+        #region PromotionNature
+        static public List<keyValueString> PromotionNatureList;
+        static public IEnumerable<keyValueString> RefreshPromotionNatureList()
+        {
+            PromotionNatureList = new List<keyValueString>() {
+                new keyValueString(){key="continual", value=AppSettings.resourcemanager.GetString("ContinualOffer") },
+                new keyValueString(){key="temporary", value=AppSettings.resourcemanager.GetString("TemporaryOffer") },
+            };
+
+            return PromotionNatureList;
+        }
+
+        static public void fillPromotionNatures(ComboBox combo)
+        {
+            if (PromotionNatureList is null)
+                RefreshPromotionNatureList();
+
+            combo.ItemsSource = PromotionNatureList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+        #endregion
     }
 }

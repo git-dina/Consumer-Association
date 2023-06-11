@@ -13,9 +13,9 @@ namespace POSCA.Classes.ApiClasses
         #region Attributes
         public long PromotionId { get; set; }
         public string RefId { get; set; }
-        public Nullable<System.DateTime> PromotionDate { get; set; }
-        public Nullable<System.DateTime> PromotionStartDate { get; set; }
-        public Nullable<System.DateTime> PromotionEndDate { get; set; }
+        public Nullable<System.DateTime> PromotionDate { get; set; } = DateTime.Now;
+        public Nullable<System.DateTime> PromotionStartDate { get; set; } = DateTime.Now;
+        public Nullable<System.DateTime> PromotionEndDate { get; set; } = DateTime.Now;
         public bool IsStoped { get; set; }
         public Nullable<System.DateTime> StopedDate { get; set; }
         public Nullable<long> StopedBy { get; set; }

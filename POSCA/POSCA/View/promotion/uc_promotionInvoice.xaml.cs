@@ -62,7 +62,7 @@ namespace POSCA.View.promotion
         public static List<string> requiredControlList;
         private Promotion promotion = new Promotion();
         private PurchaseInvoice purchaseOrder = new PurchaseInvoice();
-        private string _PromotionType = "purchaseOrders";
+        private string _PromotionType = "quantity";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             Instance = null;
@@ -114,12 +114,14 @@ namespace POSCA.View.promotion
                 while (!isDone);
                 #endregion
                 */
-                //FillCombo.fillPromotionsTypes(cb_PromotionType);
+                
+                FillCombo.fillPromotionTypes(cb_PromotionType);
+                FillCombo.fillPromotionNatures(cb_PromotionNature);
 
                 cb_PromotionType.SelectedIndex = 0;
-                cb_PromotionType.SelectedValue = "purchaseOrders";
+                cb_PromotionType.SelectedValue = "quantity";
                 //await Search();
-                await Clear();
+                Clear();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -141,7 +143,7 @@ namespace POSCA.View.promotion
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
+            txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OfferDetails");
             txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
             txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
             txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
@@ -151,25 +153,30 @@ namespace POSCA.View.promotion
             txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
             txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
 
+            txt_offerLocations.Text = AppSettings.resourcemanager.GetString("OfferLocations");
+
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionType, AppSettings.resourcemanager.GetString("OfferTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionNature, AppSettings.resourcemanager.GetString("OfferNatureHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionDate, AppSettings.resourcemanager.GetString("OfferDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionStartDate, AppSettings.resourcemanager.GetString("trStartDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionEndDate, AppSettings.resourcemanager.GetString("trEndDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            /*
+           
             dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("itemName");
-            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("Barcode");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("itemName");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trUnit");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("Factor");
             col_mainCost.Header = AppSettings.resourcemanager.GetString("trCost");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trPrice");
-            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
-            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
-            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("Free");
-            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
-            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("TotalCost");
-            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
-            */
-
+            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("basePrice");
+            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("OfferPrice");
+            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("IsBlocked");
+        
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_promotionOrders.ToolTip = AppSettings.resourcemanager.GetString("PromotionOrders");
-            // btn_purchaseOrders.ToolTip = AppSettings.resourcemanager.GetString("PurchaseOrders");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -251,86 +258,32 @@ namespace POSCA.View.promotion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-            /*
+            dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
             if (promotion.PromotionId.Equals(0))
             {
-                btn_posting.Visibility = Visibility.Collapsed;
+                col_IsItemStoped.Visibility = Visibility.Collapsed;
+
+                btn_save.IsEnabled = true;
                 btn_printInvoice.IsEnabled = false;
-                tb_InvoiceAmount.IsEnabled = true;
-                tb_AmountDifference.IsEnabled = true;
-                tb_SupInvoiceNum.IsEnabled = true;
-                tb_FreePercentage.IsEnabled = true;
-                dp_PromotionDate.IsEnabled = true;
-                dp_SupInvoiceDate.IsEnabled = true;
                 cb_PromotionType.IsEnabled = true;
+                cb_PromotionNature.IsEnabled = true;
+                tb_PromotionPercentage.IsEnabled = true;
+                dp_PromotionDate.IsEnabled = true;
+                dp_PromotionStartDate.IsEnabled = true;
+                dp_PromotionEndDate.IsEnabled = true;
+                tb_FreePercentage.IsEnabled = true;
+
                 //check promotion status first
                 switch (_PromotionType)
                 {
 
-                    case "purchaseOrders": //supplying order is approved
-                        btn_save.IsEnabled = true;
-                        col_mainCost.IsReadOnly = true;
+                    case "quantity":
 
-                        if (tgl_IsRecieveAll.IsChecked == true)
-                        {
-                            dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
-                            col_freeQty.IsReadOnly = true;
-                            col_maxQty.IsReadOnly = true;
-                            col_minQty.IsReadOnly = true;
-                        }
-                        else
-                        {
-                            dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-                            col_freeQty.IsReadOnly = false;
-                            col_maxQty.IsReadOnly = false;
-                            col_minQty.IsReadOnly = false;
-                        }
+                        tb_PromotionPercentage.Visibility = Visibility.Collapsed;
 
-                        grd_purchaseNum.IsEnabled = true;
-                        sp_IsRecieveAll.Visibility = Visibility.Visible;
-                        brd_purchaseNumber.Visibility = Visibility.Visible;
-                        brd_CustomFreeType.Visibility = Visibility.Collapsed;
-
-                        brd_grid0_0.IsEnabled = false;
-                        cb_LocationId.IsEnabled = false;
-                        cb_SupId.IsEnabled = false;
                         break;
                     default:
-                        dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
-
-                        col_freeQty.IsReadOnly = false;
-                        col_maxQty.IsReadOnly = false;
-                        col_minQty.IsReadOnly = false;
-
-                        //grd_purchaseNum.Visibility = Visibility.Collapsed;
-
-
-                        brd_grid0_0.IsEnabled = true;
-                        cb_LocationId.IsEnabled = true;
-                        cb_SupId.IsEnabled = true;
-
-                        if (_PromotionType == "customFree")
-                            brd_CustomFreeType.Visibility = Visibility.Visible;
-                        else
-                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
-
-                        if (_PromotionType == "vegetable" || _PromotionType == "freeVegetables")
-                            col_mainCost.IsReadOnly = false;
-                        else
-                            col_mainCost.IsReadOnly = true;
-
-                        if (promotion.PurchaseId != null)
-                        {
-                            //grd_purchaseNum.Visibility = Visibility.Visible;
-                            sp_IsRecieveAll.Visibility = Visibility.Visible;
-                            brd_purchaseNumber.Visibility = Visibility.Visible;
-                        }
-                        else
-                        {
-                            //grd_purchaseNum.Visibility = Visibility.Collapsed;
-                            sp_IsRecieveAll.Visibility = Visibility.Collapsed;
-                            brd_purchaseNumber.Visibility = Visibility.Collapsed;
-                        }
+                        tb_PromotionPercentage.Visibility = Visibility.Visible;
 
                         break;
 
@@ -338,72 +291,34 @@ namespace POSCA.View.promotion
             }
             else
             {
+                col_IsItemStoped.Visibility = Visibility.Visible;
+
+                btn_save.IsEnabled = true;
+                btn_printInvoice.IsEnabled = true;
+                cb_PromotionType.IsEnabled = false;
+                cb_PromotionNature.IsEnabled = false;
+                tb_PromotionPercentage.IsEnabled = false;
+                dp_PromotionDate.IsEnabled = false;
+                dp_PromotionStartDate.IsEnabled = false;
+                dp_PromotionEndDate.IsEnabled = false;
+                tb_FreePercentage.IsEnabled = false;
+
+                //check promotion status first
                 switch (_PromotionType)
                 {
 
-                    case "purchaseOrders": //supplying order is approved
+                    case "quantity":
 
-                        sp_IsRecieveAll.Visibility = Visibility.Visible;
-                        brd_purchaseNumber.Visibility = Visibility.Visible;
-                        brd_CustomFreeType.Visibility = Visibility.Collapsed;
+                        tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+
                         break;
                     default:
-
-                        sp_IsRecieveAll.Visibility = Visibility.Collapsed;
-                        brd_purchaseNumber.Visibility = Visibility.Collapsed;
-
-                        if (_PromotionType == "customFree")
-                            brd_CustomFreeType.Visibility = Visibility.Visible;
-                        else
-                            brd_CustomFreeType.Visibility = Visibility.Collapsed;
-
+                        tb_PromotionPercentage.Visibility = Visibility.Visible;
 
                         break;
 
                 }
-                dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
-
-                col_freeQty.IsReadOnly = true;
-                col_maxQty.IsReadOnly = true;
-                col_minQty.IsReadOnly = true;
-                col_mainCost.IsReadOnly = true;
-                grd_purchaseNum.IsEnabled = false;
-
-                brd_grid0_0.IsEnabled = false;
-
-                cb_PromotionType.IsEnabled = false;
-                cb_LocationId.IsEnabled = false;
-                cb_SupId.IsEnabled = false;
-                cb_CustomFreeType.IsEnabled = false;
-                tb_InvoiceAmount.IsEnabled = false;
-                tb_AmountDifference.IsEnabled = false;
-                tb_SupInvoiceNum.IsEnabled = false;
-                tb_FreePercentage.IsEnabled = false;
-                dp_PromotionDate.IsEnabled = false;
-                dp_SupInvoiceDate.IsEnabled = false;
-                grd_purchaseNum.IsEnabled = false;
-
-                btn_save.IsEnabled = false;
-                btn_printInvoice.IsEnabled = true;
-
-                //btn posting
-                if (promotion.PromotionStatus == "notCarriedOver")
-                {
-                    btn_posting.Visibility = Visibility.Visible;
-                    btn_posting.Content = AppSettings.resourcemanager.GetString("Posting");
-                }
-                else if (promotion.PromotionStatus == "locationTransfer")
-                {
-                    btn_posting.Visibility = Visibility.Visible;
-                    btn_posting.Content = AppSettings.resourcemanager.GetString("CancelPosting");
-                }
-                else
-                {
-                    btn_posting.Visibility = Visibility.Collapsed;
-                }
             }
-
-            */
         }
 
         #endregion
@@ -443,10 +358,10 @@ namespace POSCA.View.promotion
                     await addInvoice();
                 }
                 else
-                    await Clear();
+                     Clear();
             }
             else
-                await Clear();
+                 Clear();
         }
 
         private bool canAddInvoice()
@@ -592,18 +507,16 @@ namespace POSCA.View.promotion
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                await Clear();
-                HelpClass.EndAwait(grid_main);
+ 
+                 Clear();
             }
             catch (Exception ex)
             {
 
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -659,7 +572,7 @@ namespace POSCA.View.promotion
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        void Clear()
         {
 
             this.DataContext = new Promotion();
@@ -675,9 +588,6 @@ namespace POSCA.View.promotion
                 dg_invoiceDetails.IsEnabled = false;
                 RefreshInvoiceDetailsDataGrid();
             }
-            //await Task.Delay(0050);
-            //dp_PromotionDate.SelectedDate = DateTime.Now;
-            //dp_SupInvoiceDate.SelectedDate = DateTime.Now;
 
             txt_TotalCost.Text = HelpClass.DecTostring(0);
             txt_TotalPrice.Text = HelpClass.DecTostring(0);
@@ -688,11 +598,6 @@ namespace POSCA.View.promotion
             txt_FreeValue.Text = HelpClass.DecTostring(0);
             txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
             txt_CostNet.Text = HelpClass.DecTostring(0);
-            /*
-            col_freeQty.IsReadOnly = false;
-            col_maxQty.IsReadOnly = false;
-            col_minQty.IsReadOnly = false;
-            */
 
             // _PromotionType = "purchaseOrders";
             ControlsEditable();
@@ -1493,18 +1398,18 @@ namespace POSCA.View.promotion
             */
         }
 
-        private async void cb_PromotionType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private  void cb_PromotionType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                await Clear();
+                 Clear();
                 _PromotionType = cb_PromotionType.SelectedValue.ToString();
-                if (_PromotionType == "customFree")
-                    requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
-                                                "InvoiceAmount", "AmountDifference","CustomFreeType" };
+                if (_PromotionType == "quantity")
+                    requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
+                                                                "PromotionNature"};
                 else
-                    requiredControlList = new List<string> { "LocationId", "SupplierId","SupInvoiceNum",
-                                                "InvoiceAmount", "AmountDifference" };
+                    requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
+                                                "PromotionNature","PromotionPercentage"};
                 ControlsEditable();
             }
             catch { }
