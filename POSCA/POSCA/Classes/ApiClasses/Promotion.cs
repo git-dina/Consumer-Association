@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +33,28 @@ namespace POSCA.Classes.ApiClasses
         //extra 
         public List<PromotionDetails> PromotionDetails { get; set; }
         public List<PromotionLocations> PromotionLocations { get; set; }
+        #endregion
+
+        #region Methods
+        public async Task<Promotion> SaveReceiptOrder(Receipt invoice)
+        {
+            var result = new Promotion();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Promotion/SavePromotion";
+
+            var myContent = JsonConvert.SerializeObject(invoice);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Promotion>(c.Value);
+                }
+            }
+            return result;
+        }
         #endregion
     }
 

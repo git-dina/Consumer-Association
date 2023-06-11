@@ -5718,4 +5718,22 @@ Main Documents</value>
   <data name="TotalFree" xml:space="preserve">
     <value>Total Free</value>
   </data>
+  <data name="CustodyOfficial" xml:space="preserve">
+    <value>Custody Official</value>
+  </data>
+  <data name="DocumentEditor" xml:space="preserve">
+    <value>Doc Editor</value>
+  </data>
+  <data name="ItemsCount" xml:space="preserve">
+    <value>Items Count</value>
+  </data>
+  <data name="ReceivingOfficer" xml:space="preserve">
+    <value>Receiving Officer</value>
+  </data>
+  <data name="Reviewer" xml:space="preserve">
+    <value>Reviewer</value>
+  </data>
+  <data name="TotalQuantities" xml:space="preserve">
+    <value>Total Quantities</value>
+  </data>
 </root>

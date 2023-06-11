@@ -736,6 +736,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custody Official.
+        /// </summary>
+        internal static string CustodyOfficial {
+            get {
+                return ResourceManager.GetString("CustodyOfficial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom.
         /// </summary>
         internal static string Custom {
@@ -993,6 +1002,15 @@ namespace POSCA {
         internal static string DocumentDateHint {
             get {
                 return ResourceManager.GetString("DocumentDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doc Editor.
+        /// </summary>
+        internal static string DocumentEditor {
+            get {
+                return ResourceManager.GetString("DocumentEditor", resourceCulture);
             }
         }
         
@@ -1812,6 +1830,15 @@ namespace POSCA {
         internal static string Items {
             get {
                 return ResourceManager.GetString("Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items Count.
+        /// </summary>
+        internal static string ItemsCount {
+            get {
+                return ResourceManager.GetString("ItemsCount", resourceCulture);
             }
         }
         
@@ -3212,6 +3239,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Receiving Officer.
+        /// </summary>
+        internal static string ReceivingOfficer {
+            get {
+                return ResourceManager.GetString("ReceivingOfficer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reciept From Bank.
         /// </summary>
         internal static string RecieptFromBank {
@@ -3343,6 +3379,15 @@ namespace POSCA {
         internal static string Returns {
             get {
                 return ResourceManager.GetString("Returns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewer.
+        /// </summary>
+        internal static string Reviewer {
+            get {
+                return ResourceManager.GetString("Reviewer", resourceCulture);
             }
         }
         
@@ -4108,6 +4153,15 @@ namespace POSCA {
         internal static string TotalFree {
             get {
                 return ResourceManager.GetString("TotalFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Quantities.
+        /// </summary>
+        internal static string TotalQuantities {
+            get {
+                return ResourceManager.GetString("TotalQuantities", resourceCulture);
             }
         }
         

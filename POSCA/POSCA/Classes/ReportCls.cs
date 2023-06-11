@@ -379,13 +379,14 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
             paramarr.Add(new ReportParameter("SupInvNumber", AppSettings.resourcemanager.GetString("SupplierInvNumberAbbrevation") + ": " + invoice.SupInvoiceNum.ToString()));
             paramarr.Add(new ReportParameter("Notes", invoice.Notes));
-            paramarr.Add(new ReportParameter("NetPrice", invoice.TotalPrice.ToString()));
-            paramarr.Add(new ReportParameter("TotalCost", invoice.TotalCost.ToString()));
+            paramarr.Add(new ReportParameter("NetPrice", HelpClass.DecTostring(invoice.TotalPrice)));
+            paramarr.Add(new ReportParameter("TotalCost", HelpClass.DecTostring(invoice.TotalCost)));
             paramarr.Add(new ReportParameter("EnterpriseDiscount", discount));
             paramarr.Add(new ReportParameter("DiscountValue", HelpClass.DecTostring(invoice.DiscountValue)));
             paramarr.Add(new ReportParameter("Currency", AppSettings.currency));
             paramarr.Add(new ReportParameter("ConsumerDiscount", HelpClass.DecTostring(invoice.ConsumerDiscount)));
             paramarr.Add(new ReportParameter("TotalCoopDiscount", HelpClass.DecTostring(invoice.CoopDiscount)));
+            paramarr.Add(new ReportParameter("netCost", HelpClass.DecTostring(invoice.CostNet)));
 
             paramarr.Add(new ReportParameter("UserName", "دينا نعمة"));
             paramarr.Add(new ReportParameter("CreateUserId", invoice.CreateUserId.ToString()));
@@ -401,12 +402,12 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
             paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
             paramarr.Add(new ReportParameter("trSeuenceAbbrevation", AppSettings.resourcemanager.GetString("SeuenceAbbrevation")));
+            paramarr.Add(new ReportParameter("trItemCode", AppSettings.resourcemanager.GetString("ItemNumber")));
             paramarr.Add(new ReportParameter("trFree", AppSettings.resourcemanager.GetString("Free")));
             paramarr.Add(new ReportParameter("trQuantity", AppSettings.resourcemanager.GetString("trQTR")));
             paramarr.Add(new ReportParameter("trQuantity", AppSettings.resourcemanager.GetString("trQTR")));
             paramarr.Add(new ReportParameter("trPiecesQuantity", AppSettings.resourcemanager.GetString("PiecesQuantity")));
             paramarr.Add(new ReportParameter("trDescription", AppSettings.resourcemanager.GetString("itemName")));
-            paramarr.Add(new ReportParameter("trQTR", AppSettings.resourcemanager.GetString("trQTR")));
             paramarr.Add(new ReportParameter("trFactor", AppSettings.resourcemanager.GetString("Factor")));
             paramarr.Add(new ReportParameter("trPurchasePrice", AppSettings.resourcemanager.GetString("PurchasePrice")));
             paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
@@ -416,26 +417,25 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trTotalFree", AppSettings.resourcemanager.GetString("TotalFree")));
 
 
-            paramarr.Add(new ReportParameter("trSum", AppSettings.resourcemanager.GetString("trSum")));
-            paramarr.Add(new ReportParameter("trOnly", AppSettings.resourcemanager.GetString("trOnly")));
-
-            paramarr.Add(new ReportParameter("trItemsDiscount", AppSettings.resourcemanager.GetString("ItemsDiscount")));
-
-           // string orderStatus = FillCombo.PurchaseOrderStatusList.Where(x => x.key == invoice.InvStatus).FirstOrDefault().value;
-            //paramarr.Add(new ReportParameter("OrderStatus", orderStatus));
-            paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));
 
 
             //report footer 
-          
+            paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));
+            paramarr.Add(new ReportParameter("trSum", AppSettings.resourcemanager.GetString("trSum")));
+            paramarr.Add(new ReportParameter("trItemsCount", AppSettings.resourcemanager.GetString("ItemsCount")));
+            paramarr.Add(new ReportParameter("ItemsCount", invoice.ReceiptDetails.Count().ToString()));
+            paramarr.Add(new ReportParameter("TotalQuantities", invoice.ReceiptDetails.Count().ToString()));
+            paramarr.Add(new ReportParameter("trTotalQuantities", AppSettings.resourcemanager.GetString("TotalQuantities")));
+            paramarr.Add(new ReportParameter("trOnly", AppSettings.resourcemanager.GetString("trOnly")));
+            paramarr.Add(new ReportParameter("trDocumentEditor", AppSettings.resourcemanager.GetString("DocumentEditor")));
             paramarr.Add(new ReportParameter("trFrom", AppSettings.resourcemanager.GetString("trFrom")));
             paramarr.Add(new ReportParameter("trPage", AppSettings.resourcemanager.GetString("trPage")));
             paramarr.Add(new ReportParameter("trPrintDone", AppSettings.resourcemanager.GetString("trPrintDone")));
             paramarr.Add(new ReportParameter("trBy", AppSettings.resourcemanager.GetString("By")));
-            paramarr.Add(new ReportParameter("trProcurementOfficer", AppSettings.resourcemanager.GetString("ProcurementOfficer")));
-            paramarr.Add(new ReportParameter("trMerchandisingTeamLeader", AppSettings.resourcemanager.GetString("MerchandisingTeamLeader")));
-            paramarr.Add(new ReportParameter("trStoresManager", AppSettings.resourcemanager.GetString("StoresManager")));
-
+            paramarr.Add(new ReportParameter("trReceiver", AppSettings.resourcemanager.GetString("Receiver")));
+            paramarr.Add(new ReportParameter("trReceivingOfficer", AppSettings.resourcemanager.GetString("ReceivingOfficer")));
+            paramarr.Add(new ReportParameter("trCustodyOfficial", AppSettings.resourcemanager.GetString("CustodyOfficial")));
+            paramarr.Add(new ReportParameter("trViewer", AppSettings.resourcemanager.GetString("Reviewer")));
 
             //dataSet
             rep.DataSources.Add(new ReportDataSource("DataSetReceiptDetails", invoice.ReceiptDetails));

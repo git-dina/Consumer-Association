@@ -5972,4 +5972,22 @@
   <data name="TotalFree" xml:space="preserve">
     <value>إجمالي المجاني</value>
   </data>
+  <data name="CustodyOfficial" xml:space="preserve">
+    <value>مسؤول العهدة</value>
+  </data>
+  <data name="DocumentEditor" xml:space="preserve">
+    <value>محرر السند</value>
+  </data>
+  <data name="ItemsCount" xml:space="preserve">
+    <value>عدد الأصناف</value>
+  </data>
+  <data name="ReceivingOfficer" xml:space="preserve">
+    <value>مسؤول الاستلام</value>
+  </data>
+  <data name="Reviewer" xml:space="preserve">
+    <value>المراجع</value>
+  </data>
+  <data name="TotalQuantities" xml:space="preserve">
+    <value>إجمالي كميات</value>
+  </data>
 </root>
