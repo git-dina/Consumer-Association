@@ -1097,6 +1097,7 @@ namespace POSCA.View.receipts
                 if (w.isOk)
                 {
                     receipt = w.receipt;
+                    _ReceiptType = receipt.ReceiptType;
                     fillReceiptInputs(receipt);
                 }
                 Window.GetWindow(this).Opacity = 1;
