@@ -1556,5 +1556,19 @@ namespace POSCA.View.promotion
             }
         }
 
+        private void dp_PromotionStartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dp_PromotionStartDate.SelectedDate != null && dp_PromotionEndDate.SelectedDate != null)
+                    if (dp_PromotionStartDate.SelectedDate.Value.Date > dp_PromotionEndDate.SelectedDate.Value.Date)
+                        dp_PromotionEndDate.SelectedDate = dp_PromotionStartDate.SelectedDate.Value.Date;
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }
