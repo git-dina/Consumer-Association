@@ -37,9 +37,6 @@ namespace POSCA.View.windows
             catch (Exception ex)
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
-        BrushConverter bc = new BrushConverter();
-
-
 
         private void Btn_colse_Click(object sender, RoutedEventArgs e)
         {
