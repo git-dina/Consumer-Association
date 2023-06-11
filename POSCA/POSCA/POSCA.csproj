@@ -307,6 +307,9 @@
     <Compile Include="View\windows\wd_ItemUnits.xaml.cs">
       <DependentUpon>wd_ItemUnits.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_itemUnitsPromotion.xaml.cs">
+      <DependentUpon>wd_itemUnitsPromotion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_purchaseInv.xaml.cs">
       <DependentUpon>wd_purchaseInv.xaml</DependentUpon>
     </Compile>
@@ -457,6 +460,10 @@
     <Page Include="View\windows\wd_ItemUnits.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\windows\wd_itemUnitsPromotion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\windows\wd_purchaseInv.xaml">
       <SubType>Designer</SubType>
