@@ -183,6 +183,10 @@ namespace POSCA.View.locations
 
                         }
                     }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
                     HelpClass.EndAwait(grid_main);
                 }
                 //else
@@ -237,6 +241,10 @@ namespace POSCA.View.locations
                                 location = dg_location.SelectedItem as Location;
                             }
                         }
+                    }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                     }
                 }
                 else

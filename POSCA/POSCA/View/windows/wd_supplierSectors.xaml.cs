@@ -320,6 +320,10 @@ namespace POSCA.View.windows
                     isOk = true;
                     this.Close();
                 }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
 
 
                 // HelpClass.EndAwait(grid_main);

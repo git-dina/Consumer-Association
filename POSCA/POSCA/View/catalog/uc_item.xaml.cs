@@ -392,18 +392,18 @@ namespace POSCA.View.catalog
                 HelpClass.StartAwait(grid_main);
 
                 item.ItemId = 0;
-                if (HelpClass.validate(requiredControlList, this) )
+                if (HelpClass.validate(requiredControlList, this))
                 {
                     if (tb_Factor.Text.Equals("0"))
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
-                    else if(item.ItemUnits.Count == 0 ||item.ItemUnits.Where(x =>x.Barcode == "" || x.Barcode == null).FirstOrDefault() != null)
+                    else if (item.ItemUnits.Count == 0 || item.ItemUnits.Where(x => x.Barcode == "" || x.Barcode == null).FirstOrDefault() != null)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemBarcodError"), animation: ToasterAnimation.FadeIn);
                     else if (item.ItemLocations == null || item.ItemLocations.Count() == 0)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("GoToItemTransactionsError"), animation: ToasterAnimation.FadeIn);
-                    
-                    else if(item.ItemStatus =="" || item.ItemStatus == null
-                            || item.ItemReceiptType =="" || item.ItemReceiptType == null
-                            || item.ItemType =="" || item.ItemType == null
+
+                    else if (item.ItemStatus == "" || item.ItemStatus == null
+                            || item.ItemReceiptType == "" || item.ItemReceiptType == null
+                            || item.ItemType == "" || item.ItemType == null
                             || item.ItemTransactionType == "" || item.ItemTransactionType == null
                             || item.PackageWeight == null
                             || item.PackageUnit == null)
@@ -423,7 +423,7 @@ namespace POSCA.View.catalog
                             item.BrandId = (int)cb_BrandId.SelectedValue;
 
                         item.SupId = (long)cb_SupId.SelectedValue;
-                        if(cb_SupSectorId.SelectedIndex > 0)
+                        if (cb_SupSectorId.SelectedIndex > 0)
                             item.SupSectorId = (long)cb_SupSectorId.SelectedValue;
                         item.Factor = int.Parse(tb_Factor.Text);
                         if (tb_CommitteeNo.Text != "")
@@ -442,12 +442,16 @@ namespace POSCA.View.catalog
                         {
 
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                             Clear();
+                            Clear();
                             //await Search();
                         }
                     }
-            
 
+
+                }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                 }
                 HelpClass.EndAwait(grid_main);
                 //}
@@ -511,6 +515,10 @@ namespace POSCA.View.catalog
                             }
                             else
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trFactorZeroError"), animation: ToasterAnimation.FadeIn);
+                        }
+                        else
+                        {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                         }
                     }
                     else

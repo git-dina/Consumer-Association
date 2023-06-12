@@ -392,6 +392,10 @@ namespace POSCA.View.promotion
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trInvoiceAmountError"), animation: ToasterAnimation.FadeIn);
 
                 }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
 
 
                 HelpClass.EndAwait(grid_main);
@@ -1569,6 +1573,11 @@ namespace POSCA.View.promotion
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+        }
+
+        private void Btn_stop_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

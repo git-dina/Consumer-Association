@@ -176,7 +176,7 @@ namespace POSCA.View.sectionData
         {//add
             try
             {
-               // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
+                // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
 
@@ -195,12 +195,12 @@ namespace POSCA.View.sectionData
                             supplier.SupplierTypeId = (int)cb_SupplierTypeId.SelectedValue;
 
 
-                         if (cb_SupplierGroupId.SelectedIndex >= 0)
+                        if (cb_SupplierGroupId.SelectedIndex >= 0)
                             supplier.SupplierGroupId = (int)cb_SupplierGroupId.SelectedValue;
 
-                        supplier.AssistantStartDate =DateTime.Parse( dp_AssistantStartDate.Text);
-                        supplier.FreePercentag =decimal.Parse( tb_FreePercentag.Text);
-                        supplier.DiscountPercentage =decimal.Parse( tb_DiscountPercentage.Text);
+                        supplier.AssistantStartDate = DateTime.Parse(dp_AssistantStartDate.Text);
+                        supplier.FreePercentag = decimal.Parse(tb_FreePercentag.Text);
+                        supplier.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
                         supplier.Address = tb_address.Text;
                         supplier.LicenseId = tb_LicenseId.Text;
 
@@ -224,24 +224,28 @@ namespace POSCA.View.sectionData
 
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
-                       //FillCombo.suppliersList = await supplier.save(supplier);
-                      supplier = await supplier.save(supplier);
+                        //FillCombo.suppliersList = await supplier.save(supplier);
+                        supplier = await supplier.save(supplier);
                         if (supplier.SupId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                           await Clear();
-                           // await Search();
+                            await Clear();
+                            // await Search();
 
                         }
+                    }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);
                 }
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                 
+
             }
             catch (Exception ex)
             {
@@ -254,12 +258,12 @@ namespace POSCA.View.sectionData
         {//update
             try
             {
-          
+
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 //{
-                    HelpClass.StartAwait(grid_main);
-                    if (supplier.SupId > 0)
-                    {
+                HelpClass.StartAwait(grid_main);
+                if (supplier.SupId > 0)
+                {
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         supplier.ShortName = tb_ShortName.Text;
@@ -300,8 +304,8 @@ namespace POSCA.View.sectionData
                             supplier.AssistantStartDate = null;
                         supplier.CreateUserId = MainWindow.userLogin.userId;
 
-                       // FillCombo.suppliersList = await supplier.save(supplier);
-                       supplier = await supplier.save(supplier);
+                        // FillCombo.suppliersList = await supplier.save(supplier);
+                        supplier = await supplier.save(supplier);
                         if (supplier.SupId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -310,15 +314,19 @@ namespace POSCA.View.sectionData
 
                         }
                     }
-                }
                     else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemFirst"), animation: ToasterAnimation.FadeIn);
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
+                }
+                else
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemFirst"), animation: ToasterAnimation.FadeIn);
 
-                    HelpClass.EndAwait(grid_main);
+                HelpClass.EndAwait(grid_main);
                 //}
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-        
+
             }
             catch (Exception ex)
             {

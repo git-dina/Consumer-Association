@@ -258,6 +258,10 @@ namespace POSCA.View.windows
                         this.Close();
                     }
                 }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
                 // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)

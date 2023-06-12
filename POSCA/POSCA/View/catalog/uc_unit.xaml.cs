@@ -175,6 +175,10 @@ namespace POSCA.View.catalog
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FactorMustBeGreaterThanZero"), animation: ToasterAnimation.FadeIn);
                         }
                     }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
                     HelpClass.EndAwait(grid_main);
                 }
                 //else
@@ -213,7 +217,7 @@ namespace POSCA.View.catalog
                                 unit.Notes = tb_Notes.Text;
                                 unit.CreateUserId = MainWindow.userLogin.userId;
 
-                               // FillCombo.unitList = await unit.save(unit);
+                                // FillCombo.unitList = await unit.save(unit);
                                 if (FillCombo.unitList == null)
                                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                                 else
@@ -227,6 +231,7 @@ namespace POSCA.View.catalog
                         }
                         else
                         {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FactorMustBeGreaterThanZero"), animation: ToasterAnimation.FadeIn);
                         }
                     }

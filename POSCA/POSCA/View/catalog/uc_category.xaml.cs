@@ -179,6 +179,10 @@ namespace POSCA.View.catalog
                             await Search();
                         }
                     }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
                     HelpClass.EndAwait(grid_main);
                 }
                 //else
@@ -240,6 +244,10 @@ namespace POSCA.View.catalog
                             Clear();
                             await Search();
                         }
+                    }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                     }
                 }
                 else

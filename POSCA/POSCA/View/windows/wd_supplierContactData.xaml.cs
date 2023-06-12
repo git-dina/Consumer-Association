@@ -1,4 +1,5 @@
-﻿using POSCA.Classes;
+﻿using netoaster;
+using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
@@ -465,6 +466,10 @@ namespace POSCA.View.windows
                     SupplierPhones = (List<SupplierPhone>)dg_supplierPhone.ItemsSource;
                     isOk = true;
                     this.Close();
+                }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                 }
                 // HelpClass.EndAwait(grid_main);
             }
