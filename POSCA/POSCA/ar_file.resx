@@ -6023,4 +6023,13 @@
   <data name="TotalQuantities" xml:space="preserve">
     <value>إجمالي كميات</value>
   </data>
+  <data name="ItemBarcods" xml:space="preserve">
+    <value>باركودات الصنف</value>
+  </data>
+  <data name="OfferQuantityHint" xml:space="preserve">
+    <value>كمية العرض...</value>
+  </data>
+  <data name="RefHint" xml:space="preserve">
+    <value>المرجع...</value>
+  </data>
 </root>

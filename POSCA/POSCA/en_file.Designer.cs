@@ -1735,6 +1735,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item Barcods.
+        /// </summary>
+        internal static string ItemBarcods {
+            get {
+                return ResourceManager.GetString("ItemBarcods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Description.
         /// </summary>
         internal static string ItemDescription {
@@ -2407,6 +2416,15 @@ namespace POSCA {
         internal static string OfferPrice {
             get {
                 return ResourceManager.GetString("OfferPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offer Quantity....
+        /// </summary>
+        internal static string OfferQuantityHint {
+            get {
+                return ResourceManager.GetString("OfferQuantityHint", resourceCulture);
             }
         }
         
@@ -3370,6 +3388,15 @@ namespace POSCA {
         internal static string RecivedPurpose {
             get {
                 return ResourceManager.GetString("RecivedPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ref....
+        /// </summary>
+        internal static string RefHint {
+            get {
+                return ResourceManager.GetString("RefHint", resourceCulture);
             }
         }
         
@@ -13914,7 +13941,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اختيار.
+        ///   Looks up a localized string similar to Select.
         /// </summary>
         internal static string trSelect {
             get {

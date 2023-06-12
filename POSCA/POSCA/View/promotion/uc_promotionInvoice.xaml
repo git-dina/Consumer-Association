@@ -263,7 +263,7 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn x:Name="col_promotionPrice" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <!--<DataGridTemplateColumn  Header="IsItemStoped" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -320,8 +320,28 @@
                                        HorizontalAlignment="Left" Margin="20,5,5,5"/>
                     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"   >
                         <StackPanel   >
-                            
 
+                            <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_Ref" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding Ref, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="PromotionPercentage..."    
+                                        Foreground="{StaticResource textColor}" 
+                                      BorderThickness="0" 
+                                 BorderBrush="AliceBlue" MaxLength="100" 
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" />
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Ref" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+
+                                </Grid>
+                            </Border>
                             <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_PromotionType"   
@@ -393,6 +413,27 @@
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" />
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PromotionPercentage" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_PromotionQuantity" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding PromotionQuantity, Mode=TwoWay}"
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="PromotionQuantity..."    
+                                        Foreground="{StaticResource textColor}" 
+                                      BorderThickness="0" Tag="int" 
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" />
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PromotionQuantity" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">

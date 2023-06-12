@@ -3993,7 +3993,7 @@ Main Documents</value>
     <value>الأقسام</value>
   </data>
   <data name="trSelect" xml:space="preserve">
-    <value>اختيار</value>
+    <value>Select</value>
   </data>
   <data name="trSelectAllItems" xml:space="preserve">
     <value>اختيار الكل</value>
@@ -5768,5 +5768,14 @@ Main Documents</value>
   </data>
   <data name="TotalQuantities" xml:space="preserve">
     <value>Total Quantities</value>
+  </data>
+  <data name="ItemBarcods" xml:space="preserve">
+    <value>Item Barcods</value>
+  </data>
+  <data name="OfferQuantityHint" xml:space="preserve">
+    <value>Offer Quantity...</value>
+  </data>
+  <data name="RefHint" xml:space="preserve">
+    <value>Ref...</value>
   </data>
 </root>
