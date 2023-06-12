@@ -260,17 +260,17 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemNotes" Binding="{Binding Path=ItemNotes, Mode=TwoWay}"/>-->
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
-                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn  Width="*" x:Name="col_maxQty"  Header="MaxQty" Binding="{Binding Path=MaxQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*" x:Name="col_minQty"  Header="MinQty" Binding="{Binding Path=MinQty, Mode=TwoWay}"/>
                         <DataGridTextColumn  Width="*" x:Name="col_freeQty"  Header="FreeQty" Binding="{Binding Path=FreeQty, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ConsumerDiscount" Binding="{Binding Path=ConsumerDiscount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
 
                         <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="Balance" Binding="{Binding Path=Balance, Mode=TwoWay}"/>-->
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Margin="5,0" Grid.Row="2"  Background="#DFDFDF" VerticalAlignment="Center" Width="auto" />

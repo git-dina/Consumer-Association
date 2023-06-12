@@ -260,10 +260,10 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay}"/>
-                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <!--<DataGridTemplateColumn  Header="IsItemStoped" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

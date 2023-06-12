@@ -136,13 +136,13 @@
                             <DataGridTemplateColumn Width="3*"  Header="Factor">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox  Text="{Binding Path=Factor, Mode=TwoWay}"
+                                        <TextBox  Text="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"
                                                   BorderThickness="0"
                                                   LostFocus="TextBox_LostFocus"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay}"/>
+                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=SalePrice, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
                                 <DataGridTemplateColumn.CellTemplate>

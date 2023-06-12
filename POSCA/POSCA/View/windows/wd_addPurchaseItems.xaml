@@ -147,9 +147,9 @@
                                     <DataGridTextColumn Width="*"  Header="ItemNumber" Binding="{Binding Path=Code, Mode=OneWay}"/>
                                     <DataGridTextColumn Width="*"  Header="SupId" Binding="{Binding Path=SupCode, Mode=OneWay}"/>
                                     <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name, Mode=OneWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=OneWay}"/>
-                                    <DataGridTextColumn Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
+                                    <DataGridTextColumn Width="*"  Header="Price" Binding="{Binding Path=Price, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
+                                    <DataGridTextColumn Width="*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
                                     <DataGridTextColumn Width="*"  Header="Category" Binding="{Binding Path=CategoryName, Mode=OneWay}"/>
                                 </DataGrid.Columns>
                             </DataGrid>
