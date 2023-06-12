@@ -147,9 +147,9 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<Item>> GetItemBarcodesByCodeOrName(string textSearch, long locationId)
+        public async Task<List<ItemUnit>> GetItemBarcodesByCodeOrName(string textSearch, long locationId)
         {
-            var result = new List<Item>();
+            var result = new List<ItemUnit>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Item/GetItemBarcodesByCodeOrName";
 
@@ -161,7 +161,27 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
+                    result.Add(JsonConvert.DeserializeObject<ItemUnit>(c.Value));
+                }
+            }
+            return result;
+        }
+        public async Task<ItemUnit> GetItemBarcodsByBarcode(string barcode, long locationId )
+        {
+            var result = new ItemUnit();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/GetItemBarcodsByBarcode";
+
+            parameters.Add("barcode", barcode);
+            parameters.Add("locationId", locationId.ToString());
+
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<ItemUnit>(c.Value);
                 }
             }
             return result;

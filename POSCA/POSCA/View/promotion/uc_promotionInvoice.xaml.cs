@@ -156,9 +156,11 @@ namespace POSCA.View.promotion
             txt_offerLocations.Text = AppSettings.resourcemanager.GetString("OfferLocations");
 
 
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Ref, AppSettings.resourcemanager.GetString("RefHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionType, AppSettings.resourcemanager.GetString("OfferTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionNature, AppSettings.resourcemanager.GetString("OfferNatureHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionQuantity, AppSettings.resourcemanager.GetString("OfferQuantityHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionDate, AppSettings.resourcemanager.GetString("OfferDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionStartDate, AppSettings.resourcemanager.GetString("trStartDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionEndDate, AppSettings.resourcemanager.GetString("trEndDateHint"));
@@ -268,6 +270,7 @@ namespace POSCA.View.promotion
                 cb_PromotionType.IsEnabled = true;
                 cb_PromotionNature.IsEnabled = true;
                 tb_PromotionPercentage.IsEnabled = true;
+                tb_PromotionQuantity.IsEnabled = true;
                 dp_PromotionDate.IsEnabled = true;
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
@@ -280,10 +283,14 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+                        tb_PromotionQuantity.Visibility = Visibility.Visible;
+                        col_promotionPrice.IsReadOnly = false;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
+                        tb_PromotionQuantity.Visibility = Visibility.Collapsed;
+                        col_promotionPrice.IsReadOnly = true;
 
                         break;
 
@@ -292,12 +299,14 @@ namespace POSCA.View.promotion
             else
             {
                 col_IsItemStoped.Visibility = Visibility.Visible;
+                col_promotionPrice.IsReadOnly = true;
 
                 btn_save.IsEnabled = true;
                 btn_printInvoice.IsEnabled = true;
                 cb_PromotionType.IsEnabled = false;
                 cb_PromotionNature.IsEnabled = false;
                 tb_PromotionPercentage.IsEnabled = false;
+                tb_PromotionQuantity.IsEnabled = false;
                 dp_PromotionDate.IsEnabled = false;
                 dp_PromotionStartDate.IsEnabled = false;
                 dp_PromotionEndDate.IsEnabled = false;
@@ -310,10 +319,12 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+                        tb_PromotionQuantity.Visibility = Visibility.Visible;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
+                        tb_PromotionQuantity.Visibility = Visibility.Collapsed;
 
                         break;
 
@@ -699,24 +710,26 @@ namespace POSCA.View.promotion
 
         private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
-            /*
+           
             try
             {
-                if (location == null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
-                else if (supplier == null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplierError"), animation: ToasterAnimation.FadeIn);
-                else
+                //if (location == null)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
+                //else if (supplier == null)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplierError"), animation: ToasterAnimation.FadeIn);
+                //else
                 {
                     HelpClass.StartAwait(grid_main);
 
                     List<Item> itemLst = new List<Item>();
+                    List<ItemUnit> barcodes = new List<ItemUnit>();
                     Item item1 = null;
                     string barcode = "";
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, _PromotionType);
+                        // itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, _PromotionType);
+                        barcodes = await FillCombo.item.GetItemBarcodesByCodeOrName(tb_search.Text, 0);
                         if (itemLst.Count == 1)
                         {
                             item1 = itemLst[0];
@@ -726,7 +739,7 @@ namespace POSCA.View.promotion
                     }
                     else
                     {
-                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId, _PromotionType);
+                       // barcodes = await FillCombo.item.GetItemBarcodsByBarcode(tb_search.Text, 0);
                         barcode = tb_search.Text;
                     }
 
@@ -735,8 +748,8 @@ namespace POSCA.View.promotion
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItems w = new wd_addPurchaseItems();
                         w.items = itemLst.ToList();
-                        w.supId = (long)cb_SupId.SelectedValue;
-                        w.locationId = (long)cb_LocationId.SelectedValue;
+                      //  w.supId = (long)cb_SupId.SelectedValue;
+                       // w.locationId = (long)cb_LocationId.SelectedValue;
 
                         w.ShowDialog();
                         if (w.isOk)
@@ -751,46 +764,46 @@ namespace POSCA.View.promotion
                     {
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_addPurchaseItem w = new wd_addPurchaseItem();
-                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
+                        //long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
 
-                        w.newPromotionItem = new PromotionDetails()
-                        {
-                            ItemId = item1.ItemId,
-                            ItemCode = item1.Code,
-                            ItemName = item1.Name,
-                            ItemUnit = item1.ItemUnit,
-                            Factor = item1.Factor,
-                            MainCost = item1.MainCost,
-                            CoopDiscount = supplier.DiscountPercentage,
-                            ConsumerDiscount = item1.ConsumerDiscPerc,
-                            MainPrice = item1.Price,
-                            Barcode = barcode,
-                            Balance = balance,
-                        };
+                        //w.newPromotionItem = new PromotionDetails()
+                        //{
+                        //    ItemId = item1.ItemId,
+                        //    ItemCode = item1.Code,
+                        //    ItemName = item1.Name,
+                        //    ItemUnit = item1.ItemUnit,
+                        //    Factor = item1.Factor,
+                        //    MainCost = item1.MainCost,
+                        //    CoopDiscount = supplier.DiscountPercentage,
+                        //    ConsumerDiscount = item1.ConsumerDiscPerc,
+                        //    MainPrice = item1.Price,
+                        //    Barcode = barcode,
+                        //    Balance = balance,
+                        //};
                         w.ShowDialog();
 
                         if (w.isOk)
                         {
                             //check billDetails count
-                            if (billDetails.Count < 20)
-                            {
-                                int maxQty = 0;
-                                int minQty = 0;
-                                if (w.newPromotionItem.MaxQty != null)
-                                    maxQty = (int)w.newPromotionItem.MaxQty;
-                                if (w.newPromotionItem.MinQty != null)
-                                    minQty = (int)w.newPromotionItem.MinQty;
-                                w.newPromotionItem.Cost = (w.newPromotionItem.MainCost * maxQty) + ((w.newPromotionItem.MainCost / (int)w.newPromotionItem.Factor) * minQty);
-                                w.newPromotionItem.Price = ((int)w.newPromotionItem.Factor * w.newPromotionItem.MainPrice * maxQty) + (w.newPromotionItem.MainPrice * minQty);
+                            //if (billDetails.Count < 20)
+                            //{
+                            //    int maxQty = 0;
+                            //    int minQty = 0;
+                            //    if (w.newPromotionItem.MaxQty != null)
+                            //        maxQty = (int)w.newPromotionItem.MaxQty;
+                            //    if (w.newPromotionItem.MinQty != null)
+                            //        minQty = (int)w.newPromotionItem.MinQty;
+                            //    w.newPromotionItem.Cost = (w.newPromotionItem.MainCost * maxQty) + ((w.newPromotionItem.MainCost / (int)w.newPromotionItem.Factor) * minQty);
+                            //    w.newPromotionItem.Price = ((int)w.newPromotionItem.Factor * w.newPromotionItem.MainPrice * maxQty) + (w.newPromotionItem.MainPrice * minQty);
 
-                                if (w.newPromotionItem.MinQty == null)
-                                    w.newPromotionItem.MinQty = 0;
-                                if (w.newPromotionItem.FreeQty == null)
-                                    w.newPromotionItem.FreeQty = 0;
-                                addItemToBill(w.newPromotionItem);
-                            }
-                            else
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
+                            //    if (w.newPromotionItem.MinQty == null)
+                            //        w.newPromotionItem.MinQty = 0;
+                            //    if (w.newPromotionItem.FreeQty == null)
+                            //        w.newPromotionItem.FreeQty = 0;
+                            //    addItemToBill(w.newPromotionItem);
+                            //}
+                            //else
+                            //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
 
                         }
                         Window.GetWindow(this).Opacity = 1;
@@ -811,7 +824,7 @@ namespace POSCA.View.promotion
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
-            */
+           
         }
         List<PromotionDetails> billDetails = new List<PromotionDetails>();
         private void addItemToBill(PromotionDetails promotionDetails)
@@ -1410,7 +1423,7 @@ namespace POSCA.View.promotion
                 _PromotionType = cb_PromotionType.SelectedValue.ToString();
                 if (_PromotionType == "quantity")
                     requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
-                                                                "PromotionNature"};
+                                                                "PromotionNature","PromotionQuantity"};
                 else
                     requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
                                                 "PromotionNature","PromotionPercentage"};
