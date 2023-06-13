@@ -103,20 +103,10 @@ namespace POSCA.View.windows
             dg_itemUnit.Columns[5].Header = AppSettings.resourcemanager.GetString("OfferPrice");
             dg_itemUnit.Columns[6].Header = AppSettings.resourcemanager.GetString("trSelect");
 
-            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trAdd");
 
         }
-        /*
-        private void fillBarcodeTypeCombo()
-        {
-            if (FillCombo.barcodeTypeList is null)
-                FillCombo.RefreshBarcodeTypes();
 
-            cb_barcodeType.DisplayMemberPath = "value";
-            cb_barcodeType.SelectedValuePath = "key";
-            cb_barcodeType.ItemsSource = FillCombo.barcodeTypeList;
-        }
-        */
         private void setPromotionDetailsData()
         {
             foreach(var row in item.ItemUnits)

@@ -260,9 +260,10 @@ namespace POSCA.View.promotion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-            dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+          
             if (promotion.PromotionId.Equals(0))
             {
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                 col_IsItemStoped.Visibility = Visibility.Collapsed;
 
                 btn_save.IsEnabled = true;
@@ -298,6 +299,7 @@ namespace POSCA.View.promotion
             }
             else
             {
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
                 col_IsItemStoped.Visibility = Visibility.Visible;
                 col_promotionPrice.IsReadOnly = true;
 

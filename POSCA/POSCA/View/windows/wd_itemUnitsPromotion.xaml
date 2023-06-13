@@ -137,7 +137,7 @@
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsBlocked, Mode=TwoWay}"
+                                        <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsSelected, Mode=TwoWay}"
                                                   Checked="chk_isBlocked_Changed"
                                                   Unchecked="chk_isBlocked_Uncheck_Changed"/>
                                     </DataTemplate>
