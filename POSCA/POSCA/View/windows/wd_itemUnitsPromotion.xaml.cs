@@ -109,7 +109,8 @@ namespace POSCA.View.windows
 
         private void setPromotionDetailsData()
         {
-            foreach(var row in item.ItemUnits)
+            promotionDetails = new List<PromotionDetails>();
+            foreach (var row in item.ItemUnits)
             {
                 promotionDetails.Add(new PromotionDetails()
                 {
