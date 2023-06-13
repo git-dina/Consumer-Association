@@ -281,7 +281,7 @@ namespace POSCA.View.windows
             }
         }
 
-
+        /*
         private void Btn_addItemUnit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -321,6 +321,8 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        */
+        /*
         void deleteItemUnitRowinDatagrid(object sender, RoutedEventArgs e)
         {
             try
@@ -349,6 +351,7 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        */
         public void RefreshItemUnitDataGrid()
         {
             try
@@ -364,7 +367,7 @@ namespace POSCA.View.windows
             catch (Exception ex)
             {
                 dg_itemUnit.IsEnabled = true;
-                btn_addItemUnit.IsEnabled = true;
+                //btn_addItemUnit.IsEnabled = true;
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
