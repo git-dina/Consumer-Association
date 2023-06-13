@@ -140,6 +140,8 @@ namespace POSCA.View.promotion
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
 
+            txt_invoiceTitle.Text = AppSettings.resourcemanager.GetString("PromotionalOffer");
+
             chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
             chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
@@ -430,6 +432,8 @@ namespace POSCA.View.promotion
             promotion.CreateUserId = MainWindow.userLogin.userId;
 
             promotion.PromotionDetails = billDetails;
+            promotion.PromotionLocations = listItemLocations;
+
             promotion = await promotion.SavePromotion(promotion);
 
             if (promotion.PromotionId == 0)
@@ -457,16 +461,13 @@ namespace POSCA.View.promotion
                         // remove item from bill
                         billDetails.RemoveAt(index);
 
-                        //dg_invoiceDetails.Items.Clear();
-                        //dg_invoiceDetails.ItemsSource = billDetails;
-                        //dg_invoiceDetails.Items.Refresh();
                         if (!forceCancelEdit)
                         {
                             dg_invoiceDetails.IsEnabled = false;
                             RefreshInvoiceDetailsDataGrid();
                         }
                         // calculate new total
-                        refreshValues();
+
                     }
             }
             catch (Exception ex)
@@ -735,14 +736,13 @@ namespace POSCA.View.promotion
 
                         if (w.isOk)
                         {
+                            var lst = new List<PromotionDetails>();
                             foreach(var row in w.promotionDetails)
                             {
                                 if (row.IsSelected == true)
-                                    promotionDetails.Add(row);
+                                    lst.Add(row);
                             }
-                            //check billDetails count
-                            //if (billDetails.Count < 20)
-                            //{
+
                             //    int maxQty = 0;
                             //    int minQty = 0;
                             //    if (w.newPromotionItem.MaxQty != null)
@@ -756,11 +756,8 @@ namespace POSCA.View.promotion
                             //        w.newPromotionItem.MinQty = 0;
                             //    if (w.newPromotionItem.FreeQty == null)
                             //        w.newPromotionItem.FreeQty = 0;
-                            //    addItemToBill(w.newPromotionItem);
-                            //}
-                            //else
-                            //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
-
+                            addItemToBill(lst);
+                           
                         }
                         Window.GetWindow(this).Opacity = 1;
                     }
@@ -783,74 +780,30 @@ namespace POSCA.View.promotion
            
         }
         List<PromotionDetails> billDetails = new List<PromotionDetails>();
-        private void addItemToBill(PromotionDetails promotionDetails)
+        private void addItemToBill(List<PromotionDetails> promotionDetails)
         {
-            int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == promotionDetails.ItemId).FirstOrDefault());
-
-            if (index == -1)//item doesn't exist in bill
+            foreach (var row in promotionDetails)
             {
-                billDetails.Add(promotionDetails);
+                int index = billDetails.IndexOf(billDetails.Where(p => p.UnitId == row.UnitId && p.ItemId == row.ItemId).FirstOrDefault());
 
-                //dg_invoiceDetails.ItemsSource = billDetails;
-                //dg_invoiceDetails.Items.Refresh();
-                if (!forceCancelEdit)
+                if (index == -1)//item doesn't exist in bill
                 {
-                    dg_invoiceDetails.IsEnabled = false;
-                    RefreshInvoiceDetailsDataGrid();
+                    billDetails.Add(row);
+
                 }
-                refreshValues();
-            }
-            else // item exist prevoiusly in list
-            {
-                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemExistInOrderError"), animation: ToasterAnimation.FadeIn);
+                else // item exist prevoiusly in list
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemExistInOrderError"), animation: ToasterAnimation.FadeIn);
 
+                }
+            }
+            if (!forceCancelEdit)
+            {
+                dg_invoiceDetails.IsEnabled = false;
+                RefreshInvoiceDetailsDataGrid();
             }
         }
 
-        decimal _TotalCost = 0;
-        decimal _TotalPrice = 0;
-        decimal _DiscountValue = 0;
-        decimal _ConsumerDiscount = 0;
-
-        private void refreshValues()
-        {
-            /*
-            _TotalCost = 0;
-            _TotalPrice = 0;
-            _DiscountValue = 0;
-            _ConsumerDiscount = 0;
-            foreach (var row in billDetails)
-            {
-                _TotalCost += row.Cost;
-                _TotalPrice += row.Price;
-                _ConsumerDiscount = (decimal)row.ConsumerDiscount;
-            }
-
-            txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);
-            txt_TotalPrice.Text = HelpClass.DecTostring(_TotalPrice);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(_ConsumerDiscount);
-
-            //cost after discount
-            var discount = HelpClass.calcPercentage(_TotalCost, supplier.DiscountPercentage);
-            _DiscountValue = discount;
-            txt_DiscountValue.Text = HelpClass.DecTostring(_DiscountValue);
-
-            //free quantity
-            decimal freePercentage = 0;
-            decimal freeValue = 0;
-            if (tb_FreePercentage.Text != "")
-            {
-                freePercentage = decimal.Parse(tb_FreePercentage.Text);
-                freeValue = HelpClass.calcPercentage(_TotalPrice, freePercentage);
-            }
-            txt_FreeValue.Text = HelpClass.DecTostring(freeValue);
-
-            decimal netCost = _TotalCost - discount;
-            txt_CostNet.Text = HelpClass.DecTostring(netCost);
-            tb_NetInvoice.Text = HelpClass.DecTostring(netCost);
-            */
-
-        }
         //private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
         //{
 
@@ -920,83 +873,17 @@ namespace POSCA.View.promotion
             */
         }
 
-        public async Task fillOrderInputs(PurchaseInvoice invoice)
-        {
-
-            this.DataContext = promotion;
-
-            txt_TotalCost.Text = HelpClass.DecTostring(invoice.TotalCost);
-            txt_TotalPrice.Text = HelpClass.DecTostring(invoice.TotalPrice);
-            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(invoice.CoopDiscount);
-            txt_DiscountValue.Text = HelpClass.DecTostring(invoice.DiscountValue);
-            tb_FreePercentage.Text = HelpClass.DecTostring(invoice.FreePercentage);
-            txt_FreeValue.Text = HelpClass.DecTostring(invoice.FreeValue);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(invoice.ConsumerDiscount);
-            txt_CostNet.Text = HelpClass.DecTostring(invoice.CostNet);
-
-            await buildPurchaseOrderDetails(invoice);
-
-            ControlsEditable();
-
-        }
         public void fillPromotionInputs(Promotion invoice)
         {
-            /*
+            
             this.DataContext = invoice;
-
-            txt_TotalCost.Text = HelpClass.DecTostring(promotion.TotalCost);
-            txt_TotalPrice.Text = HelpClass.DecTostring(promotion.TotalPrice);
-            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(promotion.CoopDiscount);
-            txt_DiscountValue.Text = HelpClass.DecTostring(promotion.DiscountValue);
-            tb_FreePercentage.Text = HelpClass.DecTostring(promotion.FreePercentage);
-            txt_FreeValue.Text = HelpClass.DecTostring(promotion.FreeValue);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(promotion.ConsumerDiscount);
-            txt_CostNet.Text = HelpClass.DecTostring(promotion.CostNet);
 
             buildInvoiceDetails(invoice);
 
             ControlsEditable();
-            */
+           
         }
-        private async Task buildPurchaseOrderDetails(PurchaseInvoice invoice)
-        {
-            /*
-            billDetails = new List<PromotionDetails>();
-            foreach (var row in invoice.PurchaseDetails)
-            {
-                billDetails.Add(new PromotionDetails()
-                {
-                    Balance = row.Balance,
-                    Barcode = row.Barcode,
-                    ConsumerDiscount = row.ConsumerDiscount,
-                    CoopDiscount = row.CoopDiscount,
-                    Cost = row.Cost,
-                    Factor = row.Factor,
-                    FreeQty = (int)row.FreeQty,
-                    ItemCode = row.ItemCode,
-                    ItemName = row.ItemName,
-                    ItemId = row.ItemId,
-                    MainCost = row.MainCost,
-                    MainPrice = row.MainPrice,
-                    ItemNotes = row.ItemNotes,
-                    MaxQty = (int)row.MaxQty,
-                    MinQty = (int)row.MinQty,
-                    Price = row.Price,
-                    CreateUserId = MainWindow.userLogin.userId,
-                });
-            }
-
-            
-
-
-            if (!forceCancelEdit)
-            {
-                dg_invoiceDetails.IsEnabled = false;
-                RefreshInvoiceDetailsDataGrid();
-            }
-
-            */
-        }
+       
         private void buildInvoiceDetails(Promotion invoice)
         {
 
@@ -1149,7 +1036,6 @@ namespace POSCA.View.promotion
         {
             try
             {
-                refreshValues();
             }
             catch (Exception ex)
             {

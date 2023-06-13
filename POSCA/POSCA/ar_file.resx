@@ -6029,6 +6029,9 @@
   <data name="OfferQuantityHint" xml:space="preserve">
     <value>كمية العرض...</value>
   </data>
+  <data name="PromotionalOffer" xml:space="preserve">
+    <value>عرض ترويجي</value>
+  </data>
   <data name="RefHint" xml:space="preserve">
     <value>المرجع...</value>
   </data>

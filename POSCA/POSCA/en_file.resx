@@ -5775,6 +5775,9 @@ Main Documents</value>
   <data name="OfferQuantityHint" xml:space="preserve">
     <value>Offer Quantity...</value>
   </data>
+  <data name="PromotionalOffer" xml:space="preserve">
+    <value>Promotional Offer</value>
+  </data>
   <data name="RefHint" xml:space="preserve">
     <value>Ref...</value>
   </data>
