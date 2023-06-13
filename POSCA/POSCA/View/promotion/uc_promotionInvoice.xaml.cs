@@ -722,26 +722,23 @@ namespace POSCA.View.promotion
                     HelpClass.StartAwait(grid_main);
 
                     List<Item> itemLst = new List<Item>();
-                    List<ItemUnit> barcodes = new List<ItemUnit>();
+                    List<PromotionDetails> promotionDetails = new List<PromotionDetails>();
                     Item item1 = null;
-                    string barcode = "";
 
                     if (chk_itemNum.IsChecked == true)
                     {
-                        // itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, _PromotionType);
-                        barcodes = await FillCombo.item.GetItemBarcodesByCodeOrName(tb_search.Text, 0);
+                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text);
                         if (itemLst.Count == 1)
                         {
                             item1 = itemLst[0];
-                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                         }
 
                     }
                     else
                     {
-                       // barcodes = await FillCombo.item.GetItemBarcodsByBarcode(tb_search.Text, 0);
-                        barcode = tb_search.Text;
+                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text);
                     }
+
 
                     if (itemLst.Count > 1)
                     {
@@ -755,7 +752,6 @@ namespace POSCA.View.promotion
                         if (w.isOk)
                         {
                             item1 = w.item;
-                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                         }
                     }
 
@@ -763,27 +759,18 @@ namespace POSCA.View.promotion
                     if (item1 != null)
                     {
                         Window.GetWindow(this).Opacity = 0.2;
-                        wd_addPurchaseItem w = new wd_addPurchaseItem();
-                        //long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
-
-                        //w.newPromotionItem = new PromotionDetails()
-                        //{
-                        //    ItemId = item1.ItemId,
-                        //    ItemCode = item1.Code,
-                        //    ItemName = item1.Name,
-                        //    ItemUnit = item1.ItemUnit,
-                        //    Factor = item1.Factor,
-                        //    MainCost = item1.MainCost,
-                        //    CoopDiscount = supplier.DiscountPercentage,
-                        //    ConsumerDiscount = item1.ConsumerDiscPerc,
-                        //    MainPrice = item1.Price,
-                        //    Barcode = barcode,
-                        //    Balance = balance,
-                        //};
+                        wd_itemUnitsPromotion w = new wd_itemUnitsPromotion();
+                        w.item = item1;
+                        
                         w.ShowDialog();
 
                         if (w.isOk)
                         {
+                            foreach(var row in w.promotionDetails)
+                            {
+                                if (row.IsSelected == true)
+                                    promotionDetails.Add(row);
+                            }
                             //check billDetails count
                             //if (billDetails.Count < 20)
                             //{

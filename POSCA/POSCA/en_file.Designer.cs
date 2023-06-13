@@ -14130,6 +14130,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select at least one item.
+        /// </summary>
+        internal static string trSelectItemError {
+            get {
+                return ResourceManager.GetString("trSelectItemError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اختر عنصر أولاً.
         /// </summary>
         internal static string trSelectItemFirst {

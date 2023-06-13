@@ -44,9 +44,8 @@ namespace POSCA.View.windows
             this.Close();
         }
 
-        public List<ItemUnit> itemUnits = new List<ItemUnit>();
-
         public Item item { get; set; }
+        public List<PromotionDetails> promotionDetails { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -75,8 +74,7 @@ namespace POSCA.View.windows
                 fillBarcodeTypeCombo();
                 */
 
-                await FillCombo.fillSmallUnits(cb_unit, item.ItemUnit);
-                setItemUnitsData();
+                setPromotionDetailsData();
 
 
                 HelpClass.EndAwait(grid_main);
@@ -119,9 +117,24 @@ namespace POSCA.View.windows
             cb_barcodeType.ItemsSource = FillCombo.barcodeTypeList;
         }
         */
-        private void setItemUnitsData()
+        private void setPromotionDetailsData()
         {
-            dg_itemUnit.ItemsSource = itemUnits;
+            foreach(var row in item.ItemUnits)
+            {
+                promotionDetails.Add(new PromotionDetails()
+                {
+                    Barcode = row.Barcode,
+                    Factor = row.Factor,
+                    ItemId = row.ItemId,
+                    ItemCode = item.Code,
+                    ItemName = item.Name,
+                    MainCost = row.Cost,
+                    MainPrice = row.SalePrice,
+                    UnitName = item.ItemUnit,
+                    
+                });
+            }
+            dg_itemUnit.ItemsSource = promotionDetails;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
@@ -259,11 +272,10 @@ namespace POSCA.View.windows
         {
             try
             {
-                itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null
-                                || x.Factor == 0 || x.Barcode == null || x.Barcode == "").FirstOrDefault();
-                if (isEmpty != null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
+                promotionDetails = (List<PromotionDetails>)dg_itemUnit.ItemsSource;
+                var isEmpty = promotionDetails.Where(x => x.IsSelected == true ).FirstOrDefault();
+                if (isEmpty == null)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemError"), animation: ToasterAnimation.FadeIn);
                 else
                 {
                     isOk = true;
@@ -283,33 +295,33 @@ namespace POSCA.View.windows
         {
             try
             {
-                btn_addItemUnit.IsEnabled = false;
-                dg_itemUnit.IsEnabled = false;
-                itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null || x.BarcodeType == ""
-                                || x.Factor == 0 || x.Barcode == null || x.Barcode == "").FirstOrDefault();
-                if (isEmpty != null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
-                else
-                {
-                    itemUnits.Add(new ItemUnit()
-                    {
-                        ItemId = item.ItemId,
-                        Barcode = "",
-                        BarcodeType = "",
-                        Factor = 0,
-                        UnitId = item.UnitId,
-                        Cost = 0,
-                        SalePrice = 0,
-                        CreateUserId = MainWindow.userLogin.userId,
-                        UpdateUserId = MainWindow.userLogin.userId,
-                        CreateDate = DateTime.Now,
-                        UpdateDate = DateTime.Now,
-                    });
-                    RefreshItemUnitDataGrid();
-                }
-                btn_addItemUnit.IsEnabled = true;
-                dg_itemUnit.IsEnabled = true;
+                //btn_addItemUnit.IsEnabled = false;
+                //dg_itemUnit.IsEnabled = false;
+                //itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                //var isEmpty = itemUnits.Where(x => x.UnitId == null || x.BarcodeType == null || x.BarcodeType == ""
+                //                || x.Factor == 0 || x.Barcode == null || x.Barcode == "").FirstOrDefault();
+                //if (isEmpty != null)
+                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trRowWithEmptyError"), animation: ToasterAnimation.FadeIn);
+                //else
+                //{
+                //    itemUnits.Add(new ItemUnit()
+                //    {
+                //        ItemId = item.ItemId,
+                //        Barcode = "",
+                //        BarcodeType = "",
+                //        Factor = 0,
+                //        UnitId = item.UnitId,
+                //        Cost = 0,
+                //        SalePrice = 0,
+                //        CreateUserId = MainWindow.userLogin.userId,
+                //        UpdateUserId = MainWindow.userLogin.userId,
+                //        CreateDate = DateTime.Now,
+                //        UpdateDate = DateTime.Now,
+                //    });
+                //    RefreshItemUnitDataGrid();
+                //}
+                //btn_addItemUnit.IsEnabled = true;
+                //dg_itemUnit.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -322,21 +334,21 @@ namespace POSCA.View.windows
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+                //HelpClass.StartAwait(grid_main);
 
-                for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                    if (vis is DataGridRow)
-                    {
+                //for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+                //    if (vis is DataGridRow)
+                //    {
 
-                        btn_addItemUnit.IsEnabled = false;
-                        dg_itemUnit.IsEnabled = false;
-                        ItemUnit row = (ItemUnit)dg_itemUnit.SelectedItems[0];
-                        itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                        itemUnits.Remove(row);
-                        RefreshItemUnitDataGrid();
-                    }
+                //        btn_addItemUnit.IsEnabled = false;
+                //        dg_itemUnit.IsEnabled = false;
+                //        ItemUnit row = (ItemUnit)dg_itemUnit.SelectedItems[0];
+                //        itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+                //        itemUnits.Remove(row);
+                //        RefreshItemUnitDataGrid();
+                //    }
 
-                HelpClass.EndAwait(grid_main);
+                //HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
@@ -350,13 +362,13 @@ namespace POSCA.View.windows
         {
             try
             {
-                dg_itemUnit.CancelEdit();
-                dg_itemUnit.ItemsSource = null;
-                dg_itemUnit.ItemsSource = itemUnits;
-                dg_itemUnit.Items.Refresh();
+                //dg_itemUnit.CancelEdit();
+                //dg_itemUnit.ItemsSource = null;
+                //dg_itemUnit.ItemsSource = itemUnits;
+                //dg_itemUnit.Items.Refresh();
 
-                dg_itemUnit.IsEnabled = true;
-                btn_addItemUnit.IsEnabled = true;
+                //dg_itemUnit.IsEnabled = true;
+                //btn_addItemUnit.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -366,121 +378,91 @@ namespace POSCA.View.windows
             }
         }
 
-        private void Cb_barcodeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                var cmb = sender as ComboBox;
-                if (cmb.IsMouseOver)
-                {
-                    //e.Handled = true;
-                    if (dg_itemUnit.SelectedIndex != -1 && cmb != null && cmb.SelectedValue != null)
-                    {
-                        int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                        var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
-                        string barcodeTypeValue = (string)cmb.SelectedValue;
-                        itemUnit.BarcodeType = barcodeTypeValue;
-                        var _barcodeType = (keyValueString)cmb.SelectedItem;
+        //private void Cb_barcodeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        var cmb = sender as ComboBox;
+        //        if (cmb.IsMouseOver)
+        //        {
+        //            //e.Handled = true;
+        //            if (dg_itemUnit.SelectedIndex != -1 && cmb != null && cmb.SelectedValue != null)
+        //            {
+        //                int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
+        //                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+        //                string barcodeTypeValue = (string)cmb.SelectedValue;
+        //                itemUnit.BarcodeType = barcodeTypeValue;
+        //                var _barcodeType = (keyValueString)cmb.SelectedItem;
 
-                        itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
+        //                itemUnits = (List<ItemUnit>)dg_itemUnit.ItemsSource;
 
-                        bool valid = true;
-                        if (barcodeTypeValue != "external")
-                        {
-                            var lst = itemUnits.Select(x => new ItemUnit()
-                            {
-                                Barcode = x.Barcode,
-                                BarcodeType = x.BarcodeType,
-                                Cost = x.Cost,
-                                SalePrice = x.SalePrice,
-                                Factor = x.Factor,
-                                IsBlocked = x.IsBlocked,
-                                ItemId = x.ItemId,
-                                ItemUnitId = x.ItemUnitId,
-                                UnitId = x.UnitId,
-                                CreateDate = x.CreateDate,
-                                UpdateDate = x.UpdateDate,
-                                CreateUserId = x.CreateUserId,
-                                UpdateUserId = x.UpdateUserId
-                            }).ToList();
-                            var u = lst.Where(x => x.UnitId == itemUnit.UnitId && x.BarcodeType == itemUnit.BarcodeType).FirstOrDefault();
-                            lst.Remove(u);
-                            foreach (var row in lst)
-                            {
-                                if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
-                                {
-                                    valid = false;
+        //                bool valid = true;
+        //                if (barcodeTypeValue != "external")
+        //                {
+        //                    var lst = itemUnits.Select(x => new ItemUnit()
+        //                    {
+        //                        Barcode = x.Barcode,
+        //                        BarcodeType = x.BarcodeType,
+        //                        Cost = x.Cost,
+        //                        SalePrice = x.SalePrice,
+        //                        Factor = x.Factor,
+        //                        IsBlocked = x.IsBlocked,
+        //                        ItemId = x.ItemId,
+        //                        ItemUnitId = x.ItemUnitId,
+        //                        UnitId = x.UnitId,
+        //                        CreateDate = x.CreateDate,
+        //                        UpdateDate = x.UpdateDate,
+        //                        CreateUserId = x.CreateUserId,
+        //                        UpdateUserId = x.UpdateUserId
+        //                    }).ToList();
+        //                    var u = lst.Where(x => x.UnitId == itemUnit.UnitId && x.BarcodeType == itemUnit.BarcodeType).FirstOrDefault();
+        //                    lst.Remove(u);
+        //                    foreach (var row in lst)
+        //                    {
+        //                        if (row.UnitId == itemUnit.UnitId && row.BarcodeType == itemUnit.BarcodeType)
+        //                        {
+        //                            valid = false;
 
-                                    cmb.SelectedIndex = -1;
-                                    cmb.SelectedItem = null;
-                                    cmb.SelectedValue = null;
-                                    break;
-                                }
-                            }
-                        }
+        //                            cmb.SelectedIndex = -1;
+        //                            cmb.SelectedItem = null;
+        //                            cmb.SelectedValue = null;
+        //                            break;
+        //                        }
+        //                    }
+        //                }
 
-                        if (barcodeTypeValue == "external")
-                        {
-                            tb_barcode.MaxLength = 13;
-                            tb_barcode.IsEnabled = true;
-                            dgc_Barcode.IsReadOnly = false;
-                        }
-                        else
-                        {
-                            tb_barcode.MaxLength = 100;
-                            tb_barcode.IsEnabled = false;
-                            dgc_Barcode.IsReadOnly = true;
-                        }
-                        if (valid)
-                        {
-                            itemUnit.BarcodeType = barcodeTypeValue;
-                            itemUnit.Barcode = generateBarcode(barcodeTypeValue);
-                        }
-                        else
-                        {
-                            itemUnit.BarcodeType = "";
-                            itemUnit.Barcode = "";
-                        }
-                        RefreshItemUnitDataGrid();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private string generateBarcode(string barcodeTypeValue)
-        {
-            string barcode = "";
-            switch (barcodeTypeValue)
-            {
-                case "external":
-
-                    break;
-                case "internal":
-                    var lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    var barcodeNum = lst.Where(x => x.BarcodeType == "internal").Select(x => x.Barcode).Max();
-                    int num = 0;
-                    if (barcodeNum != null && barcodeNum != "")
-                        num = int.Parse(barcodeNum.Substring(0, 4));
-                    num++;
-                    barcode = "1000" + num.ToString().PadLeft(4, '0') + item.Code.ToString().PadLeft(4, '0');
-                    break;
-                case "isWeight":
-                    lst = (List<ItemUnit>)dg_itemUnit.ItemsSource;
-                    barcodeNum = lst.Where(x => x.BarcodeType == "isWeight").Select(x => x.Barcode).Max();
-                    num = 0;
-                    if (barcodeNum != null && barcodeNum != "")
-                        num = int.Parse(barcodeNum);
-                    num++;
-                    barcode = num.ToString().PadLeft(4, '0');
-                    break;
-                default:
-                    break;
-            }
-            return barcode;
-        }
+        //                if (barcodeTypeValue == "external")
+        //                {
+        //                    tb_barcode.MaxLength = 13;
+        //                    tb_barcode.IsEnabled = true;
+        //                    dgc_Barcode.IsReadOnly = false;
+        //                }
+        //                else
+        //                {
+        //                    tb_barcode.MaxLength = 100;
+        //                    tb_barcode.IsEnabled = false;
+        //                    dgc_Barcode.IsReadOnly = true;
+        //                }
+        //                if (valid)
+        //                {
+        //                    itemUnit.BarcodeType = barcodeTypeValue;
+        //                    itemUnit.Barcode = generateBarcode(barcodeTypeValue);
+        //                }
+        //                else
+        //                {
+        //                    itemUnit.BarcodeType = "";
+        //                    itemUnit.Barcode = "";
+        //                }
+        //                RefreshItemUnitDataGrid();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
+       
         private void Cb_unit_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try

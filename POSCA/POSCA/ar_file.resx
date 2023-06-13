@@ -6032,4 +6032,7 @@
   <data name="RefHint" xml:space="preserve">
     <value>المرجع...</value>
   </data>
+  <data name="trSelectItemError" xml:space="preserve">
+    <value>اختر صنف واحد على الأقل</value>
+  </data>
 </root>

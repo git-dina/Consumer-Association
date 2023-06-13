@@ -5778,4 +5778,7 @@ Main Documents</value>
   <data name="RefHint" xml:space="preserve">
     <value>Ref...</value>
   </data>
+  <data name="trSelectItemError" xml:space="preserve">
+    <value>Select at least one item</value>
+  </data>
 </root>

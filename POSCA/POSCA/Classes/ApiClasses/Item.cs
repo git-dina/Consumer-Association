@@ -104,7 +104,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-         public async Task<List<Item>> GetItemByCodeOrName(string textSearch, long locationId, long supId,string itemsFor)
+         public async Task<List<Item>> GetItemByCodeOrName(string textSearch, long locationId=0, long supId=0,string itemsFor="")
         {
             var result = new List<Item>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -125,7 +125,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-         public async Task<Item> GetItemByBarcode(string barcode, long locationId, long supId, string itemsFor)
+         public async Task<Item> GetItemByBarcode(string barcode, long locationId=0, long supId=0, string itemsFor="")
         {
             var result = new Item();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -147,45 +147,26 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<ItemUnit>> GetItemBarcodesByCodeOrName(string textSearch, long locationId)
-        {
-            var result = new List<ItemUnit>();
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Item/GetItemBarcodesByCodeOrName";
+        //public async Task<List<ItemUnit>> GetItemBarcodesByCodeOrName(string textSearch, long locationId)
+        //{
+        //    var result = new List<ItemUnit>();
+        //    Dictionary<string, string> parameters = new Dictionary<string, string>();
+        //    string method = "Item/GetItemBarcodesByCodeOrName";
 
-            parameters.Add("textSearch", textSearch);
-            parameters.Add("locationId", locationId.ToString());
+        //    parameters.Add("textSearch", textSearch);
+        //    parameters.Add("locationId", locationId.ToString());
 
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result.Add(JsonConvert.DeserializeObject<ItemUnit>(c.Value));
-                }
-            }
-            return result;
-        }
-        public async Task<ItemUnit> GetItemBarcodsByBarcode(string barcode, long locationId )
-        {
-            var result = new ItemUnit();
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Item/GetItemBarcodsByBarcode";
-
-            parameters.Add("barcode", barcode);
-            parameters.Add("locationId", locationId.ToString());
-
-
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result = JsonConvert.DeserializeObject<ItemUnit>(c.Value);
-                }
-            }
-            return result;
-        }
+        //    IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+        //    foreach (Claim c in claims)
+        //    {
+        //        if (c.Type == "scopes")
+        //        {
+        //            result.Add(JsonConvert.DeserializeObject<ItemUnit>(c.Value));
+        //        }
+        //    }
+        //    return result;
+        //}
+      
         public async Task<String> generateItemCode(long supId)
         {
             var result = "";
