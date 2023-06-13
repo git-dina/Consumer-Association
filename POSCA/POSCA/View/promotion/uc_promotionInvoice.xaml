@@ -176,7 +176,7 @@
 
             </DockPanel>
         </Border>
-        <Border x:Name="brd_grid1_0" Grid.Row="1" Grid.Column="0" 
+        <Border x:Name="brd_grid1_0" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -567,7 +567,7 @@
             </Border>
         </Grid>
 
-        <Border x:Name="brd_grid2_0" Grid.Row="2" Grid.Column="0" 
+        <!--<Border x:Name="brd_grid2_0" Grid.Row="2" Grid.Column="0" 
             BorderThickness="0"  
                     CornerRadius="7" BorderBrush="Black" Background="White" Padding="0" Margin="5">
             <Border.Effect>
@@ -585,7 +585,6 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid>
-
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
@@ -598,10 +597,10 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--<Grid.RowDefinitions>
+                    --><!--<Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>-->
+                </Grid.RowDefinitions>--><!--
                     <Border BorderThickness="0 0 0 0" 
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5">
@@ -616,8 +615,6 @@
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
                             Margin="5"/>
-
-
                     <Border BorderThickness="0 0 0 0"  Grid.Column="2"
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5">
@@ -674,9 +671,9 @@
                              FontSize="12"  
                             Margin="5"/>
 
-                    <!--<Border   Grid.RowSpan="2" Grid.Column="5" 
+                    --><!--<Border   Grid.RowSpan="2" Grid.Column="5" 
                     Margin="5"  CornerRadius="0,0,0,0"  
-                           Width="1" BorderThickness="0" Background="{StaticResource SecondColor}" />-->
+                           Width="1" BorderThickness="0" Background="{StaticResource SecondColor}" />--><!--
 
 
 
@@ -699,10 +696,10 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <!--<Grid.RowDefinitions>
+                    --><!--<Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>-->
+                    </Grid.RowDefinitions>--><!--
                     <Border BorderThickness="0 0 0 0"  Grid.Column="0"
                         BorderBrush="{StaticResource SecondColor}"
                         Margin="5">
@@ -778,7 +775,7 @@
                 </Grid>
 
             </Grid>
-        </Border>
+        </Border>-->
         <Grid x:Name="brd_grid2_1" Grid.Row="2" Grid.Column="1" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -798,7 +795,7 @@
                           Opacity="0.3"
                          BlurRadius="10"/>
             </Border.Effect>
-            <Button Content="Save"  BorderBrush="{x:Null}"  FontSize="22" FontWeight="Bold" x:Name="btn_save"
+            <Button Content="Save"  BorderBrush="{x:Null}"  FontSize="18" FontWeight="Bold" x:Name="btn_save"
                 Background="{x:Null}" Click="Btn_save_Click" 
                     Padding="0" Foreground="White" />
         </Border>
@@ -816,10 +813,10 @@
                          BlurRadius="10"/>
                 </Border.Effect>
                 <Button Content="stop"  BorderBrush="{x:Null}"  
-                        FontSize="22" FontWeight="Bold"
+                        FontSize="18" FontWeight="Bold"
                         x:Name="btn_stop"
                 Background="{x:Null}" Click="Btn_stop_Click" 
-                    Padding="5 0 " Foreground="White" />
+                    Padding="10 0 " Foreground="White" />
             </Border>
         </Grid>
 

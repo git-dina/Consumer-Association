@@ -149,14 +149,14 @@ namespace POSCA.View.promotion
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OfferDetails");
-            txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
-            txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
-            txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
-            txt_DiscountValueTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
-            txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
-            txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
-            txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
-            txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
+            //txt_TotalCostTitle.Text = AppSettings.resourcemanager.GetString("TotalCost");
+            //txt_TotalPriceTitle.Text = AppSettings.resourcemanager.GetString("trTotalPrice");
+            //txt_EnterpriseDiscountTitle.Text = AppSettings.resourcemanager.GetString("EnterpriseDiscount");
+            //txt_DiscountValueTitle.Text = AppSettings.resourcemanager.GetString("DiscountValue");
+            //txt_FreePercentageTitle.Text = AppSettings.resourcemanager.GetString("FreePercentag");
+            //txt_FreeValueTitle.Text = AppSettings.resourcemanager.GetString("FreeValue");
+            //txt_ConsumerDiscountTitle.Text = AppSettings.resourcemanager.GetString("ConsumerDiscount");
+            //txt_CostNetTitle.Text = AppSettings.resourcemanager.GetString("NetCost");
 
             txt_offerLocations.Text = AppSettings.resourcemanager.GetString("OfferLocations");
 
@@ -310,7 +310,7 @@ namespace POSCA.View.promotion
                 dp_PromotionDate.IsEnabled = true;
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
-                tb_FreePercentage.IsEnabled = true;
+                //tb_FreePercentage.IsEnabled = true;
 
                 dg_itemLocation.IsEnabled = true;
                 //check promotion status first
@@ -346,7 +346,7 @@ namespace POSCA.View.promotion
                 dp_PromotionDate.IsEnabled = false;
                 dp_PromotionStartDate.IsEnabled = false;
                 dp_PromotionEndDate.IsEnabled = false;
-                tb_FreePercentage.IsEnabled = false;
+                //tb_FreePercentage.IsEnabled = false;
 
                 dg_itemLocation.IsEnabled = false;
 
@@ -574,15 +574,15 @@ namespace POSCA.View.promotion
                 RefreshInvoiceDetailsDataGrid();
             }
 
-            txt_TotalCost.Text = HelpClass.DecTostring(0);
-            txt_TotalPrice.Text = HelpClass.DecTostring(0);
-            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
-            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
-            txt_DiscountValue.Text = HelpClass.DecTostring(0);
-            tb_FreePercentage.Text = HelpClass.DecTostring(0);
-            txt_FreeValue.Text = HelpClass.DecTostring(0);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
-            txt_CostNet.Text = HelpClass.DecTostring(0);
+            //txt_TotalCost.Text = HelpClass.DecTostring(0);
+            //txt_TotalPrice.Text = HelpClass.DecTostring(0);
+            //txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
+            //txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
+            //txt_DiscountValue.Text = HelpClass.DecTostring(0);
+            //tb_FreePercentage.Text = HelpClass.DecTostring(0);
+            //txt_FreeValue.Text = HelpClass.DecTostring(0);
+            //txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
+            //txt_CostNet.Text = HelpClass.DecTostring(0);
 
             // _PromotionType = "purchaseOrders";
             ControlsEditable();
@@ -1054,7 +1054,7 @@ namespace POSCA.View.promotion
             {
                 Grid.SetColumn(brd_grid0_0, 1);
                 Grid.SetColumn(brd_grid1_0, 1);
-                Grid.SetColumn(brd_grid2_0, 1);
+                //Grid.SetColumn(brd_grid2_0, 1);
 
                 Grid.SetColumn(brd_grid0_1, 0);
                 Grid.SetColumn(brd_grid1_1, 0);
@@ -1064,7 +1064,7 @@ namespace POSCA.View.promotion
             {
                 Grid.SetColumn(brd_grid0_0, 0);
                 Grid.SetColumn(brd_grid1_0, 0);
-                Grid.SetColumn(brd_grid2_0, 0);
+                //Grid.SetColumn(brd_grid2_0, 0);
 
                 Grid.SetColumn(brd_grid0_1, 1);
                 Grid.SetColumn(brd_grid1_1, 1);
