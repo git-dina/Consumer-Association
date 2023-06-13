@@ -120,6 +120,8 @@ namespace POSCA.View.promotion
 
                 cb_PromotionType.SelectedIndex = 0;
                 cb_PromotionType.SelectedValue = "quantity";
+
+                await setItemLocationsData();
                 //await Search();
                 Clear();
 
@@ -141,6 +143,7 @@ namespace POSCA.View.promotion
             chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
             chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
+            btn_stop.Content = AppSettings.resourcemanager.GetString("Terminate");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OfferDetails");
@@ -160,7 +163,6 @@ namespace POSCA.View.promotion
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionType, AppSettings.resourcemanager.GetString("OfferTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionNature, AppSettings.resourcemanager.GetString("OfferNatureHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionQuantity, AppSettings.resourcemanager.GetString("OfferQuantityHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionDate, AppSettings.resourcemanager.GetString("OfferDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionStartDate, AppSettings.resourcemanager.GetString("trStartDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionEndDate, AppSettings.resourcemanager.GetString("trEndDateHint"));
@@ -183,6 +185,37 @@ namespace POSCA.View.promotion
         }
 
         #region Loading
+
+        List<PromotionLocations> listItemLocations = new List<PromotionLocations>();
+        private async Task setItemLocationsData()
+        {
+
+            if (FillCombo.locationsList == null)
+                await FillCombo.RefreshLocations();
+
+            foreach (var row in FillCombo.locationsList)
+            {
+                var isSelected = false;
+                if (promotion.PromotionLocations != null )
+                {
+                    var selected = promotion.PromotionLocations.Where(x => x.LocationId == row.LocationId).FirstOrDefault();
+
+                    if (selected != null)
+                    {
+                        isSelected = true;
+                    }
+                }
+                listItemLocations.Add(new PromotionLocations()
+                {
+                    LocationId = row.LocationId,
+                    LocationName = row.Name,
+                    IsSelected = isSelected,
+                });
+
+            }
+            dg_itemLocation.ItemsSource = listItemLocations;
+
+        }
         List<keyValueBool> loadingList;
         List<string> catchError = new List<string>();
         int catchErrorCount = 0;
@@ -267,16 +300,17 @@ namespace POSCA.View.promotion
                 col_IsItemStoped.Visibility = Visibility.Collapsed;
 
                 btn_save.IsEnabled = true;
+                btn_stop.IsEnabled = false;
                 btn_printInvoice.IsEnabled = false;
                 cb_PromotionType.IsEnabled = true;
                 cb_PromotionNature.IsEnabled = true;
                 tb_PromotionPercentage.IsEnabled = true;
-                tb_PromotionQuantity.IsEnabled = true;
                 dp_PromotionDate.IsEnabled = true;
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
                 tb_FreePercentage.IsEnabled = true;
 
+                dg_itemLocation.IsEnabled = true;
                 //check promotion status first
                 switch (_PromotionType)
                 {
@@ -284,13 +318,11 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
-                        tb_PromotionQuantity.Visibility = Visibility.Visible;
                         col_promotionPrice.IsReadOnly = false;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
-                        tb_PromotionQuantity.Visibility = Visibility.Collapsed;
                         col_promotionPrice.IsReadOnly = true;
 
                         break;
@@ -304,15 +336,17 @@ namespace POSCA.View.promotion
                 col_promotionPrice.IsReadOnly = true;
 
                 btn_save.IsEnabled = true;
+                btn_stop.IsEnabled = true;
                 btn_printInvoice.IsEnabled = true;
                 cb_PromotionType.IsEnabled = false;
                 cb_PromotionNature.IsEnabled = false;
                 tb_PromotionPercentage.IsEnabled = false;
-                tb_PromotionQuantity.IsEnabled = false;
                 dp_PromotionDate.IsEnabled = false;
                 dp_PromotionStartDate.IsEnabled = false;
                 dp_PromotionEndDate.IsEnabled = false;
                 tb_FreePercentage.IsEnabled = false;
+
+                dg_itemLocation.IsEnabled = false;
 
                 //check promotion status first
                 switch (_PromotionType)
@@ -321,12 +355,10 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
-                        tb_PromotionQuantity.Visibility = Visibility.Visible;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
-                        tb_PromotionQuantity.Visibility = Visibility.Collapsed;
 
                         break;
 
@@ -336,15 +368,11 @@ namespace POSCA.View.promotion
 
         #endregion
         #region events
-        private async void Btn_newDraft_Click(object sender, RoutedEventArgs e)
+        private void  Btn_newDraft_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-
-                await addDraft();
-
-                HelpClass.EndAwait(grid_main);
+                Clear();
             }
             catch (Exception ex)
             {
@@ -354,55 +382,17 @@ namespace POSCA.View.promotion
             }
         }
 
-        private async Task addDraft()
-        {
 
-            if (billDetails.Count > 0 && _PromotionType == "po")
-            {
-                #region Accept
-                MainWindow.mainWindow.Opacity = 0.2;
-                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                w.contentText = AppSettings.resourcemanager.GetString("trSaveOrderNotification");
-                w.ShowDialog();
-                MainWindow.mainWindow.Opacity = 1;
-                #endregion
-                if (w.isOk)
-                {
-                    await addInvoice();
-                }
-                else
-                     Clear();
-            }
-            else
-                 Clear();
-        }
-
-        private bool canAddInvoice()
-        {
-            bool canAdd = true;
-            /*
-            decimal invoiceAmount = decimal.Parse(tb_InvoiceAmount.Text);
-            decimal diff = decimal.Parse(tb_AmountDifference.Text);
-            decimal costNet = decimal.Parse(txt_CostNet.Text);
-
-            if (costNet != (invoiceAmount + diff))
-                return false;
-            */
-            return canAdd;
-        }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
                 if (billDetails.Count == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOfferWithoutItemsError"), animation: ToasterAnimation.FadeIn);
                 else if (HelpClass.validate(requiredControlList, this))
                 {
-                    if (canAddInvoice())
-                        await addInvoice();
-                    else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trInvoiceAmountError"), animation: ToasterAnimation.FadeIn);
+                    await addInvoice();
 
                 }
                 else
@@ -422,48 +412,25 @@ namespace POSCA.View.promotion
 
         private async Task addInvoice()
         {
-            /*
-            promotion.LocationId = (long)cb_LocationId.SelectedValue;
-            promotion.SupId = (long)cb_SupId.SelectedValue;
+        
+            //promotion.LocationId = (long)cb_LocationId.SelectedValue;
+        
             promotion.PromotionType = _PromotionType;
-            promotion.InvType = "promotion";
-            if (purchaseOrder.PurchaseId != 0)
-                promotion.PurchaseId = purchaseOrder.PurchaseId;
-
-            promotion.PromotionStatus = "notCarriedOver";
+            promotion.PromotionNature = cb_PromotionNature.SelectedValue.ToString();
 
             promotion.PromotionDate = (DateTime)dp_PromotionDate.SelectedDate;
-            promotion.SupInvoiceDate = (DateTime)dp_SupInvoiceDate.SelectedDate;
-            promotion.SupInvoiceNum = tb_SupInvoiceNum.Text;
-            promotion.SupplierNotes = tb_SupplierNotes.Text;
-            promotion.SupplierPurchaseNotes = tb_SupplierPurchaseNotes.Text;
-            promotion.SupplierNotes = supplier.Notes;
-            promotion.SupplierPurchaseNotes = supplier.PurchaseOrderNotes;
+            promotion.PromotionStartDate = (DateTime)dp_PromotionStartDate.SelectedDate;
+            promotion.PromotionEndDate = (DateTime)dp_PromotionEndDate.SelectedDate;
 
-            if (tgl_IsRecieveAll.IsChecked == true)
-                promotion.IsRecieveAll = true;
-            else
-                promotion.IsRecieveAll = false;
+            if(tb_PromotionPercentage.Text != "")
+                promotion.PromotionPercentage = decimal.Parse(tb_PromotionPercentage.Text);
 
-            promotion.InvoiceAmount = decimal.Parse(tb_InvoiceAmount.Text);
-            promotion.AmountDifference = decimal.Parse(tb_AmountDifference.Text);
-
-            promotion.TotalCost = decimal.Parse(txt_TotalCost.Text);
-            promotion.TotalPrice = decimal.Parse(txt_TotalPrice.Text);
-
-            promotion.CoopDiscount = supplier.DiscountPercentage;
-            promotion.DiscountValue = decimal.Parse(txt_DiscountValue.Text);
-
-            if (tb_FreePercentage.Text != "")
-                promotion.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
-            promotion.FreeValue = decimal.Parse(txt_FreeValue.Text);
-            promotion.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
-            promotion.CostNet = decimal.Parse(txt_CostNet.Text);
+            promotion.Notes = tb_Notes.Text;
 
             promotion.CreateUserId = MainWindow.userLogin.userId;
 
             promotion.PromotionDetails = billDetails;
-            promotion = await promotion.SavePromotionOrder(promotion);
+            promotion = await promotion.SavePromotion(promotion);
 
             if (promotion.PromotionId == 0)
                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
@@ -473,7 +440,7 @@ namespace POSCA.View.promotion
 
                 fillPromotionInputs(promotion);
             }
-            */
+         
 
         }
         #region datagrid events
@@ -1577,9 +1544,20 @@ namespace POSCA.View.promotion
             }
         }
 
-        private void Btn_stop_Click(object sender, RoutedEventArgs e)
+        private async void Btn_stop_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                promotion = await FillCombo.Promotion.TerminateOffer(promotion.PromotionId, MainWindow.userLogin.userId);
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                HelpClass.EndAwait(grid_main);
 
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

@@ -6032,6 +6032,12 @@
   <data name="RefHint" xml:space="preserve">
     <value>المرجع...</value>
   </data>
+  <data name="Terminate" xml:space="preserve">
+    <value>إنهاء</value>
+  </data>
+  <data name="trOfferWithoutItemsError" xml:space="preserve">
+    <value>لا يمكن إضافة عرض بدون أصناف</value>
+  </data>
   <data name="trSelectItemError" xml:space="preserve">
     <value>اختر صنف واحد على الأقل</value>
   </data>

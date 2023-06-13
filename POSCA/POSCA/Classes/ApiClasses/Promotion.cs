@@ -37,7 +37,7 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<Promotion> SaveReceiptOrder(Receipt invoice)
+        public async Task<Promotion> SavePromotion(Promotion invoice)
         {
             var result = new Promotion();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -45,6 +45,26 @@ namespace POSCA.Classes.ApiClasses
 
             var myContent = JsonConvert.SerializeObject(invoice);
             parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Promotion>(c.Value);
+                }
+            }
+            return result;
+        }
+
+        public async Task<Promotion> TerminateOffer(long promotionId, long userId)
+        {
+            var result = new Promotion();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Promotion/TerminateOffer";
+
+            parameters.Add("promotionId", PromotionId.ToString());
+            parameters.Add("userId", userId.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
@@ -99,5 +119,10 @@ namespace POSCA.Classes.ApiClasses
         public long PromotionLocationId { get; set; }
         public Nullable<long> LocationId { get; set; }
         public Nullable<long> PromotionId { get; set; }
+
+        //extra
+        public string LocationName { get; set; }
+        public bool IsSelected { get; set; }
+
     }
 }

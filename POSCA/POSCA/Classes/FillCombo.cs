@@ -876,7 +876,7 @@ namespace POSCA.Classes
         #endregion
 
         #region Promotion
-
+        static public Promotion Promotion = new Promotion();
         #region PromotionType
         static public List<keyValueString> PromotionTypesList;
         static public IEnumerable<keyValueString> RefreshPromotionTypesList()

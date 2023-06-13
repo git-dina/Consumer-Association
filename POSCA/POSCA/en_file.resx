@@ -5778,6 +5778,12 @@ Main Documents</value>
   <data name="RefHint" xml:space="preserve">
     <value>Ref...</value>
   </data>
+  <data name="Terminate" xml:space="preserve">
+    <value>Terminate</value>
+  </data>
+  <data name="trOfferWithoutItemsError" xml:space="preserve">
+    <value>An offer without items cannot be added</value>
+  </data>
   <data name="trSelectItemError" xml:space="preserve">
     <value>Select at least one item</value>
   </data>

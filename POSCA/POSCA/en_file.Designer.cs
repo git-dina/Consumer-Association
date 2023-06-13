@@ -4175,6 +4175,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Terminate.
+        /// </summary>
+        internal static string Terminate {
+            get {
+                return ResourceManager.GetString("Terminate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Item Has Expired.
         /// </summary>
         internal static string theItemHasExpired {
@@ -11075,6 +11084,15 @@ namespace POSCA {
         internal static string trOffers {
             get {
                 return ResourceManager.GetString("trOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An offer without items cannot be added.
+        /// </summary>
+        internal static string trOfferWithoutItemsError {
+            get {
+                return ResourceManager.GetString("trOfferWithoutItemsError", resourceCulture);
             }
         }
         
