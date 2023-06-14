@@ -1258,7 +1258,7 @@ namespace POSCA.View.receipts
         {
             string msg = "";
             
-            //try
+            try
             {
                 int sequence = 0;
                 foreach (var row in prInvoice.ReceiptDetails)
@@ -1292,16 +1292,11 @@ namespace POSCA.View.receipts
 
 
             }
-            //catch (Exception ex)
-            //{
-            //    //this.Dispatcher.Invoke(() =>
-            //    //{
-            //    //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
+            catch (Exception ex)
+            {
+                msg = "trNotCompleted";
+            }
 
-            //    //});
-            //    msg = "trNotCompleted";
-            //}
-           
             return msg;
 
         }

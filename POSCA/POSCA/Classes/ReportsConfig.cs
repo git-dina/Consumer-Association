@@ -50,6 +50,8 @@ namespace POSCA.Classes
                         stream.Close();
                     }
                 }
+
+                System.Diagnostics.Process.Start(FullPath);
             }
             catch { }
 

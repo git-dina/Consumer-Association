@@ -440,7 +440,117 @@ namespace POSCA.Classes
 
             return paramarr;
         }
-        
+
+
+        public string GetReturnOrderRdlcpath()
+        {
+            string addpath;
+            //rs.width = 224;//224 =5.7cm
+            //rs.height = GetpageHeight(itemscount, 500);
+
+            if (AppSettings.lang == "ar")
+            {
+
+                //order Ar
+                addpath = @"\Reports\ar\returnOrder.rdlc";
+
+            }
+            else
+            {
+                addpath = @"\Reports\en\returnOrder.rdlc";
+            }
+
+            //
+            string reppath = PathUp(addpath);
+
+            return reppath;
+        }
+
+        public List<ReportParameter> fillReturnOrderReport(Receipt invoice, LocalReport rep, List<ReportParameter> paramarr)
+        {
+            rep.EnableExternalImages = true;
+            rep.DataSources.Clear();
+
+            string title = "";
+            switch (invoice.ReceiptType)
+            {
+                case "normalReturn":
+                    title = AppSettings.resourcemanager.GetString("ReturnDocumentTitle");
+                    break;
+                case "vegetablesReturn":
+                    title = AppSettings.resourcemanager.GetString("VegetablesReturnDocumentTitle");
+                    break;                
+            }
+            string discount = "(" + HelpClass.DecTostring(invoice.CoopDiscount) + " %)";
+
+            paramarr.Add(new ReportParameter("companyName", AppSettings.companyName == null ? "-" : AppSettings.companyName));
+            paramarr.Add(new ReportParameter("companyNameAr", AppSettings.companyNameAr == null ? "-" : AppSettings.companyNameAr));
+
+            //
+            paramarr.Add(new ReportParameter("Fax", AppSettings.companyFax == null ? "-" : AppSettings.companyFax.Replace("--", "")));
+            paramarr.Add(new ReportParameter("Tel", AppSettings.companyPhone == null ? "-" : AppSettings.companyPhone.Replace("--", "")));
+
+            paramarr.Add(new ReportParameter("logoImage", "file:\\" + GetLogoImagePath()));
+            paramarr.Add(new ReportParameter("com_tel_icon", "file:\\" + GetIconImagePath("phone")));
+            paramarr.Add(new ReportParameter("com_fax_icon", "file:\\" + GetIconImagePath("fax")));
+
+            paramarr.Add(new ReportParameter("OrderDate", HelpClass.DateToString(invoice.ReceiptDate)));
+            paramarr.Add(new ReportParameter("invNumber", invoice.InvNumber == null ? "-" : invoice.InvNumber.ToString()));//paramarr[6]
+            paramarr.Add(new ReportParameter("LocationName", invoice.LocationName == null ? "-" : invoice.LocationName.ToString()));
+            paramarr.Add(new ReportParameter("SupplierNumber", AppSettings.resourcemanager.GetString("SupplierNumber") + ": " + invoice.supplier.SupCode.ToString()));
+            paramarr.Add(new ReportParameter("SupplierName", invoice.supplier.Name));
+            paramarr.Add(new ReportParameter("Notes", invoice.Notes));
+            paramarr.Add(new ReportParameter("NetPrice", HelpClass.DecTostring(invoice.TotalPrice)));
+            paramarr.Add(new ReportParameter("netCost", HelpClass.DecTostring(invoice.CostNet)));
+
+            paramarr.Add(new ReportParameter("UserName", "دينا نعمة"));
+            paramarr.Add(new ReportParameter("CreateUserId", invoice.CreateUserId.ToString()));
+
+            paramarr.Add(new ReportParameter("Title", title));
+            paramarr.Add(new ReportParameter("trDate", AppSettings.resourcemanager.GetString("DocumentDate")));
+            paramarr.Add(new ReportParameter("trOrderNum", AppSettings.resourcemanager.GetString("Voucherno")));
+            paramarr.Add(new ReportParameter("trSupplierName", AppSettings.resourcemanager.GetString("SupplierName")));
+            paramarr.Add(new ReportParameter("trNotes", AppSettings.resourcemanager.GetString("trNotes")));
+
+            paramarr.Add(new ReportParameter("trTotalSale", AppSettings.resourcemanager.GetString("trTotalSale")));
+            paramarr.Add(new ReportParameter("trTotalCost", AppSettings.resourcemanager.GetString("trTotalPurchase")));
+            paramarr.Add(new ReportParameter("trSeuenceAbbrevation", AppSettings.resourcemanager.GetString("SeuenceAbbrevation")));
+            paramarr.Add(new ReportParameter("trItemCode", AppSettings.resourcemanager.GetString("ItemNumber")));
+            paramarr.Add(new ReportParameter("trFree", AppSettings.resourcemanager.GetString("Free")));
+            paramarr.Add(new ReportParameter("trQuantity", AppSettings.resourcemanager.GetString("trQTR")));
+            paramarr.Add(new ReportParameter("trQuantity", AppSettings.resourcemanager.GetString("trQTR")));
+            paramarr.Add(new ReportParameter("trPiecesQuantity", AppSettings.resourcemanager.GetString("PiecesQuantity")));
+            paramarr.Add(new ReportParameter("trDescription", AppSettings.resourcemanager.GetString("itemName")));
+            paramarr.Add(new ReportParameter("trFactor", AppSettings.resourcemanager.GetString("Factor")));
+            paramarr.Add(new ReportParameter("trPurchasePrice", AppSettings.resourcemanager.GetString("PurchasePrice")));
+            paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
+            paramarr.Add(new ReportParameter("trNetCost", AppSettings.resourcemanager.GetString("SalePrice")));
+
+
+
+
+            //report footer 
+            paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));
+            paramarr.Add(new ReportParameter("trSum", AppSettings.resourcemanager.GetString("trSum")));
+            paramarr.Add(new ReportParameter("trItemsCount", AppSettings.resourcemanager.GetString("ItemsCount")));
+            paramarr.Add(new ReportParameter("ItemsCount", invoice.ReceiptDetails.Count().ToString()));
+            paramarr.Add(new ReportParameter("TotalQuantities", invoice.ReceiptDetails.Count().ToString()));
+            paramarr.Add(new ReportParameter("trTotalQuantities", AppSettings.resourcemanager.GetString("TotalQuantities")));
+            paramarr.Add(new ReportParameter("trOnly", AppSettings.resourcemanager.GetString("trOnly")));
+            paramarr.Add(new ReportParameter("trDocumentEditor", AppSettings.resourcemanager.GetString("DocumentEditor")));
+            paramarr.Add(new ReportParameter("trFrom", AppSettings.resourcemanager.GetString("trFrom")));
+            paramarr.Add(new ReportParameter("trPage", AppSettings.resourcemanager.GetString("trPage")));
+            paramarr.Add(new ReportParameter("trPrintDone", AppSettings.resourcemanager.GetString("trPrintDone")));
+            paramarr.Add(new ReportParameter("trBy", AppSettings.resourcemanager.GetString("By")));
+            paramarr.Add(new ReportParameter("trReceiver", AppSettings.resourcemanager.GetString("Receiver")));
+            paramarr.Add(new ReportParameter("trCustodyOfficial", AppSettings.resourcemanager.GetString("CustodyOfficial")));
+            paramarr.Add(new ReportParameter("trViewer", AppSettings.resourcemanager.GetString("Reviewer")));
+
+            //dataSet
+            rep.DataSources.Add(new ReportDataSource("DataSetReceiptDetails", invoice.ReceiptDetails));
+
+            return paramarr;
+        }
         public string PathUp( string addtopath)
         {
             string path = Directory.GetCurrentDirectory();

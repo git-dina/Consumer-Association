@@ -542,6 +542,9 @@
     <Content Include="Reports\ar\receiptOrder.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reports\ar\returnOrder.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="fonts\barcodeFont.ttf" />
     <Resource Include="fonts\cairo-font\cairo bold.ttf" />
     <Resource Include="fonts\cairo-font\Cairo Regular 400.ttf" />

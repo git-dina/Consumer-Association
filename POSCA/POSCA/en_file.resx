@@ -5790,4 +5790,10 @@ Main Documents</value>
   <data name="trSelectItemError" xml:space="preserve">
     <value>Select at least one item</value>
   </data>
+  <data name="ReturnDocumentTitle" xml:space="preserve">
+    <value>Return Document</value>
+  </data>
+  <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
+    <value>Vegetables Return Document</value>
+  </data>
 </root>

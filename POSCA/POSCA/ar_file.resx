@@ -6044,4 +6044,10 @@
   <data name="trSelectItemError" xml:space="preserve">
     <value>اختر صنف واحد على الأقل</value>
   </data>
+  <data name="ReturnDocumentTitle" xml:space="preserve">
+    <value>سند مرتجع</value>
+  </data>
+  <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
+    <value>سند مرتجع خضار</value>
+  </data>
 </root>

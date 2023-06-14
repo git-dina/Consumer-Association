@@ -935,11 +935,7 @@ namespace POSCA.View.receipts
                 {
                     string msg = "";
                     msg = await printInvoice(returnOrder);
-                    if (msg == "")
-                    {
-
-                    }
-                    else
+                    if (msg != "")
                     {
                         this.Dispatcher.Invoke(() =>
                         {
@@ -967,24 +963,21 @@ namespace POSCA.View.receipts
         public async Task<string> printInvoice(Receipt prInvoice)
         {
             string msg = "";
-            /*
+          
             try
             {
-                //ReportsConfig reportConfig = new ReportsConfig();
+                int sequence = 0;
+                foreach (var row in prInvoice.ReceiptDetails)
+                {
+                    row.Sequence = sequence++;
+                }
+
                 List<ReportParameter> paramarr = new List<ReportParameter>();
 
-                rep.ReportPath = reportclass.GetSupplyingOrderRdlcpath();
+                rep.ReportPath = reportclass.GetReturnOrderRdlcpath();
 
-                ReportsConfig.setReportLanguage(paramarr);
-                ReportsConfig.InvoiceHeader(paramarr);
-                reportclass.fillSupplyingOrderReport(prInvoice, rep, paramarr);
-
-                rep.EnableExternalImages = true;
-                rep.DataSources.Clear();
-                rep.DataSources.Add(new ReportDataSource("DataSetReceiptDetails", receipt.ReceiptDetails));
-
-                rep.EnableExternalImages = true;
-
+                reportclass.fillReturnOrderReport(prInvoice, rep, paramarr);
+                rep.SetParameters(paramarr);
                 rep.Refresh();
 
                 //copy count
@@ -1001,18 +994,12 @@ namespace POSCA.View.receipts
                     }
                 });
 
-
             }
             catch (Exception ex)
             {
-                //this.Dispatcher.Invoke(() =>
-                //{
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: "Not completed", animation: ToasterAnimation.FadeIn);
-
-                //});
                 msg = "trNotCompleted";
             }
-            */
+          
             return msg;
 
         }

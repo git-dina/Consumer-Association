@@ -125,4 +125,5 @@ namespace POSCA.Classes.ApiClasses
         public bool IsSelected { get; set; }
 
     }
+
 }
