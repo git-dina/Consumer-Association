@@ -146,6 +146,19 @@ namespace POSCA.View.windows
                     IsSelected = isSelected,
                 });
             }
+            //promotionDetails.Add(new PromotionDetails()
+            //{
+            //    Barcode = "132132132",
+            //    Factor = 12,
+            //    ItemId = 1,
+            //    UnitId = 1,
+            //    ItemCode = "132132132",
+            //    ItemName = "132132132",
+            //    MainCost = 12,
+            //    MainPrice =1,
+            //    UnitName = "132132132",
+            //    IsSelected = true,
+            //});
             dg_itemUnit.ItemsSource = promotionDetails;
         }
         private void HandleKeyPress(object sender, KeyEventArgs e)

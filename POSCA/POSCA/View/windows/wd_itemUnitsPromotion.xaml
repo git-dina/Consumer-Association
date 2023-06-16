@@ -141,7 +141,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                                  Checked="chk_isBlocked_Changed"
+                                                  Checked="chk_isBlocked_Changed" HorizontalAlignment="Center"
                                                   Unchecked="chk_isBlocked_Uncheck_Changed"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
