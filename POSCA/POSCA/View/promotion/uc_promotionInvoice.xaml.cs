@@ -121,9 +121,9 @@ namespace POSCA.View.promotion
                 cb_PromotionType.SelectedIndex = 0;
                 cb_PromotionType.SelectedValue = "quantity";
 
-                await setItemLocationsData();
-                //await Search();
-                Clear();
+                //await setItemLocationsData();
+
+                await Clear();
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -196,6 +196,7 @@ namespace POSCA.View.promotion
             if (FillCombo.locationsList == null)
                 await FillCombo.RefreshLocations();
 
+            listItemLocations = new List<PromotionLocations>();
             foreach (var row in FillCombo.locationsList)
             {
                 var isSelected = false;
@@ -217,7 +218,7 @@ namespace POSCA.View.promotion
 
             }
             dg_itemLocation.ItemsSource = listItemLocations;
-
+            dg_itemLocation.Items.Refresh();
         }
         List<keyValueBool> loadingList;
         List<string> catchError = new List<string>();
@@ -457,6 +458,7 @@ namespace POSCA.View.promotion
             promotion.Notes = tb_Notes.Text;
 
             promotion.CreateUserId = MainWindow.userLogin.userId;
+            promotion.UpdateUserId = MainWindow.userLogin.userId;
 
             promotion.PromotionDetails = billDetails;
             promotion.PromotionLocations = listItemLocations.Where(x => x.IsSelected == true).ToList();
@@ -586,7 +588,7 @@ namespace POSCA.View.promotion
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+         async Task Clear()
         {
 
             this.DataContext = new Promotion();
@@ -595,25 +597,16 @@ namespace POSCA.View.promotion
             purchaseOrder = new PurchaseInvoice();
 
             billDetails = new List<PromotionDetails>();
-            //dg_invoiceDetails.ItemsSource = billDetails;
-            //dg_invoiceDetails.Items.Refresh();
+
+            await setItemLocationsData();
+
             if (!forceCancelEdit)
             {
                 dg_invoiceDetails.IsEnabled = false;
                 RefreshInvoiceDetailsDataGrid();
             }
 
-            //txt_TotalCost.Text = HelpClass.DecTostring(0);
-            //txt_TotalPrice.Text = HelpClass.DecTostring(0);
-            //txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
-            //txt_EnterpriseDiscount.Text = HelpClass.DecTostring(0);
-            //txt_DiscountValue.Text = HelpClass.DecTostring(0);
-            //tb_FreePercentage.Text = HelpClass.DecTostring(0);
-            //txt_FreeValue.Text = HelpClass.DecTostring(0);
-            //txt_ConsumerDiscount.Text = HelpClass.DecTostring(0);
-            //txt_CostNet.Text = HelpClass.DecTostring(0);
-
-            // _PromotionType = "purchaseOrders";
+          
             ControlsEditable();
 
             // last 

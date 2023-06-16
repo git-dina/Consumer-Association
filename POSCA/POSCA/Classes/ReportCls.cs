@@ -526,9 +526,6 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
             paramarr.Add(new ReportParameter("trNetCost", AppSettings.resourcemanager.GetString("TotalCost")));
 
-
-
-
             //report footer 
             paramarr.Add(new ReportParameter("CurrentDateTime", DateTime.Now.ToString()));
             paramarr.Add(new ReportParameter("trSum", AppSettings.resourcemanager.GetString("trSum")));
