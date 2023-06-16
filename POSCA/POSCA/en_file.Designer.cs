@@ -502,6 +502,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Civil No.
+        /// </summary>
+        internal static string CivilNo {
+            get {
+                return ResourceManager.GetString("CivilNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commission.
         /// </summary>
         internal static string commission {
@@ -3766,6 +3775,15 @@ namespace POSCA {
         internal static string showHideCharts {
             get {
                 return ResourceManager.GetString("showHideCharts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signature.
+        /// </summary>
+        internal static string Signature {
+            get {
+                return ResourceManager.GetString("Signature", resourceCulture);
             }
         }
         

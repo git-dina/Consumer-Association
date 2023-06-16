@@ -524,7 +524,7 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trFactor", AppSettings.resourcemanager.GetString("Factor")));
             paramarr.Add(new ReportParameter("trPurchasePrice", AppSettings.resourcemanager.GetString("PurchasePrice")));
             paramarr.Add(new ReportParameter("trSalePrice", AppSettings.resourcemanager.GetString("SalePrice")));
-            paramarr.Add(new ReportParameter("trNetCost", AppSettings.resourcemanager.GetString("SalePrice")));
+            paramarr.Add(new ReportParameter("trNetCost", AppSettings.resourcemanager.GetString("TotalCost")));
 
 
 
@@ -545,6 +545,8 @@ namespace POSCA.Classes
             paramarr.Add(new ReportParameter("trReceiver", AppSettings.resourcemanager.GetString("Receiver")));
             paramarr.Add(new ReportParameter("trCustodyOfficial", AppSettings.resourcemanager.GetString("CustodyOfficial")));
             paramarr.Add(new ReportParameter("trViewer", AppSettings.resourcemanager.GetString("Reviewer")));
+            paramarr.Add(new ReportParameter("trSignature", AppSettings.resourcemanager.GetString("Signature")));
+            paramarr.Add(new ReportParameter("trCivilNo", AppSettings.resourcemanager.GetString("CivilNo")));
 
             //dataSet
             rep.DataSources.Add(new ReportDataSource("DataSetReceiptDetails", invoice.ReceiptDetails));

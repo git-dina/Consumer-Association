@@ -5796,8 +5796,14 @@ Main Documents</value>
   <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
     <value>Vegetables Return Document</value>
   </data>
+  <data name="CivilNo" xml:space="preserve">
+    <value>Civil No</value>
+  </data>
   <data name="OfferQuantity" xml:space="preserve">
     <value>Offer Quantity</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Signature</value>
   </data>
   <data name="trBarcodeOfferError" xml:space="preserve">
     <value>There is an offer on a barcode within the same period</value>

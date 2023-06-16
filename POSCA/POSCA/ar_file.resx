@@ -6050,8 +6050,14 @@
   <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
     <value>سند مرتجع خضار</value>
   </data>
+  <data name="CivilNo" xml:space="preserve">
+    <value>الرقم المدني</value>
+  </data>
   <data name="OfferQuantity" xml:space="preserve">
     <value>كمية العرض</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>التوقيع</value>
   </data>
   <data name="trBarcodeOfferError" xml:space="preserve">
     <value>يوجد باركود عليه عرض ضمن نفس الفترة</value>
