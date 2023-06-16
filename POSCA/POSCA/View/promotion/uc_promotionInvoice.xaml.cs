@@ -179,7 +179,8 @@ namespace POSCA.View.promotion
             col_mainCost.Header = AppSettings.resourcemanager.GetString("trCost");
             dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("basePrice");
             dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("OfferPrice");
-            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("IsBlocked");
+            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("trQuantity");
+            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("IsBlocked");
         
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_promotionOrders.ToolTip = AppSettings.resourcemanager.GetString("PromotionOrders");
@@ -300,6 +301,7 @@ namespace POSCA.View.promotion
             {
                 dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                 col_IsItemStoped.Visibility = Visibility.Collapsed;
+                col_quantity.IsReadOnly = false;
 
                 btn_save.IsEnabled = true;
                 btn_stop.IsEnabled = false;
@@ -310,9 +312,8 @@ namespace POSCA.View.promotion
                 dp_PromotionDate.IsEnabled = true;
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
-                //tb_FreePercentage.IsEnabled = true;
 
-                dg_itemLocation.IsEnabled = true;
+                col_locIsSelected.IsReadOnly = false;
                 //check promotion status first
                 switch (_PromotionType)
                 {
@@ -320,11 +321,13 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+                        col_quantity.Visibility = Visibility.Visible;
                         col_promotionPrice.IsReadOnly = false;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
+                        col_quantity.Visibility = Visibility.Collapsed;
                         col_promotionPrice.IsReadOnly = true;
 
                         break;
@@ -336,6 +339,7 @@ namespace POSCA.View.promotion
                 dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
                 col_IsItemStoped.Visibility = Visibility.Visible;
                 col_promotionPrice.IsReadOnly = true;
+                col_quantity.IsReadOnly = true;
 
                 btn_save.IsEnabled = true;
                 btn_stop.IsEnabled = true;
@@ -346,9 +350,8 @@ namespace POSCA.View.promotion
                 dp_PromotionDate.IsEnabled = false;
                 dp_PromotionStartDate.IsEnabled = false;
                 dp_PromotionEndDate.IsEnabled = false;
-                //tb_FreePercentage.IsEnabled = false;
 
-                dg_itemLocation.IsEnabled = false;
+                col_locIsSelected.IsReadOnly = true;
 
                 //check promotion status first
                 switch (_PromotionType)
@@ -357,10 +360,12 @@ namespace POSCA.View.promotion
                     case "quantity":
 
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+                        col_quantity.Visibility = Visibility.Visible;
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
+                        col_quantity.Visibility = Visibility.Collapsed;
 
                         break;
 
@@ -384,24 +389,44 @@ namespace POSCA.View.promotion
             }
         }
 
-
+        private bool canAddInvoice()
+        {
+            bool canAdd = true;
+            if (billDetails.Count == 0)
+            {
+                canAdd = false;
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOfferWithoutItemsError"), animation: ToasterAnimation.FadeIn);
+            }
+            else
+            {
+                var lst = (List < PromotionLocations >) dg_itemLocation.ItemsSource;
+                var isSelected = lst.Where(x => x.IsSelected == true).FirstOrDefault();
+                if(isSelected == null)
+                {
+                    canAdd = false;
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
+                }
+            }
+            return canAdd;
+        }
         private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                if (billDetails.Count == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOfferWithoutItemsError"), animation: ToasterAnimation.FadeIn);
-                else if (HelpClass.validate(requiredControlList, this))
-                {
-                    await addInvoice();
 
-                }
-                else
+                if (canAddInvoice())
                 {
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
-                }
+                    if (HelpClass.validate(requiredControlList, this))
+                    {
+                        await addInvoice();
 
+                    }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
+                }
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -695,6 +720,7 @@ namespace POSCA.View.promotion
                     List<PromotionDetails> promotionDetails = new List<PromotionDetails>();
                     Item item1 = null;
 
+                    string barcode = "";
                     if (chk_itemNum.IsChecked == true)
                     {
                         itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text);
@@ -706,6 +732,7 @@ namespace POSCA.View.promotion
                     }
                     else
                     {
+                        barcode = tb_search.Text;
                         item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text);
                     }
 
@@ -731,7 +758,8 @@ namespace POSCA.View.promotion
                         Window.GetWindow(this).Opacity = 0.2;
                         wd_itemUnitsPromotion w = new wd_itemUnitsPromotion();
                         w.item = item1;
-                        
+                        w.promotionType = _PromotionType;
+                        w.selectedBarcode = barcode;
                         w.ShowDialog();
 
                         if (w.isOk)

@@ -97,7 +97,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=OneWay}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=OneWay}"/>
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Factor" Binding="{Binding Path=Factor, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
+                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
 
                             <!--<DataGridTemplateColumn x:Name="dgc_Barcode" Width="3*"  Header="Barcode">
                                 <DataGridTemplateColumn.CellTemplate>
@@ -132,10 +132,11 @@
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>-->
-                            
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=Cost, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=SalePrice, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
-                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=OneWay,  Converter={StaticResource accuracyConverter }}"/>
+
+                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                            <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                            <DataGridTextColumn x:Name="col_promotionPrice" Width="3*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                            <DataGridTextColumn x:Name="col_quantity" Width="3*"  Header="PromotionQty" Binding="{Binding Path=Qty, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
@@ -192,7 +193,7 @@
                             FontWeight="Bold" FontSize="12" 
                             />
                     </Border>
-                    <TextBlock  Text="Number" Grid.Row="1" Grid.Column="1"
+                    <TextBlock Text="{Binding Code, Mode=OneWay}" Grid.Row="1" Grid.Column="1"
                             x:Name="txt_Number" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
@@ -207,7 +208,7 @@
                             FontWeight="Bold" FontSize="12" 
                             />
                     </Border>
-                    <TextBlock  Text="ItemName" Grid.Row="0" Grid.Column="3"
+                    <TextBlock  Text="{Binding Name, Mode=OneWay}" Grid.Row="0" Grid.Column="3"
                             x:Name="txt_ItemName" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
@@ -248,7 +249,7 @@
                             FontWeight="Bold" FontSize="12" 
                             />
                     </Border>
-                    <TextBlock  Text="0.00" Grid.Row="1" Grid.Column="8"
+                    <TextBlock  Text="{Binding Factor, Mode=OneWay}" Grid.Row="1" Grid.Column="8"
                             x:Name="txt_Factor" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  

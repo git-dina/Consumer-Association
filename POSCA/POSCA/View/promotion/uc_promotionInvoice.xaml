@@ -261,9 +261,10 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn IsReadOnly="True" x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn x:Name="col_promotionPrice" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}"/>
                         <!--<DataGridTemplateColumn  Header="IsItemStoped" >
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -273,8 +274,8 @@
                         </DataGridTemplateColumn>-->
                         <DataGridCheckBoxColumn Header="IsItemStoped" x:Name="col_IsItemStoped" Binding="{Binding IsItemStoped, Mode=TwoWay}"></DataGridCheckBoxColumn>
 
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemBy" Binding="{Binding Path=StoppedItemBy, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemDate" Binding="{Binding Path=StoppedItemDate, Mode=TwoWay}"/>
+                        <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemBy" Binding="{Binding Path=StoppedItemBy, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemDate" Binding="{Binding Path=StoppedItemDate, Mode=TwoWay}"/>-->
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Margin="5,0" Grid.Row="2"  Background="#DFDFDF" VerticalAlignment="Center" Width="auto" />
@@ -543,10 +544,10 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn IsReadOnly="True" Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=OneWay}"/>
-                                <DataGridTemplateColumn  Header="IsActive"   >
+                                <DataGridTemplateColumn x:Name="col_locIsSelected" Header="IsSelected"   >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsAllowed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>

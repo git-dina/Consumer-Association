@@ -2420,6 +2420,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer Quantity.
+        /// </summary>
+        internal static string OfferQuantity {
+            get {
+                return ResourceManager.GetString("OfferQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer Quantity....
         /// </summary>
         internal static string OfferQuantityHint {
@@ -12897,7 +12906,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الكمية.
+        ///   Looks up a localized string similar to Quantity.
         /// </summary>
         internal static string trQuantity {
             get {

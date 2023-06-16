@@ -3639,7 +3639,7 @@ Main Documents</value>
     <value>عروض الاسعار</value>
   </data>
   <data name="trQuantity" xml:space="preserve">
-    <value>الكمية</value>
+    <value>Quantity</value>
   </data>
   <data name="trQuantityHint" xml:space="preserve">
     <value>الكمية...</value>
@@ -5795,5 +5795,8 @@ Main Documents</value>
   </data>
   <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
     <value>Vegetables Return Document</value>
+  </data>
+  <data name="OfferQuantity" xml:space="preserve">
+    <value>Offer Quantity</value>
   </data>
 </root>

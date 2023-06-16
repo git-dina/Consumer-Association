@@ -41,7 +41,7 @@ namespace POSCA.Classes.ApiClasses
         {
             var result = new Promotion();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Promotion/SavePromotion";
+            string method = "Promotion/Save";
 
             var myContent = JsonConvert.SerializeObject(invoice);
             parameters.Add("itemObject", myContent);

@@ -6050,4 +6050,7 @@
   <data name="VegetablesReturnDocumentTitle" xml:space="preserve">
     <value>سند مرتجع خضار</value>
   </data>
+  <data name="OfferQuantity" xml:space="preserve">
+    <value>كمية العرض</value>
+  </data>
 </root>

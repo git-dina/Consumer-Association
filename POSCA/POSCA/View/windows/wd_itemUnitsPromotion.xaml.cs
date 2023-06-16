@@ -45,6 +45,8 @@ namespace POSCA.View.windows
         }
 
         public Item item { get; set; }
+        public string promotionType { get; set; }
+        public string selectedBarcode { get; set; }
         public List<PromotionDetails> promotionDetails { get; set; }
         public bool isOk { get; set; }
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -73,7 +75,11 @@ namespace POSCA.View.windows
                 /*
                 fillBarcodeTypeCombo();
                 */
-
+                if (promotionType == "percentage")
+                {
+                    col_quantity.Visibility = Visibility.Collapsed;
+                    col_promotionPrice.Visibility = Visibility.Collapsed;
+                }
                 setPromotionDetailsData();
 
 
@@ -101,17 +107,31 @@ namespace POSCA.View.windows
             dg_itemUnit.Columns[3].Header = AppSettings.resourcemanager.GetString("Cost");
             dg_itemUnit.Columns[4].Header = AppSettings.resourcemanager.GetString("SalePrice");
             dg_itemUnit.Columns[5].Header = AppSettings.resourcemanager.GetString("OfferPrice");
-            dg_itemUnit.Columns[6].Header = AppSettings.resourcemanager.GetString("trSelect");
+            dg_itemUnit.Columns[6].Header = AppSettings.resourcemanager.GetString("OfferQuantity");
+            dg_itemUnit.Columns[7].Header = AppSettings.resourcemanager.GetString("trSelect");
 
+            txt_NumberTitle.Text = AppSettings.resourcemanager.GetString("ItemNumber");
+            txt_ItemNameTitle.Text = AppSettings.resourcemanager.GetString("trName");
+            txt_PriceTitle.Text = AppSettings.resourcemanager.GetString("trPrice");
+            txt_FactorTitle.Text = AppSettings.resourcemanager.GetString("Factor");
+            txt_CostTitle.Text = AppSettings.resourcemanager.GetString("Cost");
             btn_save.Content = AppSettings.resourcemanager.GetString("trAdd");
-
+            btn_colse.ToolTip = AppSettings.resourcemanager.GetString("trClose");
         }
 
         private void setPromotionDetailsData()
         {
+            this.DataContext = item;
+            txt_Price.Text = HelpClass.DecTostring(item.Price);
+            txt_Cost.Text = HelpClass.DecTostring(item.Cost);
+
             promotionDetails = new List<PromotionDetails>();
             foreach (var row in item.ItemUnits)
             {
+                bool isSelected = false;
+                if (selectedBarcode != "" && selectedBarcode == row.Barcode)
+                    isSelected = true;
+
                 promotionDetails.Add(new PromotionDetails()
                 {
                     Barcode = row.Barcode,
@@ -122,7 +142,7 @@ namespace POSCA.View.windows
                     MainCost = row.Cost,
                     MainPrice = row.SalePrice,
                     UnitName = item.ItemUnit,
-                    
+                    IsSelected = isSelected,
                 });
             }
             dg_itemUnit.ItemsSource = promotionDetails;
@@ -623,9 +643,9 @@ namespace POSCA.View.windows
                 e.Handled = true;
 
                 int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+                var itemUnit = (PromotionDetails)dg_itemUnit.SelectedItem;
 
-                itemUnit.IsBlocked = true;
+                itemUnit.IsSelected = true;
                 RefreshItemUnitDataGrid();
 
 
@@ -644,9 +664,9 @@ namespace POSCA.View.windows
                 e.Handled = true;
 
                 int _datagridSelectedIndex = dg_itemUnit.SelectedIndex;
-                var itemUnit = (ItemUnit)dg_itemUnit.SelectedItem;
+                var itemUnit = (PromotionDetails)dg_itemUnit.SelectedItem;
 
-                itemUnit.IsBlocked = false;
+                itemUnit.IsSelected = false;
                 RefreshItemUnitDataGrid();
 
 
