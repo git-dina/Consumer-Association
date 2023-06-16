@@ -219,6 +219,8 @@
     <Compile Include="Classes\ReportsConfig.cs" />
     <Compile Include="converters\accuracyConverter.cs" />
     <Compile Include="converters\dateFrameConverter.cs" />
+    <Compile Include="converters\PromotionNatureConverter.cs" />
+    <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
     <Compile Include="View\promotion\uc_promotionInvoice.xaml.cs">
       <DependentUpon>uc_promotionInvoice.xaml</DependentUpon>
@@ -309,6 +311,9 @@
     </Compile>
     <Compile Include="View\windows\wd_itemUnitsPromotion.xaml.cs">
       <DependentUpon>wd_itemUnitsPromotion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\windows\wd_promotions.xaml.cs">
+      <DependentUpon>wd_promotions.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\windows\wd_purchaseInv.xaml.cs">
       <DependentUpon>wd_purchaseInv.xaml</DependentUpon>
@@ -462,6 +467,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_itemUnitsPromotion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_promotions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
