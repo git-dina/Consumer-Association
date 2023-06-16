@@ -314,7 +314,8 @@ namespace POSCA.View.promotion
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
 
-                col_locIsSelected.IsReadOnly = false;
+                chb_locIsSelected.IsEnabled = true;
+
                 //check promotion status first
                 switch (_PromotionType)
                 {
@@ -352,7 +353,7 @@ namespace POSCA.View.promotion
                 dp_PromotionStartDate.IsEnabled = false;
                 dp_PromotionEndDate.IsEnabled = false;
 
-                col_locIsSelected.IsReadOnly = true;
+                chb_locIsSelected.IsEnabled = false;
 
                 //check promotion status first
                 switch (_PromotionType)

@@ -545,16 +545,19 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn IsReadOnly="True" Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=OneWay}"/>
-                                <DataGridTemplateColumn x:Name="col_locIsSelected" Header="IsSelected"   >
+                                <DataGridTemplateColumn  Header="IsSelected"   >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            <CheckBox  x:Name="chb_locIsSelected" 
+                                                FlowDirection="LeftToRight" 
+                                                        IsEnabled="{Binding ElementName=chb_locIsSelected, Path=IsEnabled}"
+                                                        IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
-
+                        <CheckBox x:Name="chb_locIsSelected"  IsEnabled="True" Visibility="Collapsed"/>
                     </Grid>
 
 
