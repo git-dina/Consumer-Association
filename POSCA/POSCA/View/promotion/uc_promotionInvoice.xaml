@@ -219,7 +219,7 @@
                         ColumnWidth="SizeToHeader"   CanUserSortColumns="False" 
                         VirtualizingStackPanel.IsVirtualizing="False"  
                         EnableRowVirtualization="True" EnableColumnVirtualization="True"
-                        CellEditEnding="dg_invoiceDetails_CellEditEnding">
+                       >
                     <DataGrid.Resources>
                         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
                         <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
@@ -412,7 +412,8 @@
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" />
+                                LostFocus="validateEmpty_LostFocus"
+                                             TextChanged="tb_PromotionPercentage_TextChanged"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PromotionPercentage" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"

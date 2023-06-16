@@ -769,6 +769,9 @@ namespace POSCA.View.promotion
                         if (w.isOk)
                         {
                             var lst = new List<PromotionDetails>();
+                            
+                            if (_PromotionType == "percentage")
+                                w.promotionDetails = calculatePromotionPrice(w.promotionDetails);
                             foreach(var row in w.promotionDetails)
                             {
                                 if (row.IsSelected == true)
@@ -811,12 +814,24 @@ namespace POSCA.View.promotion
 
            
         }
+
+        private List<PromotionDetails> calculatePromotionPrice(List<PromotionDetails> details)
+        {
+            decimal promotionPercentage = 0;
+            if(tb_PromotionPercentage.Text !="")
+                promotionPercentage= decimal.Parse(tb_PromotionPercentage.Text);
+            foreach(var item in details)
+            {
+                item.PromotionPrice = item.MainPrice - HelpClass.calcPercentage(item.MainPrice, promotionPercentage);
+            }
+            return details;
+        }
         List<PromotionDetails> billDetails = new List<PromotionDetails>();
         private void addItemToBill(List<PromotionDetails> promotionDetails)
         {
             foreach (var row in promotionDetails)
             {
-                int index = billDetails.IndexOf(billDetails.Where(p => p.UnitId == row.UnitId && p.ItemId == row.ItemId).FirstOrDefault());
+                int index = billDetails.IndexOf(billDetails.Where(p => p.UnitId == row.UnitId && p.ItemId == row.ItemId && p.Barcode == row.Barcode).FirstOrDefault());
 
                 if (index == -1)//item doesn't exist in bill
                 {
@@ -1139,116 +1154,7 @@ namespace POSCA.View.promotion
 
             }
         }
-
-        private async void dg_invoiceDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            /*
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-
-                TextBox t = e.EditingElement as TextBox;  // Assumes columns are all TextBoxes
-                decimal textValue = 0;
-                if (t.Text != "")
-                    textValue = decimal.Parse(t.Text);
-
-                var columnName = e.Column.Header.ToString();
-
-                PromotionDetails row = e.Row.Item as PromotionDetails;
-                int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == row.ItemId).FirstOrDefault());
-
-                int maxQty = 0;
-                int minQty = 0;
-                int freeQty = 0;
-                decimal mainCost = 0;
-                decimal mainPrice = 0;
-
-                if (columnName == AppSettings.resourcemanager.GetString("MaxFactorQty") && !t.Text.Equals(""))
-                {
-                    if (_PromotionType == "purchaseOrders")
-                    {
-                        var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
-                        if (it.MaxQty < textValue)
-                        {
-
-                            textValue = (int)it.MaxQty;
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
-                        }
-                    }
-                    maxQty = (int)textValue;
-                }
-                else
-                    maxQty = (int)row.MaxQty;
-
-                if (columnName == AppSettings.resourcemanager.GetString("LessFactorQty") && !t.Text.Equals(""))
-                {
-                    if (_PromotionType == "purchaseOrders")
-                    {
-                        if (textValue >= row.Factor)
-                        {
-                            textValue = 0;
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMinQtyMoreFactorError"), animation: ToasterAnimation.FadeIn);
-                        }
-                        var it = purchaseOrder.PurchaseDetails.Where(x => x.ItemId == row.ItemId).FirstOrDefault();
-                        if (it.MaxQty < textValue)
-                        {
-
-                            textValue = (int)it.MinQty;
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trExceedOrderqauntityError"), animation: ToasterAnimation.FadeIn);
-                        }
-                    }
-                    minQty = (int)textValue;
-                }
-                else
-                    minQty = (int)row.MinQty;
-
-                if (columnName == AppSettings.resourcemanager.GetString("Free") && !t.Text.Equals(""))
-                    freeQty = (int)textValue;
-                else
-                    freeQty = (int)row.FreeQty;
-
-
-                if (columnName == AppSettings.resourcemanager.GetString("trCost") && !t.Text.Equals(""))
-                {
-                    var item = await FillCombo.item.GetItemByCodeOrName(row.ItemCode, (long)cb_LocationId.SelectedValue, (long)cb_SupId.SelectedValue, _PromotionType);
-                    mainCost = textValue;
-                    mainPrice = mainCost / (int)row.Factor * (1 + HelpClass.calcPercentage(1, item[0].Category.ProfitPercentage));
-                }
-                else
-                {
-                    mainCost = (decimal)row.MainCost;
-                    mainPrice = (decimal)row.MainPrice;
-                }
-
-                decimal cost = (mainCost * maxQty) + ((mainCost / (int)row.Factor) * minQty);
-                decimal price = ((int)row.Factor * mainPrice * maxQty) + (mainPrice * minQty);
-
-                billDetails[index].MainCost = mainCost;
-                billDetails[index].MainPrice = mainPrice;
-                billDetails[index].MinQty = minQty;
-                billDetails[index].MaxQty = maxQty;
-                billDetails[index].FreeQty = freeQty;
-                billDetails[index].Cost = cost;
-                billDetails[index].Price = price;
-
-                refreshValues();
-
-                //dg_invoiceDetails.ItemsSource = billDetails;
-                //dg_invoiceDetails.Items.Refresh();
-                if (!forceCancelEdit)
-                {
-                    dg_invoiceDetails.IsEnabled = false;
-                    RefreshInvoiceDetailsDataGrid();
-                }
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            */
-        }
+    
 
         private async void Btn_posting_Click(object sender, RoutedEventArgs e)
         {
@@ -1474,6 +1380,25 @@ namespace POSCA.View.promotion
             {
                 HelpClass.EndAwait(grid_main);
 
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void tb_PromotionPercentage_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                calculatePromotionPrice(billDetails);
+
+                if (!forceCancelEdit)
+                {
+                    dg_invoiceDetails.IsEnabled = false;
+                    RefreshInvoiceDetailsDataGrid();
+                }
+
+            }
+            catch (Exception ex)
+            {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
