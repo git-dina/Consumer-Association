@@ -5799,4 +5799,7 @@ Main Documents</value>
   <data name="OfferQuantity" xml:space="preserve">
     <value>Offer Quantity</value>
   </data>
+  <data name="trBarcodeOfferError" xml:space="preserve">
+    <value>There is an offer on a barcode within the same period</value>
+  </data>
 </root>

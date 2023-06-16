@@ -5138,6 +5138,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is an offer on a barcode within the same period.
+        /// </summary>
+        internal static string trBarcodeOfferError {
+            get {
+                return ResourceManager.GetString("trBarcodeOfferError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Base Information.
         /// </summary>
         internal static string trBaseInformation {

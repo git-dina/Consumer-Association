@@ -439,9 +439,11 @@ namespace POSCA.View.promotion
 
         private async Task addInvoice()
         {
-        
+
             //promotion.LocationId = (long)cb_LocationId.SelectedValue;
-        
+            if (promotion.PromotionId < 0)
+                promotion.PromotionId = 0;
+
             promotion.PromotionType = _PromotionType;
             promotion.PromotionNature = cb_PromotionNature.SelectedValue.ToString();
 
@@ -457,12 +459,14 @@ namespace POSCA.View.promotion
             promotion.CreateUserId = MainWindow.userLogin.userId;
 
             promotion.PromotionDetails = billDetails;
-            promotion.PromotionLocations = listItemLocations;
+            promotion.PromotionLocations = listItemLocations.Where(x => x.IsSelected == true).ToList();
 
             promotion = await promotion.SavePromotion(promotion);
 
             if (promotion.PromotionId == 0)
                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+            if (promotion.PromotionId == -5)//الباركود عليه عرض ضمن نفس الفترة
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trBarcodeOfferError"), animation: ToasterAnimation.FadeIn);
             else
             {
                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);

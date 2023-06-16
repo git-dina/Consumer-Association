@@ -137,6 +137,7 @@ namespace POSCA.View.windows
                     Barcode = row.Barcode,
                     Factor = row.Factor,
                     ItemId = row.ItemId,
+                    UnitId = (int)row.UnitId,
                     ItemCode = item.Code,
                     ItemName = item.Name,
                     MainCost = row.Cost,
