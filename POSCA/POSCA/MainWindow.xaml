@@ -370,7 +370,7 @@
                                     </Grid.ColumnDefinitions>
                             <Path Fill="#A8AEC6" Tag="secondMenuTitle_dashboard" 
                                   x:Name="path_iconDashboard"
-                                  Stretch="Fill"  
+                                  Stretch="Fill"   FlowDirection="LeftToRight"
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
