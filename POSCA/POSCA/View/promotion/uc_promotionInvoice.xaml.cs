@@ -351,14 +351,17 @@ namespace POSCA.View.promotion
                         col_quantity.Visibility = Visibility.Visible;
                         col_promotionPrice.IsReadOnly = false;
                         brd_branchId.Visibility = Visibility.Collapsed;
-                        brd_locationsGrid.Visibility = Visibility.Visible;
+                        //brd_locationsGrid.Visibility = Visibility.Visible;
+                        rd_locationsGrid.Height = new GridLength(1, GridUnitType.Star);
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
                         col_quantity.Visibility = Visibility.Collapsed;
                         col_promotionPrice.IsReadOnly = true;
                         brd_branchId.Visibility = Visibility.Visible;
-                        brd_locationsGrid.Visibility = Visibility.Collapsed;
+                        //brd_locationsGrid.Visibility = Visibility.Collapsed;
+                        rd_locationsGrid.Height = new GridLength(0, GridUnitType.Pixel);
+
 
                         break;
 
@@ -393,14 +396,16 @@ namespace POSCA.View.promotion
                         tb_PromotionPercentage.Visibility = Visibility.Collapsed;
                         col_quantity.Visibility = Visibility.Visible;
                         brd_branchId.Visibility = Visibility.Collapsed;
-                        brd_locationsGrid.Visibility = Visibility.Visible;
+                        //brd_locationsGrid.Visibility = Visibility.Visible;
+                        rd_locationsGrid.Height = new GridLength(1, GridUnitType.Star);
 
                         break;
                     default:
                         tb_PromotionPercentage.Visibility = Visibility.Visible;
                         col_quantity.Visibility = Visibility.Collapsed;
                         brd_branchId.Visibility = Visibility.Visible;
-                        brd_locationsGrid.Visibility = Visibility.Collapsed;
+                        //brd_locationsGrid.Visibility = Visibility.Collapsed;
+                        rd_locationsGrid.Height = new GridLength(0, GridUnitType.Pixel);
 
                         break;
 
