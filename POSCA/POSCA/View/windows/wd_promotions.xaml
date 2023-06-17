@@ -158,7 +158,7 @@
                         Margin="0" Padding="0" Background="{StaticResource SecondColor}">
                                     <Button  BorderBrush="{x:Null}"  
                     Background="{x:Null}" 
-                        x:Name="btn_search" 
+                        x:Name="btn_search" Foreground="White"
                         materialDesign:ButtonAssist.CornerRadius="15"
                         Padding="0"  
                      
