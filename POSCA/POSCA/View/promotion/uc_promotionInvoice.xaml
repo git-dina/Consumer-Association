@@ -295,7 +295,7 @@
         <Grid x:Name="brd_grid1_1" Grid.Row="1" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition x:Name="rd_locationsGrid" Height="*"/>
             </Grid.RowDefinitions>
         <Border 
             BorderThickness="0"  
@@ -568,7 +568,7 @@
                                 <DataGridTemplateColumn  Header="IsSelected"   >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <CheckBox  x:Name="chb_locIsSelected" 
+                                            <CheckBox  x:Name="chb_locIsSelected1" 
                                                 FlowDirection="LeftToRight" 
                                                         IsEnabled="{Binding ElementName=chb_locIsSelected, Path=IsEnabled}"
                                                         IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
