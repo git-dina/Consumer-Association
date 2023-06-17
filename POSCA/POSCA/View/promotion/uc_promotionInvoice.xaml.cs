@@ -372,6 +372,13 @@ namespace POSCA.View.promotion
                         break;
 
                 }
+
+                if(promotion.IsStoped == true)
+                {
+                    btn_save.IsEnabled = false;
+                    btn_stop.IsEnabled = false;
+                    col_IsItemStoped.IsReadOnly = true;
+                }
             }
         }
 
