@@ -76,6 +76,29 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+
+        public async Task<List<Promotion>> SearchPromotions(long locationId, long invNumber, string promotionType,  DateTime? fromDate = null, DateTime? toDate = null)
+        {
+            var result = new List<Promotion>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Promotion/SearchPromotions";
+
+            parameters.Add("locationId", locationId.ToString());
+            parameters.Add("invNumber", invNumber.ToString());
+            parameters.Add("promotionType", promotionType);
+            parameters.Add("fromDate", fromDate.ToString());
+            parameters.Add("toDate", toDate.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Promotion>(c.Value));
+                }
+            }
+            return result;
+        }
         #endregion
     }
 

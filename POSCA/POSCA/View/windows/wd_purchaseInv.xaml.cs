@@ -108,6 +108,8 @@ namespace POSCA.View.windows
             dg_purchaseInvoice.Columns[2].Header = AppSettings.resourcemanager.GetString("Supplier");
             dg_purchaseInvoice.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
 
+            btn_search.Content = AppSettings.resourcemanager.GetString("trSearch");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSelect");
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)

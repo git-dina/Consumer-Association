@@ -204,7 +204,7 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*"  Header="PromotionNumber" Binding="{Binding Path=PromotionNumber, Mode=OneWay}"/>
+                                    <DataGridTextColumn Width="*"  Header="PromotionNumber" Binding="{Binding Path=PromotionId, Mode=OneWay}"/>
                                     <DataGridTextColumn Width="*"  Header="PromotionType" Binding="{Binding Path=PromotionType, Mode=OneWay,  Converter={StaticResource PromotionTypeConverter }}"/>
                                     <DataGridTextColumn Width="*"  Header="PromotionNature" Binding="{Binding Path=PromotionNature, Mode=OneWay,  Converter={StaticResource PromotionNatureConverter }}"/>
                                     <DataGridTextColumn Width="*"  Header="PromotionStartDate" Binding="{Binding Path=PromotionStartDate, Mode=OneWay, Converter={StaticResource dateFrameConverter }}"/>

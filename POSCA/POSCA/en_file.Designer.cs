@@ -2411,6 +2411,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Offer Nature.
+        /// </summary>
+        internal static string OfferNature {
+            get {
+                return ResourceManager.GetString("OfferNature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offer Nature....
         /// </summary>
         internal static string OfferNatureHint {
@@ -13932,7 +13941,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to أدخل هنا للبدء بالبحث....
+        ///   Looks up a localized string similar to Enter here to start searching....
         /// </summary>
         internal static string trSearchHint {
             get {
@@ -13941,7 +13950,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المعلوامات الثانوية.
+        ///   Looks up a localized string similar to Secondary Information.
         /// </summary>
         internal static string trSecondaryInformation {
             get {

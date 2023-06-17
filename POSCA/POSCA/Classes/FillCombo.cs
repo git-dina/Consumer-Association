@@ -796,6 +796,23 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "value";
 
         }
+        static public void fillReceiptsTypesWithDefault(ComboBox combo)
+        {
+       
+            if (ReceiptsTypesList is null)
+                RefreshReceiptsTypes();
+
+            var lst = ReceiptsTypesList.ToList();
+            keyValueString sup = new keyValueString();
+            sup.key = "";
+            sup.value = "-";
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+
+        }
         #endregion
 
         #region CustomFreeTypes

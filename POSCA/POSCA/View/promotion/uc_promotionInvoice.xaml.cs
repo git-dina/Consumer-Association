@@ -887,13 +887,13 @@ namespace POSCA.View.promotion
 
         private void Btn_promotionOrders_Click(object sender, RoutedEventArgs e)
         {
-            /*
+           
             try
             {
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
-                wd_promotionInv w = new wd_promotionInv();
-
+                wd_promotions w = new wd_promotions();
+                w.windowTitle = AppSettings.resourcemanager.GetString("PromotionalOffers");
                 w.ShowDialog();
                 if (w.isOk)
                 {
@@ -911,7 +911,7 @@ namespace POSCA.View.promotion
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
+          
         }
 
         public void fillPromotionInputs(Promotion invoice)
@@ -920,7 +920,7 @@ namespace POSCA.View.promotion
             this.DataContext = invoice;
 
             buildInvoiceDetails(invoice);
-
+            setItemLocationsData();
             ControlsEditable();
            
         }

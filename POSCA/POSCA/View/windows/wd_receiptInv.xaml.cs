@@ -78,8 +78,11 @@ namespace POSCA.View.windows
 
                 await FillCombo.fillLocations(cb_LocationId);
                 FillCombo.fillReceiptsTypes(cb_ReceiptType);
-
-
+                if (invType == "return")
+                {
+                    col_receiptType.Visibility = Visibility.Collapsed;
+                    brd_receiptType.Visibility = Visibility.Collapsed;
+                }
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -98,6 +101,7 @@ namespace POSCA.View.windows
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_searchInvNumber, AppSettings.resourcemanager.GetString("OrderNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ReceiptType, AppSettings.resourcemanager.GetString("ReceiptTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_FromDate, AppSettings.resourcemanager.GetString("trFrom"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ToDate, AppSettings.resourcemanager.GetString("trTo"));
           
@@ -106,6 +110,8 @@ namespace POSCA.View.windows
             dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("Location");
             dg_receipt.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
 
+            btn_search.Content = AppSettings.resourcemanager.GetString("trSearch");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSelect");
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -127,8 +133,14 @@ namespace POSCA.View.windows
             try
             {
                 if (cb_LocationId.SelectedValue != null)
-                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text,invType,
-                                        dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
+                {
+                    string receiptType = "";
+                    if (cb_ReceiptType.SelectedValue != null)
+                        receiptType = cb_ReceiptType.SelectedValue.ToString();
+
+                    await searchInvoices((long)cb_LocationId.SelectedValue, tb_searchInvNumber.Text, invType,
+                                       receiptType, dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
+                }
             }
             catch
             {
@@ -150,13 +162,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string invNumber,string invType, DateTime? fromDate = null, DateTime? toDate = null)
+        private async Task searchInvoices(long locationId, string invNumber,string invType,string receiptType=null, DateTime? fromDate = null, DateTime? toDate = null)
         {
             try
             {
               
                 HelpClass.StartAwait(grid_main);
-                var invoices = await receipt.searchOrders(locationId, invNumber, invType, fromDate, toDate);
+                var invoices = await receipt.searchOrders(locationId, invNumber, invType, receiptType, fromDate, toDate);
                 dg_receipt.ItemsSource = invoices;
                 dg_receipt.Items.Refresh();
                 HelpClass.EndAwait(grid_main);

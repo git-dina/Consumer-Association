@@ -3966,10 +3966,10 @@ Main Documents</value>
     <value>Search</value>
   </data>
   <data name="trSearchHint" xml:space="preserve">
-    <value>أدخل هنا للبدء بالبحث...</value>
+    <value>Enter here to start searching...</value>
   </data>
   <data name="trSecondaryInformation" xml:space="preserve">
-    <value>المعلوامات الثانوية</value>
+    <value>Secondary Information</value>
   </data>
   <data name="trSecondLevel" xml:space="preserve">
     <value>المسار الثانوي</value>
@@ -5807,5 +5807,8 @@ Main Documents</value>
   </data>
   <data name="trBarcodeOfferError" xml:space="preserve">
     <value>There is an offer on a barcode within the same period</value>
+  </data>
+  <data name="OfferNature" xml:space="preserve">
+    <value>Offer Nature</value>
   </data>
 </root>

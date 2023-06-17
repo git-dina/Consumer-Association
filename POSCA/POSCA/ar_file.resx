@@ -6062,4 +6062,7 @@
   <data name="trBarcodeOfferError" xml:space="preserve">
     <value>يوجد باركود عليه عرض ضمن نفس الفترة</value>
   </data>
+  <data name="OfferNature" xml:space="preserve">
+    <value>طبيعة العرض</value>
+  </data>
 </root>

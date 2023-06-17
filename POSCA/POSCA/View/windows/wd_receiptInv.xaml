@@ -111,7 +111,7 @@
                                      />
                                     </Grid>
                                 </Border>
-                                <Border Background="White" Grid.Column="3" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Border x:Name="brd_receiptType" Background="White" Grid.Column="3" Height="40" CornerRadius="0" Margin="5,0"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                     <Grid   >
 
                                         <ComboBox x:Name="cb_ReceiptType"    SelectedValue="{Binding ReceiptType, Mode=TwoWay}"
@@ -215,7 +215,7 @@
                                     </Style>
                                 </DataGrid.Resources>
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Width="*"  Header="ReceiptType" Binding="{Binding Path=ReceiptType, Mode=OneWay,  Converter={StaticResource receiptTypeConverter }}"/>
+                                    <DataGridTextColumn Width="*" x:Name="col_receiptType"  Header="ReceiptType" Binding="{Binding Path=ReceiptType, Mode=OneWay,  Converter={StaticResource receiptTypeConverter }}"/>
                                     <DataGridTextColumn Width="*"  Header="InvNumber" Binding="{Binding Path=InvNumber, Mode=OneWay}"/>
                                     <DataGridTextColumn Width="*"  Header="LocationName" Binding="{Binding Path=LocationName, Mode=OneWay}"/>
                                     <DataGridTextColumn Width="*"  Header="OrderDate" Binding="{Binding Path=ReceiptDate, Mode=OneWay, Converter={StaticResource dateFrameConverter }}"/>

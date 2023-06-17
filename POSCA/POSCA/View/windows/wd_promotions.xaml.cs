@@ -47,9 +47,10 @@ namespace POSCA.View.windows
 
         public bool isOk { get; set; }
         public string proType { get; set; }
+        public string windowTitle { get; set; }
 
 
-        public Receipt receipt = new Receipt();
+        public Promotion promotion = new Promotion();
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
@@ -77,7 +78,7 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-                //await FillCombo.fillLocations(cb_LocationId);
+                await FillCombo.fillLocations(cb_LocationId);
                 FillCombo.fillPromotionTypes(cb_PromotionType);
 
 
@@ -95,16 +96,21 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("Receipts");
+            txt_title.Text = windowTitle;
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionType, AppSettings.resourcemanager.GetString("OfferTypeHint"));
              MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_FromDate, AppSettings.resourcemanager.GetString("trFrom"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ToDate, AppSettings.resourcemanager.GetString("trTo"));
 
-            //dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("PromotionType");
-            //dg_receipt.Columns[1].Header = AppSettings.resourcemanager.GetString("OrderNum");
-            //dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("Location");
-            //dg_receipt.Columns[3].Header = AppSettings.resourcemanager.GetString("DocumentDate");
+            dg_receipt.Columns[0].Header = AppSettings.resourcemanager.GetString("Voucherno");
+            dg_receipt.Columns[1].Header = AppSettings.resourcemanager.GetString("OfferType");
+            dg_receipt.Columns[2].Header = AppSettings.resourcemanager.GetString("OfferNature");
+            dg_receipt.Columns[3].Header = AppSettings.resourcemanager.GetString("trStartDate");
+            dg_receipt.Columns[4].Header = AppSettings.resourcemanager.GetString("trEndDate");
+
+            btn_search.Content = AppSettings.resourcemanager.GetString("trSearch");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSelect");
 
         }
 
@@ -126,9 +132,9 @@ namespace POSCA.View.windows
         {
             try
             {
-                //if (cb_LocationId.SelectedValue != null)
-                //    await searchInvoices((long)cb_LocationId.SelectedValue,  proType,
-                //                        dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
+                if (cb_LocationId.SelectedValue != null)
+                    await searchInvoices((long)cb_LocationId.SelectedValue,  proType,
+                                        dp_FromDate.SelectedDate, dp_ToDate.SelectedDate);
             }
             catch
             {
@@ -150,13 +156,13 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async Task searchInvoices(long locationId, string PromotionNumber, string proType, DateTime? fromDate = null, DateTime? toDate = null)
+        private async Task searchInvoices(long locationId, string proType, DateTime? fromDate = null, DateTime? toDate = null)
         {
             try
             {
 
                 HelpClass.StartAwait(grid_main);
-                var invoices = await receipt.searchOrders(locationId, PromotionNumber, proType, fromDate, toDate);
+                var invoices = await promotion.SearchPromotions(locationId, 0, proType, fromDate, toDate);
                 dg_receipt.ItemsSource = invoices;
                 dg_receipt.Items.Refresh();
                 HelpClass.EndAwait(grid_main);
@@ -176,7 +182,7 @@ namespace POSCA.View.windows
 
                 if (dg_receipt.SelectedIndex > -1)
                 {
-                    receipt = dg_receipt.SelectedItem as Receipt;
+                    promotion = dg_receipt.SelectedItem as Promotion;
                     isOk = true;
                     this.Close();
                 }
@@ -314,7 +320,7 @@ namespace POSCA.View.windows
         {
             try
             {
-                receipt = dg_receipt.SelectedItem as Receipt;
+                promotion = dg_receipt.SelectedItem as Promotion;
                 isOk = true;
                 this.Close();
             }
