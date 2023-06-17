@@ -943,6 +943,7 @@ namespace POSCA.View.promotion
                 if (w.isOk)
                 {
                     promotion = w.promotion;
+                    _PromotionType = promotion.PromotionType;
                     fillPromotionInputs(promotion);
                 }
                 Window.GetWindow(this).Opacity = 1;
