@@ -202,7 +202,7 @@ namespace POSCA.View.catalog
             //tt_preview.Content = AppSettings.resourcemanager.GetString("trPreview");
             //tt_pieChart.Content = AppSettings.resourcemanager.GetString("trPieChart");
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
-
+            btn_search.Content = AppSettings.resourcemanager.GetString("trSearch");
         }
 
         #region Loading

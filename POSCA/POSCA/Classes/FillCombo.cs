@@ -246,6 +246,17 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
+        
+        static public async Task fillUnBlockedSuppliers(ComboBox combo)
+        {
+            if (suppliersList is null)
+                await RefreshSuppliers();
+
+            combo.ItemsSource = suppliersList.Where(x => x.IsBlocked == false).ToList();
+            combo.SelectedValuePath = "SupId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
         #endregion
 
         #region Branch

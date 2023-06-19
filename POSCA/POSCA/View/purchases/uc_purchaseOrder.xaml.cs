@@ -193,7 +193,7 @@ namespace POSCA.View.purchases
         {
             try
             {
-                await FillCombo.fillSuppliers(cb_SupId);
+                await FillCombo.fillUnBlockedSuppliers(cb_SupId);
                 if (FillCombo.suppliersList is null)
                     loading_RefrishSuppliers();
                 else
@@ -719,56 +719,65 @@ namespace POSCA.View.purchases
                             item1 = w.item;
                             barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                         }
+                        Window.GetWindow(this).Opacity = 1;
                     }
 
 
                     if (item1 != null)
                     {
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_addPurchaseItem w = new wd_addPurchaseItem();
-
-                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
-                        w.newPurchaseItem = new PurchaseInvDetails()
+                        if (item1.ItemStatus != "normal")
                         {
-                            ItemId = item1.ItemId,
-                            ItemCode = item1.Code,
-                            ItemName = item1.Name,
-                            ItemUnit = item1.ItemUnit,
-                            Factor = item1.Factor,
-                            MainCost = item1.MainCost,
-                            CoopDiscount = supplier.DiscountPercentage,
-                            ConsumerDiscount = item1.ConsumerDiscPerc,
-                            MainPrice = item1.Price,
-                            Barcode = barcode,
-                            Balance = balance,
-                        };
-                        w.ShowDialog();
-
-                        if (w.isOk)
-                        {
-                            //check billDetails count
-                            if (billDetails.Count < 20)
-                            {
-                                int maxQty = 0;
-                                int minQty = 0;
-                                if (w.newPurchaseItem.MaxQty != null)
-                                    maxQty = (int)w.newPurchaseItem.MaxQty;
-                                if (w.newPurchaseItem.MinQty != null)
-                                    minQty = (int)w.newPurchaseItem.MinQty;
-                                w.newPurchaseItem.Cost = (w.newPurchaseItem.MainCost * maxQty) + ((w.newPurchaseItem.MainCost / (int)w.newPurchaseItem.Factor) * minQty);
-                                w.newPurchaseItem.Price = ((int)w.newPurchaseItem.Factor * w.newPurchaseItem.MainPrice * maxQty) + (w.newPurchaseItem.MainPrice * minQty);
-
-                                if (w.newPurchaseItem.MinQty == null)
-                                    w.newPurchaseItem.MinQty = 0;
-                                if (w.newPurchaseItem.FreeQty == null)
-                                    w.newPurchaseItem.FreeQty = 0;
-                                addItemToBill(w.newPurchaseItem);
-                            }
-                            else
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemStatusNotNormalError"), animation: ToasterAnimation.FadeIn);
 
                         }
-                        Window.GetWindow(this).Opacity = 1;
+                        else
+                        {
+                            Window.GetWindow(this).Opacity = 0.2;
+                            wd_addPurchaseItem w = new wd_addPurchaseItem();
+
+                            long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
+                            w.newPurchaseItem = new PurchaseInvDetails()
+                            {
+                                ItemId = item1.ItemId,
+                                ItemCode = item1.Code,
+                                ItemName = item1.Name,
+                                ItemUnit = item1.ItemUnit,
+                                Factor = item1.Factor,
+                                MainCost = item1.MainCost,
+                                CoopDiscount = supplier.DiscountPercentage,
+                                ConsumerDiscount = item1.ConsumerDiscPerc,
+                                MainPrice = item1.Price,
+                                Barcode = barcode,
+                                Balance = balance,
+                            };
+                            w.ShowDialog();
+
+                            if (w.isOk)
+                            {
+                                //check billDetails count
+                                if (billDetails.Count < 20)
+                                {
+                                    int maxQty = 0;
+                                    int minQty = 0;
+                                    if (w.newPurchaseItem.MaxQty != null)
+                                        maxQty = (int)w.newPurchaseItem.MaxQty;
+                                    if (w.newPurchaseItem.MinQty != null)
+                                        minQty = (int)w.newPurchaseItem.MinQty;
+                                    w.newPurchaseItem.Cost = (w.newPurchaseItem.MainCost * maxQty) + ((w.newPurchaseItem.MainCost / (int)w.newPurchaseItem.Factor) * minQty);
+                                    w.newPurchaseItem.Price = ((int)w.newPurchaseItem.Factor * w.newPurchaseItem.MainPrice * maxQty) + (w.newPurchaseItem.MainPrice * minQty);
+
+                                    if (w.newPurchaseItem.MinQty == null)
+                                        w.newPurchaseItem.MinQty = 0;
+                                    if (w.newPurchaseItem.FreeQty == null)
+                                        w.newPurchaseItem.FreeQty = 0;
+                                    addItemToBill(w.newPurchaseItem);
+                                }
+                                else
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
+
+                            }
+                            Window.GetWindow(this).Opacity = 1;
+                        }
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);

@@ -798,47 +798,43 @@ namespace POSCA.View.promotion
                         {
                             item1 = w.item;
                         }
+                        Window.GetWindow(this).Opacity = 1;
                     }
 
 
                     if (item1 != null)
                     {
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_itemUnitsPromotion w = new wd_itemUnitsPromotion();
-                        w.item = item1;
-                        w.promotionType = _PromotionType;
-                        w.selectedBarcode = barcode;
-                        w.ShowDialog();
-
-                        if (w.isOk)
+                        if (item1.ItemStatus != "normal")
                         {
-                            var lst = new List<PromotionDetails>();
-                            
-                            if (_PromotionType == "percentage")
-                                w.promotionDetails = calculatePromotionPrice(w.promotionDetails);
-                            foreach(var row in w.promotionDetails)
-                            {
-                                if (row.IsSelected == true)
-                                    lst.Add(row);
-                            }
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemStatusNotNormalError"), animation: ToasterAnimation.FadeIn);
 
-                            //    int maxQty = 0;
-                            //    int minQty = 0;
-                            //    if (w.newPromotionItem.MaxQty != null)
-                            //        maxQty = (int)w.newPromotionItem.MaxQty;
-                            //    if (w.newPromotionItem.MinQty != null)
-                            //        minQty = (int)w.newPromotionItem.MinQty;
-                            //    w.newPromotionItem.Cost = (w.newPromotionItem.MainCost * maxQty) + ((w.newPromotionItem.MainCost / (int)w.newPromotionItem.Factor) * minQty);
-                            //    w.newPromotionItem.Price = ((int)w.newPromotionItem.Factor * w.newPromotionItem.MainPrice * maxQty) + (w.newPromotionItem.MainPrice * minQty);
-
-                            //    if (w.newPromotionItem.MinQty == null)
-                            //        w.newPromotionItem.MinQty = 0;
-                            //    if (w.newPromotionItem.FreeQty == null)
-                            //        w.newPromotionItem.FreeQty = 0;
-                            addItemToBill(lst);
-                           
                         }
-                        Window.GetWindow(this).Opacity = 1;
+                        else
+                        {
+                            Window.GetWindow(this).Opacity = 0.2;
+                            wd_itemUnitsPromotion w = new wd_itemUnitsPromotion();
+                            w.item = item1;
+                            w.promotionType = _PromotionType;
+                            w.selectedBarcode = barcode;
+                            w.ShowDialog();
+
+                            if (w.isOk)
+                            {
+                                var lst = new List<PromotionDetails>();
+
+                                if (_PromotionType == "percentage")
+                                    w.promotionDetails = calculatePromotionPrice(w.promotionDetails);
+                                foreach (var row in w.promotionDetails)
+                                {
+                                    if (row.IsSelected == true)
+                                        lst.Add(row);
+                                }
+
+                                addItemToBill(lst);
+
+                            }
+                            Window.GetWindow(this).Opacity = 1;
+                        }
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);

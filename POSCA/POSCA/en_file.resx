@@ -5811,4 +5811,7 @@ Main Documents</value>
   <data name="OfferNature" xml:space="preserve">
     <value>Offer Nature</value>
   </data>
+  <data name="trItemStatusNotNormalError" xml:space="preserve">
+    <value>Item status is not normal</value>
+  </data>
 </root>

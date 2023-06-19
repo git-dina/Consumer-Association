@@ -9899,6 +9899,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Item status is not normal.
+        /// </summary>
+        internal static string trItemStatusNotNormalError {
+            get {
+                return ResourceManager.GetString("trItemStatusNotNormalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ضريبة المواد.
         /// </summary>
         internal static string trItemsTax {

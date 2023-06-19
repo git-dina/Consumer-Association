@@ -682,56 +682,65 @@ namespace POSCA.View.receipts
                             item1 = w.item;
                             barcode = item1.ItemUnits.FirstOrDefault().Barcode;
                         }
+                        Window.GetWindow(this).Opacity = 1;
                     }
 
 
                     if (item1 != null)
                     {
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_addReturnItem w = new wd_addReturnItem();
-                        long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
-
-                        w.newReceiptItem = new RecieptDetails()
+                        if (item1.ItemStatus != "normal")
                         {
-                            ItemId = item1.ItemId,
-                            ItemCode = item1.Code,
-                            ItemName = item1.Name,
-                            ItemUnit = item1.ItemUnit,
-                            Factor = item1.Factor,
-                            MainCost = item1.MainCost,
-                            CoopDiscount = supplier.DiscountPercentage,
-                            ConsumerDiscount = item1.ConsumerDiscPerc,
-                            MainPrice = item1.Price,
-                            Barcode = barcode,
-                            Balance = balance,
-                        };
-                        w.ShowDialog();
-
-                        if (w.isOk)
-                        {
-                            //check billDetails count
-                            if (billDetails.Count < 20)
-                            {
-                                int minQty = 0;
-
-                                if (w.newReceiptItem.MinQty != null)
-                                    minQty = (int)w.newReceiptItem.MinQty;
-                                w.newReceiptItem.Cost = ((w.newReceiptItem.MainCost / (int)w.newReceiptItem.Factor) * minQty);
-                                w.newReceiptItem.Price =(w.newReceiptItem.MainPrice * minQty);
-
-                                if (w.newReceiptItem.MinQty == null)
-                                    w.newReceiptItem.MinQty = 0;
-                                if (w.newReceiptItem.MaxQty == null)
-                                    w.newReceiptItem.MaxQty = 0;
-                                if (w.newReceiptItem.FreeQty == null)
-                                    w.newReceiptItem.FreeQty = 0;
-                                addItemToBill(w.newReceiptItem);
-                            }
-                            else
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemStatusNotNormalError"), animation: ToasterAnimation.FadeIn);
 
                         }
-                        Window.GetWindow(this).Opacity = 1;
+                        else
+                        {
+                            Window.GetWindow(this).Opacity = 0.2;
+                            wd_addReturnItem w = new wd_addReturnItem();
+                            long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
+
+                            w.newReceiptItem = new RecieptDetails()
+                            {
+                                ItemId = item1.ItemId,
+                                ItemCode = item1.Code,
+                                ItemName = item1.Name,
+                                ItemUnit = item1.ItemUnit,
+                                Factor = item1.Factor,
+                                MainCost = item1.MainCost,
+                                CoopDiscount = supplier.DiscountPercentage,
+                                ConsumerDiscount = item1.ConsumerDiscPerc,
+                                MainPrice = item1.Price,
+                                Barcode = barcode,
+                                Balance = balance,
+                            };
+                            w.ShowDialog();
+
+                            if (w.isOk)
+                            {
+                                //check billDetails count
+                                if (billDetails.Count < 20)
+                                {
+                                    int minQty = 0;
+
+                                    if (w.newReceiptItem.MinQty != null)
+                                        minQty = (int)w.newReceiptItem.MinQty;
+                                    w.newReceiptItem.Cost = ((w.newReceiptItem.MainCost / (int)w.newReceiptItem.Factor) * minQty);
+                                    w.newReceiptItem.Price = (w.newReceiptItem.MainPrice * minQty);
+
+                                    if (w.newReceiptItem.MinQty == null)
+                                        w.newReceiptItem.MinQty = 0;
+                                    if (w.newReceiptItem.MaxQty == null)
+                                        w.newReceiptItem.MaxQty = 0;
+                                    if (w.newReceiptItem.FreeQty == null)
+                                        w.newReceiptItem.FreeQty = 0;
+                                    addItemToBill(w.newReceiptItem);
+                                }
+                                else
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
+
+                            }
+                            Window.GetWindow(this).Opacity = 1;
+                        }
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
