@@ -6065,6 +6065,15 @@
   <data name="OfferNature" xml:space="preserve">
     <value>طبيعة العرض</value>
   </data>
+  <data name="CarriedOut" xml:space="preserve">
+    <value>مرحل</value>
+  </data>
+  <data name="CopyPriceToPurchaseOrders" xml:space="preserve">
+    <value>نسخ السعر لطلبات الشراء</value>
+  </data>
+  <data name="PromotionStatusHint" xml:space="preserve">
+    <value>حالة العرض...</value>
+  </data>
   <data name="trItemStatusNotNormalError" xml:space="preserve">
     <value>حالة الصنف غير طبيعية</value>
   </data>

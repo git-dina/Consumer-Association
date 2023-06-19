@@ -421,6 +421,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Carried Out.
+        /// </summary>
+        internal static string CarriedOut {
+            get {
+                return ResourceManager.GetString("CarriedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to cartoon.
         /// </summary>
         internal static string cartoon {
@@ -687,6 +696,15 @@ namespace POSCA {
         internal static string copiesCount {
             get {
                 return ResourceManager.GetString("copiesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Price To Orders.
+        /// </summary>
+        internal static string CopyPriceToPurchaseOrders {
+            get {
+                return ResourceManager.GetString("CopyPriceToPurchaseOrders", resourceCulture);
             }
         }
         
@@ -3064,6 +3082,15 @@ namespace POSCA {
         internal static string PromotionalOffers {
             get {
                 return ResourceManager.GetString("PromotionalOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promotion Status....
+        /// </summary>
+        internal static string PromotionStatusHint {
+            get {
+                return ResourceManager.GetString("PromotionStatusHint", resourceCulture);
             }
         }
         

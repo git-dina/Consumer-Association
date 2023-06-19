@@ -400,8 +400,63 @@
 
                                 </Grid>
                             </Border>
-
+                            <Grid x:Name="grd_posting">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  Grid.Row="4" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_PromotionStatus" Grid.Row="8"  Padding="10,0,5,0"  
+                                     
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="Status..."    
+                                        Foreground="{StaticResource textColor}" 
+                                      BorderThickness="0" IsReadOnly="true"
+                                     BorderBrush="AliceBlue" 
+                                    materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                    Height="40"   Margin="0" 
+                                    />      
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PromotionStatus" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="1" 
+                    BorderThickness="0"  Height="35"
+                        CornerRadius="7" BorderBrush="Black"
+                    Background="{StaticResource SecondColor}" Padding="0" Margin="5 5 10 5"
+                    >
+                                    <Button   
+                            Grid.Column="1"  Padding="0"    
+                                TabIndex="-1"
+                                Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
+                                Margin="5 0 5 0" IsEnabled="True"
+                                Content="posting"
+                        x:Name="btn_posting" 
+                        materialDesign:ButtonAssist.CornerRadius="15"
+                    Click="Btn_posting_Click"
+                            FontSize="12" FontWeight="Bold" 
+                  Foreground="White" />
+                                </Border>
+                            </Grid>
                             <Border Grid.Row="6" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <StackPanel x:Name="sp_ReturnType" 
+                                Visibility="Visible" 
+                                Grid.Column="1"
+                                Orientation="Horizontal" Grid.Row="3"  Margin="5,0,10,0">
+                                    <TextBlock  x:Name="txt_CopyPrice"
+                               Margin="5,5,5,5" Text="CopyPrice" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                                    <ToggleButton Grid.Column="1"  x:Name="tgl_CopyPrice"  IsChecked="{Binding CopyPrice, Mode=TwoWay}"
+                                 VerticalAlignment="Center" Padding="10,15,5,5"
+                                 Margin="0" Height="13" Width="28" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Row="7" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <DatePicker  x:Name="dp_PromotionDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"

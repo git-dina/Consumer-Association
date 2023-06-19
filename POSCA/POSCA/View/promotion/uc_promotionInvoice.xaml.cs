@@ -145,10 +145,12 @@ namespace POSCA.View.promotion
             chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
             btn_stop.Content = AppSettings.resourcemanager.GetString("Terminate");
+            btn_posting.Content = AppSettings.resourcemanager.GetString("Posting");
 
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OfferDetails");
             txt_offerLocations.Text = AppSettings.resourcemanager.GetString("OfferLocations");
+            txt_CopyPrice.Text = AppSettings.resourcemanager.GetString("CopyPriceToPurchaseOrders");
 
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Ref, AppSettings.resourcemanager.GetString("RefHint"));
@@ -156,6 +158,7 @@ namespace POSCA.View.promotion
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_LocationId, AppSettings.resourcemanager.GetString("trBranchHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PromotionNature, AppSettings.resourcemanager.GetString("OfferNatureHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PromotionStatus, AppSettings.resourcemanager.GetString("PromotionStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionDate, AppSettings.resourcemanager.GetString("OfferDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionStartDate, AppSettings.resourcemanager.GetString("trStartDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_PromotionEndDate, AppSettings.resourcemanager.GetString("trEndDateHint"));
@@ -321,8 +324,32 @@ namespace POSCA.View.promotion
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private void ControlsEditable()
         {
-          
-            if (promotion.PromotionId.Equals(0))
+            switch (_PromotionType)
+            {
+
+                case "quantity":
+
+                    tb_PromotionPercentage.Visibility = Visibility.Collapsed;
+                    col_quantity.Visibility = Visibility.Visible;
+                    col_promotionPrice.IsReadOnly = false;
+                    brd_branchId.Visibility = Visibility.Collapsed;
+                    //brd_locationsGrid.Visibility = Visibility.Visible;
+                    rd_locationsGrid.Height = new GridLength(1, GridUnitType.Star);
+                    break;
+                default:
+                    tb_PromotionPercentage.Visibility = Visibility.Visible;
+                    col_quantity.Visibility = Visibility.Collapsed;
+                    col_promotionPrice.IsReadOnly = true;
+                    brd_branchId.Visibility = Visibility.Visible;
+                    //brd_locationsGrid.Visibility = Visibility.Collapsed;
+                    rd_locationsGrid.Height = new GridLength(0, GridUnitType.Pixel);
+
+
+                    break;
+
+            }
+
+            if (promotion.PromotionId.Equals(0) )
             {
                 dg_invoiceDetails.Columns[0].Visibility = Visibility.Visible;
                 col_IsItemStoped.Visibility = Visibility.Collapsed;
@@ -330,7 +357,8 @@ namespace POSCA.View.promotion
 
                 btn_save.IsEnabled = true;
                 btn_stop.IsEnabled = false;
-                btn_printInvoice.IsEnabled = false;
+                btn_posting.Visibility = Visibility.Collapsed;
+
                 cb_PromotionType.IsEnabled = true;
                 cb_LocationId.IsEnabled = true;
                 cb_PromotionNature.IsEnabled = true;
@@ -338,34 +366,35 @@ namespace POSCA.View.promotion
                 dp_PromotionDate.IsEnabled = true;
                 dp_PromotionStartDate.IsEnabled = true;
                 dp_PromotionEndDate.IsEnabled = true;
-
+                tgl_CopyPrice.IsEnabled = true;
                 chb_locIsSelected.IsEnabled = true;
 
+                grd_posting.Visibility = Visibility.Collapsed;
                 //check promotion status first
-                switch (_PromotionType)
-                {
+               
+            }
+            else if(promotion.IsTransfer == false)
+            {
+                dg_invoiceDetails.Columns[0].Visibility = Visibility.Collapsed;
+                col_IsItemStoped.Visibility = Visibility.Visible;
+                col_quantity.IsReadOnly = false;
 
-                    case "quantity":
+                btn_save.IsEnabled = true;
+                btn_stop.IsEnabled = false;
+                btn_posting.Visibility = Visibility.Visible;
 
-                        tb_PromotionPercentage.Visibility = Visibility.Collapsed;
-                        col_quantity.Visibility = Visibility.Visible;
-                        col_promotionPrice.IsReadOnly = false;
-                        brd_branchId.Visibility = Visibility.Collapsed;
-                        //brd_locationsGrid.Visibility = Visibility.Visible;
-                        rd_locationsGrid.Height = new GridLength(1, GridUnitType.Star);
-                        break;
-                    default:
-                        tb_PromotionPercentage.Visibility = Visibility.Visible;
-                        col_quantity.Visibility = Visibility.Collapsed;
-                        col_promotionPrice.IsReadOnly = true;
-                        brd_branchId.Visibility = Visibility.Visible;
-                        //brd_locationsGrid.Visibility = Visibility.Collapsed;
-                        rd_locationsGrid.Height = new GridLength(0, GridUnitType.Pixel);
+                cb_PromotionType.IsEnabled = true;
+                cb_LocationId.IsEnabled = true;
+                cb_PromotionNature.IsEnabled = true;
+                tb_PromotionPercentage.IsEnabled = true;
+                dp_PromotionDate.IsEnabled = true;
+                dp_PromotionStartDate.IsEnabled = true;
+                dp_PromotionEndDate.IsEnabled = true;
+                tgl_CopyPrice.IsEnabled = true;
 
+                chb_locIsSelected.IsEnabled = true;
+                grd_posting.Visibility = Visibility.Visible;
 
-                        break;
-
-                }
             }
             else
             {
@@ -374,9 +403,6 @@ namespace POSCA.View.promotion
                 col_promotionPrice.IsReadOnly = true;
                 col_quantity.IsReadOnly = true;
 
-                btn_save.IsEnabled = true;
-                btn_stop.IsEnabled = true;
-                btn_printInvoice.IsEnabled = true;
                 cb_PromotionType.IsEnabled = false;
                 cb_LocationId.IsEnabled = false;
                 cb_PromotionNature.IsEnabled = false;
@@ -386,38 +412,35 @@ namespace POSCA.View.promotion
                 dp_PromotionEndDate.IsEnabled = false;
 
                 chb_locIsSelected.IsEnabled = false;
+                tgl_CopyPrice.IsEnabled = false;
 
-                //check promotion status first
-                switch (_PromotionType)
+                grd_posting.Visibility = Visibility.Visible;
+                btn_posting.Visibility = Visibility.Collapsed;
+
+                if (promotion.IsStoped == false)
                 {
+                  
+                    btn_save.IsEnabled = true;
+                    btn_stop.IsEnabled = true;
+                    col_IsItemStoped.IsReadOnly = false;
 
-                    case "quantity":
-
-                        tb_PromotionPercentage.Visibility = Visibility.Collapsed;
-                        col_quantity.Visibility = Visibility.Visible;
-                        brd_branchId.Visibility = Visibility.Collapsed;
-                        //brd_locationsGrid.Visibility = Visibility.Visible;
-                        rd_locationsGrid.Height = new GridLength(1, GridUnitType.Star);
-
-                        break;
-                    default:
-                        tb_PromotionPercentage.Visibility = Visibility.Visible;
-                        col_quantity.Visibility = Visibility.Collapsed;
-                        brd_branchId.Visibility = Visibility.Visible;
-                        //brd_locationsGrid.Visibility = Visibility.Collapsed;
-                        rd_locationsGrid.Height = new GridLength(0, GridUnitType.Pixel);
-
-                        break;
-
+                   
                 }
-
-                if(promotion.IsStoped == true)
+                else
                 {
+                    
                     btn_save.IsEnabled = false;
                     btn_stop.IsEnabled = false;
                     col_IsItemStoped.IsReadOnly = true;
+
                 }
+                
             }
+
+            if(promotion.PromotionId != 0)
+                btn_printInvoice.IsEnabled = false;
+            else
+                btn_printInvoice.IsEnabled = true;
         }
 
         #endregion
@@ -493,6 +516,11 @@ namespace POSCA.View.promotion
 
             promotion.PromotionType = _PromotionType;
             promotion.PromotionNature = cb_PromotionNature.SelectedValue.ToString();
+
+            if (tgl_CopyPrice.IsChecked == true)
+                promotion.CopyPrice = true;
+            else
+                promotion.CopyPrice = false;
 
             promotion.PromotionDate = (DateTime)dp_PromotionDate.SelectedDate;
             promotion.PromotionStartDate = (DateTime)dp_PromotionStartDate.SelectedDate;
@@ -644,6 +672,8 @@ namespace POSCA.View.promotion
 
             billDetails = new List<PromotionDetails>();
 
+            cb_LocationId.SelectedValue = null;
+   
             await setItemLocationsData();
 
             if (!forceCancelEdit)
@@ -987,6 +1017,11 @@ namespace POSCA.View.promotion
             this.DataContext = invoice;
 
             cb_LocationId.SelectedValue = invoice.PromotionLocations[0].LocationId;
+            if (invoice.IsTransfer)
+                tb_PromotionStatus.Text = AppSettings.resourcemanager.GetString("CarriedOut");
+            else
+                tb_PromotionStatus.Text = AppSettings.resourcemanager.GetString("NotCarriedOver");
+
             buildInvoiceDetails(invoice);
             setItemLocationsData();
             ControlsEditable();

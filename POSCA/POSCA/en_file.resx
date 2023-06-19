@@ -5811,6 +5811,15 @@ Main Documents</value>
   <data name="OfferNature" xml:space="preserve">
     <value>Offer Nature</value>
   </data>
+  <data name="CarriedOut" xml:space="preserve">
+    <value>Carried Out</value>
+  </data>
+  <data name="CopyPriceToPurchaseOrders" xml:space="preserve">
+    <value>Copy Price To Orders</value>
+  </data>
+  <data name="PromotionStatusHint" xml:space="preserve">
+    <value>Promotion Status...</value>
+  </data>
   <data name="trItemStatusNotNormalError" xml:space="preserve">
     <value>Item status is not normal</value>
   </data>
