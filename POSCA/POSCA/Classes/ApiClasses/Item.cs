@@ -147,6 +147,46 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
+        public async Task<List<Item>> GetPromotionItemByCodeOrName(string textSearch,List<long?> locationsId )
+        {
+            var result = new List<Item>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/GetPromotionItemByCodeOrName";
+
+            parameters.Add("textSearch", textSearch);
+            var myContent = JsonConvert.SerializeObject(locationsId);
+            parameters.Add("locationsId", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Item>(c.Value));
+                }
+            }
+            return result;
+        }
+        public async Task<Item> GetPromotionItemByBarcode(string barcode, List<long?> locationsId )
+        {
+            var result = new Item();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/GetPromotionItemByBarcode";
+
+            parameters.Add("barcode", barcode);
+            var myContent = JsonConvert.SerializeObject(locationsId);
+            parameters.Add("locationsId", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Item>(c.Value);
+                }
+            }
+            return result;
+        }
         //public async Task<List<ItemUnit>> GetItemBarcodesByCodeOrName(string textSearch, long locationId)
         //{
         //    var result = new List<ItemUnit>();
@@ -166,7 +206,7 @@ namespace POSCA.Classes.ApiClasses
         //    }
         //    return result;
         //}
-      
+
         public async Task<String> generateItemCode(long supId)
         {
             var result = "";

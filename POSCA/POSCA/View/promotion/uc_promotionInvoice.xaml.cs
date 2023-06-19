@@ -507,13 +507,8 @@ namespace POSCA.View.promotion
             promotion.UpdateUserId = MainWindow.userLogin.userId;
 
             promotion.PromotionDetails = billDetails;
-            if (_PromotionType == "quantity")
-                promotion.PromotionLocations = listItemLocations.Where(x => x.IsSelected == true).ToList();
-            else
-            {
-                promotion.PromotionLocations = new List<PromotionLocations>();
-                promotion.PromotionLocations.Add(new PromotionLocations() { LocationId = (long)cb_LocationId.SelectedValue, IsSelected = true });
-            }
+            promotion.PromotionLocations = listItemLocations.Where(x => x.IsSelected == true).ToList();
+           
             promotion = await promotion.SavePromotion(promotion);
 
             if (promotion.PromotionId == 0)
@@ -751,19 +746,40 @@ namespace POSCA.View.promotion
 
         #endregion
 
+        private bool canSearch()
+        {
+            bool Search = true;
+            if (_PromotionType == "quantity")
+            {
+                var lst = (List<PromotionLocations>)dg_itemLocation.ItemsSource;
+                var isSelected = lst.Where(x => x.IsSelected == true).FirstOrDefault();
+                if (isSelected == null)
+                {
+                    Search = false;
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
+                }
+            }
+            else
+            {
+                if (cb_LocationId.SelectedValue == null)
+                {
+                    Search = false;
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
+                }
+            }
+            return Search;
+        }
         private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
            
             try
             {
-                //if (location == null)
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
-                //else if (supplier == null)
-                //    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplierError"), animation: ToasterAnimation.FadeIn);
-                //else
+                if(canSearch())
                 {
                     HelpClass.StartAwait(grid_main);
+                    List<long?> locationsIds = listItemLocations.Where(x => x.IsSelected == true).Select(x => x.LocationId).ToList();
 
+                    bool itemSelected = true;
                     List<Item> itemLst = new List<Item>();
                     List<PromotionDetails> promotionDetails = new List<PromotionDetails>();
                     Item item1 = null;
@@ -771,7 +787,7 @@ namespace POSCA.View.promotion
                     string barcode = "";
                     if (chk_itemNum.IsChecked == true)
                     {
-                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text);
+                        itemLst = await FillCombo.item.GetPromotionItemByCodeOrName(tb_search.Text, locationsIds);
                         if (itemLst.Count == 1)
                         {
                             item1 = itemLst[0];
@@ -781,25 +797,29 @@ namespace POSCA.View.promotion
                     else
                     {
                         barcode = tb_search.Text;
-                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text);
+                        item1 = await FillCombo.item.GetPromotionItemByBarcode(tb_search.Text,locationsIds);
                     }
 
 
                     if (itemLst.Count > 1)
                     {
                         Window.GetWindow(this).Opacity = 0.2;
-                        wd_addPurchaseItems w = new wd_addPurchaseItems();
+                        wd_addPromotionItems w = new wd_addPromotionItems();
                         w.items = itemLst.ToList();
-                      //  w.supId = (long)cb_SupId.SelectedValue;
-                       // w.locationId = (long)cb_LocationId.SelectedValue;
+
+                        w.locationsId = locationsIds;
 
                         w.ShowDialog();
                         if (w.isOk)
                         {
                             item1 = w.item;
                         }
+                        else
+                            itemSelected = false;
+
                         Window.GetWindow(this).Opacity = 1;
                     }
+
 
 
                     if (item1 != null)
@@ -836,7 +856,7 @@ namespace POSCA.View.promotion
                             Window.GetWindow(this).Opacity = 1;
                         }
                     }
-                    else
+                    else if (itemSelected == true)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
 
                     tb_search.Text = "";
@@ -1460,13 +1480,16 @@ namespace POSCA.View.promotion
             }
         }
 
-        Location location;
+        //Location location;
         private void cb_LocationId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
 
-                location = FillCombo.locationsList.Where(x => x.LocationId == (long)cb_LocationId.SelectedValue).FirstOrDefault();
+                //location = FillCombo.locationsList.Where(x => x.LocationId == (long)cb_LocationId.SelectedValue).FirstOrDefault();
+                
+                promotion.PromotionLocations = new List<PromotionLocations>();
+                promotion.PromotionLocations.Add(new PromotionLocations() { LocationId = (long)cb_LocationId.SelectedValue, IsSelected = true });
             }
             catch (Exception ex)
             {

@@ -293,6 +293,9 @@
     <Compile Include="View\windows\wd_acceptCancelPopup.xaml.cs">
       <DependentUpon>wd_acceptCancelPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_addPromotionItems.xaml.cs">
+      <DependentUpon>wd_addPromotionItems.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_addPurchaseItems.xaml.cs">
       <DependentUpon>wd_addPurchaseItems.xaml</DependentUpon>
     </Compile>
@@ -443,6 +446,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_acceptCancelPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\windows\wd_addPromotionItems.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
