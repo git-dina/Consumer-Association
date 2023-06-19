@@ -202,7 +202,7 @@ namespace POSCA.View.receipts
         {
             try
             {
-                await FillCombo.fillSuppliers(cb_SupId);
+                await FillCombo.fillUnBlockedSuppliers(cb_SupId);
                 if (FillCombo.suppliersList is null)
                     loading_RefrishSuppliers();
                 else
