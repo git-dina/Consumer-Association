@@ -1258,31 +1258,39 @@ namespace POSCA.View.receipts
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxConfirm");
 
-                if (returnOrder.ReceiptStatus == "notCarriedOver")
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
                 {
-                    returnOrder = await returnOrder.PostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+                    HelpClass.StartAwait(grid_main);
 
+                    if (returnOrder.ReceiptStatus == "notCarriedOver")
+                    {
+                        returnOrder = await returnOrder.PostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+
+                    }
+                    else if (returnOrder.ReceiptStatus == "locationTransfer")
+                    {
+                        returnOrder = await returnOrder.CanclePostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+                    }
+
+                    if (returnOrder.ReceiptId == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                    else
+                    {
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                        fillReceiptInputs(returnOrder);
+                    }
+
+                    HelpClass.EndAwait(grid_main);
                 }
-                else if (returnOrder.ReceiptStatus == "locationTransfer")
-                {
-                    returnOrder = await returnOrder.CanclePostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
-                }
-
-
-
-                if (returnOrder.ReceiptId == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                else
-                {
-                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                    fillReceiptInputs(returnOrder);
-                }
-
-                HelpClass.EndAwait(grid_main);
-
             }
             catch (Exception ex)
             {

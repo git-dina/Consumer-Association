@@ -5823,4 +5823,10 @@ Main Documents</value>
   <data name="trItemStatusNotNormalError" xml:space="preserve">
     <value>Item status is not normal</value>
   </data>
+  <data name="Finished" xml:space="preserve">
+    <value>Finished</value>
+  </data>
+  <data name="trMessageStopPromotion" xml:space="preserve">
+    <value>Are you sure to stop this promotion?</value>
+  </data>
 </root>

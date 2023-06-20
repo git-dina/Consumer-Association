@@ -60,14 +60,32 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+        public async Task<Promotion> PostingPromotion(long promotionId, long userId)
+        {
+            var result = new Promotion();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Promotion/PostingPromotion";
 
+            parameters.Add("promotionId", promotionId.ToString());
+            parameters.Add("userId", userId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Promotion>(c.Value);
+                }
+            }
+            return result;
+        }
         public async Task<Promotion> TerminateOffer(long promotionId, long userId)
         {
             var result = new Promotion();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Promotion/TerminateOffer";
 
-            parameters.Add("promotionId", PromotionId.ToString());
+            parameters.Add("promotionId", promotionId.ToString());
             parameters.Add("userId", userId.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);

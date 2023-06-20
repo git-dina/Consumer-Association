@@ -345,7 +345,7 @@
                             </Border>
                             <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <ComboBox x:Name="cb_PromotionType"   
+                                    <ComboBox x:Name="cb_PromotionType" 
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                   materialDesign:HintAssist.Hint="PromotionType..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 

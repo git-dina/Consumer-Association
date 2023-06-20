@@ -6077,4 +6077,10 @@
   <data name="trItemStatusNotNormalError" xml:space="preserve">
     <value>حالة الصنف غير طبيعية</value>
   </data>
+  <data name="Finished" xml:space="preserve">
+    <value>منتهي</value>
+  </data>
+  <data name="trMessageStopPromotion" xml:space="preserve">
+    <value>هل أنت متأكد من إيقاف هذا العرض؟</value>
+  </data>
 </root>

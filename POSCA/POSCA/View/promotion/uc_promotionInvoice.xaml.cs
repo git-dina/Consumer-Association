@@ -383,8 +383,8 @@ namespace POSCA.View.promotion
                 btn_stop.IsEnabled = false;
                 btn_posting.Visibility = Visibility.Visible;
 
-                cb_PromotionType.IsEnabled = true;
-                cb_LocationId.IsEnabled = true;
+                cb_PromotionType.IsEnabled = false;
+                cb_LocationId.IsEnabled = false;
                 cb_PromotionNature.IsEnabled = true;
                 tb_PromotionPercentage.IsEnabled = true;
                 dp_PromotionDate.IsEnabled = true;
@@ -392,7 +392,7 @@ namespace POSCA.View.promotion
                 dp_PromotionEndDate.IsEnabled = true;
                 tgl_CopyPrice.IsEnabled = true;
 
-                chb_locIsSelected.IsEnabled = true;
+                chb_locIsSelected.IsEnabled = false;
                 grd_posting.Visibility = Visibility.Visible;
 
             }
@@ -941,45 +941,7 @@ namespace POSCA.View.promotion
             }
         }
 
-        //private void Btn_purchaseOrders_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    try
-        //    {
-        //        HelpClass.StartAwait(grid_main);
-        //        Window.GetWindow(this).Opacity = 0.2;
-        //        wd_purchaseInv w = new wd_purchaseInv();
-
-        //        string invoiceType = "po";
-        //        w.invoiceType = invoiceType;
-        //        w.invoiceStatus = "orderPlaced";
-
-        //        w.ShowDialog();
-        //        if (w.isOk)
-        //        {
-        //            purchaseOrder = w.purchaseInvoice;
-
-        //            promotion.LocationId = purchaseOrder.LocationId;
-        //            promotion.SupId = purchaseOrder.SupId;
-        //            promotion.PurchaseInvNumber = purchaseOrder.InvNumber;
-
-        //          promotion.NetInvoice= purchaseOrder.CostNet;
-
-        //            fillOrderInputs(purchaseOrder);
-        //        }
-        //        Window.GetWindow(this).Opacity = 1;
-
-        //        HelpClass.EndAwait(grid_main);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        Window.GetWindow(this).Opacity = 1;
-        //        HelpClass.EndAwait(grid_main);
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-        //    }
-
-        //}
+      
 
         private void Btn_promotionOrders_Click(object sender, RoutedEventArgs e)
         {
@@ -1015,9 +977,12 @@ namespace POSCA.View.promotion
         {
             
             this.DataContext = invoice;
-
+            cb_PromotionType.SelectedValue = invoice.PromotionType;
             cb_LocationId.SelectedValue = invoice.PromotionLocations[0].LocationId;
-            if (invoice.IsTransfer)
+
+            if(invoice.IsStoped) 
+                tb_PromotionStatus.Text = AppSettings.resourcemanager.GetString("Finished");
+            else if (invoice.IsTransfer)
                 tb_PromotionStatus.Text = AppSettings.resourcemanager.GetString("CarriedOut");
             else
                 tb_PromotionStatus.Text = AppSettings.resourcemanager.GetString("NotCarriedOver");
@@ -1255,178 +1220,67 @@ namespace POSCA.View.promotion
 
         private async void Btn_posting_Click(object sender, RoutedEventArgs e)
         {
-            /*
+            
             try
             {
-                HelpClass.StartAwait(grid_main);
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxConfirm");
 
-                if (promotion.PromotionStatus == "notCarriedOver")
-                {
-                    promotion = await promotion.SavePromotionOrder(promotion);
-
-                }
-                else if (promotion.PromotionStatus == "locationTransfer")
-                {
-                    promotion = await promotion.SavePromotionOrder(promotion);
-                }
-
-
-
-                if (promotion.PromotionId == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                else
-                {
-                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                    fillPromotionInputs(promotion);
-                }
-
-                HelpClass.EndAwait(grid_main);
-
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            */
-        }
-
-        private  void cb_PromotionType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                 Clear();
-                _PromotionType = cb_PromotionType.SelectedValue.ToString();
-                if (_PromotionType == "quantity")
-                    requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
-                                                                "PromotionNature","PromotionQuantity"};
-                else
-                    requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
-                                                "PromotionNature","PromotionPercentage","LocationId"};
-                ControlsEditable();
-            }
-            catch { }
-        }
-
-        Supplier supplier;
-        private void Cb_SupId_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            /*
-            try
-            {
-
-                supplier = FillCombo.suppliersList.Where(x => x.SupId == (long)cb_SupId.SelectedValue).FirstOrDefault();
-
-                txt_EnterpriseDiscount.Text = HelpClass.DecTostring(supplier.DiscountPercentage);
-                tb_SupplierNotes.Text = supplier.Notes;
-                tb_SupplierPurchaseNotes.Text = supplier.PurchaseOrderNotes;
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            */
-        }
-
-        private void tgl_IsRecieveAll_Checked(object sender, RoutedEventArgs e)
-        {
-            ControlsEditable();
-        }
-
-        private void tgl_IsRecieveAll_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ControlsEditable();
-
-        }
-
-        private void tb_AmountDifference_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            /*
-             * 
-            try
-            {
-                ValidateEmpty_TextChange(sender, e);
-
-                if (tb_AmountDifference.Text != "")
-                {
-                    var diff = decimal.Parse(tb_AmountDifference.Text);
-                    if (diff > 50)
-                    {
-                        tb_AmountDifference.Text = "0";
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trAmountDifferenceError"), animation: ToasterAnimation.FadeIn);
-                    }
-                }
-
-            }
-            catch { }
-            */
-        }
-
-        private async void tb_PurchaseInvNumber_KeyDown(object sender, KeyEventArgs e)
-        {
-            /*
-            try
-            {
-                if (e.Key == Key.Return && tb_PurchaseInvNumber.Text != "")
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
                 {
                     HelpClass.StartAwait(grid_main);
-                    purchaseOrder = await FillCombo.purchaseInvoice.getPurchaseOrderByNum(tb_PurchaseInvNumber.Text);
 
-                    promotion = new Promotion();
-                    promotion.LocationId = purchaseOrder.LocationId;
-                    promotion.SupId = purchaseOrder.SupId;
-                    promotion.PurchaseInvNumber = purchaseOrder.InvNumber;
 
-                    promotion.NetInvoice = purchaseOrder.CostNet;
+                    promotion = await FillCombo.Promotion.PostingPromotion(promotion.PromotionId, MainWindow.userLogin.userId);
 
-                    // doesn't have any promotion
 
-                    if (purchaseOrder.PromotionDocuments == null)
-                        await fillOrderInputs(purchaseOrder);
+
+                    if (promotion.PromotionId == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                     else
                     {
-                        foreach (var row in purchaseOrder.PurchaseDetails)
-                        {
-                            var minQty = 0;
-                            var maxQty = 0;
-                            foreach (var row1 in purchaseOrder.PromotionDocuments)
-                            {
-                                foreach (var item in row1.PromotionDetails)
-                                {
-                                    if (item.ItemId == row.ItemId)
-                                    {
-                                        minQty += (int)item.MinQty;
-                                        maxQty += (int)item.MaxQty;
-                                    }
-                                }
-                            }
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            var diffMin = row.MinQty - minQty;
-                            int breakNum = 0;
-                            if (diffMin < 0)
-                            {
-                                breakNum = 1 + (int)Math.Ceiling((decimal)diffMin / (decimal)row.Factor);
-                                row.MinQty = row.Factor + diffMin;
-                            }
-                            else
-                                row.MinQty = row.Factor - diffMin;
-
-                            row.MaxQty = row.MaxQty - maxQty - breakNum;
-                            await fillOrderInputs(purchaseOrder);
-                        }
+                        fillPromotionInputs(promotion);
                     }
+
                     HelpClass.EndAwait(grid_main);
                 }
             }
             catch (Exception ex)
             {
                 HelpClass.EndAwait(grid_main);
-
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
+           
         }
+
+        private async void cb_PromotionType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ComboBox cb = sender as ComboBox;
+                if (cb.IsMouseOver)
+                {
+                    await Clear();
+                    _PromotionType = cb_PromotionType.SelectedValue.ToString();
+                    if (_PromotionType == "quantity")
+                        requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
+                                                                "PromotionNature","PromotionQuantity"};
+                    else
+                        requiredControlList = new List<string> { "PromotionDate", "PromotionStartDate","PromotionEndDate",
+                                                "PromotionNature","PromotionPercentage","LocationId"};
+                    ControlsEditable();
+                }
+            }
+            catch { }
+        }
+
 
         bool forceCancelEdit = false;
         public void RefreshInvoiceDetailsDataGrid()
@@ -1469,9 +1323,28 @@ namespace POSCA.View.promotion
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
-                promotion = await FillCombo.Promotion.TerminateOffer(promotion.PromotionId, MainWindow.userLogin.userId);
-                HelpClass.EndAwait(grid_main);
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageStopPromotion");
+
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
+                {
+                    HelpClass.StartAwait(grid_main);
+                    promotion = await FillCombo.Promotion.TerminateOffer(promotion.PromotionId, MainWindow.userLogin.userId);
+                    if (promotion.PromotionId == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                    else
+                    {
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                        fillPromotionInputs(promotion);
+                    }
+                    HelpClass.EndAwait(grid_main);
+                }
             }
             catch (Exception ex)
             {

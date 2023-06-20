@@ -1348,6 +1348,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finished.
+        /// </summary>
+        internal static string Finished {
+            get {
+                return ResourceManager.GetString("Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Storage.
         /// </summary>
         internal static string ForStorage {
@@ -10543,6 +10552,15 @@ namespace POSCA {
         internal static string trMessageBoxDelete {
             get {
                 return ResourceManager.GetString("trMessageBoxDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure to stop this promotion?.
+        /// </summary>
+        internal static string trMessageStopPromotion {
+            get {
+                return ResourceManager.GetString("trMessageStopPromotion", resourceCulture);
             }
         }
         

@@ -1576,31 +1576,41 @@ namespace POSCA.View.receipts
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+                #region
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
+                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxConfirm");
 
-                if (receipt.ReceiptStatus == "notCarriedOver")
+                w.ShowDialog();
+                Window.GetWindow(this).Opacity = 1;
+                #endregion
+                if (w.isOk)
                 {
-                    receipt = await receipt.PostingReceiptOrder(receipt.ReceiptId,MainWindow.userLogin.userId);
-   
+                    HelpClass.StartAwait(grid_main);
+
+                    if (receipt.ReceiptStatus == "notCarriedOver")
+                    {
+                        receipt = await receipt.PostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
+
+                    }
+                    else if (receipt.ReceiptStatus == "locationTransfer")
+                    {
+                        receipt = await receipt.CanclePostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
+                    }
+
+
+
+                    if (receipt.ReceiptId == 0)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                    else
+                    {
+                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                        fillReceiptInputs(receipt);
+                    }
+
+                    HelpClass.EndAwait(grid_main);
                 }
-                else if (receipt.ReceiptStatus == "locationTransfer")
-                {
-                    receipt = await receipt.CanclePostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
-                }
-
-               
-
-                if (receipt.ReceiptId == 0)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                else
-                {
-                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                    fillReceiptInputs(receipt);
-                }
-
-                HelpClass.EndAwait(grid_main);
-
             }
             catch (Exception ex)
             {
