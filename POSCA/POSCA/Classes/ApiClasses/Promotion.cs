@@ -60,6 +60,7 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+       
         public async Task<Promotion> PostingPromotion(long promotionId, long userId)
         {
             var result = new Promotion();

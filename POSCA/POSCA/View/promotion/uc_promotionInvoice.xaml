@@ -259,9 +259,9 @@
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="UnitName" Binding="{Binding Path=UnitName, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="From" Binding="{Binding Path=PromotionStartDate, Mode=TwoWay}"/>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="To" Binding="{Binding Path=PromotionEndDate, Mode=TwoWay}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn IsReadOnly="True" x:Name="col_mainCost" Width="*"  Header="MainCost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn x:Name="col_promotionPrice" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                         <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}"/>

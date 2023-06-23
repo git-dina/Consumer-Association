@@ -6083,4 +6083,7 @@
   <data name="trMessageStopPromotion" xml:space="preserve">
     <value>هل أنت متأكد من إيقاف هذا العرض؟</value>
   </data>
+  <data name="ShareholderOffers" xml:space="preserve">
+    <value>عروض المساهمين</value>
+  </data>
 </root>

@@ -168,9 +168,9 @@ namespace POSCA.View.promotion
             dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
             dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("Barcode");
             dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("itemName");
-            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trUnit");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("Factor");
-            col_mainCost.Header = AppSettings.resourcemanager.GetString("trCost");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trFrom");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trTo");
+            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("Factor");
             dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("basePrice");
             dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("OfferPrice");
             dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("trQuantity");

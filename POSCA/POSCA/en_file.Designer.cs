@@ -3779,6 +3779,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shareholder Offers.
+        /// </summary>
+        internal static string ShareholderOffers {
+            get {
+                return ResourceManager.GetString("ShareholderOffers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shipping amount.
         /// </summary>
         internal static string shippingAmount {

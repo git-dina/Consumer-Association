@@ -5829,4 +5829,7 @@ Main Documents</value>
   <data name="trMessageStopPromotion" xml:space="preserve">
     <value>Are you sure to stop this promotion?</value>
   </data>
+  <data name="ShareholderOffers" xml:space="preserve">
+    <value>Shareholder Offers</value>
+  </data>
 </root>
