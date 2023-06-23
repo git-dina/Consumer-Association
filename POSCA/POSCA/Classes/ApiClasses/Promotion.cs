@@ -142,6 +142,7 @@ namespace POSCA.Classes.ApiClasses
         public decimal PromotionPrice { get; set; }
         public decimal NetDeffirence { get; set; }
         public decimal Qty { get; set; }
+        public string Package { get; set; }
         public decimal PromotionPercentage { get; set; }
         public bool IsItemStoped { get; set; }
         public Nullable<long> StoppedItemBy { get; set; }
@@ -156,7 +157,8 @@ namespace POSCA.Classes.ApiClasses
         #region extra attributes
         public int Sequence { get; set; }
         public bool IsSelected { get; set; }
-
+        public Nullable<System.DateTime> PromotionStartDate { get; set; } = DateTime.Now;
+        public Nullable<System.DateTime> PromotionEndDate { get; set; } = DateTime.Now;
         #endregion
     }
 
