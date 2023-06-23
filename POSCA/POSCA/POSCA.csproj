@@ -222,6 +222,9 @@
     <Compile Include="converters\PromotionNatureConverter.cs" />
     <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
+    <Compile Include="View\promotion\uc_contributorsPromotion.xaml.cs">
+      <DependentUpon>uc_contributorsPromotion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\promotion\uc_promotionInvoice.xaml.cs">
       <DependentUpon>uc_promotionInvoice.xaml</DependentUpon>
     </Compile>
@@ -342,6 +345,10 @@
     <Compile Include="View\windows\wd_userControl.xaml.cs">
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\promotion\uc_contributorsPromotion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\promotion\uc_promotionInvoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
