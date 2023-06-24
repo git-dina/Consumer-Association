@@ -241,6 +241,29 @@
                             </Setter>
                         </Style>
                     </DataGrid.Resources>
+
+                    <!--<DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                    <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                    <Setter Property="Height" Value="37"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding IsItemStoped}" Value="false">
+                                    <Setter Property="Background" Value="{StaticResource lightGreen}"/>
+                                    <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                    <Setter Property="Height" Value="37"/>
+                                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>-->
+
+
                     <DataGrid.Columns >
                         <DataGridTemplateColumn Width="20" Header="" IsReadOnly="True" >
                             <DataGridTemplateColumn.CellTemplate>
@@ -256,26 +279,186 @@
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="From" Binding="{Binding Path=PromotionStartDate, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="To" Binding="{Binding Path=PromotionEndDate, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn x:Name="col_promotionPrice" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}"/>
-                        <!--<DataGridTemplateColumn  Header="IsItemStoped" >
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox FlowDirection="LeftToRight" IsChecked="{Binding IsItemStoped, Mode=TwoWay}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>-->
-                        <DataGridCheckBoxColumn Header="IsItemStoped" x:Name="col_IsItemStoped" Binding="{Binding IsItemStoped, Mode=TwoWay}"></DataGridCheckBoxColumn>
-
-                        <!--<DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemBy" Binding="{Binding Path=StoppedItemBy, Mode=TwoWay}"/>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="StoppedItemDate" Binding="{Binding Path=StoppedItemDate, Mode=TwoWay}"/>-->
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemCode" Binding="{Binding Path=ItemCode, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Barcode" Binding="{Binding Path=Barcode, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="ItemName" Binding="{Binding Path=ItemName, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="From" Binding="{Binding Path=PromotionStartDate, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="To" Binding="{Binding Path=PromotionEndDate, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Factor" Binding="{Binding Path=Factor, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="MainPrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="col_promotionPrice" Width="*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn>
+                        <DataGridCheckBoxColumn Header="IsItemStoped" x:Name="col_IsItemStoped" Binding="{Binding IsItemStoped, Mode=TwoWay}">
+                            <DataGridCheckBoxColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridCheckBoxColumn.CellStyle>
+                            <DataGridCheckBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridCheckBoxColumn.ElementStyle>
+                        </DataGridCheckBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Margin="5,0" Grid.Row="2"  Background="#DFDFDF" VerticalAlignment="Center" Width="auto" />
