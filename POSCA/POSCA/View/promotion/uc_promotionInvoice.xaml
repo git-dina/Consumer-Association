@@ -423,7 +423,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}">
+                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="Quantity" Binding="{Binding Path=Qty, Mode=TwoWay}">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
