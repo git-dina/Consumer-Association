@@ -619,6 +619,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>
                             </Button>
+                         <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="contributorsPromotion" 
+                          x:Name="btn_contributorsPromotion"  Click="Btn_contributorsPromotion_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                            <TextBlock Text="contributorsPromotion" Tag="secondMenuTitle_contributorsPromotion" Foreground="#A8AEC6" x:Name="txt_contributorsPromotion"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
                         </StackPanel>
                     </Expander>
 
