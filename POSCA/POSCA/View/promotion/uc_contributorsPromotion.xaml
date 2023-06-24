@@ -448,9 +448,10 @@
                                 </Style>
                             </DataGridCheckBoxColumn.CellStyle>
                             <DataGridCheckBoxColumn.ElementStyle>
-                                <Style TargetType="{x:Type TextBlock}">
+                                <Style TargetType="{x:Type CheckBox}">
                                     <Setter Property="HorizontalAlignment" Value="Center"/>
                                     <Setter Property="VerticalAlignment" Value="Center"/>
+                                    <Setter Property="FlowDirection" Value="LeftToRight"/>
                                 </Style>
                             </DataGridCheckBoxColumn.ElementStyle>
                         </DataGridCheckBoxColumn>
