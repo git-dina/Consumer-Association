@@ -912,7 +912,7 @@ namespace POSCA.View.promotion
                 promotionPercentage= decimal.Parse(tb_PromotionPercentage.Text);
             foreach(var item in details)
             {
-                item.PromotionPrice = item.MainPrice - HelpClass.calcPercentage(item.MainPrice, promotionPercentage);
+                item.PromotionPrice = HelpClass.CustomRound( item.MainPrice - HelpClass.calcPercentage(item.MainPrice, promotionPercentage), int.Parse(AppSettings.accuracy));
             }
             return details;
         }
