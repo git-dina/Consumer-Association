@@ -386,6 +386,7 @@ namespace POSCA
 
             txt_promotion.Text = AppSettings.resourcemanager.GetString("Offers");
             txt_promotionInvoice.Text = AppSettings.resourcemanager.GetString("PromotionalOffers");
+            txt_contributorsPromotion.Text = AppSettings.resourcemanager.GetString("ContributorsPromotions");
 
             txt_sectionData.Text = AppSettings.resourcemanager.GetString("trSectionData");
             txt_phoneType.Text = AppSettings.resourcemanager.GetString("PhonesTypes");

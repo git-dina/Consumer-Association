@@ -691,6 +691,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contributors Promotions.
+        /// </summary>
+        internal static string ContributorsPromotions {
+            get {
+                return ResourceManager.GetString("ContributorsPromotions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copies Count.
         /// </summary>
         internal static string copiesCount {
@@ -3775,15 +3784,6 @@ namespace POSCA {
         internal static string SeuenceAbbrevation {
             get {
                 return ResourceManager.GetString("SeuenceAbbrevation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shareholder Offers.
-        /// </summary>
-        internal static string ShareholderOffers {
-            get {
-                return ResourceManager.GetString("ShareholderOffers", resourceCulture);
             }
         }
         
