@@ -136,7 +136,7 @@
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="Cost" Binding="{Binding Path=MainCost, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                             <DataGridTextColumn IsReadOnly="True" Width="3*"  Header="SalePrice" Binding="{Binding Path=MainPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                             <DataGridTextColumn x:Name="col_promotionPrice" Width="3*"  Header="PromotionPrice" Binding="{Binding Path=PromotionPrice, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                            <DataGridTextColumn x:Name="col_quantity" Width="3*"  Header="PromotionQty" Binding="{Binding Path=Qty, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                            <DataGridTextColumn x:Name="col_quantity" Width="3*"  Header="PromotionQty" Binding="{Binding Path=Qty, Mode=TwoWay,  Converter={StaticResource toIntConverter }}"/>
                             <DataGridTemplateColumn  Header="IsBlocked" Width="3*"  >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
