@@ -11565,7 +11565,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الحزمة.
+        ///   Looks up a localized string similar to Package.
         /// </summary>
         internal static string trPackage {
             get {

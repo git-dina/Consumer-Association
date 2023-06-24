@@ -400,7 +400,25 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="PromotionPrice" Binding="{Binding Path=Qty, Mode=TwoWay}">
+                        <DataGridTextColumn x:Name="col_quantity" Width="*"  Header="Quantity" Binding="{Binding Path=Qty, Mode=TwoWay}">
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsItemStoped}" Value="true">
+                                            <Setter Property="Background" Value="{StaticResource lightRed}"/>
+                                            <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                            <DataGridTextColumn.ElementStyle>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                                    <Setter Property="VerticalAlignment" Value="Center"/>
+                                </Style>
+                            </DataGridTextColumn.ElementStyle>
+                        </DataGridTextColumn> 
+                        <DataGridTextColumn x:Name="col_package" Width="*"  Header="Package" Binding="{Binding Path=Package, Mode=TwoWay}">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
@@ -503,45 +521,7 @@
 
                                 </Grid>
                             </Border>
-                            <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <ComboBox x:Name="cb_PromotionType" 
-                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="PromotionType..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"
-                                  SelectionChanged="cb_PromotionType_SelectionChanged"
-                                  IsTextSearchEnabled ="False"
-                                  IsEditable="True"
-                                  StaysOpenOnEdit="true"/>
-                                    <Path Fill="#E81123" x:Name="p_error_PromotionType" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                                </Grid>
-                            </Border>
-                            <Border Grid.Row="1" Name="brd_branchId" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <ComboBox x:Name="cb_LocationId"    SelectedValue="{Binding LocationId, Mode=TwoWay}"
-                                  Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="LocationId..."  
-                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                  Grid.Column="0" Height="40"  Margin="0,0"
-                                  BorderBrush="#737373" BorderThickness="0"
-                                  KeyUp="cb_LocationId_KeyUp"
-                                  SelectionChanged="cb_LocationId_SelectionChanged"
-                                  IsTextSearchEnabled ="False"
-                                  IsEditable="True"
-                                  StaysOpenOnEdit="true"/>
-                                    <Path Fill="#E81123" x:Name="p_error_LocationId" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
-
-                                </Grid>
-                            </Border>
+                  
                             <Border Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_PromotionNature"   
@@ -635,28 +615,7 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Row="5" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_PromotionPercentage" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding PromotionPercentage, Mode=TwoWay}"
-                                     
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="PromotionPercentage..."    
-                                        Foreground="{StaticResource textColor}" 
-                                      BorderThickness="0" Tag="decimal" 
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus"
-                                             TextChanged="tb_PromotionPercentage_TextChanged"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_PromotionPercentage" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
+                            
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>

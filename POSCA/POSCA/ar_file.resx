@@ -1630,7 +1630,7 @@
     <value>المستخدمون المختارون</value>
   </data>
   <data name="trPackage" xml:space="preserve">
-    <value>الحزمة</value>
+    <value>المجموعة</value>
   </data>
   <data name="trdontHavePermission" xml:space="preserve">
     <value>ليس لديك صلاحية</value>

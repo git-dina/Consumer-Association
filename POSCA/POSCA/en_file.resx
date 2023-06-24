@@ -3159,7 +3159,7 @@ Main Documents</value>
     <value>تجاوز حدود التخزين</value>
   </data>
   <data name="trPackage" xml:space="preserve">
-    <value>الحزمة</value>
+    <value>Package</value>
   </data>
   <data name="trPackageDestroy" xml:space="preserve">
     <value>تفكيك</value>
