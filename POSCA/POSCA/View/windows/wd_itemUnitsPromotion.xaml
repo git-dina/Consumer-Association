@@ -271,7 +271,7 @@
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
                             Margin="5"/>
-                    <Border   Grid.RowSpan="2" Grid.Column="11" 
+                    <!--<Border   Grid.RowSpan="2" Grid.Column="11" 
                     Margin="5"  CornerRadius="0,0,0,0"  
                            Width="1" BorderThickness="0" Background="{StaticResource SecondColor}" />
                     <Border BorderThickness="0 0 0 0"  Grid.Column="12"
@@ -287,7 +287,7 @@
                             x:Name="txt_Package" 
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
-                            Margin="5"/>
+                            Margin="5"/>-->
 
                 </Grid>
               

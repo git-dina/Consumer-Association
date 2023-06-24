@@ -6086,4 +6086,10 @@
   <data name="ContributorsPromotions" xml:space="preserve">
     <value>عروض المساهمين</value>
   </data>
+  <data name="trEmptyPromotionPriceError" xml:space="preserve">
+    <value>أدخل سعر العرض</value>
+  </data>
+  <data name="trEmptyPromotionQuantityError" xml:space="preserve">
+    <value>أدخل كمية العرض</value>
+  </data>
 </root>

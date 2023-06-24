@@ -5832,4 +5832,10 @@ Main Documents</value>
   <data name="ContributorsPromotions" xml:space="preserve">
     <value>Contributors Promotions</value>
   </data>
+  <data name="trEmptyPromotionPriceError" xml:space="preserve">
+    <value>Enter Promotion Price</value>
+  </data>
+  <data name="trEmptyPromotionQuantityError" xml:space="preserve">
+    <value>Enter Promotion Quantity</value>
+  </data>
 </root>

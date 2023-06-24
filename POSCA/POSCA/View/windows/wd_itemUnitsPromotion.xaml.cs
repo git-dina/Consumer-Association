@@ -72,9 +72,7 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
-                /*
-                fillBarcodeTypeCombo();
-                */
+
                 if (promotionType == "percentage")
                 {
                     col_quantity.Visibility = Visibility.Collapsed;
@@ -297,11 +295,41 @@ namespace POSCA.View.windows
         {
             try
             {
+                bool valid = true;
+
+                PromotionDetails isEmpty = new PromotionDetails();
                 promotionDetails = (List<PromotionDetails>)dg_itemUnit.ItemsSource;
-                var isEmpty = promotionDetails.Where(x => x.IsSelected == true ).FirstOrDefault();
+                 isEmpty = promotionDetails.Where(x => x.IsSelected == true ).FirstOrDefault();
                 if (isEmpty == null)
+                {
+                    valid = false;
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemError"), animation: ToasterAnimation.FadeIn);
+                }
                 else
+                {
+                    if (promotionType != "percentage")
+                    {
+                        isEmpty = promotionDetails.Where(x => x.PromotionPrice == 0  ).FirstOrDefault();
+                        if (isEmpty != null)
+                        {
+                            valid = false;
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEmptyPromotionPriceError"), animation: ToasterAnimation.FadeIn);
+                        }
+                        if (valid)
+                        {
+                            isEmpty = promotionDetails.Where(x => x.Qty == 0 ).FirstOrDefault();
+                            if (isEmpty != null)
+                            {
+                                valid = false;
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trEmptyPromotionQuantityError"), animation: ToasterAnimation.FadeIn);
+
+                            }
+                        }
+                    }
+                   
+                }
+
+                if(valid)
                 {
                     isOk = true;
                     this.Close();

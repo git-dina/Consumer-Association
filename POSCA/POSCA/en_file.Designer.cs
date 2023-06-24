@@ -7775,6 +7775,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Promotion Price.
+        /// </summary>
+        internal static string trEmptyPromotionPriceError {
+            get {
+                return ResourceManager.GetString("trEmptyPromotionPriceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Promotion Quantity.
+        /// </summary>
+        internal static string trEmptyPromotionQuantityError {
+            get {
+                return ResourceManager.GetString("trEmptyPromotionQuantityError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الخاصية لا يمكن أن تكون فارغة.
         /// </summary>
         internal static string trEmptyPropertyToolTip {
