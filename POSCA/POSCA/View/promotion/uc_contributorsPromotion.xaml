@@ -310,7 +310,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="From" Binding="{Binding Path=PromotionStartDate, Mode=TwoWay}">
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="From" Binding="{Binding Path=PromotionStartDate, Mode=TwoWay, Converter={StaticResource dateFrameConverter }}">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
@@ -328,7 +328,7 @@
                                 </Style>
                             </DataGridTextColumn.ElementStyle>
                         </DataGridTextColumn>
-                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="To" Binding="{Binding Path=PromotionEndDate, Mode=TwoWay}">
+                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="To" Binding="{Binding Path=PromotionEndDate, Mode=TwoWay, Converter={StaticResource dateFrameConverter }}">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
