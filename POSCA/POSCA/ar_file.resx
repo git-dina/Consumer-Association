@@ -586,7 +586,7 @@
     <value>الفرع...</value>
   </data>
   <data name="trCash" xml:space="preserve">
-    <value>مبلغ</value>
+    <value>Cash / كاش</value>
   </data>
   <data name="trCreditCard" xml:space="preserve">
     <value>بطاقة إئتمان</value>
@@ -6091,5 +6091,26 @@
   </data>
   <data name="trEmptyPromotionQuantityError" xml:space="preserve">
     <value>أدخل كمية العرض</value>
+  </data>
+  <data name="trAmerkanExpress" xml:space="preserve">
+    <value>Amerkan Express</value>
+  </data>
+  <data name="trCustomerCard" xml:space="preserve">
+    <value>Customer Card / كارت مساهم</value>
+  </data>
+  <data name="trHolyQuranGift" xml:space="preserve">
+    <value>هدية قرآن كريم</value>
+  </data>
+  <data name="trKNET" xml:space="preserve">
+    <value>K-NET / كي نت</value>
+  </data>
+  <data name="trMasterCard" xml:space="preserve">
+    <value>Master Card / ماستر كارد</value>
+  </data>
+  <data name="trTopStudents" xml:space="preserve">
+    <value>طلاب متفوقين</value>
+  </data>
+  <data name="trVisa" xml:space="preserve">
+    <value>VISA / فيزا</value>
   </data>
 </root>

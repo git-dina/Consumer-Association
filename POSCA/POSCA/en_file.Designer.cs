@@ -4805,6 +4805,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amerkan Express.
+        /// </summary>
+        internal static string trAmerkanExpress {
+            get {
+                return ResourceManager.GetString("trAmerkanExpress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amount.
         /// </summary>
         internal static string trAmount {
@@ -6313,6 +6322,15 @@ namespace POSCA {
         internal static string trCustomer {
             get {
                 return ResourceManager.GetString("trCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Card.
+        /// </summary>
+        internal static string trCustomerCard {
+            get {
+                return ResourceManager.GetString("trCustomerCard", resourceCulture);
             }
         }
         
@@ -9332,6 +9350,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Holy Quran Gift.
+        /// </summary>
+        internal static string trHolyQuranGift {
+            get {
+                return ResourceManager.GetString("trHolyQuranGift", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الرئيسية.
         /// </summary>
         internal static string trHome {
@@ -10088,6 +10115,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to K-NET.
+        /// </summary>
+        internal static string trKNET {
+            get {
+                return ResourceManager.GetString("trKNET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to احتياجات.
         /// </summary>
         internal static string trLack {
@@ -10345,6 +10381,15 @@ namespace POSCA {
         internal static string trMarket {
             get {
                 return ResourceManager.GetString("trMarket", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master Card.
+        /// </summary>
+        internal static string trMasterCard {
+            get {
+                return ResourceManager.GetString("trMasterCard", resourceCulture);
             }
         }
         
@@ -13599,7 +13644,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إرجاع.
+        ///   Looks up a localized string similar to Return.
         /// </summary>
         internal static string trReturn {
             get {
@@ -13608,7 +13653,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to مرتجع.
+        ///   Looks up a localized string similar to Return.
         /// </summary>
         internal static string trReturned {
             get {
@@ -15750,6 +15795,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Top Students.
+        /// </summary>
+        internal static string trTopStudents {
+            get {
+                return ResourceManager.GetString("trTopStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الإجمالي.
         /// </summary>
         internal static string trTotal {
@@ -16637,6 +16691,15 @@ namespace POSCA {
         internal static string trVip {
             get {
                 return ResourceManager.GetString("trVip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VISA.
+        /// </summary>
+        internal static string trVisa {
+            get {
+                return ResourceManager.GetString("trVisa", resourceCulture);
             }
         }
         

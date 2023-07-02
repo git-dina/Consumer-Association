@@ -3831,10 +3831,10 @@ Main Documents</value>
     <value>حدث خطأ قبل اتمام عملية الاستعادة</value>
   </data>
   <data name="trReturn" xml:space="preserve">
-    <value>إرجاع</value>
+    <value>Return</value>
   </data>
   <data name="trReturned" xml:space="preserve">
-    <value>مرتجع</value>
+    <value>Return</value>
   </data>
   <data name="trReturnedInvoice" xml:space="preserve">
     <value>فاتورة مرتجع</value>
@@ -5837,5 +5837,26 @@ Main Documents</value>
   </data>
   <data name="trEmptyPromotionQuantityError" xml:space="preserve">
     <value>Enter Promotion Quantity</value>
+  </data>
+  <data name="trAmerkanExpress" xml:space="preserve">
+    <value>Amerkan Express</value>
+  </data>
+  <data name="trCustomerCard" xml:space="preserve">
+    <value>Customer Card</value>
+  </data>
+  <data name="trHolyQuranGift" xml:space="preserve">
+    <value>Holy Quran Gift</value>
+  </data>
+  <data name="trKNET" xml:space="preserve">
+    <value>K-NET</value>
+  </data>
+  <data name="trMasterCard" xml:space="preserve">
+    <value>Master Card</value>
+  </data>
+  <data name="trTopStudents" xml:space="preserve">
+    <value>Top Students</value>
+  </data>
+  <data name="trVisa" xml:space="preserve">
+    <value>VISA</value>
   </data>
 </root>
