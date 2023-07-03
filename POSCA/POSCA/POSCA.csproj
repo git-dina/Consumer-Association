@@ -198,6 +198,7 @@
     <Compile Include="Classes\ApiClasses\CompanySettings.cs" />
     <Compile Include="Classes\ApiClasses\Country.cs" />
     <Compile Include="Classes\ApiClasses\Category.cs" />
+    <Compile Include="Classes\ApiClasses\Customer.cs" />
     <Compile Include="Classes\ApiClasses\Item.cs" />
     <Compile Include="Classes\ApiClasses\ItemLocation.cs" />
     <Compile Include="Classes\ApiClasses\ItemUnit.cs" />
@@ -208,6 +209,9 @@
     <Compile Include="Classes\ApiClasses\Promotion.cs" />
     <Compile Include="Classes\ApiClasses\PurchaseInvDetails.cs" />
     <Compile Include="Classes\ApiClasses\Receipt.cs" />
+    <Compile Include="Classes\ApiClasses\SalesInvoice.cs" />
+    <Compile Include="Classes\ApiClasses\SalesInvoiceDetails.cs" />
+    <Compile Include="Classes\ApiClasses\SalesPayment.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
