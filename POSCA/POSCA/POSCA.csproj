@@ -242,6 +242,9 @@
     <Compile Include="View\receipts\uc_returnReceiptInv.xaml.cs">
       <DependentUpon>uc_returnReceiptInv.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\sales\uc_salesInvoice.xaml.cs">
+      <DependentUpon>uc_salesInvoice.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\settings\uc_generalSettings.xaml.cs">
       <DependentUpon>uc_generalSettings.xaml</DependentUpon>
     </Compile>
@@ -367,6 +370,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\receipts\uc_returnReceiptInv.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\sales\uc_salesInvoice.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -555,6 +562,8 @@
     <Content Include="pic\emptylogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="pic\phone.png" />
+    <Resource Include="pic\fax.png" />
     <Content Include="Reports\ar\supplyingOrder.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
