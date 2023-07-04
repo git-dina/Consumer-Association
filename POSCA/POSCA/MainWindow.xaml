@@ -384,7 +384,7 @@
                         <!--</StackPanel>-->
                     <!--</Expander>-->
                     <!--#region  mainSection-->
-                    <Expander  x:Name="exp_mainSection" Tag="mainSection_catalog_purchases_receipts_promotion_vendors_locations_sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                    <Expander  x:Name="exp_mainSection" Tag="mainSection_catalog_purchases_receipts_sales_promotion_vendors_locations_sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -542,7 +542,7 @@
                               HorizontalAlignment="Center" Grid.Column="0"  
                          VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
-                              Data="{StaticResource shoppingCart}"/>
+                              Data="{StaticResource Items}"/>
                                 <TextBlock Text="receipts" Foreground="White" x:Name="txt_receipts"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                                            FontWeight="SemiBold" FontSize="14"
@@ -577,6 +577,44 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <TextBlock Text="returnReceiptInv"  Tag="secondMenuTitle_returnReceiptInv" Foreground="#A8AEC6" x:Name="txt_returnReceiptInv"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                </Grid>
+                            </Button>
+                        </StackPanel>
+                    </Expander>
+                            <!--#region  sales-->
+                            <Expander  x:Name="exp_sales" Tag="sales" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                        <Path Fill="White" x:Name="path_iconSales" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource shoppingCart}"/>
+                                        <TextBlock Text="sales" Foreground="White" x:Name="txt_sales"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                                <!--#region  sales-->
+                        <StackPanel>
+                        <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="salesInvoice" 
+                          x:Name="btn_salesInvoice"  Click="Btn_salesInvoice_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                            <TextBlock Text="salesInvoice"  Tag="secondMenuTitle_salesInvoice" Foreground="#A8AEC6" x:Name="txt_salesInvoice"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                 </Grid>

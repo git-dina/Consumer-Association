@@ -4,6 +4,7 @@ using POSCA.View.locations;
 using POSCA.View.promotion;
 using POSCA.View.purchases;
 using POSCA.View.receipts;
+using POSCA.View.sales;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 using POSCA.View.settings;
@@ -829,7 +830,21 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        private void Btn_salesInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_salesInvoice.Instance);
 
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void Btn_promotionInvoice_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -1000,6 +1015,6 @@ namespace POSCA
             }
         }
 
-      
+       
     }
 }
