@@ -203,6 +203,7 @@
     <Compile Include="Classes\ApiClasses\Item.cs" />
     <Compile Include="Classes\ApiClasses\ItemLocation.cs" />
     <Compile Include="Classes\ApiClasses\ItemUnit.cs" />
+    <Compile Include="Classes\ApiClasses\Job.cs" />
     <Compile Include="Classes\ApiClasses\Location.cs" />
     <Compile Include="Classes\ApiClasses\LocationType.cs" />
     <Compile Include="Classes\ApiClasses\PhoneType.cs" />

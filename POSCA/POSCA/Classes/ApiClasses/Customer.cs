@@ -18,7 +18,7 @@ namespace POSCA.Classes.ApiClasses
         public string CivilNum { get; set; }
         public string FamilyCard { get; set; }
         public string MaritalStatus { get; set; }
-        public string Job { get; set; }
+        public int? JobId { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         #endregion
 
