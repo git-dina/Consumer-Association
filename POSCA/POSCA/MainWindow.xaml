@@ -383,6 +383,30 @@
                             </Button>
                         <!--</StackPanel>-->
                     <!--</Expander>-->
+                    <Button   Height="50"
+                                  Grid.Row="1" 
+                           Tag="salesInvoice" 
+                          x:Name="btn_salesInvoice"  Click="Btn_salesInvoice_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="24 0 0 0" >
+                        <Grid  Height="50"  Width="245" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Path Fill="#A8AEC6" Tag="secondMenuTitle_salesInvoice" 
+                                  x:Name="path_iconSalesInvoice"
+                                  Stretch="Fill"   FlowDirection="LeftToRight"
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource shoppingCart}"/>
+                            <TextBlock Text="salesInvoice" Tag="secondMenuTitle_salesInvoice" Foreground="#A8AEC6" 
+                                       x:Name="txt_salesInvoice" Visibility="Collapsed"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                        </Grid>
+                    </Button>
                     <!--#region  mainSection-->
                     <Expander  x:Name="exp_mainSection" Tag="mainSection_catalog_purchases_receipts_sales_promotion_vendors_locations_sectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
@@ -584,7 +608,7 @@
                         </StackPanel>
                     </Expander>
                             <!--#region  sales-->
-                            <Expander  x:Name="exp_sales" Tag="sales" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                            <!--<Expander  x:Name="exp_sales" Tag="sales" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -602,7 +626,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
-                                <!--#region  sales-->
+                                --><!--#region  sales--><!--
                         <StackPanel>
                         <Button   Height="50"
                                   Grid.Row="1"
@@ -620,8 +644,9 @@
                                 </Grid>
                             </Button>
                         </StackPanel>
-                    </Expander>
-                    <!--#region  promotion-->
+                    </Expander>-->
+                  
+                            <!--#region  promotion-->
                     <Expander  x:Name="exp_promotion" Tag="promotion" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >

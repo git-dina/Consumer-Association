@@ -8,6 +8,7 @@ using POSCA.View.sales;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 using POSCA.View.settings;
+using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -839,6 +840,7 @@ namespace POSCA
 
                 Button button = sender as Button;
                 secondMenuTitleActivate(button.Tag.ToString());
+
             }
             catch (Exception ex)
             {
