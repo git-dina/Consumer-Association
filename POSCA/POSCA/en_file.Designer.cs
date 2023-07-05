@@ -6407,7 +6407,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لوحة التحكم.
+        ///   Looks up a localized string similar to DashBoard.
         /// </summary>
         internal static string trDashBoard {
             get {
@@ -6434,7 +6434,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to صيغة التاريخ.
+        ///   Looks up a localized string similar to Date Form.
         /// </summary>
         internal static string trDateForm {
             get {
@@ -6443,7 +6443,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to التاريخ ....
+        ///   Looks up a localized string similar to Date....
         /// </summary>
         internal static string trDateHint {
             get {
@@ -6461,7 +6461,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يوم.
+        ///   Looks up a localized string similar to Day.
         /// </summary>
         internal static string trDay {
             get {
@@ -6470,7 +6470,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الأيام.
+        ///   Looks up a localized string similar to Days.
         /// </summary>
         internal static string trDays {
             get {
@@ -6479,7 +6479,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to أيام الأسبوع.
+        ///   Looks up a localized string similar to Days Of Week.
         /// </summary>
         internal static string trDaysOfWeek {
             get {
@@ -13761,7 +13761,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المبيعات.
+        ///   Looks up a localized string similar to Sales.
         /// </summary>
         internal static string trSales {
             get {

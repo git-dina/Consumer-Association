@@ -1490,7 +1490,7 @@ Main Documents</value>
     <value>الاحصائيات اليومية</value>
   </data>
   <data name="trDashBoard" xml:space="preserve">
-    <value>لوحة التحكم</value>
+    <value>DashBoard</value>
   </data>
   <data name="trDashHint" xml:space="preserve">
     <value>يومي,أسبوعي,...</value>
@@ -1499,22 +1499,22 @@ Main Documents</value>
     <value>Date</value>
   </data>
   <data name="trDateForm" xml:space="preserve">
-    <value>صيغة التاريخ</value>
+    <value>Date Form</value>
   </data>
   <data name="trDateHint" xml:space="preserve">
-    <value>التاريخ ...</value>
+    <value>Date...</value>
   </data>
   <data name="trDateNotCompatible" xml:space="preserve">
     <value>التاريخ غير متوافق مع السيرفر</value>
   </data>
   <data name="trDay" xml:space="preserve">
-    <value>يوم</value>
+    <value>Day</value>
   </data>
   <data name="trDays" xml:space="preserve">
-    <value>الأيام</value>
+    <value>Days</value>
   </data>
   <data name="trDaysOfWeek" xml:space="preserve">
-    <value>أيام الأسبوع</value>
+    <value>Days Of Week</value>
   </data>
   <data name="trDefaultPayType" xml:space="preserve">
     <value>طريقة الدفع الافتراضية</value>
@@ -3867,7 +3867,7 @@ Main Documents</value>
     <value>طلبية مبيعات محفوظة</value>
   </data>
   <data name="trSales" xml:space="preserve">
-    <value>المبيعات</value>
+    <value>Sales</value>
   </data>
   <data name="trSalesCopyCount" xml:space="preserve">
     <value>فاتورة المبيعات</value>
