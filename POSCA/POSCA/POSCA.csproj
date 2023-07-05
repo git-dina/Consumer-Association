@@ -191,6 +191,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Classes\ApiClasses\APIResult.cs" />
+    <Compile Include="Classes\ApiClasses\Area.cs" />
     <Compile Include="Classes\ApiClasses\AssistantSupplier.cs" />
     <Compile Include="Classes\ApiClasses\Bank.cs" />
     <Compile Include="Classes\ApiClasses\Branch.cs" />
@@ -212,6 +213,7 @@
     <Compile Include="Classes\ApiClasses\SalesInvoice.cs" />
     <Compile Include="Classes\ApiClasses\SalesInvoiceDetails.cs" />
     <Compile Include="Classes\ApiClasses\SalesPayment.cs" />
+    <Compile Include="Classes\ApiClasses\Section.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />
     <Compile Include="Classes\ApiClasses\SupplierType.cs" />
