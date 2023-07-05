@@ -133,11 +133,11 @@ namespace POSCA.View.sales
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
 
-            chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
-            chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
+            //chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
+            //chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
-            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
+            //txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
             //txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
            
 
@@ -652,7 +652,7 @@ namespace POSCA.View.sales
             }
         }
 
-
+        /*
         private async void searchType_check(object sender, RoutedEventArgs e)
         {
             try
@@ -697,7 +697,7 @@ namespace POSCA.View.sales
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-
+        */
         #endregion
         #region Refresh & Search
 
@@ -1243,7 +1243,8 @@ namespace POSCA.View.sales
             {
                 if (e.Key == Key.Return)
                 {
-                    Btn_search_Click(btn_search, null);
+                    //Btn_search_Click(btn_search, null);
+                    Btn_search_Click(null, null);
                 }
             }
             catch (Exception ex)
@@ -1251,7 +1252,6 @@ namespace POSCA.View.sales
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-       
 
 
 
