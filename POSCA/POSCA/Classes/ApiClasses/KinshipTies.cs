@@ -17,6 +17,21 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+        internal Task<List<KinshipTies>> get(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<KinshipTies>> save(KinshipTies kinshipTies)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<KinshipTies>> delete(int kinshipId, long userId)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 }
