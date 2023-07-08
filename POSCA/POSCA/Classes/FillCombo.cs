@@ -13,9 +13,6 @@ namespace POSCA.Classes
     public class FillCombo
     {
 
-        //static public string deliveryPermission = "setUserSetting_delivery";
-        //static public string administrativeMessagesPermission = "setUserSetting_administrativeMessages";
-        //static public string administrativePosTransfersPermission = "setUserSetting_administrativePosTransfers";
 
         #region supplier groups
         static public SupplierGroup supplierGroup = new SupplierGroup();
@@ -977,5 +974,125 @@ namespace POSCA.Classes
         }
         #endregion
         #endregion
+
+        #region Area
+        static public Area area = new Area();
+        static public List<Area> areaList;
+
+        static public async Task<IEnumerable<Area>> RefreshAreas()
+        {
+            areaList = await area.get(true);
+
+            return areaList;
+        }
+
+        static public async Task fillAreas(ComboBox combo)
+        {
+            if (areaList is null)
+                await RefreshAreas();
+
+            combo.ItemsSource = areaList;
+            combo.SelectedValuePath = "AreaId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillAreasWithDefault(ComboBox combo)
+        {
+            if (areaList is null)
+                await RefreshAreas();
+
+            var lst = areaList.ToList();
+            Area sup = new Area();
+            sup.Name = "-";
+            sup.AreaId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "AreaId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+
+        #region Job
+        static public Job job = new Job();
+        static public List<Job> jobList;
+
+        static public async Task<IEnumerable<Job>> RefreshJobs()
+        {
+            jobList = await job.get(true);
+
+            return jobList;
+        }
+
+        static public async Task fillJobs(ComboBox combo)
+        {
+            if (jobList is null)
+                await RefreshJobs();
+
+            combo.ItemsSource = jobList;
+            combo.SelectedValuePath = "JobId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillJobsWithDefault(ComboBox combo)
+        {
+            if (jobList is null)
+                await RefreshJobs();
+
+            var lst = jobList.ToList();
+            Job sup = new Job();
+            sup.Name = "-";
+            sup.JobId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "JobId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+        #region KinshipTies
+        static public KinshipTies kinshipTies = new KinshipTies();
+        static public List<KinshipTies> kinshipTiesList;
+
+        static public async Task<IEnumerable<KinshipTies>> RefreshKinshipTiess()
+        {
+            kinshipTiesList = await kinshipTies.get(true);
+
+            return kinshipTiesList;
+        }
+
+        static public async Task fillKinshipTiess(ComboBox combo)
+        {
+            if (kinshipTiesList is null)
+                await RefreshKinshipTiess();
+
+            combo.ItemsSource = kinshipTiesList;
+            combo.SelectedValuePath = "KinshipId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillKinshipTiessWithDefault(ComboBox combo)
+        {
+            if (kinshipTiesList is null)
+                await RefreshKinshipTiess();
+
+            var lst = kinshipTiesList.ToList();
+            KinshipTies sup = new KinshipTies();
+            sup.Name = "-";
+            sup.KinshipId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "KinshipId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+
     }
 }
