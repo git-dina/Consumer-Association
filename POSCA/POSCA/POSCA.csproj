@@ -231,6 +231,15 @@
     <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
     <Compile Include="converters\toIntConverter.cs" />
+    <Compile Include="View\customers\customerSectionData\uc_area.xaml.cs">
+      <DependentUpon>uc_area.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerSectionData\uc_job.xaml.cs">
+      <DependentUpon>uc_job.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerSectionData\uc_kinshipTies.xaml.cs">
+      <DependentUpon>uc_kinshipTies.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\promotion\uc_contributorsPromotion.xaml.cs">
       <DependentUpon>uc_contributorsPromotion.xaml</DependentUpon>
     </Compile>
@@ -363,6 +372,18 @@
     <Compile Include="View\windows\wd_userControl.xaml.cs">
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\customers\customerSectionData\uc_area.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerSectionData\uc_job.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerSectionData\uc_kinshipTies.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\promotion\uc_contributorsPromotion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
