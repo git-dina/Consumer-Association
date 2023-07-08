@@ -1,5 +1,6 @@
 ﻿using POSCA.Classes;
 using POSCA.View.catalog;
+using POSCA.View.customers.customerSectionData;
 using POSCA.View.locations;
 using POSCA.View.promotion;
 using POSCA.View.purchases;
@@ -930,7 +931,52 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        private void Btn_customerArea_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_area.Instance);
 
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        private void Btn_job_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_job.Instance);
+
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void Btn_kinshipTies_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_kinshipTies.Instance);
+
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
 
         private void Btn_generalSettings_Click(object sender, RoutedEventArgs e)
         {
@@ -1022,6 +1068,6 @@ namespace POSCA
             }
         }
 
-       
+        
     }
 }

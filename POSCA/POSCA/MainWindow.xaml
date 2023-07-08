@@ -430,7 +430,7 @@
                         <StackPanel Margin="20 0 0 0">
                        
                     <!--#region  catalog-->
-                            <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                    <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -498,7 +498,6 @@
                             </Button>-->
                         </StackPanel>
                     </Expander>
-                   
                     <!--#region  purchases-->
                     <Expander  x:Name="exp_purchases" Tag="purchases" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
@@ -1043,6 +1042,98 @@
 
                         </StackPanel>
                     </Expander>
+
+                        </StackPanel>
+                    </Expander>
+                    <!--#region  customers-->
+                    <Expander  x:Name="exp_customers" Tag="customerSectionData_" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander.Header>
+                            <Grid Margin="0 -15 0 -15"   >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Path Fill="White" x:Name="path_iconCustomers" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource customer}"/>
+                                <TextBlock Text="customers" Foreground="White" x:Name="txt_customers"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                            </Grid>
+                        </Expander.Header>
+                        <!--#region  customers-->
+                        <StackPanel Margin="20 0 0 0">
+                            <!--#region  customerSectionData-->
+                            <Expander  x:Name="exp_customerSectionData" Tag="customerSectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                                <Expander.Header>
+                                    <Grid Margin="0 -15 0 -15"   >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Path Fill="White" x:Name="path_iconCustomerSectionData" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10"
+                              Data="{StaticResource data}"/>
+                                        <TextBlock Text="customerSectionData" Foreground="White" x:Name="txt_customerSectionData"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                                    </Grid>
+                                </Expander.Header>
+                                <!--#region  customerSectionData-->
+                                <StackPanel>
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="customerArea" 
+                          x:Name="btn_customerArea"  Click="Btn_customerArea_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="customerArea"  Tag="customerSectionData_customerArea" Foreground="#A8AEC6" x:Name="txt_customerArea"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="job" 
+                          x:Name="btn_job"  Click="Btn_job_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="job"  Tag="customerSectionData_customerArea_job" Foreground="#A8AEC6" x:Name="txt_job"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
+                                <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="kinshipTies" 
+                          x:Name="btn_kinshipTies"  Click="Btn_kinshipTies_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="kinshipTies"  Tag="customerSectionData_customerArea_job_kinshipTies" Foreground="#A8AEC6" x:Name="txt_kinshipTies"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
+                                </StackPanel>
+                            </Expander>
 
                         </StackPanel>
                     </Expander>
