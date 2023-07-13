@@ -5021,6 +5021,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Area.
+        /// </summary>
+        internal static string trArea {
+            get {
+                return ResourceManager.GetString("trArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to +963.
         /// </summary>
         internal static string trAreaHint {
@@ -14166,7 +14175,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to القسم....
+        ///   Looks up a localized string similar to Sections....
         /// </summary>
         internal static string trSectionHint {
             get {
@@ -14175,16 +14184,25 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to القسم - مكان التخزين.
+        ///   Looks up a localized string similar to Section Name.
         /// </summary>
-        internal static string trSectionLocation {
+        internal static string trSectionName {
             get {
-                return ResourceManager.GetString("trSectionLocation", resourceCulture);
+                return ResourceManager.GetString("trSectionName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الأقسام.
+        ///   Looks up a localized string similar to Section Num.
+        /// </summary>
+        internal static string trSectionNum {
+            get {
+                return ResourceManager.GetString("trSectionNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sections.
         /// </summary>
         internal static string trSections {
             get {

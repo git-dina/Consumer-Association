@@ -12,6 +12,7 @@ namespace POSCA.Classes.ApiClasses
         public int SectionId { get; set; }
         public Nullable<int> AreaId { get; set; }
         public string Name { get; set; }
+        public string SectionNum { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }

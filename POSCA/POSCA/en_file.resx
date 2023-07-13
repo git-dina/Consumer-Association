@@ -3984,13 +3984,10 @@ Main Documents</value>
     <value>Data Section</value>
   </data>
   <data name="trSectionHint" xml:space="preserve">
-    <value>القسم...</value>
-  </data>
-  <data name="trSectionLocation" xml:space="preserve">
-    <value>القسم - مكان التخزين</value>
+    <value>Sections...</value>
   </data>
   <data name="trSections" xml:space="preserve">
-    <value>الأقسام</value>
+    <value>Sections</value>
   </data>
   <data name="trSelect" xml:space="preserve">
     <value>Select</value>
@@ -5873,5 +5870,14 @@ Main Documents</value>
   </data>
   <data name="trkinshipTies" xml:space="preserve">
     <value>kinship Ties</value>
+  </data>
+  <data name="trArea" xml:space="preserve">
+    <value>Area</value>
+  </data>
+  <data name="trSectionName" xml:space="preserve">
+    <value>Section Name</value>
+  </data>
+  <data name="trSectionNum" xml:space="preserve">
+    <value>Section Num</value>
   </data>
 </root>

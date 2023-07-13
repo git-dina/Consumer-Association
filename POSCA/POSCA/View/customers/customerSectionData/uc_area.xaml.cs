@@ -91,7 +91,7 @@ namespace POSCA.View.customers.customerSectionData
                 Keyboard.Focus(tb_Name);
 
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -105,18 +105,24 @@ namespace POSCA.View.customers.customerSectionData
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("Areas");
+            txt_title.Text = AppSettings.resourcemanager.GetString("trArea");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
+            txt_section.Text = AppSettings.resourcemanager.GetString("trSections");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Num, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_area.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_area.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_area.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_area.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
+
+            dg_section.Columns[0].Header = AppSettings.resourcemanager.GetString("trSectionNum");
+            dg_section.Columns[1].Header = AppSettings.resourcemanager.GetString("trSectionName");
+
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
@@ -150,13 +156,14 @@ namespace POSCA.View.customers.customerSectionData
 
                     area.CreateUserId = MainWindow.userLogin.userId;
 
+                    area.Sections = (List<Section>) dg_section.ItemsSource;
                     FillCombo.areaList = await area.save(area);
                     if (FillCombo.areaList == null)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                     else
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                        Clear();
+                        await Clear();
                         await Search();
                     }
                 }
@@ -258,7 +265,7 @@ namespace POSCA.View.customers.customerSectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 await Search();
-                                Clear();
+                               await  Clear();
                             }
                         }
 
@@ -330,12 +337,12 @@ namespace POSCA.View.customers.customerSectionData
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await  Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -377,7 +384,7 @@ namespace POSCA.View.customers.customerSectionData
 
                 //tb_search.Text = "";
                 //searchText = "";
-                await RefreshGroupsList();
+                await RefreshAreasList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -395,7 +402,7 @@ namespace POSCA.View.customers.customerSectionData
         {
             //search
             if (FillCombo.areaList is null)
-                await RefreshGroupsList();
+                await RefreshAreasList();
             searchText = tb_search.Text.ToLower();
             areasQuery = FillCombo.areaList.Where(s =>
             s.Name.ToLower().Contains(searchText)
@@ -403,7 +410,7 @@ namespace POSCA.View.customers.customerSectionData
             ).ToList();
             RefreshGroupsView();
         }
-        async Task<IEnumerable<Area>> RefreshGroupsList()
+        async Task<IEnumerable<Area>> RefreshAreasList()
         {
             await FillCombo.RefreshAreas();
 
@@ -416,11 +423,15 @@ namespace POSCA.View.customers.customerSectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new Area();
             dg_area.SelectedIndex = -1;
 
+            var maxId = await FillCombo.area.getMaxAriaId();
+            tb_Num.Text = maxId;
+            sections = new List<Section>();
+            RefreshSectionDataGrid();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -542,7 +553,10 @@ namespace POSCA.View.customers.customerSectionData
             {
                 btn_addSection.IsEnabled = false;
                 dg_section.IsEnabled = false;
-                sections.Add(new Section());
+
+                var num = dg_section.Items.Count;
+                num++;
+                sections.Add(new Section() { SectionNum = num.ToString()});
                 RefreshSectionDataGrid();
             }
             catch (Exception ex)

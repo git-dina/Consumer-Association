@@ -1509,9 +1509,6 @@
   <data name="trRealAmount" xml:space="preserve">
     <value>الكمية الموجودة</value>
   </data>
-  <data name="trSectionLocation" xml:space="preserve">
-    <value>القسم - مكان التخزين</value>
-  </data>
   <data name="trBackUp/Restore" xml:space="preserve">
     <value>نسخ احتياطي/استعادة</value>
   </data>
@@ -1952,7 +1949,7 @@
     <value>سبب النقص...</value>
   </data>
   <data name="trSectionHint" xml:space="preserve">
-    <value>القسم...</value>
+    <value>القطعة...</value>
   </data>
   <data name="trShortages" xml:space="preserve">
     <value>النواقص</value>
@@ -3101,7 +3098,7 @@
     <value>القطاعات السكنية</value>
   </data>
   <data name="trSections" xml:space="preserve">
-    <value>الأقسام</value>
+    <value>القطع</value>
   </data>
   <data name="trUserConfirm" xml:space="preserve">
     <value>عليك الحصول على تأكيد المستخدم</value>
@@ -6127,5 +6124,14 @@
   </data>
   <data name="trkinshipTies" xml:space="preserve">
     <value>صلة القرابة</value>
+  </data>
+  <data name="trArea" xml:space="preserve">
+    <value>المنطقة</value>
+  </data>
+  <data name="trSectionName" xml:space="preserve">
+    <value>وصف القطعة</value>
+  </data>
+  <data name="trSectionNum" xml:space="preserve">
+    <value>رقم القطعة</value>
   </data>
 </root>

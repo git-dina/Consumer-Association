@@ -45,7 +45,22 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
+        public async Task<String> getMaxAriaId()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Area/GetMaxAriaId";
 
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
+        }
         public async Task<List<Area>> get(bool? isActive = null)
         {
             var result = new List<Area>();
