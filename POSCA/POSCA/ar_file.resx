@@ -6113,4 +6113,19 @@
   <data name="trVisa" xml:space="preserve">
     <value>VISA / فيزا</value>
   </data>
+  <data name="Customers" xml:space="preserve">
+    <value>المساهمون</value>
+  </data>
+  <data name="trAreas" xml:space="preserve">
+    <value>المناطق</value>
+  </data>
+  <data name="trBasicData" xml:space="preserve">
+    <value>البيانات الأساسية</value>
+  </data>
+  <data name="trJobs" xml:space="preserve">
+    <value>الوظائف</value>
+  </data>
+  <data name="trkinshipTies" xml:space="preserve">
+    <value>صلة القرابة</value>
+  </data>
 </root>

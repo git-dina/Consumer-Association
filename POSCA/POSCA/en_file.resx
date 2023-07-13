@@ -5859,4 +5859,19 @@ Main Documents</value>
   <data name="trVisa" xml:space="preserve">
     <value>VISA</value>
   </data>
+  <data name="Customers" xml:space="preserve">
+    <value>Customers</value>
+  </data>
+  <data name="trAreas" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="trBasicData" xml:space="preserve">
+    <value>Basic Data</value>
+  </data>
+  <data name="trJobs" xml:space="preserve">
+    <value>Jobs</value>
+  </data>
+  <data name="trkinshipTies" xml:space="preserve">
+    <value>kinship Ties</value>
+  </data>
 </root>

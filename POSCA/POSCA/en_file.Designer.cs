@@ -799,6 +799,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customers.
+        /// </summary>
+        internal static string Customers {
+            get {
+                return ResourceManager.GetString("Customers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom Free.
         /// </summary>
         internal static string CustomFree {
@@ -5021,6 +5030,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Areas.
+        /// </summary>
+        internal static string trAreas {
+            get {
+                return ResourceManager.GetString("trAreas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Assistant Manager.
         /// </summary>
         internal static string trAssistantManager {
@@ -5242,6 +5260,15 @@ namespace POSCA {
         internal static string trBasic {
             get {
                 return ResourceManager.GetString("trBasic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Basic Data.
+        /// </summary>
+        internal static string trBasicData {
+            get {
+                return ResourceManager.GetString("trBasicData", resourceCulture);
             }
         }
         
@@ -10084,6 +10111,24 @@ namespace POSCA {
         internal static string trJobHint {
             get {
                 return ResourceManager.GetString("trJobHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Jobs.
+        /// </summary>
+        internal static string trJobs {
+            get {
+                return ResourceManager.GetString("trJobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to kinship Ties.
+        /// </summary>
+        internal static string trkinshipTies {
+            get {
+                return ResourceManager.GetString("trkinshipTies", resourceCulture);
             }
         }
         

@@ -411,7 +411,14 @@ namespace POSCA
             txt_supplierDocType.Text = AppSettings.resourcemanager.GetString("SupplierDocTypes");
 
             #endregion
-            
+
+            #region customers
+            txt_customers.Text = AppSettings.resourcemanager.GetString("Customers");
+            txt_customerSectionData.Text = AppSettings.resourcemanager.GetString("trBasicData");
+            txt_customerArea.Text = AppSettings.resourcemanager.GetString("trAreas");
+            txt_job.Text = AppSettings.resourcemanager.GetString("trJobs");
+            txt_kinshipTies.Text = AppSettings.resourcemanager.GetString("trkinshipTies");
+            #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 
           txt_generalSettings.Text = AppSettings.resourcemanager.GetString("GeneralSettings"); 
