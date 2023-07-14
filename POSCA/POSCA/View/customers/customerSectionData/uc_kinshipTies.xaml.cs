@@ -350,6 +350,7 @@ namespace POSCA.View.customers.customerSectionData
                     kinshipTies = dg_kinshipTies.SelectedItem as KinshipTies;
                     this.DataContext = kinshipTies;
 
+                    tb_Num.Text = kinshipTies.KinshipId.ToString();
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 
