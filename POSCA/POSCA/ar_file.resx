@@ -250,10 +250,10 @@
     <value>هي الوحدة الأصغر</value>
   </data>
   <data name="trJob" xml:space="preserve">
-    <value>العمل</value>
+    <value>الوظيفة</value>
   </data>
   <data name="trJobHint" xml:space="preserve">
-    <value>العمل...</value>
+    <value>الوظيفة...</value>
   </data>
   <data name="trLastName" xml:space="preserve">
     <value>الاسم الاخير</value>

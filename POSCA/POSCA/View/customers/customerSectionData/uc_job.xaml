@@ -140,6 +140,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
+                                <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=JobId}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
                             </DataGrid.Columns>
                         </DataGrid>
@@ -341,6 +342,20 @@
                             <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
                         </DockPanel>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+
+                                <TextBox x:Name="tb_Num"  Text="{Binding JobId, Mode=OneWay}" Padding="10,0,5,0" 
+                                    IsReadOnly="True"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="Id..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                            </Grid>
+                        </Border>
+                        <Border  Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox x:Name="tb_Name"  Text="{Binding Name, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"

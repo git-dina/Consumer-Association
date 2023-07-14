@@ -364,6 +364,7 @@ namespace POSCA.View.customers.customerSectionData
                     area = dg_area.SelectedItem as Area;
                     this.DataContext = area;
 
+                    tb_Num.Text = area.AreaId.ToString();
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 

@@ -88,7 +88,7 @@ namespace POSCA.View.customers.customerSectionData
                 Keyboard.Focus(tb_Name);
 
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -108,12 +108,13 @@ namespace POSCA.View.customers.customerSectionData
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Num, AppSettings.resourcemanager.GetString("trNoHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_kinshipTies.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_kinshipTies.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_kinshipTies.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_kinshipTies.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
@@ -148,7 +149,7 @@ namespace POSCA.View.customers.customerSectionData
                     else
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                        Clear();
+                       await Clear();
                         await Search();
                     }
                 }
@@ -250,7 +251,7 @@ namespace POSCA.View.customers.customerSectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 await Search();
-                                Clear();
+                                await Clear();
                             }
                         }
 
@@ -322,12 +323,12 @@ namespace POSCA.View.customers.customerSectionData
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -407,11 +408,13 @@ namespace POSCA.View.customers.customerSectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new KinshipTies();
             dg_kinshipTies.SelectedIndex = -1;
 
+            var maxId = await FillCombo.kinshipTies.GetMaxKinshipId();
+            tb_Num.Text = maxId;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

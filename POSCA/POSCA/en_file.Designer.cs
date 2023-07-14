@@ -10106,7 +10106,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to العمل.
+        ///   Looks up a localized string similar to Job.
         /// </summary>
         internal static string trJob {
             get {
@@ -10115,7 +10115,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to العمل....
+        ///   Looks up a localized string similar to Job....
         /// </summary>
         internal static string trJobHint {
             get {

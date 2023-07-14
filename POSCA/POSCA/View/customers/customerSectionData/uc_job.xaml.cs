@@ -89,7 +89,7 @@ namespace POSCA.View.customers.customerSectionData
                 Keyboard.Focus(tb_Name);
 
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -103,18 +103,19 @@ namespace POSCA.View.customers.customerSectionData
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("Jobs");
+            txt_title.Text = AppSettings.resourcemanager.GetString("trJob");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Num, AppSettings.resourcemanager.GetString("trNoHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_job.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_job.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_job.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_job.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
@@ -149,7 +150,7 @@ namespace POSCA.View.customers.customerSectionData
                     else
                     {
                         Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                        Clear();
+                        await Clear();
                         await Search();
                     }
                 }
@@ -251,7 +252,7 @@ namespace POSCA.View.customers.customerSectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 await Search();
-                                Clear();
+                                await Clear();
                             }
                         }
 
@@ -323,12 +324,12 @@ namespace POSCA.View.customers.customerSectionData
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -350,6 +351,7 @@ namespace POSCA.View.customers.customerSectionData
                     job = dg_job.SelectedItem as Job;
                     this.DataContext = job;
 
+                    tb_Num.Text = job.JobId.ToString();
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 
@@ -408,10 +410,13 @@ namespace POSCA.View.customers.customerSectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new Job();
             dg_job.SelectedIndex = -1;
+
+            var maxId = await FillCombo.job.getMaxJobId();
+            tb_Num.Text = maxId;
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
