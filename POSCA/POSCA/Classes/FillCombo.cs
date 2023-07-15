@@ -1094,5 +1094,84 @@ namespace POSCA.Classes
         }
         #endregion
 
+        #region HirarachyStructure
+        static public HirarachyStructure hirarachyStructure = new HirarachyStructure();
+        static public List<HirarachyStructure> hirarachyStructureList;
+
+        static public async Task<IEnumerable<HirarachyStructure>> RefreshHirarachyStructures()
+        {
+            hirarachyStructureList = await hirarachyStructure.get(true);
+
+            return hirarachyStructureList;
+        }
+
+        static public async Task fillHirarachyStructures(ComboBox combo)
+        {
+            if (hirarachyStructureList is null)
+                await RefreshHirarachyStructures();
+
+            combo.ItemsSource = hirarachyStructureList;
+            combo.SelectedValuePath = "Id";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillHirarachyStructuresWithDefault(ComboBox combo)
+        {
+            if (hirarachyStructureList is null)
+                await RefreshHirarachyStructures();
+
+            var lst = hirarachyStructureList.ToList();
+            HirarachyStructure sup = new HirarachyStructure();
+            sup.Name = "-";
+            sup.Id = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "Id";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+        #region CustomerBank
+        static public CustomerBank customerBank = new CustomerBank();
+        static public List<CustomerBank> customerBankList;
+
+        static public async Task<IEnumerable<CustomerBank>> RefreshCustomerBanks()
+        {
+            customerBankList = await customerBank.get(true);
+
+            return customerBankList;
+        }
+
+        static public async Task fillCustomerBanks(ComboBox combo)
+        {
+            if (customerBankList is null)
+                await RefreshCustomerBanks();
+
+            combo.ItemsSource = customerBankList;
+            combo.SelectedValuePath = "BankId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillCustomerBanksWithDefault(ComboBox combo)
+        {
+            if (customerBankList is null)
+                await RefreshCustomerBanks();
+
+            var lst = customerBankList.ToList();
+            CustomerBank sup = new CustomerBank();
+            sup.Name = "-";
+            sup.BankId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "BankId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+
     }
 }
