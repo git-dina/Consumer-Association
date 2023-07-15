@@ -236,6 +236,12 @@
     <Compile Include="View\customers\customerSectionData\uc_area.xaml.cs">
       <DependentUpon>uc_area.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\customers\customerSectionData\uc_customerBank.xaml.cs">
+      <DependentUpon>uc_customerBank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerSectionData\uc_hirarachyStructure.xaml.cs">
+      <DependentUpon>uc_hirarachyStructure.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\customers\customerSectionData\uc_job.xaml.cs">
       <DependentUpon>uc_job.xaml</DependentUpon>
     </Compile>
@@ -375,6 +381,14 @@
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\customers\customerSectionData\uc_area.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerSectionData\uc_customerBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerSectionData\uc_hirarachyStructure.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
