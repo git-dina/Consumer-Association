@@ -1132,6 +1132,37 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
+
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="hirarachyStructure" 
+                          x:Name="btn_hirarachyStructure"  Click="Btn_hirarachyStructure_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="hirarachyStructure"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure" Foreground="#A8AEC6" x:Name="txt_hirarachyStructure"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="customerBank" 
+                          x:Name="btn_customerBank"  Click="Btn_customerBank_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="customerBank"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank" Foreground="#A8AEC6" x:Name="txt_customerBank"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
                                 </StackPanel>
                             </Expander>
 
