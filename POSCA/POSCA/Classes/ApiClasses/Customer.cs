@@ -32,6 +32,8 @@ namespace POSCA.Classes.ApiClasses
         public int SharesCount { get; set; }
         public bool CalculateEarnings { get; set; }
         public bool IsBlocked { get; set; }
+        public string IBAN { get; set; }
+        public Nullable<int> BankId { get; set; }
         public bool PrintNameOnInv { get; set; }
         public bool RegisteredInMinistry { get; set; }
         public bool DataCompleted { get; set; }
