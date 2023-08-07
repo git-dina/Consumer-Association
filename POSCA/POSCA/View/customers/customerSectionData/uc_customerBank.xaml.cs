@@ -69,7 +69,7 @@ namespace POSCA.View.customers.customerSectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "Name" ,"Description","Symbol"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -87,7 +87,7 @@ namespace POSCA.View.customers.customerSectionData
                 Keyboard.Focus(tb_Name);
 
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -105,14 +105,21 @@ namespace POSCA.View.customers.customerSectionData
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BankId, AppSettings.resourcemanager.GetString("BankNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("BankNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Description, AppSettings.resourcemanager.GetString("trDescriptionHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Symbol, AppSettings.resourcemanager.GetString("BankSymbolHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Code, AppSettings.resourcemanager.GetString("BankCodeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+
+            txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            //dg_customerBank.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            //dg_customerBank.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_customerBank.Columns[0].Header = AppSettings.resourcemanager.GetString("BankNo");
+            dg_customerBank.Columns[1].Header = AppSettings.resourcemanager.GetString("BankName");
+            dg_customerBank.Columns[2].Header = AppSettings.resourcemanager.GetString("trDescription");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
 
@@ -132,7 +139,14 @@ namespace POSCA.View.customers.customerSectionData
                     {
 
                         customerBank.Name = tb_Name.Text;
+                        customerBank.Description = tb_Description.Text;
+                        customerBank.Symbol = tb_Symbol.Text;
+                        customerBank.Code = tb_Code.Text;
                         customerBank.Notes = tb_Notes.Text;
+                        if (tgl_IsBlocked.IsChecked == true)
+                            customerBank.IsBlocked = true;
+                        else
+                            customerBank.IsBlocked = false;
                         customerBank.CreateUserId = MainWindow.userLogin.userId;
 
                         FillCombo.customerBankList = await customerBank.save(customerBank);
@@ -142,7 +156,7 @@ namespace POSCA.View.customers.customerSectionData
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            Clear();
+                            await Clear();
                             await Search();
                         }
                     }
@@ -175,7 +189,14 @@ namespace POSCA.View.customers.customerSectionData
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             customerBank.Name = tb_Name.Text;
+                            customerBank.Description = tb_Description.Text;
+                            customerBank.Symbol = tb_Symbol.Text;
+                            customerBank.Code = tb_Code.Text;
                             customerBank.Notes = tb_Notes.Text;
+                            if (tgl_IsBlocked.IsChecked == true)
+                                customerBank.IsBlocked = true;
+                            else
+                                customerBank.IsBlocked = false;
                             customerBank.UpdateUserId = MainWindow.userLogin.userId;
 
                             FillCombo.customerBankList = await customerBank.save(customerBank);
@@ -237,7 +258,7 @@ namespace POSCA.View.customers.customerSectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 await Search();
-                                Clear();
+                                await Clear();
                             }
                         }
 
@@ -309,12 +330,12 @@ namespace POSCA.View.customers.customerSectionData
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+               await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -393,11 +414,13 @@ namespace POSCA.View.customers.customerSectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+       async Task Clear()
         {
             this.DataContext = new CustomerBank();
             dg_customerBank.SelectedIndex = -1;
 
+            var maxId = await FillCombo.customerBank.getMaxBankId();
+            tb_BankId.Text = maxId;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

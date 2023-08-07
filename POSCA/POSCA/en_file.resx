@@ -5880,4 +5880,37 @@ Main Documents</value>
   <data name="trSectionNum" xml:space="preserve">
     <value>Section Num</value>
   </data>
+  <data name="AdminstrativeStructure" xml:space="preserve">
+    <value>Adminstrative Structure</value>
+  </data>
+  <data name="BankCode" xml:space="preserve">
+    <value>Bank Code</value>
+  </data>
+  <data name="BankCodeHint" xml:space="preserve">
+    <value>Bank Code...</value>
+  </data>
+  <data name="BankName" xml:space="preserve">
+    <value>Bank Name</value>
+  </data>
+  <data name="BankNameHint" xml:space="preserve">
+    <value>Bank Name...</value>
+  </data>
+  <data name="BankNo" xml:space="preserve">
+    <value>Bank No</value>
+  </data>
+  <data name="BankNoHint" xml:space="preserve">
+    <value>Bank No...</value>
+  </data>
+  <data name="BankSymbol" xml:space="preserve">
+    <value>Bank Symbol</value>
+  </data>
+  <data name="BankSymbolHint" xml:space="preserve">
+    <value>Bank Symbol...</value>
+  </data>
+  <data name="CustomerBanks" xml:space="preserve">
+    <value>Customer Banks</value>
+  </data>
+  <data name="trDescriptionHint" xml:space="preserve">
+    <value>Description...</value>
+  </data>
 </root>

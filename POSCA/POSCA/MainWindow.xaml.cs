@@ -418,6 +418,8 @@ namespace POSCA
             txt_customerArea.Text = AppSettings.resourcemanager.GetString("trAreas");
             txt_job.Text = AppSettings.resourcemanager.GetString("trJobs");
             txt_kinshipTies.Text = AppSettings.resourcemanager.GetString("trkinshipTies");
+            txt_customerBank.Text = AppSettings.resourcemanager.GetString("CustomerBanks");
+            txt_hirarachyStructure.Text = AppSettings.resourcemanager.GetString("AdminstrativeStructure");
             #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 

@@ -160,6 +160,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adminstrative Structure.
+        /// </summary>
+        internal static string AdminstrativeStructure {
+            get {
+                return ResourceManager.GetString("AdminstrativeStructure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alert days.
         /// </summary>
         internal static string alertDays {
@@ -313,11 +322,83 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Code.
+        /// </summary>
+        internal static string BankCode {
+            get {
+                return ResourceManager.GetString("BankCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Code....
+        /// </summary>
+        internal static string BankCodeHint {
+            get {
+                return ResourceManager.GetString("BankCodeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank Data.
         /// </summary>
         internal static string BankData {
             get {
                 return ResourceManager.GetString("BankData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Name.
+        /// </summary>
+        internal static string BankName {
+            get {
+                return ResourceManager.GetString("BankName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Name....
+        /// </summary>
+        internal static string BankNameHint {
+            get {
+                return ResourceManager.GetString("BankNameHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank No.
+        /// </summary>
+        internal static string BankNo {
+            get {
+                return ResourceManager.GetString("BankNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank No....
+        /// </summary>
+        internal static string BankNoHint {
+            get {
+                return ResourceManager.GetString("BankNoHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Symbol.
+        /// </summary>
+        internal static string BankSymbol {
+            get {
+                return ResourceManager.GetString("BankSymbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bank Symbol....
+        /// </summary>
+        internal static string BankSymbolHint {
+            get {
+                return ResourceManager.GetString("BankSymbolHint", resourceCulture);
             }
         }
         
@@ -795,6 +876,15 @@ namespace POSCA {
         internal static string Custom {
             get {
                 return ResourceManager.GetString("Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer Banks.
+        /// </summary>
+        internal static string CustomerBanks {
+            get {
+                return ResourceManager.GetString("CustomerBanks", resourceCulture);
             }
         }
         
@@ -6808,6 +6898,15 @@ namespace POSCA {
         internal static string trDescription {
             get {
                 return ResourceManager.GetString("trDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description....
+        /// </summary>
+        internal static string trDescriptionHint {
+            get {
+                return ResourceManager.GetString("trDescriptionHint", resourceCulture);
             }
         }
         
