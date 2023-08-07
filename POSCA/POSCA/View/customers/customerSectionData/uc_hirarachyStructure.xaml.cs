@@ -69,7 +69,7 @@ namespace POSCA.View.customers.customerSectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "Name" , "Title" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -87,7 +87,7 @@ namespace POSCA.View.customers.customerSectionData
                 Keyboard.Focus(tb_Name);
 
                 await Search();
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -105,14 +105,16 @@ namespace POSCA.View.customers.customerSectionData
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Id, AppSettings.resourcemanager.GetString("trNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Title, AppSettings.resourcemanager.GetString("TitleHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            //dg_hirarachyStructure.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            //dg_hirarachyStructure.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
+            dg_hirarachyStructure.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_hirarachyStructure.Columns[1].Header = AppSettings.resourcemanager.GetString("Title");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             
@@ -132,6 +134,7 @@ namespace POSCA.View.customers.customerSectionData
                     {
 
                         hirarachyStructure.Name = tb_Name.Text;
+                        hirarachyStructure.Title = tb_Title.Text;
                         hirarachyStructure.Notes = tb_Notes.Text;
                         hirarachyStructure.CreateUserId = MainWindow.userLogin.userId;
 
@@ -142,7 +145,7 @@ namespace POSCA.View.customers.customerSectionData
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            Clear();
+                            await Clear();
                             await Search();
                         }
                     }
@@ -175,6 +178,7 @@ namespace POSCA.View.customers.customerSectionData
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             hirarachyStructure.Name = tb_Name.Text;
+                            hirarachyStructure.Title = tb_Title.Text; 
                             hirarachyStructure.Notes = tb_Notes.Text;
                             hirarachyStructure.UpdateUserId = MainWindow.userLogin.userId;
 
@@ -237,7 +241,7 @@ namespace POSCA.View.customers.customerSectionData
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                                 await Search();
-                                Clear();
+                                await Clear();
                             }
                         }
 
@@ -309,12 +313,12 @@ namespace POSCA.View.customers.customerSectionData
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -393,11 +397,13 @@ namespace POSCA.View.customers.customerSectionData
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+        async Task Clear()
         {
             this.DataContext = new HirarachyStructure();
             dg_hirarachyStructure.SelectedIndex = -1;
 
+            var maxId = await FillCombo.hirarachyStructure.getMaxhirarachyId();
+            tb_Id.Text = maxId;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }

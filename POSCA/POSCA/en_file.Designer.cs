@@ -4454,6 +4454,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title....
+        /// </summary>
+        internal static string TitleHint {
+            get {
+                return ResourceManager.GetString("TitleHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Consumer Discount.
         /// </summary>
         internal static string TotalConsumerDiscount {

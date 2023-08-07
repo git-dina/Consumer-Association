@@ -347,7 +347,7 @@
                             <Grid   >
                                 <TextBox x:Name="tb_BankId" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding BankId, Mode=TwoWay}"
-                                     
+                                      IsReadOnly="True"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="BankId..."    
                                         Foreground="{StaticResource textColor}" 
