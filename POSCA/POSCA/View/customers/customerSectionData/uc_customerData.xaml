@@ -143,7 +143,8 @@
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
-                                <DataGridTextColumn Width="*"  Header="Family" Binding="{Binding Path=Family}"/>
+                                <DataGridTextColumn Width="*"  Header="CurrentPurchses" Binding="{Binding Path=CurrentPurchses}"/>
+                                <DataGridTextColumn Width="*"  Header="AllSharesCount" Binding="{Binding Path=AllSharesCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -351,6 +352,7 @@
                             <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_CurrentPurchses" Grid.Row="8"  Padding="10,0,5,0"  
+                                             IsReadOnly="True"
                                          Text="{Binding CurrentPurchses, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="CurrentPurchses..."    
@@ -464,9 +466,9 @@
                         </Border>
                             <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_FundNumber"  Text="{Binding FundNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_InvoiceName"  Text="{Binding InvoiceName, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="FundNumber..."  
+                                     materialDesign:HintAssist.Hint="InvoiceName..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -524,24 +526,7 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_InvoiceName"  Text="{Binding InvoiceName, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="InvoiceName..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_InvoiceName" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-                                </Grid>
-                            </Border>
-                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Column="0" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <DatePicker  x:Name="dp_DOB" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
@@ -575,9 +560,9 @@
                             </StackPanel>
                             <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_FamilyCard"  Text="{Binding FamilyCard, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_CivilNum"  Text="{Binding CivilNum, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="FamilyCard..."  
+                                     materialDesign:HintAssist.Hint="CivilNum..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -993,6 +978,7 @@
                             <Border  Grid.Column="0" Grid.Row="3"  CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_CustomerStatus"    SelectedValue="{Binding CustomerStatus, Mode=OneWay}"
+                                IsReadOnly="True"
                                 Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                 materialDesign:HintAssist.Hint="CustomerStatus..."  
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
@@ -1110,7 +1096,7 @@
                             <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_JoiningSharesCount" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding JoiningSharesCount, Mode=OneWay}"
+                                         Text="5" IsReadOnly="True"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="JoiningSharesCount..."    
                                         Foreground="{StaticResource textColor}"    
@@ -1187,7 +1173,8 @@
                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
-                                Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
+                                IsReadOnly="True"
+                                              Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                 materialDesign:HintAssist.Hint="BankId..."  
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                 Grid.Column="0" Height="40"  Margin="0,0"

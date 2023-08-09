@@ -454,7 +454,7 @@
     <value>الفرع</value>
   </data>
   <data name="trCustomer" xml:space="preserve">
-    <value>العميل</value>
+    <value>المساهم</value>
   </data>
   <data name="trStore" xml:space="preserve">
     <value>المخزن</value>
@@ -6172,5 +6172,155 @@
   </data>
   <data name="trDescriptionHint" xml:space="preserve">
     <value>الوصف...</value>
+  </data>
+  <data name="AddressInfo" xml:space="preserve">
+    <value>بيانات العنوان</value>
+  </data>
+  <data name="AutomtedNumberHint" xml:space="preserve">
+    <value>الرقم الآلي...</value>
+  </data>
+  <data name="AvenueNumberHint" xml:space="preserve">
+    <value>رقم الجادة...</value>
+  </data>
+  <data name="BoxNumber" xml:space="preserve">
+    <value>رقم الصندوق</value>
+  </data>
+  <data name="BoxNumberHint" xml:space="preserve">
+    <value>رقم الصندوق...</value>
+  </data>
+  <data name="CalculateEarningsForMember" xml:space="preserve">
+    <value>احتساب الأرباح للعضو</value>
+  </data>
+  <data name="CurrentCustomerPur" xml:space="preserve">
+    <value>مشتريات المساهم الحالية</value>
+  </data>
+  <data name="CurrentCustomerPurHint" xml:space="preserve">
+    <value>مشتريات المساهم الحالية...</value>
+  </data>
+  <data name="CustomerInvNameHint" xml:space="preserve">
+    <value>الاسم بالفاتورة...</value>
+  </data>
+  <data name="CustomerName" xml:space="preserve">
+    <value>اسم المساهم</value>
+  </data>
+  <data name="CustomerNameHint" xml:space="preserve">
+    <value>اسم المساهم...</value>
+  </data>
+  <data name="CustomerNo" xml:space="preserve">
+    <value>رقم المساهم</value>
+  </data>
+  <data name="customersData" xml:space="preserve">
+    <value>بيانات المساهمين</value>
+  </data>
+  <data name="CustomerStatusHint" xml:space="preserve">
+    <value>حالة المساهم...</value>
+  </data>
+  <data name="DataCompleted" xml:space="preserve">
+    <value>تم استكمال البيانات</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>تاريخ الميلاد</value>
+  </data>
+  <data name="DOBHint" xml:space="preserve">
+    <value>تاريخ الميلاد...</value>
+  </data>
+  <data name="EmployerHint" xml:space="preserve">
+    <value>جهة العمل...</value>
+  </data>
+  <data name="FamilyHint" xml:space="preserve">
+    <value>العائلة...</value>
+  </data>
+  <data name="FloorHint" xml:space="preserve">
+    <value>الدور...</value>
+  </data>
+  <data name="GenderHint" xml:space="preserve">
+    <value>النوع...</value>
+  </data>
+  <data name="GuardianHint" xml:space="preserve">
+    <value>اسم ولي الأمر...</value>
+  </data>
+  <data name="HomePhoneHint" xml:space="preserve">
+    <value>هاتف المنزل...</value>
+  </data>
+  <data name="HouseNumberHint" xml:space="preserve">
+    <value>رقم المنزل...</value>
+  </data>
+  <data name="IBANHint" xml:space="preserve">
+    <value>IBAN...</value>
+  </data>
+  <data name="JoinDateHint" xml:space="preserve">
+    <value>تاريخ الانضمام...</value>
+  </data>
+  <data name="JoinInformation" xml:space="preserve">
+    <value>بيانات الانضمام</value>
+  </data>
+  <data name="JoiningSharesCountHint" xml:space="preserve">
+    <value>عدد أسهم الانضمام...</value>
+  </data>
+  <data name="KinshipRelationshipHint" xml:space="preserve">
+    <value>صلة القرابة...</value>
+  </data>
+  <data name="MailBoxHint" xml:space="preserve">
+    <value>صندوق البريد...</value>
+  </data>
+  <data name="MaritalStatusHint" xml:space="preserve">
+    <value>الحالة الاجتماعية...</value>
+  </data>
+  <data name="MemberNatureHint" xml:space="preserve">
+    <value>طبيعة العضو...</value>
+  </data>
+  <data name="MobileNumber2Hint" xml:space="preserve">
+    <value>رقم الجوال 2...</value>
+  </data>
+  <data name="MobileNumberHint" xml:space="preserve">
+    <value>رقم الجوال...</value>
+  </data>
+  <data name="NationalIDHint" xml:space="preserve">
+    <value>البطاقة المدنية...</value>
+  </data>
+  <data name="PastProfits" xml:space="preserve">
+    <value>الأرباح السابقة</value>
+  </data>
+  <data name="PersonalDocuments" xml:space="preserve">
+    <value>الوثائق الخاصة</value>
+  </data>
+  <data name="PlotHint" xml:space="preserve">
+    <value>قسيمة...</value>
+  </data>
+  <data name="PostalCodeHint" xml:space="preserve">
+    <value>رمز بريدي...</value>
+  </data>
+  <data name="PrintNameOnInv" xml:space="preserve">
+    <value>طباعة اسم المساهم على الفاتورة</value>
+  </data>
+  <data name="ReceiptVoucherDateHint" xml:space="preserve">
+    <value>تاريخ سند القبض...</value>
+  </data>
+  <data name="ReceiptVoucherNumberHint" xml:space="preserve">
+    <value>رقم سند القبض...</value>
+  </data>
+  <data name="RegisteredInMinistry" xml:space="preserve">
+    <value>مسجل بالوزارة</value>
+  </data>
+  <data name="SessionNumberHint" xml:space="preserve">
+    <value>رقم الجلسة...</value>
+  </data>
+  <data name="SharesCount" xml:space="preserve">
+    <value>عدد الأسهم</value>
+  </data>
+  <data name="SharesCountBiginningYearHint" xml:space="preserve">
+    <value>عدد الأسهم (أول العام)...</value>
+  </data>
+  <data name="StopOnPOS" xml:space="preserve">
+    <value>موقوف على الــ (POS)</value>
+  </data>
+  <data name="StreetHint" xml:space="preserve">
+    <value>الشارع...</value>
+  </data>
+  <data name="WorkAddressHint" xml:space="preserve">
+    <value>عنوان العمل...</value>
+  </data>
+  <data name="WorkPhoneHint" xml:space="preserve">
+    <value>هاتف العمل...</value>
   </data>
 </root>

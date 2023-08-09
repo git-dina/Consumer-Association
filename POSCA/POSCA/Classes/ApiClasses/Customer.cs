@@ -14,9 +14,9 @@ namespace POSCA.Classes.ApiClasses
         public string Family { get; set; }
         public string InvoiceName { get; set; }
         public string Gender { get; set; }
-        public string FundNumber { get; set; }
+        //public string FundNumber { get; set; }
         public string CivilNum { get; set; }
-        public string FamilyCard { get; set; }
+       // public string FamilyCard { get; set; }
         public string MaritalStatus { get; set; }
         public Nullable<int> JobId { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
@@ -50,6 +50,9 @@ namespace POSCA.Classes.ApiClasses
         public CustomerAddress customerAddress { get; set; }
 
         public List<CustomerDocument> customerDocuments { get; set; }
+
+        //extra 
+        public int AllSharesCount { get; set; }
 
         #endregion
 

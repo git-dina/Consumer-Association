@@ -102,20 +102,75 @@ namespace POSCA.View.customers.customerSectionData
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("trCustomers");
+            txt_title.Text = AppSettings.resourcemanager.GetString("trCustomer");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("BankNameHint"));
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CurrentPurchses, AppSettings.resourcemanager.GetString("CurrentCustomerPurHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Family, AppSettings.resourcemanager.GetString("FamilyHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_Gender, AppSettings.resourcemanager.GetString("GenderHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceName, AppSettings.resourcemanager.GetString("CustomerInvNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MaritalStatus, AppSettings.resourcemanager.GetString("MaritalStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_JobId, AppSettings.resourcemanager.GetString("trJobHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_DOB, AppSettings.resourcemanager.GetString("DOBHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("NationalIDHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
+
+            txt_addressInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AutomtedNumber, AppSettings.resourcemanager.GetString("AutomtedNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_AreaId, AppSettings.resourcemanager.GetString("trArea"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SectionId, AppSettings.resourcemanager.GetString("trSectionHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Street, AppSettings.resourcemanager.GetString("StreetHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_HouseNumber, AppSettings.resourcemanager.GetString("HouseNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Floor, AppSettings.resourcemanager.GetString("FloorHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AvenueNumber, AppSettings.resourcemanager.GetString("AvenueNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Plot, AppSettings.resourcemanager.GetString("PlotHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MailBox, AppSettings.resourcemanager.GetString("MailBoxHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PostalCode, AppSettings.resourcemanager.GetString("PostalCodeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Guardian, AppSettings.resourcemanager.GetString("GuardianHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_HomePhone, AppSettings.resourcemanager.GetString("HomePhoneHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WorkPhone, AppSettings.resourcemanager.GetString("WorkPhoneHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MobileNumber, AppSettings.resourcemanager.GetString("MobileNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MobileNumber2, AppSettings.resourcemanager.GetString("MobileNumber2Hint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WorkAddress, AppSettings.resourcemanager.GetString("WorkAddressHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_KinshipId, AppSettings.resourcemanager.GetString("KinshipRelationshipHint"));
+
+
+            txt_joinInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MemberNature, AppSettings.resourcemanager.GetString("MemberNatureHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SessionNumber, AppSettings.resourcemanager.GetString("SessionNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ReceiptVoucherNumber, AppSettings.resourcemanager.GetString("ReceiptVoucherNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptVoucherDate, AppSettings.resourcemanager.GetString("ReceiptVoucherDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_JoiningSharesCount, AppSettings.resourcemanager.GetString("JoiningSharesCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SharesCount, AppSettings.resourcemanager.GetString("SharesCountBiginningYearHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_IBAN, AppSettings.resourcemanager.GetString("IBANHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
+
+            txt_CalculateEarnings.Text = AppSettings.resourcemanager.GetString("CalculateEarningsForMember");
+            txt_RegisteredInMinistry.Text = AppSettings.resourcemanager.GetString("CalculateEarningsForMember");
+            txt_StopOnPOS.Text = AppSettings.resourcemanager.GetString("StopOnPOS");
+            txt_DataCompleted.Text = AppSettings.resourcemanager.GetString("DataCompleted");
+            txt_PrintNameOnInv.Text = AppSettings.resourcemanager.GetString("PrintNameOnInv");
+
+
+            txt_personalDocumentsButton.Text = AppSettings.resourcemanager.GetString("PersonalDocuments");
+            txt_pastProfitsButton.Text = AppSettings.resourcemanager.GetString("PastProfits");
+
 
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_customer.Columns[0].Header = AppSettings.resourcemanager.GetString("BankNo");
-            dg_customer.Columns[1].Header = AppSettings.resourcemanager.GetString("BankName");
-            dg_customer.Columns[2].Header = AppSettings.resourcemanager.GetString("trDescription");
+            dg_customer.Columns[0].Header = AppSettings.resourcemanager.GetString("CustomerNo");
+            dg_customer.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_customer.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
+            dg_customer.Columns[3].Header = AppSettings.resourcemanager.GetString("CurrentCustomerPur");
+            dg_customer.Columns[4].Header = AppSettings.resourcemanager.GetString("SharesCount");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
 
