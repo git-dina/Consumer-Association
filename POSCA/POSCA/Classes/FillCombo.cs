@@ -1173,5 +1173,45 @@ namespace POSCA.Classes
         }
         #endregion
 
+        #region Customer
+        static public Customer customer = new Customer();
+        static public List<Customer> customerList;
+
+        static public async Task<IEnumerable<Customer>> RefreshCustomers()
+        {
+            customerList = await customer.get(true);
+
+            return customerList;
+        }
+
+        static public async Task fillCustomers(ComboBox combo)
+        {
+            if (customerList is null)
+                await RefreshCustomers();
+
+            combo.ItemsSource = customerList;
+            combo.SelectedValuePath = "CustomerId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+
+        static public async Task fillCustomersWithDefault(ComboBox combo)
+        {
+            if (customerList is null)
+                await RefreshCustomers();
+
+            var lst = customerList.ToList();
+            Customer sup = new Customer();
+            sup.Name = "-";
+            sup.CustomerId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+            combo.SelectedValuePath = "CustomerId";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
+
     }
 }
