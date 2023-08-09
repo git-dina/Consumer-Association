@@ -299,7 +299,12 @@
                         <TranslateTransform/>
                     </TransformGroup>
                 </Grid.RenderTransform>
-                <StackPanel   HorizontalAlignment="Left" >
+                <Grid 
+                    HorizontalAlignment="Left" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     <Button x:Name="BTN_menu" HorizontalAlignment="Right" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Margin="0,0,7,0" Height="50"
                             Click="BTN_Menu_Click" >
                         <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -335,8 +340,9 @@
                     </Button>
 
                     <!--Height="40" Width="40"-->
-
-                    <!--#region  home-->
+                    <ScrollViewer   Grid.Row="1"   VerticalScrollBarVisibility="Auto"   >
+                        <StackPanel   HorizontalAlignment="Left" >
+                        <!--#region  home-->
                     <!--<Expander  x:Name="exp_home" Tag="home" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
@@ -1163,6 +1169,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="customerData" 
+                          x:Name="btn_customerData"  Click="Btn_customerData_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="customerData"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData" Foreground="#A8AEC6" x:Name="txt_customerData"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
                                 </StackPanel>
                             </Expander>
 
@@ -1205,9 +1226,10 @@
                             </Button>
                         </StackPanel>
                     </Expander>
+                    </StackPanel>
+                    </ScrollViewer>
 
-
-                </StackPanel>
+                </Grid>
             </Grid>
             <Grid  Grid.Row="3" Grid.Column="0"   Grid.ColumnSpan="2"
               Background="{StaticResource MainColor}"  />
