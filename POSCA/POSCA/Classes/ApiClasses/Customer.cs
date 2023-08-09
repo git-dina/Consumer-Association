@@ -49,6 +49,7 @@ namespace POSCA.Classes.ApiClasses
 
         public CustomerAddress customerAddress { get; set; }
 
+        public List<CustomerDocument> customerDocuments { get; set; }
 
         #endregion
 
@@ -95,5 +96,17 @@ namespace POSCA.Classes.ApiClasses
         public string MobileNumber2 { get; set; }
         public string WorkAddress { get; set; }
         public Nullable<int> KinshipId { get; set; }
+    }
+
+    public class CustomerDocument
+    {
+        public long DocumentId { get; set; }
+        public Nullable<long> CustomerId { get; set; }
+        public string DocName { get; set; }
+        public bool IsActive { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<long> CreateUserId { get; set; }
+        public Nullable<long> UpdateUserId { get; set; }
     }
 }
