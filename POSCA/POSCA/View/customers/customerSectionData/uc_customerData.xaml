@@ -347,11 +347,30 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_CurrentPurchses" Grid.Row="8"  Padding="10,0,5,0"  
+
+                                    <TextBox x:Name="tb_BoxNumber"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    IsReadOnly="True"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="BoxNumber..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                </Grid>
+                            </Border>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_CurrentPurchses" Grid.Row="8"  Padding="10,0,5,0"  
                                              IsReadOnly="True"
                                          Text="{Binding CurrentPurchses, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -362,20 +381,20 @@
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CurrentPurchses" 
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CurrentPurchses" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                                    </Path>
-                                </Grid>
-                            </Border>
+                                        </Path>
+                                    </Grid>
+                                </Border>
 
-                            <Border Grid.Row="2" Grid.Column="1" 
+                                <Border Grid.Row="2" Grid.Column="1" 
                     BorderThickness="0"  Height="35"
                         CornerRadius="7" BorderBrush="Black"
                     Background="{StaticResource SecondColor}" Padding="0" Margin="5 5 10 5"
                     >
-                                <Button   
+                                    <Button   
                             Grid.Column="1"  Padding="0"    
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
@@ -386,22 +405,9 @@
                     Click="Btn_archiving_Click"
                             FontSize="12" FontWeight="Bold" 
                   Foreground="White" />
-                            </Border>
-                        </Grid>
-                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-
-                                <TextBox x:Name="tb_BoxNumber"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
-                                    IsReadOnly="True"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="BoxNumber..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                </Border>
                             </Grid>
-                        </Border>
+                        </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -487,6 +493,41 @@
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                           
+                            <Border  Grid.Row="2"  CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_CivilNum"  Text="{Binding CivilNum, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CivilNum..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FamilyCard" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10,5,10,5">
+                                <TextBlock   x:Name="txt_FamilyCardHolder"
+                                   Margin="0,0,5,0" Text="FamilyCardHolder" Foreground="#6e6e6e"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   FontSize="12"/>
+                                <ToggleButton   x:Name="tgl_FamilyCardHolder"  IsChecked="{Binding FamilyCardHolder, Mode=OneWay}"
+                                      IsEnabled="False"  
+                                      VerticalAlignment="Center" Padding="10,15,5,5"  
+                                      Margin="0" Height="13" Width="28"    />
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Column="0" Grid.Row="3"  CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
@@ -541,39 +582,6 @@
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>
 
-                                </Grid>
-                            </Border>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
-                                <TextBlock   x:Name="txt_FamilyCardHolder"
-                                   Margin="0,0,5,0" Text="FamilyCardHolder" Foreground="#6e6e6e"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   FontSize="12"/>
-                                <ToggleButton   x:Name="tgl_FamilyCardHolder"  IsChecked="{Binding FamilyCardHolder, Mode=OneWay}"
-                                      IsEnabled="False"  
-                                      VerticalAlignment="Center" Padding="10,15,5,5"  
-                                      Margin="0" Height="13" Width="28"    />
-                            </StackPanel>
-                            <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_CivilNum"  Text="{Binding CivilNum, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="CivilNum..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FamilyCard" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
                                 </Grid>
                             </Border>
                         </Grid>
@@ -993,22 +1001,23 @@
 
                                 </Grid>
                             </Border>
-                            <Border  Grid.Column="1" Grid.Row="3"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <ComboBox x:Name="cb_MemberNature"    SelectedValue="{Binding MemberNature, Mode=OneWay}"
-                                Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                materialDesign:HintAssist.Hint="MemberNature..."  
-                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                Grid.Column="0" Height="40"  Margin="0,0"
-                                BorderBrush="#737373" BorderThickness="0"  />
-                                    <Path Fill="#E81123" x:Name="p_error_MemberNature" Stretch="Fill" Margin="5,5,20,5"
-                            HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                        VerticalAlignment="Center" Width="15"  Height="15" 
-                            Data="{StaticResource infoCircle}"/>
-
+                                    <TextBox x:Name="tb_MemberNature"  Text="{Binding MemberNature, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="MemberNature..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MemberNature" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
                                 </Grid>
                             </Border>
-
                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
