@@ -22,7 +22,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<long> BoxNumber { get; set; }
         public decimal CurrentPurchses { get; set; }
-        public string CustomerStatus { get; set; }
+        public string CustomerStatus { get; set; } = "continouse";
         public string MemberNature { get; set; }
         public Nullable<int> SessionNumber { get; set; }
         public Nullable<System.DateTime> JoinDate { get; set; }
@@ -30,11 +30,11 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> ReceiptVoucherDate { get; set; }
         public int JoiningSharesCount { get; set; }
         public int SharesCount { get; set; }
-        public bool CalculateEarnings { get; set; }
+        public bool CalculateEarnings { get; set; } = true;
         public bool IsBlocked { get; set; }
         public string IBAN { get; set; }
         public Nullable<int> BankId { get; set; }
-        public bool PrintNameOnInv { get; set; }
+        public bool PrintNameOnInv { get; set; } = true;
         public bool RegisteredInMinistry { get; set; }
         public bool StopOnPOS { get; set; }
         public bool DataCompleted { get; set; }
