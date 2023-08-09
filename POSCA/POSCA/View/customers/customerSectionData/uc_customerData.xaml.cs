@@ -70,7 +70,7 @@ namespace POSCA.View.customers.customerSectionData
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name", "Description", "Symbol" };
+                requiredControlList = new List<string> { "Name", "BoxNumber","CivilNum", "AutomtedNumber" , "MobileNumber" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
