@@ -36,6 +36,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> BankId { get; set; }
         public bool PrintNameOnInv { get; set; }
         public bool RegisteredInMinistry { get; set; }
+        public bool StopOnPOS { get; set; }
         public bool DataCompleted { get; set; }
         public string Notes { get; set; }
         public bool IsArchived { get; set; }
@@ -47,9 +48,29 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; }
 
         public CustomerAddress customerAddress { get; set; }
+
+
         #endregion
 
         #region Methods
+        internal Task<List<Customer>> get(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+       
+
+        internal Task<List<Customer>> save(Customer customer)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal Task<List<Customer>> delete(long bankId, long userId)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
 
