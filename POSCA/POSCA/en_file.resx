@@ -5964,6 +5964,12 @@ Main Documents</value>
   <data name="DataCompleted" xml:space="preserve">
     <value>Data Completed</value>
   </data>
+  <data name="Divorced" xml:space="preserve">
+    <value>Divorced</value>
+  </data>
+  <data name="DivorcedAndSupports" xml:space="preserve">
+    <value>Divorced And Supports</value>
+  </data>
   <data name="DOB" xml:space="preserve">
     <value>Birthday Date</value>
   </data>
@@ -5978,6 +5984,9 @@ Main Documents</value>
   </data>
   <data name="FamilyHint" xml:space="preserve">
     <value>Family...</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
   </data>
   <data name="FloorHint" xml:space="preserve">
     <value>Floor...</value>
@@ -6012,8 +6021,17 @@ Main Documents</value>
   <data name="MailBoxHint" xml:space="preserve">
     <value>Mail Box...</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
   <data name="MaritalStatusHint" xml:space="preserve">
     <value>Marital Status...</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>Married</value>
+  </data>
+  <data name="MarriedAndSupports" xml:space="preserve">
+    <value>Married And Supports</value>
   </data>
   <data name="MemberNatureHint" xml:space="preserve">
     <value>Member Nature...</value>
@@ -6060,11 +6078,20 @@ Main Documents</value>
   <data name="SharesCountBiginningYearHint" xml:space="preserve">
     <value>Shares Count (Biginning of the Year)...</value>
   </data>
+  <data name="Single" xml:space="preserve">
+    <value>Single</value>
+  </data>
   <data name="StopOnPOS" xml:space="preserve">
     <value>Stop On POS</value>
   </data>
   <data name="StreetHint" xml:space="preserve">
     <value>Street...</value>
+  </data>
+  <data name="Widower" xml:space="preserve">
+    <value>Widower</value>
+  </data>
+  <data name="WidowerAndSupports" xml:space="preserve">
+    <value>Widower And Supports</value>
   </data>
   <data name="WorkAddressHint" xml:space="preserve">
     <value>Work Address...</value>

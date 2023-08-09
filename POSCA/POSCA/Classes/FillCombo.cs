@@ -1172,7 +1172,64 @@ namespace POSCA.Classes
             combo.SelectedIndex = 0;
         }
         #endregion
+        #region GenderList
+        static public List<keyValueString> GenderList;
+        static public IEnumerable<keyValueString> RefreshGenderList()
+        {
+            GenderList = new List<keyValueString>() {
+                new keyValueString(){key="male", value=AppSettings.resourcemanager.GetString("Male") },
+                new keyValueString(){key="female", value=AppSettings.resourcemanager.GetString("Female") },
+            };
 
+            return GenderList;
+        }
+
+        static public void fillGender(ComboBox combo)
+        {
+            if (GenderList is null)
+                RefreshGenderList();
+
+            combo.ItemsSource = GenderList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion 
+        
+        #region Martial Status
+        static public List<keyValueString> MartialStatusList;
+        static public IEnumerable<keyValueString> RefreshMartialStatusList()
+        {
+            MartialStatusList = new List<keyValueString>() {
+                new keyValueString(){key="single", value=AppSettings.resourcemanager.GetString("Single") },
+                new keyValueString(){key="married", value=AppSettings.resourcemanager.GetString("Married") },
+                new keyValueString(){key="married-support", value=AppSettings.resourcemanager.GetString("MarriedAndSupports") },
+                new keyValueString(){key="divorced", value=AppSettings.resourcemanager.GetString("Divorced") },
+                new keyValueString(){key="divorced-support", value=AppSettings.resourcemanager.GetString("DivorcedAndSupports") },
+                new keyValueString(){key="widower", value=AppSettings.resourcemanager.GetString("Widower") },
+                new keyValueString(){key="widower-support", value=AppSettings.resourcemanager.GetString("WidowerAndSupports") },
+            };
+
+            return MartialStatusList;
+        }
+
+        static public void fillMartialStatus(ComboBox combo)
+        {
+            if (MartialStatusList is null)
+                RefreshMartialStatusList();
+
+            var lst = MartialStatusList.ToList();
+            var sup = new keyValueString();
+            sup.value = "-";
+            sup.key = "";
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = MartialStatusList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
         #region Customer
         static public Customer customer = new Customer();
         static public List<Customer> customerList;
@@ -1211,6 +1268,8 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = 0;
         }
+
+       
         #endregion
 
     }

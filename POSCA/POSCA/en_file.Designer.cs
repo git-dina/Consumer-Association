@@ -1249,6 +1249,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Divorced.
+        /// </summary>
+        internal static string Divorced {
+            get {
+                return ResourceManager.GetString("Divorced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Divorced And Supports.
+        /// </summary>
+        internal static string DivorcedAndSupports {
+            get {
+                return ResourceManager.GetString("DivorcedAndSupports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Do you want save the quotation in drafts?.
         /// </summary>
         internal static string Do_you_want_save_the_quotation_in_drafts_ {
@@ -1614,6 +1632,15 @@ namespace POSCA {
         internal static string features {
             get {
                 return ResourceManager.GetString("features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Female.
+        /// </summary>
+        internal static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
             }
         }
         
@@ -2492,6 +2519,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Male.
+        /// </summary>
+        internal static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Management.
         /// </summary>
         internal static string management {
@@ -2524,6 +2560,24 @@ namespace POSCA {
         internal static string MaritalStatusHint {
             get {
                 return ResourceManager.GetString("MaritalStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Married.
+        /// </summary>
+        internal static string Married {
+            get {
+                return ResourceManager.GetString("Married", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Married And Supports.
+        /// </summary>
+        internal static string MarriedAndSupports {
+            get {
+                return ResourceManager.GetString("MarriedAndSupports", resourceCulture);
             }
         }
         
@@ -4360,6 +4414,15 @@ namespace POSCA {
         internal static string Signature {
             get {
                 return ResourceManager.GetString("Signature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Single.
+        /// </summary>
+        internal static string Single {
+            get {
+                return ResourceManager.GetString("Single", resourceCulture);
             }
         }
         
@@ -17808,6 +17871,24 @@ namespace POSCA {
         internal static string WholesaleProfitMarginHint {
             get {
                 return ResourceManager.GetString("WholesaleProfitMarginHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widower.
+        /// </summary>
+        internal static string Widower {
+            get {
+                return ResourceManager.GetString("Widower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Widower And Supports.
+        /// </summary>
+        internal static string WidowerAndSupports {
+            get {
+                return ResourceManager.GetString("WidowerAndSupports", resourceCulture);
             }
         }
         

@@ -611,7 +611,8 @@
                                 materialDesign:HintAssist.Hint="AreaId..."  
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                 Grid.Column="0" Height="40"  Margin="0,0"
-                                BorderBrush="#737373" BorderThickness="0"  />
+                                BorderBrush="#737373" BorderThickness="0" 
+                                    SelectionChanged="cb_AreaId_SelectionChanged"/>
                                     <Path Fill="#E81123" x:Name="p_error_AreaId" Stretch="Fill" Margin="5,5,20,5"
                             HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                         VerticalAlignment="Center" Width="15"  Height="15" 

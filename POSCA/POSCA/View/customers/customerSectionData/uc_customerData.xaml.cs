@@ -87,6 +87,11 @@ namespace POSCA.View.customers.customerSectionData
 
                 Keyboard.Focus(tb_Name);
 
+                FillCombo.fillGender(cb_Gender);
+                FillCombo.fillMartialStatus(cb_MaritalStatus);
+                await FillCombo.fillJobsWithDefault(cb_JobId);
+                await FillCombo.fillAreasWithDefault(cb_AreaId);
+                await FillCombo.fillKinshipTiessWithDefault(cb_KinshipId);
                 await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
@@ -132,6 +137,7 @@ namespace POSCA.View.customers.customerSectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Plot, AppSettings.resourcemanager.GetString("PlotHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MailBox, AppSettings.resourcemanager.GetString("MailBoxHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PostalCode, AppSettings.resourcemanager.GetString("PostalCodeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Employer, AppSettings.resourcemanager.GetString("EmployerHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Guardian, AppSettings.resourcemanager.GetString("GuardianHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_HomePhone, AppSettings.resourcemanager.GetString("HomePhoneHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WorkPhone, AppSettings.resourcemanager.GetString("WorkPhoneHint"));
@@ -593,6 +599,31 @@ namespace POSCA.View.customers.customerSectionData
         private void Btn_pastProfits_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cb_AreaId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if(cb_AreaId.SelectedValue != null)
+                {
+                    var area = FillCombo.areaList.Where(x => x.AreaId == (int)cb_AreaId.SelectedValue).FirstOrDefault();
+
+                    var lst = area.Sections.ToList();
+                   POSCA.Classes.ApiClasses.Section sup = new POSCA.Classes.ApiClasses.Section();
+                    sup.Name = "-";
+                    sup.SectionId = 0;
+                    lst.Insert(0, sup);
+
+                    cb_SectionId.ItemsSource = lst;
+                    cb_SectionId.SelectedValuePath = "SectionId";
+                    cb_SectionId.DisplayMemberPath = "Name";
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

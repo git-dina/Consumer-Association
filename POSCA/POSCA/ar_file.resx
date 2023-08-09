@@ -6218,6 +6218,12 @@
   <data name="DataCompleted" xml:space="preserve">
     <value>تم استكمال البيانات</value>
   </data>
+  <data name="Divorced" xml:space="preserve">
+    <value>مطلّق</value>
+  </data>
+  <data name="DivorcedAndSupports" xml:space="preserve">
+    <value>مطلّق ويعيل</value>
+  </data>
   <data name="DOB" xml:space="preserve">
     <value>تاريخ الميلاد</value>
   </data>
@@ -6232,6 +6238,9 @@
   </data>
   <data name="FamilyHint" xml:space="preserve">
     <value>العائلة...</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>أنثى</value>
   </data>
   <data name="FloorHint" xml:space="preserve">
     <value>الدور...</value>
@@ -6266,8 +6275,17 @@
   <data name="MailBoxHint" xml:space="preserve">
     <value>صندوق البريد...</value>
   </data>
+  <data name="Male" xml:space="preserve">
+    <value>ذكر</value>
+  </data>
   <data name="MaritalStatusHint" xml:space="preserve">
     <value>الحالة الاجتماعية...</value>
+  </data>
+  <data name="Married" xml:space="preserve">
+    <value>متزوج</value>
+  </data>
+  <data name="MarriedAndSupports" xml:space="preserve">
+    <value>متزوج ويعيل</value>
   </data>
   <data name="MemberNatureHint" xml:space="preserve">
     <value>طبيعة العضو...</value>
@@ -6314,11 +6332,20 @@
   <data name="SharesCountBiginningYearHint" xml:space="preserve">
     <value>عدد الأسهم (أول العام)...</value>
   </data>
+  <data name="Single" xml:space="preserve">
+    <value>أعزب</value>
+  </data>
   <data name="StopOnPOS" xml:space="preserve">
     <value>موقوف على الــ (POS)</value>
   </data>
   <data name="StreetHint" xml:space="preserve">
     <value>الشارع...</value>
+  </data>
+  <data name="Widower" xml:space="preserve">
+    <value>أرمل</value>
+  </data>
+  <data name="WidowerAndSupports" xml:space="preserve">
+    <value>أرمل ويعيل</value>
   </data>
   <data name="WorkAddressHint" xml:space="preserve">
     <value>عنوان العمل...</value>
