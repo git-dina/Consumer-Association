@@ -239,6 +239,9 @@
     <Compile Include="View\customers\customerSectionData\uc_customerBank.xaml.cs">
       <DependentUpon>uc_customerBank.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\customers\customerSectionData\uc_customerData.xaml.cs">
+      <DependentUpon>uc_customerData.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\customers\customerSectionData\uc_hirarachyStructure.xaml.cs">
       <DependentUpon>uc_hirarachyStructure.xaml</DependentUpon>
     </Compile>
@@ -385,6 +388,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\customers\customerSectionData\uc_customerBank.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerSectionData\uc_customerData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
