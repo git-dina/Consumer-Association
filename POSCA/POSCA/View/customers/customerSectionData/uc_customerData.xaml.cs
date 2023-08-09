@@ -119,7 +119,7 @@ namespace POSCA.View.customers.customerSectionData
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("NationalIDHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            txt_FamilyCardHolder.Text = AppSettings.resourcemanager.GetString("AddressInfo");
+            txt_FamilyCardHolder.Text = AppSettings.resourcemanager.GetString("FamilyCardHolder");
             
             txt_addressInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AutomtedNumber, AppSettings.resourcemanager.GetString("AutomtedNumberHint"));
