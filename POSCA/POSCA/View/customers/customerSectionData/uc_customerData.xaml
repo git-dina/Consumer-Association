@@ -555,7 +555,8 @@
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
                                    FontSize="12"/>
                                 <ToggleButton   x:Name="tgl_FamilyCardHolder"  IsChecked="{Binding FamilyCardHolder, Mode=OneWay}"
-                                        VerticalAlignment="Center" Padding="10,15,5,5"  
+                                      IsEnabled="False"  
+                                      VerticalAlignment="Center" Padding="10,15,5,5"  
                                       Margin="0" Height="13" Width="28"    />
                             </StackPanel>
                             <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">

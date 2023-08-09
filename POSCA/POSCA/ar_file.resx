@@ -6227,6 +6227,9 @@
   <data name="EmployerHint" xml:space="preserve">
     <value>جهة العمل...</value>
   </data>
+  <data name="FamilyCardHolder" xml:space="preserve">
+    <value>مالك بطاقة عائلية</value>
+  </data>
   <data name="FamilyHint" xml:space="preserve">
     <value>العائلة...</value>
   </data>

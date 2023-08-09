@@ -1582,6 +1582,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Has Family Card.
+        /// </summary>
+        internal static string FamilyCardHolder {
+            get {
+                return ResourceManager.GetString("FamilyCardHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Family....
         /// </summary>
         internal static string FamilyHint {

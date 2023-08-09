@@ -40,7 +40,6 @@ namespace POSCA.Classes.ApiClasses
         public bool DataCompleted { get; set; }
         public string Notes { get; set; }
         public bool IsArchived { get; set; }
-        public bool FamilyCardHolder { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
@@ -53,6 +52,7 @@ namespace POSCA.Classes.ApiClasses
 
         //extra 
         public int AllSharesCount { get; set; }
+        public bool FamilyCardHolder { get; set; }
 
         #endregion
 

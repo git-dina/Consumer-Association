@@ -5973,6 +5973,9 @@ Main Documents</value>
   <data name="EmployerHint" xml:space="preserve">
     <value>Employer...</value>
   </data>
+  <data name="FamilyCardHolder" xml:space="preserve">
+    <value>Has Family Card</value>
+  </data>
   <data name="FamilyHint" xml:space="preserve">
     <value>Family...</value>
   </data>
