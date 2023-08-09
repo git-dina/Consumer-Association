@@ -1072,7 +1072,22 @@
                         </Expander.Header>
                         <!--#region  customers-->
                         <StackPanel Margin="20 0 0 0">
-                            <!--#region  customerSectionData-->
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="customerData" 
+                          x:Name="btn_customerData"  Click="Btn_customerData_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="customerData"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData" Foreground="#A8AEC6" x:Name="txt_customerData"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
+                                    <!--#region  customerSectionData-->
                             <Expander  x:Name="exp_customerSectionData" Tag="customerSectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                                 <Expander.Header>
                                     <Grid Margin="0 -15 0 -15"   >
@@ -1169,21 +1184,7 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
-                                    <Button   Height="50"
-                                  Grid.Row="1"
-                           Tag="customerData" 
-                          x:Name="btn_customerData"  Click="Btn_customerData_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
-                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                            </Grid.ColumnDefinitions>
-                                            <TextBlock Text="customerData"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData" Foreground="#A8AEC6" x:Name="txt_customerData"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
-                                        </Grid>
-                                    </Button>
+                                    
                                 </StackPanel>
                             </Expander>
 
