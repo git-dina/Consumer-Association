@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,7 +33,7 @@ namespace POSCA.Classes.ApiClasses
         public int JoiningSharesCount { get; set; }
         public int SharesCount { get; set; }
         public bool CalculateEarnings { get; set; } = true;
-        public bool IsBlocked { get; set; }
+        //public bool IsBlocked { get; set; }
         public string IBAN { get; set; }
         public Nullable<int> BankId { get; set; }
         public bool PrintNameOnInv { get; set; } = true;
@@ -57,9 +59,23 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        internal Task<List<Customer>> get(bool v)
+        internal async Task<List<Customer>> get(bool v)
         {
-            throw new NotImplementedException();
+            var result = new List<Customer>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/Get";
+
+            parameters.Add("isActive", v.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Customer>(c.Value));
+                }
+            }
+            return result;
         }
 
        
@@ -106,6 +122,7 @@ namespace POSCA.Classes.ApiClasses
         public long DocumentId { get; set; }
         public Nullable<long> CustomerId { get; set; }
         public string DocName { get; set; }
+        public string DocTitle { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
