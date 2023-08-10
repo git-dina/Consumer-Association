@@ -240,7 +240,10 @@
     <Compile Include="View\customers\customerSectionData\uc_customerBank.xaml.cs">
       <DependentUpon>uc_customerBank.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\customers\customerSectionData\uc_customerData.xaml.cs">
+    <Compile Include="View\customers\customerTransaction\uc_addStocks.xaml.cs">
+      <DependentUpon>uc_addStocks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\uc_customerData.xaml.cs">
       <DependentUpon>uc_customerData.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\customers\customerSectionData\uc_hirarachyStructure.xaml.cs">
@@ -339,6 +342,9 @@
       <DependentUpon>wd_addReturnItem.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\windows\wd_customerDocument.xaml.cs">
+      <DependentUpon>wd_customerDocument.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_getInvNumber.xaml.cs">
       <DependentUpon>wd_getInvNumber.xaml</DependentUpon>
     </Compile>
@@ -392,7 +398,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\customers\customerSectionData\uc_customerData.xaml">
+    <Page Include="View\customers\customerTransaction\uc_addStocks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\uc_customerData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -534,6 +544,10 @@
     <Page Include="View\windows\wd_addReturnItem.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="View\windows\wd_customerDocument.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\windows\wd_getInvNumber.xaml">
       <SubType>Designer</SubType>
