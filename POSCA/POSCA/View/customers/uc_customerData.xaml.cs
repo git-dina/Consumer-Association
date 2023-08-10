@@ -2,6 +2,7 @@
 using netoaster;
 using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
+using POSCA.View.customers.customerSectionData;
 using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace POSCA.View.customers.customerSectionData
+namespace POSCA.View.customers
 {
     /// <summary>
     /// Interaction logic for uc_customerData.xaml
@@ -148,7 +149,7 @@ namespace POSCA.View.customers.customerSectionData
 
 
             txt_joinInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MemberNature, AppSettings.resourcemanager.GetString("MemberNatureHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SessionNumber, AppSettings.resourcemanager.GetString("SessionNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
@@ -550,8 +551,6 @@ namespace POSCA.View.customers.customerSectionData
 
 
         #endregion
-
-
         #region swap
         private void btn_columnSwap_Click(object sender, RoutedEventArgs e)
         {
@@ -586,14 +585,85 @@ namespace POSCA.View.customers.customerSectionData
 
         }
 
-        private void btn_updateIBAN_Click(object sender, RoutedEventArgs e)
+        private async void btn_addIBAN_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_userControl w = new wd_userControl();
+
+                w.grid_uc.Children.Add(uc_customerBank.Instance);
+                w.ShowDialog();
+                uc_customerBank.Instance.UserControl_Unloaded(uc_customerBank.Instance, null);
+                //await FillCombo.RefreshSupplierTypes();
+                //await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
+
+                //if (w.isOk)
+                //{
+
+                //}
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_personalDocuments_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
 
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Opacity = 0.2;
+                wd_customerDocument w = new wd_customerDocument();
+
+                w.CustomerDocuments = customer.customerDocuments;
+                
+                w.ShowDialog();
+                if (w.isOk)
+                {
+                    customer.customerDocuments = w.CustomerDocuments.ToList();
+                    if (customer.CustomerId != 0)
+                    {
+                        /*
+                        foreach (var row in customer.customerDocuments)
+                        {
+                            if (row.IsEdited)
+                            {
+                                row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
+                                var ext = row.DocPath.Substring(row.DocPath.LastIndexOf('.'));
+                                var extension = ext.ToLower();
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId;
+                                string b = await customer.uploadDocument(row.DocPath, row.DocName);
+                                row.DocName = row.DocName + ext;
+                            }
+                        }
+                        customer = await customer.save(customer);
+
+                        */
+                        
+                    }
+                }
+                Window.GetWindow(this).Opacity = 1;
+
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Opacity = 1;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_pastProfits_Click(object sender, RoutedEventArgs e)

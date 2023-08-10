@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="POSCA.View.customers.customerSectionData.uc_customerData"
+﻿<UserControl x:Class="POSCA.View.customers.uc_customerData"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -985,40 +985,41 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" Grid.Row="3"  CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <ComboBox x:Name="cb_CustomerStatus"    SelectedValue="{Binding CustomerStatus, Mode=OneWay}"
-                                IsReadOnly="True"
-                                Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                materialDesign:HintAssist.Hint="CustomerStatus..."  
-                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
-                                Grid.Column="0" Height="40"  Margin="0,0"
-                                BorderBrush="#737373" BorderThickness="0"  />
-                                    <Path Fill="#E81123" x:Name="p_error_CustomerStatus" Stretch="Fill" Margin="5,5,20,5"
-                            HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                        VerticalAlignment="Center" Width="15"  Height="15" 
-                            Data="{StaticResource infoCircle}"/>
-
-                                </Grid>
-                            </Border>
-                            <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_MemberNature"  Text="{Binding MemberNature, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_CustomerStatus"  Text="{Binding CustomerStatus, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="MemberNature..."  
+                                     materialDesign:HintAssist.Hint="CustomerStatus..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MemberNature" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CustomerStatus" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
                                     </Path>
                                 </Grid>
                             </Border>
-                        </Grid>
+
+                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <ComboBox x:Name="cb_MemberNature"    SelectedValue="{Binding MemberNature, Mode=OneWay}"
+                                Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
+                                materialDesign:HintAssist.Hint="MemberNature..."  
+                                Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                Grid.Column="0" Height="40"  Margin="0,0"
+                                BorderBrush="#737373" BorderThickness="0" />
+                                    <Path Fill="#E81123" x:Name="p_error_MemberNature" Stretch="Fill" Margin="5,5,20,5"
+                            HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                        VerticalAlignment="Center" Width="15"  Height="15" 
+                            Data="{StaticResource infoCircle}"/>
+
+                                </Grid>
+                            </Border>
+
+                         </Grid>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -1174,11 +1175,11 @@
                                 <Button Grid.Column="1"  Padding="0" 
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" 
-                                            x:Name="btn_updateIBAN" Click="btn_updateIBAN_Click"  
+                                            x:Name="btn_addIBAN" Click="btn_addIBAN_Click"  
                                 Margin="5 5 5 5" IsEnabled="True">
                                     <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
-                           Data="{StaticResource updateFile}" />
+                           Data="{StaticResource addFile}" />
                                 </Button>
                             </Grid>
                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
