@@ -14,10 +14,13 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> BoxNumber { get; set; }
         public Nullable<System.DateTime> TransactionDate { get; set; }
         public string TransactionType { get; set; }
-        public Nullable<int> SharesCount { get; set; }
-        public decimal SharePrice { get; set; }
+        public Nullable<int> TransactionStocksCount { get; set; }
+        public Nullable<int> StocksCount { get; set; }
+        public decimal StocksPrice { get; set; }
+        public decimal TotalPrice { get; set; }
         public string ApprovalNumber { get; set; }
         public Nullable<System.DateTime> MeetingDate { get; set; }
+        public string CheckNumber { get; set; }
         public Nullable<System.DateTime> CheckDate { get; set; }
         public string Notes { get; set; }
         public Nullable<long> ToCustomerId { get; set; }
@@ -34,6 +37,11 @@ namespace POSCA.Classes.ApiClasses
         public int JoinDay { get; set; }
         public int JoinMonth{ get; set; }
         public int JoinYear{ get; set; }
+
+        // customer
+        public string CustomerName { get; set; }
+        public Nullable<System.DateTime> JoinDate { get; set; }
+
 
         #endregion
     }
