@@ -201,6 +201,7 @@
     <Compile Include="Classes\ApiClasses\Category.cs" />
     <Compile Include="Classes\ApiClasses\Customer.cs" />
     <Compile Include="Classes\ApiClasses\CustomerBank.cs" />
+    <Compile Include="Classes\ApiClasses\CustomerTransaction.cs" />
     <Compile Include="Classes\ApiClasses\HirarachyStructure.cs" />
     <Compile Include="Classes\ApiClasses\Item.cs" />
     <Compile Include="Classes\ApiClasses\ItemLocation.cs" />
