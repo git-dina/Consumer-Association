@@ -23,7 +23,6 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> JobId { get; set; }
         public Nullable<System.DateTime> DOB { get; set; }
         public Nullable<long> BoxNumber { get; set; }
-        public decimal CurrentPurchses { get; set; }
         public string CustomerStatus { get; set; } = "continouse";
         public string MemberNature { get; set; }
         public Nullable<int> SessionNumber { get; set; }
@@ -55,6 +54,7 @@ namespace POSCA.Classes.ApiClasses
         //extra 
         public int AllSharesCount { get; set; }
         public bool FamilyCardHolder { get; set; }
+        public decimal? CurrentPurchses { get; set; }
 
         #endregion
 
