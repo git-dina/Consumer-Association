@@ -1052,7 +1052,7 @@
                         </StackPanel>
                     </Expander>
                     <!--#region  customers-->
-                    <Expander  x:Name="exp_customers" Tag="customerSectionData_" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                            <Expander  x:Name="exp_customers" Tag="customerSectionData_customerTransaction" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -1187,8 +1187,48 @@
                                     
                                 </StackPanel>
                             </Expander>
+                                    <!--#region  customerTransaction-->
+                                    <Expander  x:Name="exp_customerTransaction" Tag="customerTransaction" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                                        <Expander.Header>
+                                            <Grid Margin="0 -15 0 -15"   >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Path Fill="White" x:Name="path_iconCustomerTransaction" Stretch="Fill"  
+                              HorizontalAlignment="Center" Grid.Column="0"  
+                         VerticalAlignment="Center" Width="20" Height="20"
+                                      Margin="5 10" FlowDirection="LeftToRight"
+                              Data="{StaticResource report4}"/>
+                                                <TextBlock Text="customerTransaction" Foreground="White" x:Name="txt_customerTransaction"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                           FontWeight="SemiBold" FontSize="14"
+                              Grid.Column="1"      Margin="10,0,0,0"/>
+                                            </Grid>
+                                        </Expander.Header>
+                                        <!--#region  customerTransaction-->
+                                        <StackPanel>
+                                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="addStocks" 
+                          x:Name="btn_addStocks"  Click="Btn_addStocks_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="addStocks"  Tag="customerTransaction_addStocks_" Foreground="#A8AEC6" x:Name="txt_addStocks"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                                </Grid>
+                                            </Button>
 
-                        </StackPanel>
+                                        </StackPanel>
+                                    </Expander>
+
+
+                                </StackPanel>
                     </Expander>
                     <!--#region  settings-->
                     <Expander  x:Name="exp_settings" Tag="settings" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >

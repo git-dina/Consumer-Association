@@ -1,6 +1,8 @@
 ﻿using POSCA.Classes;
 using POSCA.View.catalog;
+using POSCA.View.customers;
 using POSCA.View.customers.customerSectionData;
+using POSCA.View.customerTransactions.customerTransactionTransaction;
 using POSCA.View.locations;
 using POSCA.View.promotion;
 using POSCA.View.purchases;
@@ -1018,12 +1020,29 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+       
         private void Btn_customerData_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 grid_main.Children.Clear();
                 grid_main.Children.Add(uc_customerData.Instance);
+
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        private void Btn_addStocks_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_addStocks.Instance);
 
                 Button button = sender as Button;
                 secondMenuTitleActivate(button.Tag.ToString());
@@ -1123,6 +1142,6 @@ namespace POSCA
             }
         }
 
-      
+        
     }
 }
