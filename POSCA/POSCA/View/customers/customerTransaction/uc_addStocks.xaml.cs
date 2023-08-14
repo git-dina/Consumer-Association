@@ -204,6 +204,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
                     if (HelpClass.validate(requiredControlList, this))
                     {
+                        customerTransaction.TransactionType = "add";
                         customerTransaction.CustomerId =long.Parse( tb_CustomerId.Text);
                         customerTransaction.TransactionDate = dp_TransactionDate.SelectedDate;
                         customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
