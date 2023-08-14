@@ -205,15 +205,14 @@ namespace POSCA.View.customers
                        
                         customer.CreateUserId = MainWindow.userLogin.userId;
 
-                        FillCombo.customerList = await customer.save(customer);
-                        if (FillCombo.customerList == null)
+                       customer = await customer.save(customer);
+                        if (customer.CustomerId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
                             await Clear();
-                            await Search();
                         }
                     }
                     else
@@ -249,13 +248,12 @@ namespace POSCA.View.customers
                            
                             customer.UpdateUserId = MainWindow.userLogin.userId;
 
-                            FillCombo.customerList = await customer.save(customer);
-                            if (FillCombo.customerList == null)
+                            customer = await customer.save(customer);
+                            if (customer.CustomerId == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await Search();
 
                             }
                         }

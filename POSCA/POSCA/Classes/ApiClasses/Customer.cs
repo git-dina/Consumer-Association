@@ -78,13 +78,28 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-       
 
-       
 
-        internal Task<List<Customer>> save(Customer customer)
+
+
+        public async Task<Customer> save(Customer customer)
         {
-            throw new NotImplementedException();
+            var result = new Customer();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/Save";
+
+            var myContent = JsonConvert.SerializeObject(customer);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<Customer>(c.Value);
+                }
+            }
+            return result;
         }
 
         internal Task<List<Customer>> delete(long bankId, long userId)

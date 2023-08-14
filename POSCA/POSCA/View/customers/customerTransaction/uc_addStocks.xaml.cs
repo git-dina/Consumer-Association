@@ -70,7 +70,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber" };
+                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber" , "CheckDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -200,34 +200,40 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    /*
-                    if (customerTransaction.CustomerTransactionId > 0)
+                    
+
+                    if (HelpClass.validate(requiredControlList, this))
                     {
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                        {
-                            customerTransaction.Name = tb_Name.Text;
-                            customerTransaction.Notes = tb_Notes.Text;
+                        customerTransaction.CustomerId =long.Parse( tb_CustomerId.Text);
+                        customerTransaction.TransactionDate = dp_TransactionDate.SelectedDate;
+                        customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
+                        customerTransaction.StocksCount = int.Parse(tb_StocksCount.Text);
+                        customerTransaction.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
+                        customerTransaction.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
+                        customerTransaction.ApprovalNumber = tb_ApprovalNumber.Text;
+                        customerTransaction.MeetingDate = dp_MeetingDate.SelectedDate;
+                        customerTransaction.CheckNumber = tb_CheckNumber.Text;
+                        customerTransaction.CheckDate = dp_CheckDate.SelectedDate;
+                        customerTransaction.Notes = tb_Notes.Text;
 
-                            customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
+                        customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
 
-                            FillCombo.customerTransactionList = await customerTransaction.save(customerTransaction);
-                            if (FillCombo.customerTransactionList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await Search();
-
-                            }
-                        }
+                       var res = await customerTransaction.AddTransaction(customerTransaction);
+                        if (res == 0)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            //await Search();
+
                         }
                     }
                     else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemFirst"), animation: ToasterAnimation.FadeIn);
-                    */
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
+
+                   
                     HelpClass.EndAwait(grid_main);
                 }
                 //else
