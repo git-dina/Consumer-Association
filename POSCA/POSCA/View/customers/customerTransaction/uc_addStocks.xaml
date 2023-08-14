@@ -377,7 +377,8 @@
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                                   KeyDown="tb_CustomerId_KeyDown"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CustomerId" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"

@@ -56,7 +56,8 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
         }
 
         CustomerTransaction customerTransaction = new CustomerTransaction();
-        IEnumerable<CustomerTransaction> customerTransactionsQuery;
+        Customer customer = new Customer();
+        List<CustomerTransaction> customerTransactions;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -65,7 +66,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             Instance = null;
             GC.Collect();
         }
-        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private  void UserControl_Loaded(object sender, RoutedEventArgs e)
         {//load
             try
             {
@@ -87,10 +88,9 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
                 Keyboard.Focus(dp_TransactionDate);
 
-                tb_StocksPrice.Text = "5";
 
-                await Search();
-                await Clear();
+                //await Search();
+                Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -224,6 +224,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            Clear();
                             //await Search();
 
                         }
@@ -393,9 +394,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
                 HelpClass.StartAwait(grid_main);
 
-                //tb_search.Text = "";
-                //searchText = "";
-                await RefreshCustomerTransactionsList();
+               // await RefreshCustomerTransactionsList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -411,30 +410,22 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
         #region Refresh & Search
         async Task Search()
         {
-            //search
-            /*
-            if (FillCombo.customerTransactionList is null)
-                await RefreshCustomerTransactionsList();
-            searchText = tb_search.Text.ToLower();
-            customerTransactionsQuery = FillCombo.customerTransactionList.Where(s =>
-            s.Name.ToLower().Contains(searchText)
-            ).ToList();
+            customerTransactions = await customerTransaction.SearchTransactions(tb_search.Text);
             RefreshCustomerTransactionsView();
-            */
         }
-        async Task<IEnumerable<CustomerTransaction>> RefreshCustomerTransactionsList()
-        {
-            /*
-            await FillCombo.RefreshCustomerTransactions();
+        //async Task<IEnumerable<CustomerTransaction>> RefreshCustomerTransactionsList()
+        //{
+        
+        //    await customerTransaction.get(true);
 
-            return FillCombo.customerTransactionList;
-            */
-            return new List<CustomerTransaction>();
-        }
+        //    return FillCombo.customerTransactionList;
+           
+        //    return customerTransactions;
+        //}
         void RefreshCustomerTransactionsView()
         {
-            dg_customerTransaction.ItemsSource = customerTransactionsQuery;
-            txt_count.Text = customerTransactionsQuery.Count().ToString();
+            dg_customerTransaction.ItemsSource = customerTransactions;
+            txt_count.Text = customerTransactions.Count().ToString();
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
@@ -543,6 +534,14 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
+            if (tb_search.Text != "")
+                Btn_search_Click(null, null);
+            else
+            {
+                customerTransactions = new List<CustomerTransaction>();
+                RefreshCustomerTransactionsView();
+            }
+
         }
         void swapToData()
         {
@@ -578,5 +577,24 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
         }
 
+        private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_CustomerId.Text != "")
+                {
+                    if(FillCombo.customerList != null)
+                    {
+                        customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
+                    }
+
+                    if (customer == null)
+                        customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+
+                    this.DataContext = customer;
+                }
+            }
+            catch { }
+        }
     }
 }

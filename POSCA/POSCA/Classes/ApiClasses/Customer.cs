@@ -78,6 +78,25 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
+         internal async Task<Customer> GetById(long customerId)
+        {
+            var result = new Customer();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/GetById";
+
+            parameters.Add("customerId", customerId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result=JsonConvert.DeserializeObject<Customer>(c.Value);
+                }
+            }
+            return result;
+        }
+
 
 
 
