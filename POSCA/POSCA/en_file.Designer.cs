@@ -169,6 +169,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Stockes.
+        /// </summary>
+        internal static string AddStockes {
+            get {
+                return ResourceManager.GetString("AddStockes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adminstrative Structure.
         /// </summary>
         internal static string AdminstrativeStructure {
@@ -457,6 +466,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Board Approval Number....
+        /// </summary>
+        internal static string BoardApprovalNumberHint {
+            get {
+                return ResourceManager.GetString("BoardApprovalNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bond no.
         /// </summary>
         internal static string Bondno {
@@ -633,6 +651,24 @@ namespace POSCA {
         internal static string charts {
             get {
                 return ResourceManager.GetString("charts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Date....
+        /// </summary>
+        internal static string CheckDateHint {
+            get {
+                return ResourceManager.GetString("CheckDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check Number....
+        /// </summary>
+        internal static string CheckNumberHint {
+            get {
+                return ResourceManager.GetString("CheckNumberHint", resourceCulture);
             }
         }
         
@@ -997,6 +1033,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer No....
+        /// </summary>
+        internal static string CustomerNoHint {
+            get {
+                return ResourceManager.GetString("CustomerNoHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customers.
         /// </summary>
         internal static string Customers {
@@ -1020,6 +1065,15 @@ namespace POSCA {
         internal static string CustomerStatusHint {
             get {
                 return ResourceManager.GetString("CustomerStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customers Transactions.
+        /// </summary>
+        internal static string CustomersTransactions {
+            get {
+                return ResourceManager.GetString("CustomersTransactions", resourceCulture);
             }
         }
         
@@ -1407,6 +1461,15 @@ namespace POSCA {
         internal static string duration {
             get {
                 return ResourceManager.GetString("duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration Join.
+        /// </summary>
+        internal static string DurationJoin {
+            get {
+                return ResourceManager.GetString("DurationJoin", resourceCulture);
             }
         }
         
@@ -2365,7 +2428,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Joining Shares Count....
+        ///   Looks up a localized string similar to Joining Stocks Count....
         /// </summary>
         internal static string JoiningSharesCountHint {
             get {
@@ -4301,6 +4364,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Session Date....
+        /// </summary>
+        internal static string SessionDateHint {
+            get {
+                return ResourceManager.GetString("SessionDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Session Number....
         /// </summary>
         internal static string SessionNumberHint {
@@ -4513,6 +4585,42 @@ namespace POSCA {
         internal static string statuses {
             get {
                 return ResourceManager.GetString("statuses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stocks Count.
+        /// </summary>
+        internal static string StocksCount {
+            get {
+                return ResourceManager.GetString("StocksCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stocks Count....
+        /// </summary>
+        internal static string StocksCountHint {
+            get {
+                return ResourceManager.GetString("StocksCountHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stocks Price.
+        /// </summary>
+        internal static string StocksPrice {
+            get {
+                return ResourceManager.GetString("StocksPrice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stocks Price....
+        /// </summary>
+        internal static string StocksPriceHint {
+            get {
+                return ResourceManager.GetString("StocksPriceHint", resourceCulture);
             }
         }
         
@@ -5012,6 +5120,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Price....
+        /// </summary>
+        internal static string TotalPriceHint {
+            get {
+                return ResourceManager.GetString("TotalPriceHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Quantities.
         /// </summary>
         internal static string TotalQuantities {
@@ -5503,6 +5620,33 @@ namespace POSCA {
         internal static string trAnotherPaymentMethods {
             get {
                 return ResourceManager.GetString("trAnotherPaymentMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Date.
+        /// </summary>
+        internal static string TransactionDate {
+            get {
+                return ResourceManager.GetString("TransactionDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Date....
+        /// </summary>
+        internal static string TransactionDateHint {
+            get {
+                return ResourceManager.GetString("TransactionDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Stocks Count....
+        /// </summary>
+        internal static string TransactionStocksCountHint {
+            get {
+                return ResourceManager.GetString("TransactionStocksCountHint", resourceCulture);
             }
         }
         
@@ -11438,7 +11582,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to شهر.
+        ///   Looks up a localized string similar to Month.
         /// </summary>
         internal static string trMonth {
             get {
@@ -11447,7 +11591,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عدد الأشهر.
+        ///   Looks up a localized string similar to Month Count.
         /// </summary>
         internal static string trMonthCount {
             get {
@@ -11456,7 +11600,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عدد الأشهر ....
+        ///   Looks up a localized string similar to Month Count....
         /// </summary>
         internal static string trMonthCountHint {
             get {
@@ -11465,7 +11609,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to شهري.
+        ///   Looks up a localized string similar to Monthly....
         /// </summary>
         internal static string trMonthly {
             get {
@@ -17604,7 +17748,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عام.
+        ///   Looks up a localized string similar to Year.
         /// </summary>
         internal static string trYear {
             get {

@@ -87,6 +87,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
                 Keyboard.Focus(dp_TransactionDate);
 
+                tb_StocksPrice.Text = "5";
 
                 await Search();
                 await Clear();
@@ -102,84 +103,47 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
 
         private void translate()
         {
-            /*
-            txt_title.Text = AppSettings.resourcemanager.GetString("trCustomerTransaction");
+            
+            txt_title.Text = AppSettings.resourcemanager.GetString("AddStockes");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CurrentPurchses, AppSettings.resourcemanager.GetString("CurrentCustomerTransactionPurHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("CustomerTransactionNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Family, AppSettings.resourcemanager.GetString("FamilyHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_Gender, AppSettings.resourcemanager.GetString("GenderHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceName, AppSettings.resourcemanager.GetString("CustomerTransactionInvNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MaritalStatus, AppSettings.resourcemanager.GetString("MaritalStatusHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_JobId, AppSettings.resourcemanager.GetString("trJobHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_DOB, AppSettings.resourcemanager.GetString("DOBHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("NationalIDHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_TransactionDate, AppSettings.resourcemanager.GetString("TransactionDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksPrice, AppSettings.resourcemanager.GetString("StocksPriceHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TotalPrice, AppSettings.resourcemanager.GetString("TotalPriceHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_CheckDate, AppSettings.resourcemanager.GetString("CheckDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            txt_FamilyCardHolder.Text = AppSettings.resourcemanager.GetString("FamilyCardHolder");
+            txt_durationJoin.Text = AppSettings.resourcemanager.GetString("DurationJoin");
 
-            txt_addressInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AutomtedNumber, AppSettings.resourcemanager.GetString("AutomtedNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_AreaId, AppSettings.resourcemanager.GetString("trArea"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_SectionId, AppSettings.resourcemanager.GetString("trSectionHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Street, AppSettings.resourcemanager.GetString("StreetHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_HouseNumber, AppSettings.resourcemanager.GetString("HouseNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Floor, AppSettings.resourcemanager.GetString("FloorHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AvenueNumber, AppSettings.resourcemanager.GetString("AvenueNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Plot, AppSettings.resourcemanager.GetString("PlotHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MailBox, AppSettings.resourcemanager.GetString("MailBoxHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PostalCode, AppSettings.resourcemanager.GetString("PostalCodeHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Employer, AppSettings.resourcemanager.GetString("EmployerHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Guardian, AppSettings.resourcemanager.GetString("GuardianHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_HomePhone, AppSettings.resourcemanager.GetString("HomePhoneHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WorkPhone, AppSettings.resourcemanager.GetString("WorkPhoneHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MobileNumber, AppSettings.resourcemanager.GetString("MobileNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MobileNumber2, AppSettings.resourcemanager.GetString("MobileNumber2Hint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WorkAddress, AppSettings.resourcemanager.GetString("WorkAddressHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_KinshipId, AppSettings.resourcemanager.GetString("KinshipRelationshipHint"));
+            txt_JoinDayTitle.Text = AppSettings.resourcemanager.GetString("trDay");
+            txt_JoinMonthTitle.Text = AppSettings.resourcemanager.GetString("trMonth");
+            txt_JoinYearTitle.Text = AppSettings.resourcemanager.GetString("trYear");
+          
 
-
-            txt_joinInformation.Text = AppSettings.resourcemanager.GetString("AddressInfo");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerTransactionStatus, AppSettings.resourcemanager.GetString("CustomerTransactionStatusHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MemberNature, AppSettings.resourcemanager.GetString("MemberNatureHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SessionNumber, AppSettings.resourcemanager.GetString("SessionNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ReceiptVoucherNumber, AppSettings.resourcemanager.GetString("ReceiptVoucherNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReceiptVoucherDate, AppSettings.resourcemanager.GetString("ReceiptVoucherDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_JoiningSharesCount, AppSettings.resourcemanager.GetString("JoiningSharesCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SharesCount, AppSettings.resourcemanager.GetString("SharesCountBiginningYearHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_IBAN, AppSettings.resourcemanager.GetString("IBANHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_BankId, AppSettings.resourcemanager.GetString("trBankHint"));
-
-            txt_CalculateEarnings.Text = AppSettings.resourcemanager.GetString("CalculateEarningsForMember");
-            txt_RegisteredInMinistry.Text = AppSettings.resourcemanager.GetString("CalculateEarningsForMember");
-            txt_StopOnPOS.Text = AppSettings.resourcemanager.GetString("StopOnPOS");
-            txt_DataCompleted.Text = AppSettings.resourcemanager.GetString("DataCompleted");
-            txt_PrintNameOnInv.Text = AppSettings.resourcemanager.GetString("PrintNameOnInv");
-
-
-            txt_personalDocumentsButton.Text = AppSettings.resourcemanager.GetString("PersonalDocuments");
-            txt_pastProfitsButton.Text = AppSettings.resourcemanager.GetString("PastProfits");
-
+            dg_customerTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
+            dg_customerTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
+            dg_customerTransaction.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
+            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("StocksCount");
+            dg_customerTransaction.Columns[4].Header = AppSettings.resourcemanager.GetString("StocksPrice");
+            btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_customerTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("CustomerTransactionNo");
-            dg_customerTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
-            dg_customerTransaction.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerTransactionName");
-            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("CurrentCustomerTransactionPur");
-            dg_customerTransaction.Columns[4].Header = AppSettings.resourcemanager.GetString("SharesCount");
-            btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
-
-
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
-            */
+           
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)

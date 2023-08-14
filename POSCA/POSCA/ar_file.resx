@@ -6353,4 +6353,52 @@
   <data name="WorkPhoneHint" xml:space="preserve">
     <value>هاتف العمل...</value>
   </data>
+  <data name="AddStockes" xml:space="preserve">
+    <value>إضافة أسهم</value>
+  </data>
+  <data name="BoardApprovalNumberHint" xml:space="preserve">
+    <value>رقم موافقة المجلس...</value>
+  </data>
+  <data name="CheckDateHint" xml:space="preserve">
+    <value>تاريخ الشيك...</value>
+  </data>
+  <data name="CheckNumberHint" xml:space="preserve">
+    <value>رقم الشيك...</value>
+  </data>
+  <data name="CustomerNoHint" xml:space="preserve">
+    <value>رقم المساهم...</value>
+  </data>
+  <data name="CustomersTransactions" xml:space="preserve">
+    <value>حركات المساهمين</value>
+  </data>
+  <data name="DurationJoin" xml:space="preserve">
+    <value>مدة الانضمام</value>
+  </data>
+  <data name="SessionDateHint" xml:space="preserve">
+    <value>تاريخ الانعقاد...</value>
+  </data>
+  <data name="StocksCount" xml:space="preserve">
+    <value>عدد الأسهم</value>
+  </data>
+  <data name="StocksCountHint" xml:space="preserve">
+    <value>عدد الأسهم...</value>
+  </data>
+  <data name="StocksPrice" xml:space="preserve">
+    <value>قيمة الأسهم</value>
+  </data>
+  <data name="StocksPriceHint" xml:space="preserve">
+    <value>قيمة السهم...</value>
+  </data>
+  <data name="TotalPriceHint" xml:space="preserve">
+    <value>إجمالي قيمة...</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>تاريخ الحركة</value>
+  </data>
+  <data name="TransactionDateHint" xml:space="preserve">
+    <value>تاريخ الحركة...</value>
+  </data>
+  <data name="TransactionStocksCountHint" xml:space="preserve">
+    <value>عدد أسهم الحركة...</value>
+  </data>
 </root>

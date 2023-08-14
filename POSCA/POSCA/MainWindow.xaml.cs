@@ -423,6 +423,9 @@ namespace POSCA
             txt_customerBank.Text = AppSettings.resourcemanager.GetString("CustomerBanks");
             txt_hirarachyStructure.Text = AppSettings.resourcemanager.GetString("AdminstrativeStructure");
             txt_customerData.Text = AppSettings.resourcemanager.GetString("customersData");
+
+            txt_customerTransaction.Text = AppSettings.resourcemanager.GetString("CustomersTransactions");
+            txt_addStocks.Text = AppSettings.resourcemanager.GetString("AddStockes");
             #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 

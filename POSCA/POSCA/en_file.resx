@@ -2888,16 +2888,16 @@ Main Documents</value>
     <value>الاثنين</value>
   </data>
   <data name="trMonth" xml:space="preserve">
-    <value>شهر</value>
+    <value>Month</value>
   </data>
   <data name="trMonthCount" xml:space="preserve">
-    <value>عدد الأشهر</value>
+    <value>Month Count</value>
   </data>
   <data name="trMonthCountHint" xml:space="preserve">
-    <value>عدد الأشهر ...</value>
+    <value>Month Count...</value>
   </data>
   <data name="trMonthly" xml:space="preserve">
-    <value>شهري</value>
+    <value>Monthly...</value>
   </data>
   <data name="trMoreInformation" xml:space="preserve">
     <value>معلومات اخرى</value>
@@ -4887,7 +4887,7 @@ Main Documents</value>
     <value>Y</value>
   </data>
   <data name="trYear" xml:space="preserve">
-    <value>عام</value>
+    <value>Year</value>
   </data>
   <data name="trYearCount" xml:space="preserve">
     <value>عدد السنوات</value>
@@ -6013,7 +6013,7 @@ Main Documents</value>
     <value>Join Information</value>
   </data>
   <data name="JoiningSharesCountHint" xml:space="preserve">
-    <value>Joining Shares Count...</value>
+    <value>Joining Stocks Count...</value>
   </data>
   <data name="KinshipRelationshipHint" xml:space="preserve">
     <value>Kinship Relationship...</value>
@@ -6098,5 +6098,53 @@ Main Documents</value>
   </data>
   <data name="WorkPhoneHint" xml:space="preserve">
     <value>Work Phone...</value>
+  </data>
+  <data name="AddStockes" xml:space="preserve">
+    <value>Add Stockes</value>
+  </data>
+  <data name="BoardApprovalNumberHint" xml:space="preserve">
+    <value>Board Approval Number...</value>
+  </data>
+  <data name="CheckDateHint" xml:space="preserve">
+    <value>Check Date...</value>
+  </data>
+  <data name="CheckNumberHint" xml:space="preserve">
+    <value>Check Number...</value>
+  </data>
+  <data name="CustomerNoHint" xml:space="preserve">
+    <value>Customer No...</value>
+  </data>
+  <data name="CustomersTransactions" xml:space="preserve">
+    <value>Customers Transactions</value>
+  </data>
+  <data name="DurationJoin" xml:space="preserve">
+    <value>Duration Join</value>
+  </data>
+  <data name="SessionDateHint" xml:space="preserve">
+    <value>Session Date...</value>
+  </data>
+  <data name="StocksCount" xml:space="preserve">
+    <value>Stocks Count</value>
+  </data>
+  <data name="StocksCountHint" xml:space="preserve">
+    <value>Stocks Count...</value>
+  </data>
+  <data name="StocksPrice" xml:space="preserve">
+    <value>Stocks Price</value>
+  </data>
+  <data name="StocksPriceHint" xml:space="preserve">
+    <value>Stocks Price...</value>
+  </data>
+  <data name="TotalPriceHint" xml:space="preserve">
+    <value>Total Price...</value>
+  </data>
+  <data name="TransactionDate" xml:space="preserve">
+    <value>Transaction Date</value>
+  </data>
+  <data name="TransactionDateHint" xml:space="preserve">
+    <value>Transaction Date...</value>
+  </data>
+  <data name="TransactionStocksCountHint" xml:space="preserve">
+    <value>Transaction Stocks Count...</value>
   </data>
 </root>

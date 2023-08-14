@@ -141,10 +141,10 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate}"/>
+                                <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
-                                <DataGridTextColumn Width="*"  Header="JoinDay" Binding="{Binding Path=JoinDay}"/>
-                                <DataGridTextColumn Width="*"  Header="JoinMonth" Binding="{Binding Path=JoinMonth}"/>
-                                <DataGridTextColumn Width="*"  Header="JoinYear" Binding="{Binding Path=JoinYear}"/>
+                                <DataGridTextColumn Width="*"  Header="StocksCount" Binding="{Binding Path=TransactionStocksCount}"/>
+                                <DataGridTextColumn Width="*"  Header="StocksPrice" Binding="{Binding Path=StocksPrice}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -389,6 +389,7 @@
                             <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <DatePicker  x:Name="dp_JoinDate" 
+                                                 IsEnabled="False"
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
                                         TextBlock.Foreground="{StaticResource textColor}"
@@ -410,7 +411,8 @@
                         <Border  Grid.Row="2"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox x:Name="tb_CustomerName"  Text="{Binding CustomerName, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     IsReadOnly="True" IsEnabled="False"
+                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="CustomerName..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
@@ -451,7 +453,8 @@
                             <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_StocksCount" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding StocksCount, Mode=OneWay}"
+                                         IsEnabled="False"
+                                             Text="{Binding StocksCount, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="StocksCount..."    
                                         Foreground="{StaticResource textColor}"    
@@ -476,7 +479,7 @@
                             <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_StocksPrice" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding StocksPrice, Mode=OneWay}"
+                                       IsEnabled="False"  Text="{Binding StocksPrice, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="StocksPrice..."    
                                         Foreground="{StaticResource textColor}"    
@@ -496,6 +499,7 @@
                                 <Grid   >
                                     <TextBox x:Name="tb_TotalPrice" Grid.Row="8"  Padding="10,0,5,0"  
                                          Text="{Binding TotalPrice, Mode=OneWay}"
+                                         IsEnabled="False"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="TotalPrice..."    
                                         Foreground="{StaticResource textColor}"    

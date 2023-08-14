@@ -112,6 +112,8 @@ namespace POSCA.View.customers
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
+
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CurrentPurchses, AppSettings.resourcemanager.GetString("CurrentCustomerPurHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
