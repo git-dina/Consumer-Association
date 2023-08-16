@@ -502,7 +502,7 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="CivilNum..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="12" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
@@ -1027,14 +1027,16 @@
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_SessionNumber"  Text="{Binding SessionNumber, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="SessionNumber..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <TextBox x:Name="tb_SessionNumber" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding SessionNumber, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="SessionNumber..."    
+                                        Foreground="{StaticResource textColor}"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_SessionNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -1067,14 +1069,17 @@
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_ReceiptVoucherNumber"  Text="{Binding ReceiptVoucherNumber, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="ReceiptVoucherNumber..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <TextBox x:Name="tb_ReceiptVoucherNumber" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding ReceiptVoucherNumber, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="ReceiptVoucherNumber..."    
+                                        Foreground="{StaticResource textColor}"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ReceiptVoucherNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -1292,7 +1297,7 @@
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <!--<ColumnDefinition Width="*"/>-->
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Border Background="White" Grid.ColumnSpan="3"  Height="1"  BorderBrush="{StaticResource LightGrey}" 
@@ -1356,14 +1361,14 @@
                                 <TextBlock Foreground="White"  Name="txt_updateButton" Text="Update" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <Border Grid.Row="2" Grid.Column="2">
+                        <!--<Border Grid.Row="2" Grid.Column="2">
                             <Button x:Name="btn_delete"  materialDesign:ButtonAssist.CornerRadius="7"
                         Background="{StaticResource MainColor}" BorderBrush="{x:Null}" Foreground="White"
                     Margin="1,1"  Click="Btn_delete_Click" >
 
                                 <TextBlock  Name="txt_deleteButton" Foreground="White" Width="auto" Text="Delete" VerticalAlignment="Center"/>
                             </Button>
-                        </Border>
+                        </Border>-->
                     </Grid>
 
                 </Border>

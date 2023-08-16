@@ -175,7 +175,7 @@ namespace POSCA.View.customers
 
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
-            txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             dg_customer.Columns[0].Header = AppSettings.resourcemanager.GetString("CustomerNo");
             dg_customer.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
