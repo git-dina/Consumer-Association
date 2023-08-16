@@ -106,8 +106,8 @@ namespace POSCA.View.windows
             txt_customerDocument.Text = AppSettings.resourcemanager.GetString("CustomerDocuments");
 
             dg_customerDocument.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentType");
-            dg_customerDocument.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
-            dg_customerDocument.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
+            //dg_customerDocument.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
+            //dg_customerDocument.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 

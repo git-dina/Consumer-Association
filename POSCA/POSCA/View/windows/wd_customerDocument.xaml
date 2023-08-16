@@ -97,7 +97,7 @@
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Width="*"  Header="DocName" Binding="{Binding Path=DocName, Mode=TwoWay}"/>
-                            <DataGridTextColumn Width="*"  Header="DocTitle" Binding="{Binding Path=DocTitle, Mode=TwoWay}"/>
+                            <!--<DataGridTextColumn Width="*"  Header="DocTitle" Binding="{Binding Path=DocTitle, Mode=TwoWay}"/>-->
 
                             <DataGridTemplateColumn Width="35" Header="" IsReadOnly="True" >
                                 <DataGridTemplateColumn.CellTemplate>
