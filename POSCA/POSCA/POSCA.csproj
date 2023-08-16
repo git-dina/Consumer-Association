@@ -244,6 +244,18 @@
     <Compile Include="View\customers\customerTransaction\uc_addStocks.xaml.cs">
       <DependentUpon>uc_addStocks.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\customers\customerTransaction\uc_deathOfCustomer.xaml.cs">
+      <DependentUpon>uc_deathOfCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerTransaction\uc_reduceStocks.xaml.cs">
+      <DependentUpon>uc_reduceStocks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerTransaction\uc_retreatOfCustomer.xaml.cs">
+      <DependentUpon>uc_retreatOfCustomer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\customers\customerTransaction\uc_transformStocks.xaml.cs">
+      <DependentUpon>uc_transformStocks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\customers\uc_customerData.xaml.cs">
       <DependentUpon>uc_customerData.xaml</DependentUpon>
     </Compile>
@@ -402,6 +414,22 @@
     <Page Include="View\customers\customerTransaction\uc_addStocks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\customerTransaction\uc_deathOfCustomer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\customers\customerTransaction\uc_reduceStocks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\customers\customerTransaction\uc_retreatOfCustomer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\customers\customerTransaction\uc_transformStocks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\customers\uc_customerData.xaml">
       <SubType>Designer</SubType>
