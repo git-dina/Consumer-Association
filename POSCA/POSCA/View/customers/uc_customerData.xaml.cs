@@ -514,6 +514,8 @@ namespace POSCA.View.customers
             this.DataContext = new Customer();
             dg_customer.SelectedIndex = -1;
 
+            var maxId = await FillCombo.customer.GetMaxFundNum();
+            tb_BoxNumber.Text = maxId.ToString(); 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -762,6 +764,25 @@ namespace POSCA.View.customers
                         cb_BankId.SelectedValue = bank.BankId;
                     else
                         cb_BankId.SelectedValue = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_BoxNumber.Text !="")
+                {
+                    var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_BoxNumber.Text));
+                    if (!isValid)
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
+
+
                 }
             }
             catch (Exception ex)

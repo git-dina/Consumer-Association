@@ -1861,6 +1861,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fund Number Not Available.
+        /// </summary>
+        internal static string FundNumNotAvailable {
+            get {
+                return ResourceManager.GetString("FundNumNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gender....
         /// </summary>
         internal static string GenderHint {

@@ -6401,4 +6401,7 @@
   <data name="TransactionStocksCountHint" xml:space="preserve">
     <value>عدد أسهم الحركة...</value>
   </data>
+  <data name="FundNumNotAvailable" xml:space="preserve">
+    <value>رقم الصندوق غير متاح</value>
+  </data>
 </root>

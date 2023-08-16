@@ -6147,4 +6147,7 @@ Main Documents</value>
   <data name="TransactionStocksCountHint" xml:space="preserve">
     <value>Transaction Stocks Count...</value>
   </data>
+  <data name="FundNumNotAvailable" xml:space="preserve">
+    <value>Fund Number Not Available</value>
+  </data>
 </root>

@@ -27,6 +27,13 @@ namespace POSCA.Classes
 
         private static string Secret = "EREMN05OPLoDvbTTa/QkqLNMI7cPLguaRyHzyg7n5qNBVjQmtBhz4SzYh4NBVCXi3KJHlSXKP+oi2+bXr6CUYTR==";
         private static Random random = new Random();
+        private static readonly HttpClient client;
+        static APIResult()
+        {
+            client = new HttpClient();
+            client.BaseAddress = new Uri(AppSettings.APIUri);
+            client.Timeout = System.TimeSpan.FromSeconds(3600);
+        }
         public static async Task<IEnumerable<Claim>> getList(string method, Dictionary<string, string> parameters = null)
         {
             #region generate token to send it to api
@@ -72,10 +79,10 @@ namespace POSCA.Classes
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-            using (var client = new HttpClient())
+          //  using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(AppSettings.APIUri);
-                client.Timeout = System.TimeSpan.FromSeconds(3600);
+                //client.BaseAddress = new Uri(AppSettings.APIUri);
+                //client.Timeout = System.TimeSpan.FromSeconds(3600);
                 string boundary = string.Format("----WebKitFormBoundary{0}", DateTime.Now.Ticks.ToString("x"));
                 MultipartFormDataContent form = new MultipartFormDataContent();
                 HttpContent content = new StreamContent(fs);
@@ -180,10 +187,10 @@ namespace POSCA.Classes
             ServicePointManager.ServerCertificateValidationCallback += (sender, cert, chain, sslPolicyErrors) => true;
             ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-            using (var client = new HttpClient())
+           // using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(AppSettings.APIUri);
-                client.Timeout = System.TimeSpan.FromSeconds(3600);
+               // client.BaseAddress = new Uri(AppSettings.APIUri);
+               // client.Timeout = System.TimeSpan.FromSeconds(3600);
                 string boundary = string.Format("----WebKitFormBoundary{0}", DateTime.Now.Ticks.ToString("x"));
                 MultipartFormDataContent form = new MultipartFormDataContent();
                 HttpContent content = new StreamContent(fs);
@@ -229,10 +236,10 @@ namespace POSCA.Classes
 
         public static async Task<byte[]> getDocument(string method, string documentName)
         {
-            using (var client = new HttpClient())
+           // using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(AppSettings.APIUri);
-                client.Timeout = System.TimeSpan.FromSeconds(3600);
+               // client.BaseAddress = new Uri(AppSettings.APIUri);
+                //client.Timeout = System.TimeSpan.FromSeconds(3600);
 
 
                 Dictionary<string, string> parameters = new Dictionary<string, string>();
@@ -362,10 +369,10 @@ namespace POSCA.Classes
         }
         public static async Task<byte[]> getImage(string method, string imageName)
         {
-            using (var client = new HttpClient())
+           // using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri(AppSettings.APIUri);
-                client.Timeout = System.TimeSpan.FromSeconds(3600);
+               // client.BaseAddress = new Uri(AppSettings.APIUri);
+                //client.Timeout = System.TimeSpan.FromSeconds(3600);
  
 
                 Dictionary<string, string> parameters = new Dictionary<string, string>();

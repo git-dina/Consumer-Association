@@ -21,14 +21,14 @@ namespace POSCA.Classes.ApiClasses
        // public string FamilyCard { get; set; }
         public string MaritalStatus { get; set; }
         public Nullable<int> JobId { get; set; }
-        public Nullable<System.DateTime> DOB { get; set; }
+        public Nullable<System.DateTime> DOB { get; set; } = DateTime.Now;
         public Nullable<long> BoxNumber { get; set; }
         public string CustomerStatus { get; set; } = "continouse";
         public string MemberNature { get; set; }
         public Nullable<int> SessionNumber { get; set; }
-        public Nullable<System.DateTime> JoinDate { get; set; }
+        public Nullable<System.DateTime> JoinDate { get; set; } = DateTime.Now;
         public Nullable<int> ReceiptVoucherNumber { get; set; }
-        public Nullable<System.DateTime> ReceiptVoucherDate { get; set; }
+        public Nullable<System.DateTime> ReceiptVoucherDate { get; set; } = DateTime.Now;
         public int JoiningSharesCount { get; set; } = 5;
         public int SharesCount { get; set; }
         public bool CalculateEarnings { get; set; } = true;
@@ -95,7 +95,41 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-        internal async Task<Customer> GetById(long customerId)
+        public async Task<String> GetMaxFundNum()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/GetMaxFundNum";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
+        }
+        internal async Task<bool> CheckBoxNumber(long fundNumber)
+        {
+            bool result = false;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/CheckBoxNumber";
+
+            parameters.Add("fundNumber", fundNumber.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result=bool.Parse( c.Value);
+                }
+            }
+            return result;
+        }
+          internal async Task<Customer> GetById(long customerId)
         {
             var result = new Customer();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
