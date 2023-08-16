@@ -27,6 +27,7 @@ namespace POSCA.Classes.ApiClasses
         public string Notes { get; set; }
         public Nullable<long> ToCustomerId { get; set; }
         public Nullable<long> ToBoxNumber { get; set; }
+        public Nullable<int> ToStocksCount { get; set; }
         public Nullable<int> BondNo { get; set; }
         public Nullable<System.DateTime> BondDate { get; set; } = DateTime.Now;
         public bool IsActive { get; set; }
@@ -42,6 +43,7 @@ namespace POSCA.Classes.ApiClasses
 
         // customer
         public string CustomerName { get; set; }
+        public string ToCustomerName { get; set; }
         public Nullable<System.DateTime> JoinDate { get; set; }
 
 
