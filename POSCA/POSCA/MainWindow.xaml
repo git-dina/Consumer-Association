@@ -1224,6 +1224,67 @@
                                                 </Grid>
                                             </Button>
 
+                                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="reduceStocks" 
+                          x:Name="btn_reduceStocks"  Click="Btn_reduceStocks_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="reduceStocks"  Tag="customerTransaction_addStocks_reduceStocks" Foreground="#A8AEC6" x:Name="txt_reduceStocks"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                                </Grid>
+                                            </Button>
+                                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="transformStocks" 
+                          x:Name="btn_transformStocks"  Click="Btn_transformStocks_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="transformStocks"  Tag="customerTransaction_transformStocks_" Foreground="#A8AEC6" x:Name="txt_transformStocks"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                                </Grid>
+                                            </Button>
+                                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="retreatOfCustomer" 
+                          x:Name="btn_retreatOfCustomer"  Click="Btn_retreatOfCustomer_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="retreatOfCustomer"  Tag="customerTransaction_retreatOfCustomer_" Foreground="#A8AEC6" x:Name="txt_retreatOfCustomer"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                                </Grid>
+                                            </Button>
+                                            <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="deathOfCustomer" 
+                          x:Name="btn_deathOfCustomer"  Click="Btn_deathOfCustomer_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="deathOfCustomer"  Tag="customerTransaction_deathOfCustomer_" Foreground="#A8AEC6" x:Name="txt_deathOfCustomer"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                                </Grid>
+                                            </Button>
+                                            
                                         </StackPanel>
                                     </Expander>
 
