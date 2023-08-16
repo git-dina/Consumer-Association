@@ -430,7 +430,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bank Symbol....
+        ///   Looks up a localized string similar to IBAN....
         /// </summary>
         internal static string BankSymbolHint {
             get {
@@ -493,7 +493,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Box Number.
+        ///   Looks up a localized string similar to Fund Number.
         /// </summary>
         internal static string BoxNumber {
             get {
@@ -502,7 +502,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Box Number....
+        ///   Looks up a localized string similar to Fund Number....
         /// </summary>
         internal static string BoxNumberHint {
             get {

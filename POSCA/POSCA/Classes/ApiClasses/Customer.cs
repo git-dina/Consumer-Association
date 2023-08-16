@@ -29,7 +29,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> JoinDate { get; set; }
         public Nullable<int> ReceiptVoucherNumber { get; set; }
         public Nullable<System.DateTime> ReceiptVoucherDate { get; set; }
-        public int JoiningSharesCount { get; set; }
+        public int JoiningSharesCount { get; set; } = 5;
         public int SharesCount { get; set; }
         public bool CalculateEarnings { get; set; } = true;
         //public bool IsBlocked { get; set; }
@@ -52,9 +52,9 @@ namespace POSCA.Classes.ApiClasses
         public List<CustomerDocument> customerDocuments { get; set; }
 
         //extra 
-        public int AllSharesCount { get; set; }
+        public int AllStocksCount { get; set; }
         public bool FamilyCardHolder { get; set; }
-        public decimal? CurrentPurchses { get; set; }
+        public decimal CurrentPurchses { get; set; }
 
         #endregion
 
@@ -77,8 +77,25 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+        public async Task<List<Customer>> SearchCustomers(string textSearch)
+        {
+            var result = new List<Customer>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/SearchCustomers";
 
-         internal async Task<Customer> GetById(long customerId)
+            parameters.Add("textSearch", textSearch.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Customer>(c.Value));
+                }
+            }
+            return result;
+        }
+        internal async Task<Customer> GetById(long customerId)
         {
             var result = new Customer();
             Dictionary<string, string> parameters = new Dictionary<string, string>();

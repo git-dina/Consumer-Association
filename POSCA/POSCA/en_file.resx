@@ -5905,7 +5905,7 @@ Main Documents</value>
     <value>Bank Symbol</value>
   </data>
   <data name="BankSymbolHint" xml:space="preserve">
-    <value>Bank Symbol...</value>
+    <value>IBAN...</value>
   </data>
   <data name="CustomerBanks" xml:space="preserve">
     <value>Customer Banks</value>
@@ -5929,10 +5929,10 @@ Main Documents</value>
     <value>Avenue Number...</value>
   </data>
   <data name="BoxNumber" xml:space="preserve">
-    <value>Box Number</value>
+    <value>Fund Number</value>
   </data>
   <data name="BoxNumberHint" xml:space="preserve">
-    <value>Box Number...</value>
+    <value>Fund Number...</value>
   </data>
   <data name="CalculateEarningsForMember" xml:space="preserve">
     <value>Calculate Earnings For Member</value>

@@ -57,7 +57,7 @@ namespace POSCA.View.customers
         }
 
         Customer customer = new Customer();
-        IEnumerable<Customer> customersQuery;
+        IEnumerable<Customer> customers;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -93,7 +93,10 @@ namespace POSCA.View.customers
                 await FillCombo.fillJobsWithDefault(cb_JobId);
                 await FillCombo.fillAreasWithDefault(cb_AreaId);
                 await FillCombo.fillKinshipTiessWithDefault(cb_KinshipId);
-                await Search();
+                await FillCombo.fillCustomerBanksWithDefault(cb_BankId);
+
+
+                //await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -172,6 +175,7 @@ namespace POSCA.View.customers
             txt_personalDocumentsButton.Text = AppSettings.resourcemanager.GetString("PersonalDocuments");
             txt_pastProfitsButton.Text = AppSettings.resourcemanager.GetString("PastProfits");
 
+            btn_archiving.Content = AppSettings.resourcemanager.GetString("trArchive");
 
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
@@ -187,7 +191,105 @@ namespace POSCA.View.customers
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         }
+
+        private void inputEditable()
+        {
+            if(customer.CustomerId.Equals(0))
+            {
+                btn_archiving.IsEnabled = false;
+                tb_BoxNumber.IsEnabled = true;
+            }
+            else
+            {
+                btn_archiving.IsEnabled = true;
+                tb_BoxNumber.IsEnabled = false;
+            }
+        }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
+
+        private void AssignValueToObject()
+        {
+            customer.Name = tb_Name.Text;
+            customer.BoxNumber = long.Parse(tb_BoxNumber.Text);
+            customer.CivilNum = tb_CivilNum.Text;
+            customer.Family = tb_Family.Text;
+            customer.InvoiceName = tb_InvoiceName.Text;
+
+            if (cb_Gender.SelectedValue != null)
+                customer.Gender = cb_Gender.SelectedValue.ToString();
+            if (cb_MaritalStatus.SelectedValue != null)
+                customer.MaritalStatus = cb_MaritalStatus.SelectedValue.ToString();
+            if (cb_JobId.SelectedValue != null)
+                customer.JobId = (int)cb_JobId.SelectedValue;
+            if (dp_DOB.SelectedDate != null)
+                customer.DOB = dp_DOB.SelectedDate;
+            if (cb_MemberNature.SelectedValue != null)
+                customer.MemberNature = cb_MemberNature.SelectedValue.ToString();
+            if (tb_SessionNumber.Text != "")
+                customer.SessionNumber = int.Parse(tb_SessionNumber.Text);
+            if (dp_JoinDate.SelectedDate != null)
+                customer.JoinDate = dp_JoinDate.SelectedDate;
+            if (tb_ReceiptVoucherNumber.Text != "")
+                customer.ReceiptVoucherNumber = int.Parse(tb_ReceiptVoucherNumber.Text);
+            if (dp_ReceiptVoucherDate.SelectedDate != null)
+                customer.ReceiptVoucherDate = dp_ReceiptVoucherDate.SelectedDate;
+            if (tb_SharesCount.Text != "")
+                customer.SharesCount = int.Parse(tb_SharesCount.Text);
+            if (cb_BankId.SelectedValue != null)
+                customer.BankId = (int)cb_BankId.SelectedValue;
+            if (tgl_CalculateEarnings.IsChecked == true)
+                customer.CalculateEarnings = true;
+            else
+                customer.CalculateEarnings = false;
+
+            if (tgl_DataCompleted.IsChecked == true)
+                customer.DataCompleted = true;
+            else
+                customer.DataCompleted = false;
+
+            if (tgl_PrintNameOnInv.IsChecked == true)
+                customer.PrintNameOnInv = true;
+            else
+                customer.PrintNameOnInv = false;
+
+            if (tgl_RegisteredInMinistry.IsChecked == true)
+                customer.RegisteredInMinistry = true;
+            else
+                customer.RegisteredInMinistry = false;
+
+            if (tgl_StopOnPOS.IsChecked == true)
+                customer.StopOnPOS = true;
+            else
+                customer.StopOnPOS = false;
+
+            customer.Notes = tb_Notes.Text;
+
+            customer.CreateUserId = MainWindow.userLogin.userId;
+
+            //customer ddress
+            customer.customerAddress.AutomtedNumber = tb_AutomtedNumber.Text;
+            if (cb_AreaId.SelectedValue != null)
+                customer.customerAddress.AreaId = (int)cb_AreaId.SelectedValue;
+            if (cb_SectionId.SelectedValue != null)
+                customer.customerAddress.SectionId = (int)cb_SectionId.SelectedValue;
+            customer.customerAddress.Street = tb_Street.Text;
+            customer.customerAddress.HouseNumber = tb_HouseNumber.Text;
+            if (tb_Floor.Text != "")
+                customer.customerAddress.Floor = int.Parse(tb_Floor.Text);
+            customer.customerAddress.AvenueNumber = tb_AvenueNumber.Text;
+            customer.customerAddress.Plot = tb_Plot.Text;
+            customer.customerAddress.MailBox = tb_MailBox.Text;
+            customer.customerAddress.PostalCode = tb_PostalCode.Text;
+            customer.customerAddress.Employer = tb_Employer.Text;
+            customer.customerAddress.Guardian = tb_Guardian.Text;
+            customer.customerAddress.HomePhone = tb_HomePhone.Text;
+            customer.customerAddress.WorkPhone = tb_WorkPhone.Text;
+            customer.customerAddress.MobileNumber = tb_MobileNumber.Text;
+            customer.customerAddress.MobileNumber2 = tb_MobileNumber2.Text;
+            customer.customerAddress.WorkAddress = tb_WorkAddress.Text;
+            if (cb_KinshipId.SelectedValue != null)
+                customer.customerAddress.KinshipId = (int)cb_KinshipId.SelectedValue;
+        }
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
         {//add
             try
@@ -200,10 +302,7 @@ namespace POSCA.View.customers
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
 
-                        customer.Name = tb_Name.Text;
-                        customer.Notes = tb_Notes.Text;
-                       
-                        customer.CreateUserId = MainWindow.userLogin.userId;
+                        AssignValueToObject();
 
                        customer = await customer.save(customer);
                         if (customer.CustomerId == 0)
@@ -243,10 +342,7 @@ namespace POSCA.View.customers
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-                            customer.Name = tb_Name.Text;
-                            customer.Notes = tb_Notes.Text;
-                           
-                            customer.UpdateUserId = MainWindow.userLogin.userId;
+                            AssignValueToObject();
 
                             customer = await customer.save(customer);
                             if (customer.CustomerId == 0)
@@ -277,53 +373,7 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_delete_Click(object sender, RoutedEventArgs e)
-        {//delete
-            try
-            {
-                // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    if (customer.CustomerId != 0)
-                    {
-                        #region
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                        w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-
-                        w.ShowDialog();
-                        Window.GetWindow(this).Opacity = 1;
-                        #endregion
-
-                        if (w.isOk)
-                        {
-                            FillCombo.customerList = await customer.delete(customer.CustomerId, MainWindow.userLogin.userId);
-                            if (FillCombo.customerList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                customer.CustomerId = 0;
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                await Search();
-                                await Clear();
-                            }
-                        }
-
-                    }
-                    HelpClass.EndAwait(grid_main);
-                }
-                //else
-                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-
-            }
-            catch (Exception ex)
-            {
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+      
 
         #endregion
         #region events
@@ -335,8 +385,8 @@ namespace POSCA.View.customers
                 //if (tb_search.Text != "")
                 //{
                 //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
+                customers = await FillCombo.customer.SearchCustomers(tb_search.Text);
+              RefreshCustomersView();
 
                 await Search();
 
@@ -404,6 +454,8 @@ namespace POSCA.View.customers
                 {
                     customer = dg_customer.SelectedItem as Customer;
                     this.DataContext = customer;
+
+                    inputEditable();
                 }
                 HelpClass.clearValidate(requiredControlList, this);
 
@@ -438,15 +490,10 @@ namespace POSCA.View.customers
         }
         #endregion
         #region Refresh & Search
+
         async Task Search()
         {
-            //search
-            if (FillCombo.customerList is null)
-                await RefreshCustomersList();
-            searchText = tb_search.Text.ToLower();
-            customersQuery = FillCombo.customerList.Where(s =>
-            s.Name.ToLower().Contains(searchText)
-            ).ToList();
+            customers = await FillCombo.customer.SearchCustomers(tb_search.Text);
             RefreshCustomersView();
         }
         async Task<IEnumerable<Customer>> RefreshCustomersList()
@@ -457,8 +504,8 @@ namespace POSCA.View.customers
         }
         void RefreshCustomersView()
         {
-            dg_customer.ItemsSource = customersQuery;
-            txt_count.Text = customersQuery.Count().ToString();
+            dg_customer.ItemsSource = customers;
+            txt_count.Text = customers.Count().ToString();
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
@@ -564,12 +611,20 @@ namespace POSCA.View.customers
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
+            if (tb_search.Text != "")
+                Btn_search_Click(null, null);
+            else
+            {
+                customers = new List<Customer>();
+                RefreshCustomersView();
+            }
 
         }
         void swapToData()
         {
             cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+           
         }
 
 
@@ -693,6 +748,25 @@ namespace POSCA.View.customers
             catch
             {
 
+            }
+        }
+
+        private void tb_IBAN_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return)
+                {
+                    var bank = FillCombo.customerBankList.Where(x => x.Symbol.ToLower() == tb_IBAN.Text.ToLower()).FirstOrDefault();
+                    if (bank != null)
+                        cb_BankId.SelectedValue = bank.BankId;
+                    else
+                        cb_BankId.SelectedValue = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
     }
