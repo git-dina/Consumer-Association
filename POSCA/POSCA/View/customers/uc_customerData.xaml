@@ -144,7 +144,7 @@
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
                                 <DataGridTextColumn Width="*"  Header="CurrentPurchses" Binding="{Binding Path=CurrentPurchses}"/>
-                                <DataGridTextColumn Width="*"  Header="AllStocksCount" Binding="{Binding Path=AllSharesCount}"/>
+                                <DataGridTextColumn Width="*"  Header="AllStocksCount" Binding="{Binding Path=AllStocksCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -422,7 +422,7 @@
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                     LostFocus="tb_Name_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Name" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -504,7 +504,7 @@
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="12" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FamilyCard" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -603,7 +603,8 @@
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
+                                     PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_AutomtedNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -684,7 +685,8 @@
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
+                                     PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_HouseNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   

@@ -691,6 +691,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Civil Num Length Should Be 12 Digit.
+        /// </summary>
+        internal static string CivilNumLengthAlert {
+            get {
+                return ResourceManager.GetString("CivilNumLengthAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commission.
         /// </summary>
         internal static string commission {
@@ -2956,6 +2965,15 @@ namespace POSCA {
         internal static string NotRecieved {
             get {
                 return ResourceManager.GetString("NotRecieved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Working.
+        /// </summary>
+        internal static string NotWorking {
+            get {
+                return ResourceManager.GetString("NotWorking", resourceCulture);
             }
         }
         
@@ -18078,6 +18096,15 @@ namespace POSCA {
         internal static string WorkAddressHint {
             get {
                 return ResourceManager.GetString("WorkAddressHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Worker.
+        /// </summary>
+        internal static string Worker {
+            get {
+                return ResourceManager.GetString("Worker", resourceCulture);
             }
         }
         

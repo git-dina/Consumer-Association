@@ -90,6 +90,7 @@ namespace POSCA.View.customers
 
                 FillCombo.fillGender(cb_Gender);
                 FillCombo.fillMartialStatus(cb_MaritalStatus);
+                FillCombo.fillMemberNature(cb_MemberNature);
                 await FillCombo.fillJobsWithDefault(cb_JobId);
                 await FillCombo.fillAreasWithDefault(cb_AreaId);
                 await FillCombo.fillKinshipTiessWithDefault(cb_KinshipId);
@@ -267,6 +268,8 @@ namespace POSCA.View.customers
             customer.CreateUserId = MainWindow.userLogin.userId;
 
             //customer ddress
+            if (customer.customerAddress == null)
+                customer.customerAddress = new CustomerAddress();
             customer.customerAddress.AutomtedNumber = tb_AutomtedNumber.Text;
             if (cb_AreaId.SelectedValue != null)
                 customer.customerAddress.AreaId = (int)cb_AreaId.SelectedValue;
@@ -290,6 +293,17 @@ namespace POSCA.View.customers
             if (cb_KinshipId.SelectedValue != null)
                 customer.customerAddress.KinshipId = (int)cb_KinshipId.SelectedValue;
         }
+
+        private bool isValidCivilNum()
+        {
+            if (tb_CivilNum.Text.Length < 12)
+            {
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CivilNumLengthAlert"), animation: ToasterAnimation.FadeIn);
+
+                return false;
+            }
+            else return true;
+        }
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
         {//add
             try
@@ -299,19 +313,21 @@ namespace POSCA.View.customers
                     HelpClass.StartAwait(grid_main);
 
                     customer = new Customer();
-                    if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                    if (HelpClass.validate(requiredControlList, this) )
                     {
-
-                        AssignValueToObject();
-
-                       customer = await customer.save(customer);
-                        if (customer.CustomerId == 0)
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                        else
+                        if (isValidCivilNum())
                         {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            AssignValueToObject();
 
-                            await Clear();
+                            customer = await customer.save(customer);
+                            if (customer.CustomerId == 0)
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                            else
+                            {
+                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                                await Clear();
+                            }
                         }
                     }
                     else
@@ -340,17 +356,20 @@ namespace POSCA.View.customers
                     HelpClass.StartAwait(grid_main);
                     if (customer.CustomerId > 0)
                     {
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                        if (HelpClass.validate(requiredControlList, this) )
                         {
-                            AssignValueToObject();
-
-                            customer = await customer.save(customer);
-                            if (customer.CustomerId == 0)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
+                            if (isValidCivilNum())
                             {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                                AssignValueToObject();
 
+                                customer = await customer.save(customer);
+                                if (customer.CustomerId == 0)
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                                else
+                                {
+                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+
+                                }
                             }
                         }
                         else
@@ -454,6 +473,39 @@ namespace POSCA.View.customers
                 {
                     customer = dg_customer.SelectedItem as Customer;
                     this.DataContext = customer;
+
+                    tb_AutomtedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
+                    cb_AreaId.SelectedValue = customer.customerAddress.AreaId;
+
+                    #region section
+                    var area = FillCombo.areaList.Where(x => x.AreaId == (int)cb_AreaId.SelectedValue).FirstOrDefault();
+
+                    var lst = area.Sections.ToList();
+                    POSCA.Classes.ApiClasses.Section sup = new POSCA.Classes.ApiClasses.Section();
+                    sup.Name = "-";
+                    sup.SectionId = 0;
+                    lst.Insert(0, sup);
+
+                    cb_SectionId.ItemsSource = lst;
+                    cb_SectionId.SelectedValuePath = "SectionId";
+                    cb_SectionId.DisplayMemberPath = "Name";
+                    cb_SectionId.SelectedValue = customer.customerAddress.SectionId;
+                    #endregion
+                    tb_Street.Text = customer.customerAddress.Street;
+                    tb_HouseNumber.Text = customer.customerAddress.HouseNumber;
+                    tb_Floor.Text = customer.customerAddress.Floor.ToString();
+                    tb_AvenueNumber.Text = customer.customerAddress.AvenueNumber;
+                    tb_Plot.Text = customer.customerAddress.Plot;
+                    tb_MailBox.Text = customer.customerAddress.MailBox;
+                    tb_PostalCode.Text = customer.customerAddress.PostalCode;
+                    tb_Employer.Text = customer.customerAddress.Employer;
+                    tb_Guardian.Text = customer.customerAddress.Guardian;
+                    tb_HomePhone.Text = customer.customerAddress.HomePhone;
+                    tb_WorkPhone.Text = customer.customerAddress.WorkPhone;
+                    tb_MobileNumber.Text = customer.customerAddress.MobileNumber;
+                    tb_MobileNumber2.Text = customer.customerAddress.MobileNumber2;
+                    tb_WorkAddress.Text = customer.customerAddress.WorkAddress;
+                    cb_KinshipId.SelectedValue = customer.customerAddress.KinshipId;
 
                     inputEditable();
                 }
@@ -778,11 +830,29 @@ namespace POSCA.View.customers
             {
                 if (e.Key == Key.Return && tb_BoxNumber.Text !="")
                 {
-                    var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_BoxNumber.Text));
+                    
+                    var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_BoxNumber.Text),customer.CustomerId);
                     if (!isValid)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
 
 
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        bool nameFirstChange = true;
+        private void tb_Name_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                validateEmpty_LostFocus(sender, e);
+                if (nameFirstChange && customer.CustomerId == 0)
+                {
+                    nameFirstChange = false;
+                    tb_InvoiceName.Text = tb_Name.Text;
                 }
             }
             catch (Exception ex)

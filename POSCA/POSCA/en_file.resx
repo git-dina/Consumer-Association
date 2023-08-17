@@ -6150,4 +6150,13 @@ Main Documents</value>
   <data name="FundNumNotAvailable" xml:space="preserve">
     <value>Fund Number Not Available</value>
   </data>
+  <data name="CivilNumLengthAlert" xml:space="preserve">
+    <value>Civil Num Length Should Be 12 Digit</value>
+  </data>
+  <data name="NotWorking" xml:space="preserve">
+    <value>Not Working</value>
+  </data>
+  <data name="Worker" xml:space="preserve">
+    <value>Worker</value>
+  </data>
 </root>

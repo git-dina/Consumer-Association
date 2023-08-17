@@ -41,7 +41,7 @@ namespace POSCA.Classes.ApiClasses
         public bool DataCompleted { get; set; }
         public string Notes { get; set; }
         public bool IsArchived { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
@@ -55,6 +55,8 @@ namespace POSCA.Classes.ApiClasses
         public int AllStocksCount { get; set; }
         public bool FamilyCardHolder { get; set; }
         public decimal CurrentPurchses { get; set; }
+        public bool CanArchive { get; set; }
+
 
         #endregion
 
@@ -111,13 +113,14 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-        internal async Task<bool> CheckBoxNumber(long fundNumber)
+        internal async Task<bool> CheckBoxNumber(long fundNumber,long customerId)
         {
             bool result = false;
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Customer/CheckBoxNumber";
 
             parameters.Add("fundNumber", fundNumber.ToString());
+            parameters.Add("customerId", customerId.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)

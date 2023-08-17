@@ -1194,8 +1194,31 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "value";
             combo.SelectedIndex = 0;
         }
+        #endregion
+
+        #region MemberNature
+        static public List<keyValueString> MemberNatureList;
+        static public IEnumerable<keyValueString> RefreshMemberNatureList()
+        {
+            MemberNatureList = new List<keyValueString>() {
+                new keyValueString(){key="worker", value=AppSettings.resourcemanager.GetString("Worker") },
+                new keyValueString(){key="not-working", value=AppSettings.resourcemanager.GetString("NotWorking") },
+            };
+
+            return MemberNatureList;
+        }
+
+        static public void fillMemberNature(ComboBox combo)
+        {
+            if (MemberNatureList is null)
+                RefreshMemberNatureList();
+
+            combo.ItemsSource = MemberNatureList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
         #endregion 
-        
         #region Martial Status
         static public List<keyValueString> MartialStatusList;
         static public IEnumerable<keyValueString> RefreshMartialStatusList()
