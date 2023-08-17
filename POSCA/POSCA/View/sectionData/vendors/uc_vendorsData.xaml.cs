@@ -388,11 +388,14 @@ namespace POSCA.View.sectionData
         {
             try
             {
+                HelpClass.StartAwait(grid_main);
                 suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
                 RefreshSuppliersView();
+                HelpClass.EndAwait(grid_main);
             }
             catch
             {
+                HelpClass.EndAwait(grid_main);
 
             }
         }

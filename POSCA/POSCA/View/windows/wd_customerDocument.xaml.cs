@@ -102,27 +102,15 @@ namespace POSCA.View.windows
         private void translate()
         {
             //
-            txt_title.Text = AppSettings.resourcemanager.GetString("MainDocuments");
+            txt_title.Text = AppSettings.resourcemanager.GetString("PersonalDocuments");
             txt_customerDocument.Text = AppSettings.resourcemanager.GetString("CustomerDocuments");
 
-            dg_customerDocument.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentType");
-            //dg_customerDocument.Columns[1].Header = AppSettings.resourcemanager.GetString("trStartDate");
-            //dg_customerDocument.Columns[2].Header = AppSettings.resourcemanager.GetString("trEndDate");
+            dg_customerDocument.Columns[0].Header = AppSettings.resourcemanager.GetString("DocumentName");
 
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
         }
-        /*
-        private async Task fillDocTypeCombo()
-        {
-            if (FillCombo.customerDocumentTypeList is null)
-                await FillCombo.RefreshCustomerDocumentTypes();
 
-            cb_customerDocumentType.DisplayMemberPath = "Name";
-            cb_customerDocumentType.SelectedValuePath = "TypeId";
-            cb_customerDocumentType.ItemsSource = FillCombo.customerDocumentTypeList;
-        }
-        */
         private void setDocsData()
         {
             dg_customerDocument.ItemsSource = CustomerDocuments;
@@ -307,7 +295,7 @@ namespace POSCA.View.windows
         OpenFileDialog openFileDialog = new OpenFileDialog();
         private void uploadCustomerDocumentRowinDatagrid(object sender, RoutedEventArgs e)
         {
-            /*
+           
             try
             {
                 HelpClass.StartAwait(grid_main);
@@ -338,11 +326,11 @@ namespace POSCA.View.windows
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
+        
 
         }
         SaveFileDialog saveFileDialog = new SaveFileDialog();
-        Supplier supplier = new Supplier();
+        Customer customer = new Customer();
         private async void downloadCustomerDocumentRowinDatagrid(object sender, RoutedEventArgs e)
         {
             try
@@ -362,9 +350,9 @@ namespace POSCA.View.windows
                             if (saveFileDialog.ShowDialog() == true)
                             {
 
-                                await supplier.downloadDocument(row.DocName, saveFileDialog.FileName);
-                                //row.DocPath = openFileDialog.FileName;
-                                //row.IsEdited = true;
+                                await customer.downloadDocument(row.DocName, saveFileDialog.FileName);
+                                row.DocPath = openFileDialog.FileName;
+                                row.IsEdited = true;
                             }
                         }
 

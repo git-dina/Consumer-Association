@@ -6407,6 +6407,12 @@
   <data name="CivilNumLengthAlert" xml:space="preserve">
     <value>الرقم المدني يجب أن يكون 12 رقم</value>
   </data>
+  <data name="CustomerDocuments" xml:space="preserve">
+    <value>وثائق المساهم</value>
+  </data>
+  <data name="DocumentName" xml:space="preserve">
+    <value>اسم الوثيقة</value>
+  </data>
   <data name="NotWorking" xml:space="preserve">
     <value>غير عامل</value>
   </data>

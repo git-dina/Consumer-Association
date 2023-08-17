@@ -1006,6 +1006,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer Documents.
+        /// </summary>
+        internal static string CustomerDocuments {
+            get {
+                return ResourceManager.GetString("CustomerDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name In Invoice....
         /// </summary>
         internal static string CustomerInvNameHint {
@@ -1389,6 +1398,15 @@ namespace POSCA {
         internal static string DocumentEditor {
             get {
                 return ResourceManager.GetString("DocumentEditor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Document Name.
+        /// </summary>
+        internal static string DocumentName {
+            get {
+                return ResourceManager.GetString("DocumentName", resourceCulture);
             }
         }
         

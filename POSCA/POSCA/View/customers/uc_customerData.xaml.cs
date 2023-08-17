@@ -202,10 +202,15 @@ namespace POSCA.View.customers
             }
             else
             {
-                btn_archiving.IsEnabled = true;
+                if (customer.CanArchive)
+                    btn_archiving.IsEnabled = true;
+                else
+                    btn_archiving.IsEnabled = false;
                 tb_BoxNumber.IsEnabled = false;
             }
         }
+
+
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
 
         private void AssignValueToObject()
@@ -401,16 +406,9 @@ namespace POSCA.View.customers
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
-                //dina search
-                customers = await FillCombo.customer.SearchCustomers(tb_search.Text);
-              RefreshCustomersView();
 
                 await Search();
 
-
-                //}
             }
             catch
             {
@@ -474,21 +472,26 @@ namespace POSCA.View.customers
                     customer = dg_customer.SelectedItem as Customer;
                     this.DataContext = customer;
 
+                    tb_JoiningSharesCount.Text = customer.JoiningSharesCount.ToString();
+                    
                     tb_AutomtedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
                     cb_AreaId.SelectedValue = customer.customerAddress.AreaId;
 
                     #region section
-                    var area = FillCombo.areaList.Where(x => x.AreaId == (int)cb_AreaId.SelectedValue).FirstOrDefault();
+                    if (cb_AreaId.SelectedValue != null)
+                    {
+                        var area = FillCombo.areaList.Where(x => x.AreaId == (int)cb_AreaId.SelectedValue).FirstOrDefault();
 
-                    var lst = area.Sections.ToList();
-                    POSCA.Classes.ApiClasses.Section sup = new POSCA.Classes.ApiClasses.Section();
-                    sup.Name = "-";
-                    sup.SectionId = 0;
-                    lst.Insert(0, sup);
+                        var lst = area.Sections.ToList();
+                        POSCA.Classes.ApiClasses.Section sup = new POSCA.Classes.ApiClasses.Section();
+                        sup.Name = "-";
+                        sup.SectionId = 0;
+                        lst.Insert(0, sup);
 
-                    cb_SectionId.ItemsSource = lst;
-                    cb_SectionId.SelectedValuePath = "SectionId";
-                    cb_SectionId.DisplayMemberPath = "Name";
+                        cb_SectionId.ItemsSource = lst;
+                        cb_SectionId.SelectedValuePath = "SectionId";
+                        cb_SectionId.DisplayMemberPath = "Name";
+                    }
                     cb_SectionId.SelectedValue = customer.customerAddress.SectionId;
                     #endregion
                     tb_Street.Text = customer.customerAddress.Street;
@@ -545,8 +548,10 @@ namespace POSCA.View.customers
 
         async Task Search()
         {
+            HelpClass.StartAwait(grid_main);
             customers = await FillCombo.customer.SearchCustomers(tb_search.Text);
             RefreshCustomersView();
+            HelpClass.EndAwait(grid_main);
         }
         async Task<IEnumerable<Customer>> RefreshCustomersList()
         {
@@ -567,7 +572,24 @@ namespace POSCA.View.customers
             dg_customer.SelectedIndex = -1;
 
             var maxId = await FillCombo.customer.GetMaxFundNum();
-            tb_BoxNumber.Text = maxId.ToString(); 
+            tb_BoxNumber.Text = maxId.ToString();
+
+            //clear address info
+            tb_Street.Text = "";
+            tb_HouseNumber.Text = "";
+            tb_Floor.Text ="";
+            tb_AvenueNumber.Text = "";
+            tb_Plot.Text = "";
+            tb_MailBox.Text ="";
+            tb_PostalCode.Text = "";
+            tb_Employer.Text = "";
+            tb_Guardian.Text = "";
+            tb_HomePhone.Text = "";
+            tb_WorkPhone.Text = "";
+            tb_MobileNumber.Text = "";
+            tb_MobileNumber2.Text = "";
+            tb_WorkAddress.Text = "";
+            cb_KinshipId.SelectedValue = null;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -665,13 +687,13 @@ namespace POSCA.View.customers
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
-            if (tb_search.Text != "")
-                Btn_search_Click(null, null);
-            else
-            {
-                customers = new List<Customer>();
-                RefreshCustomersView();
-            }
+            //if (tb_search.Text != "")
+            //    Btn_search_Click(null, null);
+            //else
+            //{
+            //    customers = new List<Customer>();
+            //    RefreshCustomersView();
+            //}
 
         }
         void swapToData()
@@ -726,7 +748,7 @@ namespace POSCA.View.customers
             }
         }
 
-        private void Btn_personalDocuments_Click(object sender, RoutedEventArgs e)
+        private async void Btn_personalDocuments_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -743,7 +765,6 @@ namespace POSCA.View.customers
                     customer.customerDocuments = w.CustomerDocuments.ToList();
                     if (customer.CustomerId != 0)
                     {
-                        /*
                         foreach (var row in customer.customerDocuments)
                         {
                             if (row.IsEdited)
@@ -751,14 +772,13 @@ namespace POSCA.View.customers
                                 row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
                                 var ext = row.DocPath.Substring(row.DocPath.LastIndexOf('.'));
                                 var extension = ext.ToLower();
-                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId;
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId ;
                                 string b = await customer.uploadDocument(row.DocPath, row.DocName);
                                 row.DocName = row.DocName + ext;
                             }
                         }
                         customer = await customer.save(customer);
 
-                        */
                         
                     }
                 }
