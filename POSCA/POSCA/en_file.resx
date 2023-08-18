@@ -6165,6 +6165,12 @@ Main Documents</value>
   <data name="Worker" xml:space="preserve">
     <value>Worker</value>
   </data>
+  <data name="BondDateHint" xml:space="preserve">
+    <value>Bond Date...</value>
+  </data>
+  <data name="BondNumberHint" xml:space="preserve">
+    <value>Bond No...</value>
+  </data>
   <data name="continouse" xml:space="preserve">
     <value>Continouse</value>
   </data>

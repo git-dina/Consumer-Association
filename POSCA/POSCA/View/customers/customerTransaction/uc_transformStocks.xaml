@@ -654,9 +654,9 @@
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_CheckNumber"  Text="{Binding CheckNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_BondNo"  Text="{Binding BondNo, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="CheckNumber..."  
+                                     materialDesign:HintAssist.Hint="BondNo..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0" Tag="int"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -671,13 +671,13 @@
                             </Border>
                             <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <DatePicker  x:Name="dp_CheckDate" 
+                                    <DatePicker  x:Name="dp_BondDate" 
                                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                                          BorderBrush="#737373"   BorderThickness="0" Margin="0"
                                         TextBlock.Foreground="{StaticResource textColor}"
-                                         SelectedDate="{Binding CheckDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                         SelectedDate="{Binding BondDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                        materialDesign:HintAssist.Hint="CheckDate..."  
+                                        materialDesign:HintAssist.Hint="BondDate..."  
                                         Foreground="{StaticResource textColor}"   Height="40"    />
                                     <Path Fill="#E81123" x:Name="p_error_CheckDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   

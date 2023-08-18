@@ -6419,6 +6419,12 @@
   <data name="Worker" xml:space="preserve">
     <value>عامل</value>
   </data>
+  <data name="BondDateHint" xml:space="preserve">
+    <value>تاريخ السند...</value>
+  </data>
+  <data name="BondNumberHint" xml:space="preserve">
+    <value>رقم السند...</value>
+  </data>
   <data name="continouse" xml:space="preserve">
     <value>مستمر</value>
   </data>

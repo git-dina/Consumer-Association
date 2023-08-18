@@ -475,11 +475,29 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bond Date....
+        /// </summary>
+        internal static string BondDateHint {
+            get {
+                return ResourceManager.GetString("BondDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bond no.
         /// </summary>
         internal static string Bondno {
             get {
                 return ResourceManager.GetString("Bondno", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bond No....
+        /// </summary>
+        internal static string BondNumberHint {
+            get {
+                return ResourceManager.GetString("BondNumberHint", resourceCulture);
             }
         }
         

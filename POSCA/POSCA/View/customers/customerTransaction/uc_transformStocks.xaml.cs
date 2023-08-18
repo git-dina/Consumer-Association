@@ -72,7 +72,7 @@ namespace POSCA.View.customers.customerTransaction
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "BoxNumber", "ToBoxNumber", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "BoxNumber", "ToBoxNumber", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "BondNo", "BondDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -130,8 +130,8 @@ namespace POSCA.View.customers.customerTransaction
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_CheckDate, AppSettings.resourcemanager.GetString("CheckDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BondNo, AppSettings.resourcemanager.GetString("BondNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_BondDate, AppSettings.resourcemanager.GetString("BondDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
 
@@ -173,8 +173,8 @@ namespace POSCA.View.customers.customerTransaction
                         customerTransaction.StocksPrice = 5;
                         customerTransaction.ApprovalNumber = tb_ApprovalNumber.Text;
                         customerTransaction.MeetingDate = dp_MeetingDate.SelectedDate;
-                        customerTransaction.CheckNumber = tb_CheckNumber.Text;
-                        customerTransaction.CheckDate = dp_CheckDate.SelectedDate;
+                        customerTransaction.BondNo =int.Parse( tb_BondNo.Text);
+                        customerTransaction.BondDate = dp_BondDate.SelectedDate;
                         customerTransaction.Notes = tb_Notes.Text;
 
                         customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
