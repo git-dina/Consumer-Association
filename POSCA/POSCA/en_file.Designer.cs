@@ -862,6 +862,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continouse.
+        /// </summary>
+        internal static string continouse {
+            get {
+                return ResourceManager.GetString("continouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Continual Offer.
         /// </summary>
         internal static string ContinualOffer {
@@ -1137,6 +1146,15 @@ namespace POSCA {
         internal static string Days {
             get {
                 return ResourceManager.GetString("Days", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dead.
+        /// </summary>
+        internal static string dead {
+            get {
+                return ResourceManager.GetString("dead", resourceCulture);
             }
         }
         
@@ -1902,6 +1920,15 @@ namespace POSCA {
         internal static string FromAllSuppliers {
             get {
                 return ResourceManager.GetString("FromAllSuppliers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Customer.
+        /// </summary>
+        internal static string FromCustomer {
+            get {
+                return ResourceManager.GetString("FromCustomer", resourceCulture);
             }
         }
         
@@ -5183,6 +5210,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To Customer.
+        /// </summary>
+        internal static string ToCustomer {
+            get {
+                return ResourceManager.GetString("ToCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total Consumer Discount.
         /// </summary>
         internal static string TotalConsumerDiscount {
@@ -5764,6 +5800,15 @@ namespace POSCA {
         internal static string Transferbalanceyear {
             get {
                 return ResourceManager.GetString("Transferbalanceyear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Information.
+        /// </summary>
+        internal static string TransferInformation {
+            get {
+                return ResourceManager.GetString("TransferInformation", resourceCulture);
             }
         }
         
@@ -18168,6 +18213,15 @@ namespace POSCA {
         internal static string withDeliveryMan {
             get {
                 return ResourceManager.GetString("withDeliveryMan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Withdrawn.
+        /// </summary>
+        internal static string withdrawn {
+            get {
+                return ResourceManager.GetString("withdrawn", resourceCulture);
             }
         }
         

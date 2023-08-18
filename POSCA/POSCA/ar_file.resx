@@ -6419,11 +6419,20 @@
   <data name="Worker" xml:space="preserve">
     <value>عامل</value>
   </data>
+  <data name="continouse" xml:space="preserve">
+    <value>مستمر</value>
+  </data>
   <data name="CustomerNotContinouse" xml:space="preserve">
     <value>المساهم غير مستمر</value>
   </data>
+  <data name="dead" xml:space="preserve">
+    <value>متوفي</value>
+  </data>
   <data name="Death" xml:space="preserve">
     <value>وفاة</value>
+  </data>
+  <data name="FromCustomer" xml:space="preserve">
+    <value>من المساهم</value>
   </data>
   <data name="NumberNotTrue" xml:space="preserve">
     <value>الرقم غير صحيح</value>
@@ -6437,10 +6446,19 @@
   <data name="StocksNumberNotAllowed" xml:space="preserve">
     <value>عدد أسهم الحركة غير مسموح</value>
   </data>
+  <data name="ToCustomer" xml:space="preserve">
+    <value>إلى المساهم</value>
+  </data>
   <data name="TransactionStocksCount" xml:space="preserve">
     <value>عدد أسهم الحركة</value>
   </data>
+  <data name="TransferInformation" xml:space="preserve">
+    <value>معلومات التحويل</value>
+  </data>
   <data name="TransformStocks" xml:space="preserve">
     <value>تحويل أسهم</value>
+  </data>
+  <data name="withdrawn" xml:space="preserve">
+    <value>منسحب</value>
   </data>
 </root>

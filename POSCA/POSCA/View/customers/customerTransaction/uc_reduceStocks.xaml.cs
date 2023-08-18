@@ -105,7 +105,7 @@ namespace POSCA.View.customers.customerTransaction
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("AddStockes");
+            txt_title.Text = AppSettings.resourcemanager.GetString("ReduceStocks");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -566,9 +566,11 @@ namespace POSCA.View.customers.customerTransaction
             this.DataContext = customerTransaction;
 
             tb_CustomerId.Text = customerTransaction.CustomerId.ToString();
+            dp_TransactionDate.SelectedDate = customerTransaction.TransactionDate;
             tb_CustomerName.Text = customerTransaction.CustomerName;
             dp_JoinDate.SelectedDate = customerTransaction.JoinDate;
             tb_StocksCount.Text = customerTransaction.StocksCount.ToString();
+            tb_TotalPrice.Text = HelpClass.DecTostring(customerTransaction.StocksCount * customerTransaction.StocksPrice);
             if (customerTransaction.JoinDate != null)
             {
                 DateTime zeroTime = new DateTime(1, 1, 1);

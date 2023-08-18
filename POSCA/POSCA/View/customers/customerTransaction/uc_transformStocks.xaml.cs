@@ -56,9 +56,10 @@ namespace POSCA.View.customers.customerTransaction
         }
 
         CustomerTransaction customerTransaction = new CustomerTransaction();
-        Customer customer = new Customer();
+        Customer customer1 = new Customer();
+        Customer customer2 = new Customer();
         List<CustomerTransaction> customerTransactions;
-        string searchText = "";
+
         public static List<string> requiredControlList;
 
         public void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -71,7 +72,7 @@ namespace POSCA.View.customers.customerTransaction
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "StocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "BoxNumber", "ToBoxNumber", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -104,29 +105,34 @@ namespace POSCA.View.customers.customerTransaction
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("AddStockes");
+            txt_title.Text = AppSettings.resourcemanager.GetString("TransformStocks");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_TransactionDate, AppSettings.resourcemanager.GetString("TransactionDateHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
 
+            txt_fromCustomer.Text = AppSettings.resourcemanager.GetString("FromCustomer");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            txt_StocksCountTitle.Text = AppSettings.resourcemanager.GetString("StocksCount");
+            
+            txt_toCustomer.Text = AppSettings.resourcemanager.GetString("ToCustomer");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ToBoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ToCustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ToCustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            txt_ToStocksCountTitle.Text = AppSettings.resourcemanager.GetString("StocksCount");
+
+
+            txt_transformInformation.Text = AppSettings.resourcemanager.GetString("TransferInformation");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_CheckDate, AppSettings.resourcemanager.GetString("CheckDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
-
-            //txt_durationJoin.Text = AppSettings.resourcemanager.GetString("DurationJoin");
-
-            //txt_JoinDayTitle.Text = AppSettings.resourcemanager.GetString("trDay");
-            //txt_JoinMonthTitle.Text = AppSettings.resourcemanager.GetString("trMonth");
-            //txt_JoinYearTitle.Text = AppSettings.resourcemanager.GetString("trYear");
 
 
             dg_customerTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
@@ -144,53 +150,6 @@ namespace POSCA.View.customers.customerTransaction
 
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
-        private async void Btn_add_Click(object sender, RoutedEventArgs e)
-        {//add
-            try
-            {
-                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
-                /*
-                  {
-                      HelpClass.StartAwait(grid_main);
-
-                      customerTransaction = new CustomerTransaction();
-                      if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                      {
-
-                          customerTransaction.Name = tb_Name.Text;
-                          customerTransaction.Notes = tb_Notes.Text;
-
-                          customerTransaction.CreateUserId = MainWindow.userLogin.userId;
-
-                          FillCombo.customerTransactionList = await customerTransaction.save(customerTransaction);
-                          if (FillCombo.customerTransactionList == null)
-                              Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                          else
-                          {
-                              Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                              await Clear();
-                              await Search();
-                          }
-                      }
-                      else
-                      {
-                          Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
-                      }
-                      HelpClass.EndAwait(grid_main);
-                  }
-                  */
-                //else
-                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
         private async void Btn_update_Click(object sender, RoutedEventArgs e)
         {//update
             try
@@ -202,13 +161,16 @@ namespace POSCA.View.customers.customerTransaction
 
                     if (HelpClass.validate(requiredControlList, this))
                     {
-                        customerTransaction.TransactionType = "add";
-                        //customerTransaction.CustomerId = long.Parse(tb_CustomerId.Text);
+                        customerTransaction.TransactionType = "transform";
+                        customerTransaction.BoxNumber = customer1.BoxNumber;
+                        customerTransaction.CustomerId = customer1.CustomerId;
+                        customerTransaction.ToBoxNumber = customer2.BoxNumber;
+                        customerTransaction.ToCustomerId = customer2.CustomerId;
                         customerTransaction.TransactionDate = dp_TransactionDate.SelectedDate;
-                        //customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
-                        //customerTransaction.StocksCount = int.Parse(tb_StocksCount.Text);
-                        //customerTransaction.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
-                        //customerTransaction.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
+                        customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
+                        customerTransaction.StocksCount = int.Parse(txt_StocksCount.Text);
+                        customerTransaction.ToStocksCount = int.Parse(txt_ToStocksCount.Text);
+                        customerTransaction.StocksPrice = 5;
                         customerTransaction.ApprovalNumber = tb_ApprovalNumber.Text;
                         customerTransaction.MeetingDate = dp_MeetingDate.SelectedDate;
                         customerTransaction.CheckNumber = tb_CheckNumber.Text;
@@ -303,16 +265,9 @@ namespace POSCA.View.customers.customerTransaction
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
-                //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
 
                 await Search();
 
-
-                //}
             }
             catch
             {
@@ -349,12 +304,12 @@ namespace POSCA.View.customers.customerTransaction
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                await Clear();
+                Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -428,7 +383,7 @@ namespace POSCA.View.customers.customerTransaction
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        void  Clear()
         {
             this.DataContext = new CustomerTransaction();
             dg_customerTransaction.SelectedIndex = -1;
@@ -533,19 +488,30 @@ namespace POSCA.View.customers.customerTransaction
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
-            if (tb_search.Text != "")
-                Btn_search_Click(null, null);
-            else
-            {
-                customerTransactions = new List<CustomerTransaction>();
-                RefreshCustomerTransactionsView();
-            }
+            //if (tb_search.Text != "")
+            //    Btn_search_Click(null, null);
+            //else
+            //{
+            //    customerTransactions = new List<CustomerTransaction>();
+            //    RefreshCustomerTransactionsView();
+            //}
 
         }
         void swapToData()
         {
             cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+
+            this.DataContext = customerTransaction;
+
+            dp_TransactionDate.SelectedDate = customerTransaction.TransactionDate;
+            tb_BoxNumber.Text = customerTransaction.BoxNumber.ToString();
+            tb_CustomerName.Text = customerTransaction.CustomerName;
+            tb_ToBoxNumber.Text = customerTransaction.ToBoxNumber.ToString();
+            tb_ToCustomerName.Text = customerTransaction.ToCustomerName;
+            txt_StocksCount.Text = customerTransaction.StocksCount.ToString();
+            txt_ToStocksCount.Text = customerTransaction.ToStocksCount.ToString();
+
         }
 
 
@@ -575,46 +541,115 @@ namespace POSCA.View.customers.customerTransaction
         {
 
         }
-        /*
-       private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
+
+        private void tb_TransactionStocksCount_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                if (e.Key == Key.Return && tb_CustomerId.Text != "")
+                ValidateEmpty_TextChange(sender, e);
+                int stocksCount = 0;
+                if (tb_TransactionStocksCount.Text != "")
+                    stocksCount = int.Parse(tb_TransactionStocksCount.Text);
+
+                //check stock count
+                var difference = int.Parse(txt_StocksCount.Text) - stocksCount;
+                if (difference < 5)
                 {
-                    if(FillCombo.customerList != null)
+                    tb_TransactionStocksCount.Text = "";
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("StocksNumberNotAllowed"), animation: ToasterAnimation.FadeIn);
+                }
+
+            }
+            catch { }
+        }
+
+        private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_BoxNumber.Text != "")
+                {
+                    customer1 = null;
+                    HelpClass.StartAwait(grid_main);
+                    if (FillCombo.customerList != null)
                     {
-                        customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
+                        customer1 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_BoxNumber.Text)).FirstOrDefault();
                     }
 
-                    if (customer == null)
-                        customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+                    if (customer1 == null)
+                        customer1 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
 
-                    if (customer != null)
+                    if (customer1 != null)
                     {
-                        if (customer.CustomerStatus != "continouse")
+                        if (customer1.CustomerStatus != "continouse")
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            tb_CustomerName.Text = customer.Name;
-                            dp_JoinDate.SelectedDate = customer.JoinDate;
-                            tb_StocksCount.Text = customer.AllStocksCount.ToString();
-                            txt_JoinDay.Text = customer.JoinDay.ToString();
-                            txt_JoinMonth.Text = customer.JoinMonth.ToString();
-                            txt_JoinYear.Text = customer.JoinYear.ToString();
+                            tb_CustomerName.Text = customer1.Name;
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer1.CustomerStatus) ;
+                            txt_StocksCount.Text = customer1.AllStocksCount.ToString();
+
 
                         }
                     }
                     else
                     {
-                        tb_CustomerId.Text = "";
+                        tb_BoxNumber.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
+                    HelpClass.EndAwait(grid_main);
 
                 }
             }
-            catch { }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
-        */
+
+        private async void tb_ToBoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_ToBoxNumber.Text != "")
+                {
+                    customer2 = null;
+                    HelpClass.StartAwait(grid_main);
+                    if (FillCombo.customerList != null)
+                    {
+                        customer2 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_ToBoxNumber.Text)).FirstOrDefault();
+                    }
+
+                    if (customer2 == null)
+                        customer2 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_ToBoxNumber.Text));
+
+                    if (customer2 != null)
+                    {
+                        if (customer2.CustomerStatus != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            tb_ToCustomerName.Text = customer2.Name;
+                            tb_ToCustomerStatus.Text = AppSettings.resourcemanager.GetString(customer2.CustomerStatus);
+                            txt_ToStocksCount.Text = customer1.AllStocksCount.ToString();
+
+
+                        }
+                    }
+                    else
+                    {
+                        tb_ToBoxNumber.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+                    HelpClass.EndAwait(grid_main);
+
+                }
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
+        }
+       
     }
 }

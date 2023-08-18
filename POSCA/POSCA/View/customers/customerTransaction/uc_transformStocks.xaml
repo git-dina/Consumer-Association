@@ -386,15 +386,16 @@
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                                     KeyDown="tb_BoxNumber_KeyDown"/>
                                 </Grid>
                             </Border>
                             <Border  Grid.Row="0" Grid.Column="1" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_BoxNumber1"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_CustomerStatus"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
                                     IsReadOnly="True"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="BoxNumber..."  
+                                     materialDesign:HintAssist.Hint="CustomerStatus..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -470,15 +471,16 @@
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                                     KeyDown="tb_ToBoxNumber_KeyDown"/>
                                 </Grid>
                             </Border>
                             <Border  Grid.Row="0" Grid.Column="1" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_ToBoxNumber1"  Text="{Binding ToBoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    <TextBox x:Name="tb_ToCustomerStatus"  Text="{Binding ToBoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
                                     IsReadOnly="True"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="ToBoxNumber..."  
+                                     materialDesign:HintAssist.Hint="CustomerStatus..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -551,7 +553,7 @@
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                LostFocus="validateEmpty_LostFocus" TextChanged="tb_TransactionStocksCount_TextChanged"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_TransactionStocksCount" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -616,9 +618,9 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ApprovalNumber..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="50" BorderThickness="0" Tag="int"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ApprovalNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -656,9 +658,9 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="CheckNumber..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="50" BorderThickness="0" Tag="int"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CheckNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   

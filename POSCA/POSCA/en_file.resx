@@ -6165,11 +6165,20 @@ Main Documents</value>
   <data name="Worker" xml:space="preserve">
     <value>Worker</value>
   </data>
+  <data name="continouse" xml:space="preserve">
+    <value>Continouse</value>
+  </data>
   <data name="CustomerNotContinouse" xml:space="preserve">
     <value>The Contributor is not Continuous</value>
   </data>
+  <data name="dead" xml:space="preserve">
+    <value>Dead</value>
+  </data>
   <data name="Death" xml:space="preserve">
     <value>Death</value>
+  </data>
+  <data name="FromCustomer" xml:space="preserve">
+    <value>From Customer</value>
   </data>
   <data name="NumberNotTrue" xml:space="preserve">
     <value>The Number is Incorrect</value>
@@ -6183,10 +6192,19 @@ Main Documents</value>
   <data name="StocksNumberNotAllowed" xml:space="preserve">
     <value>Transaction Stocks Number Not Allowed</value>
   </data>
+  <data name="ToCustomer" xml:space="preserve">
+    <value>To Customer</value>
+  </data>
   <data name="TransactionStocksCount" xml:space="preserve">
     <value>Transaction Stocks Count</value>
   </data>
+  <data name="TransferInformation" xml:space="preserve">
+    <value>Transfer Information</value>
+  </data>
   <data name="TransformStocks" xml:space="preserve">
     <value>Transform Stocks</value>
+  </data>
+  <data name="withdrawn" xml:space="preserve">
+    <value>Withdrawn</value>
   </data>
 </root>

@@ -554,9 +554,11 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             this.DataContext = customerTransaction;
 
             tb_CustomerId.Text = customerTransaction.CustomerId.ToString();
+            dp_TransactionDate.SelectedDate = customerTransaction.TransactionDate;
             tb_CustomerName.Text = customerTransaction.CustomerName;
             dp_JoinDate.SelectedDate = customerTransaction.JoinDate;
             tb_StocksCount.Text = customerTransaction.StocksCount.ToString();
+            tb_TotalPrice.Text = HelpClass.DecTostring(customerTransaction.StocksCount * customerTransaction.StocksPrice);
             if (customerTransaction.JoinDate != null)
             {
                 DateTime zeroTime = new DateTime(1, 1, 1);
