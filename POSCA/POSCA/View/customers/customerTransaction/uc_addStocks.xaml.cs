@@ -56,7 +56,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
         }
 
         CustomerTransaction customerTransaction = new CustomerTransaction();
-        Customer customer = new Customer();
+        Customer customer ;
         List<CustomerTransaction> customerTransactions;
         string searchText = "";
         public static List<string> requiredControlList;
@@ -74,12 +74,10 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                 requiredControlList = new List<string> { "CustomerId", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber" , "CheckDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
@@ -305,16 +303,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
         {
             try
             {
-                //if (tb_search.Text != "")
-                //{
-                //dina search
-                //suppliers = await FillCombo.supplier.searchSuppliers(tb_search.Text);
-                //RefreshSuppliersView();
-
                 await Search();
-
-
-                //}
             }
             catch
             {
@@ -351,12 +340,12 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                await Clear();
+                Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -430,7 +419,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        private void Clear()
         {
             this.DataContext = new CustomerTransaction();
             dg_customerTransaction.SelectedIndex = -1;
@@ -592,7 +581,16 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                     if (customer == null)
                         customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
 
-                    this.DataContext = customer;
+                    if (customer != null)
+                    {
+                        if(customer.CustomerStatus != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                            this.DataContext = customer;
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+
                 }
             }
             catch { }

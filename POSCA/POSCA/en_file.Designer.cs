@@ -1060,6 +1060,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Contributor is not Continuous.
+        /// </summary>
+        internal static string CustomerNotContinouse {
+            get {
+                return ResourceManager.GetString("CustomerNotContinouse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customers.
         /// </summary>
         internal static string Customers {
@@ -2992,6 +3001,15 @@ namespace POSCA {
         internal static string NotWorking {
             get {
                 return ResourceManager.GetString("NotWorking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Number is Incorrect.
+        /// </summary>
+        internal static string NumberNotTrue {
+            get {
+                return ResourceManager.GetString("NumberNotTrue", resourceCulture);
             }
         }
         

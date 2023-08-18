@@ -347,6 +347,8 @@ namespace POSCA.View.windows
 
                         if (row.DocumentId != 0)
                         {
+                            saveFileDialog.FileName = row.DocName;
+
                             if (saveFileDialog.ShowDialog() == true)
                             {
 

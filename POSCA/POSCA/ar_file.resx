@@ -6419,4 +6419,10 @@
   <data name="Worker" xml:space="preserve">
     <value>عامل</value>
   </data>
+  <data name="CustomerNotContinouse" xml:space="preserve">
+    <value>المساهم غير مستمر</value>
+  </data>
+  <data name="NumberNotTrue" xml:space="preserve">
+    <value>الرقم غير صحيح</value>
+  </data>
 </root>

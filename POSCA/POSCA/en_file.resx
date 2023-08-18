@@ -6165,4 +6165,10 @@ Main Documents</value>
   <data name="Worker" xml:space="preserve">
     <value>Worker</value>
   </data>
+  <data name="CustomerNotContinouse" xml:space="preserve">
+    <value>The Contributor is not Continuous</value>
+  </data>
+  <data name="NumberNotTrue" xml:space="preserve">
+    <value>The Number is Incorrect</value>
+  </data>
 </root>

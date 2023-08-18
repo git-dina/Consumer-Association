@@ -584,7 +584,7 @@ namespace POSCA.View.customers.customerTransaction
             {
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
-                    if (FillCombo.customerList != null)
+                    if(FillCombo.customerList != null)
                     {
                         customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
                     }
@@ -592,7 +592,16 @@ namespace POSCA.View.customers.customerTransaction
                     if (customer == null)
                         customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
 
-                    this.DataContext = customer;
+                    if (customer != null)
+                    {
+                        if(customer.CustomerStatus != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                            this.DataContext = customer;
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+
                 }
             }
             catch { }

@@ -60,7 +60,9 @@ namespace POSCA.Classes.ApiClasses
         public decimal CurrentPurchses { get; set; }
         public bool CanArchive { get; set; }
 
-
+        public int JoinDay { get; set; }
+        public int JoinMonth { get; set; }
+        public int JoinYear { get; set; }
         #endregion
 
         #region Methods
