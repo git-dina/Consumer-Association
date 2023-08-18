@@ -132,7 +132,7 @@ namespace POSCA.View.customers.customerTransaction
             dg_customerTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
             dg_customerTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
             dg_customerTransaction.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
-            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("StocksCount");
+            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("TransactionStocksCount");
             dg_customerTransaction.Columns[4].Header = AppSettings.resourcemanager.GetString("StocksPrice");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 

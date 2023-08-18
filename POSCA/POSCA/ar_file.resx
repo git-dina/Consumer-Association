@@ -6434,6 +6434,12 @@
   <data name="Retreat" xml:space="preserve">
     <value>انسحاب</value>
   </data>
+  <data name="StocksNumberNotAllowed" xml:space="preserve">
+    <value>عدد أسهم الحركة غير مسموح</value>
+  </data>
+  <data name="TransactionStocksCount" xml:space="preserve">
+    <value>عدد أسهم الحركة</value>
+  </data>
   <data name="TransformStocks" xml:space="preserve">
     <value>تحويل أسهم</value>
   </data>

@@ -140,7 +140,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate}"/>
+                                <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate, Converter={StaticResource dateFrameConverter }}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
                                 <DataGridTextColumn Width="*"  Header="StocksCount" Binding="{Binding Path=TransactionStocksCount}"/>

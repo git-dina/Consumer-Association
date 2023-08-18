@@ -4697,6 +4697,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction Stocks Number Not Allowed.
+        /// </summary>
+        internal static string StocksNumberNotAllowed {
+            get {
+                return ResourceManager.GetString("StocksNumberNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stocks Price.
         /// </summary>
         internal static string StocksPrice {
@@ -5728,6 +5737,15 @@ namespace POSCA {
         internal static string TransactionDateHint {
             get {
                 return ResourceManager.GetString("TransactionDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Stocks Count.
+        /// </summary>
+        internal static string TransactionStocksCount {
+            get {
+                return ResourceManager.GetString("TransactionStocksCount", resourceCulture);
             }
         }
         

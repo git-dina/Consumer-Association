@@ -72,7 +72,7 @@ namespace POSCA.View.customers.customerTransaction
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "StocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "CustomerId", "TransactionStocksCount", "StocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -135,7 +135,7 @@ namespace POSCA.View.customers.customerTransaction
             dg_customerTransaction.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
             dg_customerTransaction.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
             dg_customerTransaction.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
-            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("StocksCount");
+            dg_customerTransaction.Columns[3].Header = AppSettings.resourcemanager.GetString("TransactionStocksCount");
             dg_customerTransaction.Columns[4].Header = AppSettings.resourcemanager.GetString("StocksPrice");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
@@ -549,13 +549,13 @@ namespace POSCA.View.customers.customerTransaction
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
-            if (tb_search.Text != "")
-                Btn_search_Click(null, null);
-            else
-            {
-                customerTransactions = new List<CustomerTransaction>();
-                RefreshCustomerTransactionsView();
-            }
+            //if (tb_search.Text != "")
+            //    Btn_search_Click(null, null);
+            //else
+            //{
+            //    customerTransactions = new List<CustomerTransaction>();
+            //    RefreshCustomerTransactionsView();
+            //}
 
         }
         void swapToData()
@@ -688,8 +688,19 @@ namespace POSCA.View.customers.customerTransaction
                 if (tb_TransactionStocksCount.Text != "")
                     stocksCount = int.Parse(tb_TransactionStocksCount.Text);
 
-                var totalPrice = stocksCount * decimal.Parse(tb_StocksPrice.Text);
-                tb_TotalPrice.Text = HelpClass.DecTostring(totalPrice);
+                //check stock count
+                var difference = int.Parse(tb_StocksCount.Text) - stocksCount;
+                if (difference < 5)
+                {
+                    tb_TransactionStocksCount.Text = "";
+                    tb_TotalPrice.Text = HelpClass.DecTostring(0);
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("StocksNumberNotAllowed"), animation: ToasterAnimation.FadeIn);
+                }
+                else
+                {
+                    var totalPrice = stocksCount * decimal.Parse(tb_StocksPrice.Text);
+                    tb_TotalPrice.Text = HelpClass.DecTostring(totalPrice);
+                }
             }
             catch { }
         }
