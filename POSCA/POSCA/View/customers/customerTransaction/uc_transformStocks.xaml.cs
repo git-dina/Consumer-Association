@@ -114,7 +114,7 @@ namespace POSCA.View.customers.customerTransaction
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
@@ -217,7 +217,7 @@ namespace POSCA.View.customers.customerTransaction
 
                         customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
 
-                        var res = await customerTransaction.AddTransaction(customerTransaction);
+                        var res = await customerTransaction.TransformStocks(customerTransaction);
                         if (res == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -409,7 +409,7 @@ namespace POSCA.View.customers.customerTransaction
         #region Refresh & Search
         async Task Search()
         {
-            customerTransactions = await customerTransaction.SearchTransactions(tb_search.Text);
+            customerTransactions = await customerTransaction.SearchTransactions("transform",tb_search.Text);
             RefreshCustomerTransactionsView();
         }
         //async Task<IEnumerable<CustomerTransaction>> RefreshCustomerTransactionsList()

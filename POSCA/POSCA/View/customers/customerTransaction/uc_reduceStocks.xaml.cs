@@ -115,8 +115,8 @@ namespace POSCA.View.customers.customerTransaction
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksPrice, AppSettings.resourcemanager.GetString("StocksPriceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TotalPrice, AppSettings.resourcemanager.GetString("TotalPriceHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
@@ -205,9 +205,11 @@ namespace POSCA.View.customers.customerTransaction
 
                     if (HelpClass.validate(requiredControlList, this))
                     {
-                        customerTransaction.TransactionType = "add";
+                        customerTransaction.TransactionType = "reduce";
                         customerTransaction.CustomerId = long.Parse(tb_CustomerId.Text);
+                        customerTransaction.BoxNumber = customer.BoxNumber;
                         customerTransaction.TransactionDate = dp_TransactionDate.SelectedDate;
+                        customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
                         customerTransaction.StocksCount = int.Parse(tb_StocksCount.Text);
                         customerTransaction.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
                         customerTransaction.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
@@ -219,7 +221,7 @@ namespace POSCA.View.customers.customerTransaction
 
                         customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
 
-                        var res = await customerTransaction.AddTransaction(customerTransaction);
+                        var res = await customerTransaction.ReduceStocks(customerTransaction);
                         if (res == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -351,12 +353,12 @@ namespace POSCA.View.customers.customerTransaction
             }
         }
 
-        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private  void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                await Clear();
+                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -411,7 +413,7 @@ namespace POSCA.View.customers.customerTransaction
         #region Refresh & Search
         async Task Search()
         {
-            customerTransactions = await customerTransaction.SearchTransactions(tb_search.Text);
+            customerTransactions = await customerTransaction.SearchTransactions("reduce",tb_search.Text);
             RefreshCustomerTransactionsView();
         }
         //async Task<IEnumerable<CustomerTransaction>> RefreshCustomerTransactionsList()
@@ -430,11 +432,23 @@ namespace POSCA.View.customers.customerTransaction
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        async Task Clear()
+        private void Clear()
         {
+            customerTransaction = new CustomerTransaction();
             this.DataContext = new CustomerTransaction();
             dg_customerTransaction.SelectedIndex = -1;
 
+            #region clear inputs
+            tb_CustomerId.Text = "";
+            tb_CustomerName.Text = "";
+            dp_JoinDate.SelectedDate = null;
+            tb_StocksCount.Text = "";
+            tb_TotalPrice.Text = "";
+            txt_JoinDay.Text = "";
+            txt_JoinMonth.Text = "";
+            txt_JoinYear.Text = "";
+            #endregion
+            inputEditable();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -548,9 +562,50 @@ namespace POSCA.View.customers.customerTransaction
         {
             cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+
+            this.DataContext = customerTransaction;
+
+            tb_CustomerId.Text = customerTransaction.CustomerId.ToString();
+            tb_CustomerName.Text = customerTransaction.CustomerName;
+            dp_JoinDate.SelectedDate = customerTransaction.JoinDate;
+            tb_StocksCount.Text = customerTransaction.StocksCount.ToString();
+            if (customerTransaction.JoinDate != null)
+            {
+                DateTime zeroTime = new DateTime(1, 1, 1);
+                TimeSpan span1 = DateTime.Now - (DateTime)customerTransaction.JoinDate;
+                txt_JoinYear.Text = ((zeroTime + span1).Year - 1).ToString();
+                txt_JoinMonth.Text = ((zeroTime + span1).Month - 1).ToString();
+                txt_JoinDay.Text = ((zeroTime + span1).Day).ToString();
+            }
+
+            inputEditable();
         }
 
-
+        private void inputEditable()
+        {
+            if (customerTransaction.TransactionId == 0)
+            {
+                tb_CustomerId.IsEnabled = true;
+                tb_TransactionStocksCount.IsEnabled = true;
+                tb_ApprovalNumber.IsEnabled = true;
+                tb_CheckNumber.IsEnabled = true;
+                tb_Notes.IsEnabled = true;
+                dp_CheckDate.IsEnabled = true;
+                dp_MeetingDate.IsEnabled = true;
+                btn_update.IsEnabled = true;
+            }
+            else
+            {
+                tb_CustomerId.IsEnabled = false;
+                tb_TransactionStocksCount.IsEnabled = false;
+                tb_ApprovalNumber.IsEnabled = false;
+                tb_CheckNumber.IsEnabled = false;
+                tb_Notes.IsEnabled = false;
+                dp_CheckDate.IsEnabled = false;
+                dp_MeetingDate.IsEnabled = false;
+                btn_update.IsEnabled = false;
+            }
+        }
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             swapToData();
@@ -584,6 +639,7 @@ namespace POSCA.View.customers.customerTransaction
             {
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
+                    HelpClass.StartAwait(grid_main);
                     if (FillCombo.customerList != null)
                     {
                         customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
@@ -600,7 +656,7 @@ namespace POSCA.View.customers.customerTransaction
                         {
                             tb_CustomerName.Text = customer.Name;
                             dp_JoinDate.SelectedDate = customer.JoinDate;
-                            tb_CustomerStocksCount.Text = customer.AllStocksCount.ToString();
+                            tb_StocksCount.Text = customer.AllStocksCount.ToString();
                             txt_JoinDay.Text = customer.JoinDay.ToString();
                             txt_JoinMonth.Text = customer.JoinMonth.ToString();
                             txt_JoinYear.Text = customer.JoinYear.ToString();
@@ -612,10 +668,14 @@ namespace POSCA.View.customers.customerTransaction
                         tb_CustomerId.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
+                    HelpClass.EndAwait(grid_main);
 
                 }
             }
-            catch { }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
     }
 }

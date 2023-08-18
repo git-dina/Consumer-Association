@@ -140,7 +140,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate}"/>
+                                <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate, Converter={StaticResource dateFrameConverter }}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
                                 <DataGridTextColumn Width="*"  Header="StocksCount" Binding="{Binding Path=TransactionStocksCount}"/>
@@ -435,8 +435,8 @@
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_StocksCount" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding StocksCount, Mode=OneWay}"
+                                    <TextBox x:Name="tb_TransactionStocksCount" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding TransactionStocksCount, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="TransactionStocksCount..."    
                                         Foreground="{StaticResource textColor}"    
@@ -444,7 +444,7 @@
                                  BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                LostFocus="validateEmpty_LostFocus" TextChanged="tb_TransactionStocksCount_TextChanged"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_TransactionStocksCount" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -454,9 +454,9 @@
                             </Border>
                             <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_CustomerStocksCount" Grid.Row="8"  Padding="10,0,5,0"  
+                                    <TextBox x:Name="tb_StocksCount" Grid.Row="8"  Padding="10,0,5,0"  
                                          IsEnabled="False"
-                                             Text="{Binding CustomerStocksCount, Mode=OneWay}"
+                                             Text="{Binding StocksCount, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="StocksCount..."    
                                         Foreground="{StaticResource textColor}"    
@@ -529,9 +529,9 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ApprovalNumber..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ApprovalNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -569,9 +569,9 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="CheckNumber..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CheckNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   

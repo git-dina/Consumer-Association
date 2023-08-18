@@ -16,7 +16,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> BoxNumber { get; set; }
         public Nullable<System.DateTime> TransactionDate { get; set; } = DateTime.Now;
         public string TransactionType { get; set; }
-        public Nullable<int> CustomerStocksCount { get; set; }
+        public Nullable<int> TransactionStocksCount { get; set; }
         public Nullable<int> StocksCount { get; set; }
         public decimal StocksPrice { get; set; } = 5;
         public decimal TotalPrice { get; set; }
@@ -50,11 +50,87 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region
-        internal async Task<int> AddTransaction(CustomerTransaction transaction)
+        internal async Task<int> AddStocks(CustomerTransaction transaction)
         {
             int result =0;
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "CustomerTransaction/AddTransaction";
+            string method = "CustomerTransaction/AddStocks";
+
+            var myContent = JsonConvert.SerializeObject(transaction);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                     result = JsonConvert.DeserializeObject<int>(c.Value);
+                }
+            }
+            return result;
+        }
+         internal async Task<int> DeathTransaction(CustomerTransaction transaction)
+        {
+            int result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "CustomerTransaction/DeathTransaction";
+
+            var myContent = JsonConvert.SerializeObject(transaction);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                     result = JsonConvert.DeserializeObject<int>(c.Value);
+                }
+            }
+            return result;
+        }
+         internal async Task<int> ReduceStocks(CustomerTransaction transaction)
+        {
+            int result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "CustomerTransaction/ReduceStocks";
+
+            var myContent = JsonConvert.SerializeObject(transaction);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                     result = JsonConvert.DeserializeObject<int>(c.Value);
+                }
+            }
+            return result;
+        }  
+        internal async Task<int> TransformStocks(CustomerTransaction transaction)
+        {
+            int result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "CustomerTransaction/TransformStocks";
+
+            var myContent = JsonConvert.SerializeObject(transaction);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                     result = JsonConvert.DeserializeObject<int>(c.Value);
+                }
+            }
+            return result;
+        }
+        internal async Task<int> RetreatTransaction(CustomerTransaction transaction)
+        {
+            int result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "CustomerTransaction/RetreatTransaction";
 
             var myContent = JsonConvert.SerializeObject(transaction);
             parameters.Add("itemObject", myContent);
@@ -70,13 +146,14 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<CustomerTransaction>> SearchTransactions(string textSearch)
+        public async Task<List<CustomerTransaction>> SearchTransactions(string transactionType,string textSearch)
         {
             var result = new List<CustomerTransaction>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "CustomerTransaction/SearchTransactions";
 
-            parameters.Add("textSearch", textSearch.ToString());
+            parameters.Add("transactionType", transactionType);
+            parameters.Add("textSearch", textSearch);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
