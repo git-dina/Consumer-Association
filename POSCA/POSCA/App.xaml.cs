@@ -45,7 +45,13 @@ namespace POSCA
         {
             if (sender.GetType().Name == "TextBox")
             {
-                if (e.Key == Key.Enter & (sender as TextBox).AcceptsReturn == false & !(sender as TextBox).Name.Contains("tb_search") & !(sender as TextBox).Name.Contains("tb_PurchaseInvNumber") & !(sender as TextBox).Name.Contains("tb_IBAN")& !(sender as TextBox).Name.Contains("tb_BoxNumber")  ) MoveToNextUIElement(e);
+                if (e.Key == Key.Enter & (sender as TextBox).AcceptsReturn == false 
+                    & !(sender as TextBox).Name.Contains("tb_search") 
+                    & !(sender as TextBox).Name.Contains("tb_PurchaseInvNumber") 
+                    & !(sender as TextBox).Name.Contains("tb_IBAN")
+                    & !(sender as TextBox).Name.Contains("tb_BoxNumber") 
+                    & !(sender as TextBox).Name.Contains("tb_CustomerId") 
+                    ) MoveToNextUIElement(e);
             }
             else if (sender.GetType().Name == "ComboBox")
             {
