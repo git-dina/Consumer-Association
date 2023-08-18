@@ -16,7 +16,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> BoxNumber { get; set; }
         public Nullable<System.DateTime> TransactionDate { get; set; } = DateTime.Now;
         public string TransactionType { get; set; }
-        public Nullable<int> TransactionStocksCount { get; set; }
+        public Nullable<int> CustomerStocksCount { get; set; }
         public Nullable<int> StocksCount { get; set; }
         public decimal StocksPrice { get; set; } = 5;
         public decimal TotalPrice { get; set; }

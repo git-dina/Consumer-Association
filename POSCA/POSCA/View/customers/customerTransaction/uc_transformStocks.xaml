@@ -542,8 +542,8 @@
                             </Grid.ColumnDefinitions>
                             <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
-                                    <TextBox x:Name="tb_TransactionStocksCount" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding TransactionStocksCount, Mode=OneWay}"
+                                    <TextBox x:Name="tb_StocksCount" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding StocksCount, Mode=OneWay}"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          materialDesign:HintAssist.Hint="TransactionStocksCount..."    
                                         Foreground="{StaticResource textColor}"    

@@ -71,7 +71,7 @@ namespace POSCA.View.customers.customerTransaction
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "StocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
@@ -114,10 +114,8 @@ namespace POSCA.View.customers.customerTransaction
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
             //MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksPrice, AppSettings.resourcemanager.GetString("StocksPriceHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TotalPrice, AppSettings.resourcemanager.GetString("TotalPriceHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
+
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
@@ -207,7 +205,7 @@ namespace POSCA.View.customers.customerTransaction
                         customerTransaction.TransactionType = "add";
                         //customerTransaction.CustomerId = long.Parse(tb_CustomerId.Text);
                         customerTransaction.TransactionDate = dp_TransactionDate.SelectedDate;
-                        customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
+                        //customerTransaction.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
                         //customerTransaction.StocksCount = int.Parse(tb_StocksCount.Text);
                         //customerTransaction.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
                         //customerTransaction.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
@@ -578,7 +576,7 @@ namespace POSCA.View.customers.customerTransaction
 
         }
         /*
-        private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
+       private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -594,13 +592,24 @@ namespace POSCA.View.customers.customerTransaction
 
                     if (customer != null)
                     {
-                        if(customer.CustomerStatus != "continouse")
+                        if (customer.CustomerStatus != "continouse")
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         else
-                            this.DataContext = customer;
+                        {
+                            tb_CustomerName.Text = customer.Name;
+                            dp_JoinDate.SelectedDate = customer.JoinDate;
+                            tb_StocksCount.Text = customer.AllStocksCount.ToString();
+                            txt_JoinDay.Text = customer.JoinDay.ToString();
+                            txt_JoinMonth.Text = customer.JoinMonth.ToString();
+                            txt_JoinYear.Text = customer.JoinYear.ToString();
+
+                        }
                     }
                     else
+                    {
+                        tb_CustomerId.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
 
                 }
             }

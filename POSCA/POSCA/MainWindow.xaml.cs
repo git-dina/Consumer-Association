@@ -427,6 +427,10 @@ namespace POSCA
 
             txt_customerTransaction.Text = AppSettings.resourcemanager.GetString("CustomersTransactions");
             txt_addStocks.Text = AppSettings.resourcemanager.GetString("AddStockes");
+            txt_reduceStocks.Text = AppSettings.resourcemanager.GetString("ReduceStocks");
+            txt_transformStocks.Text = AppSettings.resourcemanager.GetString("TransformStocks");
+            txt_retreatOfCustomer.Text = AppSettings.resourcemanager.GetString("Retreat");
+            txt_deathOfCustomer.Text = AppSettings.resourcemanager.GetString("Death");
             #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 

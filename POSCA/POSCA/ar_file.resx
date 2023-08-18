@@ -6422,7 +6422,19 @@
   <data name="CustomerNotContinouse" xml:space="preserve">
     <value>المساهم غير مستمر</value>
   </data>
+  <data name="Death" xml:space="preserve">
+    <value>وفاة</value>
+  </data>
   <data name="NumberNotTrue" xml:space="preserve">
     <value>الرقم غير صحيح</value>
+  </data>
+  <data name="ReduceStocks" xml:space="preserve">
+    <value>تخفيض أسهم</value>
+  </data>
+  <data name="Retreat" xml:space="preserve">
+    <value>انسحاب</value>
+  </data>
+  <data name="TransformStocks" xml:space="preserve">
+    <value>تحويل أسهم</value>
   </data>
 </root>

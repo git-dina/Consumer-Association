@@ -1141,6 +1141,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Death.
+        /// </summary>
+        internal static string Death {
+            get {
+                return ResourceManager.GetString("Death", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default class.
         /// </summary>
         internal static string defaultClass {
@@ -4139,6 +4148,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reduce Stocks.
+        /// </summary>
+        internal static string ReduceStocks {
+            get {
+                return ResourceManager.GetString("ReduceStocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ref....
         /// </summary>
         internal static string RefHint {
@@ -4225,6 +4243,15 @@ namespace POSCA {
         internal static string RequiredQuantities {
             get {
                 return ResourceManager.GetString("RequiredQuantities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retreat.
+        /// </summary>
+        internal static string Retreat {
+            get {
+                return ResourceManager.GetString("Retreat", resourceCulture);
             }
         }
         
@@ -5737,6 +5764,15 @@ namespace POSCA {
         internal static string transfersBetweenPOS {
             get {
                 return ResourceManager.GetString("transfersBetweenPOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transform Stocks.
+        /// </summary>
+        internal static string TransformStocks {
+            get {
+                return ResourceManager.GetString("TransformStocks", resourceCulture);
             }
         }
         

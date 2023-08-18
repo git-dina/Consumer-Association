@@ -6168,7 +6168,19 @@ Main Documents</value>
   <data name="CustomerNotContinouse" xml:space="preserve">
     <value>The Contributor is not Continuous</value>
   </data>
+  <data name="Death" xml:space="preserve">
+    <value>Death</value>
+  </data>
   <data name="NumberNotTrue" xml:space="preserve">
     <value>The Number is Incorrect</value>
+  </data>
+  <data name="ReduceStocks" xml:space="preserve">
+    <value>Reduce Stocks</value>
+  </data>
+  <data name="Retreat" xml:space="preserve">
+    <value>Retreat</value>
+  </data>
+  <data name="TransformStocks" xml:space="preserve">
+    <value>Transform Stocks</value>
   </data>
 </root>
