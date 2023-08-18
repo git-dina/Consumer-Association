@@ -639,6 +639,7 @@ namespace POSCA.View.customers.customerTransaction
             {
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
+                    customer = null;
                     HelpClass.StartAwait(grid_main);
                     if (FillCombo.customerList != null)
                     {
@@ -676,6 +677,21 @@ namespace POSCA.View.customers.customerTransaction
             {
                 HelpClass.EndAwait(grid_main);
             }
+        }
+
+        private void tb_TransactionStocksCount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ValidateEmpty_TextChange(sender, e);
+                int stocksCount = 0;
+                if (tb_TransactionStocksCount.Text != "")
+                    stocksCount = int.Parse(tb_TransactionStocksCount.Text);
+
+                var totalPrice = stocksCount * decimal.Parse(tb_StocksPrice.Text);
+                tb_TotalPrice.Text = HelpClass.DecTostring(totalPrice);
+            }
+            catch { }
         }
     }
 }

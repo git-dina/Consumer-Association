@@ -627,6 +627,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             {
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
+                    customer = null;
                     HelpClass.StartAwait(grid_main);
                     if(FillCombo.customerList != null)
                     {
@@ -671,8 +672,8 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
             {
                 ValidateEmpty_TextChange(sender, e);
                 int stocksCount = 0;
-                if (tb_StocksCount.Text != "")
-                    stocksCount = int.Parse(tb_StocksCount.Text);
+                if (tb_TransactionStocksCount.Text != "")
+                    stocksCount = int.Parse(tb_TransactionStocksCount.Text);
 
                 var totalPrice = stocksCount * decimal.Parse(tb_StocksPrice.Text);
                 tb_TotalPrice.Text = HelpClass.DecTostring(totalPrice);
