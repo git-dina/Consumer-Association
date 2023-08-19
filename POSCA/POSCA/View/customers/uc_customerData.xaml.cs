@@ -474,7 +474,7 @@ namespace POSCA.View.customers
                     this.DataContext = customer;
 
                     tb_JoiningSharesCount.Text = customer.JoiningSharesCount.ToString();
-                    
+                    tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
                     tb_AutomtedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
                     cb_AreaId.SelectedValue = customer.customerAddress.AreaId;
 

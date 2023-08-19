@@ -385,6 +385,8 @@ namespace POSCA.View.customers.customerTransaction
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         void  Clear()
         {
+            customerTransaction = new CustomerTransaction();
+
             this.DataContext = new CustomerTransaction();
             dg_customerTransaction.SelectedIndex = -1;
 
