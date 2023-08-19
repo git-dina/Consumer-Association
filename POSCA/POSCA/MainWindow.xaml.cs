@@ -563,6 +563,7 @@ namespace POSCA
                         sb.Begin();
                         txt_companyName.Visibility = Visibility.Visible;
                         txt_dashboard.Visibility = Visibility.Visible;
+                        txt_salesInvoice.Visibility = Visibility.Visible;
                         menuState = true;
                     }
                 }
@@ -603,6 +604,11 @@ namespace POSCA
                 path_iconDashboard.Fill = Application.Current.Resources["White"] as SolidColorBrush;
             else
                 path_iconDashboard.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#A8AEC6"));
+
+            if (active == "salesInvoice")
+                path_iconSalesInvoice.Fill = Application.Current.Resources["White"] as SolidColorBrush;
+            else
+                path_iconSalesInvoice.Fill = (SolidColorBrush)(new BrushConverter().ConvertFrom("#A8AEC6"));
 
 
         }
@@ -1186,6 +1192,7 @@ namespace POSCA
                     sb.Begin();
                     txt_companyName.Visibility = Visibility.Visible;
                     txt_dashboard.Visibility = Visibility.Visible;
+                    txt_salesInvoice.Visibility = Visibility.Visible;
                     menuState = true;
                 }
                 else
@@ -1204,6 +1211,7 @@ namespace POSCA
                     }
                     txt_companyName.Visibility = Visibility.Collapsed;
                     txt_dashboard.Visibility = Visibility.Collapsed;
+                    txt_salesInvoice.Visibility = Visibility.Collapsed;
                     Storyboard sb = this.FindResource("Storyboard2") as Storyboard;
                     sb.Begin();
                     menuState = false;
