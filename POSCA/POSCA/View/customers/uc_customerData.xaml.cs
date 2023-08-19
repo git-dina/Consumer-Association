@@ -424,6 +424,7 @@ namespace POSCA.View.customers
                 if (e.Key == Key.Return)
                 {
                     Btn_search_Click(btn_search, null);
+                }
             }
             catch (Exception ex)
             {
