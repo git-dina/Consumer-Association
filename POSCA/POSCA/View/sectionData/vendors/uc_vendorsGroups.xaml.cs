@@ -103,7 +103,6 @@ namespace POSCA.View.sectionData.vendors
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("SupplierGroups");
-            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_HasSuppliers.Text = AppSettings.resourcemanager.GetString("HasSuppliers");
