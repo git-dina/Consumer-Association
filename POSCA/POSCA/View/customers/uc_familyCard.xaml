@@ -140,11 +140,12 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="TransactionDate" Binding="{Binding Path=TransactionDate, Converter={StaticResource dateFrameConverter }}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
-                                <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
-                                <DataGridTextColumn Width="*"  Header="StocksCount" Binding="{Binding Path=TransactionStocksCount}"/>
-                                <DataGridTextColumn Width="*"  Header="StocksPrice" Binding="{Binding Path=StocksPrice}"/>
+                                <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber}"/>
+                                <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
+                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum}"/>
+                                <DataGridTextColumn Width="*"  Header="CurrentPurchses" Binding="{Binding Path=CurrentPurchses}"/>
+                                <DataGridTextColumn Width="*"  Header="AllStocksCount" Binding="{Binding Path=AllStocksCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -427,6 +428,7 @@
 
                                     <TextBox x:Name="tb_BoxNumber"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                    IsReadOnly="True" IsEnabled="False"
                                      materialDesign:HintAssist.Hint="BoxNumber..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" Tag="int" BorderThickness="0"

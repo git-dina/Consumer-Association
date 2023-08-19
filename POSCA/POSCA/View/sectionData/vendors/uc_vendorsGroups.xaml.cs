@@ -103,8 +103,8 @@ namespace POSCA.View.sectionData.vendors
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("SupplierGroups");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_HasSuppliers.Text = AppSettings.resourcemanager.GetString("HasSuppliers");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
@@ -115,8 +115,6 @@ namespace POSCA.View.sectionData.vendors
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            //dg_supplierGroup.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            //dg_supplierGroup.Columns[1].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");

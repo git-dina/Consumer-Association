@@ -388,6 +388,18 @@ namespace POSCA.View.customers.customerTransaction
             this.DataContext = new CustomerTransaction();
             dg_customerTransaction.SelectedIndex = -1;
 
+            #region clear inputs
+            tb_BoxNumber.Text = "";
+            tb_CustomerName.Text = "";
+            tb_CustomerStatus.Text = "";
+            tb_ToBoxNumber.Text = "";
+            tb_ToCustomerName.Text = "";
+            tb_ToCustomerStatus.Text = "";
+            txt_StocksCount.Text = "";
+            txt_ToStocksCount.Text = "";
+
+            #endregion
+            inputEditable();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -512,9 +524,36 @@ namespace POSCA.View.customers.customerTransaction
             txt_StocksCount.Text = customerTransaction.StocksCount.ToString();
             txt_ToStocksCount.Text = customerTransaction.ToStocksCount.ToString();
 
+            inputEditable();
         }
 
-
+        private void inputEditable()
+        {
+            if (customerTransaction.TransactionId == 0)
+            {
+                tb_BoxNumber.IsEnabled = true;
+                tb_ToBoxNumber.IsEnabled = true;
+                tb_TransactionStocksCount.IsEnabled = true;
+                tb_ApprovalNumber.IsEnabled = true;
+                tb_BondNo.IsEnabled = true;
+                tb_Notes.IsEnabled = true;
+                dp_BondDate.IsEnabled = true;
+                dp_MeetingDate.IsEnabled = true;
+                btn_update.IsEnabled = true;
+            }
+            else
+            {
+                tb_BoxNumber.IsEnabled = false;
+                tb_ToBoxNumber.IsEnabled = false;
+                tb_TransactionStocksCount.IsEnabled = false;
+                tb_ApprovalNumber.IsEnabled = false;
+                tb_BondNo.IsEnabled = false;
+                tb_Notes.IsEnabled = false;
+                dp_BondDate.IsEnabled = false;
+                dp_MeetingDate.IsEnabled = false;
+                btn_update.IsEnabled = false;
+            }
+        }
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             swapToData();
@@ -571,12 +610,12 @@ namespace POSCA.View.customers.customerTransaction
                 {
                     customer1 = null;
                     HelpClass.StartAwait(grid_main);
-                    if (FillCombo.customerList != null)
-                    {
-                        customer1 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_BoxNumber.Text)).FirstOrDefault();
-                    }
+                    //if (FillCombo.customerList != null)
+                    //{
+                    //    customer1 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_BoxNumber.Text)).FirstOrDefault();
+                    //}
 
-                    if (customer1 == null)
+                    //if (customer1 == null)
                         customer1 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
 
                     if (customer1 != null)
@@ -613,33 +652,41 @@ namespace POSCA.View.customers.customerTransaction
             {
                 if (e.Key == Key.Return && tb_ToBoxNumber.Text != "")
                 {
-                    customer2 = null;
-                    HelpClass.StartAwait(grid_main);
-                    if (FillCombo.customerList != null)
+                    if (tb_BoxNumber.Text.Equals(tb_ToBoxNumber.Text))
                     {
-                        customer2 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_ToBoxNumber.Text)).FirstOrDefault();
-                    }
-
-                    if (customer2 == null)
-                        customer2 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_ToBoxNumber.Text));
-
-                    if (customer2 != null)
-                    {
-                        if (customer2.CustomerStatus != "continouse")
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
-                        else
-                        {
-                            tb_ToCustomerName.Text = customer2.Name;
-                            tb_ToCustomerStatus.Text = AppSettings.resourcemanager.GetString(customer2.CustomerStatus);
-                            txt_ToStocksCount.Text = customer1.AllStocksCount.ToString();
-
-
-                        }
+                        tb_ToBoxNumber.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CannotTransferToSameBox"), animation: ToasterAnimation.FadeIn);
                     }
                     else
                     {
-                        tb_ToBoxNumber.Text = "";
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                        customer2 = null;
+                        HelpClass.StartAwait(grid_main);
+                        //if (FillCombo.customerList != null)
+                        //{
+                        //    customer2 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_ToBoxNumber.Text)).FirstOrDefault();
+                        //}
+
+                        //if (customer2 == null)
+                        customer2 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_ToBoxNumber.Text));
+
+                        if (customer2 != null)
+                        {
+                            if (customer2.CustomerStatus != "continouse")
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                            else
+                            {
+                                tb_ToCustomerName.Text = customer2.Name;
+                                tb_ToCustomerStatus.Text = AppSettings.resourcemanager.GetString(customer2.CustomerStatus);
+                                txt_ToStocksCount.Text = customer2.AllStocksCount.ToString();
+
+
+                            }
+                        }
+                        else
+                        {
+                            tb_ToBoxNumber.Text = "";
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                        }
                     }
                     HelpClass.EndAwait(grid_main);
 

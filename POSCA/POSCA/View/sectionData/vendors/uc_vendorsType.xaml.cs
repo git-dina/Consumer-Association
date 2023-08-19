@@ -102,10 +102,10 @@ namespace POSCA.View.sectionData.vendors
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("SupplierTypes");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_code, AppSettings.resourcemanager.GetString("trCodeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");

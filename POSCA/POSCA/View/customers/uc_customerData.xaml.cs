@@ -185,8 +185,9 @@ namespace POSCA.View.customers
             dg_customer.Columns[0].Header = AppSettings.resourcemanager.GetString("CustomerNo");
             dg_customer.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
             dg_customer.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
-            dg_customer.Columns[3].Header = AppSettings.resourcemanager.GetString("CurrentCustomerPur");
-            dg_customer.Columns[4].Header = AppSettings.resourcemanager.GetString("SharesCount");
+            dg_customer.Columns[3].Header = AppSettings.resourcemanager.GetString("CivilNo");
+            dg_customer.Columns[4].Header = AppSettings.resourcemanager.GetString("CurrentCustomerPur");
+            dg_customer.Columns[5].Header = AppSettings.resourcemanager.GetString("SharesCount");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
 
@@ -423,7 +424,6 @@ namespace POSCA.View.customers
                 if (e.Key == Key.Return)
                 {
                     Btn_search_Click(btn_search, null);
-                }
             }
             catch (Exception ex)
             {

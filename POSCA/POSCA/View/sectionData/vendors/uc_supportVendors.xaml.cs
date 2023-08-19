@@ -102,6 +102,7 @@ namespace POSCA.View.sectionData.vendors
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("AssistantSuppliers");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -117,7 +118,6 @@ namespace POSCA.View.sectionData.vendors
             dg_assistantSupplier.Columns[2].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
             //tt_report.Content = AppSettings.resourcemanager.GetString("trPdf");
             //tt_print.Content = AppSettings.resourcemanager.GetString("trPrint");

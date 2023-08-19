@@ -143,6 +143,7 @@
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber}"/>
                                 <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Name}"/>
+                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum}"/>
                                 <DataGridTextColumn Width="*"  Header="CurrentPurchses" Binding="{Binding Path=CurrentPurchses}"/>
                                 <DataGridTextColumn Width="*"  Header="AllStocksCount" Binding="{Binding Path=AllStocksCount}"/>
                             </DataGrid.Columns>

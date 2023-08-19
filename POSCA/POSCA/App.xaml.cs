@@ -50,6 +50,7 @@ namespace POSCA
                     & !(sender as TextBox).Name.Contains("tb_PurchaseInvNumber") 
                     & !(sender as TextBox).Name.Contains("tb_IBAN")
                     & !(sender as TextBox).Name.Contains("tb_BoxNumber") 
+                    & !(sender as TextBox).Name.Contains("tb_ToBoxNumber") 
                     & !(sender as TextBox).Name.Contains("tb_CustomerId") 
                     ) MoveToNextUIElement(e);
             }

@@ -6467,4 +6467,28 @@
   <data name="withdrawn" xml:space="preserve">
     <value>منسحب</value>
   </data>
+  <data name="CannotTransferToSameBox" xml:space="preserve">
+    <value>لا يمكن التحويل لنفس الصندوق</value>
+  </data>
+  <data name="AddedDate" xml:space="preserve">
+    <value>تاريخ الإضافة</value>
+  </data>
+  <data name="CivilNoHint" xml:space="preserve">
+    <value>الرقم المدني...</value>
+  </data>
+  <data name="EscortsInformation" xml:space="preserve">
+    <value>بيانات المرافقين</value>
+  </data>
+  <data name="FamilyCard" xml:space="preserve">
+    <value>بطاقة العائلة</value>
+  </data>
+  <data name="IsCustomer" xml:space="preserve">
+    <value>مساهم</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>العلاقة</value>
+  </data>
+  <data name="ReleaseDateHint" xml:space="preserve">
+    <value>تاريخ الإصدار...</value>
+  </data>
 </root>

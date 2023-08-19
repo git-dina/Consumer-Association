@@ -151,6 +151,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Added Date.
+        /// </summary>
+        internal static string AddedDate {
+            get {
+                return ResourceManager.GetString("AddedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fill aditional information.
         /// </summary>
         internal static string AdditionalInfoError {
@@ -592,6 +601,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot Transfer To Same Box.
+        /// </summary>
+        internal static string CannotTransferToSameBox {
+            get {
+                return ResourceManager.GetString("CannotTransferToSameBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Carried Out.
         /// </summary>
         internal static string CarriedOut {
@@ -705,6 +723,15 @@ namespace POSCA {
         internal static string CivilNo {
             get {
                 return ResourceManager.GetString("CivilNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Civil No....
+        /// </summary>
+        internal static string CivilNoHint {
+            get {
+                return ResourceManager.GetString("CivilNoHint", resourceCulture);
             }
         }
         
@@ -1645,6 +1672,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Escorts Information.
+        /// </summary>
+        internal static string EscortsInformation {
+            get {
+                return ResourceManager.GetString("EscortsInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exchange And Transfer.
         /// </summary>
         internal static string ExchangeAndTransfer {
@@ -1740,6 +1776,15 @@ namespace POSCA {
         internal static string FactorMustBeGreaterThanZero {
             get {
                 return ResourceManager.GetString("FactorMustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Family Card.
+        /// </summary>
+        internal static string FamilyCard {
+            get {
+                return ResourceManager.GetString("FamilyCard", resourceCulture);
             }
         }
         
@@ -2271,6 +2316,15 @@ namespace POSCA {
         internal static string IsBlocked {
             get {
                 return ResourceManager.GetString("IsBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contributor.
+        /// </summary>
+        internal static string IsCustomer {
+            get {
+                return ResourceManager.GetString("IsCustomer", resourceCulture);
             }
         }
         
@@ -4216,6 +4270,24 @@ namespace POSCA {
         internal static string RegisteredInMinistry {
             get {
                 return ResourceManager.GetString("RegisteredInMinistry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Relationship.
+        /// </summary>
+        internal static string Relationship {
+            get {
+                return ResourceManager.GetString("Relationship", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Date....
+        /// </summary>
+        internal static string ReleaseDateHint {
+            get {
+                return ResourceManager.GetString("ReleaseDateHint", resourceCulture);
             }
         }
         

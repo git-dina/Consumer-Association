@@ -6213,4 +6213,28 @@ Main Documents</value>
   <data name="withdrawn" xml:space="preserve">
     <value>Withdrawn</value>
   </data>
+  <data name="CannotTransferToSameBox" xml:space="preserve">
+    <value>Cannot Transfer To Same Box</value>
+  </data>
+  <data name="AddedDate" xml:space="preserve">
+    <value>Added Date</value>
+  </data>
+  <data name="CivilNoHint" xml:space="preserve">
+    <value>Civil No...</value>
+  </data>
+  <data name="EscortsInformation" xml:space="preserve">
+    <value>Escorts Information</value>
+  </data>
+  <data name="FamilyCard" xml:space="preserve">
+    <value>Family Card</value>
+  </data>
+  <data name="IsCustomer" xml:space="preserve">
+    <value>Contributor</value>
+  </data>
+  <data name="Relationship" xml:space="preserve">
+    <value>Relationship</value>
+  </data>
+  <data name="ReleaseDateHint" xml:space="preserve">
+    <value>Release Date...</value>
+  </data>
 </root>

@@ -101,39 +101,37 @@ namespace POSCA.View.customers
 
         private void translate()
         {
-            /*
-            txt_title.Text = AppSettings.resourcemanager.GetString("AddStockes");
+      
+            txt_title.Text = AppSettings.resourcemanager.GetString("FamilyCard");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_TransactionDate, AppSettings.resourcemanager.GetString("TransactionDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksPrice, AppSettings.resourcemanager.GetString("StocksPriceHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TotalPrice, AppSettings.resourcemanager.GetString("TotalPriceHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_CheckDate, AppSettings.resourcemanager.GetString("CheckDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("CivilNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ReleaseDate, AppSettings.resourcemanager.GetString("ReleaseDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AutomatedNumber, AppSettings.resourcemanager.GetString("AutomtedNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            txt_durationJoin.Text = AppSettings.resourcemanager.GetString("DurationJoin");
+            txt_escortInformation.Text = AppSettings.resourcemanager.GetString("EscortsInformation");
+            dg_escort.Columns[0].Header = AppSettings.resourcemanager.GetString("CivilNo");
+            dg_escort.Columns[1].Header = AppSettings.resourcemanager.GetString("IsCustomer");
+            dg_escort.Columns[2].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_escort.Columns[3].Header = AppSettings.resourcemanager.GetString("trName");
+            dg_escort.Columns[4].Header = AppSettings.resourcemanager.GetString("Relationship");
+            dg_escort.Columns[5].Header = AppSettings.resourcemanager.GetString("AddedDate");
 
-            txt_JoinDayTitle.Text = AppSettings.resourcemanager.GetString("trDay");
-            txt_JoinMonthTitle.Text = AppSettings.resourcemanager.GetString("trMonth");
-            txt_JoinYearTitle.Text = AppSettings.resourcemanager.GetString("trYear");
-
-
-            dg_familyCard.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
-            dg_familyCard.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
+            dg_familyCard.Columns[0].Header = AppSettings.resourcemanager.GetString("CustomerNo");
+            dg_familyCard.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
             dg_familyCard.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
-            dg_familyCard.Columns[3].Header = AppSettings.resourcemanager.GetString("TransactionStocksCount");
-            dg_familyCard.Columns[4].Header = AppSettings.resourcemanager.GetString("StocksPrice");
+            dg_familyCard.Columns[3].Header = AppSettings.resourcemanager.GetString("CivilNo");
+            dg_familyCard.Columns[4].Header = AppSettings.resourcemanager.GetString("CurrentCustomerPur");
+            dg_familyCard.Columns[5].Header = AppSettings.resourcemanager.GetString("SharesCount");
+          
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
@@ -141,7 +139,7 @@ namespace POSCA.View.customers
             //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
-            */
+        
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)

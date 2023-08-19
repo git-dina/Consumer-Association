@@ -662,7 +662,7 @@
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CheckNumber" 
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_BondNo" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
@@ -679,7 +679,7 @@
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="BondDate..."  
                                         Foreground="{StaticResource textColor}"   Height="40"    />
-                                    <Path Fill="#E81123" x:Name="p_error_CheckDate" Stretch="Fill" Margin="5,5,20,5"
+                                    <Path Fill="#E81123" x:Name="p_error_BondDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>

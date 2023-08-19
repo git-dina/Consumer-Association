@@ -118,6 +118,7 @@ namespace POSCA.View.sectionData
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Supplier");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
             txt_Notes.Text = AppSettings.resourcemanager.GetString("trNote");
             txt_contactDataButton.Text = AppSettings.resourcemanager.GetString("ContactData");
             txt_allowedOperationsButton.Text = AppSettings.resourcemanager.GetString("AllowedOperations");
@@ -160,7 +161,6 @@ namespace POSCA.View.sectionData
             dg_supplier.Columns[5].Header = AppSettings.resourcemanager.GetString("IsBlocked");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
             btn_swapToSearch.ToolTip = AppSettings.resourcemanager.GetString("trSearch");
             //tt_report.Content = AppSettings.resourcemanager.GetString("trPdf");
