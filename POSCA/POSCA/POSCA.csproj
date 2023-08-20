@@ -203,6 +203,7 @@
     <Compile Include="Classes\ApiClasses\CustomerBank.cs" />
     <Compile Include="Classes\ApiClasses\CustomerTransaction.cs" />
     <Compile Include="Classes\ApiClasses\FamilyCard.cs" />
+    <Compile Include="Classes\ApiClasses\FundChange.cs" />
     <Compile Include="Classes\ApiClasses\HirarachyStructure.cs" />
     <Compile Include="Classes\ApiClasses\Item.cs" />
     <Compile Include="Classes\ApiClasses\ItemLocation.cs" />
