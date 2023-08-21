@@ -678,22 +678,15 @@
                                 <TextBlock  Name="txt_addButton" Text="Add" Foreground="White" VerticalAlignment="Center"/>
                             </Button>
                         </Border>
-                        <Border Grid.Row="2" Grid.Column="1">
-                            <Button x:Name="btn_update"   materialDesign:ButtonAssist.CornerRadius="7"
-                        Background="{StaticResource MainColor}" BorderBrush="{x:Null}"
-                   Margin="1,1"  Click="Btn_update_Click" >
 
-                                <TextBlock Foreground="White"  Name="txt_updateButton" Text="Update" VerticalAlignment="Center"/>
-                            </Button>
-                        </Border>
-                        <Border Grid.Row="2" Grid.Column="2">
-                            <Button x:Name="btn_delete"  materialDesign:ButtonAssist.CornerRadius="7"
+                        <!--<Border Grid.Row="2" Grid.Column="2">
+                            <Button x:Name="btn_stopCard"  materialDesign:ButtonAssist.CornerRadius="7"
                         Background="{StaticResource MainColor}" BorderBrush="{x:Null}" Foreground="White"
-                    Margin="1,1"  Click="Btn_delete_Click" >
+                    Margin="1,1"  Click="btn_stopCard_Click" >
 
-                                <TextBlock  Name="txt_deleteButton" Foreground="White" Width="auto" Text="Delete" VerticalAlignment="Center"/>
+                                <TextBlock  Name="txt_stopCardButton" Foreground="White" Width="auto" Text="Delete" VerticalAlignment="Center"/>
                             </Button>
-                        </Border>
+                        </Border>-->
                     </Grid>
 
                 </Border>

@@ -4859,6 +4859,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Stopping Card.
+        /// </summary>
+        internal static string StoppingCard {
+            get {
+                return ResourceManager.GetString("StoppingCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stores Manager.
         /// </summary>
         internal static string StoresManager {

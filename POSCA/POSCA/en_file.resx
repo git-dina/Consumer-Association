@@ -6237,4 +6237,7 @@ Main Documents</value>
   <data name="ReleaseDateHint" xml:space="preserve">
     <value>Release Date...</value>
   </data>
+  <data name="StoppingCard" xml:space="preserve">
+    <value>Stopping Card</value>
+  </data>
 </root>

@@ -34,13 +34,13 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<FamilyCard> save(Customer customer)
+        public async Task<FamilyCard> save(FamilyCard familyCard)
         {
             var result = new FamilyCard();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "Customer/SaveFamilyCard";
 
-            var myContent = JsonConvert.SerializeObject(customer);
+            var myContent = JsonConvert.SerializeObject(familyCard);
             parameters.Add("itemObject", myContent);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
@@ -52,7 +52,9 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
-        }
+        } 
+        
+    
         #endregion
     }
 

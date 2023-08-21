@@ -6491,4 +6491,7 @@
   <data name="ReleaseDateHint" xml:space="preserve">
     <value>تاريخ الإصدار...</value>
   </data>
+  <data name="StoppingCard" xml:space="preserve">
+    <value>إيقاف البطاقة</value>
+  </data>
 </root>

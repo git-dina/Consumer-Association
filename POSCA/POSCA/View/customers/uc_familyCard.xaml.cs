@@ -71,7 +71,7 @@ namespace POSCA.View.customers
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "CustomerId", "ReleaseDate"};
                 if (AppSettings.lang.Equals("en"))
                 {
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
@@ -134,7 +134,7 @@ namespace POSCA.View.customers
           
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
+            txt_addButton.Text = AppSettings.resourcemanager.GetString("trSave");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         
@@ -145,83 +145,25 @@ namespace POSCA.View.customers
             try
             {
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
-                /*
+           
                     {
-                        HelpClass.StartAwait(grid_main);
-
-                        familyCard = new FamilyCard();
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                        {
-
-                            familyCard.TransactionDate = dp_TransactionDate.SelectedDate;
-                            familyCard.Notes = tb_Notes.Text;
-
-                            familyCard.CreateUserId = MainWindow.userLogin.userId;
-
-                            FillCombo.familyCardList = await familyCard.save(familyCard);
-                            if (FillCombo.familyCardList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                                await Clear();
-                                await Search();
-                            }
-                        }
-                        else
-                        {
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
-                        }
-                        HelpClass.EndAwait(grid_main);
-                    }
-
-                    //else
-                    //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void Btn_update_Click(object sender, RoutedEventArgs e)
-        {//update
-            try
-            {
-                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
-                {
                     HelpClass.StartAwait(grid_main);
-                    /*
+                   
 
                     if (HelpClass.validate(requiredControlList, this))
                     {
-                        familyCard.TransactionType = "add";
                         familyCard.CustomerId = long.Parse(tb_CustomerId.Text);
-                        familyCard.BoxNumber = customer.BoxNumber;
-                        familyCard.TransactionDate = dp_TransactionDate.SelectedDate;
-                        familyCard.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
-                        familyCard.StocksCount = int.Parse(tb_StocksCount.Text);
-                        familyCard.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
-                        familyCard.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
-                        familyCard.ApprovalNumber = tb_ApprovalNumber.Text;
-                        familyCard.MeetingDate = dp_MeetingDate.SelectedDate;
-                        familyCard.CheckNumber = tb_CheckNumber.Text;
-                        familyCard.CheckDate = dp_CheckDate.SelectedDate;
+                        familyCard.ReleaseDate = dp_ReleaseDate.SelectedDate;
                         familyCard.Notes = tb_Notes.Text;
-
                         familyCard.UpdateUserId = MainWindow.userLogin.userId;
 
-                        var res = await familyCard.AddStocks(familyCard);
-                        if (res == 0)
+                        var res = await familyCard.save(familyCard);
+                        if (res.FamilyCardId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-                            Clear();
-                            //await Search();
+                            //Clear();
 
                         }
                     }
@@ -230,68 +172,23 @@ namespace POSCA.View.customers
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                     }
 
-                    */
+                
                     HelpClass.EndAwait(grid_main);
                 }
-                //else
-                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
 
+                    //else
+                    //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+              
             }
             catch (Exception ex)
             {
+
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_delete_Click(object sender, RoutedEventArgs e)
-        {//delete
-            try
-            {
-                // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    /*
-                    if (familyCard.FamilyCardId != 0)
-                    {
-                        #region
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                        w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-
-                        w.ShowDialog();
-                        Window.GetWindow(this).Opacity = 1;
-                        #endregion
-
-                        if (w.isOk)
-                        {
-                            FillCombo.familyCardList = await familyCard.delete(familyCard.FamilyCardId, MainWindow.userLogin.userId);
-                            if (FillCombo.familyCardList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                familyCard.FamilyCardId = 0;
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                await Search();
-                                await Clear();
-                            }
-                        }
-
-                    }
-                    */
-                    HelpClass.EndAwait(grid_main);
-                }
-                //else
-                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-
-            }
-            catch (Exception ex)
-            {
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+        
+        
 
         #endregion
         #region events
@@ -423,18 +320,16 @@ namespace POSCA.View.customers
             familyCard = new FamilyCard();
             this.DataContext = new FamilyCard();
             dg_familyCard.SelectedIndex = -1;
-            /*
+    
             #region clear inputs
             tb_CustomerId.Text = "";
             tb_CustomerName.Text = "";
-            dp_JoinDate.SelectedDate = null;
-            tb_StocksCount.Text = "";
-            tb_TotalPrice.Text = "";
-            txt_JoinDay.Text = "";
-            txt_JoinMonth.Text = "";
-            txt_JoinYear.Text = "";
+            tb_CustomerStatus.Text = "";
+            tb_CivilNum.Text = "";
+            tb_AutomatedNumber.Text = "";
+            tb_BoxNumber.Text = "";
             #endregion
-            */
+        
             inputEditable();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -736,8 +631,8 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
             }
         }
+
         #endregion
 
-      
     }
 }
