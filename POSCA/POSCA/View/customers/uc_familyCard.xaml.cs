@@ -117,6 +117,7 @@ namespace POSCA.View.customers
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AutomatedNumber, AppSettings.resourcemanager.GetString("AutomtedNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
+            txt_IsStopped.Text = AppSettings.resourcemanager.GetString("StoppingCard");
             txt_escortInformation.Text = AppSettings.resourcemanager.GetString("EscortsInformation");
             dg_escort.Columns[0].Header = AppSettings.resourcemanager.GetString("CivilNo");
             dg_escort.Columns[1].Header = AppSettings.resourcemanager.GetString("IsCustomer");
@@ -154,6 +155,10 @@ namespace POSCA.View.customers
                     {
                         familyCard.CustomerId = long.Parse(tb_CustomerId.Text);
                         familyCard.ReleaseDate = dp_ReleaseDate.SelectedDate;
+                        if (tgl_IsStopped.IsChecked == true)
+                            familyCard.IsStopped = true;
+                        else
+                            familyCard.IsStopped = false;
                         familyCard.Notes = tb_Notes.Text;
                         familyCard.UpdateUserId = MainWindow.userLogin.userId;
 
