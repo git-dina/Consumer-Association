@@ -434,8 +434,7 @@
                                      MaxLength="50" Tag="int" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
-                                     KeyDown="tb_BoxNumber_KeyDown"/>
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                 </Grid>
                             </Border>
                             <Border  Grid.Row="2" Grid.Column="2"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">

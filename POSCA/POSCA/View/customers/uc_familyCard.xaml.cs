@@ -134,9 +134,7 @@ namespace POSCA.View.customers
           
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
-            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         
@@ -631,18 +629,13 @@ namespace POSCA.View.customers
         {
             try
             {
-                /*
+
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
                     customer = null;
                     HelpClass.StartAwait(grid_main);
-                    if (FillCombo.customerList != null)
-                    {
-                        customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
-                    }
 
-                    if (customer == null)
-                        customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+                   customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
 
                     if (customer != null)
                     {
@@ -651,11 +644,10 @@ namespace POSCA.View.customers
                         else
                         {
                             tb_CustomerName.Text = customer.Name;
-                            dp_JoinDate.SelectedDate = customer.JoinDate;
-                            tb_StocksCount.Text = customer.AllStocksCount.ToString();
-                            txt_JoinDay.Text = customer.JoinDay.ToString();
-                            txt_JoinMonth.Text = customer.JoinMonth.ToString();
-                            txt_JoinYear.Text = customer.JoinYear.ToString();
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
+                            tb_BoxNumber.Text = customer.BoxNumber.ToString();
+                            tb_CivilNum.Text = customer.CivilNum.ToString();
+                            tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
 
                         }
                     }
@@ -667,49 +659,14 @@ namespace POSCA.View.customers
                     HelpClass.EndAwait(grid_main);
 
                 }
-                */
+   
             }
             catch
             {
                 HelpClass.EndAwait(grid_main);
             }
         }
-        /*
-        private void tb_TransactionStocksCount_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                ValidateEmpty_TextChange(sender, e);
-                int stocksCount = 0;
-                if (tb_TransactionStocksCount.Text != "")
-                    stocksCount = int.Parse(tb_TransactionStocksCount.Text);
-
-                var totalPrice = stocksCount * decimal.Parse(tb_StocksPrice.Text);
-                tb_TotalPrice.Text = HelpClass.DecTostring(totalPrice);
-            }
-            catch { }
-        }
-        */
-
-        private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.Return && tb_BoxNumber.Text != "")
-                {
-
-                    var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_BoxNumber.Text), customer.CustomerId);
-                    if (!isValid)
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+        
         private void Btn_cardActive_Click(object sender, RoutedEventArgs e)
         {
 
@@ -722,6 +679,8 @@ namespace POSCA.View.customers
             {
                 btn_addEscort.IsEnabled = false;
                 dg_escort.IsEnabled = false;
+                if (familyCard.Escorts == null)
+                    familyCard.Escorts = new List<Escort>();
                 familyCard.Escorts.Add(new Escort());
                 RefreshEscortDataGrid();
             }
