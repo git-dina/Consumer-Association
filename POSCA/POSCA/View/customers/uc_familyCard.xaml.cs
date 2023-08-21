@@ -299,20 +299,12 @@ namespace POSCA.View.customers
         #region Refresh & Search
         async Task Search()
         {
-            /*
-            familyCards = await familyCard.SearchTransactions("add", tb_search.Text);
+         
+            familyCards = await customer.SearchFamilyCardsCustomers( tb_search.Text);
             RefreshFamilyCardsView();
-            */
+      
         }
-        //async Task<IEnumerable<FamilyCard>> RefreshFamilyCardsList()
-        //{
 
-        //    await familyCard.get(true);
-
-        //    return FillCombo.familyCardList;
-
-        //    return familyCards;
-        //}
         void RefreshFamilyCardsView()
         {
             dg_familyCard.ItemsSource = familyCards;
@@ -335,7 +327,6 @@ namespace POSCA.View.customers
             tb_BoxNumber.Text = "";
             #endregion
         
-            inputEditable();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -451,53 +442,26 @@ namespace POSCA.View.customers
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
 
             this.DataContext = familyCard;
-            /*
+          
             tb_CustomerId.Text = familyCard.CustomerId.ToString();
-            dp_TransactionDate.SelectedDate = familyCard.TransactionDate;
+            dp_ReleaseDate.SelectedDate = familyCard.ReleaseDate;
             tb_CustomerName.Text = familyCard.CustomerName;
-            dp_JoinDate.SelectedDate = familyCard.JoinDate;
-            tb_StocksCount.Text = familyCard.StocksCount.ToString();
-            tb_TotalPrice.Text = HelpClass.DecTostring(familyCard.StocksCount * familyCard.StocksPrice);
-            if (familyCard.JoinDate != null)
-            {
-                DateTime zeroTime = new DateTime(1, 1, 1);
-                TimeSpan span1 = DateTime.Now - (DateTime)familyCard.JoinDate;
-                txt_JoinYear.Text = ((zeroTime + span1).Year - 1).ToString();
-                txt_JoinMonth.Text = ((zeroTime + span1).Month - 1).ToString();
-                txt_JoinDay.Text = ((zeroTime + span1).Day).ToString();
-            }
-            */
+            tb_BoxNumber.Text = familyCard.BoxNumber.ToString();
+            tb_CustomerStatus.Text = familyCard.CustomerStatus;
+            tb_CivilNum.Text = familyCard.CivilNum;
+            tb_AutomatedNumber.Text = familyCard.AutomatedNumber;
 
-            inputEditable();
-        }
-
-        private void inputEditable()
-        {
-            /*
-            if (familyCard.TransactionId == 0)
-            {
-                tb_CustomerId.IsEnabled = true;
-                tb_TransactionStocksCount.IsEnabled = true;
-                tb_ApprovalNumber.IsEnabled = true;
-                tb_CheckNumber.IsEnabled = true;
-                tb_Notes.IsEnabled = true;
-                dp_CheckDate.IsEnabled = true;
-                dp_MeetingDate.IsEnabled = true;
-                btn_update.IsEnabled = true;
-            }
+            if (familyCard.IsStopped == true)
+                tgl_IsStopped.IsChecked = true;
             else
-            {
-                tb_CustomerId.IsEnabled = false;
-                tb_TransactionStocksCount.IsEnabled = false;
-                tb_ApprovalNumber.IsEnabled = false;
-                tb_CheckNumber.IsEnabled = false;
-                tb_Notes.IsEnabled = false;
-                dp_CheckDate.IsEnabled = false;
-                dp_MeetingDate.IsEnabled = false;
-                btn_update.IsEnabled = false;
-            }
-            */
+                tgl_IsStopped.IsChecked = false;
+
+            RefreshEscortDataGrid();
+
+
+
         }
+
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             swapToData();

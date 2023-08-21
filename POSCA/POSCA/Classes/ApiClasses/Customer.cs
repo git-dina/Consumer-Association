@@ -63,6 +63,9 @@ namespace POSCA.Classes.ApiClasses
         public int JoinDay { get; set; }
         public int JoinMonth { get; set; }
         public int JoinYear { get; set; }
+
+        public FamilyCard FamilyCard { get; set; }
+
         #endregion
 
         #region Methods
@@ -98,6 +101,24 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<Customer>(c.Value));
+                }
+            }
+            return result;
+        }
+        public async Task<List<FamilyCard>> SearchFamilyCardsCustomers(string textSearch)
+        {
+            var result = new List<FamilyCard>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/SearchFamilyCardsCustomers";
+
+            parameters.Add("textSearch", textSearch.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<FamilyCard>(c.Value));
                 }
             }
             return result;
