@@ -437,7 +437,31 @@
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                 </Grid>
                             </Border>
-                            <Border  Grid.Row="2" Grid.Column="2"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Border  Grid.Column="1" Grid.Row="3" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <DatePicker  x:Name="dp_ReleaseDate" 
+                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                         BorderBrush="#737373"   BorderThickness="0" Margin="0"
+                                        TextBlock.Foreground="{StaticResource textColor}"
+                                         SelectedDate="{Binding ReleaseDate, Mode=OneWay}" Padding="10,0,5,0"  
+                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                        materialDesign:HintAssist.Hint="ReleaseDate..."  
+                                        Foreground="{StaticResource textColor}"   Height="40"    />
+                                    <Path Fill="#E81123" x:Name="p_error_ReleaseDate" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
+
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="2" Grid.Column="0"  CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_CivilNum"  Text="{Binding CivilNum, Mode=OneWay}" Padding="10,0,5,0" 
                                      IsReadOnly="True" IsEnabled="False"
@@ -455,29 +479,7 @@
                                     </Path>
                                 </Grid>
                             </Border>
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Column="0" Grid.Row="3" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <DatePicker  x:Name="dp_ReleaseDate" 
-                                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                         BorderBrush="#737373"   BorderThickness="0" Margin="0"
-                                        TextBlock.Foreground="{StaticResource textColor}"
-                                         SelectedDate="{Binding ReleaseDate, Mode=OneWay}" Padding="10,0,5,0"  
-                                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                        materialDesign:HintAssist.Hint="ReleaseDate..."  
-                                        Foreground="{StaticResource textColor}"   Height="40"    />
-                                    <Path Fill="#E81123" x:Name="p_error_ReleaseDate" Stretch="Fill" Margin="5,5,20,5"
-                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15" 
-                             Data="{StaticResource infoCircle}"/>
 
-                                </Grid>
-                            </Border>
                             <Border  Grid.Row="2" Grid.Column="2"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_AutomatedNumber"  Text="{Binding AutomatedNumber, Mode=OneWay}" Padding="10,0,5,0" 
@@ -498,6 +500,15 @@
                             </Border>
 
                         </Grid>
+                        <StackPanel Orientation="Horizontal" Margin="10,5,10,5">
+                            <TextBlock   x:Name="txt_IsStopped"
+                                   Margin="0,0,5,0" Text="IsStopped" Foreground="#6e6e6e"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   FontSize="12"/>
+                            <ToggleButton   x:Name="tgl_IsStopped"  IsChecked="{Binding IsStopped, Mode=OneWay}"
+                                        VerticalAlignment="Center" Padding="10,15,5,5"  
+                                      Margin="0" Height="13" Width="28"    />
+                        </StackPanel>
                         <Border  Grid.Column="0" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
@@ -553,8 +564,6 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-
-                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum, Mode=TwoWay}"/>
                                 <DataGridCheckBoxColumn Width="*" Header="IsCustomer" x:Name="col_IsCustomer" Binding="{Binding IsCustomer, Mode=TwoWay}">
                                     <!--<DataGridCheckBoxColumn.CellStyle>
                                             <Style TargetType="{x:Type DataGridCell}">
@@ -574,6 +583,8 @@
                                         </Style>
                                     </DataGridCheckBoxColumn.ElementStyle>
                                 </DataGridCheckBoxColumn>
+
+                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum, Mode=TwoWay}"/>
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber, Mode=TwoWay}"/>
                                 <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>
                                 <DataGridComboBoxColumn Width="*"  Header="KinshipId"
@@ -670,9 +681,11 @@
                             </Button>-->
                         </Grid>
 
-                        <Border Grid.Row="2">
+                        <Border Grid.Row="2" Grid.ColumnSpan="2">
 
-                            <Button x:Name="btn_add"  materialDesign:ButtonAssist.CornerRadius="7"
+                            <Button x:Name="btn_add"
+                                    
+                                    materialDesign:ButtonAssist.CornerRadius="7"
                           Background="{StaticResource MainColor}" BorderBrush="{x:Null}"
                     Margin="1,1" Click="Btn_add_Click" Foreground="White" >
                                 <TextBlock  Name="txt_addButton" Text="Add" Foreground="White" VerticalAlignment="Center"/>
