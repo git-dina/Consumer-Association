@@ -66,7 +66,7 @@ namespace POSCA.View.customers
             Instance = null;
             GC.Collect();
         }
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {//load
             try
             {
@@ -86,8 +86,8 @@ namespace POSCA.View.customers
 
                 Keyboard.Focus(tb_CustomerId);
 
+                await fillKinshipTiess();
 
-                //await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -119,9 +119,9 @@ namespace POSCA.View.customers
 
             txt_IsStopped.Text = AppSettings.resourcemanager.GetString("StoppingCard");
             txt_escortInformation.Text = AppSettings.resourcemanager.GetString("EscortsInformation");
-            dg_escort.Columns[0].Header = AppSettings.resourcemanager.GetString("CivilNo");
-            dg_escort.Columns[1].Header = AppSettings.resourcemanager.GetString("IsCustomer");
-            dg_escort.Columns[2].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_escort.Columns[0].Header = AppSettings.resourcemanager.GetString("IsCustomer");
+            dg_escort.Columns[1].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_escort.Columns[2].Header = AppSettings.resourcemanager.GetString("CivilNo");
             dg_escort.Columns[3].Header = AppSettings.resourcemanager.GetString("trName");
             dg_escort.Columns[4].Header = AppSettings.resourcemanager.GetString("Relationship");
             dg_escort.Columns[5].Header = AppSettings.resourcemanager.GetString("AddedDate");
@@ -139,6 +139,15 @@ namespace POSCA.View.customers
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         
+        }
+        private async Task fillKinshipTiess()
+        {
+            if (FillCombo.kinshipTiesList is null)
+                await FillCombo.RefreshKinshipTiess();
+
+            cb_KinshipId.DisplayMemberPath = "Name";
+            cb_KinshipId.SelectedValuePath = "PhoneTypeId";
+            cb_KinshipId.ItemsSource = FillCombo.kinshipTiesList;
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
