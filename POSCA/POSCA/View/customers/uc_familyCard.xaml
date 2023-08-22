@@ -540,13 +540,11 @@
                     <Grid  Grid.Row="1"  >
                         <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid1" BorderThickness="0" 
                             Background="White"/>
-
                         <DataGrid x:Name="dg_escort" 
                             Margin="10" Grid.Row="1" 
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
                        HeadersVisibility="Column" Background="White"
-                       
                        AutoGenerateColumns="False" 
                         ColumnWidth="SizeToHeader"    
                         AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
@@ -564,17 +562,9 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridCheckBoxColumn Width="*" Header="IsCustomer" x:Name="col_IsCustomer" Binding="{Binding IsCustomer, Mode=TwoWay}">
-                                    <!--<DataGridCheckBoxColumn.CellStyle>
-                                            <Style TargetType="{x:Type DataGridCell}">
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsCustomer}" Value="true">
-                                                        <Setter Property="Background" Value="{StaticResource lightRed}"/>
-                                                        <Setter Property="Foreground" Value="{StaticResource ThickGrey}"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </DataGridCheckBoxColumn.CellStyle>-->
+                                <DataGridCheckBoxColumn Width="*" Header="IsCustomer" x:Name="col_IsCustomer" 
+                                                        Binding="{Binding IsCustomer, Mode=TwoWay}"  
+                                                        >
                                     <DataGridCheckBoxColumn.ElementStyle>
                                         <Style TargetType="{x:Type CheckBox}">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -583,10 +573,92 @@
                                         </Style>
                                     </DataGridCheckBoxColumn.ElementStyle>
                                 </DataGridCheckBoxColumn>
+                                <!--<DataGridTemplateColumn x:Name="dgc_IsCustomer" Width="3*"  Header="IsCustomer">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox  IsChecked="{Binding Path=IsCustomer, Mode=TwoWay}"
+                                                 Checked="Dgc_IsCustomer_Checking" Unchecked="Dgc_IsCustomer_Checking" >
+                                                
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>-->
 
-                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum, Mode=TwoWay}"/>
+                                <!--<DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber, Mode=TwoWay}"/>
-                                <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>
+                                <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>-->
+
+                                <DataGridTemplateColumn x:Name="dgc_CivilNum" Width="3*"  Header="CivilNum">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding Path=CivilNum, Mode=TwoWay}"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                                  BorderThickness="0" 
+                                                  >
+                                                <TextBox.Style>
+                                                    <Style TargetType="{x:Type TextBox}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="true">
+                                                                <Setter Property="IsEnabled" Value="false"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
+                                                                <Setter Property="IsEnabled" Value="True"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBox.Style>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="3*"  Header="BoxNumber">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding Path=BoxNumber, Mode=TwoWay}"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                                  BorderThickness="0" 
+                                                  KeyDown="Dgc_BoxNumber_KeyDown">
+                                                <TextBox.Style>
+                                                    <Style TargetType="{x:Type TextBox}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="true">
+                                                                <Setter Property="IsEnabled" Value="True"/>
+                                                                <!--<Setter Property="Background" Value="Green"/>-->
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
+                                                                <Setter Property="IsEnabled" Value="false"/>
+                                                                <!--<Setter Property="Background" Value="Red"/>-->
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBox.Style>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="dgc_EscortName" Width="3*"  Header="EscortName">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding Path=EscortName, Mode=TwoWay}"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                                  BorderThickness="0" 
+                                                  >
+                                                <TextBox.Style>
+                                                    <Style TargetType="{x:Type TextBox}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="true">
+                                                                <Setter Property="IsEnabled" Value="false"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
+                                                                <Setter Property="IsEnabled" Value="true"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBox.Style>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                                 <DataGridComboBoxColumn Width="*"  Header="KinshipId"
                                                             x:Name="cb_KinshipId" 
                                         SelectedValueBinding="{Binding KinshipId, Mode=TwoWay}"  

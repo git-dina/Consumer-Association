@@ -555,6 +555,7 @@ namespace POSCA.View.customers
                 if (familyCard.Escorts == null)
                     familyCard.Escorts = new List<Escort>();
                 familyCard.Escorts.Add(new Escort());
+                //familyCard.Escorts[0].IsCustomer = true;
                 RefreshEscortDataGrid();
             }
             catch (Exception ex)
@@ -612,5 +613,37 @@ namespace POSCA.View.customers
 
         #endregion
 
+
+        private void Dgc_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+
+        private void Dgc_IsCustomer_Checking(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //dg_escort.CancelEdit();
+                //dg_escort.ItemsSource = familyCard.Escorts;
+                //dg_escort.Items.Refresh();
+                CheckBox checkBox = sender as CheckBox;
+                Escort row = (Escort)dg_escort.SelectedItem;
+                row.IsCustomer = checkBox.IsChecked;
+                //dg_escort.IsEnabled = true;
+                //btn_addEscort.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                //dg_escort.IsEnabled = true;
+                //btn_addEscort.IsEnabled = true;
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
+            }
+        }
+
+        private void col_IsCustomer_Unselected(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
