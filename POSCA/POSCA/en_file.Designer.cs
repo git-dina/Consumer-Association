@@ -610,6 +610,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Card Activities.
+        /// </summary>
+        internal static string CardActivities {
+            get {
+                return ResourceManager.GetString("CardActivities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Carried Out.
         /// </summary>
         internal static string CarriedOut {

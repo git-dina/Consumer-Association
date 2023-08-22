@@ -6494,6 +6494,9 @@
   <data name="StoppingCard" xml:space="preserve">
     <value>إيقاف البطاقة</value>
   </data>
+  <data name="CardActivities" xml:space="preserve">
+    <value>أنشطة البطاقة</value>
+  </data>
   <data name="InvoiceDetails" xml:space="preserve">
     <value>تفاصيل الفاتورة</value>
   </data>

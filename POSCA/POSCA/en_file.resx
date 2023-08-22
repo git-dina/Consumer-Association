@@ -6240,6 +6240,9 @@ Main Documents</value>
   <data name="StoppingCard" xml:space="preserve">
     <value>Stopping Card</value>
   </data>
+  <data name="CardActivities" xml:space="preserve">
+    <value>Card Activities</value>
+  </data>
   <data name="InvoiceDetails" xml:space="preserve">
     <value>Invoice Details</value>
   </data>

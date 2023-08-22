@@ -588,30 +588,8 @@
                                 <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber, Mode=TwoWay}"/>
                                 <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>-->
 
-                                <DataGridTemplateColumn x:Name="dgc_CivilNum" Width="3*"  Header="CivilNum">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBox  Text="{Binding Path=CivilNum, Mode=TwoWay}"
-                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                                  BorderThickness="0" 
-                                                  >
-                                                <TextBox.Style>
-                                                    <Style TargetType="{x:Type TextBox}">
-                                                        <Style.Triggers>
-                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="true">
-                                                                <Setter Property="IsEnabled" Value="false"/>
-                                                            </DataTrigger>
-                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
-                                                                <Setter Property="IsEnabled" Value="True"/>
-                                                            </DataTrigger>
-                                                        </Style.Triggers>
-                                                    </Style>
-                                                </TextBox.Style>
-                                            </TextBox>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="3*"  Header="BoxNumber">
+                               
+                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="2*"  Header="BoxNumber">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox  Text="{Binding Path=BoxNumber, Mode=TwoWay}"
@@ -628,6 +606,29 @@
                                                             <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
                                                                 <Setter Property="IsEnabled" Value="false"/>
                                                                 <!--<Setter Property="Background" Value="Red"/>-->
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBox.Style>
+                                            </TextBox>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn x:Name="dgc_CivilNum" Width="3*"  Header="CivilNum">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBox  Text="{Binding Path=CivilNum, Mode=TwoWay}"
+                                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                                  BorderThickness="0" 
+                                                  >
+                                                <TextBox.Style>
+                                                    <Style TargetType="{x:Type TextBox}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="true">
+                                                                <Setter Property="IsEnabled" Value="false"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding IsCustomer, Mode=OneWay}" Value="false">
+                                                                <Setter Property="IsEnabled" Value="True"/>
                                                             </DataTrigger>
                                                         </Style.Triggers>
                                                     </Style>

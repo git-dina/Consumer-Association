@@ -136,6 +136,7 @@ namespace POSCA.View.customers
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trSave");
+            txt_cardActiveButton.Text = AppSettings.resourcemanager.GetString("CardActivities");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         
@@ -614,9 +615,46 @@ namespace POSCA.View.customers
         #endregion
 
 
-        private void Dgc_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        private async void Dgc_BoxNumber_KeyDown(object sender, KeyEventArgs e)
         {
+            try
+            {
+                TextBox tb = sender as TextBox;
+                if (e.Key == Key.Return && tb.Text != "")
+                {
+                    customer = null;
+                    HelpClass.StartAwait(grid_main);
 
+                    customer = await FillCombo.customer.GetByBoxNumber(long.Parse(tb.Text));
+
+                    if (customer != null)
+                    {
+                        if (customer.CustomerStatus != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            tb_CustomerName.Text = customer.Name;
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
+                            tb_BoxNumber.Text = customer.BoxNumber.ToString();
+                            tb_CivilNum.Text = customer.CivilNum.ToString();
+                            tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
+
+                        }
+                    }
+                    else
+                    {
+                        tb.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+                    HelpClass.EndAwait(grid_main);
+
+                }
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
 
 
