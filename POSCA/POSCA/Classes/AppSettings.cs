@@ -31,7 +31,7 @@ namespace POSCA.Classes
         internal static string accuracy = "3";
         internal static string currency = "د.ك";
         public static string dateFormat = "ShortDatePattern";
-
+        public static long locationId = 0;
         #region company info
         //default system info
         internal static string companyName;

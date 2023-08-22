@@ -52,7 +52,7 @@
                                   Height="40"   Margin="0" 
                               VerticalAlignment="Center"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" 
-                                         TextChanged="Tb_search_TextChanged"
+                                      
                                        />
                     </Grid>
                 </Border>
@@ -529,8 +529,8 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=TwoWay}"/>
-                                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                                <DataGridTextColumn IsReadOnly="True" Width="*" x:Name="col_paymentType"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=TwoWay}"/>
+                                <DataGridTextColumn IsReadOnly="True" Width="*" x:Name="col_amount"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                      </Grid>

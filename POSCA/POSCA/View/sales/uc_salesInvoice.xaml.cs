@@ -133,30 +133,36 @@ namespace POSCA.View.sales
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
 
-            //chk_barcode.Content = AppSettings.resourcemanager.GetString("trBarcode");
-            //chk_itemNum.Content = AppSettings.resourcemanager.GetString("ItemNumber");
+            txt_invoiceTitle.Text = AppSettings.resourcemanager.GetString("SalesInvoice");
+            txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("InvoiceDetails");
+            txt_InvNumberTitle.Text = AppSettings.resourcemanager.GetString("trInvoiceNumber");
+            txt_LocationTitle.Text = AppSettings.resourcemanager.GetString("Branch");
+            txt_MachineTitle.Text = AppSettings.resourcemanager.GetString("Machine");
+            txt_ShiftTitle.Text = AppSettings.resourcemanager.GetString("Shift");
+            txt_LastInvTitle.Text = AppSettings.resourcemanager.GetString("LastInvoice");
+            txt_CustomerTitle.Text = AppSettings.resourcemanager.GetString("IsCustomer");
+            txt_CustomerBalanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
+            txt_payType.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
+
+
+            txt_QuantityTitle.Text = AppSettings.resourcemanager.GetString("trAmount");
+            txt_TotalTitle.Text = AppSettings.resourcemanager.GetString("TotalInvoice");
+
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
-
-            //txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
-            //txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("OrderDetails");
            
-
            
-            /*
-            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("ItemNumber");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("itemName");
-            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("Factor");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trPrice");
-            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("MaxFactorQty");
-            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("LessFactorQty");
-            dg_invoiceDetails.Columns[8].Header = AppSettings.resourcemanager.GetString("Free");
-            dg_invoiceDetails.Columns[9].Header = AppSettings.resourcemanager.GetString("ConsumerDiscountTitle");
-            dg_invoiceDetails.Columns[10].Header = AppSettings.resourcemanager.GetString("TotalCost");
-            dg_invoiceDetails.Columns[11].Header = AppSettings.resourcemanager.GetString("trTotalPrice");
-            */
+            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("SeuenceAbbrevation");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("trBarcode");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("itemName");
+            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trAmount");
+            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("trTotal");
+           
+            col_paymentType.Header = AppSettings.resourcemanager.GetString("trPaymentType");
+            col_amount.Header = AppSettings.resourcemanager.GetString("trPaymentType");
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
-            btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("ReceiptOrders");
+            btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("trSalesInvoices");
             // btn_salesInvoices.ToolTip = AppSettings.resourcemanager.GetString("SalesInvoices");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
@@ -822,120 +828,25 @@ namespace POSCA.View.sales
 
         #endregion
 
-        private async void Btn_search_Click(object sender, RoutedEventArgs e)
+        private async Task search()
         {
 
-            /*
             try
             {
-                if (location == null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectLocationError"), animation: ToasterAnimation.FadeIn);
-                else if (supplier == null)
-                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectSupplierError"), animation: ToasterAnimation.FadeIn);
-                else
+               
+                if(tb_search.Text != "")
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    List<Item> itemLst = new List<Item>();
                     Item item1 = null;
-                    string barcode = "";
 
-                    if (chk_itemNum.IsChecked == true)
-                    {
-                        itemLst = await FillCombo.item.GetItemByCodeOrName(tb_search.Text, location.LocationId, supplier.SupId, _ReceiptType);
-                        if (itemLst.Count == 1)
-                        {
-                            item1 = itemLst[0];
-                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
-                        }
 
-                    }
-                    else
-                    {
-                        item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, location.LocationId, supplier.SupId, _ReceiptType);
-                        barcode = tb_search.Text;
-                    }
-
-                    if (itemLst.Count > 1)
-                    {
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_addSalesItems w = new wd_addSalesItems();
-                        w.items = itemLst.ToList();
-                        w.supId = (long)cb_SupId.SelectedValue;
-                        w.locationId = (long)cb_LocationId.SelectedValue;
-
-                        w.ShowDialog();
-                        if (w.isOk)
-                        {
-                            item1 = w.item;
-                            barcode = item1.ItemUnits.FirstOrDefault().Barcode;
-                        }
-                        Window.GetWindow(this).Opacity = 1;
-                    }
-
+                    item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, AppSettings.locationId);                                  
 
                     if (item1 != null)
                     {
-                        if (item1.ItemStatus != "normal")
-                        {
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemStatusNotNormalError"), animation: ToasterAnimation.FadeIn);
-
-                        }
-                        else
-                        {
-                            Window.GetWindow(this).Opacity = 0.2;
-                            wd_addSalesItem w = new wd_addSalesItem();
-                            w.receiptType = _ReceiptType;
-
-                            long balance = item1.ItemLocations.Where(x => x.LocationId == location.LocationId).FirstOrDefault().Balance;
-
-                            w.newReceiptItem = new SalesInvoiceDetails()
-                            {
-                                ItemId = item1.ItemId,
-                                ItemCode = item1.Code,
-                                ItemName = item1.Name,
-                                ItemUnit = item1.ItemUnit,
-                                Factor = item1.Factor,
-                                MainCost = item1.MainCost,
-                                CoopDiscount = supplier.DiscountPercentage,
-                                ConsumerDiscount = item1.ConsumerDiscPerc,
-                                MainPrice = item1.Price,
-                                Barcode = barcode,
-                                Balance = balance,
-                            };
-                            w.ShowDialog();
-
-                            if (w.isOk)
-                            {
-                                //check billDetails count
-                                if (billDetails.Count < 20)
-                                {
-                                    int maxQty = 0;
-                                    int minQty = 0;
-                                    if (w.newReceiptItem.MaxQty != null)
-                                        maxQty = (int)w.newReceiptItem.MaxQty;
-                                    else
-                                        w.newReceiptItem.MaxQty = 0;
-
-                                    if (w.newReceiptItem.MinQty != null)
-                                        minQty = (int)w.newReceiptItem.MinQty;
-                                    else
-                                        w.newReceiptItem.MinQty = 0;
-                                    w.newReceiptItem.Cost = (w.newReceiptItem.MainCost * maxQty) + ((w.newReceiptItem.MainCost / (int)w.newReceiptItem.Factor) * minQty);
-                                    w.newReceiptItem.Price = ((int)w.newReceiptItem.Factor * w.newReceiptItem.MainPrice * maxQty) + (w.newReceiptItem.MainPrice * minQty);
-
-                                    if (w.newReceiptItem.MinQty == null)
-                                        w.newReceiptItem.MinQty = 0;
-                                    if (w.newReceiptItem.FreeQty == null)
-                                        w.newReceiptItem.FreeQty = 0;
-                                    addItemToBill(w.newReceiptItem);
-                                }
-                                else
-                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMoreTwentyItemsError"), animation: ToasterAnimation.FadeIn);
-
-                            }
-                            Window.GetWindow(this).Opacity = 1;
-                        }
+                        //add item to invoice
+                       
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
@@ -952,7 +863,6 @@ namespace POSCA.View.sales
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
-            */
 
         }
         List<SalesInvoiceDetails> billDetails = new List<SalesInvoiceDetails>();
@@ -1237,14 +1147,13 @@ namespace POSCA.View.sales
 
         }
         #endregion
-        private void tb_search_KeyDown(object sender, KeyEventArgs e)
+        private async void tb_search_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
                 if (e.Key == Key.Return)
                 {
-                    //Btn_search_Click(btn_search, null);
-                    Btn_search_Click(null, null);
+                    await search();
                 }
             }
             catch (Exception ex)

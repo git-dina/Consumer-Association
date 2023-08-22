@@ -6494,4 +6494,22 @@
   <data name="StoppingCard" xml:space="preserve">
     <value>إيقاف البطاقة</value>
   </data>
+  <data name="InvoiceDetails" xml:space="preserve">
+    <value>تفاصيل الفاتورة</value>
+  </data>
+  <data name="LastInvoice" xml:space="preserve">
+    <value>آخر فاتورة</value>
+  </data>
+  <data name="Machine" xml:space="preserve">
+    <value>ماكينة</value>
+  </data>
+  <data name="SalesInvoice" xml:space="preserve">
+    <value>فاتورة مبيعات</value>
+  </data>
+  <data name="Shift" xml:space="preserve">
+    <value>شيفت</value>
+  </data>
+  <data name="TotalInvoice" xml:space="preserve">
+    <value>إجمالي الفاتورة</value>
+  </data>
 </root>

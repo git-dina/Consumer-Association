@@ -2552,7 +2552,7 @@ Main Documents</value>
     <value>فاتورة, المادة,...</value>
   </data>
   <data name="trInvoiceNumber" xml:space="preserve">
-    <value>رقم الفاتورة</value>
+    <value>Invoice No.</value>
   </data>
   <data name="trInvoiceNumberHint" xml:space="preserve">
     <value>Invoice Num...</value>
@@ -3234,7 +3234,7 @@ Main Documents</value>
     <value>الدفع</value>
   </data>
   <data name="trPaymentMethods" xml:space="preserve">
-    <value>طرق الدفع</value>
+    <value>Payment Methods</value>
   </data>
   <data name="trPaymentProcessType" xml:space="preserve">
     <value>نوع عملية الدفع</value>
@@ -3258,10 +3258,10 @@ Main Documents</value>
     <value>المدفوعات,المستلمين, ...</value>
   </data>
   <data name="trPaymentType" xml:space="preserve">
-    <value>طريقة الدفع</value>
+    <value>Payment Type</value>
   </data>
   <data name="trPaymentTypeHint" xml:space="preserve">
-    <value>نوع الدفع...</value>
+    <value>Payment Type...</value>
   </data>
   <data name="trPaymentTypeTooltip" xml:space="preserve">
     <value>نوع الدفع</value>
@@ -3888,7 +3888,7 @@ Main Documents</value>
     <value>ملاحظة فاتورة المبيعات</value>
   </data>
   <data name="trSalesInvoices" xml:space="preserve">
-    <value>فواتير المبيعات</value>
+    <value>Sales Invoices</value>
   </data>
   <data name="trSalesInvoiceUpdated" xml:space="preserve">
     <value>فاتورة مبيعات - معدّلة</value>
@@ -4500,10 +4500,10 @@ Main Documents</value>
     <value>الخميس</value>
   </data>
   <data name="trTime" xml:space="preserve">
-    <value>الوقت</value>
+    <value>Time</value>
   </data>
   <data name="trTitle" xml:space="preserve">
-    <value>العنوان</value>
+    <value>Title</value>
   </data>
   <data name="trTo" xml:space="preserve">
     <value>To</value>
@@ -4524,10 +4524,10 @@ Main Documents</value>
     <value>إلى نقطة بيع...</value>
   </data>
   <data name="trTotal" xml:space="preserve">
-    <value>الإجمالي</value>
+    <value>Total</value>
   </data>
   <data name="trTotal:" xml:space="preserve">
-    <value>الإجمالي:</value>
+    <value>Total:</value>
   </data>
   <data name="trTotalDiscountValue" xml:space="preserve">
     <value>قيمة الحسم الإجمالية</value>
@@ -6239,5 +6239,23 @@ Main Documents</value>
   </data>
   <data name="StoppingCard" xml:space="preserve">
     <value>Stopping Card</value>
+  </data>
+  <data name="InvoiceDetails" xml:space="preserve">
+    <value>Invoice Details</value>
+  </data>
+  <data name="LastInvoice" xml:space="preserve">
+    <value>Last Invoice</value>
+  </data>
+  <data name="Machine" xml:space="preserve">
+    <value>Machine</value>
+  </data>
+  <data name="SalesInvoice" xml:space="preserve">
+    <value>Sales Invoice</value>
+  </data>
+  <data name="Shift" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="TotalInvoice" xml:space="preserve">
+    <value>Total Invoice</value>
   </data>
 </root>

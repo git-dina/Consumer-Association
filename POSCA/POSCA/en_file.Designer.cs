@@ -2185,6 +2185,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Details.
+        /// </summary>
+        internal static string InvoiceDetails {
+            get {
+                return ResourceManager.GetString("InvoiceDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice items.
         /// </summary>
         internal static string invoiceItems {
@@ -2608,6 +2617,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Invoice.
+        /// </summary>
+        internal static string LastInvoice {
+            get {
+                return ResourceManager.GetString("LastInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Less Factor Qty.
         /// </summary>
         internal static string LessFactorQty {
@@ -2703,6 +2721,15 @@ namespace POSCA {
         internal static string LoggedOutBecauseDidNotDoneAnyProcess {
             get {
                 return ResourceManager.GetString("LoggedOutBecauseDidNotDoneAnyProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Machine.
+        /// </summary>
+        internal static string Machine {
+            get {
+                return ResourceManager.GetString("Machine", resourceCulture);
             }
         }
         
@@ -4454,6 +4481,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sales Invoice.
+        /// </summary>
+        internal static string SalesInvoice {
+            get {
+                return ResourceManager.GetString("SalesInvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sales Report.
         /// </summary>
         internal static string SalesReport {
@@ -4639,6 +4675,15 @@ namespace POSCA {
         internal static string SharesCountBiginningYearHint {
             get {
                 return ResourceManager.GetString("SharesCountBiginningYearHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift.
+        /// </summary>
+        internal static string Shift {
+            get {
+                return ResourceManager.GetString("Shift", resourceCulture);
             }
         }
         
@@ -5350,6 +5395,15 @@ namespace POSCA {
         internal static string TotalFree {
             get {
                 return ResourceManager.GetString("TotalFree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Invoice.
+        /// </summary>
+        internal static string TotalInvoice {
+            get {
+                return ResourceManager.GetString("TotalInvoice", resourceCulture);
             }
         }
         
@@ -10736,7 +10790,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to رقم الفاتورة.
+        ///   Looks up a localized string similar to Invoice No..
         /// </summary>
         internal static string trInvoiceNumber {
             get {
@@ -12942,7 +12996,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طرق الدفع.
+        ///   Looks up a localized string similar to Payment Methods.
         /// </summary>
         internal static string trPaymentMethods {
             get {
@@ -13014,7 +13068,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to طريقة الدفع.
+        ///   Looks up a localized string similar to Payment Type.
         /// </summary>
         internal static string trPaymentType {
             get {
@@ -13023,7 +13077,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نوع الدفع....
+        ///   Looks up a localized string similar to Payment Type....
         /// </summary>
         internal static string trPaymentTypeHint {
             get {
@@ -14904,7 +14958,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to فواتير المبيعات.
+        ///   Looks up a localized string similar to Sales Invoices.
         /// </summary>
         internal static string trSalesInvoices {
             get {
@@ -16812,7 +16866,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الوقت.
+        ///   Looks up a localized string similar to Time.
         /// </summary>
         internal static string trTime {
             get {
@@ -16821,7 +16875,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to العنوان.
+        ///   Looks up a localized string similar to Title.
         /// </summary>
         internal static string trTitle {
             get {
@@ -16893,7 +16947,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الإجمالي.
+        ///   Looks up a localized string similar to Total.
         /// </summary>
         internal static string trTotal {
             get {
@@ -16902,7 +16956,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الإجمالي:.
+        ///   Looks up a localized string similar to Total:.
         /// </summary>
         internal static string trTotal_ {
             get {

@@ -64,7 +64,6 @@ namespace POSCA.Classes.ApiClasses
         public int JoinMonth { get; set; }
         public int JoinYear { get; set; }
 
-        public FamilyCard FamilyCard { get; set; }
 
         #endregion
 
