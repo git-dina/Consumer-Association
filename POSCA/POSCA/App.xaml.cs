@@ -52,7 +52,6 @@ namespace POSCA
                     & !(sender as TextBox).Name.Contains("tb_BoxNumber") 
                     & !(sender as TextBox).Name.Contains("tb_ToBoxNumber") 
                     & !(sender as TextBox).Name.Contains("tb_CustomerId") 
-                    & !(sender as TextBox).Name.Contains("Dgc_BoxNumber") 
                     ) MoveToNextUIElement(e);
             }
             else if (sender.GetType().Name == "ComboBox")
