@@ -272,6 +272,9 @@
     <Compile Include="View\customers\uc_familyCard.xaml.cs">
       <DependentUpon>uc_familyCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\customers\uc_fundChange.xaml.cs">
+      <DependentUpon>uc_fundChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\promotion\uc_contributorsPromotion.xaml.cs">
       <DependentUpon>uc_contributorsPromotion.xaml</DependentUpon>
     </Compile>
@@ -452,6 +455,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\customers\uc_familyCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\customers\uc_fundChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
