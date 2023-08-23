@@ -509,9 +509,15 @@
                                         VerticalAlignment="Center" Padding="10,15,5,5"  
                                       Margin="0" Height="13" Width="28"    />
                         </StackPanel>
-                        <Border  Grid.Column="0" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Border  Grid.Column="0" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+                                    <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                   Padding="10,0,5,0"  
                                  materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -519,8 +525,31 @@
                                   Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
-                            </Grid>
-                        </Border>
+                                </Grid>
+                            </Border>
+
+                            <Button x:Name="btn_cardActive" Grid.Column="1" 
+                                    BorderBrush="{x:Null}" Padding="0" 
+                                  Margin="5 5 10 5" Height="auto" 
+                                Background="{x:Null}" 
+                                    Click="Btn_cardActive_Click"  >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
+                           Width="35" Height="35" FlowDirection="LeftToRight"
+                           Data="{StaticResource printer}"/>
+                                    <TextBlock  x:Name="txt_cardActiveButton"
+                                    Text="cardActive"  Grid.Row="1" 
+                                                    FontWeight="Regular" FontSize="10" TextAlignment="Center"
+                                                    Foreground="{StaticResource SecondColor}"
+                                                     HorizontalAlignment="Center" TextWrapping="Wrap"/>
+                                </Grid>
+                            </Button>
+
+                        </Grid>
                         <DockPanel Margin="10 0" LastChildFill="True"  >
                             <TextBlock x:Name="txt_escortInformation" Text="Escort Infomation" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
                             <Button  Padding="0"     Width="35" Height="35"
@@ -593,6 +622,7 @@
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox  Text="{Binding Path=BoxNumber, Mode=TwoWay}"
+                                                      x:Name="tb_BoxNumber"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                                   BorderThickness="0" 
                                                   KeyDown="Dgc_BoxNumber_KeyDown">
@@ -711,48 +741,6 @@
                         </Grid.ColumnDefinitions>
                         <Border Background="White" Grid.ColumnSpan="3"  Height="1"  BorderBrush="{StaticResource LightGrey}" 
                     BorderThickness="1" Opacity="1" Margin="5,5,5,5"  />
-                        <Grid  Grid.Row="1"  Grid.ColumnSpan="3"  >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button x:Name="btn_cardActive" Grid.Column="0" BorderBrush="{x:Null}" Padding="0" 
-                                  Margin="5 5 2.5 5 " Height="auto" 
-                                Background="{x:Null}" VerticalAlignment="Top" Click="Btn_cardActive_Click"  >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
-                           Width="35" Height="35" FlowDirection="LeftToRight"
-                           Data="{StaticResource printer}"/>
-                                    <TextBlock  x:Name="txt_cardActiveButton"
-                                    Text="cardActive"  Grid.Row="1" 
-                                                    FontWeight="Regular" FontSize="10" TextAlignment="Center"
-                                                    Foreground="{StaticResource SecondColor}"
-                                                     HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                                </Grid>
-                            </Button>
-                            <!--<Button Grid.Column="1" BorderBrush="{x:Null}" Padding="0" 
-                                Name="btn_pastProfits"  Margin="5 5 2.5 5 " Height="auto" Click="Btn_pastProfits_Click"
-                                Background="{x:Null}" VerticalAlignment="Top"  >
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                        <RowDefinition Height="auto"/>
-                                    </Grid.RowDefinitions>
-                                    <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
-                           Width="35" Height="35" FlowDirection="LeftToRight"
-                           Data="{StaticResource cash}"/>
-                                    <TextBlock x:Name="txt_pastProfitsButton"
-                                    Text="pastProfits"  Grid.Row="1" 
-                                                    FontWeight="Regular" FontSize="10" TextAlignment="Center"
-                                                    Foreground="{StaticResource SecondColor}"
-                                                     HorizontalAlignment="Center" TextWrapping="Wrap"/>
-                                </Grid>
-                            </Button>-->
-                        </Grid>
 
                         <Border Grid.Row="2" Grid.ColumnSpan="2">
 
