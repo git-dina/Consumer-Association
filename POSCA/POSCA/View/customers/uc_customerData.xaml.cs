@@ -854,8 +854,10 @@ namespace POSCA.View.customers
                     
                     var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_BoxNumber.Text),customer.CustomerId);
                     if (!isValid)
+                    {
+                        tb_BoxNumber.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
-
+                    }
 
                 }
             }

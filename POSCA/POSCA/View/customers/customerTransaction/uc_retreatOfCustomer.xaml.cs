@@ -603,6 +603,7 @@ namespace POSCA.View.customers.customerTransaction
                     else
                     {
                         tb_CustomerId.Text = "";
+                        Clear();
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);

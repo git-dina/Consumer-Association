@@ -57,6 +57,7 @@ namespace POSCA.View.customers
 
         FundChange fundChange = new FundChange();
         Customer customer;
+        Customer customer2;
         List<FundChange> fundChanges;
         string searchText = "";
         public static List<string> requiredControlList;
@@ -375,6 +376,9 @@ namespace POSCA.View.customers
             tb_SecondMobileNumber.Text = "";
             tb_NewFundNumber.Text = "";
             dp_SecondJoinDate.SelectedDate = null;
+
+            tb_EmptyFundNumber.Text = "";
+            tb_ChangeToFundNumber.Text = "";
             #endregion
             inputEditable();
           
@@ -571,9 +575,41 @@ namespace POSCA.View.customers
                 {
 
                     customer = null;
+                    tb_ChangeToFundNumber.Text = "";
                     HelpClass.StartAwait(grid_main);
-
                     customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+
+                    switch (cb_ChangeType.SelectedValue)
+                    {
+                        case "emptying":
+                            if (customer != null && (customer.CustomerStatus != "withdrawn" || customer.IsArchived == true))
+                            {
+                                tb_CustomerId.Text = "";
+                                tb_CustomerName.Text = "";
+                                tb_OldFundNumber.Text = "";
+                                tb_CustomerStatus.Text = "";
+                                dp_JoinDate.SelectedDate = null;
+                                tb_CivilNum.Text = "";
+                                tb_MobileNumber.Text = "";
+
+                                customer = null;
+                                
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("BoxCannotBeDumped"), animation: ToasterAnimation.FadeIn);
+                                HelpClass.EndAwait(grid_main);
+                                return;
+                            }
+                            else if (customer != null)
+                            {
+                                var maxDumped = await fundChange.GetMaxDumpedBoxNum();
+                                tb_EmptyFundNumber.Text = maxDumped.ToString();
+                            }
+
+                            break;
+                        default:
+                         
+                            break;
+                    }
+                   
 
                     if (customer != null)
                     {
@@ -593,6 +629,12 @@ namespace POSCA.View.customers
                     else
                     {
                         tb_CustomerId.Text = "";
+                        tb_CustomerName.Text = "";
+                        tb_OldFundNumber.Text = "";
+                        tb_CustomerStatus.Text = "";
+                        dp_JoinDate.SelectedDate = null;
+                        tb_CivilNum.Text = "";
+                        tb_MobileNumber.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);
@@ -606,9 +648,62 @@ namespace POSCA.View.customers
             }
         }
 
-        private void tb_SecondCustomerId_KeyDown(object sender, KeyEventArgs e)
+        private async void tb_SecondCustomerId_KeyDown(object sender, KeyEventArgs e)
         {
+            try
+            {
+                if (e.Key == Key.Return && tb_CustomerId.Text == "")
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SelectFirstContributor"), animation: ToasterAnimation.FadeIn);
+                }
+                else if (e.Key == Key.Return &&  tb_CustomerId.Text.Equals(tb_SecondCustomerId.Text))
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SecondDifferentFromFirst"), animation: ToasterAnimation.FadeIn);
+                }
+               else if (e.Key == Key.Return && tb_SecondCustomerId.Text != "")
+                {
 
+                    customer2 = null;
+                    HelpClass.StartAwait(grid_main);
+                    customer2 = await FillCombo.customer.GetById(long.Parse(tb_SecondCustomerId.Text));
+
+                  
+
+                    if (customer2 != null)
+                    {
+                        if (customer2.CustomerStatus != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            tb_SecondCustomerName.Text = customer2.Name;
+                            tb_NewFundNumber.Text = customer2.BoxNumber.ToString();
+                            tb_SecondCustomerStatus.Text = AppSettings.resourcemanager.GetString(customer2.CustomerStatus);
+                            dp_SecondJoinDate.SelectedDate = customer2.JoinDate;
+                            tb_SecondCivilNum.Text = customer2.CivilNum;
+                            tb_SecondMobileNumber.Text = customer2.customerAddress.MobileNumber;
+
+                        }
+                    }
+                    else
+                    {
+                        tb_SecondCustomerId.Text = "";
+                        tb_SecondCustomerName.Text = "";
+                        tb_NewFundNumber.Text = "";
+                        tb_SecondCustomerStatus.Text = "";
+                        dp_SecondJoinDate.SelectedDate = null;
+                        tb_SecondCivilNum.Text = "";
+                        tb_SecondMobileNumber.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+                    HelpClass.EndAwait(grid_main);
+
+                }
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
 
         private void Btn_clearSecond_Click(object sender, RoutedEventArgs e)
@@ -648,6 +743,36 @@ namespace POSCA.View.customers
 
                     break;
 
+            }
+        }
+
+        private async void tb_ChangeToFundNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_ChangeToFundNumber.Text != "")
+                {
+                    if (tb_ChangeToFundNumber.Text.Equals(tb_OldFundNumber.Text))
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("EnterDifferentBoxNumber"), animation: ToasterAnimation.FadeIn);
+                        tb_ChangeToFundNumber.Text = "";
+                    }
+
+                    else
+                    {
+                        var isValid = await FillCombo.customer.CheckBoxNumber(long.Parse(tb_ChangeToFundNumber.Text), customer.CustomerId);
+                        if (!isValid)
+                        {
+                            tb_ChangeToFundNumber.Text = "";
+
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
     }

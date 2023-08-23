@@ -6515,6 +6515,9 @@
   <data name="TotalInvoice" xml:space="preserve">
     <value>إجمالي الفاتورة</value>
   </data>
+  <data name="BoxCannotBeDumped" xml:space="preserve">
+    <value>لا يمكن تفريغ رقم الصندوق</value>
+  </data>
   <data name="ChangeBoxNumber" xml:space="preserve">
     <value>تغيير رقم الصندوق</value>
   </data>
@@ -6526,6 +6529,9 @@
   </data>
   <data name="ClearBoxNumber" xml:space="preserve">
     <value>تفريغ رقم صندوق</value>
+  </data>
+  <data name="EnterDifferentBoxNumber" xml:space="preserve">
+    <value>أدخل رقم صندوق مختلف</value>
   </data>
   <data name="FundNumberChange" xml:space="preserve">
     <value>تغيير رقم الصندوق</value>
@@ -6544,6 +6550,12 @@
   </data>
   <data name="ProcessDateHint" xml:space="preserve">
     <value>تاريخ العملية...</value>
+  </data>
+  <data name="SecondDifferentFromFirst" xml:space="preserve">
+    <value>يجب أن يكون المساهم الثاني مختلف عن الأول</value>
+  </data>
+  <data name="SelectFirstContributor" xml:space="preserve">
+    <value>اختر المساهم الأول</value>
   </data>
   <data name="SwitchWithAnotherContributor" xml:space="preserve">
     <value>تبديل مع مساهم آخر</value>

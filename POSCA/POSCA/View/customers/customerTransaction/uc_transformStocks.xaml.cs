@@ -90,7 +90,6 @@ namespace POSCA.View.customers.customerTransaction
                 Keyboard.Focus(dp_TransactionDate);
 
 
-                //await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -612,13 +611,8 @@ namespace POSCA.View.customers.customerTransaction
                 {
                     customer1 = null;
                     HelpClass.StartAwait(grid_main);
-                    //if (FillCombo.customerList != null)
-                    //{
-                    //    customer1 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_BoxNumber.Text)).FirstOrDefault();
-                    //}
 
-                    //if (customer1 == null)
-                        customer1 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
+                    customer1 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
 
                     if (customer1 != null)
                     {
@@ -636,6 +630,9 @@ namespace POSCA.View.customers.customerTransaction
                     else
                     {
                         tb_BoxNumber.Text = "";
+                        tb_CustomerName.Text = "";
+                        tb_CustomerStatus.Text = "";
+                        txt_StocksCount.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);
@@ -663,12 +660,7 @@ namespace POSCA.View.customers.customerTransaction
                     {
                         customer2 = null;
                         HelpClass.StartAwait(grid_main);
-                        //if (FillCombo.customerList != null)
-                        //{
-                        //    customer2 = FillCombo.customerList.Where(x => x.BoxNumber == long.Parse(tb_ToBoxNumber.Text)).FirstOrDefault();
-                        //}
 
-                        //if (customer2 == null)
                         customer2 = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_ToBoxNumber.Text));
 
                         if (customer2 != null)
@@ -687,6 +679,9 @@ namespace POSCA.View.customers.customerTransaction
                         else
                         {
                             tb_ToBoxNumber.Text = "";
+                            tb_ToCustomerName.Text = "";
+                            tb_ToCustomerStatus.Text = "";
+                            txt_ToStocksCount.Text = "";
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                         }
                     }

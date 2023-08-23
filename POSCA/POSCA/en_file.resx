@@ -6261,6 +6261,9 @@ Main Documents</value>
   <data name="TotalInvoice" xml:space="preserve">
     <value>Total Invoice</value>
   </data>
+  <data name="BoxCannotBeDumped" xml:space="preserve">
+    <value>The box number cannot be dumped</value>
+  </data>
   <data name="ChangeBoxNumber" xml:space="preserve">
     <value>Change Box Number</value>
   </data>
@@ -6272,6 +6275,9 @@ Main Documents</value>
   </data>
   <data name="ClearBoxNumber" xml:space="preserve">
     <value>Clear Box Number</value>
+  </data>
+  <data name="EnterDifferentBoxNumber" xml:space="preserve">
+    <value>Enter Different Box Number</value>
   </data>
   <data name="FundNumberChange" xml:space="preserve">
     <value>Box Number Change</value>
@@ -6290,6 +6296,12 @@ Main Documents</value>
   </data>
   <data name="ProcessDateHint" xml:space="preserve">
     <value>Process Date...</value>
+  </data>
+  <data name="SecondDifferentFromFirst" xml:space="preserve">
+    <value>The second contributor must be different from the first</value>
+  </data>
+  <data name="SelectFirstContributor" xml:space="preserve">
+    <value>Select First Contributor</value>
   </data>
   <data name="SwitchWithAnotherContributor" xml:space="preserve">
     <value>Switch With Another Contributor</value>

@@ -18,7 +18,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> SecondCustomerId { get; set; }
         public string ChangeType { get; set; }
         public string Reason { get; set; }
-        public Nullable<System.DateTime> ChangeDate { get; set; }
+        public Nullable<System.DateTime> ChangeDate { get; set; } = DateTime.Now;
         public Nullable<long> EmptyFundNumber { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
@@ -59,6 +59,23 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result = int.Parse( c.Value);
+                }
+            }
+            return result;
+        }
+
+        public async Task<String> GetMaxDumpedBoxNum()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "FundChange/GetMaxDumpedBoxNum";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
                 }
             }
             return result;

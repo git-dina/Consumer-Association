@@ -631,12 +631,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                 {
                     customer = null;
                     HelpClass.StartAwait(grid_main);
-                    //if(FillCombo.customerList != null)
-                    //{
-                    //    customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
-                    //}
 
-                   // if (customer == null)
                     customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
 
                     if (customer != null)
@@ -657,6 +652,7 @@ namespace POSCA.View.customerTransactions.customerTransactionTransaction
                     else
                     {
                         tb_CustomerId.Text = "";
+                        Clear();
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);

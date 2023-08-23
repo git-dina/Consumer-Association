@@ -511,6 +511,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The box number cannot be dumped.
+        /// </summary>
+        internal static string BoxCannotBeDumped {
+            get {
+                return ResourceManager.GetString("BoxCannotBeDumped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BOX....
         /// </summary>
         internal static string BOXHint {
@@ -1677,6 +1686,15 @@ namespace POSCA {
         internal static string enter {
             get {
                 return ResourceManager.GetString("enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Different Box Number.
+        /// </summary>
+        internal static string EnterDifferentBoxNumber {
+            get {
+                return ResourceManager.GetString("EnterDifferentBoxNumber", resourceCulture);
             }
         }
         
@@ -4625,6 +4643,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The second contributor must be different from the first.
+        /// </summary>
+        internal static string SecondDifferentFromFirst {
+            get {
+                return ResourceManager.GetString("SecondDifferentFromFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sections.
         /// </summary>
         internal static string sections {
@@ -4666,6 +4693,15 @@ namespace POSCA {
         internal static string SelectAll {
             get {
                 return ResourceManager.GetString("SelectAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select First Contributor.
+        /// </summary>
+        internal static string SelectFirstContributor {
+            get {
+                return ResourceManager.GetString("SelectFirstContributor", resourceCulture);
             }
         }
         
