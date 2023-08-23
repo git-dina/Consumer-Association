@@ -141,10 +141,12 @@
                             </DataGrid.Resources>
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*"  Header="ChangeType" Binding="{Binding Path=ChangeType, Converter={StaticResource dateFrameConverter }}"/>
+                                <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/> 
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
                                 <DataGridTextColumn Width="*"  Header="OldFundNumber" Binding="{Binding Path=OldFundNumber}"/>
+                                <DataGridTextColumn Width="*"  Header="NewFundNumber" Binding="{Binding Path=NewFundNumber}"/>
+                                <DataGridTextColumn Width="*"  Header="ChangeDate" Binding="{Binding Path=ChangeDate, Converter={StaticResource dateFrameConverter }}"/>
                                 <DataGridTextColumn Width="*"  Header="Reason" Binding="{Binding Path=Reason}"/>
-                                <DataGridTextColumn Width="*"  Header="CreateDate" Binding="{Binding Path=CreateDate}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 
@@ -560,7 +562,8 @@
                             <Border  Grid.Row="2"  CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_EmptyFundNumber"  Text="{Binding EmptyFundNumber, Mode=OneWay}" Padding="10,0,5,0" 
-                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     IsEnabled="False"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="EmptyFundNumber..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
@@ -587,9 +590,9 @@
                                       Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="ChangeToFundNumber..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
+                                     Height="40"  Margin="0,0" Tag="int"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ChangeToFundNumber" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   

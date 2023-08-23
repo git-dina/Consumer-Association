@@ -418,6 +418,8 @@ namespace POSCA
             #region customers
             txt_customers.Text = AppSettings.resourcemanager.GetString("Customers");
             txt_familyCard.Text = AppSettings.resourcemanager.GetString("FamilyCard");
+            txt_fundChange.Text = AppSettings.resourcemanager.GetString("FundNumberChange");
+
             txt_customerSectionData.Text = AppSettings.resourcemanager.GetString("trBasicData");
             txt_customerArea.Text = AppSettings.resourcemanager.GetString("trAreas");
             txt_job.Text = AppSettings.resourcemanager.GetString("trJobs");

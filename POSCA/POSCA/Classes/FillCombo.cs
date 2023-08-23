@@ -1292,8 +1292,33 @@ namespace POSCA.Classes
             combo.SelectedIndex = 0;
         }
 
-       
+
         #endregion
 
+        #region change box type
+        static public List<keyValueString> ChangeBoxTypeList;
+        static public IEnumerable<keyValueString> RefreshChangeBoxTypeList()
+        {
+            ChangeBoxTypeList = new List<keyValueString>() {
+                new keyValueString(){key="change", value=AppSettings.resourcemanager.GetString("ChangeBoxNumber") },
+                new keyValueString(){key="exchange", value=AppSettings.resourcemanager.GetString("SwitchWithAnotherContributor") },
+                new keyValueString(){key="emptying", value=AppSettings.resourcemanager.GetString("ClearBoxNumber") },
+               
+            };
+
+            return ChangeBoxTypeList;
+        }
+
+        static public void fillChangeBoxType(ComboBox combo)
+        {
+            if (ChangeBoxTypeList is null)
+                RefreshChangeBoxTypeList();
+
+            combo.ItemsSource = ChangeBoxTypeList;
+            combo.SelectedValuePath = "key";
+            combo.DisplayMemberPath = "value";
+            combo.SelectedIndex = 0;
+        }
+        #endregion
     }
 }

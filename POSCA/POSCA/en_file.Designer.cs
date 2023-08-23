@@ -691,6 +691,33 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change Box Number.
+        /// </summary>
+        internal static string ChangeBoxNumber {
+            get {
+                return ResourceManager.GetString("ChangeBoxNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Type.
+        /// </summary>
+        internal static string ChangeType {
+            get {
+                return ResourceManager.GetString("ChangeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Type....
+        /// </summary>
+        internal static string ChangeTypeHint {
+            get {
+                return ResourceManager.GetString("ChangeTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Charts.
         /// </summary>
         internal static string charts {
@@ -750,6 +777,15 @@ namespace POSCA {
         internal static string CivilNumLengthAlert {
             get {
                 return ResourceManager.GetString("CivilNumLengthAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear Box Number.
+        /// </summary>
+        internal static string ClearBoxNumber {
+            get {
+                return ResourceManager.GetString("ClearBoxNumber", resourceCulture);
             }
         }
         
@@ -2005,6 +2041,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Box Number Change.
+        /// </summary>
+        internal static string FundNumberChange {
+            get {
+                return ResourceManager.GetString("FundNumberChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Fund Number Not Available.
         /// </summary>
         internal static string FundNumNotAvailable {
@@ -3023,6 +3068,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Box Number.
+        /// </summary>
+        internal static string NewFundNumber {
+            get {
+                return ResourceManager.GetString("NewFundNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Box Number....
+        /// </summary>
+        internal static string NewFundNumberHint {
+            get {
+                return ResourceManager.GetString("NewFundNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Membership.
         /// </summary>
         internal static string newMembership {
@@ -3406,6 +3469,15 @@ namespace POSCA {
         internal static string OrderStatusHint {
             get {
                 return ResourceManager.GetString("OrderStatusHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Contributor Data.
+        /// </summary>
+        internal static string OtherContributorData {
+            get {
+                return ResourceManager.GetString("OtherContributorData", resourceCulture);
             }
         }
         
@@ -3820,6 +3892,24 @@ namespace POSCA {
         internal static string printOnSale {
             get {
                 return ResourceManager.GetString("printOnSale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Date.
+        /// </summary>
+        internal static string ProcessDate {
+            get {
+                return ResourceManager.GetString("ProcessDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Process Date....
+        /// </summary>
+        internal static string ProcessDateHint {
+            get {
+                return ResourceManager.GetString("ProcessDateHint", resourceCulture);
             }
         }
         
@@ -5237,6 +5327,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Switch With Another Contributor.
+        /// </summary>
+        internal static string SwitchWithAnotherContributor {
+            get {
+                return ResourceManager.GetString("SwitchWithAnotherContributor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to tank.
         /// </summary>
         internal static string tank {
@@ -5980,6 +6079,15 @@ namespace POSCA {
         internal static string TransferNum {
             get {
                 return ResourceManager.GetString("TransferNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer Reason....
+        /// </summary>
+        internal static string TransferReasonHint {
+            get {
+                return ResourceManager.GetString("TransferReasonHint", resourceCulture);
             }
         }
         
@@ -18176,6 +18284,15 @@ namespace POSCA {
         internal static string Units {
             get {
                 return ResourceManager.GetString("Units", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Number Of Unloaded Box Will Be Archived At No.
+        /// </summary>
+        internal static string UnloadedBoxNoHint {
+            get {
+                return ResourceManager.GetString("UnloadedBoxNoHint", resourceCulture);
             }
         }
         

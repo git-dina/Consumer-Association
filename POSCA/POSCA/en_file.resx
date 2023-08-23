@@ -6261,4 +6261,43 @@ Main Documents</value>
   <data name="TotalInvoice" xml:space="preserve">
     <value>Total Invoice</value>
   </data>
+  <data name="ChangeBoxNumber" xml:space="preserve">
+    <value>Change Box Number</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>Change Type</value>
+  </data>
+  <data name="ChangeTypeHint" xml:space="preserve">
+    <value>Change Type...</value>
+  </data>
+  <data name="ClearBoxNumber" xml:space="preserve">
+    <value>Clear Box Number</value>
+  </data>
+  <data name="FundNumberChange" xml:space="preserve">
+    <value>Box Number Change</value>
+  </data>
+  <data name="NewFundNumber" xml:space="preserve">
+    <value>New Box Number</value>
+  </data>
+  <data name="NewFundNumberHint" xml:space="preserve">
+    <value>New Box Number...</value>
+  </data>
+  <data name="OtherContributorData" xml:space="preserve">
+    <value>Other Contributor Data</value>
+  </data>
+  <data name="ProcessDate" xml:space="preserve">
+    <value>Process Date</value>
+  </data>
+  <data name="ProcessDateHint" xml:space="preserve">
+    <value>Process Date...</value>
+  </data>
+  <data name="SwitchWithAnotherContributor" xml:space="preserve">
+    <value>Switch With Another Contributor</value>
+  </data>
+  <data name="TransferReasonHint" xml:space="preserve">
+    <value>Transfer Reason...</value>
+  </data>
+  <data name="UnloadedBoxNoHint" xml:space="preserve">
+    <value>The Number Of Unloaded Box Will Be Archived At No</value>
+  </data>
 </root>

@@ -41,21 +41,24 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<FundChange> save(FundChange fundChange)
+        public async Task<int> Save(FundChange fundChange, FundChange secondFundChange)
         {
-            var result = new FundChange();
+            var result =0;
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "FundChange/Save";
 
             var myContent = JsonConvert.SerializeObject(fundChange);
             parameters.Add("itemObject", myContent);
 
+            myContent = JsonConvert.SerializeObject(secondFundChange);
+            parameters.Add("secondFundChange", myContent);
+            
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
             {
                 if (c.Type == "scopes")
                 {
-                    result = JsonConvert.DeserializeObject<FundChange>(c.Value);
+                    result = int.Parse( c.Value);
                 }
             }
             return result;

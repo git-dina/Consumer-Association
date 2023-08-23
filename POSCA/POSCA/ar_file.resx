@@ -6515,4 +6515,43 @@
   <data name="TotalInvoice" xml:space="preserve">
     <value>إجمالي الفاتورة</value>
   </data>
+  <data name="ChangeBoxNumber" xml:space="preserve">
+    <value>تغيير رقم الصندوق</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>نوع الحركة</value>
+  </data>
+  <data name="ChangeTypeHint" xml:space="preserve">
+    <value>...نوع الحركة</value>
+  </data>
+  <data name="ClearBoxNumber" xml:space="preserve">
+    <value>تفريغ رقم صندوق</value>
+  </data>
+  <data name="FundNumberChange" xml:space="preserve">
+    <value>تغيير رقم الصندوق</value>
+  </data>
+  <data name="NewFundNumber" xml:space="preserve">
+    <value>رقم الصندوق الجديد</value>
+  </data>
+  <data name="NewFundNumberHint" xml:space="preserve">
+    <value>رقم الصندوق الجديد...</value>
+  </data>
+  <data name="OtherContributorData" xml:space="preserve">
+    <value>بيانات المساهم الآخر</value>
+  </data>
+  <data name="ProcessDate" xml:space="preserve">
+    <value>تاريخ العملية</value>
+  </data>
+  <data name="ProcessDateHint" xml:space="preserve">
+    <value>تاريخ العملية...</value>
+  </data>
+  <data name="SwitchWithAnotherContributor" xml:space="preserve">
+    <value>تبديل مع مساهم آخر</value>
+  </data>
+  <data name="TransferReasonHint" xml:space="preserve">
+    <value>سبب التحويل...</value>
+  </data>
+  <data name="UnloadedBoxNoHint" xml:space="preserve">
+    <value>سيتم أرشفة رقم الصندوق المفرغ في الرقم</value>
+  </data>
 </root>

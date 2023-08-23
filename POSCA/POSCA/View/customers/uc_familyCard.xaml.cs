@@ -170,6 +170,7 @@ namespace POSCA.View.customers
                         else
                             familyCard.IsStopped = false;
                         familyCard.Notes = tb_Notes.Text;
+                        familyCard.CreateUserId = MainWindow.userLogin.userId;
                         familyCard.UpdateUserId = MainWindow.userLogin.userId;
 
                         var res = await familyCard.save(familyCard);
@@ -615,7 +616,7 @@ namespace POSCA.View.customers
         #endregion
 
 
-        private async void Dgc_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        private async void Dgc_BoxNumber_KeyDown(object sender, KeyEventArgs e)        
         {
             try
             {
@@ -633,11 +634,11 @@ namespace POSCA.View.customers
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            tb_CustomerName.Text = customer.Name;
-                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
-                            tb_BoxNumber.Text = customer.BoxNumber.ToString();
-                            tb_CivilNum.Text = customer.CivilNum.ToString();
-                            tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
+                            var escort = (Escort)dg_familyCard.SelectedItem;
+
+                            escort.EscortName = customer.Name;
+                            escort.CivilNum = customer.CivilNum;
+                            RefreshEscortDataGrid();
 
                         }
                     }

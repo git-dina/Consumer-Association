@@ -71,7 +71,7 @@ namespace POSCA.View.customers
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "CustomerId", "TransactionDate", "TransactionStocksCount", "ApprovalNumber", "MeetingDate", "CheckNumber", "CheckDate" };
+                requiredControlList = new List<string> { "CustomerId", "ChangeDate" };
                 if (AppSettings.lang.Equals("en"))
                 {
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
@@ -85,7 +85,7 @@ namespace POSCA.View.customers
 
 
                 Keyboard.Focus(cb_ChangeType);
-
+                FillCombo.fillChangeBoxType(cb_ChangeType);
 
                 //await Search();
                 Clear();
@@ -101,96 +101,54 @@ namespace POSCA.View.customers
 
         private void translate()
         {
-            /*
-            txt_title.Text = AppSettings.resourcemanager.GetString("AddStockes");
+            txt_title.Text = AppSettings.resourcemanager.GetString("FundNumberChange");
             
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_TransactionDate, AppSettings.resourcemanager.GetString("TransactionDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ChangeType, AppSettings.resourcemanager.GetString("ChangeTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_ChangeDate, AppSettings.resourcemanager.GetString("ProcessDateHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SecondCustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_OldFundNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_NewFundNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TransactionStocksCount, AppSettings.resourcemanager.GetString("TransactionStocksCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksCount, AppSettings.resourcemanager.GetString("StocksCountHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_StocksPrice, AppSettings.resourcemanager.GetString("StocksPriceHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_TotalPrice, AppSettings.resourcemanager.GetString("TotalPriceHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ApprovalNumber, AppSettings.resourcemanager.GetString("BoardApprovalNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_MeetingDate, AppSettings.resourcemanager.GetString("SessionDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_CheckDate, AppSettings.resourcemanager.GetString("CheckDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
-
-            txt_durationJoin.Text = AppSettings.resourcemanager.GetString("DurationJoin");
-
-            txt_JoinDayTitle.Text = AppSettings.resourcemanager.GetString("trDay");
-            txt_JoinMonthTitle.Text = AppSettings.resourcemanager.GetString("trMonth");
-            txt_JoinYearTitle.Text = AppSettings.resourcemanager.GetString("trYear");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SecondCustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SecondCustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_JoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_SecondJoinDate, AppSettings.resourcemanager.GetString("JoinDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("CivilNumHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SecondCivilNum, AppSettings.resourcemanager.GetString("CivilNumHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MobileNumber, AppSettings.resourcemanager.GetString("MobileNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_SecondMobileNumber, AppSettings.resourcemanager.GetString("MobileNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Reason, AppSettings.resourcemanager.GetString("TransferReasonHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_EmptyFundNumber, AppSettings.resourcemanager.GetString("UnloadedBoxNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ChangeToFundNumber, AppSettings.resourcemanager.GetString("NewFundNumberHint"));
 
 
-            dg_fundChange.Columns[0].Header = AppSettings.resourcemanager.GetString("TransactionDate");
+            txt_clearBoxNumberTitle.Text = AppSettings.resourcemanager.GetString("ClearBoxNumber");
+            txt_changeBoxNumberTitle.Text = AppSettings.resourcemanager.GetString("ChangeBoxNumber");
+            txt_switchBoxNumberTitle.Text = AppSettings.resourcemanager.GetString("OtherContributorData");
+
+
+
+            dg_fundChange.Columns[0].Header = AppSettings.resourcemanager.GetString("ChangeType");
             dg_fundChange.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
             dg_fundChange.Columns[2].Header = AppSettings.resourcemanager.GetString("CustomerName");
-            dg_fundChange.Columns[3].Header = AppSettings.resourcemanager.GetString("TransactionStocksCount");
-            dg_fundChange.Columns[4].Header = AppSettings.resourcemanager.GetString("StocksPrice");
+            dg_fundChange.Columns[3].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_fundChange.Columns[4].Header = AppSettings.resourcemanager.GetString("NewFundNumber");
+            dg_fundChange.Columns[5].Header = AppSettings.resourcemanager.GetString("ProcessDate");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
-            //txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
-            //txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
-            */
+      
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
-        private async void Btn_add_Click(object sender, RoutedEventArgs e)
-        {//add
-            try
-            {
-                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
-                /*
-                    {
-                        HelpClass.StartAwait(grid_main);
-
-                        fundChange = new FundChange();
-                        if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
-                        {
-
-                            fundChange.TransactionDate = dp_TransactionDate.SelectedDate;
-                            fundChange.Notes = tb_Notes.Text;
-
-                            fundChange.CreateUserId = MainWindow.userLogin.userId;
-
-                            FillCombo.fundChangeList = await fundChange.save(fundChange);
-                            if (FillCombo.fundChangeList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
-                                await Clear();
-                                await Search();
-                            }
-                        }
-                        else
-                        {
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
-                        }
-                        HelpClass.EndAwait(grid_main);
-                    }
-
-                    //else
-                    //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+       
         private async void Btn_update_Click(object sender, RoutedEventArgs e)
         {//update
             try
@@ -199,33 +157,51 @@ namespace POSCA.View.customers
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    /*
+ 
                     if (HelpClass.validate(requiredControlList, this))
                     {
-                        fundChange.TransactionType = "add";
+                        FundChange secondFundChange = new FundChange();
+
+                        fundChange.ChangeType = cb_ChangeType.SelectedValue.ToString();
+                        fundChange.ChangeDate = dp_ChangeDate.SelectedDate;
                         fundChange.CustomerId = long.Parse(tb_CustomerId.Text);
-                        fundChange.BoxNumber = customer.BoxNumber;
-                        fundChange.TransactionDate = dp_TransactionDate.SelectedDate;
-                        fundChange.TransactionStocksCount = int.Parse(tb_TransactionStocksCount.Text);
-                        fundChange.StocksCount = int.Parse(tb_StocksCount.Text);
-                        fundChange.StocksPrice = decimal.Parse(tb_StocksPrice.Text);
-                        fundChange.TotalPrice = decimal.Parse(tb_TotalPrice.Text);
-                        fundChange.ApprovalNumber = tb_ApprovalNumber.Text;
-                        fundChange.MeetingDate = dp_MeetingDate.SelectedDate;
-                        fundChange.CheckNumber = tb_CheckNumber.Text;
-                        fundChange.CheckDate = dp_CheckDate.SelectedDate;
-                        fundChange.Notes = tb_Notes.Text;
+                        fundChange.OldFundNumber = long.Parse( tb_OldFundNumber.Text);
+                        fundChange.Reason = tb_Reason.Text;
+                        switch (cb_ChangeType.SelectedValue)
+                        {
+                            case "change":
+                                fundChange.NewFundNumber = long.Parse(tb_ChangeToFundNumber.Text);
+                                break;
+                            case "exchange":
+                                fundChange.SecondCustomerId = long.Parse(tb_SecondCustomerId.Text);
+                                fundChange.NewFundNumber = long.Parse(tb_NewFundNumber.Text);
 
-                        fundChange.UpdateUserId = MainWindow.userLogin.userId;
+                                secondFundChange.ChangeType = cb_ChangeType.SelectedValue.ToString();
+                                secondFundChange.ChangeDate = dp_ChangeDate.SelectedDate;
+                                secondFundChange.CustomerId = long.Parse(tb_SecondCustomerId.Text);
+                                secondFundChange.SecondCustomerId = long.Parse(tb_CustomerId.Text);
+                                secondFundChange.OldFundNumber = long.Parse(tb_NewFundNumber.Text);
+                                secondFundChange.NewFundNumber = long.Parse(tb_OldFundNumber.Text);
+                                secondFundChange.Reason = tb_Reason.Text;
+                                secondFundChange.CreateUserId = MainWindow.userLogin.userId;
 
-                        var res = await fundChange.AddStocks(fundChange);
+                                break;
+                            case "emptying":
+                                fundChange.NewFundNumber = long.Parse(tb_EmptyFundNumber.Text);
+
+                                break;
+
+                        }
+
+                        fundChange.CreateUserId = MainWindow.userLogin.userId;
+
+                        var res = await fundChange.Save(fundChange,secondFundChange);
                         if (res == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
                             Clear();
-                            //await Search();
 
                         }
                     }
@@ -233,7 +209,7 @@ namespace POSCA.View.customers
                     {
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                     }
-                    */
+                
 
                     HelpClass.EndAwait(grid_main);
                 }
@@ -247,55 +223,7 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_delete_Click(object sender, RoutedEventArgs e)
-        {//delete
-            try
-            {
-                // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
-                {
-                    HelpClass.StartAwait(grid_main);
-                    /*
-                    if (fundChange.FundChangeId != 0)
-                    {
-                        #region
-                        Window.GetWindow(this).Opacity = 0.2;
-                        wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                        w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-
-                        w.ShowDialog();
-                        Window.GetWindow(this).Opacity = 1;
-                        #endregion
-
-                        if (w.isOk)
-                        {
-                            FillCombo.fundChangeList = await fundChange.delete(fundChange.FundChangeId, MainWindow.userLogin.userId);
-                            if (FillCombo.fundChangeList == null)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
-                            {
-                                fundChange.FundChangeId = 0;
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
-                                await Search();
-                                await Clear();
-                            }
-                        }
-
-                    }
-                    */
-                    HelpClass.EndAwait(grid_main);
-                }
-                //else
-                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-
-            }
-            catch (Exception ex)
-            {
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+      
 
         #endregion
         #region events
@@ -424,7 +352,7 @@ namespace POSCA.View.customers
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         private void Clear()
         {
-            /*
+          
             fundChange = new FundChange();
             this.DataContext = new FundChange();
             dg_fundChange.SelectedIndex = -1;
@@ -433,14 +361,23 @@ namespace POSCA.View.customers
             tb_CustomerId.Text = "";
             tb_CustomerName.Text = "";
             dp_JoinDate.SelectedDate = null;
-            tb_StocksCount.Text = "";
-            tb_TotalPrice.Text = "";
-            txt_JoinDay.Text = "";
-            txt_JoinMonth.Text = "";
-            txt_JoinYear.Text = "";
+            tb_OldFundNumber.Text ="";
+            tb_CustomerStatus.Text = "";
+            dp_JoinDate.SelectedDate = null;
+            tb_CivilNum.Text ="";
+            tb_MobileNumber.Text = "";
+            tb_Reason.Text = "";
+
+            tb_SecondCustomerId.Text = "";
+            tb_SecondCivilNum.Text = "";
+            tb_SecondCustomerName.Text = "";
+            tb_SecondCustomerStatus.Text = "";
+            tb_SecondMobileNumber.Text = "";
+            tb_NewFundNumber.Text = "";
+            dp_SecondJoinDate.SelectedDate = null;
             #endregion
             inputEditable();
-            */
+          
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -577,30 +514,27 @@ namespace POSCA.View.customers
 
         private void inputEditable()
         {
-            /*
-            if (fundChange.TransactionId == 0)
+            if (fundChange.Id == 0)
             {
                 tb_CustomerId.IsEnabled = true;
-                tb_TransactionStocksCount.IsEnabled = true;
-                tb_ApprovalNumber.IsEnabled = true;
-                tb_CheckNumber.IsEnabled = true;
-                tb_Notes.IsEnabled = true;
-                dp_CheckDate.IsEnabled = true;
-                dp_MeetingDate.IsEnabled = true;
+                tb_SecondCustomerId.IsEnabled = true;
+                tb_Reason.IsEnabled = true;
+                dp_ChangeDate.IsEnabled = true;
+                cb_ChangeType.IsEnabled = true;
+                btn_clearSecond.IsEnabled = true;
                 btn_update.IsEnabled = true;
             }
             else
             {
                 tb_CustomerId.IsEnabled = false;
-                tb_TransactionStocksCount.IsEnabled = false;
-                tb_ApprovalNumber.IsEnabled = false;
-                tb_CheckNumber.IsEnabled = false;
-                tb_Notes.IsEnabled = false;
-                dp_CheckDate.IsEnabled = false;
-                dp_MeetingDate.IsEnabled = false;
+                tb_SecondCustomerId.IsEnabled = false;
+                tb_Reason.IsEnabled = false;
+                dp_ChangeDate.IsEnabled = false;
+                cb_ChangeType.IsEnabled = false;
+                btn_clearSecond.IsEnabled = false;
                 btn_update.IsEnabled = false;
             }
-            */
+     
         }
         private void DataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -633,18 +567,12 @@ namespace POSCA.View.customers
         {
             try
             {
-                /*
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
 
                     customer = null;
                     HelpClass.StartAwait(grid_main);
-                    //if(FillCombo.customerList != null)
-                    //{
-                    //    customer = FillCombo.customerList.Where(x => x.CustomerId == long.Parse(tb_CustomerId.Text)).FirstOrDefault();
-                    //}
 
-                    // if (customer == null)
                     customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
 
                     if (customer != null)
@@ -654,11 +582,11 @@ namespace POSCA.View.customers
                         else
                         {
                             tb_CustomerName.Text = customer.Name;
+                            tb_OldFundNumber.Text = customer.BoxNumber.ToString();
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
                             dp_JoinDate.SelectedDate = customer.JoinDate;
-                            tb_StocksCount.Text = customer.AllStocksCount.ToString();
-                            txt_JoinDay.Text = customer.JoinDay.ToString();
-                            txt_JoinMonth.Text = customer.JoinMonth.ToString();
-                            txt_JoinYear.Text = customer.JoinYear.ToString();
+                            tb_CivilNum.Text = customer.CivilNum;
+                            tb_MobileNumber.Text = customer.customerAddress.MobileNumber;
 
                         }
                     }
@@ -670,7 +598,7 @@ namespace POSCA.View.customers
                     HelpClass.EndAwait(grid_main);
 
                 }
-                */
+             
             }
             catch
             {
@@ -685,12 +613,42 @@ namespace POSCA.View.customers
 
         private void Btn_clearSecond_Click(object sender, RoutedEventArgs e)
         {
-
+            tb_SecondCustomerId.Text = "";
+            tb_SecondCivilNum.Text = "";
+            tb_SecondCustomerName.Text = "";
+            tb_SecondCustomerStatus.Text = "";
+            tb_SecondMobileNumber.Text = "";
+            tb_NewFundNumber.Text = "";
+            dp_SecondJoinDate.SelectedDate = null;
         }
 
         private void cb_ChangeType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            switch (cb_ChangeType.SelectedValue)
+            {
+                case "change":
+                    sp_changeBoxNumber.Visibility = Visibility.Visible;
+                    sp_clearBoxNumber.Visibility = Visibility.Collapsed;
+                    sp_switchBoxNumber.Visibility = Visibility.Collapsed;
 
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "ChangeToFundNumber" };
+                    break;
+                     case "exchange":
+                    sp_changeBoxNumber.Visibility = Visibility.Collapsed;
+                    sp_clearBoxNumber.Visibility = Visibility.Collapsed;
+                    sp_switchBoxNumber.Visibility = Visibility.Visible;
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "SecondCustomerId" };
+
+                    break;
+                case "emptying":
+                    sp_changeBoxNumber.Visibility = Visibility.Collapsed;
+                    sp_clearBoxNumber.Visibility = Visibility.Visible;
+                    sp_switchBoxNumber.Visibility = Visibility.Collapsed;
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate" };
+
+                    break;
+
+            }
         }
     }
 }
