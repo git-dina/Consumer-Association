@@ -1102,6 +1102,21 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
+                                    <Button   Height="50"
+                                  Grid.Row="1"
+                           Tag="fundChange" 
+                          x:Name="btn_fundChange"  Click="Btn_fundChange_Click"
+                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                    Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="fundChange"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData_fundChange" Foreground="#A8AEC6" x:Name="txt_fundChange"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
                                     <!--#region  customerSectionData-->
                             <Expander  x:Name="exp_customerSectionData" Tag="customerSectionData" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                                 <Expander.Header>
