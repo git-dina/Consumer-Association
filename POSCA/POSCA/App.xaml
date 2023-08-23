@@ -15,6 +15,7 @@
             <converters:PromotionTypeConverter x:Key="PromotionTypeConverter"/>
             <converters:PromotionNatureConverter x:Key="PromotionNatureConverter"/>
             <converters:toIntConverter x:Key="toIntConverter"/>
+            <converters:changeBoxTypeConverter x:Key="changeBoxTypeConverter"/>
             <!--#region Fonts-->
             <FontFamily x:Key="BarcodeFont" >IDAHC39M Code 39 Barcode, /POSCA;component/fonts/#IDAHC39M Code 39 Barcode, Arial</FontFamily>
             <FontFamily x:Key="Font-cairo-light" >cairo light, /POSCA;component/fonts/cairo-font/#cairo light, Arial</FontFamily>
