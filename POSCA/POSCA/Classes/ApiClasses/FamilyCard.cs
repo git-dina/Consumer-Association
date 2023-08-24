@@ -66,7 +66,7 @@ namespace POSCA.Classes.ApiClasses
         public string CivilNum { get; set; }
         public string EscortName { get; set; }
         public Nullable<int> KinshipId { get; set; }
-        public Nullable<System.DateTime> AddedDate { get; set; }
+        public Nullable<System.DateTime> AddedDate { get; set; } = DateTime.Now;
         public Nullable<bool> IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }

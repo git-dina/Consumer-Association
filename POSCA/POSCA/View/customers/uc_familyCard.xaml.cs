@@ -147,7 +147,7 @@ namespace POSCA.View.customers
                 await FillCombo.RefreshKinshipTiess();
 
             cb_KinshipId.DisplayMemberPath = "Name";
-            cb_KinshipId.SelectedValuePath = "PhoneTypeId";
+            cb_KinshipId.SelectedValuePath = "KinshipId";
             cb_KinshipId.ItemsSource = FillCombo.kinshipTiesList;
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
@@ -163,6 +163,26 @@ namespace POSCA.View.customers
 
                     if (HelpClass.validate(requiredControlList, this))
                     {
+                        foreach(var row in familyCard.Escorts)
+                        {
+                            row.CustomerId = long.Parse(tb_CustomerId.Text);
+
+                            if((row.IsCustomer.Equals(true) && (row.BoxNumber == null || row.BoxNumber.Equals(""))  ) 
+                                || (row.IsCustomer.Equals(false) && (row.CivilNum == null || row.CivilNum.Equals("") || row.EscortName == null || row.EscortName.Equals("")  )   )
+                               || row.AddedDate == null )
+                                {
+
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("MissingEscortsData"), animation: ToasterAnimation.FadeIn);
+                                HelpClass.EndAwait(grid_main); 
+                                return;
+                            }
+                            if(row.CivilNum == null || row.CivilNum.Length < 12)
+                            {
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CivilNumLengthAlert"), animation: ToasterAnimation.FadeIn);
+                                HelpClass.EndAwait(grid_main);
+                                return;
+                            }
+                        }
                         familyCard.CustomerId = long.Parse(tb_CustomerId.Text);
                         familyCard.ReleaseDate = dp_ReleaseDate.SelectedDate;
                         if (tgl_IsStopped.IsChecked == true)
@@ -330,12 +350,12 @@ namespace POSCA.View.customers
             dg_familyCard.SelectedIndex = -1;
     
             #region clear inputs
-            tb_CustomerId.Text = "";
-            tb_CustomerName.Text = "";
-            tb_CustomerStatus.Text = "";
-            tb_CivilNum.Text = "";
-            tb_AutomatedNumber.Text = "";
-            tb_BoxNumber.Text = "";
+            //tb_CustomerId.Text = "";
+            //tb_CustomerName.Text = "";
+            //tb_CustomerStatus.Text = "";
+            //tb_CivilNum.Text = "";
+            //tb_AutomatedNumber.Text = "";
+            //tb_BoxNumber.Text = "";
             #endregion
         
             // last 
@@ -454,18 +474,18 @@ namespace POSCA.View.customers
 
             this.DataContext = familyCard;
           
-            tb_CustomerId.Text = familyCard.CustomerId.ToString();
-            dp_ReleaseDate.SelectedDate = familyCard.ReleaseDate;
-            tb_CustomerName.Text = familyCard.CustomerName;
-            tb_BoxNumber.Text = familyCard.BoxNumber.ToString();
-            tb_CustomerStatus.Text = familyCard.CustomerStatus;
-            tb_CivilNum.Text = familyCard.CivilNum;
-            tb_AutomatedNumber.Text = familyCard.AutomatedNumber;
+            //tb_CustomerId.Text = familyCard.CustomerId.ToString();
+            //dp_ReleaseDate.SelectedDate = familyCard.ReleaseDate;
+            //tb_CustomerName.Text = familyCard.CustomerName;
+            //tb_BoxNumber.Text = familyCard.BoxNumber.ToString();
+            //tb_CustomerStatus.Text = familyCard.CustomerStatus;
+            //tb_CivilNum.Text = familyCard.CivilNum;
+            //tb_AutomatedNumber.Text = familyCard.AutomatedNumber;
 
-            if (familyCard.IsStopped == true)
-                tgl_IsStopped.IsChecked = true;
-            else
-                tgl_IsStopped.IsChecked = false;
+            //if (familyCard.IsStopped == true)
+            //    tgl_IsStopped.IsChecked = true;
+            //else
+            //    tgl_IsStopped.IsChecked = false;
 
             RefreshEscortDataGrid();
 
@@ -480,25 +500,7 @@ namespace POSCA.View.customers
 
         #endregion
 
-        private void Btn_archiving_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void btn_updateIBAN_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_personalDocuments_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Btn_pastProfits_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
         {
@@ -507,30 +509,33 @@ namespace POSCA.View.customers
 
                 if (e.Key == Key.Return && tb_CustomerId.Text != "")
                 {
-                    customer = null;
+                    familyCard = new FamilyCard();
                     HelpClass.StartAwait(grid_main);
 
-                   customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+                    familyCard = await FillCombo.customer.GetFamilyCardById(long.Parse(tb_CustomerId.Text));
 
-                    if (customer != null)
+                    if (familyCard != null)
                     {
-                        if (customer.CustomerStatus != "continouse")
+                        if (familyCard.CustomerStatus != "continouse")
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            tb_CustomerName.Text = customer.Name;
-                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
-                            tb_BoxNumber.Text = customer.BoxNumber.ToString();
-                            tb_CivilNum.Text = customer.CivilNum.ToString();
-                            tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
+                            //tb_CustomerName.Text = customer.Name;
+                            //tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
+                            //tb_BoxNumber.Text = customer.BoxNumber.ToString();
+                            //tb_CivilNum.Text = customer.CivilNum.ToString();
+                            //tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
 
                         }
                     }
                     else
                     {
-                        tb_CustomerId.Text = "";
+                        familyCard = new FamilyCard();
+                        //tb_CustomerId.Text = "";
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
+                    this.DataContext = familyCard;
+                    RefreshEscortDataGrid();
                     HelpClass.EndAwait(grid_main);
 
                 }
@@ -599,6 +604,7 @@ namespace POSCA.View.customers
             try
             {
                 dg_escort.CancelEdit();
+                dg_escort.ItemsSource = null;
                 dg_escort.ItemsSource = familyCard.Escorts;
                 dg_escort.Items.Refresh();
 
@@ -621,6 +627,7 @@ namespace POSCA.View.customers
             try
             {
                 TextBox tb = sender as TextBox;
+
                 if (e.Key == Key.Return && tb.Text != "")
                 {
                     customer = null;
@@ -631,11 +638,21 @@ namespace POSCA.View.customers
                     if (customer != null)
                     {
                         if (customer.CustomerStatus != "continouse")
+                        {
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                            tb.Text = "";
+                        }
+                        else if (customer.BoxNumber == long.Parse( tb_BoxNumber.Text))
+                        {
+                            tb.Text = "";
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SecondDifferentFromFirst"), animation: ToasterAnimation.FadeIn);
+
+                        }
                         else
                         {
-                            var escort = (Escort)dg_familyCard.SelectedItem;
+                            var escort = (Escort)dg_escort.SelectedItem;
 
+                            escort.BoxNumber = customer.BoxNumber;
                             escort.EscortName = customer.Name;
                             escort.CivilNum = customer.CivilNum;
                             RefreshEscortDataGrid();
@@ -683,6 +700,74 @@ namespace POSCA.View.customers
         private void col_IsCustomer_Unselected(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cb_KinshipId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                var cmb = sender as ComboBox;
+                e.Handled = true;
+
+                if (cmb.IsMouseOver)
+                {
+                    if (dg_escort.SelectedIndex != -1 && cmb != null && cmb.SelectedValue != null)
+                    {
+                        int _datagridSelectedIndex = dg_escort.SelectedIndex;
+                        var escort = (Escort)dg_escort.SelectedItem;
+
+                        int kinshipId = int.Parse(cmb.SelectedValue.ToString());
+                        escort.KinshipId = kinshipId;
+                       
+                        RefreshEscortDataGrid();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void dgc_CivilNum_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+                int _datagridSelectedIndex = dg_escort.SelectedIndex;
+                var escort = (Escort)dg_escort.SelectedItem;
+
+                escort.CivilNum = txt.Text;
+
+                RefreshEscortDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void dgc_EscortName_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var txt = sender as TextBox;
+                e.Handled = true;
+                int _datagridSelectedIndex = dg_escort.SelectedIndex;
+                var escort = (Escort)dg_escort.SelectedItem;
+
+                escort.EscortName = txt.Text;
+
+                RefreshEscortDataGrid();
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }

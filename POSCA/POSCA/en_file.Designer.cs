@@ -2996,6 +2996,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Escorts Data Is Incomplete.
+        /// </summary>
+        internal static string MissingEscortsData {
+            get {
+                return ResourceManager.GetString("MissingEscortsData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mobile Number 2....
         /// </summary>
         internal static string MobileNumber2Hint {

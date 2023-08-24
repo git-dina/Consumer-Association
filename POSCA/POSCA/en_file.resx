@@ -6312,4 +6312,7 @@ Main Documents</value>
   <data name="UnloadedBoxNoHint" xml:space="preserve">
     <value>The Number Of Unloaded Box Will Be Archived At No</value>
   </data>
+  <data name="MissingEscortsData" xml:space="preserve">
+    <value>Escorts Data Is Incomplete</value>
+  </data>
 </root>

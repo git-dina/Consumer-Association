@@ -618,7 +618,7 @@
                                 <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>-->
 
                                
-                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="2*"  Header="BoxNumber">
+                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="*"  Header="BoxNumber">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox  Text="{Binding Path=BoxNumber, Mode=TwoWay}"
@@ -644,13 +644,13 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTemplateColumn x:Name="dgc_CivilNum" Width="3*"  Header="CivilNum">
+                                <DataGridTemplateColumn x:Name="dgc_CivilNum" Width="*"  Header="CivilNum">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox  Text="{Binding Path=CivilNum, Mode=TwoWay}"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                                  BorderThickness="0" 
-                                                  >
+                                                  BorderThickness="0" MaxLength="12"
+                                                 LostFocus="dgc_CivilNum_LostFocus" >
                                                 <TextBox.Style>
                                                     <Style TargetType="{x:Type TextBox}">
                                                         <Style.Triggers>
@@ -673,7 +673,7 @@
                                             <TextBox  Text="{Binding Path=EscortName, Mode=TwoWay}"
                                                   materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                                   BorderThickness="0" 
-                                                  >
+                                                  LostFocus="dgc_EscortName_LostFocus">
                                                 <TextBox.Style>
                                                     <Style TargetType="{x:Type TextBox}">
                                                         <Style.Triggers>
@@ -690,10 +690,22 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridComboBoxColumn Width="*"  Header="KinshipId"
+                                <DataGridTemplateColumn  Width="4*" Header="BarcodeType"   >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <ComboBox ItemsSource="{Binding ElementName=cb_KinshipId, Path=ItemsSource}"  
+                                                  SelectedValue="{Binding KinshipId, Mode=TwoWay}"
+                                                  DisplayMemberPath="Name"
+                                                  SelectedValuePath="KinshipId"
+                                                  SelectionChanged="cb_KinshipId_SelectionChanged"
+                                              />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <!--<DataGridComboBoxColumn Width="*"  Header="KinshipId"
                                                             x:Name="cb_KinshipId" 
                                         SelectedValueBinding="{Binding KinshipId, Mode=TwoWay}"  
-                                                            />
+                                                            />-->
                                 <DataGridTemplateColumn Width="*" Header="AddedDate" IsReadOnly="True" >
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
@@ -719,6 +731,10 @@
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
+                                <DataGridComboBoxColumn Width="4*"  Header="KinshipId"
+                                                            x:Name="cb_KinshipId" 
+                                        SelectedValueBinding="{Binding KinshipId, Mode=TwoWay}"  
+                                                     Visibility="Collapsed" />
                             </DataGrid.Columns>
                         </DataGrid>
 

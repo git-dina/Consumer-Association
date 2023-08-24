@@ -6566,4 +6566,7 @@
   <data name="UnloadedBoxNoHint" xml:space="preserve">
     <value>سيتم أرشفة رقم الصندوق المفرغ في الرقم</value>
   </data>
+  <data name="MissingEscortsData" xml:space="preserve">
+    <value>بيانات المرافقين غير كاملة</value>
+  </data>
 </root>

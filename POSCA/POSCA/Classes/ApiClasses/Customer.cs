@@ -175,6 +175,24 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+        internal async Task<FamilyCard> GetFamilyCardById(long customerId)
+        {
+            var result = new FamilyCard();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/GetFamilyCardById";
+
+            parameters.Add("customerId", customerId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result=JsonConvert.DeserializeObject<FamilyCard>(c.Value);
+                }
+            }
+            return result;
+        }
 
         internal async Task<Customer> GetByBoxNumber(long boxNumber)
         {
