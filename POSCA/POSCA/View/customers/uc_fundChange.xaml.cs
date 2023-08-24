@@ -307,43 +307,24 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        {//refresh
-            try
-            {
-
-                HelpClass.StartAwait(grid_main);
-
-                // await RefreshFundChangesList();
-                await Search();
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+      
         #endregion
         #region Refresh & Search
         async Task Search()
         {
-            /*
-            fundChanges = await fundChange.SearchTransactions("add", tb_search.Text);
-            RefreshFundChangesView();
-            */
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                fundChanges = await fundChange.SearchFundChanges(tb_search.Text);
+                RefreshFundChangesView();
+                HelpClass.EndAwait(grid_main);
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
-        //async Task<IEnumerable<FundChange>> RefreshFundChangesList()
-        //{
-
-        //    await fundChange.get(true);
-
-        //    return FillCombo.fundChangeList;
-
-        //    return fundChanges;
-        //}
+        
         void RefreshFundChangesView()
         {
             dg_fundChange.ItemsSource = fundChanges;
@@ -477,18 +458,18 @@ namespace POSCA.View.customers
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
-        private void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
+        private async void Btn_swapToSearch_Click(object sender, RoutedEventArgs e)
         {
             cd_gridMain1.Width = new GridLength(1, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(0, GridUnitType.Star);
 
-            //if (tb_search.Text != "")
-            //    Btn_search_Click(null, null);
-            //else
-            //{
-            //    fundChanges = new List<FundChange>();
-            //    RefreshFundChangesView();
-            //}
+            if (tb_search.Text != "")
+                await Search();
+            else
+            {
+                fundChanges = new List<FundChange>();
+                RefreshFundChangesView();
+            }
 
         }
         void swapToData()
@@ -582,7 +563,7 @@ namespace POSCA.View.customers
                     switch (cb_ChangeType.SelectedValue)
                     {
                         case "emptying":
-                            if (customer != null && (customer.CustomerStatus != "withdrawn" || customer.IsArchived == true))
+                            if (customer != null && customer.CustomerStatus == "continouse" )
                             {
                                 tb_CustomerId.Text = "";
                                 tb_CustomerName.Text = "";
@@ -600,8 +581,17 @@ namespace POSCA.View.customers
                             }
                             else if (customer != null)
                             {
-                                var maxDumped = await fundChange.GetMaxDumpedBoxNum();
+                                var maxDumped = "1000" + customer.BoxNumber;
                                 tb_EmptyFundNumber.Text = maxDumped.ToString();
+
+                                tb_CustomerName.Text = customer.Name;
+                                tb_OldFundNumber.Text = customer.BoxNumber.ToString();
+                                tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
+                                dp_JoinDate.SelectedDate = customer.JoinDate;
+                                tb_CivilNum.Text = customer.CivilNum;
+                                tb_MobileNumber.Text = customer.customerAddress.MobileNumber;
+                                HelpClass.EndAwait(grid_main);
+                                return;
                             }
 
                             break;
@@ -614,7 +604,10 @@ namespace POSCA.View.customers
                     if (customer != null)
                     {
                         if (customer.CustomerStatus != "continouse")
+                        {
+                            tb_CustomerId.Text = "";
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        }
                         else
                         {
                             tb_CustomerName.Text = customer.Name;
@@ -726,20 +719,20 @@ namespace POSCA.View.customers
                     sp_clearBoxNumber.Visibility = Visibility.Collapsed;
                     sp_switchBoxNumber.Visibility = Visibility.Collapsed;
 
-                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "ChangeToFundNumber" };
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "ChangeToFundNumber","Reason" };
                     break;
                      case "exchange":
                     sp_changeBoxNumber.Visibility = Visibility.Collapsed;
                     sp_clearBoxNumber.Visibility = Visibility.Collapsed;
                     sp_switchBoxNumber.Visibility = Visibility.Visible;
-                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "SecondCustomerId" };
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "SecondCustomerId", "Reason" };
 
                     break;
                 case "emptying":
                     sp_changeBoxNumber.Visibility = Visibility.Collapsed;
                     sp_clearBoxNumber.Visibility = Visibility.Visible;
                     sp_switchBoxNumber.Visibility = Visibility.Collapsed;
-                    requiredControlList = new List<string> { "CustomerId", "ChangeDate" };
+                    requiredControlList = new List<string> { "CustomerId", "ChangeDate", "Reason" };
 
                     break;
 

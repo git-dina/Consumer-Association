@@ -64,18 +64,20 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<String> GetMaxDumpedBoxNum()
+        public async Task<List<FundChange>> SearchFundChanges( string textSearch)
         {
-            var result = "";
+            var result = new List<FundChange>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "FundChange/GetMaxDumpedBoxNum";
+            string method = "FundChange/SearchFundChanges";
+
+            parameters.Add("textSearch", textSearch);
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
             {
                 if (c.Type == "scopes")
                 {
-                    result = c.Value;
+                    result.Add(JsonConvert.DeserializeObject<FundChange>(c.Value));
                 }
             }
             return result;

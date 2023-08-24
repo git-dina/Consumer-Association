@@ -140,7 +140,7 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="ChangeType" Binding="{Binding Path=ChangeType, Converter={StaticResource dateFrameConverter }}"/>
+                                <DataGridTextColumn Width="*"  Header="ChangeType" Binding="{Binding Path=ChangeType, Converter={StaticResource changeBoxTypeConverter }}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/> 
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
                                 <DataGridTextColumn Width="*"  Header="OldFundNumber" Binding="{Binding Path=OldFundNumber}"/>
@@ -552,6 +552,10 @@
                                   Foreground="{StaticResource textColor}"
                                  Margin="0,0"  BorderThickness="0"
                             Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
+                                <Path Fill="#E81123" x:Name="p_error_Reason" Stretch="Fill" Margin="5,5,20,5"
+                              HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15" 
+                             Data="{StaticResource infoCircle}"/>
                             </Grid>
                         </Border>
                         <StackPanel x:Name="sp_clearBoxNumber">
