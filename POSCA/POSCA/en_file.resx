@@ -6315,4 +6315,19 @@ Main Documents</value>
   <data name="MissingEscortsData" xml:space="preserve">
     <value>Escorts Data Is Incomplete</value>
   </data>
+  <data name="Activities" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="ActivitiesReport" xml:space="preserve">
+    <value>Activities Report</value>
+  </data>
+  <data name="ActivitiesTypes" xml:space="preserve">
+    <value>Activities Types</value>
+  </data>
+  <data name="ContributorActivities" xml:space="preserve">
+    <value>Contributor Activities</value>
+  </data>
+  <data name="SubscriptionRequest" xml:space="preserve">
+    <value>Subscription Request</value>
+  </data>
 </root>

@@ -151,6 +151,33 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activities.
+        /// </summary>
+        internal static string Activities {
+            get {
+                return ResourceManager.GetString("Activities", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activities Report.
+        /// </summary>
+        internal static string ActivitiesReport {
+            get {
+                return ResourceManager.GetString("ActivitiesReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activities Types.
+        /// </summary>
+        internal static string ActivitiesTypes {
+            get {
+                return ResourceManager.GetString("ActivitiesTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Added Date.
         /// </summary>
         internal static string AddedDate {
@@ -975,6 +1002,15 @@ namespace POSCA {
         internal static string ContinualOffer {
             get {
                 return ResourceManager.GetString("ContinualOffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contributor Activities.
+        /// </summary>
+        internal static string ContributorActivities {
+            get {
+                return ResourceManager.GetString("ContributorActivities", resourceCulture);
             }
         }
         
@@ -5080,6 +5116,15 @@ namespace POSCA {
         internal static string StreetHint {
             get {
                 return ResourceManager.GetString("StreetHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subscription Request.
+        /// </summary>
+        internal static string SubscriptionRequest {
+            get {
+                return ResourceManager.GetString("SubscriptionRequest", resourceCulture);
             }
         }
         

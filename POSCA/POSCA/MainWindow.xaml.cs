@@ -434,6 +434,13 @@ namespace POSCA
             txt_transformStocks.Text = AppSettings.resourcemanager.GetString("TransformStocks");
             txt_retreatOfCustomer.Text = AppSettings.resourcemanager.GetString("Retreat");
             txt_deathOfCustomer.Text = AppSettings.resourcemanager.GetString("Death");
+
+
+            txt_customerActivities.Text = AppSettings.resourcemanager.GetString("ContributorActivities");
+            txt_activitiesTypes.Text = AppSettings.resourcemanager.GetString("ActivitiesTypes");
+            txt_activities.Text = AppSettings.resourcemanager.GetString("Activities");
+            txt_subscriptionRequest.Text = AppSettings.resourcemanager.GetString("SubscriptionRequest");
+            txt_activitiesReport.Text = AppSettings.resourcemanager.GetString("ActivitiesReport");
             #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 
@@ -1258,6 +1265,24 @@ namespace POSCA
             }
         }
 
-       
+        private void btn_activitiesTypes_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_activities_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_SubscriptionRequest_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_activitiesReport_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -6569,4 +6569,19 @@
   <data name="MissingEscortsData" xml:space="preserve">
     <value>بيانات المرافقين غير كاملة</value>
   </data>
+  <data name="Activities" xml:space="preserve">
+    <value>الأنشطة</value>
+  </data>
+  <data name="ActivitiesReport" xml:space="preserve">
+    <value>تقرير الأنشطة</value>
+  </data>
+  <data name="ActivitiesTypes" xml:space="preserve">
+    <value>أنواع الأنشطة</value>
+  </data>
+  <data name="ContributorActivities" xml:space="preserve">
+    <value>أنشطة المساهمين</value>
+  </data>
+  <data name="SubscriptionRequest" xml:space="preserve">
+    <value>طلب اشتراك</value>
+  </data>
 </root>

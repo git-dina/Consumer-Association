@@ -237,6 +237,9 @@
     <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
     <Compile Include="converters\toIntConverter.cs" />
+    <Compile Include="View\customers\activities\uc_activitiesType.xaml.cs">
+      <DependentUpon>uc_activitiesType.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\customers\customerSectionData\uc_area.xaml.cs">
       <DependentUpon>uc_area.xaml</DependentUpon>
     </Compile>
@@ -411,6 +414,10 @@
     <Compile Include="View\windows\wd_userControl.xaml.cs">
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\customers\activities\uc_activitiesType.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\customers\customerSectionData\uc_area.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

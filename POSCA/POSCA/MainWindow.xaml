@@ -1318,7 +1318,89 @@
                                         </StackPanel>
                                     </Expander>
 
+                                    <Expander  x:Name="exp_customerActivities" Tag="customerActivities" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                                        <Expander.Header>
+                                            <Grid Margin="0 -15 0 -15"   >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="auto"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Path Fill="White" x:Name="path_iconCustomerActivities" Stretch="Fill"  
+                                                    HorizontalAlignment="Center" Grid.Column="0"  
+                                                    VerticalAlignment="Center" Width="20" Height="20"
+                                                    Margin="5 10" FlowDirection="LeftToRight"
+                                                    Data="{StaticResource report4}"/>
+                                                <TextBlock Text="customerActivities" Foreground="White" x:Name="txt_customerActivities"
+                                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                    FontWeight="SemiBold" FontSize="14"
+                                                    Grid.Column="1"      Margin="10,0,0,0"/>
+                                                </Grid>
+                                            </Expander.Header>
+                                            <!--#region  customerActivities-->
+                                            <StackPanel>
+                                            <Button   Height="50"
+                                                          Grid.Row="1"
+                                                   Tag="activitiesTypes" 
+                                                  x:Name="btn_activitiesTypes"  Click="btn_activitiesTypes_Click"
+                                            Background="{x:Null}" BorderBrush="{x:Null}"   
+                                            Padding="35 0 0 0" >                
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="activitiesTypes"  Tag="customerActivities_activitiesTypes_" Foreground="#A8AEC6" x:Name="txt_activitiesTypes"
+                                                           HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                      Grid.Column="1"      Margin="30,0,0,0"/>
+                                                    </Grid>
+                                                </Button>
 
+                                            <Button   Height="50"
+                                                    Grid.Row="1"
+                                                   Tag="activities" 
+                                                  x:Name="btn_activities"  Click="btn_activities_Click"
+                                            Background="{x:Null}" BorderBrush="{x:Null}"   
+                                            Padding="35 0 0 0" >        
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="activities"  Tag="customerActivities_activities" Foreground="#A8AEC6" x:Name="txt_activities"
+                                                       HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                  Grid.Column="1"      Margin="30,0,0,0"/>
+                                                    </Grid>
+                                                </Button>
+                                            <Button   Height="50"
+                                                 Grid.Row="1"
+                                               Tag="subscriptionRequest" 
+                                                      x:Name="btn_SubscriptionRequest"  Click="btn_SubscriptionRequest_Click"
+                                                Background="{x:Null}" BorderBrush="{x:Null}"   
+                                                Padding="35 0 0 0" >    
+                                                <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Text="subscriptionRequest"  Tag="customerActivities_subscriptionRequest_" Foreground="#A8AEC6" x:Name="txt_subscriptionRequest"
+                                                           HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                      Grid.Column="1"      Margin="30,0,0,0"/>
+                                                    </Grid>
+                                                </Button>
+                                                <Button   Height="50"
+                                                    Grid.Row="1"
+                                                       Tag="activitiesReport" 
+                                                      x:Name="btn_activitiesReport"  Click="btn_activitiesReport_Click"
+                                                Background="{x:Null}" BorderBrush="{x:Null}"   
+                                                Padding="35 0 0 0" >
+                                                    <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </Grid.ColumnDefinitions>
+                                                    <TextBlock Text="activitiesReport"  Tag="customerActivities_activitiesReport_" Foreground="#A8AEC6" x:Name="txt_activitiesReport"
+                                                        HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                                        Grid.Column="1"      Margin="30,0,0,0"/>
+                                                    </Grid>
+                                                </Button>
+                                        </StackPanel>
+                                    </Expander>
                                 </StackPanel>
                     </Expander>
                     <!--#region  settings-->
