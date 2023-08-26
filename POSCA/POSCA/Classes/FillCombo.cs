@@ -1254,6 +1254,47 @@ namespace POSCA.Classes
         }
         #endregion
         #region Customer
+
+        #region Activity type
+        static public List<ActivityType> activityTypeList;
+        static public ActivityType activityType = new ActivityType();
+
+        static public async Task<IEnumerable<ActivityType>> RefreshActivityTypes()
+        {
+            activityTypeList = await activityType.get(true);
+
+            return activityTypeList;
+        }
+
+        static public async Task fillActivityTypesWithDefault(ComboBox combo)
+        {
+            if (activityTypeList is null)
+                await RefreshActivityTypes();
+
+            var lst = activityTypeList.ToList();
+            ActivityType sup = new ActivityType();
+            sup.Name = "-";
+            sup.Id = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+
+            combo.SelectedValuePath = "Id";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillActivityTypes(ComboBox combo)
+        {
+            if (activityTypeList is null)
+                await RefreshActivityTypes();
+
+            combo.ItemsSource = activityTypeList;
+
+            combo.SelectedValuePath = "Id";
+            combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
         static public Customer customer = new Customer();
         static public List<Customer> customerList;
 

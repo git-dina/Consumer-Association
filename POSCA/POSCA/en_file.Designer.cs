@@ -1942,6 +1942,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Final Type.
+        /// </summary>
+        internal static string FinalType {
+            get {
+                return ResourceManager.GetString("FinalType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finance.
         /// </summary>
         internal static string finance {
@@ -3410,6 +3419,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Only Family Card Holder.
+        /// </summary>
+        internal static string OnlyFamilyCardHolder {
+            get {
+                return ResourceManager.GetString("OnlyFamilyCardHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to On the way.
         /// </summary>
         internal static string onTheWay {
@@ -4459,6 +4477,15 @@ namespace POSCA {
         internal static string RegisteredInMinistry {
             get {
                 return ResourceManager.GetString("RegisteredInMinistry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register With One Activity At The Level Of This Type.
+        /// </summary>
+        internal static string RegisterInOneActivity {
+            get {
+                return ResourceManager.GetString("RegisterInOneActivity", resourceCulture);
             }
         }
         

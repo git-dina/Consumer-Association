@@ -6330,4 +6330,13 @@ Main Documents</value>
   <data name="SubscriptionRequest" xml:space="preserve">
     <value>Subscription Request</value>
   </data>
+  <data name="FinalType" xml:space="preserve">
+    <value>Final Type</value>
+  </data>
+  <data name="OnlyFamilyCardHolder" xml:space="preserve">
+    <value>Only Family Card Holder</value>
+  </data>
+  <data name="RegisterInOneActivity" xml:space="preserve">
+    <value>Register With One Activity At The Level Of This Type</value>
+  </data>
 </root>

@@ -190,6 +190,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\ApiClasses\ActivityType.cs" />
     <Compile Include="Classes\ApiClasses\APIResult.cs" />
     <Compile Include="Classes\ApiClasses\Area.cs" />
     <Compile Include="Classes\ApiClasses\AssistantSupplier.cs" />

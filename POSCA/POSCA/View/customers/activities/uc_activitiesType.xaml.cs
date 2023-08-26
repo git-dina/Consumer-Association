@@ -50,9 +50,9 @@ namespace POSCA.View.customers.activities
             }
         }
 
-        Category category = new Category();
-        IEnumerable<Category> categorysQuery;
-        IEnumerable<Category> categorys;
+        ActivityType activityType = new ActivityType();
+        IEnumerable<ActivityType> activityTypesQuery;
+        IEnumerable<ActivityType> ActivityTypes;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -61,7 +61,7 @@ namespace POSCA.View.customers.activities
             Instance = null;
             GC.Collect();
         }
-        //List<Category> categories;
+        //List<ActivityType> categories;
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
         {//load
             try
@@ -83,7 +83,7 @@ namespace POSCA.View.customers.activities
 
                 Keyboard.Focus(tb_Name);
 
-                await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
+                await FillCombo.fillCategorysWithDefault(cb_ParentTypeId);
                 await Clear();
                 await Search();
 
@@ -103,21 +103,19 @@ namespace POSCA.View.customers.activities
 
 
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("Category");
+            txt_title.Text = AppSettings.resourcemanager.GetString("ActivitiesTypes");
 
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Code, AppSettings.resourcemanager.GetString("trNoHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Id, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_CategoryParentId, AppSettings.resourcemanager.GetString("ParentCategoryHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ProfitPercentage, AppSettings.resourcemanager.GetString("ProfitPercentageHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WholesalePercentage, AppSettings.resourcemanager.GetString("WholeSalePercentageHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FreePercentage, AppSettings.resourcemanager.GetString("FreePercentagHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_DiscountPercentage, AppSettings.resourcemanager.GetString("DiscountPercentageHint"));
+
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
 
-            txt_CanContainItems.Text = AppSettings.resourcemanager.GetString("ContainItems");
+            txt_IsFinal.Text = AppSettings.resourcemanager.GetString("FinalType");
+            txt_AllContributors.Text = AppSettings.resourcemanager.GetString("AllContributors");
+            txt_OnlyFamilyCardHolder.Text = AppSettings.resourcemanager.GetString("OnlyFamilyCardHolder");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
+            txt_OnlyOneActivity.Text = AppSettings.resourcemanager.GetString("RegisterInOneActivity");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -135,43 +133,47 @@ namespace POSCA.View.customers.activities
                 {
                     HelpClass.StartAwait(grid_main);
 
-                    category = new Category();
+                    activityType = new ActivityType();
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                        category.Name = tb_Name.Text;
-                        if (cb_CategoryParentId.SelectedIndex > 0)
-                            category.CategoryParentId = (long)cb_CategoryParentId.SelectedValue;
+                        activityType.Name = tb_Name.Text;
 
-                        if (tb_ProfitPercentage.Text != "")
-                            category.ProfitPercentage = decimal.Parse(tb_ProfitPercentage.Text);
-                        if (tb_WholesalePercentage.Text != "")
-                            category.WholesalePercentage = decimal.Parse(tb_WholesalePercentage.Text);
-                        if (tb_DiscountPercentage.Text != "")
-                            category.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
-                        if (tb_FreePercentage.Text != "")
-                            category.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
-
-                        if (tgl_CanContainItems.IsChecked == true)
-                            category.CanContainItems = true;
+                        if (tgl_AllContributors.IsChecked == true)
+                            activityType.AllContributors = true;
                         else
-                            category.CanContainItems = false;
+                            activityType.AllContributors = false;
+
+                         if (tgl_IsFinal.IsChecked == true)
+                            activityType.IsFinal = true;
+                        else
+                            activityType.IsFinal = false;
+
+                         if (tgl_OnlyFamilyCardHolder.IsChecked == true)
+                            activityType.OnlyFamilyCardHolder = true;
+                        else
+                            activityType.OnlyFamilyCardHolder = false;
+
+                         if (tgl_OnlyOneActivity.IsChecked == true)
+                            activityType.OnlyOneActivity = true;
+                        else
+                            activityType.OnlyOneActivity = false;
 
                         if (tgl_IsBlocked.IsChecked == true)
-                            category.IsBlocked = true;
+                            activityType.IsBlocked = true;
                         else
-                            category.IsBlocked = false;
+                            activityType.IsBlocked = false;
 
-                        category.Notes = tb_Notes.Text;
+                        activityType.Notes = tb_Notes.Text;
 
-                        FillCombo.categoryList = await category.save(category);
+                        FillCombo.activityTypeList = await activityType.save(activityType);
 
-                        if (FillCombo.categoryList == null)
+                        if (FillCombo.activityTypeList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            Clear();
+                            await Clear();
                             await Search();
                         }
                     }
@@ -200,44 +202,48 @@ namespace POSCA.View.customers.activities
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 //{
                 HelpClass.StartAwait(grid_main);
-                if (category.CategoryId > 0)
+                if (activityType.Id > 0)
                 {
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
-                        category.Name = tb_Name.Text;
-                        if (cb_CategoryParentId.SelectedIndex > 0)
-                            category.CategoryParentId = (long)cb_CategoryParentId.SelectedValue;
+                        activityType.Name = tb_Name.Text;
 
-                        if (tb_ProfitPercentage.Text != "")
-                            category.ProfitPercentage = decimal.Parse(tb_ProfitPercentage.Text);
-                        if (tb_WholesalePercentage.Text != "")
-                            category.WholesalePercentage = decimal.Parse(tb_WholesalePercentage.Text);
-                        if (tb_DiscountPercentage.Text != "")
-                            category.DiscountPercentage = decimal.Parse(tb_DiscountPercentage.Text);
-                        if (tb_FreePercentage.Text != "")
-                            category.FreePercentage = decimal.Parse(tb_FreePercentage.Text);
-
-                        if (tgl_CanContainItems.IsChecked == true)
-                            category.CanContainItems = true;
+                        if (tgl_AllContributors.IsChecked == true)
+                            activityType.AllContributors = true;
                         else
-                            category.CanContainItems = false;
+                            activityType.AllContributors = false;
+
+                        if (tgl_IsFinal.IsChecked == true)
+                            activityType.IsFinal = true;
+                        else
+                            activityType.IsFinal = false;
+
+                        if (tgl_OnlyFamilyCardHolder.IsChecked == true)
+                            activityType.OnlyFamilyCardHolder = true;
+                        else
+                            activityType.OnlyFamilyCardHolder = false;
+
+                        if (tgl_OnlyOneActivity.IsChecked == true)
+                            activityType.OnlyOneActivity = true;
+                        else
+                            activityType.OnlyOneActivity = false;
 
                         if (tgl_IsBlocked.IsChecked == true)
-                            category.IsBlocked = true;
+                            activityType.IsBlocked = true;
                         else
-                            category.IsBlocked = false;
+                            activityType.IsBlocked = false;
 
-                        category.Notes = tb_Notes.Text;
+                        activityType.Notes = tb_Notes.Text;
 
-                        FillCombo.categoryList = await category.save(category);
+                        FillCombo.activityTypeList = await activityType.save(activityType);
 
-                        if (FillCombo.categoryList == null)
+                        if (FillCombo.activityTypeList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
 
-                            Clear();
+                            await Clear();
                             await Search();
                         }
                     }
@@ -266,7 +272,7 @@ namespace POSCA.View.customers.activities
             try
             {
                 HelpClass.StartAwait(grid_main);
-                if (category.CategoryId != 0)
+                if (activityType.Id != 0)
                 {
                     #region
                     Window.GetWindow(this).Opacity = 0.2;
@@ -279,16 +285,16 @@ namespace POSCA.View.customers.activities
 
                     if (w.isOk)
                     {
-                        FillCombo.categoryList = await category.delete(category.CategoryId, MainWindow.userLogin.userId);
-                        if (FillCombo.categoryList == null)
+                        FillCombo.activityTypeList = await activityType.delete(activityType.Id, MainWindow.userLogin.userId);
+                        if (FillCombo.activityTypeList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            category.CategoryId = 0;
+                            activityType.Id = 0;
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
 
                             await Search();
-                            Clear();
+                            await Clear();
                         }
                     }
 
@@ -335,19 +341,19 @@ namespace POSCA.View.customers.activities
             }
         }
         /*
-        private async void Dg_category_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Dg_ActivityType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 //HelpClass.StartAwait(grid_main);
                 //selection
 
-                if (dg_category.SelectedIndex != -1)
+                if (dg_ActivityType.SelectedIndex != -1)
                 {
-                    category = dg_category.SelectedItem as Category;
-                    this.DataContext = category;
+                    ActivityType = dg_ActivityType.SelectedItem as ActivityType;
+                    this.DataContext = ActivityType;
 
-                    tb_DiscountPercentage.Text = HelpClass.DecTostring(category.DiscountPercentage);
+                    tb_DiscountPercentage.Text = HelpClass.DecTostring(ActivityType.DiscountPercentage);
 
                 }
                 HelpClass.clearValidate(requiredControlList, this);
@@ -360,7 +366,7 @@ namespace POSCA.View.customers.activities
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private void Dg_category_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Dg_ActivityType_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
             {
@@ -381,7 +387,7 @@ namespace POSCA.View.customers.activities
 
                 //tb_search.Text = "";
                 searchText = "";
-                await RefreshCategorysList();
+                await RefreshActivityTypesList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -398,42 +404,38 @@ namespace POSCA.View.customers.activities
         async Task Search()
         {
             //search
-            if (FillCombo.categoryList is null)
-                await RefreshCategorysList();
+            if (FillCombo.activityTypeList is null)
+                await RefreshActivityTypesList();
             /*
             searchText = tb_search.Text.ToLower();
-            //categorysQuery = FillCombo.categoryList.Where(s =>
-            categorysQuery = categorys.Where(s =>
-            s.CategoryId.ToString().Contains(searchText) ||
+            //ActivityTypesQuery = FillCombo.ActivityTypeList.Where(s =>
+            ActivityTypesQuery = ActivityTypes.Where(s =>
+            s.ActivityTypeId.ToString().Contains(searchText) ||
             s.Name.ToLower().Contains(searchText)
             ).ToList();
             */
-            categorysQuery = FillCombo.categoryList.ToList();
-            RefreshCategorysView();
+            activityTypesQuery = FillCombo.activityTypeList.ToList();
+            RefreshActivityTypesView();
         }
-        async Task<IEnumerable<Category>> RefreshCategorysList()
+        async Task<IEnumerable<ActivityType>> RefreshActivityTypesList()
         {
 
-            await FillCombo.RefreshCategorys();
-            categorys = FillCombo.categoryList.ToList();
+            await FillCombo.RefreshActivityTypes();
+            ActivityTypes = FillCombo.activityTypeList.ToList();
 
-            return categorys;
+            return ActivityTypes;
         }
-        void RefreshCategorysView()
+        void RefreshActivityTypesView()
         {
-            //dg_category.ItemsSource = null;
-            //dg_category.ItemsSource = categorysQuery;
-            //txt_count.Text = categorysQuery.Count().ToString();
-
-            tv_categorys.Items.Clear();
-            if (categorysQuery.Where(x => x.CategoryParentId is null).Count() > 0)
+            tv_activityTypes.Items.Clear();
+            if (activityTypesQuery.Where(x => x.ParentTypeId is null).Count() > 0)
             {
-                buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
+                buildTreeViewList(activityTypesQuery.Where(x => x.ParentTypeId is null).ToList(), tv_activityTypes);
 
             }
             else
             {
-                buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId is null).ToList(), tv_categorys);
+                buildTreeViewList(activityTypesQuery.Where(x => x.ParentTypeId is null).ToList(), tv_activityTypes);
 
             }
 
@@ -443,11 +445,11 @@ namespace POSCA.View.customers.activities
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         async Task Clear()
         {
-            this.DataContext = new Category();
-            //dg_category.SelectedIndex = -1;
+            this.DataContext = new ActivityType();
+            //dg_ActivityType.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            await FillCombo.fillCategorysWithDefault(cb_CategoryParentId);
+            await FillCombo.fillCategorysWithDefault(cb_ParentTypeId);
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -532,41 +534,41 @@ namespace POSCA.View.customers.activities
         #endregion
         #region TreeView
 
-        void buildTreeViewList(List<Category> _categories, TreeView treeViewItemParent)
+        void buildTreeViewList(List<ActivityType> _categories, TreeView treeViewItemParent)
         {
             foreach (var item in _categories)
             {
                 TreeViewItem treeViewItem = new TreeViewItem();
-                treeViewItem.Tag = item.CategoryId.ToString();
+                treeViewItem.Tag = item.Id.ToString();
                 treeViewItem.Header = item.Name;
                 treeViewItem.FontSize = 16;
                 treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
                 treeViewItem.Selected += TreeViewItem_Selected;
 
                 treeViewItemParent.Items.Add(treeViewItem);
-                if (categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList().Count() > 0)
+                if (activityTypesQuery.Where(x => x.ParentTypeId == item.Id).ToList().Count() > 0)
                 {
-                    buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList(), treeViewItem);
+                    buildTreeViewList(activityTypesQuery.Where(x => x.ParentTypeId == item.Id).ToList(), treeViewItem);
                 }
 
 
             }
         }
-        void buildTreeViewList(List<Category> _categories, TreeViewItem treeViewItemParent)
+        void buildTreeViewList(List<ActivityType> _categories, TreeViewItem treeViewItemParent)
         {
             foreach (var item in _categories)
             {
                 TreeViewItem treeViewItem = new TreeViewItem();
-                treeViewItem.Tag = item.CategoryId.ToString();
+                treeViewItem.Tag = item.Id.ToString();
                 treeViewItem.Header = item.Name;
                 treeViewItem.FontSize = 16;
                 treeViewItem.Foreground = Application.Current.Resources["textColor"] as SolidColorBrush; ;
                 treeViewItem.Selected += TreeViewItem_Selected;
 
                 treeViewItemParent.Items.Add(treeViewItem);
-                if (categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList().Count() > 0)
+                if (activityTypesQuery.Where(x => x.ParentTypeId == item.Id).ToList().Count() > 0)
                 {
-                    buildTreeViewList(categorysQuery.Where(x => x.CategoryParentId == item.CategoryId).ToList(), treeViewItem);
+                    buildTreeViewList(activityTypesQuery.Where(x => x.ParentTypeId == x.Id).ToList(), treeViewItem);
                 }
             }
         }
@@ -578,9 +580,8 @@ namespace POSCA.View.customers.activities
             {
                 unExpandTreeViewItem();
                 setSelectedStyleTreeViewItem();
-                category = FillCombo.categoryList.Where(x => x.CategoryId == long.Parse(treeViewItem.Tag.ToString())).FirstOrDefault();
-                this.DataContext = category;
-                //MessageBox.Show($"Category Id is: {treeViewItem.Tag}, Category Name: {treeViewItem.Header}");
+                activityType = FillCombo.activityTypeList.Where(x => x.Id == long.Parse(treeViewItem.Tag.ToString())).FirstOrDefault();
+                this.DataContext = activityType;
 
             }
             treeViewItem.IsExpanded = true;
@@ -622,13 +623,13 @@ namespace POSCA.View.customers.activities
             cd_gridMain2.Width = cd_gridMain3.Width;
         }
 
-        private void cb_CategoryParentId_KeyUp(object sender, KeyEventArgs e)
+        private void cb_ActivityTypeParentId_KeyUp(object sender, KeyEventArgs e)
         {
             try
             {
-                var tb = cb_CategoryParentId.Template.FindName("PART_EditableTextBox", cb_CategoryParentId) as TextBox;
+                var tb = cb_ParentTypeId.Template.FindName("PART_EditableTextBox", cb_ParentTypeId) as TextBox;
                 tb.FontFamily = Application.Current.Resources["Font-cairo-regular"] as FontFamily;
-                cb_CategoryParentId.ItemsSource = FillCombo.categoryList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
+                cb_ParentTypeId.ItemsSource = FillCombo.activityTypeList.Where(p => p.Name.ToLower().Contains(tb.Text.ToLower())).ToList();
             }
             catch (Exception ex)
             {

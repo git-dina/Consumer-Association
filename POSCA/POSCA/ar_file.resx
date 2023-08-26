@@ -6584,4 +6584,16 @@
   <data name="SubscriptionRequest" xml:space="preserve">
     <value>طلب اشتراك</value>
   </data>
+  <data name="AllContributors" xml:space="preserve">
+    <value>كافة المساهمين</value>
+  </data>
+  <data name="FinalType" xml:space="preserve">
+    <value>نوع نهائي</value>
+  </data>
+  <data name="OnlyFamilyCardHolder" xml:space="preserve">
+    <value>من لديه بطاقة عائلة فقط</value>
+  </data>
+  <data name="RegisterInOneActivity" xml:space="preserve">
+    <value>التسجيل بنشاط واحد على مستوى هذا النوع</value>
+  </data>
 </root>

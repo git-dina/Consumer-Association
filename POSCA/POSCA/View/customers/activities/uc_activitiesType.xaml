@@ -61,7 +61,7 @@
                                 <DataGridTextColumn Width="*"  Header="CategorySonsCount" Binding="{Binding Path=CategorySonsCount}"/>
                             </DataGrid.Columns>
                         </DataGrid>-->
-                        <TreeView x:Name="tv_categorys" Margin="10">
+                        <TreeView x:Name="tv_activityTypes" Margin="10">
                             <TreeViewItem Header="root" Tag="1"  Selected="TreeViewItem_Selected"
                                           FontSize="18" Foreground="{StaticResource textColor}">
                                 <TreeViewItem Header="son1-1" Tag="2"  Selected="TreeViewItem_Selected"
@@ -293,10 +293,10 @@
                         </DockPanel>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <TextBox x:Name="tb_Code"  Text="{Binding CategoryId, Mode=OneWay}" Padding="10,0,5,0" 
+                                <TextBox x:Name="tb_Id"  Text="{Binding Id, Mode=OneWay}" Padding="10,0,5,0" 
                                     IsReadOnly="True"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="Code..."  
+                                     materialDesign:HintAssist.Hint="Id..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
@@ -327,18 +327,19 @@
 
                             </Grid>
                         </Border>
+
                         <Border Grid.Row="3" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <ComboBox x:Name="cb_CategoryParentId"    SelectedValue="{Binding CategoryParentId, Mode=OneWay}"
+                                <ComboBox x:Name="cb_ParentTypeId"    SelectedValue="{Binding ParentTypeId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="CategoryParentId..."  
+                                  materialDesign:HintAssist.Hint="ParentTypeId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0" 
                                    IsTextSearchEnabled ="False"
                                    IsEditable="True"
                                    StaysOpenOnEdit="true"
-                                   KeyUp ="cb_CategoryParentId_KeyUp"/>
+                                   KeyUp ="cb_ActivityTypeParentId_KeyUp"/>
                                 <Path Fill="#E81123" x:Name="p_error_CategoryParentId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -346,138 +347,48 @@
 
                             </Grid>
                         </Border>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_ProfitPercentage" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding ProfitPercentage, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="ProfitPercentage..."    
-                                        Foreground="{StaticResource textColor}"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ProfitPercentage" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
-                                                             Width="20" Height="20" Margin="0 5 10 5"
-                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_WholesalePercentage" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding WholesalePercentage, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="WholesalePercentage..."    
-                                        Foreground="{StaticResource textColor}"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_WholesalePercentage" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
-                                                             Width="20" Height="20" Margin="0 5 10 5"
-                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_FreePercentage" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding FreePercentage, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="FreePercentage..."    
-                                        Foreground="{StaticResource textColor}"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FreePercentage" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
-                                                             Width="20" Height="20" Margin="0 5 10 5"
-                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_DiscountPercentage" Grid.Row="8"  Padding="10,0,5,0"  
-                                         Text="{Binding DiscountPercentage, Mode=OneWay}"
-                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                         materialDesign:HintAssist.Hint="DiscountPercentage..."    
-                                        Foreground="{StaticResource textColor}"    
-                                     BorderThickness="0" Tag="decimal"
-                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
-                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_DiscountPercentage" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-
-                                </Grid>
-                            </Border>
-                            <materialDesign:PackIcon Grid.Column="1" Foreground="{StaticResource Grey}" Kind="PercentOutline"   
-                                                             Width="20" Height="20" Margin="0 5 10 5"
-                                                             HorizontalAlignment="Right" VerticalAlignment="Center" />
-                        </Grid>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="txt_CanContainItems" Grid.Row="0" Grid.Column="0" 
-                                Margin="10" Text="CanContainItems" Foreground="#6e6e6e"
+                            <TextBlock x:Name="txt_IsFinal" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="IsFinal" Foreground="#6e6e6e"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                   FontSize="12"/>
-                            <ToggleButton x:Name="tgl_CanContainItems" Grid.Row="0" Grid.Column="1"    IsChecked="True"
+                            <ToggleButton x:Name="tgl_IsFinal" Grid.Row="0" Grid.Column="1"    IsChecked="True"
                                  VerticalAlignment="Center" Padding="10,0,5,0" 
                                               Margin="10"  />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="txt_AllContributors" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="AllContributors" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                            <ToggleButton x:Name="tgl_AllContributors" Grid.Row="0" Grid.Column="1"    IsChecked="True"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10"  />
+                        </StackPanel>
+                         <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="txt_OnlyFamilyCardHolder" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="OnlyFamilyCardHolder" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                            <ToggleButton x:Name="tgl_OnlyFamilyCardHolder" Grid.Row="0" Grid.Column="1"    IsChecked="True"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10"  />
+                        </StackPanel>
+                         <StackPanel Orientation="Horizontal">
                             <TextBlock x:Name="txt_IsBlocked" Grid.Row="0" Grid.Column="0" 
                                 Margin="10" Text="IsBlocked" Foreground="#6e6e6e"
                             HorizontalAlignment="Left" VerticalAlignment="Center"
                                   FontSize="12"/>
                             <ToggleButton x:Name="tgl_IsBlocked" Grid.Row="0" Grid.Column="1"    IsChecked="True"
+                                 VerticalAlignment="Center" Padding="10,0,5,0" 
+                                              Margin="10"  />
+                        </StackPanel>
+                         <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="txt_OnlyOneActivity" Grid.Row="0" Grid.Column="0" 
+                                Margin="10" Text="OnlyOneActivity" Foreground="#6e6e6e"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                                  FontSize="12"/>
+                            <ToggleButton x:Name="tgl_OnlyOneActivity" Grid.Row="0" Grid.Column="1"    IsChecked="True"
                                  VerticalAlignment="Center" Padding="10,0,5,0" 
                                               Margin="10"  />
                         </StackPanel>
