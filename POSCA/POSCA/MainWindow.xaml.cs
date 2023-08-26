@@ -1,6 +1,7 @@
 ﻿using POSCA.Classes;
 using POSCA.View.catalog;
 using POSCA.View.customers;
+using POSCA.View.customers.activities;
 using POSCA.View.customers.customerSectionData;
 using POSCA.View.customers.customerTransaction;
 using POSCA.View.customerTransactions.customerTransactionTransaction;
@@ -437,7 +438,7 @@ namespace POSCA
 
 
             txt_customerActivities.Text = AppSettings.resourcemanager.GetString("ContributorActivities");
-            txt_activitiesTypes.Text = AppSettings.resourcemanager.GetString("ActivitiesTypes");
+            txt_activitiesType.Text = AppSettings.resourcemanager.GetString("ActivitiesTypes");
             txt_activities.Text = AppSettings.resourcemanager.GetString("Activities");
             txt_subscriptionRequest.Text = AppSettings.resourcemanager.GetString("SubscriptionRequest");
             txt_activitiesReport.Text = AppSettings.resourcemanager.GetString("ActivitiesReport");
@@ -1045,7 +1046,22 @@ namespace POSCA
             }
         }
 
-       
+        private void btn_activitiesType_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_activitiesType.Instance);
+
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+
+        }
         private void Btn_customerData_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -1173,22 +1189,7 @@ namespace POSCA
             }
 
         }
-        private void btn_activitiesTypes_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                grid_main.Children.Clear();
-                grid_main.Children.Add(uc_deathOfCustomer.Instance);
-
-                Button button = sender as Button;
-                secondMenuTitleActivate(button.Tag.ToString());
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-
-        }
+       
 
         private void btn_activities_Click(object sender, RoutedEventArgs e)
         {
@@ -1198,7 +1199,7 @@ namespace POSCA
         private void btn_SubscriptionRequest_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        }   
 
         private void btn_activitiesReport_Click(object sender, RoutedEventArgs e)
         {

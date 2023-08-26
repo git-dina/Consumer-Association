@@ -1052,7 +1052,7 @@
                         </StackPanel>
                     </Expander>
                     <!--#region  customers-->
-                            <Expander  x:Name="exp_customers" Tag="customerSectionData_customerTransaction" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
+                        <Expander  x:Name="exp_customers" Tag="customerSectionData_customerTransaction_customerActivities" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
                         <Expander.Header>
                             <Grid Margin="0 -15 0 -15"   >
                                 <Grid.ColumnDefinitions>
@@ -1061,12 +1061,12 @@
                                 </Grid.ColumnDefinitions>
                                 <Path Fill="White" x:Name="path_iconCustomers" Stretch="Fill"  
                               HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20"
+                                VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
                               Data="{StaticResource customer}"/>
                                 <TextBlock Text="customers" Foreground="White" x:Name="txt_customers"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
-                                           FontWeight="SemiBold" FontSize="14"
+                                   FontWeight="SemiBold" FontSize="14"
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
@@ -1083,8 +1083,8 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="customerData"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData" Foreground="#A8AEC6" x:Name="txt_customerData"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                        Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
                                     <Button   Height="50"
@@ -1104,17 +1104,17 @@
                                     </Button>
                                     <Button   Height="50"
                                   Grid.Row="1"
-                           Tag="fundChange" 
-                          x:Name="btn_fundChange"  Click="Btn_fundChange_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
+                                         Tag="fundChange" 
+                                        x:Name="btn_fundChange"  Click="Btn_fundChange_Click"
+                                        Background="{x:Null}" BorderBrush="{x:Null}"   
+                                        Padding="35 0 0 0" >
                                         <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
                                             <TextBlock Text="fundChange"  Tag="customerSectionData_customerArea_job_kinshipTies_hirarachyStructure_customerBank_customerData_fundChange" Foreground="#A8AEC6" x:Name="txt_fundChange"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
-                              Grid.Column="1"      Margin="30,0,0,0"/>
+                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                            Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
                                     <!--#region  customerSectionData-->
@@ -1126,24 +1126,24 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Path Fill="White" x:Name="path_iconCustomerSectionData" Stretch="Fill"  
-                              HorizontalAlignment="Center" Grid.Column="0"  
-                         VerticalAlignment="Center" Width="20" Height="20"
+                                       HorizontalAlignment="Center" Grid.Column="0"  
+                                      VerticalAlignment="Center" Width="20" Height="20"
                                       Margin="5 10"
-                              Data="{StaticResource data}"/>
+                                          Data="{StaticResource data}"/>
                                         <TextBlock Text="customerSectionData" Foreground="White" x:Name="txt_customerSectionData"
                                    HorizontalAlignment="Left" VerticalAlignment="Center" 
                                            FontWeight="SemiBold" FontSize="14"
-                              Grid.Column="1"      Margin="10,0,0,0"/>
+                                          Grid.Column="1"      Margin="10,0,0,0"/>
                                     </Grid>
                                 </Expander.Header>
                                 <!--#region  customerSectionData-->
                                 <StackPanel>
                                     <Button   Height="50"
                                   Grid.Row="1"
-                           Tag="customerArea" 
-                          x:Name="btn_customerArea"  Click="Btn_customerArea_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
+                                               Tag="customerArea" 
+                                              x:Name="btn_customerArea"  Click="Btn_customerArea_Click"
+                                        Background="{x:Null}" BorderBrush="{x:Null}"   
+                                        Padding="35 0 0 0" >
                                         <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -1154,11 +1154,11 @@
                                         </Grid>
                                     </Button>
                                     <Button   Height="50"
-                                  Grid.Row="1"
-                           Tag="job" 
-                          x:Name="btn_job"  Click="Btn_job_Click"
-                    Background="{x:Null}" BorderBrush="{x:Null}"   
-                    Padding="35 0 0 0" >
+                                                  Grid.Row="1"
+                                           Tag="job" 
+                                          x:Name="btn_job"  Click="Btn_job_Click"
+                                    Background="{x:Null}" BorderBrush="{x:Null}"   
+                                    Padding="35 0 0 0" >
                                         <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>
@@ -1338,23 +1338,22 @@
                                             </Expander.Header>
                                             <!--#region  customerActivities-->
                                             <StackPanel>
-                                            <Button   Height="50"
+                                                <Button   Height="50"
                                                           Grid.Row="1"
-                                                   Tag="activitiesTypes" 
-                                                  x:Name="btn_activitiesTypes"  Click="btn_activitiesTypes_Click"
+                                                   Tag="activitiesType" 
+                                                  x:Name="btn_activitiesType"  Click="btn_activitiesType_Click"
                                             Background="{x:Null}" BorderBrush="{x:Null}"   
                                             Padding="35 0 0 0" >                
                                                 <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="*"/>
                                                         </Grid.ColumnDefinitions>
-                                                    <TextBlock Text="activitiesTypes"  Tag="customerActivities_activitiesTypes_" Foreground="#A8AEC6" x:Name="txt_activitiesTypes"
+                                                    <TextBlock Text="activitiesType"  Tag="customerActivities_activitiesType_" Foreground="#A8AEC6" x:Name="txt_activitiesType"
                                                            HorizontalAlignment="Left" VerticalAlignment="Center" 
                                                       Grid.Column="1"      Margin="30,0,0,0"/>
                                                     </Grid>
                                                 </Button>
-
-                                            <Button   Height="50"
+                                                <Button   Height="50"
                                                     Grid.Row="1"
                                                    Tag="activities" 
                                                   x:Name="btn_activities"  Click="btn_activities_Click"
@@ -1369,7 +1368,7 @@
                                                   Grid.Column="1"      Margin="30,0,0,0"/>
                                                     </Grid>
                                                 </Button>
-                                            <Button   Height="50"
+                                                <Button   Height="50"
                                                  Grid.Row="1"
                                                Tag="subscriptionRequest" 
                                                       x:Name="btn_SubscriptionRequest"  Click="btn_SubscriptionRequest_Click"
