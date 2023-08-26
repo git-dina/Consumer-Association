@@ -70,12 +70,10 @@ namespace POSCA.View.customers.activities
                 requiredControlList = new List<string> { "Name" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
@@ -83,7 +81,7 @@ namespace POSCA.View.customers.activities
 
                 Keyboard.Focus(tb_Name);
 
-                await FillCombo.fillCategorysWithDefault(cb_ParentTypeId);
+                //await FillCombo.fillActivityTypesWithDefault(cb_ParentTypeId);
                 await Clear();
                 await Search();
 
@@ -108,7 +106,7 @@ namespace POSCA.View.customers.activities
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Id, AppSettings.resourcemanager.GetString("trNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
-
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ParentTypeId, AppSettings.resourcemanager.GetString("ParentActivityHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("GeneralNotesHint"));
 
             txt_IsFinal.Text = AppSettings.resourcemanager.GetString("FinalType");
@@ -138,6 +136,8 @@ namespace POSCA.View.customers.activities
                     {
                         activityType.Name = tb_Name.Text;
 
+                        if (cb_ParentTypeId.SelectedIndex > 0)
+                            activityType.ParentTypeId = (int)cb_ParentTypeId.SelectedValue;
                         if (tgl_AllContributors.IsChecked == true)
                             activityType.AllContributors = true;
                         else
@@ -207,7 +207,8 @@ namespace POSCA.View.customers.activities
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
                         activityType.Name = tb_Name.Text;
-
+                        if (cb_ParentTypeId.SelectedIndex > 0)
+                            activityType.ParentTypeId = (int)cb_ParentTypeId.SelectedValue;
                         if (tgl_AllContributors.IsChecked == true)
                             activityType.AllContributors = true;
                         else
@@ -241,7 +242,7 @@ namespace POSCA.View.customers.activities
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
 
                             await Clear();
                             await Search();
@@ -340,44 +341,7 @@ namespace POSCA.View.customers.activities
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        /*
-        private async void Dg_ActivityType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                //HelpClass.StartAwait(grid_main);
-                //selection
-
-                if (dg_ActivityType.SelectedIndex != -1)
-                {
-                    ActivityType = dg_ActivityType.SelectedItem as ActivityType;
-                    this.DataContext = ActivityType;
-
-                    tb_DiscountPercentage.Text = HelpClass.DecTostring(ActivityType.DiscountPercentage);
-
-                }
-                HelpClass.clearValidate(requiredControlList, this);
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private void Dg_ActivityType_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                MessageBox.Show("Mouse Double Click on datagrid");
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        */
+      
         private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
         {//refresh
             try
@@ -449,7 +413,7 @@ namespace POSCA.View.customers.activities
             //dg_ActivityType.SelectedIndex = -1;
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            await FillCombo.fillCategorysWithDefault(cb_ParentTypeId);
+            await FillCombo.fillActivityTypesWithDefault(cb_ParentTypeId);
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
