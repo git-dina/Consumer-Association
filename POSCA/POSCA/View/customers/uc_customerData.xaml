@@ -414,6 +414,27 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+
+                                    <TextBox x:Name="tb_CustomerId"  Text="{Binding CustomerId, Mode=OneWay}" Padding="10,0,5,0" 
+                                     IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CustomerId..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" Tag="int" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                                     />
+                                </Grid>
+
+                            </Border>
+                        </Grid>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
                             <Border  Grid.Row="2" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_Name"  Text="{Binding Name, Mode=OneWay}" Padding="10,0,5,0" 
@@ -1168,11 +1189,11 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="IBAN..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
+                                     MaxLength="30" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
-                                     KeyDown="tb_IBAN_KeyDown"/>
+                                     />
                                      
                                         <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_IBAN" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -1195,7 +1216,6 @@
                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_BankId"    SelectedValue="{Binding BankId, Mode=OneWay}"
-                                IsEnabled="False"
                                               Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
                                 materialDesign:HintAssist.Hint="BankId..."  
                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}" 

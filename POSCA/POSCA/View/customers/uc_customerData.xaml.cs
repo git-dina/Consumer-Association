@@ -121,6 +121,7 @@ namespace POSCA.View.customers
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CurrentPurchses, AppSettings.resourcemanager.GetString("CurrentCustomerPurHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumber, AppSettings.resourcemanager.GetString("BoxNumberHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerIdHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("CustomerNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Family, AppSettings.resourcemanager.GetString("FamilyHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_Gender, AppSettings.resourcemanager.GetString("GenderHint"));
@@ -221,6 +222,7 @@ namespace POSCA.View.customers
             customer.CivilNum = tb_CivilNum.Text;
             customer.Family = tb_Family.Text;
             customer.InvoiceName = tb_InvoiceName.Text;
+            customer.IBAN = tb_IBAN.Text;
 
             if (cb_Gender.SelectedValue != null)
                 customer.Gender = cb_Gender.SelectedValue.ToString();
@@ -309,6 +311,17 @@ namespace POSCA.View.customers
                 return false;
             }
             else return true;
+        } 
+        
+        private bool isValidIBAN()
+        {
+            if (tb_IBAN.Text != "" && tb_IBAN.Text.Length < 30)
+            {
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("IBANLengthAlert"), animation: ToasterAnimation.FadeIn);
+
+                return false;
+            }
+            else return true;
         }
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
         {//add
@@ -321,7 +334,7 @@ namespace POSCA.View.customers
                     customer = new Customer();
                     if (HelpClass.validate(requiredControlList, this) )
                     {
-                        if (isValidCivilNum())
+                        if (isValidCivilNum() && isValidIBAN())
                         {
                             AssignValueToObject();
 
@@ -364,7 +377,7 @@ namespace POSCA.View.customers
                     {
                         if (HelpClass.validate(requiredControlList, this) )
                         {
-                            if (isValidCivilNum())
+                            if (isValidCivilNum() && isValidIBAN())
                             {
                                 AssignValueToObject();
 
@@ -574,6 +587,8 @@ namespace POSCA.View.customers
 
             var maxId = await FillCombo.customer.GetMaxFundNum();
             tb_BoxNumber.Text = maxId.ToString();
+             var maxCustomerId = await FillCombo.customer.GetMaxCustomerId();
+            tb_CustomerId.Text = maxCustomerId.ToString();
 
             //clear address info
             tb_Street.Text = "";
@@ -826,25 +841,7 @@ namespace POSCA.View.customers
             }
         }
 
-        private void tb_IBAN_KeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.Return)
-                {
-                    var bank = FillCombo.customerBankList.Where(x => x.Symbol.ToLower() == tb_IBAN.Text.ToLower()).FirstOrDefault();
-                    if (bank != null)
-                        cb_BankId.SelectedValue = bank.BankId;
-                    else
-                        cb_BankId.SelectedValue = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
+        
         private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
         {
             try

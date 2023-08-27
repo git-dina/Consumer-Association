@@ -6635,4 +6635,10 @@
   <data name="RegistrationTotalNumberHint" xml:space="preserve">
     <value>العدد الكلي للتسجيل...</value>
   </data>
+  <data name="CustomerIdHint" xml:space="preserve">
+    <value>رقم المساهم...</value>
+  </data>
+  <data name="IBANLengthAlert" xml:space="preserve">
+    <value>IBAN يجب أن يكون 30 محرف</value>
+  </data>
 </root>

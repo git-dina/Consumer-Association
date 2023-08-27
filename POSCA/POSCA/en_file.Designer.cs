@@ -1231,6 +1231,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contributor No....
+        /// </summary>
+        internal static string CustomerIdHint {
+            get {
+                return ResourceManager.GetString("CustomerIdHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name In Invoice....
         /// </summary>
         internal static string CustomerInvNameHint {
@@ -2325,6 +2334,15 @@ namespace POSCA {
         internal static string IBANHint {
             get {
                 return ResourceManager.GetString("IBANHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IBAN Length Should Be 30 Digit.
+        /// </summary>
+        internal static string IBANLengthAlert {
+            get {
+                return ResourceManager.GetString("IBANLengthAlert", resourceCulture);
             }
         }
         

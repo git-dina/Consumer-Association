@@ -108,16 +108,16 @@ namespace POSCA.View.customers.activities
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ParentTypeId, AppSettings.resourcemanager.GetString("ParentActivityHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodeHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountNumber, AppSettings.resourcemanager.GetString("AccountNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountName, AppSettings.resourcemanager.GetString("AccountNameHint"));
+            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountCode, AppSettings.resourcemanager.GetString("AccountCodeHint"));
+            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountNumber, AppSettings.resourcemanager.GetString("AccountNumberHint"));
+            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_AccountName, AppSettings.resourcemanager.GetString("AccountNameHint"));
 
             txt_IsFinal.Text = AppSettings.resourcemanager.GetString("FinalType");
-            txt_AllContributors.Text = AppSettings.resourcemanager.GetString("AllContributors");
+            //txt_AllContributors.Text = AppSettings.resourcemanager.GetString("AllContributors");
             txt_OnlyFamilyCardHolder.Text = AppSettings.resourcemanager.GetString("OnlyFamilyCardHolder");
             txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_OnlyOneActivity.Text = AppSettings.resourcemanager.GetString("RegisterInOneActivity");
-            txt_accountInformationTitle.Text = AppSettings.resourcemanager.GetString("AccountDetails");
+            //txt_accountInformationTitle.Text = AppSettings.resourcemanager.GetString("AccountDetails");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -142,10 +142,10 @@ namespace POSCA.View.customers.activities
 
                         if (cb_ParentTypeId.SelectedIndex > 0)
                             activityType.ParentTypeId = (int)cb_ParentTypeId.SelectedValue;
-                        if (tgl_AllContributors.IsChecked == true)
-                            activityType.AllContributors = true;
-                        else
-                            activityType.AllContributors = false;
+                        //if (tgl_AllContributors.IsChecked == true)
+                        //    activityType.AllContributors = true;
+                        //else
+                        //    activityType.AllContributors = false;
 
                          if (tgl_IsFinal.IsChecked == true)
                             activityType.IsFinal = true;
@@ -168,9 +168,9 @@ namespace POSCA.View.customers.activities
                             activityType.IsBlocked = false;
 
                         activityType.Notes = tb_Notes.Text;
-                        activityType.AccountCode = tb_AccountCode.Text;
-                        activityType.AccountName = tb_AccountName.Text;
-                        activityType.AccountNumber = tb_AccountNumber.Text;
+                        //activityType.AccountCode = tb_AccountCode.Text;
+                        //activityType.AccountName = tb_AccountName.Text;
+                        //activityType.AccountNumber = tb_AccountNumber.Text;
 
                         FillCombo.activityTypeList = await activityType.save(activityType);
 
@@ -216,10 +216,10 @@ namespace POSCA.View.customers.activities
                         activityType.Name = tb_Name.Text;
                         if (cb_ParentTypeId.SelectedIndex > 0)
                             activityType.ParentTypeId = (int)cb_ParentTypeId.SelectedValue;
-                        if (tgl_AllContributors.IsChecked == true)
-                            activityType.AllContributors = true;
-                        else
-                            activityType.AllContributors = false;
+                        //if (tgl_AllContributors.IsChecked == true)
+                        //    activityType.AllContributors = true;
+                        //else
+                        //    activityType.AllContributors = false;
 
                         if (tgl_IsFinal.IsChecked == true)
                             activityType.IsFinal = true;
@@ -242,9 +242,9 @@ namespace POSCA.View.customers.activities
                             activityType.IsBlocked = false;
 
                         activityType.Notes = tb_Notes.Text;
-                        activityType.AccountCode = tb_AccountCode.Text;
-                        activityType.AccountName = tb_AccountName.Text;
-                        activityType.AccountNumber = tb_AccountNumber.Text;
+                        //activityType.AccountCode = tb_AccountCode.Text;
+                        //activityType.AccountName = tb_AccountName.Text;
+                        //activityType.AccountNumber = tb_AccountNumber.Text;
 
                         FillCombo.activityTypeList = await activityType.save(activityType);
 

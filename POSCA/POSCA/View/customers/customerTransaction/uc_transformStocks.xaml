@@ -144,7 +144,7 @@
                                 <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
                                 <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
                                 <DataGridTextColumn Width="*"  Header="StocksCount" Binding="{Binding Path=TransactionStocksCount}"/>
-                                <DataGridTextColumn Width="*"  Header="StocksPrice" Binding="{Binding Path=StocksPrice}"/>
+                                <DataGridTextColumn Width="*"  Header="TotalPrice" Binding="{Binding Path=TotalPrice, Converter={StaticResource accuracyConverter }}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

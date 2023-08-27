@@ -6378,4 +6378,10 @@ Main Documents</value>
   <data name="RegistrationTotalNumberHint" xml:space="preserve">
     <value>Registration Total Number...</value>
   </data>
+  <data name="CustomerIdHint" xml:space="preserve">
+    <value>Contributor No...</value>
+  </data>
+  <data name="IBANLengthAlert" xml:space="preserve">
+    <value>IBAN Length Should Be 30 Digit</value>
+  </data>
 </root>

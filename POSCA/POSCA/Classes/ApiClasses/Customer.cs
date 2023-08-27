@@ -137,6 +137,22 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
+        } 
+        public async Task<String> GetMaxCustomerId()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/GetMaxCustomerId";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
         }
         internal async Task<bool> CheckBoxNumber(long fundNumber,long customerId)
         {
