@@ -574,7 +574,7 @@ namespace POSCA.View.catalog
                 }
             }
         }
-        private void TreeViewItem_Selected(object sender, RoutedEventArgs e)
+        private async void TreeViewItem_Selected(object sender, RoutedEventArgs e)
         {
             
             TreeViewItem treeViewItem = sender as TreeViewItem;
@@ -584,7 +584,7 @@ namespace POSCA.View.catalog
                 setSelectedStyleTreeViewItem();
                 category = FillCombo.categoryList.Where(x => x.CategoryId ==long.Parse( treeViewItem.Tag.ToString())).FirstOrDefault();
                 this.DataContext = category;
-                //MessageBox.Show($"Category Id is: {treeViewItem.Tag}, Category Name: {treeViewItem.Header}");
+                 await FillCombo.fillCategorysWithDefault(cb_CategoryParentId, category.CategoryId);
 
             }
             treeViewItem.IsExpanded = true;

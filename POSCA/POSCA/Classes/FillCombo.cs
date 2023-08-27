@@ -343,12 +343,13 @@ namespace POSCA.Classes
             return categoryList;
         }
 
-        static public async Task fillCategorysWithDefault(ComboBox combo)
+        static public async Task fillCategorysWithDefault(ComboBox combo, long id=0)
         {
             if (categoryList is null)
                 await RefreshCategorys();
 
             var lst = categoryList.ToList();
+            lst = lst.Where(x => x.CategoryId != id).ToList();
             Category sup = new Category();
             sup.Name = "-";
             sup.CategoryId = 0;
@@ -1266,12 +1267,13 @@ namespace POSCA.Classes
             return activityTypeList;
         }
 
-        static public async Task fillActivityTypesWithDefault(ComboBox combo)
+        static public async Task fillActivityTypesWithDefault(ComboBox combo,int id=0)
         {
             if (activityTypeList is null)
                 await RefreshActivityTypes();
 
             var lst = activityTypeList.ToList();
+            lst = lst.Where(x => x.Id != id).ToList();
             ActivityType sup = new ActivityType();
             sup.Name = "-";
             sup.Id = 0;
@@ -1292,6 +1294,49 @@ namespace POSCA.Classes
 
             combo.SelectedValuePath = "Id";
             combo.DisplayMemberPath = "Name";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
+        
+        #region Activity 
+        static public List<Activity> activitiesList;
+        static public Activity activity = new Activity();
+
+        static public async Task<IEnumerable<Activity>> RefreshActivities()
+        {
+            activitiesList = await activity.get(true);
+
+            return activitiesList;
+        }
+
+        static public async Task fillActivitiesWithDefault(ComboBox combo)
+        {
+            if (activitiesList is null)
+                await RefreshActivities();
+
+            var lst = activitiesList.ToList();
+ 
+            Activity sup = new Activity();
+            sup.Description = "-";
+            sup.ActivityId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+
+            combo.SelectedValuePath = "ActivityId";
+            combo.DisplayMemberPath = "Description";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillActivities(ComboBox combo)
+        {
+            if (activitiesList is null)
+                await RefreshActivities();
+
+            var lst = activitiesList.Where(x => x.IsBlocked == false).ToList();
+            combo.ItemsSource = lst;
+
+            combo.SelectedValuePath = "ActivityId";
+            combo.DisplayMemberPath = "Description";
             combo.SelectedIndex = -1;
         }
         #endregion

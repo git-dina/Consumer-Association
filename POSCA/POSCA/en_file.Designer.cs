@@ -124,6 +124,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Code....
+        /// </summary>
+        internal static string AccountCodeHint {
+            get {
+                return ResourceManager.GetString("AccountCodeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Administrative cash Administrative cash transfers.
         /// </summary>
         internal static string AccountCodetHint {
@@ -133,11 +142,38 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account Details.
+        /// </summary>
+        internal static string AccountDetails {
+            get {
+                return ResourceManager.GetString("AccountDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accounting Transfer.
         /// </summary>
         internal static string AccountingTransfer {
             get {
                 return ResourceManager.GetString("AccountingTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Name....
+        /// </summary>
+        internal static string AccountNameHint {
+            get {
+                return ResourceManager.GetString("AccountNameHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Number....
+        /// </summary>
+        internal static string AccountNumberHint {
+            get {
+                return ResourceManager.GetString("AccountNumberHint", resourceCulture);
             }
         }
         
@@ -174,6 +210,33 @@ namespace POSCA {
         internal static string ActivitiesTypes {
             get {
                 return ResourceManager.GetString("ActivitiesTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity.
+        /// </summary>
+        internal static string Activity {
+            get {
+                return ResourceManager.GetString("Activity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity Basic Value....
+        /// </summary>
+        internal static string ActivityBasicValueHint {
+            get {
+                return ResourceManager.GetString("ActivityBasicValueHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity Type....
+        /// </summary>
+        internal static string ActivityTypeHint {
+            get {
+                return ResourceManager.GetString("ActivityTypeHint", resourceCulture);
             }
         }
         
@@ -354,6 +417,15 @@ namespace POSCA {
         internal static string AutomtedNumberHint {
             get {
                 return ResourceManager.GetString("AutomtedNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Number....
+        /// </summary>
+        internal static string AvailableNumberHint {
+            get {
+                return ResourceManager.GetString("AvailableNumberHint", resourceCulture);
             }
         }
         
@@ -2960,6 +3032,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximum Benefit From The Activity....
+        /// </summary>
+        internal static string MaximumBenefitFromTheActivityHint {
+            get {
+                return ResourceManager.GetString("MaximumBenefitFromTheActivityHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to أقصى وقت للاحتفاظ بالحجز.
         /// </summary>
         internal static string maximumTimeToKeepReservation {
@@ -3658,6 +3739,15 @@ namespace POSCA {
         internal static string paid {
             get {
                 return ResourceManager.GetString("paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parent Activity....
+        /// </summary>
+        internal static string ParentActivityHint {
+            get {
+                return ResourceManager.GetString("ParentActivityHint", resourceCulture);
             }
         }
         
@@ -4472,6 +4562,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Regestrtion Count....
+        /// </summary>
+        internal static string RegestrtionCountHint {
+            get {
+                return ResourceManager.GetString("RegestrtionCountHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registered In Ministry.
         /// </summary>
         internal static string RegisteredInMinistry {
@@ -4486,6 +4585,15 @@ namespace POSCA {
         internal static string RegisterInOneActivity {
             get {
                 return ResourceManager.GetString("RegisterInOneActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Total Number....
+        /// </summary>
+        internal static string RegistrationTotalNumberHint {
+            get {
+                return ResourceManager.GetString("RegistrationTotalNumberHint", resourceCulture);
             }
         }
         
@@ -18447,6 +18555,15 @@ namespace POSCA {
         internal static string upperLimitAdministrativePayment {
             get {
                 return ResourceManager.GetString("upperLimitAdministrativePayment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity Value After Discount....
+        /// </summary>
+        internal static string ValueAfterDiscountHint {
+            get {
+                return ResourceManager.GetString("ValueAfterDiscountHint", resourceCulture);
             }
         }
         

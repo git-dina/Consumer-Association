@@ -6596,4 +6596,43 @@
   <data name="RegisterInOneActivity" xml:space="preserve">
     <value>التسجيل بنشاط واحد على مستوى هذا النوع</value>
   </data>
+  <data name="AccountCodeHint" xml:space="preserve">
+    <value>كود الحساب...</value>
+  </data>
+  <data name="AccountDetails" xml:space="preserve">
+    <value>بيانات الحساب</value>
+  </data>
+  <data name="AccountNameHint" xml:space="preserve">
+    <value>اسم الحساب...</value>
+  </data>
+  <data name="AccountNumberHint" xml:space="preserve">
+    <value>رقم الحساب...</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>نشاط</value>
+  </data>
+  <data name="ActivityBasicValueHint" xml:space="preserve">
+    <value>قيمة النشاط الأساسية...</value>
+  </data>
+  <data name="ActivityTypeHint" xml:space="preserve">
+    <value>نوع النشاط...</value>
+  </data>
+  <data name="MaximumBenefitFromTheActivityHint" xml:space="preserve">
+    <value>الحد الأقصى للاستفادة من النشاط...</value>
+  </data>
+  <data name="ParentActivityHint" xml:space="preserve">
+    <value>النشاط الأب...</value>
+  </data>
+  <data name="RegestrtionCountHint" xml:space="preserve">
+    <value>العدد الكلي للتسجيل...</value>
+  </data>
+  <data name="ValueAfterDiscountHint" xml:space="preserve">
+    <value>قيمة النشاط بعد الحسم...</value>
+  </data>
+  <data name="AvailableNumberHint" xml:space="preserve">
+    <value>العدد المتبقي...</value>
+  </data>
+  <data name="RegistrationTotalNumberHint" xml:space="preserve">
+    <value>العدد الكلي للتسجيل...</value>
+  </data>
 </root>

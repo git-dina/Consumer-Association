@@ -20,11 +20,16 @@ namespace POSCA.Classes.ApiClasses
         public bool OnlyFamilyCardHolder { get; set; }
         public bool IsBlocked { get; set; }
         public bool OnlyOneActivity { get; set; }
+        public string AccountCode { get; set; }
+        public string AccountNumber { get; set; }
+        public string AccountName { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
+
+
         #endregion
 
         #region Methods
