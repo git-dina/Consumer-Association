@@ -243,6 +243,9 @@
     <Compile Include="View\customers\activities\uc_activities.xaml.cs">
       <DependentUpon>uc_activities.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\customers\activities\uc_activitiesReport.xaml.cs">
+      <DependentUpon>uc_activitiesReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\customers\activities\uc_activitiesType.xaml.cs">
       <DependentUpon>uc_activitiesType.xaml</DependentUpon>
     </Compile>
@@ -421,6 +424,10 @@
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
     <Page Include="View\customers\activities\uc_activities.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\customers\activities\uc_activitiesReport.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
