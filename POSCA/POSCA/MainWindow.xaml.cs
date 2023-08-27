@@ -1207,14 +1207,36 @@ namespace POSCA
             }
         }
 
-        private void btn_SubscriptionRequest_Click(object sender, RoutedEventArgs e)
+        private void btn_subscriptionRequest_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                grid_main.Children.Clear();
+                //grid_main.Children.Add(uc_subscriptionRequest.Instance);
 
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }   
 
         private void btn_activitiesReport_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_activitiesReport.Instance);
 
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
         private void Btn_generalSettings_Click(object sender, RoutedEventArgs e)
         {

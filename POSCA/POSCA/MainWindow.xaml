@@ -1371,7 +1371,7 @@
                                                 <Button   Height="50"
                                                  Grid.Row="1"
                                                Tag="subscriptionRequest" 
-                                                      x:Name="btn_SubscriptionRequest"  Click="btn_SubscriptionRequest_Click"
+                                                      x:Name="btn_subscriptionRequest"  Click="btn_subscriptionRequest_Click"
                                                 Background="{x:Null}" BorderBrush="{x:Null}"   
                                                 Padding="35 0 0 0" >    
                                                 <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
