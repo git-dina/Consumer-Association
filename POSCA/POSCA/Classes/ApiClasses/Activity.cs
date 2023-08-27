@@ -16,7 +16,7 @@ namespace POSCA.Classes.ApiClasses
         public string Description { get; set; }
         public decimal BasicValue { get; set; }
         public decimal ValueAfterDiscount { get; set; }
-        public decimal MaximumBenefit { get; set; }
+        public int MaximumBenefit { get; set; }
         public int RegestrtionCount { get; set; }
         public Nullable<System.DateTime> StartDate { get; set; } = DateTime.Now;
         public Nullable<System.DateTime> EndDate { get; set; } = DateTime.Now;
@@ -30,7 +30,7 @@ namespace POSCA.Classes.ApiClasses
 
         //extra
         public string TypeName { get; set; }
-        public int RemainCount { get; set; }
+        public int? RemainCount { get; set; }
 
         #endregion
 

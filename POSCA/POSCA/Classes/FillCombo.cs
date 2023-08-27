@@ -1273,7 +1273,7 @@ namespace POSCA.Classes
                 await RefreshActivityTypes();
 
             var lst = activityTypeList.ToList();
-            lst = lst.Where(x => x.Id != id).ToList();
+            lst = lst.Where(x => x.Id != id && x.IsFinal == false).ToList();
             ActivityType sup = new ActivityType();
             sup.Name = "-";
             sup.Id = 0;
@@ -1285,12 +1285,13 @@ namespace POSCA.Classes
             combo.DisplayMemberPath = "Name";
             combo.SelectedIndex = -1;
         }
-        static public async Task fillActivityTypes(ComboBox combo)
+        static public async Task fillFinalActivityTypes(ComboBox combo)
         {
             if (activityTypeList is null)
                 await RefreshActivityTypes();
 
-            combo.ItemsSource = activityTypeList;
+            var lst = activityTypeList.Where(x => x.IsBlocked == false && x.IsFinal == true).ToList();
+            combo.ItemsSource = lst;
 
             combo.SelectedValuePath = "Id";
             combo.DisplayMemberPath = "Name";

@@ -86,7 +86,7 @@ namespace POSCA.View.customers.activities
 
 
                 Keyboard.Focus(tb_Description);
-                await FillCombo.fillActivities(cb_ActivityId);
+                await FillCombo.fillFinalActivityTypes(cb_ActivityId);
                 await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
@@ -149,7 +149,7 @@ namespace POSCA.View.customers.activities
                         activity.TypeId =(int) cb_ActivityId.SelectedValue;
                         activity.BasicValue = decimal.Parse(tb_BasicValue.Text);
                         activity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
-                        activity.MaximumBenefit = decimal.Parse(tb_MaximumBenefit.Text);
+                        activity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);
                         activity.RegestrtionCount = int.Parse(tb_RegestrtionCount.Text);
                         activity.StartDate = dp_StartDate.SelectedDate;
                         activity.EndDate = dp_EndDate.SelectedDate;
@@ -204,7 +204,7 @@ namespace POSCA.View.customers.activities
                             activity.TypeId = (int)cb_ActivityId.SelectedValue;
                             activity.BasicValue = decimal.Parse(tb_BasicValue.Text);
                             activity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
-                            activity.MaximumBenefit = decimal.Parse(tb_MaximumBenefit.Text);
+                            activity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);
                             activity.RegestrtionCount = int.Parse(tb_RegestrtionCount.Text);
                             activity.StartDate = dp_StartDate.SelectedDate;
                             activity.EndDate = dp_EndDate.SelectedDate;
@@ -551,5 +551,35 @@ namespace POSCA.View.customers.activities
         }
 
         #endregion
+
+        private void dp_StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dp_StartDate.SelectedDate != null && dp_EndDate.SelectedDate != null)
+                    if (dp_StartDate.SelectedDate.Value.Date > dp_EndDate.SelectedDate.Value.Date)
+                        dp_EndDate.SelectedDate = dp_StartDate.SelectedDate.Value.Date;
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void dp_EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (dp_StartDate.SelectedDate != null && dp_EndDate.SelectedDate != null)
+                    if (dp_StartDate.SelectedDate.Value.Date > dp_EndDate.SelectedDate.Value.Date)
+                        dp_EndDate.SelectedDate = dp_StartDate.SelectedDate.Value.Date;
+
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
     }
 }

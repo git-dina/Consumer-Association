@@ -401,41 +401,52 @@
                                 </Path>
                             </Grid>
                         </Border>
-                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_BasicValue"  Text="{Binding BasicValue, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="BasicValue..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" Tag="decimal"
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_BasicValue" 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_BasicValue" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding BasicValue, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="BasicValue..."    
+                                        Foreground="{StaticResource textColor}"    
+                                     BorderThickness="0" Tag="decimal"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_BasicValue" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
                              Data="{StaticResource infoCircle}">
-                                </Path>
-                            </Grid>
-                        </Border>
+                                    </Path>
+                                </Grid>
+                            </Border>
+                            <Border  Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                                <Grid   >
+                                    <TextBox x:Name="tb_ValueAfterDiscount" Grid.Row="8"  Padding="10,0,5,0"  
+                                         Text="{Binding ValueAfterDiscount, Mode=OneWay}"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         materialDesign:HintAssist.Hint="ValueAfterDiscount..."    
+                                        Foreground="{StaticResource textColor}"    
+                                     BorderThickness="0" Tag="int"
+                                 BorderBrush="AliceBlue" MaxLength="100" PreviewTextInput="Number_PreviewTextInput"
+                                materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
+                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ValueAfterDiscount" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                    </Path>
+                                </Grid>
+                            </Border>
+                        </Grid>
 
-                        <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                            <Grid   >
-                                <TextBox x:Name="tb_ValueAfterDiscount"  Text="{Binding ValueAfterDiscount, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="ValueAfterDiscount..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" Tag="decimal"
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_ValueAfterDiscount" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                </Path>
-                            </Grid>
-                        </Border>
+                        
                     <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <TextBox x:Name="tb_MaximumBenefit"  Text="{Binding MaximumBenefit, Mode=OneWay}" Padding="10,0,5,0" 
@@ -444,7 +455,7 @@
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" BorderThickness="0" PreviewTextInput="Number_PreviewTextInput"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" Tag="decimal"
+                                     Height="40"  Margin="0,0" Tag="int"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                 <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_MaximumBenefit" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -512,7 +523,8 @@
                                          SelectedDate="{Binding StartDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="StartDate..."  
-                                        Foreground="{StaticResource textColor}"   Height="40"    />
+                                        Foreground="{StaticResource textColor}"   Height="40"    
+                                         SelectedDateChanged="dp_StartDate_SelectedDateChanged"/>
                                     <Path Fill="#E81123" x:Name="p_error_StartDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
@@ -528,7 +540,8 @@
                                          SelectedDate="{Binding EndDate, Mode=OneWay}" Padding="10,0,5,0"  
                                         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                         materialDesign:HintAssist.Hint="EndDate..."  
-                                        Foreground="{StaticResource textColor}"   Height="40"    />
+                                        Foreground="{StaticResource textColor}"   Height="40"   
+                                        SelectedDateChanged="dp_EndDate_SelectedDateChanged"/>
                                     <Path Fill="#E81123" x:Name="p_error_EndDate" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
