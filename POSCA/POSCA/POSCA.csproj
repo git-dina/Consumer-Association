@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -204,6 +204,7 @@
     <Compile Include="Classes\ApiClasses\Customer.cs" />
     <Compile Include="Classes\ApiClasses\CustomerActivity.cs" />
     <Compile Include="Classes\ApiClasses\CustomerBank.cs" />
+    <Compile Include="Classes\ApiClasses\CustomerBankAccount.cs" />
     <Compile Include="Classes\ApiClasses\CustomerTransaction.cs" />
     <Compile Include="Classes\ApiClasses\FamilyCard.cs" />
     <Compile Include="Classes\ApiClasses\FundChange.cs" />
