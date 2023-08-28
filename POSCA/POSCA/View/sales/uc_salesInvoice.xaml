@@ -281,7 +281,7 @@
         <Grid x:Name="brd_grid1_1" Grid.Row="1" Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition x:Name="rd_locationsGrid" Height="*"/>
+                <RowDefinition x:Name="rd_locationsGrid" Height="auto"/>
             </Grid.RowDefinitions>
             <Border  
             BorderThickness="0"  
@@ -408,51 +408,10 @@
                             Margin="10"/>
 
                         </Grid>
-                        <Border Grid.Row="1" Margin="5"  
+                        <!--<Border Grid.Row="1" Margin="5"  
                         BorderThickness="0 0 0 1" 
-                        BorderBrush="{StaticResource LightGrey}"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Grid.Column="0"
-                                Text="Customer" 
-                            x:Name="txt_CustomerTitle"  
-                                         Margin="10"
-                            Foreground="{StaticResource textColor}" 
-                            FontWeight="Bold" FontSize="12" 
-                            />
-                            <TextBlock  x:Name="txt_Customer"
-                                    Grid.Row="0" Grid.Column="1"
-                            Text="" 
-                                    HorizontalAlignment="Right"
-                            Foreground="{StaticResource textColor}" 
-                             FontSize="12"  
-                            Margin="10"/>
-
-                        </Grid>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock   Grid.Column="0"
-                                Text="Balance" 
-                            x:Name="txt_CustomerBalanceTitle"  
-                                         Margin="10"
-                            Foreground="{StaticResource textColor}" 
-                            FontWeight="Bold" FontSize="12" 
-                            />
-                            <TextBlock  x:Name="txt_CustomerBalance"
-                                    Grid.Row="0" Grid.Column="1"
-                            Text="" 
-                                    HorizontalAlignment="Right"
-                            Foreground="{StaticResource textColor}" 
-                             FontSize="12"  
-                            Margin="10"/>
-
-                        </Grid>
+                        BorderBrush="{StaticResource LightGrey}"/>-->
+                       
                         <!--<Border Grid.Row="2" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
                                 <ComboBox x:Name="cb_CustomerId"    SelectedValue="{Binding CustomerId, Mode=TwoWay}"
@@ -499,12 +458,13 @@
                 <Grid  Margin="0,10" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock   Text="payTypes" x:Name="txt_payType" Foreground="{StaticResource SecondColor}" 
+                    <!--<TextBlock   Text="payTypes" x:Name="txt_payType" Foreground="{StaticResource SecondColor}" 
                                                 FontWeight="Bold" FontSize="12"  
-                                       HorizontalAlignment="Left" Margin="20,5,5,5"/>
-                    <Grid  Grid.Row="2" >
+                                       HorizontalAlignment="Left" Margin="20,5,5,5"/>-->
+                    <!--<Grid  Grid.Row="2" >
                         <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGridPayTypes" BorderThickness="0" 
                             Background="White"/>
                         <DataGrid x:Name="dg_payTypes" 
@@ -533,7 +493,49 @@
                                 <DataGridTextColumn IsReadOnly="True" Width="*" x:Name="col_amount"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
                             </DataGrid.Columns>
                         </DataGrid>
-                     </Grid>
+                     </Grid>-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock   Grid.Column="0"
+         Text="Customer" 
+     x:Name="txt_CustomerTitle"  
+                  Margin="10"
+     Foreground="{StaticResource textColor}" 
+     FontWeight="Bold" FontSize="12" 
+     />
+                        <TextBlock  x:Name="txt_Customer"
+             Grid.Row="0" Grid.Column="1"
+     Text="" 
+             HorizontalAlignment="Right"
+     Foreground="{StaticResource textColor}" 
+      FontSize="12"  
+     Margin="10"/>
+
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock   Grid.Column="0"
+         Text="Balance" 
+     x:Name="txt_CustomerBalanceTitle"  
+                  Margin="10"
+     Foreground="{StaticResource textColor}" 
+     FontWeight="Bold" FontSize="12" 
+     />
+                        <TextBlock  x:Name="txt_CustomerBalance"
+             Grid.Row="0" Grid.Column="1"
+     Text="" 
+             HorizontalAlignment="Right"
+     Foreground="{StaticResource textColor}" 
+      FontSize="12"  
+     Margin="10"/>
+
+                    </Grid>
 
                 </Grid>
                 <!--</ScrollViewer>-->
