@@ -74,12 +74,10 @@ namespace POSCA.View.customers
                 requiredControlList = new List<string> { "Name", "BoxNumber","CivilNum", "AutomtedNumber" , "MobileNumber" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
@@ -310,11 +308,33 @@ namespace POSCA.View.customers
                 customer.customerAddress.KinshipId = (int)cb_KinshipId.SelectedValue;
         }
 
+        private bool validateCustomerData()
+        {
+            if(isValidCivilNum())
+            {
+                if(isValidCustomerName())
+                if(isValidIBAN())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         private bool isValidCivilNum()
         {
             if (tb_CivilNum.Text.Length < 12)
             {
                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CivilNumLengthAlert"), animation: ToasterAnimation.FadeIn);
+
+                return false;
+            }
+            else return true;
+        } 
+        private bool isValidCustomerName()
+        {
+            if (tb_Name.Text.Trim().Split(' ').Length < 3)
+            {
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNameLengthAlert"), animation: ToasterAnimation.FadeIn);
 
                 return false;
             }
@@ -342,7 +362,7 @@ namespace POSCA.View.customers
                     customer = new Customer();
                     if (HelpClass.validate(requiredControlList, this) )
                     {
-                        if (isValidCivilNum() && isValidIBAN())
+                        if (validateCustomerData())
                         {
                             AssignValueToObject();
 
@@ -385,7 +405,7 @@ namespace POSCA.View.customers
                     {
                         if (HelpClass.validate(requiredControlList, this) )
                         {
-                            if (isValidCivilNum() && isValidIBAN())
+                            if (validateCustomerData())
                             {
                                 AssignValueToObject();
 
@@ -494,6 +514,7 @@ namespace POSCA.View.customers
                     customer = dg_customer.SelectedItem as Customer;
                     this.DataContext = customer;
 
+                    tb_CurrentPurchses.Text = HelpClass.DecTostring(customer.CurrentPurchses);
                     tb_JoiningSharesCount.Text = customer.JoiningSharesCount.ToString();
                     tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
                     tb_AutomtedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
@@ -590,6 +611,8 @@ namespace POSCA.View.customers
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         async Task Clear()
         {
+            requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber" };
+
             customer = new Customer();
             this.DataContext = new Customer();
             dg_customer.SelectedIndex = -1;
@@ -602,6 +625,7 @@ namespace POSCA.View.customers
             // nameFirstChange = true;
             //clear address info
             tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString("continouse");
+            tb_CurrentPurchses.Text = "";
             tb_Street.Text = "";
             tb_HouseNumber.Text = "";
             tb_Floor.Text ="";
@@ -908,7 +932,6 @@ namespace POSCA.View.customers
                 //only  digits
 
                 var txt = textBox.Text.Trim();
-                var txtArr = txt.Split(' ');
                 int countSpaces = txt.Count(Char.IsWhiteSpace);
                 if (countSpaces > 2)
                 {
@@ -923,6 +946,38 @@ namespace POSCA.View.customers
             catch (Exception ex)
             {
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void tb_IBAN_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ValidateEmpty_TextChange(null, null);
+                if(tb_IBAN.Text != "")
+                    requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber","BankId" };
+                else
+                    requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber" };
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void cb_BankId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                ValidateEmpty_TextChange(null, null);
+                if (cb_BankId.SelectedIndex > 0)
+                    requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber", "IBAN" };
+                else
+                    requiredControlList = new List<string> { "Name", "BoxNumber", "CivilNum", "AutomtedNumber", "MobileNumber" };
+            }
+            catch
+            {
+
             }
         }
     }

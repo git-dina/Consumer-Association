@@ -1267,6 +1267,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The name must consist of three words.
+        /// </summary>
+        internal static string CustomerNameLengthAlert {
+            get {
+                return ResourceManager.GetString("CustomerNameLengthAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customer No.
         /// </summary>
         internal static string CustomerNo {
