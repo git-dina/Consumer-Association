@@ -88,7 +88,7 @@ namespace POSCA.View.customers
 
                 await fillKinshipTiess();
 
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -108,6 +108,7 @@ namespace POSCA.View.customers
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FamilyCardId, AppSettings.resourcemanager.GetString("FamilyCardNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
@@ -270,12 +271,12 @@ namespace POSCA.View.customers
             }
         }
 
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -343,21 +344,24 @@ namespace POSCA.View.customers
         }
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        private void Clear()
+        private async Task Clear()
         {
             familyCard = new FamilyCard();
             this.DataContext = new FamilyCard();
             dg_familyCard.SelectedIndex = -1;
-    
+
+            var maxCardId = await familyCard.GetMaxFamilyCardId();
+            tb_FamilyCardId.Text = maxCardId.ToString();
+
             #region clear inputs
-            //tb_CustomerId.Text = "";
-            //tb_CustomerName.Text = "";
-            //tb_CustomerStatus.Text = "";
-            //tb_CivilNum.Text = "";
-            //tb_AutomatedNumber.Text = "";
-            //tb_BoxNumber.Text = "";
+            tb_CustomerId.Text = "";
+           tb_CustomerName.Text = "";
+            tb_CustomerStatus.Text = "";
+            tb_CivilNum.Text = "";
+            tb_AutomatedNumber.Text = "";
+            tb_BoxNumber.Text = "";
             #endregion
-        
+            RefreshEscortDataGrid();
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -516,22 +520,21 @@ namespace POSCA.View.customers
 
                     if (familyCard != null)
                     {
-                        if (familyCard.CustomerStatus != "continouse")
+                        if (familyCard.CustomerStatus.Trim() != "continouse")
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         else
                         {
-                            //tb_CustomerName.Text = customer.Name;
-                            //tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
-                            //tb_BoxNumber.Text = customer.BoxNumber.ToString();
-                            //tb_CivilNum.Text = customer.CivilNum.ToString();
-                            //tb_AutomatedNumber.Text = customer.customerAddress.AutomtedNumber.ToString();
+                            tb_CustomerName.Text = familyCard.CustomerName;
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(familyCard.CustomerStatus);
+                            tb_BoxNumber.Text = familyCard.BoxNumber.ToString();
+                            tb_CivilNum.Text = familyCard.CivilNum.ToString();
+                           tb_AutomatedNumber.Text = familyCard.AutomatedNumber.ToString();
 
                         }
                     }
                     else
                     {
-                        familyCard = new FamilyCard();
-                        //tb_CustomerId.Text = "";
+                        await Clear();
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     this.DataContext = familyCard;
@@ -546,7 +549,50 @@ namespace POSCA.View.customers
                 HelpClass.EndAwait(grid_main);
             }
         }
-        
+        private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                if (e.Key == Key.Return && tb_BoxNumber.Text != "")
+                {
+                    familyCard = new FamilyCard();
+                    HelpClass.StartAwait(grid_main);
+
+                    familyCard = await FillCombo.customer.GetFamilyCardByBoxNumber(long.Parse(tb_BoxNumber.Text));
+
+                    if (familyCard != null)
+                    {
+                        if (familyCard.CustomerStatus.Trim() != "continouse")
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            tb_CustomerId.Text = familyCard.CustomerId.ToString();
+                            tb_CustomerName.Text = familyCard.CustomerName;
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(familyCard.CustomerStatus);
+                            //tb_BoxNumber.Text = familyCard.BoxNumber.ToString();
+                            tb_CivilNum.Text = familyCard.CivilNum.ToString();
+                            tb_AutomatedNumber.Text = familyCard.AutomatedNumber.ToString();
+
+                        }
+                    }
+                    else
+                    {
+                        await Clear();
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+                    this.DataContext = familyCard;
+                    RefreshEscortDataGrid();
+                    HelpClass.EndAwait(grid_main);
+
+                }
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
+        }
         private void Btn_cardActive_Click(object sender, RoutedEventArgs e)
         {
 
@@ -675,7 +721,7 @@ namespace POSCA.View.customers
             }
         }
 
-
+        
         private void Dgc_IsCustomer_Checking(object sender, RoutedEventArgs e)
         {
             try
@@ -769,5 +815,7 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+       
     }
 }

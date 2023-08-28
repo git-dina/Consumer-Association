@@ -1987,6 +1987,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Family Card No....
+        /// </summary>
+        internal static string FamilyCardNumberHint {
+            get {
+                return ResourceManager.GetString("FamilyCardNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Family....
         /// </summary>
         internal static string FamilyHint {

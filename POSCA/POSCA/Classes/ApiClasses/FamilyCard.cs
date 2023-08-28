@@ -11,7 +11,7 @@ namespace POSCA.Classes.ApiClasses
     public class FamilyCard
     {
         #region Attributes
-        public long FamilyCardId { get; set; }
+        public long? FamilyCardId { get; set; }
         public Nullable<long> CustomerId { get; set; }
         public Nullable<System.DateTime> ReleaseDate { get; set; } = DateTime.Now;
         public Nullable<bool> IsStopped { get; set; }
@@ -52,9 +52,24 @@ namespace POSCA.Classes.ApiClasses
                 }
             }
             return result;
-        } 
-        
-    
+        }
+        public async Task<String> GetMaxFamilyCardId()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Customer/GetMaxFamilyCardId";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
+                }
+            }
+            return result;
+        }
+
         #endregion
     }
 

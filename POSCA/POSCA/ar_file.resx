@@ -6644,6 +6644,9 @@
   <data name="CustomerNameLengthAlert" xml:space="preserve">
     <value>يجب أن يتكون الاسم من ثلاث كلمات</value>
   </data>
+  <data name="FamilyCardNumberHint" xml:space="preserve">
+    <value>رقم بطاقة العائلة...</value>
+  </data>
   <data name="WithdrawnDateHint" xml:space="preserve">
     <value>تاريخ الانسحاب...</value>
   </data>

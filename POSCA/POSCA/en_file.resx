@@ -6387,6 +6387,9 @@ Main Documents</value>
   <data name="CustomerNameLengthAlert" xml:space="preserve">
     <value>The name must consist of three words</value>
   </data>
+  <data name="FamilyCardNumberHint" xml:space="preserve">
+    <value>Family Card No...</value>
+  </data>
   <data name="WithdrawnDateHint" xml:space="preserve">
     <value>Withdrawn Date...</value>
   </data>
