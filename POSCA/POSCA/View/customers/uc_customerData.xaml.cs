@@ -86,7 +86,7 @@ namespace POSCA.View.customers
                 swapToData();
 
 
-                Keyboard.Focus(tb_Name);
+                Keyboard.Focus(tb_BoxNumber);
 
                 FillCombo.fillGender(cb_Gender);
                 FillCombo.fillMartialStatus(cb_MaritalStatus);
@@ -96,8 +96,6 @@ namespace POSCA.View.customers
                 await FillCombo.fillKinshipTiessWithDefault(cb_KinshipId);
                 await FillCombo.fillCustomerBanksWithDefault(cb_BankId);
 
-
-                //await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -125,6 +123,8 @@ namespace POSCA.View.customers
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("CustomerNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Family, AppSettings.resourcemanager.GetString("FamilyHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_Gender, AppSettings.resourcemanager.GetString("GenderHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_WithdrawnDate, AppSettings.resourcemanager.GetString("WithdrawnDateHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CheckNumber, AppSettings.resourcemanager.GetString("CheckNumberHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_InvoiceName, AppSettings.resourcemanager.GetString("CustomerInvNameHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_MaritalStatus, AppSettings.resourcemanager.GetString("MaritalStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_JobId, AppSettings.resourcemanager.GetString("trJobHint"));
@@ -201,6 +201,7 @@ namespace POSCA.View.customers
             {
                 btn_archiving.IsEnabled = false;
                 tb_BoxNumber.IsEnabled = true;
+                sp_withdrawnData.Visibility = Visibility.Collapsed;
             }
             else
             {
@@ -208,8 +209,15 @@ namespace POSCA.View.customers
                     btn_archiving.IsEnabled = true;
                 else
                     btn_archiving.IsEnabled = false;
+
+                if (customer.WithdrawnDate != null)
+                    sp_withdrawnData.Visibility = Visibility.Visible;
+                else
+                    sp_withdrawnData.Visibility = Visibility.Collapsed;
                 tb_BoxNumber.IsEnabled = false;
             }
+
+            tb_CustomerStatus.Foreground = tb_CustomerStatus.Text.Equals(AppSettings.resourcemanager.GetString("withdrawn")) ? Brushes.Red : Brushes.Black;
         }
 
 
@@ -582,15 +590,18 @@ namespace POSCA.View.customers
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         async Task Clear()
         {
+            customer = new Customer();
             this.DataContext = new Customer();
             dg_customer.SelectedIndex = -1;
 
-            var maxId = await FillCombo.customer.GetMaxFundNum();
-            tb_BoxNumber.Text = maxId.ToString();
+            //var maxId = await FillCombo.customer.GetMaxFundNum();
+            //tb_BoxNumber.Text = maxId.ToString();
              var maxCustomerId = await FillCombo.customer.GetMaxCustomerId();
             tb_CustomerId.Text = maxCustomerId.ToString();
 
+            // nameFirstChange = true;
             //clear address info
+            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString("continouse");
             tb_Street.Text = "";
             tb_HouseNumber.Text = "";
             tb_Floor.Text ="";
@@ -607,6 +618,8 @@ namespace POSCA.View.customers
             tb_WorkAddress.Text = "";
             cb_KinshipId.SelectedValue = null;
             // last 
+            inputEditable();
+
             HelpClass.clearValidate(requiredControlList, this);
         }
         string input;
@@ -863,17 +876,49 @@ namespace POSCA.View.customers
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        bool nameFirstChange = true;
-        private void tb_Name_LostFocus(object sender, RoutedEventArgs e)
+        //bool nameFirstChange = true;
+        //private void tb_Name_LostFocus(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        validateEmpty_LostFocus(sender, e);
+        //        if (nameFirstChange && customer.CustomerId == 0)
+        //        {
+        //            nameFirstChange = false;
+        //            tb_InvoiceName.Text = tb_Name.Text;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
+
+        private void tb_Name_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
-                validateEmpty_LostFocus(sender, e);
-                if (nameFirstChange && customer.CustomerId == 0)
+                HelpClass.validate(requiredControlList, this);
+
+                TextBox textBox = sender as TextBox;
+
+                RegexOptions options = RegexOptions.None;
+                Regex regex = new Regex(@"[ ]{2,}", options);
+                textBox.Text = regex.Replace(textBox.Text, @" ");
+                //only  digits
+
+                var txt = textBox.Text.Trim();
+                var txtArr = txt.Split(' ');
+                int countSpaces = txt.Count(Char.IsWhiteSpace);
+                if (countSpaces > 2)
                 {
-                    nameFirstChange = false;
-                    tb_InvoiceName.Text = tb_Name.Text;
+                    int k = txt.LastIndexOf(" ", txt.LastIndexOf(" ") + 1);
+                    String res = txt.Substring(0, k);
+                    textBox.Text = res;
                 }
+                tb_InvoiceName.Text = tb_Name.Text;
+
+                tb_Family.Text = textBox.Text.Split(' ').Last();
             }
             catch (Exception ex)
             {

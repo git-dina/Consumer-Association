@@ -18757,6 +18757,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Withdrawn Date....
+        /// </summary>
+        internal static string WithdrawnDateHint {
+            get {
+                return ResourceManager.GetString("WithdrawnDateHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to without.
         /// </summary>
         internal static string without {

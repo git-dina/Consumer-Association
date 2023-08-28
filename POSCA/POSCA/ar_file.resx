@@ -6641,4 +6641,7 @@
   <data name="IBANLengthAlert" xml:space="preserve">
     <value>IBAN يجب أن يكون 30 محرف</value>
   </data>
+  <data name="WithdrawnDateHint" xml:space="preserve">
+    <value>تاريخ الانسحاب...</value>
+  </data>
 </root>

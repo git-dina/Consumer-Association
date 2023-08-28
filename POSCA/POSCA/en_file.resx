@@ -6384,4 +6384,7 @@ Main Documents</value>
   <data name="IBANLengthAlert" xml:space="preserve">
     <value>IBAN Length Should Be 30 Digit</value>
   </data>
+  <data name="WithdrawnDateHint" xml:space="preserve">
+    <value>Withdrawn Date...</value>
+  </data>
 </root>

@@ -142,7 +142,7 @@ namespace POSCA.View.sales
             txt_LastInvTitle.Text = AppSettings.resourcemanager.GetString("LastInvoice");
             txt_CustomerTitle.Text = AppSettings.resourcemanager.GetString("IsCustomer");
             txt_CustomerBalanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
-            txt_payType.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
+            //txt_payType.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
 
 
             txt_QuantityTitle.Text = AppSettings.resourcemanager.GetString("trAmount");
@@ -158,8 +158,8 @@ namespace POSCA.View.sales
             dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("trPrice");
             dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("trTotal");
            
-            col_paymentType.Header = AppSettings.resourcemanager.GetString("trPaymentType");
-            col_amount.Header = AppSettings.resourcemanager.GetString("trPaymentType");
+           // col_paymentType.Header = AppSettings.resourcemanager.GetString("trPaymentType");
+           // col_amount.Header = AppSettings.resourcemanager.GetString("trPaymentType");
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("trSalesInvoices");

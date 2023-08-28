@@ -353,15 +353,15 @@
                             <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
 
-                                    <TextBox x:Name="tb_BoxNumber"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="BoxNumber..."  
+                                    <TextBox x:Name="tb_CustomerId"  Text="{Binding CustomerId, Mode=OneWay}" Padding="10,0,5,0" 
+                                     IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CustomerId..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" Tag="int" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
-                                     KeyDown="tb_BoxNumber_KeyDown"/>
+                                     />
                                 </Grid>
                             </Border>
                             <Grid Grid.Column="1">
@@ -391,11 +391,11 @@
                                 </Border>
 
                                 <Border Grid.Row="2" Grid.Column="1" 
-                    BorderThickness="0"  Height="35"
-                        CornerRadius="7" BorderBrush="Black"
-                    Background="{StaticResource SecondColor}" Padding="0" Margin="5 5 10 5"
-                    >
-                                    <Button   
+                                        BorderThickness="0"  Height="35"
+                                            CornerRadius="7" BorderBrush="Black"
+                                        Background="{StaticResource SecondColor}" Padding="0" Margin="5 5 10 5"
+                                        >   
+                            <Button   
                             Grid.Column="1"  Padding="0"    
                                 TabIndex="-1"
                                 Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Right" 
@@ -417,19 +417,98 @@
                             <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
 
-                                    <TextBox x:Name="tb_CustomerId"  Text="{Binding CustomerId, Mode=OneWay}" Padding="10,0,5,0" 
-                                     IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="CustomerId..."  
+                                    <TextBox x:Name="tb_BoxNumber"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="BoxNumber..."  
+                                     Foreground="{StaticResource textColor}"  PreviewTextInput="Number_PreviewTextInput"
+                                     MaxLength="50" Tag="int" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                                     KeyDown="tb_BoxNumber_KeyDown"/>
+                                  
+                                </Grid>
+
+                            </Border>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    <Grid   >
+                                        <TextBox x:Name="tb_CustomerStatus"  Text="{Binding CustomerStatus, Mode=OneWay}" Padding="10,0,5,0" 
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CustomerStatus..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                        <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CustomerStatus" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                        </Path>
+                                    </Grid>
+                                </Border>
+
+                            </Grid>
+                        </Grid>
+                        <StackPanel x:Name="sp_withdrawnData" Visibility="Collapsed">
+                            <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                <Grid   >
+
+                                    <TextBox x:Name="tb_WithdrawnDate"  Text="{Binding BoxNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    IsReadOnly="True" 
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="WithdrawnDate..."  
                                      Foreground="{StaticResource textColor}"  
                                      MaxLength="50" Tag="int" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
-                                     />
+                                     KeyDown="tb_BoxNumber_KeyDown"/>
+                                  
                                 </Grid>
 
                             </Border>
+                            
+                                
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Border  Grid.Column="0" CornerRadius="0" Margin="5,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                                    
+                                    <Grid>
+                                    <TextBox x:Name="tb_CheckNumber"  Text="{Binding CheckNumber, Mode=OneWay}" Padding="10,0,5,0" 
+                                    IsReadOnly="True"
+                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     materialDesign:HintAssist.Hint="CheckNumber..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                            <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CheckNumber" 
+                              HorizontalAlignment="Right" Visibility="Collapsed"   
+                         VerticalAlignment="Center" Width="15"  Height="15"
+                             Data="{StaticResource infoCircle}">
+                                            </Path>
+                                        </Grid>
+                                    </Border>
+
+                                </Grid>
                         </Grid>
+                        </StackPanel>
+
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -444,7 +523,8 @@
                                      MaxLength="50" BorderThickness="0"
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                      Height="40"  Margin="0,0" 
-                                     LostFocus="tb_Name_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                    TextChanged="tb_Name_TextChanged"
+                                    />
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Name" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"
@@ -455,6 +535,7 @@
                             <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <TextBox x:Name="tb_Family"  Text="{Binding Family, Mode=OneWay}" Padding="10,0,5,0" 
+                                     IsReadOnly="True"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="Family..."  
                                      Foreground="{StaticResource textColor}"  
@@ -524,9 +605,9 @@
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                      materialDesign:HintAssist.Hint="CivilNum..."  
                                      Foreground="{StaticResource textColor}"  
-                                     MaxLength="12" BorderThickness="0"
+                                     MaxLength="12" BorderThickness="0" 
                                      materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" Tag="int"
+                                     Height="40"  Margin="0,0" Tag="int" PreviewTextInput="Number_PreviewTextInput"
                                      LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
                                     <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_FamilyCard" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
@@ -1009,25 +1090,8 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
-                                <Grid   >
-                                    <TextBox x:Name="tb_CustomerStatus"  Text="{Binding CustomerStatus, Mode=OneWay}" Padding="10,0,5,0" 
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                     materialDesign:HintAssist.Hint="CustomerStatus..."  
-                                     Foreground="{StaticResource textColor}"  
-                                     MaxLength="50" BorderThickness="0"
-                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-                                     Height="40"  Margin="0,0" 
-                                     LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
-                                    <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CustomerStatus" 
-                              HorizontalAlignment="Right" Visibility="Collapsed"   
-                         VerticalAlignment="Center" Width="15"  Height="15"
-                             Data="{StaticResource infoCircle}">
-                                    </Path>
-                                </Grid>
-                            </Border>
 
-                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Border  Grid.Row="2"  Grid.Column="0"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                                 <Grid   >
                                     <ComboBox x:Name="cb_MemberNature"    SelectedValue="{Binding MemberNature, Mode=OneWay}"
                                 Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"

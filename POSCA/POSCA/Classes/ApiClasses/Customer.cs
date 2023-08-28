@@ -26,7 +26,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> JobId { get; set; }
         public Nullable<System.DateTime> DOB { get; set; } = DateTime.Now;
         public Nullable<long> BoxNumber { get; set; }
-        public string CustomerStatus { get; set; } = "continouse";
+        public string CustomerStatus { get; set; } =AppSettings.resourcemanager.GetString( "continouse");
         public string MemberNature { get; set; }
         public Nullable<int> SessionNumber { get; set; }
         public Nullable<System.DateTime> JoinDate { get; set; } = DateTime.Now;
@@ -63,7 +63,8 @@ namespace POSCA.Classes.ApiClasses
         public int JoinDay { get; set; }
         public int JoinMonth { get; set; }
         public int JoinYear { get; set; }
-
+        public string CheckNumber { get; set; }
+        public Nullable<System.DateTime> WithdrawnDate { get; set; }
 
         #endregion
 
@@ -122,22 +123,22 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
-        public async Task<String> GetMaxFundNum()
-        {
-            var result = "";
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "Customer/GetMaxFundNum";
+        //public async Task<String> GetMaxFundNum()
+        //{
+        //    var result = "";
+        //    Dictionary<string, string> parameters = new Dictionary<string, string>();
+        //    string method = "Customer/GetMaxFundNum";
 
-            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
-            foreach (Claim c in claims)
-            {
-                if (c.Type == "scopes")
-                {
-                    result = c.Value;
-                }
-            }
-            return result;
-        } 
+        //    IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+        //    foreach (Claim c in claims)
+        //    {
+        //        if (c.Type == "scopes")
+        //        {
+        //            result = c.Value;
+        //        }
+        //    }
+        //    return result;
+        //} 
         public async Task<String> GetMaxCustomerId()
         {
             var result = "";
