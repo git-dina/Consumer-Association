@@ -1212,7 +1212,7 @@ namespace POSCA
             try
             {
                 grid_main.Children.Clear();
-                //grid_main.Children.Add(uc_subscriptionRequest.Instance);
+                grid_main.Children.Add(uc_subscriptionRequest.Instance);
 
                 Button button = sender as Button;
                 secondMenuTitleActivate(button.Tag.ToString());

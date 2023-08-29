@@ -26,7 +26,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<int> JobId { get; set; }
         public Nullable<System.DateTime> DOB { get; set; } = DateTime.Now;
         public Nullable<long> BoxNumber { get; set; }
-        public string CustomerStatus { get; set; } =AppSettings.resourcemanager.GetString( "continouse");
+        public string CustomerStatus { get; set; } = "continouse";
         public string MemberNature { get; set; }
         public Nullable<int> SessionNumber { get; set; }
         public Nullable<System.DateTime> JoinDate { get; set; } = DateTime.Now;
