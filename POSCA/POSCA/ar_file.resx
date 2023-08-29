@@ -6650,4 +6650,16 @@
   <data name="WithdrawnDateHint" xml:space="preserve">
     <value>تاريخ الانسحاب...</value>
   </data>
+  <data name="ActivityHint" xml:space="preserve">
+    <value>النشاط...</value>
+  </data>
+  <data name="FromHint" xml:space="preserve">
+    <value>من...</value>
+  </data>
+  <data name="TheActivity" xml:space="preserve">
+    <value>النشاط</value>
+  </data>
+  <data name="ToHint" xml:space="preserve">
+    <value>إلى...</value>
+  </data>
 </root>

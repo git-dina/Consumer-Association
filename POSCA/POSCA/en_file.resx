@@ -2300,7 +2300,7 @@ Main Documents</value>
     <value>انتهت مدة صلاحية البرنامج من </value>
   </data>
   <data name="trExport" xml:space="preserve">
-    <value>تصدير</value>
+    <value>Export</value>
   </data>
   <data name="trExportAlertContent" xml:space="preserve">
     <value>طلب تصدير مواد بانتظار الموافقة</value>
@@ -5947,13 +5947,13 @@ Main Documents</value>
     <value>Name In Invoice...</value>
   </data>
   <data name="CustomerName" xml:space="preserve">
-    <value>Customer Name</value>
+    <value>Contributor Name</value>
   </data>
   <data name="CustomerNameHint" xml:space="preserve">
-    <value>Customer Name...</value>
+    <value>Contributor Name...</value>
   </data>
   <data name="CustomerNo" xml:space="preserve">
-    <value>Customer No</value>
+    <value>Contributor No</value>
   </data>
   <data name="customersData" xml:space="preserve">
     <value>customers Data</value>
@@ -6112,7 +6112,7 @@ Main Documents</value>
     <value>Check Number...</value>
   </data>
   <data name="CustomerNoHint" xml:space="preserve">
-    <value>Customer No...</value>
+    <value>Contributor No...</value>
   </data>
   <data name="CustomersTransactions" xml:space="preserve">
     <value>Customers Transactions</value>
@@ -6392,5 +6392,32 @@ Main Documents</value>
   </data>
   <data name="WithdrawnDateHint" xml:space="preserve">
     <value>Withdrawn Date...</value>
+  </data>
+  <data name="ActivityEndDate" xml:space="preserve">
+    <value>Activity End Date</value>
+  </data>
+  <data name="ActivityHint" xml:space="preserve">
+    <value>Activity...</value>
+  </data>
+  <data name="ActivityStartDate" xml:space="preserve">
+    <value>Activity Start Date</value>
+  </data>
+  <data name="ActivityValueAfterDisc" xml:space="preserve">
+    <value>Activity Value After Discount</value>
+  </data>
+  <data name="ActivityValueBeforeDisc" xml:space="preserve">
+    <value>Activity Value Before Discount</value>
+  </data>
+  <data name="FromHint" xml:space="preserve">
+    <value>From...</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>Join Date</value>
+  </data>
+  <data name="TheActivity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="ToHint" xml:space="preserve">
+    <value>To...</value>
   </data>
 </root>

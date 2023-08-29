@@ -199,10 +199,15 @@ namespace POSCA.View.customers
             {
                 btn_archiving.IsEnabled = false;
                 tb_BoxNumber.IsEnabled = true;
+                tb_IBAN.IsEnabled = true;
+                cb_BankId.IsEnabled = true;
                 sp_withdrawnData.Visibility = Visibility.Collapsed;
             }
             else
             {
+                tb_IBAN.IsEnabled = false;
+                cb_BankId.IsEnabled = false;
+
                 if (customer.CanArchive)
                     btn_archiving.IsEnabled = true;
                 else
