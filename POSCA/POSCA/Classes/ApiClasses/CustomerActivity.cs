@@ -41,9 +41,9 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<List<CustomerActivity>> save(CustomerActivity activity)
+        public async Task<CustomerActivity> save(CustomerActivity activity)
         {
-            var result = new List<CustomerActivity>();
+            var result = new CustomerActivity();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             string method = "CustomerActivity/Save";
 
@@ -55,19 +55,19 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<CustomerActivity>(c.Value));
+                    result = JsonConvert.DeserializeObject<CustomerActivity>(c.Value);
                 }
             }
             return result;
         }
 
-        public async Task<List<CustomerActivity>> get(bool? isActive = null)
+        public async Task<List<CustomerActivity>> SearchActivities(string textSearch)
         {
             var result = new List<CustomerActivity>();
             Dictionary<string, string> parameters = new Dictionary<string, string>();
-            string method = "CustomerActivity/Get";
+            string method = "CustomerActivity/SearchActivities";
 
-            parameters.Add("isActive", isActive.ToString());
+            parameters.Add("textSearch", textSearch.ToString());
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)
@@ -80,9 +80,9 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<List<CustomerActivity>> delete(long activityId, long userId)
+        public async Task<int> delete(long activityId, long userId)
         {
-            var result = new List<CustomerActivity>();
+            var result =0;
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("itemId", activityId.ToString());
             parameters.Add("userId", userId.ToString());
@@ -93,7 +93,7 @@ namespace POSCA.Classes.ApiClasses
             {
                 if (c.Type == "scopes")
                 {
-                    result.Add(JsonConvert.DeserializeObject<CustomerActivity>(c.Value));
+                    result = int.Parse(c.Value);
                 }
             }
             return result;

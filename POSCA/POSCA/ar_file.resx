@@ -6683,6 +6683,9 @@
   <data name="UsedNumber" xml:space="preserve">
     <value>العدد المستخدم</value>
   </data>
+  <data name="HasNoFamilyCard" xml:space="preserve">
+    <value>ليس لديه بطاقة عائلة</value>
+  </data>
   <data name="RequestNumberHint" xml:space="preserve">
     <value>رقم الطلب...</value>
   </data>

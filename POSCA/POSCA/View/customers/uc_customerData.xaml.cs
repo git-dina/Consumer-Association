@@ -899,7 +899,10 @@ namespace POSCA.View.customers
                     }
 
                     // last
+                    if(isValid)
                     App.MoveToNextUIElement(e);
+                    else
+                        Keyboard.Focus(tb_BoxNumber);
                 }
             }
             catch (Exception ex)

@@ -56,6 +56,7 @@ namespace POSCA.View.customers.activities
 
         CustomerActivity customerActivity = new CustomerActivity();
         IEnumerable<CustomerActivity> customerActivitiesQuery;
+        Customer customer;
         string searchText = "";
         public static List<string> requiredControlList;
 
@@ -85,8 +86,8 @@ namespace POSCA.View.customers.activities
                 swapToData();
 
 
-                Keyboard.Focus(tb_Description);
-                await FillCombo.fillFinalActivityTypes(cb_ActivityId);
+                Keyboard.Focus(tb_BoxNumber);
+                await FillCombo.fillActivities(cb_ActivityId);
                 await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
@@ -115,14 +116,9 @@ namespace POSCA.View.customers.activities
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BasicValue, AppSettings.resourcemanager.GetString("ActivityBasicValueHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ValueAfterDiscount, AppSettings.resourcemanager.GetString("ValueAfterDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MaximumBenefit, AppSettings.resourcemanager.GetString("MaximumBenefitFromTheActivityHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_RegestrtionCount, AppSettings.resourcemanager.GetString("RegistrationTotalNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_RemainCount, AppSettings.resourcemanager.GetString("AvailableNumberHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_StartDate, AppSettings.resourcemanager.GetString("trStartDateHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(dp_EndDate, AppSettings.resourcemanager.GetString("trEndDateHint"));
-
+        
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
-            txt_IsBlocked.Text = AppSettings.resourcemanager.GetString("IsBlocked");
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
@@ -148,23 +144,16 @@ namespace POSCA.View.customers.activities
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
 
-                        customerActivity.Description = tb_Description.Text;
-                        customerActivity.TypeId =(int) cb_ActivityId.SelectedValue;
-                        customerActivity.BasicValue = decimal.Parse(tb_BasicValue.Text);
-                        customerActivity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
-                        customerActivity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);
-                        customerActivity.RegestrtionCount = int.Parse(tb_RegestrtionCount.Text);
-                        customerActivity.StartDate = dp_StartDate.SelectedDate;
-                        customerActivity.EndDate = dp_EndDate.SelectedDate;
+                        customerActivity.CustomerId = customer.CustomerId;
+                        customerActivity.ActivityId =(long) cb_ActivityId.SelectedValue;
+                        customerActivity.Count = int.Parse(tb_Count.Text);
+   
                         customerActivity.Notes = tb_Notes.Text;
-                        if (tgl_IsBlocked.IsChecked == true)
-                            customerActivity.IsBlocked = true;
-                        else
-                            customerActivity.IsBlocked = false;
+                      
                         customerActivity.CreateUserId = MainWindow.userLogin.userId;
 
-                        FillCombo.activitiesList = await customerActivity.save(customerActivity);
-                        if (FillCombo.activitiesList == null)
+                        var res = await customerActivity.save(customerActivity);
+                        if (res.RequestId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
@@ -198,28 +187,18 @@ namespace POSCA.View.customers.activities
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
-                    if (customerActivity.ActivityId > 0)
+                    if (customerActivity.RequestId > 0)
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
 
-                            customerActivity.Description = tb_Description.Text;
-                            customerActivity.TypeId = (int)cb_ActivityId.SelectedValue;
-                            customerActivity.BasicValue = decimal.Parse(tb_BasicValue.Text);
-                            customerActivity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
-                            customerActivity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);
-                            customerActivity.RegestrtionCount = int.Parse(tb_RegestrtionCount.Text);
-                            customerActivity.StartDate = dp_StartDate.SelectedDate;
-                            customerActivity.EndDate = dp_EndDate.SelectedDate;
+                            customerActivity.Count = int.Parse(tb_Count.Text);
+
                             customerActivity.Notes = tb_Notes.Text;
-                            if (tgl_IsBlocked.IsChecked == true)
-                                customerActivity.IsBlocked = true;
-                            else
-                                customerActivity.IsBlocked = false;
                             customerActivity.UpdateUserId = MainWindow.userLogin.userId;
 
-                            FillCombo.activitiesList = await customerActivity.save(customerActivity);
-                            if (FillCombo.activitiesList == null)
+                            var res = await customerActivity.save(customerActivity);
+                            if (res.RequestId == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
@@ -268,8 +247,8 @@ namespace POSCA.View.customers.activities
 
                         if (w.isOk)
                         {
-                            FillCombo.activitiesList = await customerActivity.delete(customerActivity.ActivityId, MainWindow.userLogin.userId);
-                            if (FillCombo.activitiesList == null)
+                            var res = await customerActivity.delete(customerActivity.RequestId, MainWindow.userLogin.userId);
+                            if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
@@ -385,27 +364,7 @@ namespace POSCA.View.customers.activities
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        {//refresh
-            try
-            {
-
-                HelpClass.StartAwait(grid_main);
-
-                //tb_search.Text = "";
-                //searchText = "";
-                await RefreshActivitiesList();
-                await Search();
-
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+      
         #endregion
         #region Refresh & Search
         async Task Search()
@@ -435,8 +394,8 @@ namespace POSCA.View.customers.activities
             this.DataContext = new CustomerActivity();
             dg_activity.SelectedIndex = -1;
 
-            var maxId = await FillCombo.customerActivity.getMaxActivityId();
-            tb_ActivityId.Text = maxId;
+            var maxId = await customerActivity.getMaxRequestId();
+            tb_RequestId.Text = maxId;
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -551,34 +510,55 @@ namespace POSCA.View.customers.activities
         }
 
         #endregion
+ 
 
-        private void dp_StartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private async void tb_BoxNumber_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
-                if (dp_StartDate.SelectedDate != null && dp_EndDate.SelectedDate != null)
-                    if (dp_StartDate.SelectedDate.Value.Date > dp_EndDate.SelectedDate.Value.Date)
-                        dp_EndDate.SelectedDate = dp_StartDate.SelectedDate.Value.Date;
+                if (e.Key == Key.Return && tb_BoxNumber.Text != "")
+                {
+
+                    customer = null;
+                    HelpClass.StartAwait(grid_main);
+                    customer = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
+
+
+                    if (customer != null)
+                    {
+                        if (customer.CustomerStatus != "continouse")
+                        {
+                            tb_BoxNumber.Text = "";
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        }
+                        else
+                        {
+                            tb_CustomerName.Text = customer.Name;
+                            tb_CivilNum.Text = customer.CivilNum.ToString();
+                            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customer.CustomerStatus);
+                            tb_FamilyCardHolder.Text = customer.FamilyCardHolder == true? AppSettings.resourcemanager.GetString("FamilyCardHolder") :
+                                                        AppSettings.resourcemanager.GetString("HasNoFamilyCard");
+                            tb_CivilNum.Text = customer.CivilNum;
+
+                        }
+                    }
+                    else
+                    {
+                        tb_CustomerName.Text ="";
+                        tb_CivilNum.Text = "";
+                        tb_CustomerStatus.Text = "";
+                        tb_FamilyCardHolder.Text ="";
+                        tb_CivilNum.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+                    HelpClass.EndAwait(grid_main);
+
+                }
 
             }
-            catch (Exception ex)
+            catch
             {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        private void dp_EndDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                if (dp_StartDate.SelectedDate != null && dp_EndDate.SelectedDate != null)
-                    if (dp_StartDate.SelectedDate.Value.Date > dp_EndDate.SelectedDate.Value.Date)
-                        dp_EndDate.SelectedDate = dp_StartDate.SelectedDate.Value.Date;
-
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+                HelpClass.EndAwait(grid_main);
             }
         }
     }

@@ -2356,6 +2356,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Has No Family Card.
+        /// </summary>
+        internal static string HasNoFamilyCard {
+            get {
+                return ResourceManager.GetString("HasNoFamilyCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Has Suppliers.
         /// </summary>
         internal static string HasSuppliers {

@@ -71,7 +71,7 @@ namespace POSCA
         }
 
 
-        void MoveToNextUIElement(KeyEventArgs e)
+       public static void MoveToNextUIElement(KeyEventArgs e)
         {
             // Creating a FocusNavigationDirection object and setting it to a
             // local field that contains the direction selected.
