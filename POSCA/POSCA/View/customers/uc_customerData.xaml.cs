@@ -898,6 +898,8 @@ namespace POSCA.View.customers
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("FundNumNotAvailable"), animation: ToasterAnimation.FadeIn);
                     }
 
+                    // last
+                    App.MoveToNextUIElement(e);
                 }
             }
             catch (Exception ex)

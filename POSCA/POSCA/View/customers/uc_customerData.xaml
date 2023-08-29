@@ -1274,7 +1274,7 @@
                                 Margin="5 5 5 5" IsEnabled="True">
                                     <Path Fill="{StaticResource SecondColor}" Stretch="Fill"  
                     Width="25.5" Height="27.5" FlowDirection="LeftToRight"
-                           Data="{StaticResource addFile}" />
+                           Data="{StaticResource updateFile}" />
                                 </Button>
                             </Grid>
                             <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
