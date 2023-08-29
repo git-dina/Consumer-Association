@@ -4787,6 +4787,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Request No....
+        /// </summary>
+        internal static string RequestNumberHint {
+            get {
+                return ResourceManager.GetString("RequestNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required Quantities.
         /// </summary>
         internal static string RequiredQuantities {

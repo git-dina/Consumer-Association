@@ -6650,16 +6650,40 @@
   <data name="WithdrawnDateHint" xml:space="preserve">
     <value>تاريخ الانسحاب...</value>
   </data>
+  <data name="ActivityEndDate" xml:space="preserve">
+    <value>تاريخ نهاية النشاط</value>
+  </data>
   <data name="ActivityHint" xml:space="preserve">
     <value>النشاط...</value>
   </data>
+  <data name="ActivityStartDate" xml:space="preserve">
+    <value>تاريخ بداية النشاط</value>
+  </data>
+  <data name="ActivityValueAfterDisc" xml:space="preserve">
+    <value>قيمة النشاط بعد الخصم</value>
+  </data>
+  <data name="ActivityValueBeforeDisc" xml:space="preserve">
+    <value>قيمة النشاط قبل الخصم</value>
+  </data>
   <data name="FromHint" xml:space="preserve">
     <value>من...</value>
+  </data>
+  <data name="JoinDate" xml:space="preserve">
+    <value>تاريخ الانضمام</value>
+  </data>
+  <data name="RegistrationDate" xml:space="preserve">
+    <value>تاريخ التسجيل</value>
   </data>
   <data name="TheActivity" xml:space="preserve">
     <value>النشاط</value>
   </data>
   <data name="ToHint" xml:space="preserve">
     <value>إلى...</value>
+  </data>
+  <data name="UsedNumber" xml:space="preserve">
+    <value>العدد المستخدم</value>
+  </data>
+  <data name="RequestNumberHint" xml:space="preserve">
+    <value>رقم الطلب...</value>
   </data>
 </root>

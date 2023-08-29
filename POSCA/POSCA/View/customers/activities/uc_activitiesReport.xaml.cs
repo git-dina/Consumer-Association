@@ -87,6 +87,9 @@ namespace POSCA.View.customers.activities
 
         private void translate()
         {
+            txt_title.Text = AppSettings.resourcemanager.GetString("ActivitiesReport");
+
+
             txt_BoxNumber.Text = AppSettings.resourcemanager.GetString("BoxNumber");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumberFrom, AppSettings.resourcemanager.GetString("FromHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BoxNumberTo, AppSettings.resourcemanager.GetString("ToHint"));
