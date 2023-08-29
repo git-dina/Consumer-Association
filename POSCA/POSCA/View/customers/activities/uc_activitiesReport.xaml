@@ -28,11 +28,18 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Border CornerRadius="7,7,0,0"  Height="30"
+                <Border  Background="{StaticResource MainColor}"   CornerRadius="7 7 0 0">
+                    <Grid  Height="40" Margin="10 0">
+                        <TextBlock Grid.Column="1" Text="activities" x:Name="txt_title" Margin="10,0,0,0"  Foreground="White" 
+                 FontSize="14"     VerticalAlignment="Center" 
+            FontWeight="Bold" />
+                    </Grid>
+                </Border>
+                <!--<Border CornerRadius="7,7,0,0"  Height="30"
                 Grid.Row="0" 
                 BorderBrush="{x:Null}"
                 Background="{StaticResource MainColor}">
-                </Border>
+                </Border>-->
 
                 <Border CornerRadius="0,0,7,7" 
                 Grid.Row="1"
