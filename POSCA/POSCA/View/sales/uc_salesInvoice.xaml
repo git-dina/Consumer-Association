@@ -455,45 +455,26 @@
                          BlurRadius="10"/>
                 </Border.Effect>
                 <!--<ScrollViewer Margin="0,10" Background="White"  Grid.Row="1"   VerticalScrollBarVisibility="Auto"   >-->
-                <Grid  Margin="0,10" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <!--<TextBlock   Text="payTypes" x:Name="txt_payType" Foreground="{StaticResource SecondColor}" 
-                                                FontWeight="Bold" FontSize="12"  
-                                       HorizontalAlignment="Left" Margin="20,5,5,5"/>-->
-                    <!--<Grid  Grid.Row="2" >
-                        <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGridPayTypes" BorderThickness="0" 
-                            Background="White"/>
-                        <DataGrid x:Name="dg_payTypes" 
-                            Margin="10" Grid.Row="1" 
-                                   CanUserAddRows="False" IsReadOnly="False" 
-                                   CanUserDeleteRows="False"
-                        Background="White"
-                                      AutoGenerateColumns="False" 
-                        ColumnWidth="SizeToHeader"    
-                        AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
-                            <DataGrid.OpacityMask>
-                                <VisualBrush Visual="{Binding ElementName=brd_roundDataGridPayTypes}"/>
-                            </DataGrid.OpacityMask>
-                            <DataGrid.Resources>
-                                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
-                                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                                    <Setter Property="Background" Value="#BADAEF" />
-                                    <Setter Property="BorderBrush" Value="White"/>
-                                    <Setter Property="BorderThickness" Value="0 0 1 0"/>
-                                    <Setter Property="Foreground" Value="{StaticResource textColor}"/>
-                                    <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
-                                </Style>
-                            </DataGrid.Resources>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn IsReadOnly="True" Width="*" x:Name="col_paymentType"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=TwoWay}"/>
-                                <DataGridTextColumn IsReadOnly="True" Width="*" x:Name="col_amount"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                     </Grid>-->
+                <StackPanel  Margin="0,10" >
+                    <TextBlock Tag="customerDetails"   Text="customerDetails" x:Name="txt_customerDetails" Foreground="{StaticResource SecondColor}" 
+                        FontWeight="Bold" FontSize="12"  
+               HorizontalAlignment="Left" Margin="20,5,5,5"/>
+
+                    <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+
+                            <TextBox x:Name="tb_CustomerId"  Text="{Binding CustomerId, Mode=OneWay}" Padding="10,0,5,0" 
+                             IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             materialDesign:HintAssist.Hint="CustomerId..."  
+                             Foreground="{StaticResource textColor}"  
+                             MaxLength="50" Tag="int" BorderThickness="0"
+                             materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                             Height="40"  Margin="0,0" 
+                             LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"
+                             />
+                        </Grid>
+                    </Border>
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto"/>
@@ -537,7 +518,7 @@
 
                     </Grid>
 
-                </Grid>
+                </StackPanel>
                 <!--</ScrollViewer>-->
             </Border>
         </Grid>
