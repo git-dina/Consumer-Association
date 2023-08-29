@@ -41,7 +41,7 @@ namespace POSCA.Classes.ApiClasses
         #endregion
 
         #region Methods
-        public async Task<CustomerActivity> save(CustomerActivity activity)
+        public async Task<CustomerActivity> Save(CustomerActivity activity)
         {
             var result = new CustomerActivity();
             Dictionary<string, string> parameters = new Dictionary<string, string>();

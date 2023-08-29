@@ -140,9 +140,16 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="BankId" Binding="{Binding Path=ActivityId}"/>
-                                <DataGridTextColumn Width="*"  Header="Name" Binding="{Binding Path=Description}"/>
-                                <DataGridTextColumn Width="*"  Header="Description" Binding="{Binding Path=ValueAfterDiscount, Converter={StaticResource accuracyConverter }}"/>
+                                <DataGridTextColumn Width="*"  Header="BoxNumber" Binding="{Binding Path=BoxNumber}"/>
+                                <DataGridTextColumn Width="*"  Header="CustomerId" Binding="{Binding Path=CustomerId}"/>
+                                <DataGridTextColumn Width="*"  Header="CivilNum" Binding="{Binding Path=CivilNum}"/>
+                                <DataGridTextColumn Width="*"  Header="CustomerName" Binding="{Binding Path=CustomerName}"/>
+                                <DataGridTextColumn Width="*"  Header="ActivityName" Binding="{Binding Path=ActivityName}"/>
+                                <DataGridTextColumn Width="*"  Header="ValueAfterDiscount" Binding="{Binding Path=ValueAfterDiscount, Converter={StaticResource accuracyConverter }}"/>
+                                <DataGridTextColumn Width="*"  Header="Count" Binding="{Binding Path=Count}"/>
+                                <DataGridTextColumn Width="*"  Header="StartDate" Binding="{Binding Path=StartDate}"/>
+                                <DataGridTextColumn Width="*"  Header="EndDate" Binding="{Binding Path=EndDate}"/>
+                                <DataGridTextColumn Width="*"  Header="RegistrationDate" Binding="{Binding Path=RegistrationDate}"/>
                             </DataGrid.Columns>
                         </DataGrid>
 

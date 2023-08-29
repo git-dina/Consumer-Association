@@ -104,6 +104,7 @@ namespace POSCA.View.customers.activities
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("SubscriptionRequest");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
@@ -113,6 +114,7 @@ namespace POSCA.View.customers.activities
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CivilNum, AppSettings.resourcemanager.GetString("CivilNumHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerStatus, AppSettings.resourcemanager.GetString("CustomerStatusHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_FamilyCardHolder, AppSettings.resourcemanager.GetString("FamilyCardHolder"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ActivityId, AppSettings.resourcemanager.GetString("TheActivity"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BasicValue, AppSettings.resourcemanager.GetString("ActivityBasicValueHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ValueAfterDiscount, AppSettings.resourcemanager.GetString("ValueAfterDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MaximumBenefit, AppSettings.resourcemanager.GetString("MaximumBenefitFromTheActivityHint"));
@@ -123,9 +125,17 @@ namespace POSCA.View.customers.activities
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_activity.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
-            dg_activity.Columns[1].Header = AppSettings.resourcemanager.GetString("trName");
-            dg_activity.Columns[2].Header = AppSettings.resourcemanager.GetString("trValue");
+            dg_activity.Columns[0].Header = AppSettings.resourcemanager.GetString("BoxNumber");
+            dg_activity.Columns[1].Header = AppSettings.resourcemanager.GetString("CustomerNo");
+            dg_activity.Columns[2].Header = AppSettings.resourcemanager.GetString("CivilNo");
+            dg_activity.Columns[3].Header = AppSettings.resourcemanager.GetString("CustomerName");
+            dg_activity.Columns[4].Header = AppSettings.resourcemanager.GetString("TheActivity");
+            dg_activity.Columns[5].Header = AppSettings.resourcemanager.GetString("ActivityValueAfterDisc");
+            dg_activity.Columns[6].Header = AppSettings.resourcemanager.GetString("UsedNumber");
+            dg_activity.Columns[7].Header = AppSettings.resourcemanager.GetString("ActivityStartDate");
+            dg_activity.Columns[8].Header = AppSettings.resourcemanager.GetString("ActivityEndDate");
+            dg_activity.Columns[9].Header = AppSettings.resourcemanager.GetString("RegistrationDate");
+
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
 
 
@@ -152,7 +162,7 @@ namespace POSCA.View.customers.activities
                       
                         customerActivity.CreateUserId = MainWindow.userLogin.userId;
 
-                        var res = await customerActivity.save(customerActivity);
+                        var res = await customerActivity.Save(customerActivity);
                         if (res.RequestId == 0)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -197,7 +207,7 @@ namespace POSCA.View.customers.activities
                             customerActivity.Notes = tb_Notes.Text;
                             customerActivity.UpdateUserId = MainWindow.userLogin.userId;
 
-                            var res = await customerActivity.save(customerActivity);
+                            var res = await customerActivity.Save(customerActivity);
                             if (res.RequestId == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

@@ -103,6 +103,7 @@ namespace POSCA.View.customers.activities
         {
 
             txt_title.Text = AppSettings.resourcemanager.GetString("Activity");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
