@@ -17,7 +17,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> ActivityId { get; set; }
         public int? Count { get; set; }
         public string Notes { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public Nullable<long> CreateUserId { get; set; }
@@ -80,13 +80,32 @@ namespace POSCA.Classes.ApiClasses
             return result;
         }
 
-        public async Task<int> delete(long activityId, long userId)
+        public async Task<int> delete(long requestId, long userId)
+        {
+            var result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("itemId", requestId.ToString());
+            parameters.Add("userId", userId.ToString());
+            string method = "CustomerActivity/delete";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = int.Parse(c.Value);
+                }
+            }
+            return result;
+
+        } 
+        public async Task<int> GetUserUsedCount(long activityId, long userId)
         {
             var result =0;
             Dictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add("itemId", activityId.ToString());
             parameters.Add("userId", userId.ToString());
-            string method = "CustomerActivity/delete";
+            string method = "CustomerActivity/GetUserUsedCount";
 
             IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
             foreach (Claim c in claims)

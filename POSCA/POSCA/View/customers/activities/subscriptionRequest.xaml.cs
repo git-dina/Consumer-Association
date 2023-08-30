@@ -115,6 +115,7 @@ namespace POSCA.View.customers.activities
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BasicValue, AppSettings.resourcemanager.GetString("ActivityBasicValueHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ValueAfterDiscount, AppSettings.resourcemanager.GetString("ValueAfterDiscountHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_MaximumBenefit, AppSettings.resourcemanager.GetString("MaximumBenefitFromTheActivityHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ActivityCount, AppSettings.resourcemanager.GetString("RequiredCountHint"));
         
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
@@ -407,11 +408,27 @@ namespace POSCA.View.customers.activities
         async Task Clear()
         {
             customerActivity = new CustomerActivity();
+            customer = new Customer();
             this.DataContext = new CustomerActivity();
             dg_activity.SelectedIndex = -1;
 
             var maxId = await customerActivity.getMaxRequestId();
             tb_RequestId.Text = maxId;
+
+            #region clear inputs
+            tb_BoxNumber.Text = "";
+            tb_CustomerName.Text = "";
+            tb_CivilNum.Text = "";
+            tb_CustomerStatus.Text = "";
+            tb_FamilyCardHolder.Text = "";
+            tb_CivilNum.Text = "";
+            tb_CivilNum.Text = "";
+            tb_BasicValue.Text = "";
+            tb_ValueAfterDiscount.Text = "";
+            tb_MaximumBenefit.Text = "";
+            tb_ActivityCount.Text = "";
+
+            #endregion
             // last 
             HelpClass.clearValidate(requiredControlList, this);
         }
@@ -517,6 +534,19 @@ namespace POSCA.View.customers.activities
         {
             cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
+
+            customer.CustomerId = (long)customerActivity.CustomerId;
+            tb_BoxNumber.Text = customerActivity.BoxNumber.ToString();
+            tb_CustomerName.Text = customerActivity.CustomerName;
+            tb_CivilNum.Text = customerActivity.CivilNum.ToString();
+            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customerActivity.CustomerStatus);
+            tb_FamilyCardHolder.Text = customerActivity.FamilyCardHolder == true ? AppSettings.resourcemanager.GetString("FamilyCardHolder") :
+                                        AppSettings.resourcemanager.GetString("HasNoFamilyCard");
+            tb_CivilNum.Text = customerActivity.CivilNum;
+            tb_ActivityCount.Text = customerActivity.Count.ToString();
+            tb_BasicValue.Text = HelpClass.DecTostring(customerActivity.BasicValue);
+            tb_ValueAfterDiscount.Text = HelpClass.DecTostring(customerActivity.ValueAfterDiscount);
+            tb_MaximumBenefit.Text = customerActivity.MaximumBenefit.ToString();
         }
 
 
@@ -562,6 +592,7 @@ namespace POSCA.View.customers.activities
                     }
                     else
                     {
+                        tb_BoxNumber.Text = "";
                         tb_CustomerName.Text ="";
                         tb_CivilNum.Text = "";
                         tb_CustomerStatus.Text = "";
@@ -583,7 +614,7 @@ namespace POSCA.View.customers.activities
             }
         }
 
-        private void tb_Count_KeyDown(object sender, KeyEventArgs e)
+        private async void tb_Count_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -592,8 +623,8 @@ namespace POSCA.View.customers.activities
 
                     HelpClass.StartAwait(grid_main);
                     var act = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
-
-                    if(  int.Parse(tb_ActivityCount.Text) > act.MaximumBenefit)
+                    var usedCount = await customerActivity.GetUserUsedCount((long)cb_ActivityId.SelectedValue, customer.CustomerId);
+                    if(usedCount + int.Parse(tb_ActivityCount.Text) > act.MaximumBenefit)
                     {
 
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CountNotAllowed"), animation: ToasterAnimation.FadeIn);
@@ -621,19 +652,19 @@ namespace POSCA.View.customers.activities
             }
         }
 
-        private void cb_ActivityId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void cb_ActivityId_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
                 if(cb_ActivityId.SelectedIndex != -1)
                 {
                     var ac = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
-
+                    var usedCount = await customerActivity.GetUserUsedCount((long)cb_ActivityId.SelectedValue, customer.CustomerId);
                     tb_BasicValue.Text = HelpClass.DecTostring(ac.BasicValue);
                     tb_ValueAfterDiscount.Text = HelpClass.DecTostring(ac.ValueAfterDiscount);
                     tb_MaximumBenefit.Text = ac.MaximumBenefit.ToString();
 
-                    if(tb_ActivityCount.Text != "" && (int.Parse(tb_ActivityCount.Text) > ac.RemainCount || int.Parse(tb_ActivityCount.Text) > ac.MaximumBenefit ))
+                    if(tb_ActivityCount.Text != "" && (int.Parse(tb_ActivityCount.Text) > ac.RemainCount || usedCount > ac.MaximumBenefit ))
                     {
                         tb_ActivityCount.Text = "";
                     }

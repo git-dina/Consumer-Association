@@ -6435,6 +6435,9 @@ Main Documents</value>
   <data name="CountNotAllowed" xml:space="preserve">
     <value>Count Not Allowed</value>
   </data>
+  <data name="RequiredCountHint" xml:space="preserve">
+    <value>Required Count...</value>
+  </data>
   <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
     <value>The count is greater than the maximum benefit</value>
   </data>

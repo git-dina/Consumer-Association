@@ -4814,6 +4814,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Required Count....
+        /// </summary>
+        internal static string RequiredCountHint {
+            get {
+                return ResourceManager.GetString("RequiredCountHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Required Quantities.
         /// </summary>
         internal static string RequiredQuantities {

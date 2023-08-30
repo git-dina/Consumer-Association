@@ -6692,6 +6692,9 @@
   <data name="CountNotAllowed" xml:space="preserve">
     <value>العدد غير مسموح</value>
   </data>
+  <data name="RequiredCountHint" xml:space="preserve">
+    <value>العدد المطلوب...</value>
+  </data>
   <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
     <value>العدد أكبر من الحد الأقصى للإستفادة</value>
   </data>
