@@ -1,0 +1,212 @@
+﻿<Window x:Class="POSCA.View.windows.wd_customerBankAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POSCA.View.windows"
+        mc:Ignorable="d" KeyDown="HandleKeyPress"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         WindowStyle="None" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize" Margin="0"
+         Height="600" Width="800"  Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown"
+        Loaded="Window_Loaded" Closing="Window_Closing" >
+    <Grid Grid.Column="1" Grid.Row="1"    x:Name="grid_main">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Border  BorderThickness="0" Grid.Row="0" 
+                    CornerRadius="7,7,0,0"  Background="{StaticResource MainColor}">
+                <Grid>
+
+                    <Button   IsCancel="true"  HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" 
+                             BorderBrush="{x:Null}"  Foreground="White" Margin="7.5,0"  x:Name="btn_colse" Click="Btn_colse_Click"
+                             FontWeight="SemiBold" Width="24" Padding="0" ToolTip="Close"  FontSize="14">
+                        <materialDesign:PackIcon Foreground="White" Kind="Close" 
+                                         Width="20" Height="20"/>
+                    </Button>
+                    <Grid  HorizontalAlignment="Center"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Fill="White" Stretch="Fill" Margin="5,0" FlowDirection="LeftToRight"
+                              HorizontalAlignment="Right" Grid.Column="0"  
+                         VerticalAlignment="Center"  Width="20" Height="20"
+                              Data="{StaticResource bank}"/>
+                        <TextBlock Text="CustomerBankAccount" x:Name="txt_title" Foreground="White" 
+                                   HorizontalAlignment="Left" VerticalAlignment="Center" 
+                              Grid.Column="1"      Margin="5,0"/>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Grid>
+        <Border BorderThickness="1,0,1,1"  Grid.Row="1"
+                    CornerRadius="0,0,7,7" BorderBrush="#999999"  Background="White">
+            <Grid  Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!--<ScrollViewer  VerticalScrollBarVisibility="Auto"   >-->
+                    <StackPanel>
+                        <DockPanel Margin="10 0" LastChildFill="True"  >
+                        <TextBlock x:Name="txt_BankAccountInformation" Text="BankAccountInformationn" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                            <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
+                        </DockPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_CustomerName"  Text="{Binding CustomerName, Mode=OneWay}" Padding="10,0,5,0" 
+                                 IsReadOnly="True" IsEnabled="False"
+                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 materialDesign:HintAssist.Hint="CustomerName..."  
+                                 Foreground="{StaticResource textColor}"  
+                                 MaxLength="50" BorderThickness="0"
+                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                 Height="40"  Margin="0,0" 
+                                 LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                 <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_CustomerName" 
+                                  HorizontalAlignment="Right" Visibility="Collapsed"   
+                                 VerticalAlignment="Center" Width="15"  Height="15"
+                                 Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+                        <Border  Grid.Row="2" Grid.Column="1" CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource veryLightGrey}">
+                            <Grid   >
+                                <TextBox x:Name="tb_OldIBAN"  Text="{Binding OldIBAN, Mode=OneWay}" Padding="10,0,5,0" 
+         IsReadOnly="True" IsEnabled="False"
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+         materialDesign:HintAssist.Hint="OldIBAN..."  
+         Foreground="{StaticResource textColor}"  
+         MaxLength="50" BorderThickness="0"
+         materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+         Height="40"  Margin="0,0" 
+         LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_OldIBAN" 
+          HorizontalAlignment="Right" Visibility="Collapsed"   
+         VerticalAlignment="Center" Width="15"  Height="15"
+         Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+
+
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border  Grid.Row="2" Grid.Column="0" CornerRadius="0" Margin="10,5,5,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid>
+                                <TextBox x:Name="tb_NewIBAN"  Text="{Binding NewIBAN, Mode=OneWay}" Padding="10,0,5,0" 
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        materialDesign:HintAssist.Hint="NewIBAN..."  
+                        Foreground="{StaticResource textColor}"  
+                        MaxLength="50" BorderThickness="0"
+                        materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                        Height="40"  Margin="0,0" 
+                        LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_NewIBAN" 
+                         HorizontalAlignment="Right" Visibility="Collapsed"   
+                        VerticalAlignment="Center" Width="15"  Height="15"
+                        Data="{StaticResource infoCircle}">
+                                </Path>
+                            </Grid>
+                        </Border>
+                        <Border  Grid.Row="3"  Grid.Column="1"  CornerRadius="0" Margin="5,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                            <Grid   >
+                                <ComboBox x:Name="cb_OldBankId"   
+                                          SelectedValue="{Binding OldBankId, Mode=OneWay}"
+                      Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
+                    materialDesign:HintAssist.Hint="OldBankId..."  
+                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                    Grid.Column="0" Height="40"  Margin="0,0"
+                    BorderBrush="#737373" BorderThickness="0"/>
+                                <Path Fill="#E81123" x:Name="p_error_OldBankId" Stretch="Fill" Margin="5,5,20,5"
+    HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
+VerticalAlignment="Center" Width="15"  Height="15" 
+    Data="{StaticResource infoCircle}"/>
+
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Border  Grid.Column="0" Grid.Row="10" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
+                        <Grid   >
+                            <TextBox  x:Name="tb_Notes" Text="{Binding Notes, Mode=OneWay}"
+      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+      Padding="10,0,5,0"  
+     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+      materialDesign:HintAssist.Hint="Notes..."  
+      Foreground="{StaticResource textColor}"
+     Margin="0,0"  BorderThickness="0"
+Grid.Column="1"  Height="70" TextWrapping="Wrap"/>
+                        </Grid>
+                    </Border>
+
+                    <DockPanel Margin="10 0" LastChildFill="True"  >
+                        <TextBlock x:Name="txt_HistoryData" Text="HistoryData" Foreground="{StaticResource MainColor}" FontSize="12" FontWeight="Bold" VerticalAlignment="Center" Margin="5,5,5,5"/>
+                            <Separator  Background="{StaticResource SecondColor}" VerticalAlignment="Center" Width="auto"  />
+                        </DockPanel>
+                        
+
+                         
+                    </StackPanel>
+                <!--</ScrollViewer>-->
+                <Grid  Grid.Row="1" >
+                    <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid" BorderThickness="0" 
+                 Background="White"/>
+
+                    <DataGrid x:Name="dg_customerBankAccount" 
+                     Margin="10" Grid.Row="1" 
+                            CanUserAddRows="False" IsReadOnly="False" 
+                            CanUserDeleteRows="False"
+                HeadersVisibility="Column" Background="White"
+                SelectionChanged="Dg_customerBankAccount_SelectionChanged"  
+                               AutoGenerateColumns="False" 
+                 ColumnWidth="SizeToHeader"    
+                 AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
+                        <DataGrid.OpacityMask>
+                            <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid}"/>
+                        </DataGrid.OpacityMask>
+                        <DataGrid.Resources>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"></SolidColorBrush>
+                            <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#BADAEF" />
+                                <Setter Property="BorderBrush" Value="White"/>
+                                <Setter Property="BorderThickness" Value="0 0 1 0"/>
+                                <Setter Property="Foreground" Value="{StaticResource textColor}"/>
+                                <Setter Property="FontFamily" Value="{StaticResource Font-cairo-regular}"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="BankAccountId" Binding="{Binding Path=Price, Mode=OneWay}"/>
+                            <DataGridTextColumn  Header="OldIBAN" Binding="{Binding Path=OldIBAN, Mode=OneWay}"/>
+                            <DataGridTextColumn  Header="NewIBAN" Binding="{Binding Path=NewIBAN, Mode=OneWay}"/>
+                            <DataGridTextColumn  Header="OldBankId" Binding="{Binding Path=OldBankId, Mode=OneWay}"/>
+                            <DataGridTextColumn  Header="NewBankId" Binding="{Binding Path=NewBankId, Mode=OneWay}"/>
+                            <DataGridTextColumn  Header="Notes" Binding="{Binding Path=Notes, Mode=OneWay}"/>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Grid>
+
+                <Button   Grid.Row="6" Grid.ColumnSpan="2"   Content="save" materialDesign:ButtonAssist.CornerRadius="7"
+                       Margin="5,10" x:Name="btn_save" Click="Btn_save_Click" Foreground="White"
+                          Background="{StaticResource MainColor}" BorderBrush="{x:Null}" />
+            </Grid>
+
+        </Border>
+
+
+    </Grid>
+</Window>
