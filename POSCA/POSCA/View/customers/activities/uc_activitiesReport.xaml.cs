@@ -73,7 +73,7 @@ namespace POSCA.View.customers.activities
                 }
 
                 translate();
-                //await Search();
+
                 await Clear();
                 HelpClass.EndAwait(grid_main);
             }
@@ -133,9 +133,7 @@ namespace POSCA.View.customers.activities
         #region validate - clearValidate - textChange - lostFocus - . . . . 
         async Task Clear()
         {
-            customerActivity = new CustomerActivity();
-            this.DataContext = new CustomerActivity();
-            dg_customerActivity.SelectedIndex = -1;
+            dg_customerActivity.ItemsSource = null;
 
           
         }
@@ -221,9 +219,86 @@ namespace POSCA.View.customers.activities
 
         #endregion
 
-        private void Btn_search_Click(object sender, RoutedEventArgs e)
+        private async void Btn_search_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                long boxNumberFrom = 0;
+                long boxNumberTo = 0;
+                if (tgl_BoxNumber.IsChecked == true)
+                {
+                    if (tb_BoxNumberFrom.Text != "")
+                        boxNumberFrom = long.Parse(tb_BoxNumberFrom.Text);
 
+
+                    if (tb_BoxNumberTo.Text != "")
+                        boxNumberTo = long.Parse(tb_BoxNumberTo.Text);
+                }
+
+                 long customerIdFrom = 0;
+                long customerIdTo = 0;
+                if (tgl_CustomerNumber.IsChecked == true)
+                {
+                    if (tb_CustomerNumberFrom.Text != "")
+                        customerIdFrom = long.Parse(tb_CustomerNumberFrom.Text);
+                    if (tb_CustomerNumberTo.Text != "")
+                        customerIdTo = long.Parse(tb_CustomerNumberTo.Text);
+                }
+                string customerName = "";
+                if(tgl_CustomerName.IsChecked == true)
+                    customerName = tb_CustomerNameFrom.Text;
+
+                long activityId = 0;
+
+                if (tgl_Activities.IsChecked == true)
+                if (cb_Activities.SelectedIndex != -1)
+                    activityId =(long) cb_Activities.SelectedValue;
+
+                DateTime? activityStartDateFrom = null;
+                DateTime? activityStartDateTo = null;
+
+                if (tgl_ActivitiesStartDate.IsChecked == true)
+                {
+                    if (dp_ActivitiesStartDateFrom.SelectedDate != null)
+                        activityStartDateFrom = dp_ActivitiesStartDateFrom.SelectedDate;
+                    if (dp_ActivitiesStartDateTo.SelectedDate != null)
+                        activityStartDateTo = dp_ActivitiesStartDateTo.SelectedDate;
+                }
+                DateTime? activityEndDateFrom = null;
+                DateTime? activityEndDateTo = null;
+                if (tgl_ActivitiesEndDate.IsChecked == true)
+                {
+                    if (dp_ActivitiesEndDateFrom.SelectedDate != null)
+                        activityEndDateFrom = dp_ActivitiesEndDateFrom.SelectedDate;
+                    if (dp_ActivitiesEndDateTo.SelectedDate != null)
+                        activityEndDateTo = dp_ActivitiesEndDateTo.SelectedDate;
+                }
+
+                 DateTime? joinDateFrom = null;
+                DateTime? joinDateTo = null;
+                if (tgl_JoinDate.IsChecked == true)
+                {
+                    if (dp_JoinDateFrom.SelectedDate != null)
+                        joinDateFrom = dp_JoinDateFrom.SelectedDate;
+                    if (dp_JoinDateTo.SelectedDate != null)
+                        joinDateTo = dp_JoinDateTo.SelectedDate;
+                }
+                var res = await customerActivity.GetActivitiesReport(boxNumberFrom,boxNumberTo,customerIdFrom,customerIdTo,
+                                            customerName,activityId,activityStartDateFrom,activityStartDateTo,
+                                            activityEndDateFrom, activityEndDateTo, joinDateFrom, joinDateTo);
+
+                dg_customerActivity.ItemsSource = null;
+                dg_customerActivity.ItemsSource = res;
+                dg_customerActivity.Items.Refresh();
+                HelpClass.EndAwait(grid_main);
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+
+            }
         }
 
         private void Btn_clear_Click(object sender, RoutedEventArgs e)

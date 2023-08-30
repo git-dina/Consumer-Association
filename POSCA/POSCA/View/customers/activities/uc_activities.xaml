@@ -367,9 +367,9 @@
                         </Border>
                         <Border  Grid.Row="1" CornerRadius="0" Margin="10,5,10,5"   BorderThickness="0 0 0 1" BorderBrush="{StaticResource Grey}">
                             <Grid   >
-                                <ComboBox x:Name="cb_ActivityId"    SelectedValue="{Binding ActivityId, Mode=OneWay}"
+                                <ComboBox x:Name="cb_TypeId"    SelectedValue="{Binding TypeId, Mode=OneWay}"
                                   Padding="10,0,5,0"  TextBlock.Foreground="{StaticResource textColor}"
-                                  materialDesign:HintAssist.Hint="ActivityId..."  
+                                  materialDesign:HintAssist.Hint="TypeId..."  
                                    Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
                                   Grid.Column="0" Height="40"  Margin="0,0"
                                   BorderBrush="#737373" BorderThickness="0" 
@@ -377,7 +377,7 @@
                                    IsEditable="True"
                                    StaysOpenOnEdit="true"
                                    />
-                                <Path Fill="#E81123" x:Name="p_error_ActivityId" Stretch="Fill" Margin="5,5,20,5"
+                                <Path Fill="#E81123" x:Name="p_error_TypeId" Stretch="Fill" Margin="5,5,20,5"
                               HorizontalAlignment="Right" Grid.Row="8"  Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15" 
                              Data="{StaticResource infoCircle}"/>

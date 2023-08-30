@@ -69,7 +69,7 @@ namespace POSCA.View.customers.activities
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Description" , "ActivityId", "BasicValue", "ValueAfterDiscount",
+                requiredControlList = new List<string> { "Description" , "TypeId", "BasicValue", "ValueAfterDiscount",
                                                     "RegestrtionCount","StartDate","EndDate"};
                 if (AppSettings.lang.Equals("en"))
                 {
@@ -86,7 +86,7 @@ namespace POSCA.View.customers.activities
 
 
                 Keyboard.Focus(tb_Description);
-                await FillCombo.fillFinalActivityTypes(cb_ActivityId);
+                await FillCombo.fillFinalActivityTypes(cb_TypeId);
                 await Search();
                 await Clear();
                 HelpClass.EndAwait(grid_main);
@@ -108,7 +108,7 @@ namespace POSCA.View.customers.activities
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ActivityId, AppSettings.resourcemanager.GetString("trNoHint"));
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ActivityId, AppSettings.resourcemanager.GetString("ActivityTypeHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_TypeId, AppSettings.resourcemanager.GetString("ActivityTypeHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Description, AppSettings.resourcemanager.GetString("trDescriptionHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_BasicValue, AppSettings.resourcemanager.GetString("ActivityBasicValueHint"));
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_ValueAfterDiscount, AppSettings.resourcemanager.GetString("ValueAfterDiscountHint"));
@@ -147,7 +147,7 @@ namespace POSCA.View.customers.activities
                     {
 
                         activity.Description = tb_Description.Text;
-                        activity.TypeId =(int) cb_ActivityId.SelectedValue;
+                        activity.TypeId =(int) cb_TypeId.SelectedValue;
                         activity.BasicValue = decimal.Parse(tb_BasicValue.Text);
                         activity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
                         activity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);
@@ -202,7 +202,7 @@ namespace POSCA.View.customers.activities
                         {
 
                             activity.Description = tb_Description.Text;
-                            activity.TypeId = (int)cb_ActivityId.SelectedValue;
+                            activity.TypeId = (int)cb_TypeId.SelectedValue;
                             activity.BasicValue = decimal.Parse(tb_BasicValue.Text);
                             activity.ValueAfterDiscount = decimal.Parse(tb_ValueAfterDiscount.Text);
                             activity.MaximumBenefit = int.Parse(tb_MaximumBenefit.Text);

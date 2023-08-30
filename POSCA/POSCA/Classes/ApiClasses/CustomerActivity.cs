@@ -79,6 +79,39 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+         public async Task<List<CustomerActivity>> GetActivitiesReport(long boxNumberFrom , long boxNumberTo,
+             long customerIdFrom, long customerIdTo, string customerName, long activityId,
+             DateTime? activityStartDateFrom, DateTime? activityStartDateTo,
+             DateTime? activityEndDateFrom, DateTime? activityEndDateTo,
+             DateTime? joinDateFrom, DateTime? joinDateTo)
+        {
+            var result = new List<CustomerActivity>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "CustomerActivity/GetActivitiesReport";
+
+            parameters.Add("boxNumberFrom", boxNumberFrom.ToString());
+            parameters.Add("boxNumberTo", boxNumberTo.ToString());
+            parameters.Add("customerIdFrom", customerIdFrom.ToString());
+            parameters.Add("customerIdTo", customerIdTo.ToString());
+            parameters.Add("customerName", customerName.ToString());
+            parameters.Add("activityId", activityId.ToString());
+            parameters.Add("activityStartDateFrom", activityStartDateFrom.ToString());
+            parameters.Add("activityStartDateTo", activityStartDateTo.ToString());
+            parameters.Add("activityEndDateFrom", activityEndDateFrom.ToString());
+            parameters.Add("activityEndDateTo", activityEndDateTo.ToString());
+            parameters.Add("joinDateFrom", joinDateFrom.ToString());
+            parameters.Add("joinDateTo", joinDateTo.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<CustomerActivity>(c.Value));
+                }
+            }
+            return result;
+        }
 
         public async Task<int> delete(long requestId, long userId)
         {

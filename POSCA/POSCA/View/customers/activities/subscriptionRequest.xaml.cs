@@ -387,17 +387,12 @@ namespace POSCA.View.customers.activities
         async Task Search()
         {
             //search
-            HelpClass.StartAwait(grid_main);
+
             customerActivitiesQuery = await customerActivity.SearchActivities(tb_search.Text);
             RefreshActivitiesView();
-            HelpClass.EndAwait(grid_main);
-        }
-        //async Task<IEnumerable<CustomerActivity>> RefreshActivitiesList()
-        //{
-        //    await FillCombo.RefreshActivities();
 
-        //    return FillCombo.activitiesList;
-        //}
+        }
+
         void RefreshActivitiesView()
         {
             dg_activity.ItemsSource = customerActivitiesQuery;
@@ -535,18 +530,21 @@ namespace POSCA.View.customers.activities
             cd_gridMain1.Width = new GridLength(0, GridUnitType.Star);
             cd_gridMain2.Width = new GridLength(1, GridUnitType.Star);
 
-            customer.CustomerId = (long)customerActivity.CustomerId;
-            tb_BoxNumber.Text = customerActivity.BoxNumber.ToString();
-            tb_CustomerName.Text = customerActivity.CustomerName;
-            tb_CivilNum.Text = customerActivity.CivilNum.ToString();
-            tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customerActivity.CustomerStatus);
-            tb_FamilyCardHolder.Text = customerActivity.FamilyCardHolder == true ? AppSettings.resourcemanager.GetString("FamilyCardHolder") :
-                                        AppSettings.resourcemanager.GetString("HasNoFamilyCard");
-            tb_CivilNum.Text = customerActivity.CivilNum;
-            tb_ActivityCount.Text = customerActivity.Count.ToString();
-            tb_BasicValue.Text = HelpClass.DecTostring(customerActivity.BasicValue);
-            tb_ValueAfterDiscount.Text = HelpClass.DecTostring(customerActivity.ValueAfterDiscount);
-            tb_MaximumBenefit.Text = customerActivity.MaximumBenefit.ToString();
+            if (customerActivity.CustomerId != null)
+            {
+                customer.CustomerId = (long)customerActivity.CustomerId;
+                tb_BoxNumber.Text = customerActivity.BoxNumber.ToString();
+                tb_CustomerName.Text = customerActivity.CustomerName.ToString(); ;
+                tb_CivilNum.Text = customerActivity.CivilNum.ToString();
+                tb_CustomerStatus.Text = AppSettings.resourcemanager.GetString(customerActivity.CustomerStatus);
+                tb_FamilyCardHolder.Text = customerActivity.FamilyCardHolder == true ? AppSettings.resourcemanager.GetString("FamilyCardHolder") :
+                                            AppSettings.resourcemanager.GetString("HasNoFamilyCard");
+                tb_CivilNum.Text = customerActivity.CivilNum;
+                tb_ActivityCount.Text = customerActivity.Count.ToString();
+                tb_BasicValue.Text = HelpClass.DecTostring(customerActivity.BasicValue);
+                tb_ValueAfterDiscount.Text = HelpClass.DecTostring(customerActivity.ValueAfterDiscount);
+                tb_MaximumBenefit.Text = customerActivity.MaximumBenefit.ToString();
+            }
         }
 
 
@@ -658,6 +656,7 @@ namespace POSCA.View.customers.activities
             {
                 if(cb_ActivityId.SelectedIndex != -1)
                 {
+                    HelpClass.StartAwait(grid_main);
                     var ac = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
                     var usedCount = await customerActivity.GetUserUsedCount((long)cb_ActivityId.SelectedValue, customer.CustomerId);
                     tb_BasicValue.Text = HelpClass.DecTostring(ac.BasicValue);
@@ -668,6 +667,7 @@ namespace POSCA.View.customers.activities
                     {
                         tb_ActivityCount.Text = "";
                     }
+                    HelpClass.EndAwait(grid_main);
                 }
                 else
                 {
@@ -678,6 +678,7 @@ namespace POSCA.View.customers.activities
             }
             catch
             {
+                HelpClass.EndAwait(grid_main);
 
             }
         }
