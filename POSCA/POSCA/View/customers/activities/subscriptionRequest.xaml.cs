@@ -560,11 +560,12 @@ namespace POSCA.View.customers.activities
         {
             try
             {
+                HelpClass.StartAwait(grid_main);
+
                 if (e.Key == Key.Return && tb_BoxNumber.Text != "")
                 {
 
                     customer = null;
-                    HelpClass.StartAwait(grid_main);
                     customer = await FillCombo.customer.GetByBoxNumber(long.Parse(tb_BoxNumber.Text));
 
 
@@ -601,9 +602,9 @@ namespace POSCA.View.customers.activities
 
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
-                    HelpClass.EndAwait(grid_main);
 
                 }
+                HelpClass.EndAwait(grid_main);
 
             }
             catch
@@ -616,10 +617,11 @@ namespace POSCA.View.customers.activities
         {
             try
             {
+                HelpClass.StartAwait(grid_main);
+
                 if (e.Key == Key.Return && tb_ActivityCount.Text != "" && cb_ActivityId.SelectedIndex != -1)
                 {
 
-                    HelpClass.StartAwait(grid_main);
                     var act = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
                     var usedCount = await customerActivity.GetUserUsedCount((long)cb_ActivityId.SelectedValue, customer.CustomerId);
                     if(usedCount + int.Parse(tb_ActivityCount.Text) > act.MaximumBenefit)
@@ -639,9 +641,9 @@ namespace POSCA.View.customers.activities
                     else
                         App.MoveToNextUIElement(e);
                        
-                    HelpClass.EndAwait(grid_main);
 
                 }
+                HelpClass.EndAwait(grid_main);
 
             }
             catch
@@ -654,9 +656,11 @@ namespace POSCA.View.customers.activities
         {
             try
             {
-                if(cb_ActivityId.SelectedIndex != -1)
+                HelpClass.StartAwait(grid_main);
+                if (cb_ActivityId.SelectedIndex != -1)
                 {
-                    HelpClass.StartAwait(grid_main);
+                   
+
                     var ac = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
                     var usedCount = await customerActivity.GetUserUsedCount((long)cb_ActivityId.SelectedValue, customer.CustomerId);
                     tb_BasicValue.Text = HelpClass.DecTostring(ac.BasicValue);
@@ -667,7 +671,6 @@ namespace POSCA.View.customers.activities
                     {
                         tb_ActivityCount.Text = "";
                     }
-                    HelpClass.EndAwait(grid_main);
                 }
                 else
                 {
@@ -675,6 +678,8 @@ namespace POSCA.View.customers.activities
                     tb_ValueAfterDiscount.Text ="";
                     tb_MaximumBenefit.Text = "";
                 }
+                HelpClass.EndAwait(grid_main);
+
             }
             catch
             {

@@ -1,7 +1,10 @@
-﻿using POSCA.Classes;
+﻿using Microsoft.Reporting.WebForms;
+using netoaster;
+using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -123,10 +126,11 @@ namespace POSCA.View.customers.activities
             dg_customerActivity.Columns[10].Header = AppSettings.resourcemanager.GetString("ActivityEndDate");
             dg_customerActivity.Columns[11].Header = AppSettings.resourcemanager.GetString("RegistrationDate");
             dg_customerActivity.Columns[12].Header = AppSettings.resourcemanager.GetString("trNotes");
-            btn_search.ToolTip = AppSettings.resourcemanager.GetString("trSearch");
-            btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
-            btn_export.ToolTip = AppSettings.resourcemanager.GetString("trExport");
-            btn_print.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
+
+            btn_search.Content = AppSettings.resourcemanager.GetString("trSearch");
+            btn_clear.Content = AppSettings.resourcemanager.GetString("trClear");
+            btn_export.Content = AppSettings.resourcemanager.GetString("trExport");
+            btn_print.Content = AppSettings.resourcemanager.GetString("trPrint");
 
             tt_count.Content = AppSettings.resourcemanager.GetString("trCount");
         }
@@ -308,7 +312,62 @@ namespace POSCA.View.customers.activities
 
         private void Btn_export_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (sender != null)
+                    HelpClass.StartAwait(grid_main);
 
+               // if (MainWindow.groupObject.HasPermissionAction(basicsPermission, MainWindow.groupObjects, "report") || SectionData.isAdminPermision())
+                {
+                    #region
+                    Microsoft.Office.Interop.Excel.Application excel = null;
+                    Microsoft.Office.Interop.Excel.Workbook wb = null;
+                    object missing = Type.Missing;
+                    Microsoft.Office.Interop.Excel.Worksheet ws = null;
+                    Microsoft.Office.Interop.Excel.Range rng = null;
+
+                    // collection of DataGrid Items
+                    var dtExcelDataTable = dg_customerActivity.ItemsSource;
+
+                    excel = new Microsoft.Office.Interop.Excel.Application();
+                    wb = excel.Workbooks.Add();
+                    ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
+                    ws.Columns.AutoFit();
+                    ws.Columns.EntireColumn.ColumnWidth = 25;
+
+                    // Header row
+                    for (int Idx = 0; Idx < dg_customerActivity.Columns.Count; Idx++)
+                    {
+                        ws.Range["A1"].Offset[0, Idx].Value = dg_customerActivity.Columns[Idx].Header;
+                    }
+
+                    // Data Rows
+                    for (int i = 0; i < dg_customerActivity.Columns.Count; i++)
+                    {
+                        for (int j = 0; j < dg_customerActivity.Items.Count; j++)
+                        {
+                            TextBlock b = dg_customerActivity.Columns[i].GetCellContent(dg_customerActivity.Items[j]) as TextBlock;
+                            Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)ws.Cells[j + 2, i + 1];
+                            myRange.NumberFormat = "@";
+                            myRange.Value2 = b.Text;
+                        }
+                    }
+
+                    excel.Visible = true;
+                    wb.Activate();
+                    #endregion
+                }
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+                if (sender != null)
+                    HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
 
         private void Btn_print_Click(object sender, RoutedEventArgs e)
