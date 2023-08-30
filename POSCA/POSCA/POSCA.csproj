@@ -379,6 +379,9 @@
       <DependentUpon>wd_addReturnItem.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\windows\wd_customerBankAccount.xaml.cs">
+      <DependentUpon>wd_customerBankAccount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_customerDocument.xaml.cs">
       <DependentUpon>wd_customerDocument.xaml</DependentUpon>
     </Compile>
@@ -621,6 +624,10 @@
     <Page Include="View\windows\wd_addReturnItem.xaml">
       <SubType>Designer</SubType>
       <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="View\windows\wd_customerBankAccount.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\windows\wd_customerDocument.xaml">
       <SubType>Designer</SubType>
