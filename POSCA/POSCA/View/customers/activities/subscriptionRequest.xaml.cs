@@ -70,16 +70,13 @@ namespace POSCA.View.customers.activities
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Description" , "ActivityId", "BasicValue", "ValueAfterDiscount",
-                                                    "RegestrtionCount","StartDate","EndDate"};
+                requiredControlList = new List<string> { "BoxNumber" , "ActivityId", "ActivityCount" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
@@ -151,27 +148,31 @@ namespace POSCA.View.customers.activities
                     HelpClass.StartAwait(grid_main);
 
                     customerActivity = new CustomerActivity();
-                    if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                    if (HelpClass.validate(requiredControlList, this) )
                     {
-
-                        customerActivity.CustomerId = customer.CustomerId;
-                        customerActivity.ActivityId =(long) cb_ActivityId.SelectedValue;
-                        customerActivity.Count = int.Parse(tb_Count.Text);
-   
-                        customerActivity.Notes = tb_Notes.Text;
-                      
-                        customerActivity.CreateUserId = MainWindow.userLogin.userId;
-
-                        var res = await customerActivity.Save(customerActivity);
-                        if (res.RequestId == 0)
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                        else
+                        if (int.Parse(tb_ActivityCount.Text) > 0)
                         {
-                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                            customerActivity.CustomerId = customer.CustomerId;
+                            customerActivity.ActivityId = (long)cb_ActivityId.SelectedValue;
+                            customerActivity.Count = int.Parse(tb_ActivityCount.Text);
 
-                            await Clear();
-                            await Search();
+                            customerActivity.Notes = tb_Notes.Text;
+
+                            customerActivity.CreateUserId = MainWindow.userLogin.userId;
+
+                            var res = await customerActivity.Save(customerActivity);
+                            if (res.RequestId == 0)
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                            else
+                            {
+                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                                await Clear();
+                                await Search();
+                            }
                         }
+                        else
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMustBeMoreThanZero"), animation: ToasterAnimation.FadeIn);
                     }
                     else
                     {
@@ -201,26 +202,31 @@ namespace POSCA.View.customers.activities
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-
-                            customerActivity.Count = int.Parse(tb_Count.Text);
-
-                            customerActivity.Notes = tb_Notes.Text;
-                            customerActivity.UpdateUserId = MainWindow.userLogin.userId;
-
-                            var res = await customerActivity.Save(customerActivity);
-                            if (res.RequestId == 0)
-                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                            else
+                            if (int.Parse(tb_ActivityCount.Text) > 0)
                             {
-                                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
-                                await Search();
+                                customerActivity.Count = int.Parse(tb_ActivityCount.Text);
 
+                                customerActivity.Notes = tb_Notes.Text;
+                                customerActivity.UpdateUserId = MainWindow.userLogin.userId;
+
+                                var res = await customerActivity.Save(customerActivity);
+                                if (res.RequestId == 0)
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                                else
+                                {
+                                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                                    await Search();
+
+                                }
                             }
-                        }
+                            else
+                                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trMustBeMoreThanZero"), animation: ToasterAnimation.FadeIn);
+                        }                     
                         else
                         {
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
                         }
+                       
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trSelectItemFirst"), animation: ToasterAnimation.FadeIn);
@@ -539,6 +545,7 @@ namespace POSCA.View.customers.activities
                         if (customer.CustomerStatus != "continouse")
                         {
                             tb_BoxNumber.Text = "";
+                            Keyboard.Focus(tb_BoxNumber);
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         }
                         else
@@ -550,6 +557,7 @@ namespace POSCA.View.customers.activities
                                                         AppSettings.resourcemanager.GetString("HasNoFamilyCard");
                             tb_CivilNum.Text = customer.CivilNum;
 
+                            App.MoveToNextUIElement(e);
                         }
                     }
                     else
@@ -559,6 +567,9 @@ namespace POSCA.View.customers.activities
                         tb_CustomerStatus.Text = "";
                         tb_FamilyCardHolder.Text ="";
                         tb_CivilNum.Text = "";
+
+                        Keyboard.Focus(tb_BoxNumber);
+
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
                     HelpClass.EndAwait(grid_main);
@@ -569,6 +580,74 @@ namespace POSCA.View.customers.activities
             catch
             {
                 HelpClass.EndAwait(grid_main);
+            }
+        }
+
+        private void tb_Count_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_ActivityCount.Text != "" && cb_ActivityId.SelectedIndex != -1)
+                {
+
+                    HelpClass.StartAwait(grid_main);
+                    var act = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
+
+                    if(  int.Parse(tb_ActivityCount.Text) > act.MaximumBenefit)
+                    {
+
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CountNotAllowed"), animation: ToasterAnimation.FadeIn);
+                        tb_ActivityCount.Text = "";
+                        Keyboard.Focus(tb_ActivityCount);
+                    }
+                    else if (act.RemainCount < int.Parse(tb_ActivityCount.Text))
+                    {
+
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CountNotAllowed"), animation: ToasterAnimation.FadeIn);
+                        tb_ActivityCount.Text = "";
+                        Keyboard.Focus(tb_ActivityCount);
+                    }
+                    else
+                        App.MoveToNextUIElement(e);
+                       
+                    HelpClass.EndAwait(grid_main);
+
+                }
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
+        }
+
+        private void cb_ActivityId_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if(cb_ActivityId.SelectedIndex != -1)
+                {
+                    var ac = FillCombo.activitiesList.Where(x => x.ActivityId == (long)cb_ActivityId.SelectedValue).FirstOrDefault();
+
+                    tb_BasicValue.Text = HelpClass.DecTostring(ac.BasicValue);
+                    tb_ValueAfterDiscount.Text = HelpClass.DecTostring(ac.ValueAfterDiscount);
+                    tb_MaximumBenefit.Text = ac.MaximumBenefit.ToString();
+
+                    if(tb_ActivityCount.Text != "" && (int.Parse(tb_ActivityCount.Text) > ac.RemainCount || int.Parse(tb_ActivityCount.Text) > ac.MaximumBenefit ))
+                    {
+                        tb_ActivityCount.Text = "";
+                    }
+                }
+                else
+                {
+                    tb_BasicValue.Text = "";
+                    tb_ValueAfterDiscount.Text ="";
+                    tb_MaximumBenefit.Text = "";
+                }
+            }
+            catch
+            {
+
             }
         }
     }

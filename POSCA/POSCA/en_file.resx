@@ -2918,7 +2918,7 @@ Main Documents</value>
     <value>دفع متعدد</value>
   </data>
   <data name="trMustBeMoreThanZero" xml:space="preserve">
-    <value>العدد يجب أن يكون أكبر من الصفر</value>
+    <value>Count Must Be More Than Zero</value>
   </data>
   <data name="trName" xml:space="preserve">
     <value>Name</value>
@@ -6431,5 +6431,11 @@ Main Documents</value>
   </data>
   <data name="RequestNumberHint" xml:space="preserve">
     <value>Request No...</value>
+  </data>
+  <data name="CountNotAllowed" xml:space="preserve">
+    <value>Count Not Allowed</value>
+  </data>
+  <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
+    <value>The count is greater than the maximum benefit</value>
   </data>
 </root>

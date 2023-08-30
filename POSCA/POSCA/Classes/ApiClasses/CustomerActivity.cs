@@ -15,7 +15,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CustomerId { get; set; }
         public Nullable<long> BoxNumber { get; set; }
         public Nullable<long> ActivityId { get; set; }
-        public int Count { get; set; }
+        public int? Count { get; set; }
         public string Notes { get; set; }
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

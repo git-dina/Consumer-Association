@@ -6689,4 +6689,10 @@
   <data name="RequestNumberHint" xml:space="preserve">
     <value>رقم الطلب...</value>
   </data>
+  <data name="CountNotAllowed" xml:space="preserve">
+    <value>العدد غير مسموح</value>
+  </data>
+  <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
+    <value>العدد أكبر من الحد الأقصى للإستفادة</value>
+  </data>
 </root>

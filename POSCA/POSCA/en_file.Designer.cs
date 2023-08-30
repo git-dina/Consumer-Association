@@ -1186,6 +1186,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Count Not Allowed.
+        /// </summary>
+        internal static string CountNotAllowed {
+            get {
+                return ResourceManager.GetString("CountNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countries.
         /// </summary>
         internal static string Countries {
@@ -5728,6 +5737,15 @@ namespace POSCA {
         internal static string TheActivity {
             get {
                 return ResourceManager.GetString("TheActivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The count is greater than the maximum benefit.
+        /// </summary>
+        internal static string TheCountIsGreaterThanTheMaximumBenefit {
+            get {
+                return ResourceManager.GetString("TheCountIsGreaterThanTheMaximumBenefit", resourceCulture);
             }
         }
         
@@ -12482,7 +12500,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to العدد يجب أن يكون أكبر من الصفر.
+        ///   Looks up a localized string similar to Count Must Be More Than Zero.
         /// </summary>
         internal static string trMustBeMoreThanZero {
             get {
