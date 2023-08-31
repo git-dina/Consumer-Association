@@ -617,7 +617,7 @@ namespace POSCA.View.customers.activities
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+                HelpClass.StartAwait(grid_ActivityCount);
 
                 if (e.Key == Key.Return && tb_ActivityCount.Text != "" && cb_ActivityId.SelectedIndex != -1)
                 {
@@ -643,12 +643,12 @@ namespace POSCA.View.customers.activities
                        
 
                 }
-                HelpClass.EndAwait(grid_main);
+                HelpClass.EndAwait(grid_ActivityCount);
 
             }
             catch
             {
-                HelpClass.EndAwait(grid_main);
+                HelpClass.EndAwait(grid_ActivityCount);
             }
         }
 
