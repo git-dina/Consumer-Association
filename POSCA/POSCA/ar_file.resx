@@ -6698,4 +6698,28 @@
   <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
     <value>العدد أكبر من الحد الأقصى للإستفادة</value>
   </data>
+  <data name="BankAccount" xml:space="preserve">
+    <value>الحساب البنكي</value>
+  </data>
+  <data name="ChangingBankAccountInformation" xml:space="preserve">
+    <value>تغيير بيانات الحساب البنكي</value>
+  </data>
+  <data name="NewBank" xml:space="preserve">
+    <value>البنك الجديد</value>
+  </data>
+  <data name="NewIBAN" xml:space="preserve">
+    <value>IBAN الجديد</value>
+  </data>
+  <data name="NewIBANHint" xml:space="preserve">
+    <value>IBAN الجديد...</value>
+  </data>
+  <data name="OldBank" xml:space="preserve">
+    <value>البنك القديم</value>
+  </data>
+  <data name="OldIBAN" xml:space="preserve">
+    <value>IBAN القديم</value>
+  </data>
+  <data name="OldIBANHint" xml:space="preserve">
+    <value>IBAN القديم...</value>
+  </data>
 </root>

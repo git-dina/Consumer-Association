@@ -502,6 +502,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bank Account.
+        /// </summary>
+        internal static string BankAccount {
+            get {
+                return ResourceManager.GetString("BankAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bank Account....
         /// </summary>
         internal static string BankAccountHint {
@@ -867,6 +876,15 @@ namespace POSCA {
         internal static string ChangeTypeHint {
             get {
                 return ResourceManager.GetString("ChangeTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing Bank Account Information.
+        /// </summary>
+        internal static string ChangingBankAccountInformation {
+            get {
+                return ResourceManager.GetString("ChangingBankAccountInformation", resourceCulture);
             }
         }
         
@@ -3338,6 +3356,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Bank.
+        /// </summary>
+        internal static string NewBank {
+            get {
+                return ResourceManager.GetString("NewBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Box Number.
         /// </summary>
         internal static string NewFundNumber {
@@ -3352,6 +3379,24 @@ namespace POSCA {
         internal static string NewFundNumberHint {
             get {
                 return ResourceManager.GetString("NewFundNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New IBAN.
+        /// </summary>
+        internal static string NewIBAN {
+            get {
+                return ResourceManager.GetString("NewIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New IBAN....
+        /// </summary>
+        internal static string NewIBANHint {
+            get {
+                return ResourceManager.GetString("NewIBANHint", resourceCulture);
             }
         }
         
@@ -3595,6 +3640,33 @@ namespace POSCA {
         internal static string OfferTypeHint {
             get {
                 return ResourceManager.GetString("OfferTypeHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old Bank.
+        /// </summary>
+        internal static string OldBank {
+            get {
+                return ResourceManager.GetString("OldBank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old IBAN.
+        /// </summary>
+        internal static string OldIBAN {
+            get {
+                return ResourceManager.GetString("OldIBAN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Old IBAN....
+        /// </summary>
+        internal static string OldIBANHint {
+            get {
+                return ResourceManager.GetString("OldIBANHint", resourceCulture);
             }
         }
         

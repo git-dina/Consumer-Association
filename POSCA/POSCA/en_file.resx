@@ -6441,4 +6441,28 @@ Main Documents</value>
   <data name="TheCountIsGreaterThanTheMaximumBenefit" xml:space="preserve">
     <value>The count is greater than the maximum benefit</value>
   </data>
+  <data name="BankAccount" xml:space="preserve">
+    <value>Bank Account</value>
+  </data>
+  <data name="ChangingBankAccountInformation" xml:space="preserve">
+    <value>Changing Bank Account Information</value>
+  </data>
+  <data name="NewBank" xml:space="preserve">
+    <value>New Bank</value>
+  </data>
+  <data name="NewIBAN" xml:space="preserve">
+    <value>New IBAN</value>
+  </data>
+  <data name="NewIBANHint" xml:space="preserve">
+    <value>New IBAN...</value>
+  </data>
+  <data name="OldBank" xml:space="preserve">
+    <value>Old Bank</value>
+  </data>
+  <data name="OldIBAN" xml:space="preserve">
+    <value>Old IBAN</value>
+  </data>
+  <data name="OldIBANHint" xml:space="preserve">
+    <value>Old IBAN...</value>
+  </data>
 </root>

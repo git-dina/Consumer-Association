@@ -314,8 +314,7 @@ namespace POSCA.View.customers.activities
         {
             try
             {
-                if (sender != null)
-                    HelpClass.StartAwait(grid_main);
+                HelpClass.StartAwait(grid_main);
 
                // if (MainWindow.groupObject.HasPermissionAction(basicsPermission, MainWindow.groupObjects, "report") || SectionData.isAdminPermision())
                 {
@@ -359,13 +358,12 @@ namespace POSCA.View.customers.activities
                 }
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                if (sender != null)
-                    HelpClass.EndAwait(grid_main);
+            
+                HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
             {
-                if (sender != null)
-                    HelpClass.EndAwait(grid_main);
+                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }

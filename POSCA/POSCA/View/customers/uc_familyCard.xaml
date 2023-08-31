@@ -640,7 +640,7 @@
                                 <DataGridTextColumn Width="*"  Header="EscortName" Binding="{Binding Path=EscortName, Mode=TwoWay}"/>-->
 
                                
-                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="*"  Header="BoxNumber">
+                                <DataGridTemplateColumn x:Name="dgc_BoxNumber" Width="1*"  Header="BoxNumber">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <TextBox  Text="{Binding Path=BoxNumber, Mode=TwoWay}"

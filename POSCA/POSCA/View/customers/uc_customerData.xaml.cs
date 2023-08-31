@@ -201,6 +201,7 @@ namespace POSCA.View.customers
                 tb_BoxNumber.IsEnabled = true;
                 tb_IBAN.IsEnabled = true;
                 cb_BankId.IsEnabled = true;
+                btn_addIBAN.IsEnabled = false;
                 sp_withdrawnData.Visibility = Visibility.Collapsed;
             }
             else
@@ -218,6 +219,7 @@ namespace POSCA.View.customers
                 else
                     sp_withdrawnData.Visibility = Visibility.Collapsed;
                 tb_BoxNumber.IsEnabled = false;
+                btn_addIBAN.IsEnabled = true;
             }
 
             tb_CustomerStatus.Foreground = tb_CustomerStatus.Text.Equals(AppSettings.resourcemanager.GetString("withdrawn")) ? Brushes.Red : Brushes.Black;
@@ -781,18 +783,16 @@ namespace POSCA.View.customers
 
                 HelpClass.StartAwait(grid_main);
                 Window.GetWindow(this).Opacity = 0.2;
-                wd_userControl w = new wd_userControl();
-
-                w.grid_uc.Children.Add(uc_customerBank.Instance);
+                wd_customerBankAccount w = new wd_customerBankAccount();
+                w.customerId = customer.CustomerId;
+                w.customerName = customer.Name;
+                w.oldIBAN = customer.IBAN;
+                w.oldBankId = customer.BankId;
                 w.ShowDialog();
-                uc_customerBank.Instance.UserControl_Unloaded(uc_customerBank.Instance, null);
-                //await FillCombo.RefreshSupplierTypes();
-                //await FillCombo.fillSupplierTypes(cb_SupplierTypeId);
 
-                //if (w.isOk)
-                //{
-
-                //}
+                customer = await FillCombo.customer.GetById(customer.CustomerId);
+                tb_IBAN.Text = customer.IBAN;
+                cb_BankId.SelectedValue = customer.BankId;
                 Window.GetWindow(this).Opacity = 1;
 
                 HelpClass.EndAwait(grid_main);

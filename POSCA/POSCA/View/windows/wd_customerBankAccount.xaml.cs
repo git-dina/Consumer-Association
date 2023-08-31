@@ -1,4 +1,6 @@
-﻿using POSCA.Classes;
+﻿using netoaster;
+using POSCA.Classes;
+using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,14 +42,12 @@ namespace POSCA.View.windows
             this.Close();
         }
 
-        /*
-        public string itemStatus { get; set; }
-        public string itemRecieptType { get; set; }
-        public string itemType { get; set; }
-        public string itemTransactionType { get; set; }
-        public decimal? packageWeight { get; set; }
-        public long? packageUnit { get; set; }
-        */
+        IEnumerable<CustomerBankAccount> customerBankAccounts;
+        CustomerBankAccount customerBankAccount = new CustomerBankAccount();
+        public long customerId { get; set; }
+        public string customerName { get; set; }
+        public int? oldBankId { get; set; }
+        public string oldIBAN { get; set; }
         public bool isOk { get; set; }
         public static List<string> requiredControlList;
 
@@ -59,26 +59,27 @@ namespace POSCA.View.windows
 
 
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "", };
+                requiredControlList = new List<string> { "NewIBAN", "NewBankId"};
 
                 #region translate
 
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
 
                 translate();
                 #endregion
+                tb_OldIBAN.Text = oldIBAN;
+                tb_CustomerName.Text = customerName;
+                await FillCombo.fillCustomerBanksWithDefault(cb_NewBankId);
 
+                await fillCustomerBankAccounts();
 
-                //setSupplyingItemData();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -93,34 +94,37 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("ExtraInformation");
-            //txt_itemTransaction.Text = AppSettings.resourcemanager.GetString("ItemTransaction");
+            txt_title.Text = AppSettings.resourcemanager.GetString("ChangingBankAccountInformation");
+            txt_BankAccountInformation.Text = AppSettings.resourcemanager.GetString("BankAccount");
             //txt_packageInformation.Text = AppSettings.resourcemanager.GetString("PackageInformation");
 
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemStatus, AppSettings.resourcemanager.GetString("ItemStatusHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemReceiptType, AppSettings.resourcemanager.GetString("ItemReceiptTypeHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemType, AppSettings.resourcemanager.GetString("ItemTypeHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_ItemTransactionType, AppSettings.resourcemanager.GetString("ItemTransactionTypeHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_PackageWeight, AppSettings.resourcemanager.GetString("PackageWeightHint"));
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_PackageUnit, AppSettings.resourcemanager.GetString("PackageUnitHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerName, AppSettings.resourcemanager.GetString("CustomerNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_OldIBAN, AppSettings.resourcemanager.GetString("OldIBANHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_NewIBAN, AppSettings.resourcemanager.GetString("NewIBANHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_NewBankId, AppSettings.resourcemanager.GetString("trBankHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Notes, AppSettings.resourcemanager.GetString("trNoteHint"));
 
+            dg_customerBankAccount.Columns[0].Header = AppSettings.resourcemanager.GetString("trNo");
+            dg_customerBankAccount.Columns[1].Header = AppSettings.resourcemanager.GetString("OldIBAN");
+            dg_customerBankAccount.Columns[2].Header = AppSettings.resourcemanager.GetString("NewIBAN");
+            dg_customerBankAccount.Columns[3].Header = AppSettings.resourcemanager.GetString("OldBank");
+            dg_customerBankAccount.Columns[4].Header = AppSettings.resourcemanager.GetString("NewBank");
+            dg_customerBankAccount.Columns[5].Header = AppSettings.resourcemanager.GetString("trNote");
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
 
         }
 
-        //private void setSupplyingItemData()
-        //{
-        //    cb_ItemReceiptType.SelectedValue = itemRecieptType;
-        //    cb_ItemStatus.SelectedValue = itemStatus;
-        //    cb_ItemType.SelectedValue = itemType;
-        //    //if (itemTransactionType == null || itemTransactionType.Equals("")) 
-        //    //    cb_ItemTransactionType.SelectedValue = "new_committee";
-        //    //else
-        //    cb_ItemTransactionType.SelectedValue = itemTransactionType;
+       private async Task fillCustomerBankAccounts()
+        {
+            customerBankAccounts = await customerBankAccount.GetByCustomerId(customerId);
+            refreshBankAccountsView();
+        }
 
-        //    cb_PackageUnit.SelectedValue = packageUnit;
-        //    tb_PackageWeight.Text = packageWeight.ToString();
-        //}
+        private void refreshBankAccountsView()
+        {
+            dg_customerBankAccount.ItemsSource = customerBankAccounts;
+            dg_customerBankAccount.Items.Refresh();
+        }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -236,25 +240,52 @@ namespace POSCA.View.windows
         }
 
         #endregion
-        private void Btn_save_Click(object sender, RoutedEventArgs e)
+        private bool isValidIBAN()
+        {
+            if (tb_NewIBAN.Text != "" && tb_NewIBAN.Text.Length < 30)
+            {
+                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("IBANLengthAlert"), animation: ToasterAnimation.FadeIn);
+
+                return false;
+            }
+            else return true;
+        }
+        private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
 
                 HelpClass.StartAwait(grid_main);
-                /*
-                itemRecieptType = cb_ItemReceiptType.SelectedValue.ToString();
-                itemStatus = cb_ItemStatus.SelectedValue.ToString();
-                itemType = cb_ItemType.SelectedValue.ToString();
-                itemTransactionType = cb_ItemTransactionType.SelectedValue.ToString();
-                if (!tb_PackageWeight.Text.Equals(""))
-                    packageWeight = decimal.Parse(tb_PackageWeight.Text);
-                if (cb_PackageUnit.SelectedIndex != -1)
-                    packageUnit = int.Parse(cb_PackageUnit.SelectedValue.ToString());
+                if (HelpClass.validate(requiredControlList, this))
+                {
+                    if (isValidIBAN())
+                    {
+                        customerBankAccount.CustomerId = customerId;
+                        customerBankAccount.OldIBAN = oldIBAN;
+                        customerBankAccount.OldBankId = oldBankId;
+                        customerBankAccount.NewIBAN = tb_NewIBAN.Text;
+                        customerBankAccount.NewBankId = (int)cb_NewBankId.SelectedValue;
+                        customerBankAccount.CreateUserId = MainWindow.userLogin.userId;
 
-                */
-                isOk = true;
-                this.Close();
+                        customerBankAccount.Notes = tb_Notes.ToString();
+
+                        customerBankAccounts = await customerBankAccount.save(customerBankAccount);
+                        if (customerBankAccounts != null)
+                        {
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                            refreshBankAccountsView();
+                        }
+                        else
+                        {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+
+                        }
+                    }
+                }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
