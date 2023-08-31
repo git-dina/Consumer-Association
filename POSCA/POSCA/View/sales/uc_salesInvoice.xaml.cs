@@ -902,7 +902,7 @@ namespace POSCA.View.sales
             }
 
             txt_Total.Text = HelpClass.DecTostring(_TotalPrice);
-            txt_Quantity.Text = billDetails.Select(x => x.Qty).Sum();
+            txt_Quantity.Text = billDetails.Select(x => x.Qty).Sum().ToString();
 
         }
 
