@@ -227,7 +227,6 @@
     <Compile Include="Classes\ApiClasses\Receipt.cs" />
     <Compile Include="Classes\ApiClasses\SalesInvoice.cs" />
     <Compile Include="Classes\ApiClasses\SalesInvoiceDetails.cs" />
-    <Compile Include="Classes\ApiClasses\SalesPayment.cs" />
     <Compile Include="Classes\ApiClasses\Section.cs" />
     <Compile Include="Classes\ApiClasses\Supplier.cs" />
     <Compile Include="Classes\ApiClasses\SupplierGroup.cs" />

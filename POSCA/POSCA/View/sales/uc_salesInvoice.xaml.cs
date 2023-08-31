@@ -151,19 +151,15 @@ namespace POSCA.View.sales
             btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
            
            
-            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("SeuenceAbbrevation");
-            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("trBarcode");
-            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("itemName");
-            dg_invoiceDetails.Columns[5].Header = AppSettings.resourcemanager.GetString("trAmount");
-            dg_invoiceDetails.Columns[6].Header = AppSettings.resourcemanager.GetString("trPrice");
-            dg_invoiceDetails.Columns[7].Header = AppSettings.resourcemanager.GetString("trTotal");
+            dg_invoiceDetails.Columns[0].Header = AppSettings.resourcemanager.GetString("trBarcode");
+            dg_invoiceDetails.Columns[1].Header = AppSettings.resourcemanager.GetString("itemName");
+            dg_invoiceDetails.Columns[2].Header = AppSettings.resourcemanager.GetString("trAmount");
+            dg_invoiceDetails.Columns[3].Header = AppSettings.resourcemanager.GetString("trPrice");
+            dg_invoiceDetails.Columns[4].Header = AppSettings.resourcemanager.GetString("trTotal");
            
-           // col_paymentType.Header = AppSettings.resourcemanager.GetString("trPaymentType");
-           // col_amount.Header = AppSettings.resourcemanager.GetString("trPaymentType");
 
             btn_newDraft.ToolTip = AppSettings.resourcemanager.GetString("trNew");
             btn_receiptOrders.ToolTip = AppSettings.resourcemanager.GetString("trSalesInvoices");
-            // btn_salesInvoices.ToolTip = AppSettings.resourcemanager.GetString("SalesInvoices");
             btn_printInvoice.ToolTip = AppSettings.resourcemanager.GetString("trPrint");
         }
 
@@ -868,72 +864,45 @@ namespace POSCA.View.sales
         List<SalesInvoiceDetails> billDetails = new List<SalesInvoiceDetails>();
         private void addItemToBill(SalesInvoiceDetails salesInvoiceDetails)
         {
-            /*
-            int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == salesInvoiceDetails.ItemId).FirstOrDefault());
+       
+            var invoiceItem = billDetails.Where(p => p.ItemUnitId == salesInvoiceDetails.ItemUnitId).FirstOrDefault();
 
-            if (index == -1)//item doesn't exist in bill
+            if (invoiceItem == null)//item doesn't exist in bill
             {
                 billDetails.Add(salesInvoiceDetails);
 
-                //dg_invoiceDetails.ItemsSource = billDetails;
-                //dg_invoiceDetails.Items.Refresh();
                 if (!forceCancelEdit)
                 {
                     dg_invoiceDetails.IsEnabled = false;
                     RefreshInvoiceDetailsDataGrid();
                 }
-                refreshValues();
             }
             else // item exist prevoiusly in list
             {
-                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemExistInOrderError"), animation: ToasterAnimation.FadeIn);
+                invoiceItem.Qty++;
+                invoiceItem.Total = invoiceItem.Qty * invoiceItem.Price;
 
             }
-            */
+                refreshValues();
+
         }
 
-        decimal _TotalCost = 0;
+
         decimal _TotalPrice = 0;
-        decimal _DiscountValue = 0;
-        decimal _ConsumerDiscount = 0;
 
         private void refreshValues()
         {
-            /*
-            _TotalCost = 0;
+
+
             _TotalPrice = 0;
-            _DiscountValue = 0;
-            _ConsumerDiscount = 0;
+
             foreach (var row in billDetails)
             {
-                _TotalCost += row.Cost * ((int)row.MinQty + ((int)row.MaxQty * (int)row.Factor));
-                _TotalPrice += row.Price * ((int)row.MinQty + ((int)row.MaxQty * (int)row.Factor));
-                _ConsumerDiscount = (decimal)row.ConsumerDiscount;
+                _TotalPrice += (decimal) row.Total;
             }
 
-            txt_TotalCost.Text = HelpClass.DecTostring(_TotalCost);
-            txt_TotalPrice.Text = HelpClass.DecTostring(_TotalPrice);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(_ConsumerDiscount);
-
-            //cost after discount
-            var discount = HelpClass.calcPercentage(_TotalCost, supplier.DiscountPercentage);
-            _DiscountValue = discount;
-            txt_DiscountValue.Text = HelpClass.DecTostring(_DiscountValue);
-
-            //free quantity
-            decimal freePercentage = 0;
-            decimal freeValue = 0;
-            if (tb_FreePercentage.Text != "")
-            {
-                freePercentage = decimal.Parse(tb_FreePercentage.Text);
-                freeValue = HelpClass.calcPercentage(_TotalPrice, freePercentage);
-            }
-            txt_FreeValue.Text = HelpClass.DecTostring(freeValue);
-
-            decimal netCost = _TotalCost - discount;
-            txt_CostNet.Text = HelpClass.DecTostring(netCost);
-            tb_NetInvoice.Text = HelpClass.DecTostring(netCost);
-            */
+            txt_Total.Text = HelpClass.DecTostring(_TotalPrice);
+            txt_Quantity.Text = billDetails.Select(x => x.Qty).Sum();
 
         }
 

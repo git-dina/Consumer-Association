@@ -1407,5 +1407,47 @@ namespace POSCA.Classes
             combo.SelectedIndex = 0;
         }
         #endregion
+
+        #region Sales
+        static public List<PaymentType> paymentTypeList;
+        static public SalesInvoice sales = new SalesInvoice();
+
+        static public async Task<IEnumerable<PaymentType>> RefreshPaymentTypes()
+        {
+            paymentTypeList = await sales.GetPaymentTypes();
+
+            return paymentTypeList;
+        }
+
+        static public async Task fillPaymentTypesWithDefault(ComboBox combo)
+        {
+            if (paymentTypeList is null)
+                await RefreshPaymentTypes();
+
+            var lst = paymentTypeList.ToList();
+
+            PaymentType sup = new PaymentType();
+            sup.PaymentTypeName = "-";
+            sup.PaymentTypeId = 0;
+            lst.Insert(0, sup);
+
+            combo.ItemsSource = lst;
+
+            combo.SelectedValuePath = "PaymentTypeId";
+            combo.DisplayMemberPath = "PaymentTypeName";
+            combo.SelectedIndex = -1;
+        }
+        static public async Task fillPaymentTypes(ComboBox combo)
+        {
+            if (paymentTypeList is null)
+                await RefreshPaymentTypes();
+
+            combo.ItemsSource = paymentTypeList;
+
+            combo.SelectedValuePath = "PaymentTypeId";
+            combo.DisplayMemberPath = "PaymentTypeName";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
     }
 }
