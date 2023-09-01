@@ -656,7 +656,7 @@ namespace POSCA.View.customers.activities
         {
             try
             {
-                HelpClass.StartAwait(grid_main);
+                //HelpClass.StartAwait(grid_main);
                 if (cb_ActivityId.SelectedIndex != -1)
                 {
                    
@@ -678,12 +678,12 @@ namespace POSCA.View.customers.activities
                     tb_ValueAfterDiscount.Text ="";
                     tb_MaximumBenefit.Text = "";
                 }
-                HelpClass.EndAwait(grid_main);
+                //HelpClass.EndAwait(grid_main);
 
             }
             catch
             {
-                HelpClass.EndAwait(grid_main);
+                //HelpClass.EndAwait(grid_main);
 
             }
         }
