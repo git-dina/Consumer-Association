@@ -5084,6 +5084,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to See The Administration.
+        /// </summary>
+        internal static string SeeTheAdministrationAlert {
+            get {
+                return ResourceManager.GetString("SeeTheAdministrationAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select All.
         /// </summary>
         internal static string SelectAll {

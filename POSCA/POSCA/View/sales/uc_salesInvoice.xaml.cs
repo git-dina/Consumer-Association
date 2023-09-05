@@ -117,7 +117,7 @@ namespace POSCA.View.sales
 
                 //await Search();
                 Clear();
-
+                Keyboard.Focus(tb_search);
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -143,6 +143,7 @@ namespace POSCA.View.sales
             txt_CustomerTitle.Text = AppSettings.resourcemanager.GetString("IsCustomer");
             txt_CustomerBalanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
             //txt_payType.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
 
 
             txt_QuantityTitle.Text = AppSettings.resourcemanager.GetString("trAmount");
@@ -705,12 +706,12 @@ namespace POSCA.View.sales
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-        void Clear()
+       async void Clear()
         {
 
             this.DataContext = new Receipt();
 
-            receipt = new Receipt();
+            customer = new Customer();
             salesInvoice = new SalesInvoice();
 
             billDetails = new List<SalesInvoiceDetails>();
@@ -1337,6 +1338,80 @@ namespace POSCA.View.sales
             }
         }
 
-       
+        private void HandleKeyPress(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.PageUp)
+                {
+                    GetCustomerByBox_ID();
+                }
+            }
+            catch (Exception ex)
+            { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+        }
+
+        private void GetCustomerByBox_ID()
+        {
+            Keyboard.Focus(tb_CustomerId);
+        }
+
+        Customer customer = new Customer();
+        private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Return && tb_CustomerId.Text != "")
+                {
+                    customer = new Customer();
+                    HelpClass.StartAwait(grid_main);
+
+                    customer = await FillCombo.customer.GetById(long.Parse(tb_CustomerId.Text));
+
+                    if (customer != null)
+                    {
+                        if (customer.CustomerStatus.Trim() != "continouse")
+                        {
+                            txt_Customer.Text = "";
+                            txt_CustomerBalance.Text = "";
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
+                        }
+                        else if(customer.StopOnPOS )
+                        {
+                            txt_Customer.Text = "";
+                            txt_CustomerBalance.Text = "";
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SeeTheAdministrationAlert"), animation: ToasterAnimation.FadeIn);
+                        }
+                        else
+                        {
+                            txt_Customer.Text = customer.Name;
+                            txt_CustomerBalance.Text = HelpClass.DecTostring(customer.CurrentPurchses);
+
+                        }
+                    }
+                    else
+                    {
+                        txt_Customer.Text = "";
+                        txt_CustomerBalance.Text = "";
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
+                    }
+  
+                    HelpClass.EndAwait(grid_main);
+                    Keyboard.Focus(tb_search);
+
+                }
+                else
+                {
+                    txt_Customer.Text = "";
+                    txt_CustomerBalance.Text = "";
+                    Keyboard.Focus(tb_search);
+                }
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
+        }
     }
 }

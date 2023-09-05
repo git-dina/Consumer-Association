@@ -6722,4 +6722,7 @@
   <data name="OldIBANHint" xml:space="preserve">
     <value>IBAN القديم...</value>
   </data>
+  <data name="SeeTheAdministrationAlert" xml:space="preserve">
+    <value>راجع الإدارة</value>
+  </data>
 </root>

@@ -6465,4 +6465,7 @@ Main Documents</value>
   <data name="OldIBANHint" xml:space="preserve">
     <value>Old IBAN...</value>
   </data>
+  <data name="SeeTheAdministrationAlert" xml:space="preserve">
+    <value>See The Administration</value>
+  </data>
 </root>
