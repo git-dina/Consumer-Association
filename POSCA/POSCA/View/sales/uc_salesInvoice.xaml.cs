@@ -1338,18 +1338,18 @@ namespace POSCA.View.sales
             }
         }
 
-        private void HandleKeyPress(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.PageUp)
-                {
-                    GetCustomerByBox_ID();
-                }
-            }
-            catch (Exception ex)
-            { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
-        }
+        //private void HandleKeyPress(object sender, KeyEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.Key == Key.PageUp)
+        //        {
+        //            GetCustomerByBox_ID();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
+        //}
 
         private void GetCustomerByBox_ID()
         {
@@ -1412,6 +1412,20 @@ namespace POSCA.View.sales
             {
                 HelpClass.EndAwait(grid_main);
             }
+        }
+
+
+        private void UserControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.PageUp)
+                {
+                    GetCustomerByBox_ID();
+                }
+            }
+            catch (Exception ex)
+            { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
     }
 }
