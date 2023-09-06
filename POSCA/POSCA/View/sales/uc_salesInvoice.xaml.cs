@@ -1399,7 +1399,7 @@ namespace POSCA.View.sales
                     }
   
                     HelpClass.EndAwait(grid_main);
-                    Keyboard.Focus(tb_search);
+                    //Keyboard.Focus(tb_search);
 
                 }
                 else
