@@ -65,6 +65,7 @@ namespace POSCA.View.sales
         private string _ReceiptType = "salesInvoices";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
             Instance = null;
             GC.Collect();
         }
@@ -73,6 +74,7 @@ namespace POSCA.View.sales
             try
             {
                 HelpClass.StartAwait(grid_main);
+                MainWindow.mainWindow.KeyUp += UserControl_KeyUp;
 
                 if (AppSettings.lang.Equals("en"))
                 {
