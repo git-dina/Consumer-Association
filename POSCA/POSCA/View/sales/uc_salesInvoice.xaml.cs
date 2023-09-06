@@ -1406,7 +1406,7 @@ namespace POSCA.View.sales
                 {
                     txt_Customer.Text = "";
                     txt_CustomerBalance.Text = "";
-                    Keyboard.Focus(tb_search);
+                    //Keyboard.Focus(tb_search);
                 }
 
             }
