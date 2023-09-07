@@ -59,7 +59,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> CreateUserId { get; set; }
         public Nullable<long> UpdateUserId { get; set; }
 
-        public List<User> Users { get; set; }
+
         public List<Permissions> Permissions { get; set; }
     }
 
