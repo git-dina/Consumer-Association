@@ -578,7 +578,7 @@ namespace POSCA.View.sales
             receipt.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
             receipt.CostNet = decimal.Parse(txt_CostNet.Text);
 
-            receipt.CreateUserId = MainWindow.userLogin.userId;
+            receipt.CreateUserId = MainWindow.userLogin.UserId;
 
             receipt.ReceiptDetails = billDetails;
             receipt = await receipt.SaveReceiptOrder(receipt);
@@ -1003,7 +1003,7 @@ namespace POSCA.View.sales
                     MaxQty = (int)row.MaxQty,
                     MinQty = (int)row.MinQty,
                     Price = row.Price,
-                    CreateUserId = MainWindow.userLogin.userId,
+                    CreateUserId = MainWindow.userLogin.UserId,
                 });
             }
 
@@ -1182,7 +1182,7 @@ namespace POSCA.View.sales
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.userId);
+                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {

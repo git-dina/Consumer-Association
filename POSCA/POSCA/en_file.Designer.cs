@@ -331,15 +331,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alert days.
-        /// </summary>
-        internal static string alertDays {
-            get {
-                return ResourceManager.GetString("alertDays", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Allowed Operations.
         /// </summary>
         internal static string AllowedOperations {
@@ -480,24 +471,6 @@ namespace POSCA {
         internal static string AvenueNumberHint {
             get {
                 return ResourceManager.GetString("AvenueNumberHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Backup data.
-        /// </summary>
-        internal static string backupData {
-            get {
-                return ResourceManager.GetString("backupData", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Backup time.
-        /// </summary>
-        internal static string backupTime {
-            get {
-                return ResourceManager.GetString("backupTime", resourceCulture);
             }
         }
         
@@ -1231,15 +1204,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Credit limit.
-        /// </summary>
-        internal static string creditLimit {
-            get {
-                return ResourceManager.GetString("creditLimit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Current.
         /// </summary>
         internal static string current {
@@ -1384,7 +1348,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to customers Data.
+        ///   Looks up a localized string similar to Contributers Data.
         /// </summary>
         internal static string customersData {
             get {
@@ -1393,7 +1357,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer Status....
+        ///   Looks up a localized string similar to Contributor Status....
         /// </summary>
         internal static string CustomerStatusHint {
             get {
@@ -1402,7 +1366,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customers Transactions.
+        ///   Looks up a localized string similar to Contributors Transactions.
         /// </summary>
         internal static string CustomersTransactions {
             get {
@@ -1465,15 +1429,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default class.
-        /// </summary>
-        internal static string defaultClass {
-            get {
-                return ResourceManager.GetString("defaultClass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Default payment.
         /// </summary>
         internal static string defaultPayment {
@@ -1492,69 +1447,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delivery Date.
-        /// </summary>
-        internal static string DeliveryDate {
-            get {
-                return ResourceManager.GetString("DeliveryDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delivery list.
-        /// </summary>
-        internal static string deliveryList {
-            get {
-                return ResourceManager.GetString("deliveryList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delivery Man.
-        /// </summary>
-        internal static string deliveryMan {
-            get {
-                return ResourceManager.GetString("deliveryMan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delivery Report.
-        /// </summary>
-        internal static string deliveryReport {
-            get {
-                return ResourceManager.GetString("deliveryReport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Delivery time.
-        /// </summary>
-        internal static string deliveryTime {
-            get {
-                return ResourceManager.GetString("deliveryTime", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Receipt from.
-        /// </summary>
-        internal static string Depositfor {
-            get {
-                return ResourceManager.GetString("Depositfor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Deposit to Bank.
-        /// </summary>
-        internal static string DeposittoBank {
-            get {
-                return ResourceManager.GetString("DeposittoBank", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to dept not available.
         /// </summary>
         internal static string deptNotAvailable {
@@ -1569,15 +1461,6 @@ namespace POSCA {
         internal static string deserved {
             get {
                 return ResourceManager.GetString("deserved", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Destructive.
-        /// </summary>
-        internal static string Destructive {
-            get {
-                return ResourceManager.GetString("Destructive", resourceCulture);
             }
         }
         
@@ -3036,15 +2919,6 @@ namespace POSCA {
         internal static string LocationTypes {
             get {
                 return ResourceManager.GetString("LocationTypes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You are logged out because you haven&apos;t done any process for 15 minutes.
-        /// </summary>
-        internal static string LoggedOutBecauseDidNotDoneAnyProcess {
-            get {
-                return ResourceManager.GetString("LoggedOutBecauseDidNotDoneAnyProcess", resourceCulture);
             }
         }
         
@@ -4922,24 +4796,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Return period.
-        /// </summary>
-        internal static string returnPeriod {
-            get {
-                return ResourceManager.GetString("returnPeriod", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Return Period Exceeded.
-        /// </summary>
-        internal static string ReturnPeriodExceeded {
-            get {
-                return ResourceManager.GetString("ReturnPeriodExceeded", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Returns.
         /// </summary>
         internal static string Returns {
@@ -6569,15 +6425,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transfers Between POS.
-        /// </summary>
-        internal static string transfersBetweenPOS {
-            get {
-                return ResourceManager.GetString("transfersBetweenPOS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Transform Stocks.
         /// </summary>
         internal static string TransformStocks {
@@ -6691,15 +6538,6 @@ namespace POSCA {
         internal static string trArea {
             get {
                 return ResourceManager.GetString("trArea", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to +963.
-        /// </summary>
-        internal static string trAreaHint {
-            get {
-                return ResourceManager.GetString("trAreaHint", resourceCulture);
             }
         }
         
@@ -11816,47 +11654,11 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المطبخ.
-        /// </summary>
-        internal static string trKitchen {
-            get {
-                return ResourceManager.GetString("trKitchen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to موظف مطبخ.
-        /// </summary>
-        internal static string trKitchenEmployee {
-            get {
-                return ResourceManager.GetString("trKitchenEmployee", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مدير المطبخ.
-        /// </summary>
-        internal static string trKitchenManager {
-            get {
-                return ResourceManager.GetString("trKitchenManager", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to K-NET.
         /// </summary>
         internal static string trKNET {
             get {
                 return ResourceManager.GetString("trKNET", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to احتياجات.
-        /// </summary>
-        internal static string trLack {
-            get {
-                return ResourceManager.GetString("trLack", resourceCulture);
             }
         }
         

@@ -142,7 +142,7 @@ namespace POSCA.View.sectionData.vendors
 
                         supplierType.Name = tb_Name.Text;
                         supplierType.Notes = tb_Notes.Text;
-                        supplierType.CreateUserId = MainWindow.userLogin.userId;
+                        supplierType.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.supplierTypeList = await supplierType.save(supplierType);
                         if (FillCombo.supplierTypeList == null)
@@ -185,7 +185,7 @@ namespace POSCA.View.sectionData.vendors
                         {
                             supplierType.Name = tb_Name.Text;
                             supplierType.Notes = tb_Notes.Text;
-                            supplierType.UpdateUserId = MainWindow.userLogin.userId;
+                            supplierType.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.supplierTypeList = await supplierType.save(supplierType);
                             if (FillCombo.supplierTypeList == null)
@@ -237,7 +237,7 @@ namespace POSCA.View.sectionData.vendors
 
                         if (w.isOk)
                         {
-                            FillCombo.supplierTypeList = await supplierType.delete(supplierType.SupplierTypeId, MainWindow.userLogin.userId);
+                            FillCombo.supplierTypeList = await supplierType.delete(supplierType.SupplierTypeId, MainWindow.userLogin.UserId);
                             if (FillCombo.supplierTypeList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

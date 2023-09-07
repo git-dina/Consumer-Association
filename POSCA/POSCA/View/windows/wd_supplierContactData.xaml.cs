@@ -193,8 +193,8 @@ namespace POSCA.View.windows
                         supplier.balance = 0;
                         supplier.balanceType = 0;
                         supplier.payType = payType;
-                        supplier.createUserId = MainWindow.userLogin.userId;
-                        supplier.updateUserId = MainWindow.userLogin.userId;
+                        supplier.createUserId = MainWindow.userLogin.UserId;
+                        supplier.updateUserId = MainWindow.userLogin.UserId;
                         supplier.notes = tb_notes.Text;
                         supplier.isActive = 1;
 
@@ -259,7 +259,7 @@ namespace POSCA.View.windows
                             if (!tb_fax.Text.Equals(""))
                                 supplier.fax = cb_areaFax.Text + "-" + cb_areaFaxLocal.Text + "-" + tb_fax.Text;
                             supplier.payType = payType;
-                            supplier.updateUserId = MainWindow.userLogin.userId;
+                            supplier.updateUserId = MainWindow.userLogin.UserId;
                             supplier.notes = tb_notes.Text;
 
                             var s = await supplier.save(supplier);

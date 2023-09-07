@@ -136,7 +136,7 @@ namespace POSCA.View.customers.customerSectionData
                         hirarachyStructure.Name = tb_Name.Text;
                         hirarachyStructure.Title = tb_Title.Text;
                         hirarachyStructure.Notes = tb_Notes.Text;
-                        hirarachyStructure.CreateUserId = MainWindow.userLogin.userId;
+                        hirarachyStructure.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.hirarachyStructureList = await hirarachyStructure.save(hirarachyStructure);
                         if (FillCombo.hirarachyStructureList == null)
@@ -180,7 +180,7 @@ namespace POSCA.View.customers.customerSectionData
                             hirarachyStructure.Name = tb_Name.Text;
                             hirarachyStructure.Title = tb_Title.Text; 
                             hirarachyStructure.Notes = tb_Notes.Text;
-                            hirarachyStructure.UpdateUserId = MainWindow.userLogin.userId;
+                            hirarachyStructure.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.hirarachyStructureList = await hirarachyStructure.save(hirarachyStructure);
                             if (FillCombo.hirarachyStructureList == null)
@@ -232,7 +232,7 @@ namespace POSCA.View.customers.customerSectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.hirarachyStructureList = await hirarachyStructure.delete(hirarachyStructure.Id, MainWindow.userLogin.userId);
+                            FillCombo.hirarachyStructureList = await hirarachyStructure.delete(hirarachyStructure.Id, MainWindow.userLogin.UserId);
                             if (FillCombo.hirarachyStructureList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

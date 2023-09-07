@@ -286,7 +286,7 @@ namespace POSCA.View.customers
 
             customer.Notes = tb_Notes.Text;
 
-            customer.CreateUserId = MainWindow.userLogin.userId;
+            customer.CreateUserId = MainWindow.userLogin.UserId;
 
             //customer ddress
             if (customer.customerAddress == null)
@@ -830,7 +830,7 @@ namespace POSCA.View.customers
                                 row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
                                 var ext = row.DocPath.Substring(row.DocPath.LastIndexOf('.'));
                                 var extension = ext.ToLower();
-                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId ;
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.UserId ;
                                 string b = await customer.uploadDocument(row.DocPath, row.DocName);
                                 row.DocName = row.DocName + ext;
                             }

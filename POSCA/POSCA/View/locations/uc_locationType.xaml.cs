@@ -142,7 +142,7 @@ namespace POSCA.View.locations
 
                         locationType.Name = tb_Name.Text;
                         //locationType.Notes = tb_Notes.Text;
-                        locationType.CreateUserId = MainWindow.userLogin.userId;
+                        locationType.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.locationTypeList = await locationType.save(locationType);
                         if (FillCombo.locationTypeList == null)
@@ -185,7 +185,7 @@ namespace POSCA.View.locations
                         {
                             locationType.Name = tb_Name.Text;
                             //locationType.Notes = tb_Notes.Text;
-                            locationType.UpdateUserId = MainWindow.userLogin.userId;
+                            locationType.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.locationTypeList = await locationType.save(locationType);
                             if (FillCombo.locationTypeList == null)
@@ -237,7 +237,7 @@ namespace POSCA.View.locations
 
                         if (w.isOk)
                         {
-                            FillCombo.locationTypeList = await locationType.delete(locationType.LocationTypeId, MainWindow.userLogin.userId);
+                            FillCombo.locationTypeList = await locationType.delete(locationType.LocationTypeId, MainWindow.userLogin.UserId);
                             if (FillCombo.locationTypeList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

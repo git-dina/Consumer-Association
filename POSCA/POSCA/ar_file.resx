@@ -141,9 +141,6 @@
   <data name="trAnotherInfomation" xml:space="preserve">
     <value>معلومات أخرى</value>
   </data>
-  <data name="trAreaHint" xml:space="preserve">
-    <value>963+</value>
-  </data>
   <data name="trBalance" xml:space="preserve">
     <value>الرصيد</value>
   </data>
@@ -1930,9 +1927,6 @@
   <data name="trItemHint" xml:space="preserve">
     <value>المادة...</value>
   </data>
-  <data name="trItemShortage" xml:space="preserve">
-    <value>نقص مادة</value>
-  </data>
   <data name="trItemStorage" xml:space="preserve">
     <value>تخزين مادة</value>
   </data>
@@ -2310,12 +2304,6 @@
   </data>
   <data name="trImportExport" xml:space="preserve">
     <value>استيراد, تصدير</value>
-  </data>
-  <data name="trItemsDestroy" xml:space="preserve">
-    <value>اتلاف</value>
-  </data>
-  <data name="trItemsStorage" xml:space="preserve">
-    <value>التخزين</value>
   </data>
   <data name="trLocations" xml:space="preserve">
     <value>أماكن التخزين</value>
@@ -2806,9 +2794,6 @@
   <data name="trExpire" xml:space="preserve">
     <value>تاريخ صلاحية</value>
   </data>
-  <data name="trLack" xml:space="preserve">
-    <value>احتياجات</value>
-  </data>
   <data name="trPersonsCount" xml:space="preserve">
     <value>عدد الأشخاص</value>
   </data>
@@ -2845,12 +2830,6 @@
   <data name="trHeadWaiter" xml:space="preserve">
     <value>رئيس الندل</value>
   </data>
-  <data name="trKitchenEmployee" xml:space="preserve">
-    <value>موظف مطبخ</value>
-  </data>
-  <data name="trKitchenManager" xml:space="preserve">
-    <value>مدير المطبخ</value>
-  </data>
   <data name="trPurchasingManager" xml:space="preserve">
     <value>مدير المشتريات</value>
   </data>
@@ -2871,9 +2850,6 @@
   </data>
   <data name="trWarehouseManager" xml:space="preserve">
     <value>مدير المخزن</value>
-  </data>
-  <data name="trAppetizers" xml:space="preserve">
-    <value>المقبلات</value>
   </data>
   <data name="trBeverages" xml:space="preserve">
     <value>المشروبات</value>
@@ -2931,9 +2907,6 @@
   </data>
   <data name="trItemsCosting" xml:space="preserve">
     <value>تكليف المواد</value>
-  </data>
-  <data name="trKitchen" xml:space="preserve">
-    <value>المطبخ</value>
   </data>
   <data name="trMenuSettings" xml:space="preserve">
     <value>قائمة الطعام</value>
@@ -3120,9 +3093,6 @@
   </data>
   <data name="trAddUpdateDelete" xml:space="preserve">
     <value>إضافة، تعديل، حذف</value>
-  </data>
-  <data name="trAppetizersBeverages" xml:space="preserve">
-    <value>المقبلات, المشروبات</value>
   </data>
   <data name="trBanksPaymentMethods" xml:space="preserve">
     <value>البنوك, طرق الدفع</value>
@@ -3384,9 +3354,6 @@
   </data>
   <data name="invoicesClasses" xml:space="preserve">
     <value>فئات الفواتير</value>
-  </data>
-  <data name="trAboutUs" xml:space="preserve">
-    <value>من نحن</value>
   </data>
   <data name="trSubscriptionType" xml:space="preserve">
     <value>نوع الاشتراك</value>
@@ -3667,9 +3634,6 @@
   <data name="trBranchItemHint" xml:space="preserve">
     <value>فروع, مواد...</value>
   </data>
-  <data name="trItemsAgentsInvoiceHint" xml:space="preserve">
-    <value>مواد, وكلاء, فواتير...</value>
-  </data>
   <data name="trItemsHint" xml:space="preserve">
     <value>مواد...</value>
   </data>
@@ -3796,12 +3760,6 @@
   <data name="selectedResidentialSectors" xml:space="preserve">
     <value>القطاعات السكنية المختارة</value>
   </data>
-  <data name="deliveryMan" xml:space="preserve">
-    <value>موظف التوصيل</value>
-  </data>
-  <data name="deliveryTime" xml:space="preserve">
-    <value>وقت التسليم</value>
-  </data>
   <data name="onTheWay" xml:space="preserve">
     <value>على الطريق</value>
   </data>
@@ -3883,9 +3841,6 @@
   <data name="membershipSubscriptions" xml:space="preserve">
     <value>اشتراكات العضوية</value>
   </data>
-  <data name="transfersBetweenPOS" xml:space="preserve">
-    <value>التحويلات بين نقاط البيع</value>
-  </data>
   <data name="trSpendingOrders" xml:space="preserve">
     <value>اوامر صرف</value>
   </data>
@@ -3964,9 +3919,6 @@
   <data name="trOrdersWaitConfirmUser" xml:space="preserve">
     <value>طلبات بانتظار تأكيد المستخدم</value>
   </data>
-  <data name="deliveryReport" xml:space="preserve">
-    <value>تقرير التوصيل</value>
-  </data>
   <data name="trCash_" xml:space="preserve">
     <value>المبلغ</value>
   </data>
@@ -4002,9 +3954,6 @@
   </data>
   <data name="trOrderSharp" xml:space="preserve">
     <value>رمز الطلب</value>
-  </data>
-  <data name="deliveryList" xml:space="preserve">
-    <value>قائمة الطلبات</value>
   </data>
   <data name="driversShippingCompanies" xml:space="preserve">
     <value>السائقين, شركات الشحن</value>
@@ -4159,9 +4108,6 @@
   <data name="trAdministrative" xml:space="preserve">
     <value>إداري</value>
   </data>
-  <data name="administrativePayment" xml:space="preserve">
-    <value>دفع إداري</value>
-  </data>
   <data name="trBasic" xml:space="preserve">
     <value>أساسي</value>
   </data>
@@ -4173,9 +4119,6 @@
   </data>
   <data name="extraPriceHint" xml:space="preserve">
     <value>اكسترا - السعر...</value>
-  </data>
-  <data name="TheIngredients" xml:space="preserve">
-    <value>المكونات</value>
   </data>
   <data name="order" xml:space="preserve">
     <value>الطلب</value>
@@ -4243,15 +4186,6 @@
   <data name="onUser" xml:space="preserve">
     <value>على المستخدم</value>
   </data>
-  <data name="administrativeCashTransfers" xml:space="preserve">
-    <value>التحويلات النقدية الإدارية</value>
-  </data>
-  <data name="agentType" xml:space="preserve">
-    <value>نوع العميل</value>
-  </data>
-  <data name="alertDays" xml:space="preserve">
-    <value>أيام التنبيه</value>
-  </data>
   <data name="AmountInWords" xml:space="preserve">
     <value>المبلغ كتابة</value>
   </data>
@@ -4260,12 +4194,6 @@
   </data>
   <data name="Application" xml:space="preserve">
     <value>تطبيق</value>
-  </data>
-  <data name="backupData" xml:space="preserve">
-    <value>نسخ إحتياطي للبيانات</value>
-  </data>
-  <data name="backupTime" xml:space="preserve">
-    <value>وقت النسخ الاحتياطي</value>
   </data>
   <data name="basePrice" xml:space="preserve">
     <value>السعر الأساسي</value>
@@ -4318,17 +4246,11 @@
   <data name="contents" xml:space="preserve">
     <value>المحتويات</value>
   </data>
-  <data name="creditLimit" xml:space="preserve">
-    <value>الحد الائتماني</value>
-  </data>
   <data name="current" xml:space="preserve">
     <value>الحالي</value>
   </data>
   <data name="Days" xml:space="preserve">
     <value>أيام</value>
-  </data>
-  <data name="defaultClass" xml:space="preserve">
-    <value>الفئة الافتراضية</value>
   </data>
   <data name="defaultPayment" xml:space="preserve">
     <value>الدفع الافتراضي</value>
@@ -4336,14 +4258,8 @@
   <data name="defaultSlice" xml:space="preserve">
     <value>السعر الافتراضي</value>
   </data>
-  <data name="Depositfor" xml:space="preserve">
-    <value>قبضة مقابل</value>
-  </data>
   <data name="DeposittoBank" xml:space="preserve">
     <value>إيداع في البنك</value>
-  </data>
-  <data name="deptNotAvailable" xml:space="preserve">
-    <value>المديونية غير متوفرة</value>
   </data>
   <data name="deserved" xml:space="preserve">
     <value>مستحق</value>
@@ -4527,12 +4443,6 @@
   </data>
   <data name="reportsLanguage" xml:space="preserve">
     <value>لغة التقارير</value>
-  </data>
-  <data name="returnPeriod" xml:space="preserve">
-    <value>فترة الإرجاع</value>
-  </data>
-  <data name="ReturnPeriodExceeded" xml:space="preserve">
-    <value>تجاوزت فترة الارجاع</value>
   </data>
   <data name="salesEmployee" xml:space="preserve">
     <value>موظف المبيعات</value>
@@ -5014,9 +4924,6 @@
   <data name="itemUnitReportHint" xml:space="preserve">
     <value>المادة، الوحدة</value>
   </data>
-  <data name="theItemHasExpired" xml:space="preserve">
-    <value>انتهاء صلاحية العنصر</value>
-  </data>
   <data name="previewEmptyInvoice" xml:space="preserve">
     <value>لا يمكن معاينة فاتورة فارغة</value>
   </data>
@@ -5461,9 +5368,6 @@
   </data>
   <data name="trFactorZeroError" xml:space="preserve">
     <value>الشد يجب أن يكون أكبر من الصفر</value>
-  </data>
-  <data name="Destructive" xml:space="preserve">
-    <value>التوالف</value>
   </data>
   <data name="ExchangeAndTransfer" xml:space="preserve">
     <value>الصرف والتحويل</value>

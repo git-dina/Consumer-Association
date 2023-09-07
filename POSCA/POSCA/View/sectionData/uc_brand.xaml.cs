@@ -147,7 +147,7 @@ namespace POSCA.View.sectionData
                         brand.IsBlocked = false;
 
                     brand.Notes = tb_Notes.Text;
-                    brand.CreateUserId = MainWindow.userLogin.userId;
+                    brand.CreateUserId = MainWindow.userLogin.UserId;
 
                     FillCombo.brandList = await brand.save(brand);
                     if (FillCombo.brandList == null)
@@ -196,7 +196,7 @@ namespace POSCA.View.sectionData
                                 brand.IsBlocked = false;
 
                             brand.Notes = tb_Notes.Text;
-                            brand.UpdateUserId = MainWindow.userLogin.userId;
+                            brand.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.brandList = await brand.save(brand);
                             if (FillCombo.brandList == null)
@@ -249,7 +249,7 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.brandList = await brand.delete(brand.BrandId, MainWindow.userLogin.userId);
+                            FillCombo.brandList = await brand.delete(brand.BrandId, MainWindow.userLogin.UserId);
                             if (FillCombo.brandList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

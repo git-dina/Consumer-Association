@@ -265,7 +265,7 @@ namespace POSCA.View.windows
                         customerBankAccount.OldBankId = oldBankId;
                         customerBankAccount.NewIBAN = tb_NewIBAN.Text;
                         customerBankAccount.NewBankId = (int)cb_NewBankId.SelectedValue;
-                        customerBankAccount.CreateUserId = MainWindow.userLogin.userId;
+                        customerBankAccount.CreateUserId = MainWindow.userLogin.UserId;
 
                         customerBankAccount.Notes = tb_Notes.ToString();
 

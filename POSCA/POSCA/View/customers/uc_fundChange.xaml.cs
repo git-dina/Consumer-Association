@@ -184,7 +184,7 @@ namespace POSCA.View.customers
                                 secondFundChange.OldFundNumber = long.Parse(tb_NewFundNumber.Text);
                                 secondFundChange.NewFundNumber = long.Parse(tb_OldFundNumber.Text);
                                 secondFundChange.Reason = tb_Reason.Text;
-                                secondFundChange.CreateUserId = MainWindow.userLogin.userId;
+                                secondFundChange.CreateUserId = MainWindow.userLogin.UserId;
 
                                 break;
                             case "emptying":
@@ -194,7 +194,7 @@ namespace POSCA.View.customers
 
                         }
 
-                        fundChange.CreateUserId = MainWindow.userLogin.userId;
+                        fundChange.CreateUserId = MainWindow.userLogin.UserId;
 
                         var res = await fundChange.Save(fundChange,secondFundChange);
                         if (res == 0)

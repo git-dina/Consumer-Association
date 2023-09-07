@@ -531,8 +531,8 @@ namespace POSCA.View.promotion
 
             promotion.Notes = tb_Notes.Text;
 
-            promotion.CreateUserId = MainWindow.userLogin.userId;
-            promotion.UpdateUserId = MainWindow.userLogin.userId;
+            promotion.CreateUserId = MainWindow.userLogin.UserId;
+            promotion.UpdateUserId = MainWindow.userLogin.UserId;
 
             promotion.PromotionDetails = billDetails;
             promotion.PromotionLocations = listItemLocations.Where(x => x.IsSelected == true).ToList();
@@ -1198,7 +1198,7 @@ namespace POSCA.View.promotion
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await promotion.deletePromotionInv(promotion.PromotionId, MainWindow.userLogin.userId);
+                    var res = await promotion.deletePromotionInv(promotion.PromotionId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {
@@ -1236,7 +1236,7 @@ namespace POSCA.View.promotion
                     HelpClass.StartAwait(grid_main);
 
 
-                    promotion = await FillCombo.Promotion.PostingPromotion(promotion.PromotionId, MainWindow.userLogin.userId);
+                    promotion = await FillCombo.Promotion.PostingPromotion(promotion.PromotionId, MainWindow.userLogin.UserId);
 
 
 
@@ -1334,7 +1334,7 @@ namespace POSCA.View.promotion
                 if (w.isOk)
                 {
                     HelpClass.StartAwait(grid_main);
-                    promotion = await FillCombo.Promotion.TerminateOffer(promotion.PromotionId, MainWindow.userLogin.userId);
+                    promotion = await FillCombo.Promotion.TerminateOffer(promotion.PromotionId, MainWindow.userLogin.UserId);
                     if (promotion.PromotionId == 0)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                     else

@@ -684,7 +684,7 @@ namespace POSCA.Classes
 
         private static string generateRequestToken()
         {
-            return DateTime.Now.ToFileTime() + random.Next() + MainWindow.userLogin.userId.ToString();
+            return DateTime.Now.ToFileTime() + random.Next() + MainWindow.userLogin.UserId.ToString();
         }
     }
 

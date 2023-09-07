@@ -245,8 +245,8 @@
     <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
     <Compile Include="converters\toIntConverter.cs" />
-    <Compile Include="View\customers\activities\subscriptionRequest.xaml.cs">
-      <DependentUpon>subscriptionRequest.xaml</DependentUpon>
+    <Compile Include="View\customers\activities\uc_subscriptionRequest.xaml.cs">
+      <DependentUpon>uc_subscriptionRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\customers\activities\uc_activities.xaml.cs">
       <DependentUpon>uc_activities.xaml</DependentUpon>
@@ -330,9 +330,6 @@
     </Compile>
     <Compile Include="View\catalog\uc_item.xaml.cs">
       <DependentUpon>uc_item.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\catalog\uc_unit.xaml.cs">
-      <DependentUpon>uc_unit.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\locations\uc_locationsData.xaml.cs">
       <DependentUpon>uc_locationsData.xaml</DependentUpon>
@@ -434,7 +431,7 @@
     <Compile Include="View\windows\wd_userControl.xaml.cs">
       <DependentUpon>wd_userControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\customers\activities\subscriptionRequest.xaml">
+    <Page Include="View\customers\activities\uc_subscriptionRequest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -558,10 +555,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\catalog\uc_item.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\catalog\uc_unit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -154,7 +154,7 @@ namespace POSCA.View.customers.customerSectionData
                     else
                         area.IsBlocked = false;
 
-                    area.CreateUserId = MainWindow.userLogin.userId;
+                    area.CreateUserId = MainWindow.userLogin.UserId;
 
                     area.Sections = (List<Section>) dg_section.ItemsSource;
                     FillCombo.areaList = await area.save(area);
@@ -203,7 +203,7 @@ namespace POSCA.View.customers.customerSectionData
                             else
                                 area.IsBlocked = false;
 
-                            area.UpdateUserId = MainWindow.userLogin.userId;
+                            area.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.areaList = await area.save(area);
                             if (FillCombo.areaList == null)
@@ -256,7 +256,7 @@ namespace POSCA.View.customers.customerSectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.areaList = await area.delete(area.AreaId, MainWindow.userLogin.userId);
+                            FillCombo.areaList = await area.delete(area.AreaId, MainWindow.userLogin.UserId);
                             if (FillCombo.areaList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

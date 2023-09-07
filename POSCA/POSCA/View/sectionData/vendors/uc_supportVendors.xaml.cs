@@ -147,7 +147,7 @@ namespace POSCA.View.sectionData.vendors
                         assistantSupplier.IsBlocked = false;
 
                     assistantSupplier.Notes = tb_Notes.Text;
-                    assistantSupplier.CreateUserId = MainWindow.userLogin.userId;
+                    assistantSupplier.CreateUserId = MainWindow.userLogin.UserId;
 
                    assistantSupplier = await assistantSupplier.save(assistantSupplier);
                     if (assistantSupplier.AssistantSupId == 0)
@@ -196,7 +196,7 @@ namespace POSCA.View.sectionData.vendors
                                 assistantSupplier.IsBlocked = false;
 
                             assistantSupplier.Notes = tb_Notes.Text;
-                            assistantSupplier.UpdateUserId = MainWindow.userLogin.userId;
+                            assistantSupplier.UpdateUserId = MainWindow.userLogin.UserId;
 
                             assistantSupplier= await assistantSupplier.save(assistantSupplier);
                             if (assistantSupplier.AssistantSupId == 0)
@@ -248,7 +248,7 @@ namespace POSCA.View.sectionData.vendors
 
                         if (w.isOk)
                         {
-                           var res = await assistantSupplier.delete(assistantSupplier.AssistantSupId, MainWindow.userLogin.userId);
+                           var res = await assistantSupplier.delete(assistantSupplier.AssistantSupId, MainWindow.userLogin.UserId);
                             if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

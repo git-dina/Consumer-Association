@@ -304,7 +304,7 @@ namespace POSCA.View.windows
                 {
                     if (row.IsAllowed)
                     {
-                        row.CreateUserId = MainWindow.userLogin.userId;
+                        row.CreateUserId = MainWindow.userLogin.UserId;
                         itemAllowedTransactions.Add(row);
                     }
                 }
@@ -316,7 +316,7 @@ namespace POSCA.View.windows
                 {
                     if (row.IsAllowed)
                     {
-                        row.CreateUserId = MainWindow.userLogin.userId;
+                        row.CreateUserId = MainWindow.userLogin.UserId;
                         itemLocations.Add(row);
                     }
                 }

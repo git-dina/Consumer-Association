@@ -388,7 +388,7 @@ namespace POSCA.View.receipts
             returnOrder.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
             returnOrder.CostNet = decimal.Parse(txt_CostNet.Text);
 
-            returnOrder.CreateUserId = MainWindow.userLogin.userId;
+            returnOrder.CreateUserId = MainWindow.userLogin.UserId;
 
             returnOrder.ReceiptDetails = billDetails;
             returnOrder = await returnOrder.SaveReturnOrder(returnOrder);
@@ -905,7 +905,7 @@ namespace POSCA.View.receipts
                     MaxQty = (int)row.MaxQty,
                     MinQty = (int)row.MinQty,
                     Price = row.Price,
-                    CreateUserId = MainWindow.userLogin.userId,
+                    CreateUserId = MainWindow.userLogin.UserId,
                 });
             }
 
@@ -1148,7 +1148,7 @@ namespace POSCA.View.receipts
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.userId);
+                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {
@@ -1272,12 +1272,12 @@ namespace POSCA.View.receipts
 
                     if (returnOrder.ReceiptStatus == "notCarriedOver")
                     {
-                        returnOrder = await returnOrder.PostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+                        returnOrder = await returnOrder.PostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.UserId);
 
                     }
                     else if (returnOrder.ReceiptStatus == "locationTransfer")
                     {
-                        returnOrder = await returnOrder.CanclePostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.userId);
+                        returnOrder = await returnOrder.CanclePostingReceiptOrder(returnOrder.ReceiptId, MainWindow.userLogin.UserId);
                     }
 
                     if (returnOrder.ReceiptId == 0)

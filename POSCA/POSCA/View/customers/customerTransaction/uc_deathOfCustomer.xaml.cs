@@ -172,7 +172,7 @@ namespace POSCA.View.customers.customerTransaction
                         customerTransaction.CheckDate = dp_CheckDate.SelectedDate;
                         customerTransaction.Notes = tb_Notes.Text;
 
-                        customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
+                        customerTransaction.UpdateUserId = MainWindow.userLogin.UserId;
 
                         var res = await customerTransaction.DeathTransaction(customerTransaction);
                         if (res == 0)

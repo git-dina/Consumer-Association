@@ -44,7 +44,7 @@ namespace POSCA.Classes
         }
         static public bool isSupportPermision()
         {
-            //if (MainWindow.userLogin.userId == 1 || MainWindow.userLogin.userId == 2)
+            //if (MainWindow.userLogin.UserId == 1 || MainWindow.userLogin.UserId == 2)
             if (MainWindow.userLogin.isAdmin == true && MainWindow.userLogin.username == "Support@Increase")
                 return true;
             return false;
@@ -574,7 +574,7 @@ namespace POSCA.Classes
                     errorClass.targetSite = ex.TargetSite.ToString();
                     errorClass.posId = MainWindow.posLogin.posId;
                     errorClass.branchId = MainWindow.branchLogin.branchId;
-                    errorClass.createUserId = MainWindow.userLogin.userId;
+                    errorClass.createUserId = MainWindow.userLogin.UserId;
                     errorClass.programNamePos = Application.ResourceAssembly.GetName().Name;
                     errorClass.versionNamePos = AppSettings.CurrentVersion;
                     errorClass.source = source;

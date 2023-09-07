@@ -599,7 +599,7 @@ namespace POSCA.View.receipts
             receipt.ConsumerDiscount = decimal.Parse(txt_ConsumerDiscount.Text);
             receipt.CostNet = decimal.Parse(txt_CostNet.Text);
 
-            receipt.CreateUserId = MainWindow.userLogin.userId;
+            receipt.CreateUserId = MainWindow.userLogin.UserId;
 
             receipt.ReceiptDetails = billDetails;
             receipt = await receipt.SaveReceiptOrder(receipt);
@@ -1188,7 +1188,7 @@ namespace POSCA.View.receipts
                     MaxQty =(int) row.MaxQty,
                     MinQty = (int)row.MinQty,
                     Price = row.Price,
-                    CreateUserId = MainWindow.userLogin.userId,
+                    CreateUserId = MainWindow.userLogin.UserId,
                 });
             }
 
@@ -1445,7 +1445,7 @@ namespace POSCA.View.receipts
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.userId);
+                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {
@@ -1590,12 +1590,12 @@ namespace POSCA.View.receipts
 
                     if (receipt.ReceiptStatus == "notCarriedOver")
                     {
-                        receipt = await receipt.PostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
+                        receipt = await receipt.PostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.UserId);
 
                     }
                     else if (receipt.ReceiptStatus == "locationTransfer")
                     {
-                        receipt = await receipt.CanclePostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.userId);
+                        receipt = await receipt.CanclePostingReceiptOrder(receipt.ReceiptId, MainWindow.userLogin.UserId);
                     }
 
 

@@ -433,7 +433,7 @@ namespace POSCA.View.catalog
                         if (tgl_IsSpecialOffer.IsChecked == true)
                             item.IsSpecialOffer = true;
                         item.Notes = tb_Notes.Text;
-                        item.CreateUserId = MainWindow.userLogin.userId;
+                        item.CreateUserId = MainWindow.userLogin.UserId;
 
                         var item1 = await item.save(item);
                         if (item1 == null)
@@ -501,7 +501,7 @@ namespace POSCA.View.catalog
                                 if (tgl_IsSpecialOffer.IsChecked == true)
                                     item.IsSpecialOffer = true;
                                 item.Notes = tb_Notes.Text;
-                                item.CreateUserId = MainWindow.userLogin.userId;
+                                item.CreateUserId = MainWindow.userLogin.UserId;
 
                                 var item1 = await item.save(item);
                                 if (item1 == null)
@@ -557,7 +557,7 @@ namespace POSCA.View.catalog
                         if (w.isOk)
                         {
                            
-                            var res = await item.delete(item.ItemId, MainWindow.userLogin.userId);
+                            var res = await item.delete(item.ItemId, MainWindow.userLogin.UserId);
                             if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -1311,8 +1311,8 @@ namespace POSCA.View.catalog
                             Factor = factor,
                             Cost = item.Cost,
                             SalePrice = item.Price *factor,
-                            CreateUserId= MainWindow.userLogin.userId,
-                            UpdateUserId = MainWindow.userLogin.userId,
+                            CreateUserId= MainWindow.userLogin.UserId,
+                            UpdateUserId = MainWindow.userLogin.UserId,
                         }) ;
                     }
                 }

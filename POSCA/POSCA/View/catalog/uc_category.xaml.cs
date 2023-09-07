@@ -283,7 +283,7 @@ namespace POSCA.View.catalog
 
                     if (w.isOk)
                     {
-                        FillCombo.categoryList = await category.delete(category.CategoryId, MainWindow.userLogin.userId);
+                        FillCombo.categoryList = await category.delete(category.CategoryId, MainWindow.userLogin.UserId);
                         if (FillCombo.categoryList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else

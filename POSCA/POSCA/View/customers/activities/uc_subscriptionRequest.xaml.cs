@@ -159,7 +159,7 @@ namespace POSCA.View.customers.activities
 
                             customerActivity.Notes = tb_Notes.Text;
 
-                            customerActivity.CreateUserId = MainWindow.userLogin.userId;
+                            customerActivity.CreateUserId = MainWindow.userLogin.UserId;
 
                             var res = await customerActivity.Save(customerActivity);
                             if (res.RequestId == 0)
@@ -208,7 +208,7 @@ namespace POSCA.View.customers.activities
                                 customerActivity.Count = int.Parse(tb_ActivityCount.Text);
 
                                 customerActivity.Notes = tb_Notes.Text;
-                                customerActivity.UpdateUserId = MainWindow.userLogin.userId;
+                                customerActivity.UpdateUserId = MainWindow.userLogin.UserId;
 
                                 var res = await customerActivity.Save(customerActivity);
                                 if (res.RequestId == 0)
@@ -264,7 +264,7 @@ namespace POSCA.View.customers.activities
 
                         if (w.isOk)
                         {
-                            var res = await customerActivity.delete(customerActivity.RequestId, MainWindow.userLogin.userId);
+                            var res = await customerActivity.delete(customerActivity.RequestId, MainWindow.userLogin.UserId);
                             if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

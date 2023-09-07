@@ -123,9 +123,6 @@
   <data name="activate" xml:space="preserve">
     <value>activate</value>
   </data>
-  <data name="alertDays" xml:space="preserve">
-    <value>Alert days</value>
-  </data>
   <data name="AllowedOperations" xml:space="preserve">
     <value>Allowed Operations</value>
   </data>
@@ -146,12 +143,6 @@
   </data>
   <data name="AssistantSuppliers" xml:space="preserve">
     <value>Assistant Suppliers</value>
-  </data>
-  <data name="backupData" xml:space="preserve">
-    <value>Backup data</value>
-  </data>
-  <data name="backupTime" xml:space="preserve">
-    <value>Backup time</value>
   </data>
   <data name="BankAccountHint" xml:space="preserve">
     <value>Bank Account...</value>
@@ -228,41 +219,17 @@
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
   </data>
-  <data name="creditLimit" xml:space="preserve">
-    <value>Credit limit</value>
-  </data>
   <data name="current" xml:space="preserve">
     <value>Current</value>
   </data>
   <data name="Days" xml:space="preserve">
     <value>days</value>
   </data>
-  <data name="defaultClass" xml:space="preserve">
-    <value>Default class</value>
-  </data>
   <data name="defaultPayment" xml:space="preserve">
     <value>Default payment</value>
   </data>
   <data name="defaultSlice" xml:space="preserve">
     <value>Default price</value>
-  </data>
-  <data name="deliveryList" xml:space="preserve">
-    <value>Delivery list</value>
-  </data>
-  <data name="deliveryMan" xml:space="preserve">
-    <value>Delivery Man</value>
-  </data>
-  <data name="deliveryReport" xml:space="preserve">
-    <value>Delivery Report</value>
-  </data>
-  <data name="deliveryTime" xml:space="preserve">
-    <value>Delivery time</value>
-  </data>
-  <data name="Depositfor" xml:space="preserve">
-    <value>Receipt from</value>
-  </data>
-  <data name="DeposittoBank" xml:space="preserve">
-    <value>Deposit to Bank</value>
   </data>
   <data name="deptNotAvailable" xml:space="preserve">
     <value>dept not available</value>
@@ -452,9 +419,6 @@
   </data>
   <data name="itMustBeGreaterThanZero" xml:space="preserve">
     <value>It must be greater than zero</value>
-  </data>
-  <data name="LoggedOutBecauseDidNotDoneAnyProcess" xml:space="preserve">
-    <value>You are logged out because you haven't done any process for 15 minutes</value>
   </data>
   <data name="MainDocuments" xml:space="preserve">
     <value>LoggedOutBecauseDidNotDoneAnyProcess
@@ -699,12 +663,6 @@ Main Documents</value>
   </data>
   <data name="reportsLanguage" xml:space="preserve">
     <value>Reports language</value>
-  </data>
-  <data name="returnPeriod" xml:space="preserve">
-    <value>Return period</value>
-  </data>
-  <data name="ReturnPeriodExceeded" xml:space="preserve">
-    <value>Return Period Exceeded</value>
   </data>
   <data name="salesEmployee" xml:space="preserve">
     <value>Sales employee</value>
@@ -988,9 +946,6 @@ Main Documents</value>
   <data name="TransferNum" xml:space="preserve">
     <value>Transfer Num</value>
   </data>
-  <data name="transfersBetweenPOS" xml:space="preserve">
-    <value>Transfers Between POS</value>
-  </data>
   <data name="trApprove" xml:space="preserve">
     <value>Approve</value>
   </data>
@@ -1023,9 +978,6 @@ Main Documents</value>
   </data>
   <data name="trArchivesShortfallsHint" xml:space="preserve">
     <value>Archives,Shortfalls,...</value>
-  </data>
-  <data name="trAreaHint" xml:space="preserve">
-    <value>+963</value>
   </data>
   <data name="trAssistantManager" xml:space="preserve">
     <value>Assistant Manager</value>
@@ -2676,18 +2628,6 @@ Main Documents</value>
   </data>
   <data name="trJobHint" xml:space="preserve">
     <value>Job...</value>
-  </data>
-  <data name="trKitchen" xml:space="preserve">
-    <value>المطبخ</value>
-  </data>
-  <data name="trKitchenEmployee" xml:space="preserve">
-    <value>موظف مطبخ</value>
-  </data>
-  <data name="trKitchenManager" xml:space="preserve">
-    <value>مدير المطبخ</value>
-  </data>
-  <data name="trLack" xml:space="preserve">
-    <value>احتياجات</value>
   </data>
   <data name="trLanguage" xml:space="preserve">
     <value>اللغة</value>
@@ -5214,9 +5154,6 @@ Main Documents</value>
   <data name="Category" xml:space="preserve">
     <value>Category</value>
   </data>
-  <data name="Destructive" xml:space="preserve">
-    <value>Destructive</value>
-  </data>
   <data name="ExchangeAndTransfer" xml:space="preserve">
     <value>Exchange And Transfer</value>
   </data>
@@ -5480,9 +5417,6 @@ Main Documents</value>
   </data>
   <data name="SupplierOrderNotesHint" xml:space="preserve">
     <value>Supplier Notes (Purchase Orders)...</value>
-  </data>
-  <data name="DeliveryDate" xml:space="preserve">
-    <value>Delivery Date</value>
   </data>
   <data name="SupplierName" xml:space="preserve">
     <value>Supplier Name</value>
@@ -5956,10 +5890,10 @@ Main Documents</value>
     <value>Contributor No</value>
   </data>
   <data name="customersData" xml:space="preserve">
-    <value>customers Data</value>
+    <value>Contributers Data</value>
   </data>
   <data name="CustomerStatusHint" xml:space="preserve">
-    <value>Customer Status...</value>
+    <value>Contributor Status...</value>
   </data>
   <data name="DataCompleted" xml:space="preserve">
     <value>Data Completed</value>
@@ -6115,7 +6049,7 @@ Main Documents</value>
     <value>Contributor No...</value>
   </data>
   <data name="CustomersTransactions" xml:space="preserve">
-    <value>Customers Transactions</value>
+    <value>Contributors Transactions</value>
   </data>
   <data name="DurationJoin" xml:space="preserve">
     <value>Duration Join</value>

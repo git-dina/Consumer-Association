@@ -159,7 +159,7 @@ namespace POSCA.View.customers.activities
                             activity.IsBlocked = true;
                         else
                             activity.IsBlocked = false;
-                        activity.CreateUserId = MainWindow.userLogin.userId;
+                        activity.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.activitiesList = await activity.save(activity);
                         if (FillCombo.activitiesList == null)
@@ -214,7 +214,7 @@ namespace POSCA.View.customers.activities
                                 activity.IsBlocked = true;
                             else
                                 activity.IsBlocked = false;
-                            activity.UpdateUserId = MainWindow.userLogin.userId;
+                            activity.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.activitiesList = await activity.save(activity);
                             if (FillCombo.activitiesList == null)
@@ -266,7 +266,7 @@ namespace POSCA.View.customers.activities
 
                         if (w.isOk)
                         {
-                            FillCombo.activitiesList = await activity.delete(activity.ActivityId, MainWindow.userLogin.userId);
+                            FillCombo.activitiesList = await activity.delete(activity.ActivityId, MainWindow.userLogin.UserId);
                             if (FillCombo.activitiesList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

@@ -191,8 +191,8 @@ namespace POSCA.View.customers
                         else
                             familyCard.IsStopped = false;
                         familyCard.Notes = tb_Notes.Text;
-                        familyCard.CreateUserId = MainWindow.userLogin.userId;
-                        familyCard.UpdateUserId = MainWindow.userLogin.userId;
+                        familyCard.CreateUserId = MainWindow.userLogin.UserId;
+                        familyCard.UpdateUserId = MainWindow.userLogin.UserId;
 
                         var res = await familyCard.save(familyCard);
                         if (res.FamilyCardId == 0)

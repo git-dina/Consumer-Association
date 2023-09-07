@@ -142,7 +142,7 @@ namespace POSCA.View.sectionData.vendors
 
                         supplierDocType.Name = tb_Name.Text;
                         supplierDocType.Notes = tb_Notes.Text;
-                        supplierDocType.CreateUserId = MainWindow.userLogin.userId;
+                        supplierDocType.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.supplierDocTypeList = await supplierDocType.save(supplierDocType);
                         if (FillCombo.supplierDocTypeList == null)
@@ -185,7 +185,7 @@ namespace POSCA.View.sectionData.vendors
                         {
                             supplierDocType.Name = tb_Name.Text;
                             supplierDocType.Notes = tb_Notes.Text;
-                            supplierDocType.UpdateUserId = MainWindow.userLogin.userId;
+                            supplierDocType.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.supplierDocTypeList = await supplierDocType.save(supplierDocType);
                             if (FillCombo.supplierDocTypeList == null)
@@ -237,7 +237,7 @@ namespace POSCA.View.sectionData.vendors
 
                         if (w.isOk)
                         {
-                            FillCombo.supplierDocTypeList = await supplierDocType.delete(supplierDocType.TypeId, MainWindow.userLogin.userId);
+                            FillCombo.supplierDocTypeList = await supplierDocType.delete(supplierDocType.TypeId, MainWindow.userLogin.UserId);
                             if (FillCombo.supplierDocTypeList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

@@ -163,7 +163,7 @@ namespace POSCA.View.customers.customerTransaction
                           customerTransaction.Name = tb_Name.Text;
                           customerTransaction.Notes = tb_Notes.Text;
 
-                          customerTransaction.CreateUserId = MainWindow.userLogin.userId;
+                          customerTransaction.CreateUserId = MainWindow.userLogin.UserId;
 
                           FillCombo.customerTransactionList = await customerTransaction.save(customerTransaction);
                           if (FillCombo.customerTransactionList == null)
@@ -219,7 +219,7 @@ namespace POSCA.View.customers.customerTransaction
                         customerTransaction.CheckDate = dp_CheckDate.SelectedDate;
                         customerTransaction.Notes = tb_Notes.Text;
 
-                        customerTransaction.UpdateUserId = MainWindow.userLogin.userId;
+                        customerTransaction.UpdateUserId = MainWindow.userLogin.UserId;
 
                         var res = await customerTransaction.ReduceStocks(customerTransaction);
                         if (res == 0)
@@ -271,7 +271,7 @@ namespace POSCA.View.customers.customerTransaction
 
                         if (w.isOk)
                         {
-                            FillCombo.customerTransactionList = await customerTransaction.delete(customerTransaction.CustomerTransactionId, MainWindow.userLogin.userId);
+                            FillCombo.customerTransactionList = await customerTransaction.delete(customerTransaction.CustomerTransactionId, MainWindow.userLogin.UserId);
                             if (FillCombo.customerTransactionList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

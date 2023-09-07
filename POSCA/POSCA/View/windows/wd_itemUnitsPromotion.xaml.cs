@@ -366,8 +366,8 @@ namespace POSCA.View.windows
                 //        UnitId = item.UnitId,
                 //        Cost = 0,
                 //        SalePrice = 0,
-                //        CreateUserId = MainWindow.userLogin.userId,
-                //        UpdateUserId = MainWindow.userLogin.userId,
+                //        CreateUserId = MainWindow.userLogin.UserId,
+                //        UpdateUserId = MainWindow.userLogin.UserId,
                 //        CreateDate = DateTime.Now,
                 //        UpdateDate = DateTime.Now,
                 //    });

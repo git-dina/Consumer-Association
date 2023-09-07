@@ -141,7 +141,7 @@ namespace POSCA.View.customers.customerSectionData
                     else
                         kinshipTies.IsBlocked = false;
 
-                    kinshipTies.CreateUserId = MainWindow.userLogin.userId;
+                    kinshipTies.CreateUserId = MainWindow.userLogin.UserId;
 
                     FillCombo.kinshipTiesList = await kinshipTies.save(kinshipTies);
                     if (FillCombo.kinshipTiesList == null)
@@ -189,7 +189,7 @@ namespace POSCA.View.customers.customerSectionData
                             else
                                 kinshipTies.IsBlocked = false;
 
-                            kinshipTies.UpdateUserId = MainWindow.userLogin.userId;
+                            kinshipTies.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.kinshipTiesList = await kinshipTies.save(kinshipTies);
                             if (FillCombo.kinshipTiesList == null)
@@ -242,7 +242,7 @@ namespace POSCA.View.customers.customerSectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.kinshipTiesList = await kinshipTies.delete(kinshipTies.KinshipId, MainWindow.userLogin.userId);
+                            FillCombo.kinshipTiesList = await kinshipTies.delete(kinshipTies.KinshipId, MainWindow.userLogin.UserId);
                             if (FillCombo.kinshipTiesList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

@@ -142,7 +142,7 @@ namespace POSCA.View.customers.customerSectionData
                     else
                         job.IsBlocked = false;
 
-                    job.CreateUserId = MainWindow.userLogin.userId;
+                    job.CreateUserId = MainWindow.userLogin.UserId;
 
                     FillCombo.jobList = await job.save(job);
                     if (FillCombo.jobList == null)
@@ -190,7 +190,7 @@ namespace POSCA.View.customers.customerSectionData
                             else
                                 job.IsBlocked = false;
 
-                            job.UpdateUserId = MainWindow.userLogin.userId;
+                            job.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.jobList = await job.save(job);
                             if (FillCombo.jobList == null)
@@ -243,7 +243,7 @@ namespace POSCA.View.customers.customerSectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.jobList = await job.delete(job.JobId, MainWindow.userLogin.userId);
+                            FillCombo.jobList = await job.delete(job.JobId, MainWindow.userLogin.UserId);
                             if (FillCombo.jobList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

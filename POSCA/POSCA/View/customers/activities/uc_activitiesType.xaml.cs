@@ -296,7 +296,7 @@ namespace POSCA.View.customers.activities
 
                     if (w.isOk)
                     {
-                        FillCombo.activityTypeList = await activityType.delete(activityType.Id, MainWindow.userLogin.userId);
+                        FillCombo.activityTypeList = await activityType.delete(activityType.Id, MainWindow.userLogin.UserId);
                         if (FillCombo.activityTypeList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else

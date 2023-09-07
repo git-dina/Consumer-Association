@@ -147,7 +147,7 @@ namespace POSCA.View.customers.customerSectionData
                             customerBank.IsBlocked = true;
                         else
                             customerBank.IsBlocked = false;
-                        customerBank.CreateUserId = MainWindow.userLogin.userId;
+                        customerBank.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.customerBankList = await customerBank.save(customerBank);
                         if (FillCombo.customerBankList == null)
@@ -197,7 +197,7 @@ namespace POSCA.View.customers.customerSectionData
                                 customerBank.IsBlocked = true;
                             else
                                 customerBank.IsBlocked = false;
-                            customerBank.UpdateUserId = MainWindow.userLogin.userId;
+                            customerBank.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.customerBankList = await customerBank.save(customerBank);
                             if (FillCombo.customerBankList == null)
@@ -249,7 +249,7 @@ namespace POSCA.View.customers.customerSectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.customerBankList = await customerBank.delete(customerBank.BankId, MainWindow.userLogin.userId);
+                            FillCombo.customerBankList = await customerBank.delete(customerBank.BankId, MainWindow.userLogin.UserId);
                             if (FillCombo.customerBankList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

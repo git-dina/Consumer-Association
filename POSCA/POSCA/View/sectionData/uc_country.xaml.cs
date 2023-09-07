@@ -140,7 +140,7 @@ namespace POSCA.View.sectionData
                     {
 
                         country.CountryName = tb_CountryName.Text;
-                        country.CreateUserId = MainWindow.userLogin.userId;
+                        country.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.countryList = await country.save(country);
                         if (FillCombo.countryList == null)
@@ -182,7 +182,7 @@ namespace POSCA.View.sectionData
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             country.CountryName = tb_CountryName.Text;
-                            country.UpdateUserId = MainWindow.userLogin.userId;
+                            country.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.countryList = await country.save(country);
                             if (FillCombo.countryList == null)
@@ -234,7 +234,7 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.countryList = await country.delete(country.CountryId, MainWindow.userLogin.userId);
+                            FillCombo.countryList = await country.delete(country.CountryId, MainWindow.userLogin.UserId);
                             if (FillCombo.countryList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

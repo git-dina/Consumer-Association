@@ -137,7 +137,7 @@ namespace POSCA.View.sectionData
                     {
 
                         phoneType.Name = tb_Name.Text;
-                        phoneType.CreateUserId = MainWindow.userLogin.userId;
+                        phoneType.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.phoneTypeList = await phoneType.save(phoneType);
                         if (FillCombo.phoneTypeList == null)
@@ -179,7 +179,7 @@ namespace POSCA.View.sectionData
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
                             phoneType.Name = tb_Name.Text;
-                            phoneType.UpdateUserId = MainWindow.userLogin.userId;
+                            phoneType.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.phoneTypeList = await phoneType.save(phoneType);
                             if (FillCombo.phoneTypeList == null)
@@ -231,7 +231,7 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.phoneTypeList = await phoneType.delete(phoneType.PhoneTypeId, MainWindow.userLogin.userId);
+                            FillCombo.phoneTypeList = await phoneType.delete(phoneType.PhoneTypeId, MainWindow.userLogin.UserId);
                             if (FillCombo.phoneTypeList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

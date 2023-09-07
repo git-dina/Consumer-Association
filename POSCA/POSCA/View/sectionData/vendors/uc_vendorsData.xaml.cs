@@ -222,7 +222,7 @@ namespace POSCA.View.sectionData
                         else
                             supplier.AssistantStartDate = null;
 
-                        supplier.CreateUserId = MainWindow.userLogin.userId;
+                        supplier.CreateUserId = MainWindow.userLogin.UserId;
 
                         //FillCombo.suppliersList = await supplier.save(supplier);
                         supplier = await supplier.save(supplier);
@@ -302,7 +302,7 @@ namespace POSCA.View.sectionData
                             supplier.AssistantStartDate = (DateTime)dp_AssistantStartDate.SelectedDate;
                         else
                             supplier.AssistantStartDate = null;
-                        supplier.CreateUserId = MainWindow.userLogin.userId;
+                        supplier.CreateUserId = MainWindow.userLogin.UserId;
 
                         // FillCombo.suppliersList = await supplier.save(supplier);
                         supplier = await supplier.save(supplier);
@@ -355,7 +355,7 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            var res = await supplier.delete(supplier.SupId, MainWindow.userLogin.userId);
+                            var res = await supplier.delete(supplier.SupId, MainWindow.userLogin.UserId);
                             if (res == 0)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -786,7 +786,7 @@ namespace POSCA.View.sectionData
                                 row.DocTitle = System.IO.Path.GetFileNameWithoutExtension(row.DocPath);
                                 var ext = row.DocPath.Substring(row.DocPath.LastIndexOf('.'));
                                 var extension = ext.ToLower();
-                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.userId + row.TypeId ;
+                                row.DocName = row.DocTitle.ToLower() + MainWindow.userLogin.UserId + row.TypeId ;
                                 string b = await supplier.uploadDocument(row.DocPath,row.DocName);
                                 row.DocName = row.DocName +  ext;
                             }
@@ -1112,7 +1112,7 @@ namespace POSCA.View.sectionData
                     HelpClass.StartAwait(grid_main);
 
                  var lst = (List<Supplier>)dg_supplier.ItemsSource;
-                    FillCombo.suppliersList = await supplier.editBlocked(lst,MainWindow.userLogin.userId);
+                    FillCombo.suppliersList = await supplier.editBlocked(lst,MainWindow.userLogin.UserId);
                     if (FillCombo.suppliersList == null)
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                     else

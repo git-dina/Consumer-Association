@@ -149,7 +149,7 @@ namespace POSCA.View.sectionData.vendors
                             supplierGroup.IsBlocked = false;
 
                         supplierGroup.Notes = tb_Notes.Text;
-                    supplierGroup.CreateUserId = MainWindow.userLogin.userId;
+                    supplierGroup.CreateUserId = MainWindow.userLogin.UserId;
 
                     FillCombo.supplierGroupList = await supplierGroup.save(supplierGroup);
                         if (FillCombo.supplierGroupList == null)
@@ -203,7 +203,7 @@ namespace POSCA.View.sectionData.vendors
                                 supplierGroup.IsBlocked = false;
 
                             supplierGroup.Notes = tb_Notes.Text;
-                            supplierGroup.UpdateUserId = MainWindow.userLogin.userId;
+                            supplierGroup.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.supplierGroupList = await supplierGroup.save(supplierGroup);
                             if (FillCombo.supplierGroupList == null)
@@ -256,7 +256,7 @@ namespace POSCA.View.sectionData.vendors
 
                         if (w.isOk)
                         {
-                            FillCombo.supplierGroupList = await supplierGroup.delete(supplierGroup.SupplierGroupId, MainWindow.userLogin.userId);
+                            FillCombo.supplierGroupList = await supplierGroup.delete(supplierGroup.SupplierGroupId, MainWindow.userLogin.UserId);
                             if (FillCombo.supplierGroupList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else

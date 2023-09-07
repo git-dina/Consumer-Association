@@ -429,7 +429,7 @@ namespace POSCA.View.purchases
             purchaseInvoice.CostNet = decimal.Parse(txt_CostNet.Text);
 
 
-            purchaseInvoice.CreateUserId = MainWindow.userLogin.userId;
+            purchaseInvoice.CreateUserId = MainWindow.userLogin.UserId;
 
             purchaseInvoice.PurchaseDetails = billDetails;
             purchaseInvoice = await purchaseInvoice.SavePurchaseOrder(purchaseInvoice);
@@ -1211,7 +1211,7 @@ namespace POSCA.View.purchases
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await purchaseInvoice.approveSupplyingOrder(purchaseInvoice.PurchaseId, MainWindow.userLogin.userId);
+                    var res = await purchaseInvoice.approveSupplyingOrder(purchaseInvoice.PurchaseId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {
@@ -1244,7 +1244,7 @@ namespace POSCA.View.purchases
                 #endregion
                 if (w.isOk)
                 {
-                    var res = await purchaseInvoice.deletePurchaseInv(purchaseInvoice.PurchaseId, MainWindow.userLogin.userId);
+                    var res = await purchaseInvoice.deletePurchaseInv(purchaseInvoice.PurchaseId, MainWindow.userLogin.UserId);
 
                     if (res != 0)
                     {

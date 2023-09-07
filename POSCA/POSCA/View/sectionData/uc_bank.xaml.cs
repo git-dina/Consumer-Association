@@ -141,7 +141,7 @@ namespace POSCA.View.sectionData
 
                         bank.BankName = tb_BankName.Text;
                         bank.Notes = tb_Notes.Text;
-                        bank.CreateUserId = MainWindow.userLogin.userId;
+                        bank.CreateUserId = MainWindow.userLogin.UserId;
 
                         FillCombo.bankList = await bank.save(bank);
                         if (FillCombo.bankList == null)
@@ -184,7 +184,7 @@ namespace POSCA.View.sectionData
                         {
                             bank.BankName = tb_BankName.Text;
                             bank.Notes = tb_Notes.Text;
-                            bank.UpdateUserId = MainWindow.userLogin.userId;
+                            bank.UpdateUserId = MainWindow.userLogin.UserId;
 
                             FillCombo.bankList = await bank.save(bank);
                             if (FillCombo.bankList == null)
@@ -236,7 +236,7 @@ namespace POSCA.View.sectionData
 
                         if (w.isOk)
                         {
-                            FillCombo.bankList = await bank.delete(bank.BankId, MainWindow.userLogin.userId);
+                            FillCombo.bankList = await bank.delete(bank.BankId, MainWindow.userLogin.UserId);
                             if (FillCombo.bankList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
