@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +25,26 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; }
         //extr 
         public string AppObject { get; set; }
+        #endregion
+
+        #region Methods
+        public async Task<List<AppObject>> GetAppObjects()
+        {
+            var result = new List<AppObject>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Permissions/GetAppObject";
+
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<AppObject>(c.Value));
+                }
+            }
+            return result;
+        }
         #endregion
     }
 

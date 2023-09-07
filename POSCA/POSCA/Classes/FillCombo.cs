@@ -1449,5 +1449,10 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+
+        #region Permissions
+        static public List<AppObject> appObjectsList;
+        static public Permissions permission = new Permissions();
+        #endregion
     }
 }
