@@ -1,4 +1,5 @@
 ﻿using POSCA.Classes;
+using POSCA.Classes.ApiClasses;
 using POSCA.View.catalog;
 using POSCA.View.customers;
 using POSCA.View.customers.activities;
@@ -13,6 +14,7 @@ using POSCA.View.sales;
 using POSCA.View.sectionData;
 using POSCA.View.sectionData.vendors;
 using POSCA.View.settings;
+using POSCA.View.usersManagement;
 using POSCA.View.windows;
 using System;
 using System.Collections.Generic;
@@ -1253,6 +1255,21 @@ namespace POSCA
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+        private void Btn_user_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                grid_main.Children.Clear();
+                grid_main.Children.Add(uc_user.Instance);
+
+                Button button = sender as Button;
+                secondMenuTitleActivate(button.Tag.ToString());
+            }
+            catch (Exception ex)
+            {
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         private void Btn_lang_Click(object sender, RoutedEventArgs e)
         {
             if (AppSettings.lang.Equals("en"))
@@ -1330,6 +1347,6 @@ namespace POSCA
             }
         }
 
-      
+       
     }
 }
