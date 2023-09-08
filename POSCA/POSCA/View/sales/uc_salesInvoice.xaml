@@ -465,7 +465,7 @@
                         <Grid   >
 
                             <TextBox x:Name="tb_CustomerId"  Text="{Binding CustomerId, Mode=OneWay}" Padding="10,0,5,0" 
-                             IsReadOnly="true" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                              materialDesign:HintAssist.Hint="CustomerId..."  
                              Foreground="{StaticResource textColor}"  
                              MaxLength="50" Tag="int" BorderThickness="0"
