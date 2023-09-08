@@ -33,6 +33,14 @@ namespace POSCA.Classes.ApiClasses
 
         //extra
         public Role userRole { get; set; }
+        public string RoleName { get; set; }
+
+
         #endregion
+
+        internal Task<List<User>> get(bool v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
