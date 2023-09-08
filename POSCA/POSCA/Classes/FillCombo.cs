@@ -1449,6 +1449,28 @@ namespace POSCA.Classes
             combo.SelectedIndex = -1;
         }
         #endregion
+        #region users
+        static public User user = new User();
+        static public List<User> userList;
+
+        static public async Task<IEnumerable<User>> RefreshUsers()
+        {
+            userList = await user.get(true);
+
+            return userList;
+        }
+
+        static public async Task fillUsers(ComboBox combo)
+        {
+            if (userList is null)
+                await RefreshUsers();
+
+            combo.ItemsSource = userList;
+            combo.SelectedValuePath = "UserId";
+            combo.DisplayMemberPath = "LoginName";
+            combo.SelectedIndex = -1;
+        }
+        #endregion
 
         #region Permissions
         static public List<AppObject> appObjectsList;
