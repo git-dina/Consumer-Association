@@ -1475,6 +1475,21 @@ Padding="35 0 0 0" >
                     Grid.Column="1"      Margin="30,0,0,0"/>
                                         </Grid>
                                     </Button>
+                                 <Button   Height="50"
+              Grid.Row="1"
+       Tag="permissions" 
+      x:Name="btn_permissions"  Click="Btn_permissions_Click"
+Background="{x:Null}" BorderBrush="{x:Null}"   
+Padding="35 0 0 0" >
+                                        <Grid  Height="50"  Width="{Binding ElementName=grid, Path=ActualWidth}" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Text="permissions"  Tag="permissions" Foreground="#A8AEC6" x:Name="txt_permissions"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" 
+                    Grid.Column="1"      Margin="30,0,0,0"/>
+                                        </Grid>
+                                    </Button>
                                  </StackPanel>
                             </Expander>
 
