@@ -239,6 +239,7 @@
     <Compile Include="Classes\ReportCls.cs" />
     <Compile Include="Classes\ReportsConfig.cs" />
     <Compile Include="converters\accuracyConverter.cs" />
+    <Compile Include="converters\appObjectConverter.cs" />
     <Compile Include="converters\changeBoxTypeConverter.cs" />
     <Compile Include="converters\dateFrameConverter.cs" />
     <Compile Include="converters\PromotionNatureConverter.cs" />
