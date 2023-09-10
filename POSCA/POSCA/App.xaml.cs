@@ -55,6 +55,7 @@ namespace POSCA
                     & !(sender as TextBox).Name.Contains("tb_SecondCustomerId") 
                     & !(sender as TextBox).Name.Contains("tb_ChangeToFundNumber") 
                     & !(sender as TextBox).Name.Contains("tb_ActivityCount") 
+                    & !(sender as TextBox).Name.Contains("tb_quantity") 
                     ) MoveToNextUIElement(e);
             }
             else if (sender.GetType().Name == "ComboBox")
