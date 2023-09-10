@@ -6626,4 +6626,16 @@
   <data name="UsersManagement" xml:space="preserve">
     <value>إدارة المستخدمين</value>
   </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>اسم الدخول</value>
+  </data>
+  <data name="LoginNameHint" xml:space="preserve">
+    <value>اسم الدخول...</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>الدور</value>
+  </data>
+  <data name="RoleHint" xml:space="preserve">
+    <value>الدور...</value>
+  </data>
 </root>

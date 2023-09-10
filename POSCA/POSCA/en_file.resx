@@ -3159,7 +3159,7 @@ Main Documents</value>
     <value>كلمة المرور</value>
   </data>
   <data name="trPasswordHint" xml:space="preserve">
-    <value>كلمة المرور...</value>
+    <value>Password...</value>
   </data>
   <data name="trPay" xml:space="preserve">
     <value>دفع</value>
@@ -4656,10 +4656,10 @@ Main Documents</value>
     <value>المستخدم  سجل دخول في نقطة مبيعات أخرى</value>
   </data>
   <data name="trUserName" xml:space="preserve">
-    <value>اسم المستخدم</value>
+    <value>User Name</value>
   </data>
   <data name="trUserNameHint" xml:space="preserve">
-    <value>اسم المستخدم...</value>
+    <value>User Name...</value>
   </data>
   <data name="trUserNotFound" xml:space="preserve">
     <value>اسم المستخدم غير موجود</value>
@@ -6419,5 +6419,17 @@ Main Documents</value>
   </data>
   <data name="UsersManagement" xml:space="preserve">
     <value>Users Management</value>
+  </data>
+  <data name="LoginName" xml:space="preserve">
+    <value>Login Name</value>
+  </data>
+  <data name="LoginNameHint" xml:space="preserve">
+    <value>Login Name...</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="RoleHint" xml:space="preserve">
+    <value>Role...</value>
   </data>
 </root>

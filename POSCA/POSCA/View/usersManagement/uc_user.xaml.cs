@@ -70,15 +70,13 @@ namespace POSCA.View.usersManagement
             try
             {
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "Name" };
+                requiredControlList = new List<string> { "LoginName", "Password" , "UserName", "RoleId" };
                 if (AppSettings.lang.Equals("en"))
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.LeftToRight;
                 }
                 else
                 {
-                    //AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
                     grid_main.FlowDirection = FlowDirection.RightToLeft;
                 }
                 translate();
@@ -102,19 +100,24 @@ namespace POSCA.View.usersManagement
         private void translate()
         {
 
-            txt_title.Text = AppSettings.resourcemanager.GetString("PhonesTypes");
+            txt_title.Text = AppSettings.resourcemanager.GetString("trUser");
+            txt_search.Text = AppSettings.resourcemanager.GetString("trSearch");
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
             txt_baseInformation.Text = AppSettings.resourcemanager.GetString("trBaseInformation");
-            //MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Name, AppSettings.resourcemanager.GetString("trNameHint"));
+
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_LoginName, AppSettings.resourcemanager.GetString("LoginNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_Password, AppSettings.resourcemanager.GetString("trPasswordHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_UserName, AppSettings.resourcemanager.GetString("trUserNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(cb_RoleId, AppSettings.resourcemanager.GetString("RoleHint"));
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
 
-            dg_user.Columns[0].Header = AppSettings.resourcemanager.GetString("trName");
-            btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
+            dg_user.Columns[0].Header = AppSettings.resourcemanager.GetString("LoginName");
+            dg_user.Columns[1].Header = AppSettings.resourcemanager.GetString("trUserName");
+            dg_user.Columns[2].Header = AppSettings.resourcemanager.GetString("Role");
 
-            //tt_refresh.Content = AppSettings.resourcemanager.GetString("trRefresh");
             btn_clear.ToolTip = AppSettings.resourcemanager.GetString("trClear");
             //tt_report.Content = AppSettings.resourcemanager.GetString("trPdf");
             //tt_print.Content = AppSettings.resourcemanager.GetString("trPrint");
@@ -130,7 +133,6 @@ namespace POSCA.View.usersManagement
         {//add
             try
             {
-                /*
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
@@ -139,10 +141,14 @@ namespace POSCA.View.usersManagement
                     if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                     {
 
-                        user.Name = tb_Name.Text;
+                        user.UserName = tb_UserName.Text;
+                        user.LoginName = tb_LoginName.Text;
+                        user.Password = Md5Encription.MD5Hash("Inc-m" + tb_Password.Password);
+                        user.RoleId = (long)cb_RoleId.SelectedValue;
+
                         user.CreateUserId = MainWindow.userLogin.UserId;
 
-                        FillCombo.userList = await user.save(user);
+                        FillCombo.userList = await user.Save(user);
                         if (FillCombo.userList == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
@@ -161,7 +167,7 @@ namespace POSCA.View.usersManagement
                 }
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
+               
             }
             catch (Exception ex)
             {
@@ -174,7 +180,6 @@ namespace POSCA.View.usersManagement
         {//update
             try
             {
-                /*
                 //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "update") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
@@ -182,10 +187,12 @@ namespace POSCA.View.usersManagement
                     {
                         if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
                         {
-                            user.Name = tb_Name.Text;
+                            user.UserName = tb_UserName.Text;
+                            user.LoginName = tb_LoginName.Text;
+                            user.RoleId = (long)cb_RoleId.SelectedValue;
                             user.UpdateUserId = MainWindow.userLogin.UserId;
 
-                            FillCombo.userList = await user.save(user);
+                            FillCombo.userList = await user.Save(user);
                             if (FillCombo.userList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -207,7 +214,7 @@ namespace POSCA.View.usersManagement
                 }
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
+              
             }
             catch (Exception ex)
             {
@@ -219,7 +226,7 @@ namespace POSCA.View.usersManagement
         {//delete
             try
             {
-                /*
+       
                 // if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "delete") || HelpClass.isAdminPermision())
                 {
                     HelpClass.StartAwait(grid_main);
@@ -236,7 +243,7 @@ namespace POSCA.View.usersManagement
 
                         if (w.isOk)
                         {
-                            FillCombo.userList = await user.delete(user.UserId, MainWindow.userLogin.UserId);
+                            FillCombo.userList = await user.Delete(user.UserId, MainWindow.userLogin.UserId);
                             if (FillCombo.userList == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
@@ -254,7 +261,7 @@ namespace POSCA.View.usersManagement
                 }
                 //else
                 //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
-                */
+                
             }
             catch (Exception ex)
             {
@@ -356,7 +363,7 @@ namespace POSCA.View.usersManagement
 
                 //tb_search.Text = "";
                 //searchText = "";
-                await RefreshTypesList();
+                await RefreshUsersList();
                 await Search();
 
                 HelpClass.EndAwait(grid_main);
@@ -372,18 +379,18 @@ namespace POSCA.View.usersManagement
         #region Refresh & Search
         async Task Search()
         {
-            /*
+     
             //search
             if (FillCombo.userList is null)
-                await RefreshTypesList();
+                await RefreshUsersList();
             searchText = tb_search.Text.ToLower();
             usersQuery = FillCombo.userList.Where(s =>
-            s.Name.ToLower().Contains(searchText)
-            ).ToList();
+            s.UserName.ToLower().Contains(searchText)
+           && s.UserId != 1 ).ToList();
             RefreshTypesView();
-            */
+         
         }
-        async Task<IEnumerable<User>> RefreshTypesList()
+        async Task<IEnumerable<User>> RefreshUsersList()
         {
 
             await FillCombo.RefreshUsers();

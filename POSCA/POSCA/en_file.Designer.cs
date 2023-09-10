@@ -2932,6 +2932,24 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login Name.
+        /// </summary>
+        internal static string LoginName {
+            get {
+                return ResourceManager.GetString("LoginName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login Name....
+        /// </summary>
+        internal static string LoginNameHint {
+            get {
+                return ResourceManager.GetString("LoginNameHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Machine.
         /// </summary>
         internal static string Machine {
@@ -4855,6 +4873,24 @@ namespace POSCA {
         internal static string Reviewer {
             get {
                 return ResourceManager.GetString("Reviewer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        internal static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role....
+        /// </summary>
+        internal static string RoleHint {
+            get {
+                return ResourceManager.GetString("RoleHint", resourceCulture);
             }
         }
         
@@ -13383,7 +13419,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to كلمة المرور....
+        ///   Looks up a localized string similar to Password....
         /// </summary>
         internal static string trPasswordHint {
             get {
@@ -17982,7 +18018,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اسم المستخدم.
+        ///   Looks up a localized string similar to User Name.
         /// </summary>
         internal static string trUserName {
             get {
@@ -17991,7 +18027,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اسم المستخدم....
+        ///   Looks up a localized string similar to User Name....
         /// </summary>
         internal static string trUserNameHint {
             get {
