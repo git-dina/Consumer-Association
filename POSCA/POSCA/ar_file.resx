@@ -1041,9 +1041,6 @@
   <data name="trErrorEmptyDeservedDate" xml:space="preserve">
     <value>تاريخ الاستحقاق لا يمكن أن يكون فارغاً</value>
   </data>
-  <data name="trPopCanNotDeleteRequest" xml:space="preserve">
-    <value>لا يمكن الحذف بسبب تأكيد العملية</value>
-  </data>
   <data name="trPopNotEnoughBalance" xml:space="preserve">
     <value>لا يوجد رصيد كافي</value>
   </data>
@@ -1368,9 +1365,6 @@
   <data name="trErrorStartBeforEndToolTip" xml:space="preserve">
     <value>تاريخ النهاية لا يمكن أن يكون قبل تاريخ البداية</value>
   </data>
-  <data name="trPopCardExist" xml:space="preserve">
-    <value>البطاقة موجودة سابقاً</value>
-  </data>
   <data name="trCardNameHint" xml:space="preserve">
     <value>اسم البطاقة...</value>
   </data>
@@ -1409,9 +1403,6 @@
   </data>
   <data name="trOrders" xml:space="preserve">
     <value>الطلبات</value>
-  </data>
-  <data name="trPopErrorBarcodeLength" xml:space="preserve">
-    <value>طول الباركود أقل من 13 رقم</value>
   </data>
   <data name="trBranchs/Stores" xml:space="preserve">
     <value>الفروع/المخازن</value>
@@ -1885,9 +1876,6 @@
   <data name="trPurchaceOrderDraft" xml:space="preserve">
     <value>مسودة طلبية شراء</value>
   </data>
-  <data name="trQuotationsDraft" xml:space="preserve">
-    <value>مسودة عرض سعر</value>
-  </data>
   <data name="trSaleOrder" xml:space="preserve">
     <value>طلبية مبيعات</value>
   </data>
@@ -2335,9 +2323,6 @@
   <data name="trApproveQuotationNotification" xml:space="preserve">
     <value>هل تريد تأكيد عرض السعر؟</value>
   </data>
-  <data name="trSaveQuotationNotification" xml:space="preserve">
-    <value>هل تريد حفظ عرض السعر في المسودات؟</value>
-  </data>
   <data name="trThereWasAnErrorLoadingTheImage" xml:space="preserve">
     <value>حدث خطأ أثناء تحميل الصورة</value>
   </data>
@@ -2782,9 +2767,6 @@
   <data name="trMeat" xml:space="preserve">
     <value>لحوم</value>
   </data>
-  <data name="trRawMaterials" xml:space="preserve">
-    <value>مواد خام</value>
-  </data>
   <data name="trVegetables" xml:space="preserve">
     <value>خضروات</value>
   </data>
@@ -3000,9 +2982,6 @@
   </data>
   <data name="trPurchasesEmailTemplate" xml:space="preserve">
     <value>قالب بريد فاتورة المشتريات</value>
-  </data>
-  <data name="trQuotationsEmailTemplate" xml:space="preserve">
-    <value>قالب بريد عروض الأسعار</value>
   </data>
   <data name="trRequirementsEmailTemplate" xml:space="preserve">
     <value>قالب بريد المطالبة بالمستحقات</value>
@@ -4713,9 +4692,6 @@
   </data>
   <data name="trQuotation" xml:space="preserve">
     <value>عرض سعر</value>
-  </data>
-  <data name="trQuotationsSaved" xml:space="preserve">
-    <value>عرض سعر محفوظ</value>
   </data>
   <data name="trQuotations_" xml:space="preserve">
     <value>عروض الأسعار</value>
@@ -6628,5 +6604,26 @@
   </data>
   <data name="SeeTheAdministrationAlert" xml:space="preserve">
     <value>راجع الإدارة</value>
+  </data>
+  <data name="Interface" xml:space="preserve">
+    <value>الواجهة</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>الاسم بالعربية</value>
+  </data>
+  <data name="NameArHint" xml:space="preserve">
+    <value>الاسم بالعربية...</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>الاسم بالانجليزية</value>
+  </data>
+  <data name="NameEnHint" xml:space="preserve">
+    <value>الاسم بالانجليزية...</value>
+  </data>
+  <data name="trPopErrorBarcodeLength" xml:space="preserve">
+    <value>طول الباركود أقل من 13 رقم</value>
+  </data>
+  <data name="UsersManagement" xml:space="preserve">
+    <value>إدارة المستخدمين</value>
   </data>
 </root>

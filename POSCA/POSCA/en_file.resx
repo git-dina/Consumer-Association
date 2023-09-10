@@ -6402,4 +6402,22 @@ Main Documents</value>
   <data name="SeeTheAdministrationAlert" xml:space="preserve">
     <value>See The Administration</value>
   </data>
+  <data name="Interface" xml:space="preserve">
+    <value>Interface</value>
+  </data>
+  <data name="NameAr" xml:space="preserve">
+    <value>Name ar</value>
+  </data>
+  <data name="NameArHint" xml:space="preserve">
+    <value>Name ar...</value>
+  </data>
+  <data name="NameEn" xml:space="preserve">
+    <value>Name en</value>
+  </data>
+  <data name="NameEnHint" xml:space="preserve">
+    <value>Name en...</value>
+  </data>
+  <data name="UsersManagement" xml:space="preserve">
+    <value>Users Management</value>
+  </data>
 </root>

@@ -25,6 +25,8 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; }
         //extr 
         public string AppObject { get; set; }
+        public string NameAr { get; set; }
+        public string NameEn { get; set; }
         #endregion
 
         #region Methods
@@ -41,6 +43,63 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<AppObject>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<List<Role>> save(Role role)
+        {
+            var result = new List<Role>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Permissions/Save";
+
+            var myContent = JsonConvert.SerializeObject(role);
+            parameters.Add("itemObject", myContent);
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Role>(c.Value));
+                }
+            }
+            return result;
+        }
+        public async Task<List<Role>> GetRoles(bool? isActive = null)
+        {
+            var result = new List<Role>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Permissions/GetRoles";
+
+            parameters.Add("isActive", isActive.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Role>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<List<Role>> DeleteRole(long roleId, long userId)
+        {
+            var result = new List<Role>();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("itemId", roleId.ToString());
+            parameters.Add("userId", userId.ToString());
+            string method = "Permissions/DeleteRole";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result.Add(JsonConvert.DeserializeObject<Role>(c.Value));
                 }
             }
             return result;

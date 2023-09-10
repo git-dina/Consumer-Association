@@ -447,7 +447,13 @@ namespace POSCA
             #endregion
 
             txt_settings.Text = AppSettings.resourcemanager.GetString("Settings"); 
-          txt_generalSettings.Text = AppSettings.resourcemanager.GetString("GeneralSettings"); 
+          txt_generalSettings.Text = AppSettings.resourcemanager.GetString("GeneralSettings");
+
+            #region usersManagement
+            txt_usersManagement.Text = AppSettings.resourcemanager.GetString("UsersManagement");
+            txt_user.Text = AppSettings.resourcemanager.GetString("trUsers");
+            txt_permissions.Text = AppSettings.resourcemanager.GetString("trPermissions");
+            #endregion
             /*
             tt_menu.Content = AppSettings.resourcemanager.GetString("trMenu");
             tt_home.Content = AppSettings.resourcemanager.GetString("trHome");

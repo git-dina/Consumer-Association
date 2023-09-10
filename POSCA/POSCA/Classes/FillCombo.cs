@@ -1455,7 +1455,7 @@ namespace POSCA.Classes
 
         static public async Task<IEnumerable<User>> RefreshUsers()
         {
-            userList = await user.get(true);
+            userList = await user.Get(true);
 
             return userList;
         }
@@ -1475,6 +1475,13 @@ namespace POSCA.Classes
         #region Permissions
         static public List<AppObject> appObjectsList;
         static public Permissions permission = new Permissions();
+
+        static public async Task<IEnumerable<AppObject>> RefreshAppObjects()
+        {
+            appObjectsList = await permission.GetAppObjects();
+
+            return appObjectsList;
+        }
         #endregion
     }
 }

@@ -2356,6 +2356,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Interface.
+        /// </summary>
+        internal static string Interface {
+            get {
+                return ResourceManager.GetString("Interface", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice Amount....
         /// </summary>
         internal static string InvoiceAmountHint {
@@ -3172,6 +3181,42 @@ namespace POSCA {
         internal static string multipleDelete {
             get {
                 return ResourceManager.GetString("multipleDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name ar.
+        /// </summary>
+        internal static string NameAr {
+            get {
+                return ResourceManager.GetString("NameAr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name ar....
+        /// </summary>
+        internal static string NameArHint {
+            get {
+                return ResourceManager.GetString("NameArHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name en.
+        /// </summary>
+        internal static string NameEn {
+            get {
+                return ResourceManager.GetString("NameEn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name en....
+        /// </summary>
+        internal static string NameEnHint {
+            get {
+                return ResourceManager.GetString("NameEnHint", resourceCulture);
             }
         }
         
@@ -18618,6 +18663,15 @@ namespace POSCA {
         internal static string UsedNumber {
             get {
                 return ResourceManager.GetString("UsedNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users Management.
+        /// </summary>
+        internal static string UsersManagement {
+            get {
+                return ResourceManager.GetString("UsersManagement", resourceCulture);
             }
         }
         

@@ -327,7 +327,14 @@
                                 </Style>
                             </DataGrid.Resources>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Width="*"  Header="AppObject" Binding="{Binding Path=AppObject}"/>
+                                <DataGridTextColumn Width="*"  Header="AppObject" >
+                                    <DataGridTextColumn.Binding >
+                                        <MultiBinding Converter="{StaticResource appObjectConverter}" >
+                                            <Binding Path="NameAr" />
+                                            <Binding Path="NameEn" />
+                                        </MultiBinding>
+                                    </DataGridTextColumn.Binding>
+                                </DataGridTextColumn>
                                 <DataGridCheckBoxColumn Header="ViewObject" Binding="{Binding ViewObject, Mode=TwoWay}">
                                     <DataGridCheckBoxColumn.ElementStyle>
                                         <Style TargetType="{x:Type CheckBox}">
