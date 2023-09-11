@@ -1338,14 +1338,40 @@ namespace POSCA.View.sales
         {
             try
             {
-                if (e.Key == Key.PageUp)
+                if (e.Key == Key.System)
                 {
-                    Keyboard.Focus(tb_CustomerId);
+                     if (e.SystemKey == Key.F10)
+                        RepeatLastItem();
+                    e.Handled = true;
+
                 }
-                else if (e.Key == Key.End)
-                    Keyboard.Focus(tb_quantity);
-                else if (e.Key == Key.F10)
-                    RepeatLastItem();
+                else
+                {
+                    if (e.Key == Key.PageUp)
+                    {
+                        Keyboard.Focus(tb_CustomerId);
+                    }
+                    else if (e.Key == Key.End) // move focus to quantity
+                        Keyboard.Focus(tb_quantity);
+                    else if (e.Key == Key.Up) // Select Next Row In Grid
+                        SelectNextRowInGrid();
+                    else if (e.Key == Key.Down) // Select Previous Row In Grid
+                        SelectPreviousRowInGrid();
+                    else if (e.Key == Key.F9) // delete selected item
+                        DeleteSelectedItem();
+                    else if (e.Key == Key.F1) // lock system go to login window
+                        LockSystem();
+                    else if (e.Key == Key.Divide) // clear brcode or contibutor id
+                        ClearItemsInsertData();
+                    else if (e.Key == Key.Insert) // check item prices
+                        CheckItemsBarcode();
+                    else if (e.Key == Key.Decimal) // write 00
+                        CheckItemsBarcode();
+
+                    e.Handled = true;
+
+                }
+
             }
             catch (Exception ex)
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
@@ -1371,6 +1397,90 @@ namespace POSCA.View.sales
                 var lastItem = billDetails.LastOrDefault();
                 if (lastItem != null)
                     addItemToBill(lastItem);
+
+                Keyboard.Focus(tb_search);
+            }
+            catch { }
+        } 
+        private void SelectNextRowInGrid()
+        {
+            try
+            {
+                var selectedIndex = dg_invoiceDetails.SelectedIndex;
+                selectedIndex++;
+                if(selectedIndex <= billDetails.Count)
+                    dg_invoiceDetails.SelectedIndex = selectedIndex;
+             
+                Keyboard.Focus(tb_search);
+            }
+            catch { }
+        }
+        private void SelectPreviousRowInGrid()
+        {
+            try
+            {
+                var selectedIndex = dg_invoiceDetails.SelectedIndex;
+                if (selectedIndex > 0)
+                {
+                    selectedIndex--;
+                    if (selectedIndex <= billDetails.Count)
+                        dg_invoiceDetails.SelectedIndex = selectedIndex;
+                }
+                Keyboard.Focus(tb_search);
+            }
+            catch { }
+        }
+        private void DeleteSelectedItem()
+        {
+            try
+            {
+                var selectedIndex = dg_invoiceDetails.SelectedIndex;
+                if (selectedIndex > -1)
+                {
+                    billDetails.RemoveAt(selectedIndex);
+
+                    if (!forceCancelEdit)
+                    {
+                        dg_invoiceDetails.IsEnabled = false;
+                        RefreshInvoiceDetailsDataGrid();
+                    }
+                    // calculate new total
+                    refreshValues();
+                }
+                Keyboard.Focus(tb_search);
+            }
+            catch { }
+        } 
+        
+        private void LockSystem()
+        {
+            try
+            {
+                
+            }
+            catch { }
+        }
+        private void ClearItemsInsertData()
+        {
+            try
+            {
+                if (tb_search.IsFocused == true)
+                    tb_search.Text = "";
+                else if (tb_CustomerId.IsFocused == true)
+                {
+                    tb_CustomerId.Text = "";
+                    tb_CustomerId_KeyDown(null, null);
+                }
+            }
+            catch { }
+        }
+        private void CheckItemsBarcode()
+        {
+            try
+            {
+               
+
+                Keyboard.Focus(tb_search);
             }
             catch { }
         }
