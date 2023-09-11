@@ -463,12 +463,6 @@ Main Documents</value>
   <data name="newMembership" xml:space="preserve">
     <value>New Membership</value>
   </data>
-  <data name="noCoupons" xml:space="preserve">
-    <value>No Coupons</value>
-  </data>
-  <data name="noInvoicesClasses" xml:space="preserve">
-    <value>noInvoicesClasses</value>
-  </data>
   <data name="noOffers" xml:space="preserve">
     <value>No Offers</value>
   </data>
@@ -2911,21 +2905,11 @@ Main Documents</value>
   <data name="trNoConnection" xml:space="preserve">
     <value>لا يوجد اتصال</value>
   </data>
-  <data name="trNoDraft" xml:space="preserve">
-    <value>لا يوجد مسودة</value>
-  </data>
-  <data name="trNoEmailForThisDept" xml:space="preserve">
-    <value>لا يوجد بريد الكتروني لهذا القسم
-يرجى اضافة بريد الكتروني في الاعدادات</value>
-  </data>
   <data name="trNoHint" xml:space="preserve">
     <value>Num...</value>
   </data>
   <data name="trNoInternetConnection" xml:space="preserve">
     <value>لا يوجد اتصال بالانترنت</value>
-  </data>
-  <data name="trNoInventory" xml:space="preserve">
-    <value>لا يوجد جرد</value>
   </data>
   <data name="trNoInvoice" xml:space="preserve">
     <value>الفاتورة غير موجودة</value>
@@ -2965,15 +2949,6 @@ Main Documents</value>
   </data>
   <data name="trNote_" xml:space="preserve">
     <value>ملاحظة</value>
-  </data>
-  <data name="trNotification" xml:space="preserve">
-    <value>الإشعارات</value>
-  </data>
-  <data name="trNotifications" xml:space="preserve">
-    <value>الإشعارات</value>
-  </data>
-  <data name="trNotReady" xml:space="preserve">
-    <value>غير جاهز</value>
   </data>
   <data name="trNum" xml:space="preserve">
     <value>الرقم</value>
@@ -6431,5 +6406,11 @@ Main Documents</value>
   </data>
   <data name="RoleHint" xml:space="preserve">
     <value>Role...</value>
+  </data>
+  <data name="ItemQuantityZeroAlert" xml:space="preserve">
+    <value>Can not add item with zero quantity</value>
+  </data>
+  <data name="Nothing" xml:space="preserve">
+    <value>nothing</value>
   </data>
 </root>

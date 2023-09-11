@@ -25,6 +25,9 @@ namespace POSCA.Classes
         public Nullable<long> UpdateUserId { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+
+        //extra
+        public string ItemName { get; set; }
         #endregion
 
     }

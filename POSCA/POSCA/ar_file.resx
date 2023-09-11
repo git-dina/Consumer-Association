@@ -1515,9 +1515,6 @@
   <data name="trLanguage" xml:space="preserve">
     <value>اللغة</value>
   </data>
-  <data name="trNotification" xml:space="preserve">
-    <value>الإشعارات</value>
-  </data>
   <data name="trPermissionsBasics" xml:space="preserve">
     <value>الأساسيات</value>
   </data>
@@ -1800,12 +1797,6 @@
   <data name="trInventoryDraft" xml:space="preserve">
     <value>مسودة جرد</value>
   </data>
-  <data name="trNoDraft" xml:space="preserve">
-    <value>لا يوجد مسودة</value>
-  </data>
-  <data name="trNoInventory" xml:space="preserve">
-    <value>لا يوجد جرد</value>
-  </data>
   <data name="trWarningOneInventory" xml:space="preserve">
     <value>لا يمكنك إنشاء أكثر من جرد في الفرع</value>
   </data>
@@ -1835,10 +1826,6 @@
   </data>
   <data name="trMajor" xml:space="preserve">
     <value>رئيسي</value>
-  </data>
-  <data name="trNoEmailForThisDept" xml:space="preserve">
-    <value>لا يوجد بريد الكتروني لهذا القسم
-يرجى اضافة بريد الكتروني في الاعدادات</value>
   </data>
   <data name="trNoInternetConnection" xml:space="preserve">
     <value>لا يوجد اتصال بالانترنت</value>
@@ -2230,9 +2217,6 @@
   <data name="trCreate" xml:space="preserve">
     <value>إنشاء</value>
   </data>
-  <data name="trOverrideStorageLimitAlert" xml:space="preserve">
-    <value>تجاوز حدود التخزين</value>
-  </data>
   <data name="trTransferAlertContent" xml:space="preserve">
     <value>عملية تحويل بانتظار التأكيد</value>
   </data>
@@ -2259,12 +2243,6 @@
   </data>
   <data name="trNew" xml:space="preserve">
     <value>جديد</value>
-  </data>
-  <data name="trNoNotifications" xml:space="preserve">
-    <value>لا يوجد إشعارات!</value>
-  </data>
-  <data name="trNotifications" xml:space="preserve">
-    <value>الإشعارات</value>
   </data>
   <data name="trReturnInvoices" xml:space="preserve">
     <value>فواتير المرتجع</value>
@@ -2673,9 +2651,6 @@
   </data>
   <data name="trCashType" xml:space="preserve">
     <value>نقدي</value>
-  </data>
-  <data name="trNotReady" xml:space="preserve">
-    <value>غير جاهز</value>
   </data>
   <data name="trReady" xml:space="preserve">
     <value>جاهز</value>
@@ -3805,9 +3780,6 @@
   <data name="newMembership" xml:space="preserve">
     <value>عضوية جديدة</value>
   </data>
-  <data name="newReservation" xml:space="preserve">
-    <value>حجز جديد</value>
-  </data>
   <data name="reservationsManagement" xml:space="preserve">
     <value>إدارة الحجوزات</value>
   </data>
@@ -3858,12 +3830,6 @@
   </data>
   <data name="membership" xml:space="preserve">
     <value>العضوية</value>
-  </data>
-  <data name="noCoupons" xml:space="preserve">
-    <value>لا يوجد كوبونات</value>
-  </data>
-  <data name="noInvoicesClasses" xml:space="preserve">
-    <value>noInvoicesClasses</value>
   </data>
   <data name="noOffers" xml:space="preserve">
     <value>لا يوجد عروض</value>
@@ -4632,9 +4598,6 @@
   </data>
   <data name="trOrderreport" xml:space="preserve">
     <value>الطلبات</value>
-  </data>
-  <data name="trOutOfStock" xml:space="preserve">
-    <value>لا يوجد مخزون</value>
   </data>
   <data name="trPackageDestroy" xml:space="preserve">
     <value>تفكيك</value>
@@ -6637,5 +6600,11 @@
   </data>
   <data name="RoleHint" xml:space="preserve">
     <value>الدور...</value>
+  </data>
+  <data name="ItemQuantityZeroAlert" xml:space="preserve">
+    <value>لا يمكن إضافة صنف بكمية صفر</value>
+  </data>
+  <data name="Nothing" xml:space="preserve">
+    <value>لا يوجد</value>
   </data>
 </root>

@@ -12,6 +12,7 @@ namespace POSCA.Classes.ApiClasses
     {
         #region Attributes
         public long InvoiceId { get; set; }
+        public long LocationId { get; set; }
         public string InvNumber { get; set; }
         public Nullable<decimal> TotalNet { get; set; }
         public Nullable<long> CustomerId { get; set; }
@@ -41,6 +42,23 @@ namespace POSCA.Classes.ApiClasses
                 if (c.Type == "scopes")
                 {
                     result.Add(JsonConvert.DeserializeObject<PaymentType>(c.Value));
+                }
+            }
+            return result;
+        }
+
+        public async Task<String> GetLastInvNum()
+        {
+            var result = "";
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "SalesInvoice/GetLastInvNum";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = c.Value;
                 }
             }
             return result;

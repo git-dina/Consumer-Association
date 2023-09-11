@@ -118,7 +118,7 @@ namespace POSCA.View.sales
                 */
 
                 //await Search();
-                Clear();
+                await Clear();
                 Keyboard.Focus(tb_search);
                 HelpClass.EndAwait(grid_main);
             }
@@ -134,6 +134,7 @@ namespace POSCA.View.sales
         {
 
             MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_search, AppSettings.resourcemanager.GetString("trSearchHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_quantity, AppSettings.resourcemanager.GetString("trAmount"));
 
             txt_invoiceTitle.Text = AppSettings.resourcemanager.GetString("SalesInvoice");
             txt_invoiceDetails.Text = AppSettings.resourcemanager.GetString("InvoiceDetails");
@@ -144,9 +145,8 @@ namespace POSCA.View.sales
             txt_LastInvTitle.Text = AppSettings.resourcemanager.GetString("LastInvoice");
             txt_CustomerTitle.Text = AppSettings.resourcemanager.GetString("IsCustomer");
             txt_CustomerBalanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
-            //txt_payType.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
-            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
 
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_CustomerId, AppSettings.resourcemanager.GetString("CustomerNoHint"));
 
             txt_QuantityTitle.Text = AppSettings.resourcemanager.GetString("trAmount");
             txt_TotalTitle.Text = AppSettings.resourcemanager.GetString("TotalInvoice");
@@ -454,12 +454,12 @@ namespace POSCA.View.sales
 
         #endregion
         #region events
-        private void Btn_newDraft_Click(object sender, RoutedEventArgs e)
+        private async void Btn_newDraft_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // HelpClass.StartAwait(grid_main);
-                Clear();
+                await Clear();
                 //await addDraft();
 
                 //HelpClass.EndAwait(grid_main);
@@ -626,27 +626,12 @@ namespace POSCA.View.sales
         }
         #endregion
 
-        private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                //await Search();
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        private void Btn_clear_Click(object sender, RoutedEventArgs e)
+        private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 // HelpClass.StartAwait(grid_main);
-                Clear();
+               await Clear();
                 // HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -708,7 +693,7 @@ namespace POSCA.View.sales
 
         #endregion
         #region validate - clearValidate - textChange - lostFocus - . . . . 
-       async void Clear()
+       async Task Clear()
         {
 
             this.DataContext = new Receipt();
@@ -728,12 +713,13 @@ namespace POSCA.View.sales
             //dp_ReceiptDate.SelectedDate = DateTime.Now;
             //dp_SupInvoiceDate.SelectedDate = DateTime.Now;
 
-           
-
-
-
-
-            // _ReceiptType = "salesInvoices";
+            #region lastInvoiceNumber
+            var lastInvNum = await FillCombo.sales.GetLastInvNum();
+            if (lastInvNum.Equals(0))
+                txt_LastInv.Text = AppSettings.resourcemanager.GetString("Nothing");
+            else
+                txt_LastInv.Text = lastInvNum.ToString();
+            #endregion
             ControlsEditable();
 
             // last 
@@ -816,62 +802,17 @@ namespace POSCA.View.sales
             }
         }
 
-
-
-
-
-
-
-
-
-
         #endregion
 
-        private async Task search()
-        {
-
-            try
-            {
-               
-                if(tb_search.Text != "")
-                {
-                    HelpClass.StartAwait(grid_main);
-
-                    Item item1 = null;
-
-
-                    item1 = await FillCombo.item.GetItemByBarcode(tb_search.Text, AppSettings.locationId);                                  
-
-                    if (item1 != null)
-                    {
-                        //add item to invoice
-                       
-                    }
-                    else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
-
-                    tb_search.Text = "";
-
-                    HelpClass.EndAwait(grid_main);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-
-        }
+      
         List<SalesInvoiceDetails> billDetails = new List<SalesInvoiceDetails>();
         private void addItemToBill(SalesInvoiceDetails salesInvoiceDetails)
         {
        
-            var invoiceItem = billDetails.Where(p => p.ItemUnitId == salesInvoiceDetails.ItemUnitId).FirstOrDefault();
+          //  var invoiceItem = billDetails.Where(p => p.ItemUnitId == salesInvoiceDetails.ItemUnitId).FirstOrDefault();
 
-            if (invoiceItem == null)//item doesn't exist in bill
-            {
+           // if (invoiceItem == null)//item doesn't exist in bill
+           // {
                 billDetails.Add(salesInvoiceDetails);
 
                 if (!forceCancelEdit)
@@ -879,13 +820,13 @@ namespace POSCA.View.sales
                     dg_invoiceDetails.IsEnabled = false;
                     RefreshInvoiceDetailsDataGrid();
                 }
-            }
-            else // item exist prevoiusly in list
-            {
-                invoiceItem.Qty++;
-                invoiceItem.Total = invoiceItem.Qty * invoiceItem.Price;
+            //}
+            //else // item exist prevoiusly in list
+            //{
+            //    invoiceItem.Qty++;
+            //    invoiceItem.Total = invoiceItem.Qty * invoiceItem.Price;
 
-            }
+            //}
                 refreshValues();
 
         }
@@ -939,26 +880,7 @@ namespace POSCA.View.sales
 
         }
 
-        public async Task fillOrderInputs(SalesInvoice invoice)
-        {
-
-            this.DataContext = receipt;
-
-            /*
-             txt_TotalCost.Text = HelpClass.DecTostring(invoice.TotalCost);
-            txt_TotalPrice.Text = HelpClass.DecTostring(invoice.TotalPrice);
-            txt_EnterpriseDiscount.Text = HelpClass.DecTostring(invoice.CoopDiscount);
-            txt_DiscountValue.Text = HelpClass.DecTostring(invoice.DiscountValue);
-            tb_FreePercentage.Text = HelpClass.DecTostring(invoice.FreePercentage);
-            txt_FreeValue.Text = HelpClass.DecTostring(invoice.FreeValue);
-            txt_ConsumerDiscount.Text = HelpClass.DecTostring(invoice.ConsumerDiscount);
-            txt_CostNet.Text = HelpClass.DecTostring(invoice.CostNet);
-            */
-            await buildSalesInvoiceDetails(invoice);
-
-            ControlsEditable();
-
-        }
+   
         public void fillReceiptInputs(Receipt invoice)
         {
 
@@ -1123,9 +1045,25 @@ namespace POSCA.View.sales
         {
             try
             {
-                if (e.Key == Key.Return)
+                if (e.Key == Key.Return && tb_search.Text != "")
                 {
-                    await search();
+                    var item = await FillCombo.item.GetItemUnitByBarcode(tb_search.Text);
+                    if (item != null)
+                    {
+                        SalesInvoiceDetails details = new SalesInvoiceDetails()
+                        {
+                            Barcode = item.Barcode,
+                            Qty = int.Parse(tb_quantity.Text),
+                            ItemName = item.ItemName,
+                            ItemUnitId = item.ItemUnitId,
+                            
+                            Price = item.SalePrice,
+                            Total = int.Parse(tb_quantity.Text) * item.SalePrice
+                        };
+                        addItemToBill(details);
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
                 }
             }
             catch (Exception ex)
@@ -1312,12 +1250,6 @@ namespace POSCA.View.sales
         }
 
 
-    
-
-      
-
-
-
         bool forceCancelEdit = false;
         public void RefreshInvoiceDetailsDataGrid()
         {
@@ -1340,23 +1272,6 @@ namespace POSCA.View.sales
             }
         }
 
-        //private void HandleKeyPress(object sender, KeyEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.Key == Key.PageUp)
-        //        {
-        //            GetCustomerByBox_ID();
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
-        //}
-
-        private void GetCustomerByBox_ID()
-        {
-            Keyboard.Focus(tb_CustomerId);
-        }
 
         Customer customer = new Customer();
         private async void tb_CustomerId_KeyDown(object sender, KeyEventArgs e)
@@ -1374,12 +1289,14 @@ namespace POSCA.View.sales
                     {
                         if (customer.CustomerStatus.Trim() != "continouse")
                         {
+                            tb_CustomerId.Text = "";
                             txt_Customer.Text = "";
                             txt_CustomerBalance.Text = "";
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         }
                         else if(customer.StopOnPOS )
                         {
+                            tb_CustomerId.Text = "";
                             txt_Customer.Text = "";
                             txt_CustomerBalance.Text = "";
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SeeTheAdministrationAlert"), animation: ToasterAnimation.FadeIn);
@@ -1399,7 +1316,7 @@ namespace POSCA.View.sales
                     }
   
                     HelpClass.EndAwait(grid_main);
-                    //Keyboard.Focus(tb_search);
+                    Keyboard.Focus(tb_search);
 
                 }
                 else
@@ -1423,11 +1340,40 @@ namespace POSCA.View.sales
             {
                 if (e.Key == Key.PageUp)
                 {
-                    GetCustomerByBox_ID();
+                    Keyboard.Focus(tb_CustomerId);
                 }
+                else if (e.Key == Key.End)
+                    Keyboard.Focus(tb_quantity);
+                else if (e.Key == Key.F10)
+                    RepeatLastItem();
             }
             catch (Exception ex)
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
+
+        private void tb_quantity_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && tb_quantity.Text != "")
+            {
+                if(int.Parse(tb_quantity.Text) == 0)
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("ItemQuantityZeroAlert"), animation: ToasterAnimation.FadeIn);
+                else
+                Keyboard.Focus(tb_search);
+            }
+        }
+
+
+        #region Keys Functions
+        private void RepeatLastItem()
+        {
+            try
+            {
+                var lastItem = billDetails.LastOrDefault();
+                if (lastItem != null)
+                    addItemToBill(lastItem);
+            }
+            catch { }
+        }
+        #endregion
     }
 }

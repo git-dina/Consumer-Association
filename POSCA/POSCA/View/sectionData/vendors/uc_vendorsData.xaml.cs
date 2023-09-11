@@ -415,21 +415,6 @@ namespace POSCA.View.sectionData
             }
         }
 
-        //private async void Tb_search_TextChanged(object sender, TextChangedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        HelpClass.StartAwait(grid_main);
-        //        await Search();
-        //        HelpClass.EndAwait(grid_main);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        HelpClass.EndAwait(grid_main);
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-        //    }
-        //}
-
         private async void Btn_clear_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -473,27 +458,7 @@ namespace POSCA.View.sectionData
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
-        //private async void Btn_refresh_Click(object sender, RoutedEventArgs e)
-        //{//refresh
-        //    try
-        //    {
 
-        //        HelpClass.StartAwait(grid_main);
-
-        //        tb_search.Text = "";
-        //        searchText = "";
-        //        await RefreshSuppliersList();
-        //        await Search();
-
-        //        HelpClass.EndAwait(grid_main);
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        HelpClass.EndAwait(grid_main);
-        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-        //    }
-        //}
         #endregion
         #region Refresh & Search
         async Task Search()

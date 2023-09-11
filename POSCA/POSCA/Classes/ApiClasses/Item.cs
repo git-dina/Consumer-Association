@@ -146,6 +146,25 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+           public async Task<ItemUnit> GetItemUnitByBarcode(string barcode, long locationId=0)
+        {
+            var result = new ItemUnit();
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            string method = "Item/GetItemUnitByBarcode";
+
+            parameters.Add("barcode", barcode);
+            parameters.Add("locationId", locationId.ToString());
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<ItemUnit>(c.Value);
+                }
+            }
+            return result;
+        }
 
         public async Task<List<Item>> GetPromotionItemByCodeOrName(string textSearch,List<long?> locationsId )
         {

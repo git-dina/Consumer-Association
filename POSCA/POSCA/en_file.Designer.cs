@@ -2662,6 +2662,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can not add item with zero quantity.
+        /// </summary>
+        internal static string ItemQuantityZeroAlert {
+            get {
+                return ResourceManager.GetString("ItemQuantityZeroAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receipt Type....
         /// </summary>
         internal static string ItemReceiptTypeHint {
@@ -3347,24 +3356,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to No Coupons.
-        /// </summary>
-        internal static string noCoupons {
-            get {
-                return ResourceManager.GetString("noCoupons", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to noInvoicesClasses.
-        /// </summary>
-        internal static string noInvoicesClasses {
-            get {
-                return ResourceManager.GetString("noInvoicesClasses", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to No Offers.
         /// </summary>
         internal static string noOffers {
@@ -3424,6 +3415,15 @@ namespace POSCA {
         internal static string notCompleted {
             get {
                 return ResourceManager.GetString("notCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to nothing.
+        /// </summary>
+        internal static string Nothing {
+            get {
+                return ResourceManager.GetString("Nothing", resourceCulture);
             }
         }
         
@@ -12635,25 +12635,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to لا يوجد مسودة.
-        /// </summary>
-        internal static string trNoDraft {
-            get {
-                return ResourceManager.GetString("trNoDraft", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to لا يوجد بريد الكتروني لهذا القسم
-        ///يرجى اضافة بريد الكتروني في الاعدادات.
-        /// </summary>
-        internal static string trNoEmailForThisDept {
-            get {
-                return ResourceManager.GetString("trNoEmailForThisDept", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Num....
         /// </summary>
         internal static string trNoHint {
@@ -12668,15 +12649,6 @@ namespace POSCA {
         internal static string trNoInternetConnection {
             get {
                 return ResourceManager.GetString("trNoInternetConnection", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to لا يوجد جرد.
-        /// </summary>
-        internal static string trNoInventory {
-            get {
-                return ResourceManager.GetString("trNoInventory", resourceCulture);
             }
         }
         
@@ -12794,33 +12766,6 @@ namespace POSCA {
         internal static string trNotes {
             get {
                 return ResourceManager.GetString("trNotes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الإشعارات.
-        /// </summary>
-        internal static string trNotification {
-            get {
-                return ResourceManager.GetString("trNotification", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to الإشعارات.
-        /// </summary>
-        internal static string trNotifications {
-            get {
-                return ResourceManager.GetString("trNotifications", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to غير جاهز.
-        /// </summary>
-        internal static string trNotReady {
-            get {
-                return ResourceManager.GetString("trNotReady", resourceCulture);
             }
         }
         
