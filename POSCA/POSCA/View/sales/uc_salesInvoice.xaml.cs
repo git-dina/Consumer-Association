@@ -65,6 +65,7 @@ namespace POSCA.View.sales
         private string _ReceiptType = "salesInvoices";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
+            MainWindow.mainWindow.KeyDown -= UserControl_KeyDown;
             MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
             Instance = null;
             GC.Collect();
@@ -74,6 +75,7 @@ namespace POSCA.View.sales
             try
             {
                 HelpClass.StartAwait(grid_main);
+                MainWindow.mainWindow.KeyDown += UserControl_KeyDown;
                 MainWindow.mainWindow.KeyUp += UserControl_KeyUp;
 
                 if (AppSettings.lang.Equals("en"))
@@ -1333,7 +1335,61 @@ namespace POSCA.View.sales
             }
         }
 
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            #region Ctrl + Alt +Shift + F8
+            if (
+                (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+                && (e.KeyboardDevice.IsKeyDown(Key.LeftAlt) || e.KeyboardDevice.IsKeyDown(Key.RightAlt))
+                && (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
+                && e.KeyboardDevice.IsKeyDown(Key.F8)
+                )
+            {
+                MessageBox.Show("Ctrl + Alt +Shift + F8");
+            }
+            #endregion
+            #region Oem1 + F10
+            if (
+                e.KeyboardDevice.IsKeyDown(Key.Oem1)
+                && e.KeyboardDevice.IsKeyDown(Key.F10)
+                )
+            {
+                MessageBox.Show("Oem1 + F10");
+            }
 
+            #endregion
+            #region Ctrl + Shift + F2
+            if (
+               (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+               && (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
+               && e.KeyboardDevice.IsKeyDown(Key.F2)
+               )
+            {
+                MessageBox.Show("Ctrl + Shift + F2");
+            }
+
+            #endregion
+            #region Ctrl + Shift + F3
+            if (
+              (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+              && (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
+              && e.KeyboardDevice.IsKeyDown(Key.F3)
+              )
+            {
+                MessageBox.Show("Ctrl + Shift + F3");
+            }
+            #endregion
+            #region Ctrl + Shift + F4
+            if (
+             (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
+             && (e.KeyboardDevice.IsKeyDown(Key.LeftShift) || e.KeyboardDevice.IsKeyDown(Key.RightShift))
+             && e.KeyboardDevice.IsKeyDown(Key.F4)
+             )
+            {
+                MessageBox.Show("Ctrl + Shift + F4");
+            }
+            #endregion
+        }
         private void UserControl_KeyUp(object sender, KeyEventArgs e)
         {
             try
@@ -1451,7 +1507,6 @@ namespace POSCA.View.sales
             }
             catch { }
         } 
-        
         private void LockSystem()
         {
             try
@@ -1485,5 +1540,7 @@ namespace POSCA.View.sales
             catch { }
         }
         #endregion
+
+        
     }
 }
