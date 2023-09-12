@@ -149,13 +149,13 @@ namespace POSCA.View.usersManagement
 
                         user.CreateUserId = MainWindow.userLogin.UserId;
 
-                        FillCombo.userList = await user.Save(user);
-                        if (FillCombo.userList == null)
+                        var res = await user.Save(user);
+                        if (res == null)
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
+                            FillCombo.userList = res.ToList();
                             Clear();
                             await Search();
                         }
@@ -193,12 +193,13 @@ namespace POSCA.View.usersManagement
                             user.RoleId = (long)cb_RoleId.SelectedValue;
                             user.UpdateUserId = MainWindow.userLogin.UserId;
 
-                            FillCombo.userList = await user.Save(user);
-                            if (FillCombo.userList == null)
+                            var res = await user.Save(user);
+                            if (res == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopUpdate"), animation: ToasterAnimation.FadeIn);
+                                FillCombo.userList = res.ToList();
                                 await Search();
 
                             }
@@ -244,14 +245,14 @@ namespace POSCA.View.usersManagement
 
                         if (w.isOk)
                         {
-                            FillCombo.userList = await user.Delete(user.UserId, MainWindow.userLogin.UserId);
-                            if (FillCombo.userList == null)
+                            var res = await user.Delete(user.UserId, MainWindow.userLogin.UserId);
+                            if (res == null)
                                 Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
                             else
                             {
                                 user.UserId = 0;
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-
+                                FillCombo.userList = res.ToList();
                                 await Search();
                                 Clear();
                             }
@@ -388,7 +389,7 @@ namespace POSCA.View.usersManagement
             usersQuery = FillCombo.userList.Where(s =>
             s.UserName.ToLower().Contains(searchText)
            && s.UserId != 1 ).ToList();
-            RefreshTypesView();
+            RefreshUsersView();
          
         }
         async Task<IEnumerable<User>> RefreshUsersList()
@@ -398,7 +399,7 @@ namespace POSCA.View.usersManagement
             return FillCombo.userList;
 
         }
-        void RefreshTypesView()
+        void RefreshUsersView()
         {
             dg_user.ItemsSource = usersQuery;
             txt_count.Text = usersQuery.Count().ToString();
