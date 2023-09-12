@@ -162,7 +162,7 @@ namespace POSCA.View.usersManagement
                         else
                         {
                             Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
-
+                            FillCombo.rolesList = roles.ToList();
                             Clear();
                             await Search();
                         }
@@ -206,6 +206,7 @@ namespace POSCA.View.usersManagement
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+                                FillCombo.rolesList = roles.ToList();
 
                                 await Search();
                             }
@@ -256,6 +257,7 @@ namespace POSCA.View.usersManagement
                             else
                             {
                                 Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
+                                FillCombo.rolesList = roles.ToList();
 
                                 await Search();
                                 Clear();
@@ -402,10 +404,10 @@ namespace POSCA.View.usersManagement
         {
    
             //search
-            if (roles is null)
-                await RefreshRolesList();
+            if (FillCombo.rolesList is null)
+                await FillCombo.RefreshRoles();
             searchText = tb_search.Text.ToLower();
-            rolesQuery = roles.Where(s =>
+            rolesQuery = FillCombo.rolesList.Where(s =>
             s.NameAr.ToLower().Contains(searchText)
            || s.NameEn.ToLower().Contains(searchText)
             ).ToList();
@@ -413,11 +415,7 @@ namespace POSCA.View.usersManagement
           
         }
     
-        async Task<IEnumerable<Role>> RefreshRolesList()
-        {
-           roles = await FillCombo.permission.GetRoles(true);
-            return roles;
-        }
+
       
         void RefreshRolesView()
         {

@@ -128,5 +128,10 @@ namespace POSCA.Classes.ApiClasses
         public string Name { get; set; }
         public string NameEn { get; set; }
         public string NameAr { get; set; }
+
+        //extra
+        public bool ViewObject { get; set; }
+        public bool EditObject { get; set; }
+        public bool ApproveObject { get; set; }
     }
 }

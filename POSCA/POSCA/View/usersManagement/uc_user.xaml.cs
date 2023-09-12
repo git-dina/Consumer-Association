@@ -85,6 +85,7 @@ namespace POSCA.View.usersManagement
 
                 Keyboard.Focus(tb_LoginName);
 
+                await FillCombo.fillRoles(cb_RoleId);
                 await Search();
                 Clear();
                 HelpClass.EndAwait(grid_main);

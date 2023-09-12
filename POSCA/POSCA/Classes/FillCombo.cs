@@ -1482,6 +1482,28 @@ namespace POSCA.Classes
 
             return appObjectsList;
         }
+
+        static public List<Role> rolesList;
+        static public async Task<IEnumerable<Role>> RefreshRoles()
+        {
+            rolesList = await permission.GetRoles(true);
+
+            return rolesList;
+        }
+        static public async Task fillRoles(ComboBox combo)
+        {
+            if (rolesList is null)
+                await RefreshRoles();
+
+            combo.ItemsSource = rolesList;
+            combo.SelectedValuePath = "RoleID";
+            if(AppSettings.lang =="ar")
+                combo.DisplayMemberPath = "NameAr";
+            else
+                combo.DisplayMemberPath = "NameEn";
+
+            combo.SelectedIndex = -1;
+        }
         #endregion
     }
 }
