@@ -111,6 +111,8 @@ namespace POSCA.View.usersManagement
             txt_addButton.Text = AppSettings.resourcemanager.GetString("trAdd");
             txt_updateButton.Text = AppSettings.resourcemanager.GetString("trSave");
             txt_deleteButton.Text = AppSettings.resourcemanager.GetString("trDelete");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
+
 
             dg_role.Columns[0].Header = AppSettings.resourcemanager.GetString("NameAr");
             dg_role.Columns[1].Header = AppSettings.resourcemanager.GetString("NameEn");
@@ -349,8 +351,16 @@ namespace POSCA.View.usersManagement
                     this.DataContext = role;
 
                     if (role.Permissions == null || role.Permissions.Count == 0)
-                        dg_permissions.ItemsSource = FillCombo.appObjectsList;
-                    else
+                    {
+                        foreach (var row in FillCombo.appObjectsList)
+                            role.Permissions.Add(new Permissions() {
+                            NameAr = row.NameAr,
+                            NameEn = row.NameEn,
+                            AppObjectId = row.AppObjectId,
+                            ViewObject = row.ViewObject});
+                    }
+                        //dg_permissions.ItemsSource = FillCombo.appObjectsList;
+                    //else
                         dg_permissions.ItemsSource = role.Permissions;
                 }
                 HelpClass.clearValidate(requiredControlList, this);
@@ -412,6 +422,7 @@ namespace POSCA.View.usersManagement
         void RefreshRolesView()
         {
             dg_role.ItemsSource = rolesQuery;
+            dg_role.Items.Refresh();
             txt_count.Text = rolesQuery.Count().ToString();
         }
         #endregion
@@ -421,6 +432,18 @@ namespace POSCA.View.usersManagement
             role = new Role();
             this.DataContext = new Role();
             dg_role.SelectedIndex = -1;
+
+
+            foreach (var row in FillCombo.appObjectsList)
+                role.Permissions.Add(new Permissions()
+                {
+                    NameAr = row.NameAr,
+                    NameEn = row.NameEn,
+                    AppObjectId = row.AppObjectId,
+                    ViewObject = row.ViewObject
+                });
+
+             dg_permissions.ItemsSource = role.Permissions;
 
             // last 
             HelpClass.clearValidate(requiredControlList, this);
@@ -537,9 +560,45 @@ namespace POSCA.View.usersManagement
 
         #endregion
 
-        private void Btn_save_Click(object sender, RoutedEventArgs e)
+        private async void Btn_save_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //if (FillCombo.groupObject.HasPermissionAction(basicsPermission, FillCombo.groupObjects, "add") || HelpClass.isAdminPermision())
+                {
+                    HelpClass.StartAwait(grid_main);
 
+                    if (HelpClass.validate(requiredControlList, this) && HelpClass.IsValidEmail(this))
+                    {
+                        role.UpdateUserId = MainWindow.userLogin.UserId;
+
+                        role.Permissions = (List<Permissions>)dg_permissions.ItemsSource;
+                        roles = await FillCombo.permission.save(role);
+                        if (roles == null)
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+                        else
+                        {
+                            Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopAdd"), animation: ToasterAnimation.FadeIn);
+
+                            await Search();
+                        }
+                    }
+                    else
+                    {
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                    }
+                    HelpClass.EndAwait(grid_main);
+                }
+                //else
+                //    Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trdontHavePermission"), animation: ToasterAnimation.FadeIn);
+
+            }
+            catch (Exception ex)
+            {
+
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
         }
     }
 }
