@@ -408,6 +408,9 @@
     <Compile Include="View\windows\wd_itemUnitsPromotion.xaml.cs">
       <DependentUpon>wd_itemUnitsPromotion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_login.xaml.cs">
+      <DependentUpon>wd_login.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_payTypes.xaml.cs">
       <DependentUpon>wd_payTypes.xaml</DependentUpon>
     </Compile>
@@ -664,6 +667,10 @@
     <Page Include="View\windows\wd_itemUnitsPromotion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_payTypes.xaml">
       <SubType>Designer</SubType>
