@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Controls.Primitives;
+using POSCA.View.windows;
 
 namespace POSCA
 {
@@ -31,7 +32,8 @@ namespace POSCA
                 EventManager.RegisterClassHandler(typeof(DatePicker), DatePicker.KeyDownEvent, new KeyEventHandler(NextControl_KeyDown));
                 EventManager.RegisterClassHandler(typeof(ToggleButton), ToggleButton.KeyDownEvent, new KeyEventHandler(NextControl_KeyDown));
 
-                MainWindow window = new MainWindow();
+                //MainWindow window = new MainWindow();
+                wd_login window = new wd_login();
                 MainWindow.Show();
 
             }
