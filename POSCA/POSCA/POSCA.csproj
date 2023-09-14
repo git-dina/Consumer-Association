@@ -245,6 +245,7 @@
     <Compile Include="converters\PromotionNatureConverter.cs" />
     <Compile Include="converters\PromotionTypeConverter.cs" />
     <Compile Include="converters\receiptTypeConverter.cs" />
+    <Compile Include="converters\RoleNameConverter.cs" />
     <Compile Include="converters\toIntConverter.cs" />
     <Compile Include="View\customers\activities\uc_subscriptionRequest.xaml.cs">
       <DependentUpon>uc_subscriptionRequest.xaml</DependentUpon>
