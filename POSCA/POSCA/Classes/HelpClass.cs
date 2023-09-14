@@ -19,6 +19,7 @@ using System.Windows.Shapes;
 //using Tulpep.NotificationWindow;
 using System.Globalization;
 using System.Reflection;
+
 //using System.Drawing.Printing;
 namespace POSCA.Classes
 {
@@ -1025,6 +1026,16 @@ namespace POSCA.Classes
             }
 
             return count;
+        }
+
+        static public void ClearTmpFiles()
+        {
+            string dir = System.IO.Directory.GetCurrentDirectory();
+            string tmpPath = System.IO.Path.Combine(dir, AppSettings.TMPFolder);
+
+            var files = System.IO.Directory.GetFiles(tmpPath);
+            foreach (var f in files)
+                System.IO.File.Delete(f);
         }
     }
 }

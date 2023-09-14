@@ -2666,10 +2666,10 @@ Main Documents</value>
     <value>لقد تم تسجيل خروجك لأنك لم تنفذ أي عملية لمدة 15 دقيقة</value>
   </data>
   <data name="trLogIn" xml:space="preserve">
-    <value>تسجيل الدخول</value>
+    <value>Login</value>
   </data>
   <data name="trLoginInformation" xml:space="preserve">
-    <value>معلومات التسجيل</value>
+    <value>Login Information</value>
   </data>
   <data name="trLogOut" xml:space="preserve">
     <value>تسجيل الخروج</value>
@@ -3683,7 +3683,7 @@ Main Documents</value>
     <value>الكمية المتبقية...</value>
   </data>
   <data name="trRememberMe" xml:space="preserve">
-    <value>تذكرني</value>
+    <value>Remember Me</value>
   </data>
   <data name="trReportPrinterName" xml:space="preserve">
     <value>طابعة التقارير</value>
@@ -4637,7 +4637,7 @@ Main Documents</value>
     <value>User Name...</value>
   </data>
   <data name="trUserNotFound" xml:space="preserve">
-    <value>اسم المستخدم غير موجود</value>
+    <value>User Name Not Found</value>
   </data>
   <data name="trUserPath" xml:space="preserve">
     <value>مسار المستخدم</value>

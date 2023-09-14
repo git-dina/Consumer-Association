@@ -48,21 +48,26 @@ namespace POSCA.View.windows
 
 
                 HelpClass.StartAwait(grid_main);
-                requiredControlList = new List<string> { "serverName", };
+                requiredControlList = new List<string> { "userName", "password" };
+
+
+                #region read app settings
+                var api = Properties.Settings.Default.APIUri;
+                AppSettings.APIUri = api + "/api/";
+                AppSettings.lang = Properties.Settings.Default.lang;
+                tb_userName.Text = Properties.Settings.Default.userName;
+                pb_password.Password = Properties.Settings.Default.password;
+                if (Properties.Settings.Default.rememberMe)
+                    cbxRemmemberMe.IsChecked = true;
+                else
+                    cbxRemmemberMe.IsChecked = false;
+                #endregion
 
                 #region translate
-                /*
-                if (AppSettings.lang.Equals("en"))
-                {
-                    grid_main.FlowDirection = FlowDirection.LeftToRight;
-                }
-                else
-                {
-                    grid_main.FlowDirection = FlowDirection.RightToLeft;
-                }
-                */
                 translate();
                 #endregion
+
+               
 
                 HelpClass.EndAwait(grid_main);
             }
@@ -79,7 +84,12 @@ namespace POSCA.View.windows
 
         private void translate()
         {
+            txt_title.Text = AppSettings.resourcemanager.GetString("trLoginInformation"); 
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_userName, AppSettings.resourcemanager.GetString("LoginNameHint"));
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(pb_password, AppSettings.resourcemanager.GetString("trPasswordHint"));
 
+            cbxRemmemberMe.Content = AppSettings.resourcemanager.GetString("trRememberMe");
+            btn_login.Content = AppSettings.resourcemanager.GetString("trLogIn");
         }
 
         private void HandleKeyPress(object sender, KeyEventArgs e)
@@ -223,37 +233,31 @@ namespace POSCA.View.windows
             {
                 if (HelpClass.validate(requiredControlList, this))
                 {
-
-                    bool canLogin = false;
-                    btn_login.IsEnabled = false;
-                    txt_message.Text = "";
-                    string res = "";
-
-                    //clear loaded images
-                    //_itemService.ClearSavedImages();
-                    if (tb_userName.Text != "" && pb_password.Password != "")
-                    {
-                       
-
-                    }
-                   
-
-
-                    // show message
-                    if (res != "")
-                        txt_message.Text = res;
-                    else
-                        txt_message.Text = "";
-
-
                     HelpClass.StartAwait(grid_form);
 
-                   
-                    
+                    btn_login.IsEnabled = false;
+                    txt_message.Text = "";
 
-                    //if (canLogin)
+                    //clear temp files
+                    HelpClass.ClearTmpFiles();
+
+                    string password = Md5Encription.MD5Hash("Inc-m" + pb_password.Password);
+                    var user = await FillCombo.user.LoginUser(tb_userName.Text, password);
+
+                    if (user.UserName == null || user.UserId == 0)
                     {
-                        /*
+                        //user not found
+
+                        txt_message.Text = AppSettings.resourcemanager.GetString("trUserNotFound");
+
+                    }
+                    else
+                    {
+
+                        //correct
+                        //send user info to main window
+                        MainWindow.userLogin = user;
+
                         #region remember me
                         if (cbxRemmemberMe.IsChecked.Value)
                         {
@@ -269,16 +273,13 @@ namespace POSCA.View.windows
 
                         Properties.Settings.Default.Save();
                         #endregion
-                        */
 
-                        //open main window and close this window
                         MainWindow main = new MainWindow();
                         main.Show();
                         this.Close();
                     }
+
                     HelpClass.EndAwait(grid_form);
-
-
 
                     btn_login.IsEnabled = true;
                 }

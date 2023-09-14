@@ -11870,7 +11870,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تسجيل الدخول.
+        ///   Looks up a localized string similar to Login.
         /// </summary>
         internal static string trLogIn {
             get {
@@ -11879,7 +11879,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to معلومات التسجيل.
+        ///   Looks up a localized string similar to Login Information.
         /// </summary>
         internal static string trLoginInformation {
             get {
@@ -15011,7 +15011,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تذكرني.
+        ///   Looks up a localized string similar to Remember Me.
         /// </summary>
         internal static string trRememberMe {
             get {
@@ -17981,7 +17981,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اسم المستخدم غير موجود.
+        ///   Looks up a localized string similar to User Name Not Found.
         /// </summary>
         internal static string trUserNotFound {
             get {

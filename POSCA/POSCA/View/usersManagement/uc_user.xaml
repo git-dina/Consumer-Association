@@ -141,7 +141,14 @@
                             <DataGrid.Columns>
                                 <DataGridTextColumn Width="*"  Header="LoginName" Binding="{Binding Path=LoginName}"/>
                                 <DataGridTextColumn Width="*"  Header="UserName" Binding="{Binding Path=UserName}"/>
-                                <DataGridTextColumn Width="*"  Header="RoleName" Binding="{Binding Path=RoleName}"/>
+                                <DataGridTextColumn Width="*"  Header="RoleName" >
+                                    <DataGridTextColumn.Binding >
+                                        <MultiBinding Converter="{StaticResource RoleNameConverter}" >
+                                            <Binding Path="RoleNameAr" />
+                                            <Binding Path="RoleNameEn" />
+                                        </MultiBinding>
+                                    </DataGridTextColumn.Binding>
+                                </DataGridTextColumn>
 
                             </DataGrid.Columns>
                         </DataGrid>
@@ -363,17 +370,17 @@
                             <Grid   >
                                 <PasswordBox x:Name="tb_Password"  
                                              Padding="10,0,5,0" 
-             Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-             materialDesign:HintAssist.Hint="Password..."  
-             Foreground="{StaticResource textColor}"  
-             MaxLength="50" BorderThickness="0"
-             materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
-             Height="40"  Margin="0,0" 
-             LostFocus="validateEmpty_LostFocus" />
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                                     materialDesign:HintAssist.Hint="Password..."  
+                                     Foreground="{StaticResource textColor}"  
+                                     MaxLength="50" BorderThickness="0"
+                                     materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
+                                     Height="40"  Margin="0,0" 
+                                     LostFocus="validateEmpty_LostFocus" />
                                 <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_Password" 
-      HorizontalAlignment="Right" Visibility="Collapsed"   
- VerticalAlignment="Center" Width="15"  Height="15"
-     Data="{StaticResource infoCircle}">
+                                          HorizontalAlignment="Right" Visibility="Collapsed"   
+                                     VerticalAlignment="Center" Width="15"  Height="15"
+                                         Data="{StaticResource infoCircle}">
                                 </Path>
                             </Grid>
                         </Border>
