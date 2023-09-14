@@ -311,7 +311,7 @@
                         <Border Margin="5,5,5,17.5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGrid1" BorderThickness="0" 
                             Background="White"/>
                         <DataGrid  Margin="5,5,5,5" Grid.Row="1"  IsReadOnly="True"   HeadersVisibility="Column"
-                       x:Name="dg_permissions"   AutoGenerateColumns="False"   Background="White"
+                       x:Name="dg_permissions"   AutoGenerateColumns="False"   Background="White" SelectionMode="Extended"
                         ColumnWidth="SizeToHeader"    AlternatingRowBackground="#f3f3f3" AlternationCount="2">
                             <DataGrid.OpacityMask>
                                 <VisualBrush Visual="{Binding ElementName=brd_roundDataGrid1}"/>
@@ -335,7 +335,7 @@
                                         </MultiBinding>
                                     </DataGridTextColumn.Binding>
                                 </DataGridTextColumn>
-                                <DataGridCheckBoxColumn Header="ViewObject" Binding="{Binding ViewObject, Mode=TwoWay}">
+                                <!--<DataGridCheckBoxColumn Header="ViewObject" Binding="{Binding ViewObject, Mode=TwoWay}">
                                     <DataGridCheckBoxColumn.ElementStyle>
                                         <Style TargetType="{x:Type CheckBox}">
                                             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -343,8 +343,14 @@
                                             <Setter Property="FlowDirection" Value="LeftToRight"/>
                                         </Style>
                                     </DataGridCheckBoxColumn.ElementStyle>
-                                </DataGridCheckBoxColumn>
-
+                                </DataGridCheckBoxColumn>-->
+                                <DataGridTemplateColumn Header="Visible"  Width="100" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding ViewObject, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
                             </DataGrid.Columns>
                         </DataGrid>
 

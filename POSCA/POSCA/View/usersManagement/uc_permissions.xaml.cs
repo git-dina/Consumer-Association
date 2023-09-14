@@ -136,7 +136,7 @@ namespace POSCA.View.usersManagement
         private async Task fillAppObjects()
         {
             if (FillCombo.appObjectsList == null)
-                FillCombo.RefreshAppObjects();
+                await FillCombo.RefreshAppObjects();
         }
         #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
         private async void Btn_add_Click(object sender, RoutedEventArgs e)
