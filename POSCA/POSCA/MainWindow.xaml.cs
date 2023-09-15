@@ -266,28 +266,63 @@ namespace POSCA
 
         void permission()
         {
-            /*
-            bool loadWindow = false;
-            //loadWindow = loadingDefaultPath(AppSettings.defaultPath);
+            
             if (!HelpClass.isAdminPermision())
-                foreach (Button button in FindControls.FindVisualChildren<Button>(this))
+                foreach (Button button in FindControls.FindVisualChildren<Button>(this).Where(x=>x.Tag != null))
                 {
                     if (button.Tag != null)
-                        if (FillCombo.groupObject.HasPermission(button.Tag.ToString(), FillCombo.groupObjects))
-                        {
+                        if (MainWindow.userLogin.userRole.Permissions
+                            .Where(x => x.AppObject == button.Tag.ToString()
+                        && x.ViewObject == true).Count() != 0)
                             button.Visibility = Visibility.Visible;
-                            if (!loadWindow)
-                            {
-                                button.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-                                loadWindow = true;
-                            }
-                        }
-                        else button.Visibility = Visibility.Collapsed;
+                        else
+                            button.Visibility = Visibility.Collapsed;
                 }
-            else
-            if (!loadWindow)
-                Btn_home_Click(btn_home, null);
-            */
+
+            bool isChanged = false;
+            do
+            {
+                isChanged = false;
+                // to hide empty expander
+                foreach (Expander expander in FindControls.FindVisualChildren<Expander>(this).Where(x=> x.IsVisible))
+                {
+                    if (expander.Content.GetType().Name == "StackPanel")
+                    {
+                        var stackPanel = expander.Content as StackPanel;
+                        if (stackPanel.Tag.ToString() == "expanderContent")
+                        { 
+                            // to solve proplem: stack has two Type Button and Expander
+                            try
+                            {
+                                bool containVisible = false;
+                                foreach (Button item2 in stackPanel.Children.Cast<Object>().Where(x => x.GetType().Name == "Button"))
+                                {
+                                    if (item2.IsVisible)
+                                        containVisible = true;
+                                }
+                                foreach (Expander item2 in stackPanel.Children.Cast<Object>().Where(x => x.GetType().Name == "Expander"))
+                                {
+                                    if (item2.IsVisible)
+                                        containVisible = true;
+                                }
+
+                                if (!containVisible)
+                                {
+                                    expander.Visibility = Visibility.Collapsed;
+                                    isChanged = true;
+                                }
+                            }
+                            catch
+                            {
+
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            // return if we collapsed any thing 
+            while (isChanged);
         }
         void timer_Tick(object sender, EventArgs e)
         {
@@ -1322,7 +1357,26 @@ namespace POSCA
 
             }
         }
+        private void Btn_lockApp_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                Window.GetWindow(this).Visibility = Visibility.Collapsed;
+                wd_pauseScreen w = new wd_pauseScreen();
+                w.ShowDialog();
+                Window.GetWindow(this).Visibility = Visibility.Visible;
 
+                HelpClass.EndAwait(grid_main);
+            }
+            catch (Exception ex)
+            {
+
+                Window.GetWindow(this).Visibility = Visibility.Visible;
+                HelpClass.EndAwait(grid_main);
+                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
         bool menuState = false;
         private void BTN_Menu_Click(object sender, RoutedEventArgs e)
         {
@@ -1368,6 +1422,6 @@ namespace POSCA
             }
         }
 
-       
+        
     }
 }

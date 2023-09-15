@@ -84,8 +84,10 @@
                 <ColumnDefinition  Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Grid  Grid.Row="0" Grid.Column="1" Background="{StaticResource White}"  >
-                <Grid.ColumnDefinitions>
+            <StackPanel  Grid.Row="0" Grid.Column="1" Background="{StaticResource White}"  
+                         Orientation="Horizontal"
+                         HorizontalAlignment="Right">
+                <!--<Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
@@ -102,7 +104,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="auto"/>
-                </Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>-->
 
 
                 <Grid >
@@ -131,13 +133,23 @@
                     <TextBlock Name="txtDate" Text="2021/5/1" Foreground="{StaticResource MainColor}" HorizontalAlignment="Center"  FontSize="12" ></TextBlock>
                 </StackPanel>
                 <Border Grid.Column="6" Height="30" BorderBrush="{StaticResource Grey}" BorderThickness="1,0,0,0" Margin="5" VerticalAlignment="Center" ></Border>
-                <!--<Button  Grid.Column="7" Name="btn_Keyboard"  Click="btn_Keyboard_Click"
-                Margin="5,10,5,10" 
-                    Background="{x:Null}" BorderBrush="{x:Null}" Width="auto" Height="auto" 
-                    Padding="0" >
-                    <materialDesign:PackIcon Foreground="{StaticResource SecondColor}" Kind="Keyboard"  FlowDirection="LeftToRight"
-                                         Width="30" Height="30"/>
-                </Button>-->
+                <Button Grid.Column="10" x:Name="btn_lockApp"
+                    Background="{x:Null}" BorderBrush="{x:Null}" 
+                  Click="Btn_lockApp_Click"
+                    Padding="0" Margin="5 0">
+                    <Border Background="{StaticResource MainColor}"
+                            CornerRadius="90"
+        Height="30" Width="30">
+                        <Path Fill="{StaticResource White}"  Stretch="Fill"  
+          HorizontalAlignment="Center" Grid.Column="0"  
+     VerticalAlignment="Center" Width="15" Height="17.5"
+          Data="{StaticResource lock}"
+                  Margin="5"/>
+
+                    </Border>
+
+                </Button>
+
                 <Button Grid.Column="7" x:Name="btn_lang"
                     Background="{x:Null}" BorderBrush="{x:Null}" 
                             Click="Btn_lang_Click"
@@ -151,6 +163,7 @@
                     </Border>
 
                 </Button>
+                
                 <materialDesign:Badged     Height="auto" Grid.Column="8"  Name="md_messageCount" Margin="10,10,10,10"
                                    VerticalAlignment="Center"   
                       BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  >
@@ -250,7 +263,7 @@
                 </Button>
                 <Separator Margin="5 0" Background="{StaticResource veryLightGrey}" VerticalAlignment="Bottom" Width="auto" 
                            Grid.ColumnSpan="25"/>
-            </Grid>
+            </StackPanel>
             <Grid  x:Name="grid_logo" Grid.Row="0" Grid.Column="0"  Width="125"
                   Background="{StaticResource MainColor}" >
                 <StackPanel Orientation="Horizontal"  Margin="5 0 0 0 ">
@@ -433,7 +446,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  mainSection-->
-                        <StackPanel Margin="20 0 0 0">
+                                <StackPanel Tag="expanderContent" Margin="20 0 0 0">
                        
                     <!--#region  catalog-->
                     <Expander  x:Name="exp_catalog" Tag="catalog" Expanded="Expander_Expanded"  Background="Transparent" Foreground="White" >
@@ -455,7 +468,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  vendors-->
-                        <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
 
                             <Button   Height="50"
                                   Grid.Row="1"
@@ -525,7 +538,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  purchases-->
-                        <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="purchaseInvoice" 
@@ -579,7 +592,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  receipts-->
-                        <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="receiptInvoice" 
@@ -671,7 +684,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  promotion-->
-                        <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="promotionInvoice" 
@@ -724,7 +737,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
-                        <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="vendorsData" 
@@ -827,7 +840,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
-                        <StackPanel>
+                                        <StackPanel Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="locationsData" 
@@ -885,7 +898,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
-                        <StackPanel>
+                                        <StackPanel Tag="expanderContent">
                             
                         <Button   Height="50"
                                   Grid.Row="1"
@@ -1071,7 +1084,7 @@
                             </Grid>
                         </Expander.Header>
                         <!--#region  customers-->
-                        <StackPanel Margin="20 0 0 0">
+                                <StackPanel  Tag="expanderContent" Margin="20 0 0 0">
                                     <Button   Height="50"
                                   Grid.Row="1"
                            Tag="customerData" 
@@ -1137,7 +1150,7 @@
                                     </Grid>
                                 </Expander.Header>
                                 <!--#region  customerSectionData-->
-                                <StackPanel>
+                                        <StackPanel Tag="expanderContent">
                                     <Button   Height="50"
                                   Grid.Row="1"
                                                Tag="customerArea" 
@@ -1237,7 +1250,7 @@
                                             </Grid>
                                         </Expander.Header>
                                         <!--#region  customerTransaction-->
-                                        <StackPanel>
+                                        <StackPanel Tag="expanderContent">
                                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="addStocks" 
@@ -1253,7 +1266,6 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                                 </Grid>
                                             </Button>
-
                                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="reduceStocks" 
@@ -1314,7 +1326,6 @@
                               Grid.Column="1"      Margin="30,0,0,0"/>
                                                 </Grid>
                                             </Button>
-                                            
                                         </StackPanel>
                                     </Expander>
 
@@ -1337,7 +1348,7 @@
                                                 </Grid>
                                             </Expander.Header>
                                             <!--#region  customerActivities-->
-                                            <StackPanel>
+                                        <StackPanel  Tag="expanderContent">
                                                 <Button   Height="50"
                                                           Grid.Row="1"
                                                    Tag="activitiesType" 
@@ -1421,7 +1432,7 @@
                               Grid.Column="1"      Margin="10,0,0,0"/>
                             </Grid>
                         </Expander.Header>
-                        <StackPanel>
+                                <StackPanel  Tag="expanderContent">
                             <Button   Height="50"
                                   Grid.Row="1"
                            Tag="generalSettings" 
@@ -1459,7 +1470,7 @@
                                     </Grid>
                                 </Expander.Header>
                                 <!--#region  usersManagement-->
-                                <StackPanel Margin="20 0 0 0">
+                                <StackPanel Tag="expanderContent" Margin="20 0 0 0">
                                     <Button   Height="50"
               Grid.Row="1"
        Tag="user" 
