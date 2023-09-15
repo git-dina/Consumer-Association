@@ -107,122 +107,12 @@ namespace POSCA
 
                 //should be moved to login page
                 await FillCombo.RefreshCompanySettings();
-                //try
-                //{
-                //    tb_version.Text = AppSettings.CurrentVersion;
-                //}
-                //catch (Exception ex)
-                //{
-                //    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name, false);
-                //}
-                /*
 
-                #region loading 
-                loadingList = new List<keyValueBool>();
-                bool isDone = true;
-                loadingList.Add(new keyValueBool { key = "loading_listObjects", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getGroupObjects", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_globalItemUnitsList", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshBranches", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshBranchesAllWithoutMain", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshByBranchandUser", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshCategory", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshUnit", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshVendors", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefreshCards", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getUserPersonalInfo", value = false });
-                //loadingList.Add(new keyValueBool { key = "loading_getUserPath", value = false });//dina
-
-                // loadingList.Add(new keyValueBool { key = "loading_getItemCost", value = false });//dina
-                //  loadingList.Add(new keyValueBool { key = "loading_getPrintCount", value = false });
-                //loadingList.Add(new keyValueBool { key = "loading_getTaxDetails", value = false });//dina
-                //loadingList.Add(new keyValueBool { key = "loading_getDefaultSystemInfo", value = false });//dina
-                // loadingList.Add(new keyValueBool { key = "loading_getDateForm", value = false });//dina
-                //loadingList.Add(new keyValueBool { key = "loading_getRegionAndCurrency", value = false });//dina
-                //loadingList.Add(new keyValueBool { key = "loading_getStorageCost", value = false });//dina
-                //loadingList.Add(new keyValueBool { key = "loading_getAccurac", value = false });//dina
-                loadingList.Add(new keyValueBool { key = "loading_getprintSitting", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_POSList", value = false });
-                //loadingList.Add(new keyValueBool { key = "loading_getTableTimes", value = false });//dina
-                // loadingList.Add(new keyValueBool { key = "loading_getDefaultInvoiceType", value = false });//dina
-                // loadingList.Add(new keyValueBool { key = "loading_getStatusesOfPreparingOrder", value = false });//dina
-                loadingList.Add(new keyValueBool { key = "loading_typesOfService", value = false });
-                //loadingList.Add(new keyValueBool { key = "loading_maxDiscount", value = false });//dina
-                loadingList.Add(new keyValueBool { key = "loading_itemUnitsUsersList", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getSetValues", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getRegions", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_activationSite", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getDefaultServerStatus", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getCountries", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getCities", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_getUsers", value = false });
-
-                loading_listObjects();
-                loading_getGroupObjects();
-                loading_globalItemUnitsList();
-                loading_RefreshBranches();
-                loading_RefreshBranchesAllWithoutMain();
-                loading_RefreshByBranchandUser();
-                loading_RefreshCategory();
-                loading_RefreshUnit();
-                loading_RefreshVendors();
-                loading_RefreshCards();
-                loading_getUserPersonalInfo();
-                loading_getUsers();
-                //loading_getUserPath();//dina
-
-                //  loading_getItemCost();
-                //  loading_getPrintCount();
-                //loading_getTaxDetails();//dina
-                //loading_getDefaultSystemInfo();//dina
-                //loading_getDateForm();//dina
-                //loading_getRegionAndCurrency();
-                //loading_getStorageCost();//dina
-                //loading_getAccurac();
-                loading_getprintSitting();
-                loading_POSList();
-                //loading_getTableTimes();//dina
-                // loading_getDefaultInvoiceType();//dina
-                //loading_getStatusesOfPreparingOrder();//dina
-                loading_typesOfService();
-                //loading_maxDiscount();//dina
-                loading_itemUnitsUsersList();
-                loading_getSetValues();
-                loading_getRegions();
-                loading_getCountries();
-                loading_getCities();
-                loading_activationSite();
-                loading_getDefaultServerStatus();
-
-                do
-                {
-                    isDone = true;
-                    foreach (var item in loadingList)
-                    {
-                        if (item.value == false)
-                        {
-                            isDone = false;
-                            break;
-                        }
-                    }
-                    if (!isDone)
-                    {
-                        //MessageBox.Show("not done");
-                        //string s = "";
-                        //foreach (var item in loadingList)
-                        //{
-                        //    s += item.name + " - " + item.value + "\n";
-                        //}
-                        //MessageBox.Show(s);
-                        await Task.Delay(0500);
-                        //MessageBox.Show("do");
-                    }
-                }
-                while (!isDone);
-                //MessageBox.Show(catchError + " and count: " + catchErrorCount);
-                #endregion
-                */
-
+                txt_userName.Text = userLogin.UserName;
+                if (AppSettings.lang == "ar")
+                    txt_userJob.Text = userLogin.userRole.NameAr;
+                else
+                    txt_userJob.Text = userLogin.userRole.NameEn;
 
                 #region Permision
                 permission();

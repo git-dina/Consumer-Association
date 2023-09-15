@@ -164,7 +164,7 @@
 
                 </Button>
                 
-                <materialDesign:Badged     Height="auto" Grid.Column="8"  Name="md_messageCount" Margin="10,10,10,10"
+                <!--<materialDesign:Badged     Height="auto" Grid.Column="8"  Name="md_messageCount" Margin="10,10,10,10"
                                    VerticalAlignment="Center"   
                       BadgeBackground="{StaticResource MainColorRed}"  BadgeForeground="White"  >
                     <Button Grid.Column="6" x:Name="btn_message"
@@ -176,7 +176,7 @@
                          VerticalAlignment="Center" 
                             Data="{StaticResource closedEnvelope}"/>
                     </Button>
-                </materialDesign:Badged>
+                </materialDesign:Badged>-->
               
                 <!--<materialDesign:Badged     Height="auto" Grid.Column="9"  Name="md_notificationCount" Margin="10,10,10,10"
                                            VerticalAlignment="Center"   
@@ -230,7 +230,7 @@
                         </MenuItem>
                     </Menu>
                 </StackPanel>-->
-                <Button Grid.Column="11" Margin="5,5,5,5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"
+                <!--<Button Grid.Column="11" Margin="5,5,5,5" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"
                    Height="40" Width="40"      materialDesign:ButtonAssist.CornerRadius="90"  FlowDirection="LeftToRight" 
                         x:Name="btn_userImage" Click="Btn_userImage_Click">
                     <Ellipse  x:Name="img_userLogin"
@@ -240,7 +240,7 @@
                             <ImageBrush Stretch="UniformToFill"  x:Name="IMG_userPic" ImageSource="pic/no-image-icon-40x40.png"   />
                         </Ellipse.Fill>
                     </Ellipse>
-                </Button>
+                </Button>-->
                 <StackPanel x:Name="stp_userName" VerticalAlignment="Center" Orientation="Vertical" Grid.Column="12" Margin="5,5,5,5">
                     <TextBlock x:Name="txt_userName"  Text="" FontSize="12" Foreground="White" HorizontalAlignment="Center" />
                     <TextBlock x:Name="txt_userJob"  Text=""   FontSize="12" FontWeight="Light" Foreground="#E8E8E8" HorizontalAlignment="Left" />
