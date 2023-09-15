@@ -58,6 +58,7 @@ namespace POSCA
                     & !(sender as TextBox).Name.Contains("tb_ChangeToFundNumber") 
                     & !(sender as TextBox).Name.Contains("tb_ActivityCount") 
                     & !(sender as TextBox).Name.Contains("tb_quantity") 
+                    & !(sender as TextBox).Name.Contains("pb_password") 
                     ) MoveToNextUIElement(e);
             }
             else if (sender.GetType().Name == "ComboBox")

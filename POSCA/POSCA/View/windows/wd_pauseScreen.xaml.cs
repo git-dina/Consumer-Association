@@ -57,7 +57,7 @@ namespace POSCA.View.windows
                 #endregion
 
 
-
+                Keyboard.Focus(pb_password);
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -230,13 +230,13 @@ namespace POSCA.View.windows
                     HelpClass.ClearTmpFiles();
 
                     string password = Md5Encription.MD5Hash("Inc-m" + pb_password.Password);
-                    var user = await FillCombo.user.LoginUser(MainWindow.userLogin.UserName, password);
+                    var user = await FillCombo.user.LoginUser(MainWindow.userLogin.LoginName, password);
 
                     if (user.UserName == null || user.UserId == 0)
                     {
                         //user not found
 
-                        txt_message.Text = AppSettings.resourcemanager.GetString("trUserNotFound");
+                        txt_message.Text = AppSettings.resourcemanager.GetString("trWrongPassword");
 
                     }
                     else
@@ -257,6 +257,10 @@ namespace POSCA.View.windows
             }
         }
 
-
+        private void pb_password_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return && pb_password.Password != "")
+                Btn_login_Click(null, null);
+        }
     }
 }

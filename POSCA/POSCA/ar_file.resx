@@ -1384,7 +1384,7 @@
     <value>تذكرني</value>
   </data>
   <data name="trUserNotFound" xml:space="preserve">
-    <value>اسم المستخدم غير موجود</value>
+    <value>المستخدم غير موجود</value>
   </data>
   <data name="trWrongPassword" xml:space="preserve">
     <value>كلمة المرور خاطئة</value>

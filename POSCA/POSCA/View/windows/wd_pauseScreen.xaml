@@ -105,6 +105,7 @@
                                          materialDesign:HintAssist.Foreground="#FF2196F3"
                                          LostFocus="validateEmpty_LostFocus"
                                          PasswordChanged="pb_password_PasswordChanged"
+                                         KeyDown="pb_password_KeyDown"
                                          />
                                     <Path Fill="#E81123" Grid.Row="8" Stretch="Fill" Margin="5,5,15,5"
                                   HorizontalAlignment="Right" Grid.Column="2"  Visibility="Collapsed"   

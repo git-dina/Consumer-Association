@@ -4637,7 +4637,7 @@ Main Documents</value>
     <value>User Name...</value>
   </data>
   <data name="trUserNotFound" xml:space="preserve">
-    <value>User Name Not Found</value>
+    <value>User Not Found</value>
   </data>
   <data name="trUserPath" xml:space="preserve">
     <value>مسار المستخدم</value>
@@ -4790,7 +4790,7 @@ Main Documents</value>
     <value>المستحق</value>
   </data>
   <data name="trWrongPassword" xml:space="preserve">
-    <value>كلمة المرور خاطئة</value>
+    <value>Wrong Password</value>
   </data>
   <data name="trX" xml:space="preserve">
     <value>X</value>

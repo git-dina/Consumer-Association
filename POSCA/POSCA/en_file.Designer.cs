@@ -17981,7 +17981,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Name Not Found.
+        ///   Looks up a localized string similar to User Not Found.
         /// </summary>
         internal static string trUserNotFound {
             get {
@@ -18449,7 +18449,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to كلمة المرور خاطئة.
+        ///   Looks up a localized string similar to Wrong Password.
         /// </summary>
         internal static string trWrongPassword {
             get {
