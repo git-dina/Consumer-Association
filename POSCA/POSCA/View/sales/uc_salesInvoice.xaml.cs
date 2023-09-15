@@ -1415,7 +1415,7 @@ namespace POSCA.View.sales
                         SelectPreviousRowInGrid();
                     else if (e.Key == Key.F9) // delete selected item
                         DeleteSelectedItem();
-                    else if (e.Key == Key.F1) // lock system go to login window
+                    else if (e.Key == Key.F1) // lock system
                         LockSystem();
                     else if (e.Key == Key.Divide) // clear brcode or contibutor id
                         ClearItemsInsertData();
@@ -1511,7 +1511,10 @@ namespace POSCA.View.sales
         {
             try
             {
-                
+                Window.GetWindow(this).Visibility = Visibility.Collapsed;
+                wd_pauseScreen w = new wd_pauseScreen();
+                w.ShowDialog();
+                Window.GetWindow(this).Visibility = Visibility.Visible;
             }
             catch { }
         }

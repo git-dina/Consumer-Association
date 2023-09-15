@@ -253,6 +253,7 @@ namespace POSCA.View.windows
             {
                 HelpClass.EndAwait(grid_form);
                 btn_login.IsEnabled = true;
+                Keyboard.Focus(pb_password);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
