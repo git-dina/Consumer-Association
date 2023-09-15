@@ -36,13 +36,13 @@ namespace POSCA.Classes
         public static string code;
         static public BrushConverter brushConverter = new BrushConverter();
         public static ImageBrush imageBrush = new ImageBrush();
-        /*
         static public bool isAdminPermision()
         {
-            if (MainWindow.userLogin.isAdmin == true)
+            if (MainWindow.userLogin.UserId == 1)
                 return true;
             return false;
         }
+        /*
         static public bool isSupportPermision()
         {
             //if (MainWindow.userLogin.UserId == 1 || MainWindow.userLogin.UserId == 2)
