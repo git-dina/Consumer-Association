@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -27,11 +29,27 @@ namespace POSCA.View.windows
             try
             {
                 InitializeComponent();
+            windowFlowDirection();
             }
             catch (Exception ex)
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
+        void windowFlowDirection()
+        {
+            #region translate
+            if (AppSettings.lang.Equals("en"))
+            {
+                AppSettings.resourcemanager = new ResourceManager("POSCA.en_file", Assembly.GetExecutingAssembly());
+                grid_main.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                AppSettings.resourcemanager = new ResourceManager("POSCA.ar_file", Assembly.GetExecutingAssembly());
 
+                grid_main.FlowDirection = FlowDirection.RightToLeft;
+            }
+            #endregion
+        }
         private void Btn_colse_Click(object sender, RoutedEventArgs e)
         {
             isOk = false;
