@@ -5165,24 +5165,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shipping amount.
-        /// </summary>
-        internal static string shippingAmount {
-            get {
-                return ResourceManager.GetString("shippingAmount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shipping cost.
-        /// </summary>
-        internal static string shippingCost {
-            get {
-                return ResourceManager.GetString("shippingCost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Short Name.
         /// </summary>
         internal static string ShortName {
@@ -13427,24 +13409,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to نوع عملية الدفع.
-        /// </summary>
-        internal static string trPaymentProcessType {
-            get {
-                return ResourceManager.GetString("trPaymentProcessType", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to نوع عملية الدفع....
-        /// </summary>
-        internal static string trPaymentProcessTypeHint {
-            get {
-                return ResourceManager.GetString("trPaymentProcessTypeHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to إيصال دفع.
         /// </summary>
         internal static string trPaymentReceipt {
@@ -13504,15 +13468,6 @@ namespace POSCA {
         internal static string trPaymentTypeHint {
             get {
                 return ResourceManager.GetString("trPaymentTypeHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to نوع الدفع.
-        /// </summary>
-        internal static string trPaymentTypeTooltip {
-            get {
-                return ResourceManager.GetString("trPaymentTypeTooltip", resourceCulture);
             }
         }
         
@@ -16145,15 +16100,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يجب أن يتساوى عدد السيريال مع عدد المواد.
-        /// </summary>
-        internal static string trSerialNumbersEqualItemsNumber {
-            get {
-                return ResourceManager.GetString("trSerialNumbersEqualItemsNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to الرقم التسلسلي....
         /// </summary>
         internal static string trSerialNumHint {
@@ -17477,69 +17423,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to إلى الوحدة ....
-        /// </summary>
-        internal static string trToUnitHint {
-            get {
-                return ResourceManager.GetString("trToUnitHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى X.
-        /// </summary>
-        internal static string trToX {
-            get {
-                return ResourceManager.GetString("trToX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى X....
-        /// </summary>
-        internal static string trToXHint {
-            get {
-                return ResourceManager.GetString("trToXHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى Y.
-        /// </summary>
-        internal static string trToY {
-            get {
-                return ResourceManager.GetString("trToY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى Y....
-        /// </summary>
-        internal static string trToYHint {
-            get {
-                return ResourceManager.GetString("trToYHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى Z.
-        /// </summary>
-        internal static string trToZ {
-            get {
-                return ResourceManager.GetString("trToZ", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to إلى Z....
-        /// </summary>
-        internal static string trToZHint {
-            get {
-                return ResourceManager.GetString("trToZHint", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to تفاصيل التحويل.
         /// </summary>
         internal static string trTransaferDetails {
@@ -17549,29 +17432,11 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to يجب اختيار مكان تخزين جديد للنقل.
-        /// </summary>
-        internal static string trTranseToSameLocation {
-            get {
-                return ResourceManager.GetString("trTranseToSameLocation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to نقل.
         /// </summary>
         internal static string trTransfer {
             get {
                 return ResourceManager.GetString("trTransfer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to عملية تحويل بانتظار التأكيد.
-        /// </summary>
-        internal static string trTransferAlertContent {
-            get {
-                return ResourceManager.GetString("trTransferAlertContent", resourceCulture);
             }
         }
         
@@ -17644,15 +17509,6 @@ namespace POSCA {
         internal static string trType_Name {
             get {
                 return ResourceManager.GetString("trType-Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to نوع الحسم....
-        /// </summary>
-        internal static string trTypeDiscountHint {
-            get {
-                return ResourceManager.GetString("trTypeDiscountHint", resourceCulture);
             }
         }
         
@@ -17846,15 +17702,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تمت الترقية بنجاح.
-        /// </summary>
-        internal static string trUpgradeCompleted {
-            get {
-                return ResourceManager.GetString("trUpgradeCompleted", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to الترقية لم تكتمل.
         /// </summary>
         internal static string trUpgradeNotCompleted {
@@ -17918,24 +17765,6 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عليك الحصول على تأكيد المستخدم.
-        /// </summary>
-        internal static string trUserConfirm {
-            get {
-                return ResourceManager.GetString("trUserConfirm", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to تأكيد المستخدم.
-        /// </summary>
-        internal static string trUserConfirmation {
-            get {
-                return ResourceManager.GetString("trUserConfirmation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to المستخدم....
         /// </summary>
         internal static string trUserHint {
@@ -17950,15 +17779,6 @@ namespace POSCA {
         internal static string trUserInformation {
             get {
                 return ResourceManager.GetString("trUserInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to المستخدم  سجل دخول في نقطة مبيعات أخرى.
-        /// </summary>
-        internal static string trUserLoginFromOtherPos {
-            get {
-                return ResourceManager.GetString("trUserLoginFromOtherPos", resourceCulture);
             }
         }
         
@@ -18080,7 +17900,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to القيمة.
+        ///   Looks up a localized string similar to Value.
         /// </summary>
         internal static string trValue {
             get {

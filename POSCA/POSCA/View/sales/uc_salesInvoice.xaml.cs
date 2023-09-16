@@ -1066,6 +1066,8 @@ namespace POSCA.View.sales
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
+
+                    tb_search.Text = "";
                 }
             }
             catch (Exception ex)
@@ -1419,6 +1421,8 @@ namespace POSCA.View.sales
                         LockSystem();
                     else if (e.Key == Key.Divide) // clear brcode or contibutor id
                         ClearItemsInsertData();
+                    else if (e.Key == Key.Add) // display pay window
+                        ManyPayment();
                     else if (e.Key == Key.Insert) // check item prices
                         CheckItemsBarcode();
                     else if (e.Key == Key.Decimal) // write 00
@@ -1514,6 +1518,7 @@ namespace POSCA.View.sales
                 Window.GetWindow(this).Visibility = Visibility.Collapsed;
                 wd_pauseScreen w = new wd_pauseScreen();
                 w.ShowDialog();
+                Keyboard.Focus(tb_search);
                 Window.GetWindow(this).Visibility = Visibility.Visible;
             }
             catch { }
@@ -1529,6 +1534,18 @@ namespace POSCA.View.sales
                     tb_CustomerId.Text = "";
                     tb_CustomerId_KeyDown(null, null);
                 }
+            }
+            catch { }
+        }
+        private void ManyPayment()
+        {
+            try
+            {
+                Window.GetWindow(this).Visibility = Visibility.Collapsed;
+                wd_payTypes w = new wd_payTypes();
+                w.ShowDialog();
+                Keyboard.Focus(tb_search);
+                Window.GetWindow(this).Visibility = Visibility.Visible;
             }
             catch { }
         }

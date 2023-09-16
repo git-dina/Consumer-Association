@@ -203,7 +203,7 @@
                                 <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGridPayTypes" BorderThickness="0" 
                             Background="White"/>
                                 <DataGrid x:Name="dg_payTypes" 
-                            Margin="10" Grid.Row="1" 
+                            Margin="10" Grid.Row="1" Focusable="true"
                                           MouseDoubleClick="dg_payTypes_MouseDoubleClick"
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
@@ -225,7 +225,7 @@
                                         </Style>
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=OneWay}"/>
+                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentTypeName, Mode=OneWay}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
@@ -282,9 +282,9 @@
                                         </Style>
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentId" Binding="{Binding Path=PaymentId, Mode=OneWay}"/>
-                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=OneWay}"/>
+                                        <DataGridTextColumn  IsReadOnly="True" Width="*"  Header="PaymentId" Binding="{Binding Path=PaymentId, Mode=OneWay}"/>
                                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
+                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=OneWay}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>

@@ -955,24 +955,24 @@ namespace POSCA.Classes
         #region Sales
 
         #region PaymentMethods
-        static public List<keyValueString> PaymentMethodsList;
+        //static public List<keyValueString> PaymentMethodsList;
 
-        static public IEnumerable<keyValueString> RefreshPaymentMethodsList()
-        {
-            PaymentMethodsList = new List<keyValueString>() {
-                new keyValueString(){key="cash", value=AppSettings.resourcemanager.GetString("trCash") },
-                new keyValueString(){key="k-net", value=AppSettings.resourcemanager.GetString("trKNET") },
-                new keyValueString(){key="visa", value=AppSettings.resourcemanager.GetString("trVisa") },
-                new keyValueString(){key="master-card", value=AppSettings.resourcemanager.GetString("trMasterCard") },
-                new keyValueString(){key="amerkan-express", value=AppSettings.resourcemanager.GetString("trAmerkanExpress") },
-                new keyValueString(){key="return", value=AppSettings.resourcemanager.GetString("trReturned") },
-                new keyValueString(){key="customer-card", value=AppSettings.resourcemanager.GetString("trCustomerCard") },
-                new keyValueString(){key="top-students", value=AppSettings.resourcemanager.GetString("trTopStudents") },
-                new keyValueString(){key="quran-gift", value=AppSettings.resourcemanager.GetString("trHolyQuranGift") },
-            };
+        //static public IEnumerable<keyValueString> RefreshPaymentMethodsList()
+        //{
+        //    PaymentMethodsList = new List<keyValueString>() {
+        //        new keyValueString(){key="cash", value=AppSettings.resourcemanager.GetString("trCash") },
+        //        new keyValueString(){key="k-net", value=AppSettings.resourcemanager.GetString("trKNET") },
+        //        new keyValueString(){key="visa", value=AppSettings.resourcemanager.GetString("trVisa") },
+        //        new keyValueString(){key="master-card", value=AppSettings.resourcemanager.GetString("trMasterCard") },
+        //        new keyValueString(){key="amerkan-express", value=AppSettings.resourcemanager.GetString("trAmerkanExpress") },
+        //        new keyValueString(){key="return", value=AppSettings.resourcemanager.GetString("trReturned") },
+        //        new keyValueString(){key="customer-card", value=AppSettings.resourcemanager.GetString("trCustomerCard") },
+        //        new keyValueString(){key="top-students", value=AppSettings.resourcemanager.GetString("trTopStudents") },
+        //        new keyValueString(){key="quran-gift", value=AppSettings.resourcemanager.GetString("trHolyQuranGift") },
+        //    };
 
-            return PaymentMethodsList;
-        }
+        //    return PaymentMethodsList;
+        //}
         #endregion
         #endregion
 

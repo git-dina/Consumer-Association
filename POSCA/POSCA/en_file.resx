@@ -697,12 +697,6 @@ Main Documents</value>
   <data name="setSettings" xml:space="preserve">
     <value>Set settings</value>
   </data>
-  <data name="shippingAmount" xml:space="preserve">
-    <value>Shipping amount</value>
-  </data>
-  <data name="shippingCost" xml:space="preserve">
-    <value>Shipping cost</value>
-  </data>
   <data name="ShortName" xml:space="preserve">
     <value>Short Name</value>
   </data>
@@ -3151,12 +3145,6 @@ Main Documents</value>
   <data name="trPaymentMethods" xml:space="preserve">
     <value>Payment Methods</value>
   </data>
-  <data name="trPaymentProcessType" xml:space="preserve">
-    <value>نوع عملية الدفع</value>
-  </data>
-  <data name="trPaymentProcessTypeHint" xml:space="preserve">
-    <value>نوع عملية الدفع...</value>
-  </data>
   <data name="trPaymentReceipt" xml:space="preserve">
     <value>إيصال دفع</value>
   </data>
@@ -3177,9 +3165,6 @@ Main Documents</value>
   </data>
   <data name="trPaymentTypeHint" xml:space="preserve">
     <value>Payment Type...</value>
-  </data>
-  <data name="trPaymentTypeTooltip" xml:space="preserve">
-    <value>نوع الدفع</value>
   </data>
   <data name="trPaymentValue" xml:space="preserve">
     <value>قيمة الدفعة</value>
@@ -4033,9 +4018,6 @@ Main Documents</value>
   <data name="trSerialNum" xml:space="preserve">
     <value>الرقم التسلسلي</value>
   </data>
-  <data name="trSerialNumbersEqualItemsNumber" xml:space="preserve">
-    <value>يجب أن يتساوى عدد السيريال مع عدد المواد</value>
-  </data>
   <data name="trSerialNumHint" xml:space="preserve">
     <value>الرقم التسلسلي...</value>
   </data>
@@ -4465,41 +4447,11 @@ Main Documents</value>
   <data name="trTotalSales" xml:space="preserve">
     <value>إجمالي المبيعات</value>
   </data>
-  <data name="trTotalTax" xml:space="preserve">
-    <value>إجمالي الضريبة</value>
-  </data>
-  <data name="trToUnitHint" xml:space="preserve">
-    <value>إلى الوحدة ...</value>
-  </data>
-  <data name="trToX" xml:space="preserve">
-    <value>إلى X</value>
-  </data>
-  <data name="trToXHint" xml:space="preserve">
-    <value>إلى X...</value>
-  </data>
-  <data name="trToY" xml:space="preserve">
-    <value>إلى Y</value>
-  </data>
-  <data name="trToYHint" xml:space="preserve">
-    <value>إلى Y...</value>
-  </data>
-  <data name="trToZ" xml:space="preserve">
-    <value>إلى Z</value>
-  </data>
-  <data name="trToZHint" xml:space="preserve">
-    <value>إلى Z...</value>
-  </data>
   <data name="trTransaferDetails" xml:space="preserve">
     <value>تفاصيل التحويل</value>
   </data>
-  <data name="trTranseToSameLocation" xml:space="preserve">
-    <value>يجب اختيار مكان تخزين جديد للنقل</value>
-  </data>
   <data name="trTransfer" xml:space="preserve">
     <value>نقل</value>
-  </data>
-  <data name="trTransferAlertContent" xml:space="preserve">
-    <value>عملية تحويل بانتظار التأكيد</value>
   </data>
   <data name="trTransferAlertTilte" xml:space="preserve">
     <value>عملية تحويل</value>
@@ -4524,9 +4476,6 @@ Main Documents</value>
   </data>
   <data name="trType-Name" xml:space="preserve">
     <value>النوع-الاسم</value>
-  </data>
-  <data name="trTypeDiscountHint" xml:space="preserve">
-    <value>نوع الحسم...</value>
   </data>
   <data name="trUnavailable" xml:space="preserve">
     <value>غير متاح</value>
@@ -4591,9 +4540,6 @@ Main Documents</value>
   <data name="trUpgrade" xml:space="preserve">
     <value>ترقية</value>
   </data>
-  <data name="trUpgradeCompleted" xml:space="preserve">
-    <value>تمت الترقية بنجاح</value>
-  </data>
   <data name="trUpgradeNotCompleted" xml:space="preserve">
     <value>الترقية لم تكتمل</value>
   </data>
@@ -4615,20 +4561,11 @@ Main Documents</value>
   <data name="trUser" xml:space="preserve">
     <value>المستخدم</value>
   </data>
-  <data name="trUserConfirm" xml:space="preserve">
-    <value>عليك الحصول على تأكيد المستخدم</value>
-  </data>
-  <data name="trUserConfirmation" xml:space="preserve">
-    <value>تأكيد المستخدم</value>
-  </data>
   <data name="trUserHint" xml:space="preserve">
     <value>المستخدم...</value>
   </data>
   <data name="trUserInformation" xml:space="preserve">
     <value>معلومات المستخدم</value>
-  </data>
-  <data name="trUserLoginFromOtherPos" xml:space="preserve">
-    <value>المستخدم  سجل دخول في نقطة مبيعات أخرى</value>
   </data>
   <data name="trUserName" xml:space="preserve">
     <value>User Name</value>
@@ -4670,7 +4607,7 @@ Main Documents</value>
     <value>المجال المسموح به : 0 إلى 100</value>
   </data>
   <data name="trValue" xml:space="preserve">
-    <value>القيمة</value>
+    <value>Value</value>
   </data>
   <data name="trValueDiscount" xml:space="preserve">
     <value>قيمة</value>
@@ -6412,5 +6349,8 @@ Main Documents</value>
   </data>
   <data name="Nothing" xml:space="preserve">
     <value>nothing</value>
+  </data>
+  <data name="trTotalTax" xml:space="preserve">
+    <value>إجمالي الضريبة</value>
   </data>
 </root>

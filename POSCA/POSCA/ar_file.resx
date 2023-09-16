@@ -846,12 +846,6 @@
   <data name="trEmptyEndDateToolTip" xml:space="preserve">
     <value>تاريخ الانتهاء لا يمكن أن يكون فارغ</value>
   </data>
-  <data name="trEmptyMaxInvoiceValueToolTip" xml:space="preserve">
-    <value>القيمة العليا للفاتورة لا يمكن أن تكون فارغة</value>
-  </data>
-  <data name="trEmptyMinInvoiceValueToolTip" xml:space="preserve">
-    <value>القيمة الدنيا للفاتورة لا يمكن أن تكون فارغة</value>
-  </data>
   <data name="trEmptyQuantityToolTip" xml:space="preserve">
     <value>الكمية لا يمكن أن تكون فارغة</value>
   </data>
@@ -863,9 +857,6 @@
   </data>
   <data name="trErrorItemNotFoundToolTip" xml:space="preserve">
     <value>المادة غير موجودة</value>
-  </data>
-  <data name="trErrorMaxInvoiceSmallerToolTip" xml:space="preserve">
-    <value>لا يمكن أن يكون الحد الأعظمي للفاتورة أقل من الحد الأدنى</value>
   </data>
   <data name="trMaxInvoiceValue" xml:space="preserve">
     <value>القيمة العظمى للفاتورة</value>
@@ -1602,9 +1593,6 @@
   <data name="trSelectedInvoices" xml:space="preserve">
     <value>الفواتير المختارة</value>
   </data>
-  <data name="trErrorMaxDeservedExceeded" xml:space="preserve">
-    <value>تم تجاوز القيمة العظمى للرصيد</value>
-  </data>
   <data name="trEmptyPrice" xml:space="preserve">
     <value>السعر لا يمكن أن يكون فارغ</value>
   </data>
@@ -2259,12 +2247,6 @@
   <data name="trAccuracy" xml:space="preserve">
     <value>الأرقام العشرية</value>
   </data>
-  <data name="trErrorMaxInvToolTip" xml:space="preserve">
-    <value>لا يمكن استخدام الكوبون، المجموع أكبر من الحد الأعلى المسموح</value>
-  </data>
-  <data name="trErrorMinInvToolTip" xml:space="preserve">
-    <value>لا يمكن استخدام الكوبون، المجموع أقل من الحد الأدنى المسموح</value>
-  </data>
   <data name="trPopUpgrade" xml:space="preserve">
     <value>الرجاء ترقية التطبيق</value>
   </data>
@@ -2682,9 +2664,6 @@
   <data name="trCost" xml:space="preserve">
     <value>التكلفة</value>
   </data>
-  <data name="trDefaultPayType" xml:space="preserve">
-    <value>طريقة الدفع الافتراضية</value>
-  </data>
   <data name="trDirectEntry" xml:space="preserve">
     <value>إدخال مباشر</value>
   </data>
@@ -3048,9 +3027,6 @@
   <data name="trAddUpdateDelete" xml:space="preserve">
     <value>إضافة، تعديل، حذف</value>
   </data>
-  <data name="trBanksPaymentMethods" xml:space="preserve">
-    <value>البنوك, طرق الدفع</value>
-  </data>
   <data name="trBranchesStoresPOS" xml:space="preserve">
     <value>الفروع, العملاء, نقطة بيع</value>
   </data>
@@ -3254,9 +3230,6 @@
   </data>
   <data name="trAgents" xml:space="preserve">
     <value>الوكلاء</value>
-  </data>
-  <data name="trAgentType" xml:space="preserve">
-    <value>نوع الوكيل</value>
   </data>
   <data name="trArchives" xml:space="preserve">
     <value>أرشيف</value>
@@ -3854,9 +3827,6 @@
   </data>
   <data name="discounts" xml:space="preserve">
     <value>الحسومات</value>
-  </data>
-  <data name="trErrorMaxDiscountToolTip" xml:space="preserve">
-    <value>الحسم تجاوز القيمة المسموحة</value>
   </data>
   <data name="minimize" xml:space="preserve">
     <value>تصغير</value>

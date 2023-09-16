@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace POSCA.View.windows
 {
@@ -71,7 +72,7 @@ namespace POSCA.View.windows
                 translate();
                 #endregion
 
-               
+                await fillPaymentsTypes();
                 HelpClass.EndAwait(grid_main);
             }
             catch (Exception ex)
@@ -86,12 +87,37 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            //txt_title.Text = AppSettings.resourcemanager.GetString("Receipts");
+            txt_title.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
+            txt_balanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
+            txt_paidTitle.Text = AppSettings.resourcemanager.GetString("paid");
+            txt_valueTitle.Text = AppSettings.resourcemanager.GetString("trValue");
+            txt_paymentTypesTitle.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
+            txt_paid1Titles.Text = AppSettings.resourcemanager.GetString("paid"); 
 
-           
-            //btn_save.Content = AppSettings.resourcemanager.GetString("trSelect");
+            dg_payTypes.Columns[0].Header = AppSettings.resourcemanager.GetString("trPaymentType"); 
+
+            dg_paid.Columns[0].Header = AppSettings.resourcemanager.GetString("SeuenceAbbrevation");
+            dg_paid.Columns[1].Header = AppSettings.resourcemanager.GetString("trAmount");
+            dg_paid.Columns[2].Header = AppSettings.resourcemanager.GetString("trPaymentType");
+            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
         }
 
+        private async Task fillPaymentsTypes()
+        {
+            if (FillCombo.paymentTypeList == null)
+                await FillCombo.RefreshPaymentTypes();
+
+            dg_payTypes.ItemsSource = FillCombo.paymentTypeList;
+            dg_payTypes.SelectedIndex = 0;
+
+            object item = dg_payTypes.Items[0];
+            dg_payTypes.SelectedItem = item;
+            dg_payTypes.ScrollIntoView(item);
+            var row = (DataGridRow)dg_payTypes.ItemContainerGenerator.ContainerFromIndex(0);
+            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+
+
+        }
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
