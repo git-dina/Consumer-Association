@@ -50,9 +50,17 @@ namespace POSCA.View.windows
 
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "password" };
-            
+
 
                 #region translate
+                if (AppSettings.lang.Equals("en"))
+                {
+                    grid_main.FlowDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    grid_main.FlowDirection = FlowDirection.RightToLeft;
+                }
                 translate();
                 #endregion
 
