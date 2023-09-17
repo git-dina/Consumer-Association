@@ -60,7 +60,7 @@ namespace POSCA.View.sales
 
         string searchText = "";
         public static List<string> requiredControlList;
-        private Receipt receipt = new Receipt();
+        //private Receipt receipt = new Receipt();
         private SalesInvoice salesInvoice = new SalesInvoice();
         private string _ReceiptType = "salesInvoices";
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
@@ -477,7 +477,7 @@ namespace POSCA.View.sales
         //private async Task addDraft()
         //{
 
-        //    if (billDetails.Count > 0 && _ReceiptType == "po")
+        //    if (salesInvoice.SalesDetails.Count > 0 && _ReceiptType == "po")
         //    {
         //        #region Accept
         //        MainWindow.mainWindow.Opacity = 0.2;
@@ -515,7 +515,7 @@ namespace POSCA.View.sales
             try
             {
                 HelpClass.StartAwait(grid_main);
-                if (billDetails.Count == 0)
+                if (salesInvoice.SalesDetails.Count == 0)
                     Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trOrderWithoutItemsError"), animation: ToasterAnimation.FadeIn);
                 else if (HelpClass.validate(requiredControlList, this))
                 {
@@ -582,7 +582,7 @@ namespace POSCA.View.sales
 
             receipt.CreateUserId = MainWindow.userLogin.UserId;
 
-            receipt.ReceiptDetails = billDetails;
+            receipt.ReceiptDetails = salesInvoice.SalesDetails;
             receipt = await receipt.SaveReceiptOrder(receipt);
 
             if (receipt.ReceiptId == 0)
@@ -596,36 +596,36 @@ namespace POSCA.View.sales
             */
         }
         #region datagrid events
-        void deleteRowFromInvoiceItems(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
-                    if (vis is DataGridRow)
-                    {
-                        SalesInvoiceDetails row = (SalesInvoiceDetails)dg_invoiceDetails.SelectedItems[0];
-                        int index = dg_invoiceDetails.SelectedIndex;
+        //void deleteRowFromInvoiceItems(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        for (var vis = sender as Visual; vis != null; vis = VisualTreeHelper.GetParent(vis) as Visual)
+        //            if (vis is DataGridRow)
+        //            {
+        //                SalesInvoiceDetails row = (SalesInvoiceDetails)dg_invoiceDetails.SelectedItems[0];
+        //                int index = dg_invoiceDetails.SelectedIndex;
 
-                        // remove item from bill
-                        billDetails.RemoveAt(index);
+        //                // remove item from bill
+        //                salesInvoice.SalesDetails.RemoveAt(index);
 
-                        //dg_invoiceDetails.Items.Clear();
-                        //dg_invoiceDetails.ItemsSource = billDetails;
-                        //dg_invoiceDetails.Items.Refresh();
-                        if (!forceCancelEdit)
-                        {
-                            dg_invoiceDetails.IsEnabled = false;
-                            RefreshInvoiceDetailsDataGrid();
-                        }
-                        // calculate new total
-                        refreshValues();
-                    }
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
+        //                //dg_invoiceDetails.Items.Clear();
+        //                //dg_invoiceDetails.ItemsSource = salesInvoice.SalesDetails;
+        //                //dg_invoiceDetails.Items.Refresh();
+        //                if (!forceCancelEdit)
+        //                {
+        //                    dg_invoiceDetails.IsEnabled = false;
+        //                    RefreshInvoiceDetailsDataGrid();
+        //                }
+        //                // calculate new total
+        //                refreshValues();
+        //            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+        //    }
+        //}
         #endregion
 
         private async void Btn_clear_Click(object sender, RoutedEventArgs e)
@@ -703,8 +703,8 @@ namespace POSCA.View.sales
             customer = new Customer();
             salesInvoice = new SalesInvoice();
 
-            billDetails = new List<SalesInvoiceDetails>();
-            //dg_invoiceDetails.ItemsSource = billDetails;
+            salesInvoice.SalesDetails = new List<SalesInvoiceDetails>();
+            //dg_invoiceDetails.ItemsSource = salesInvoice.SalesDetails;
             //dg_invoiceDetails.Items.Refresh();
             if (!forceCancelEdit)
             {
@@ -807,30 +807,43 @@ namespace POSCA.View.sales
         #endregion
 
       
-        List<SalesInvoiceDetails> billDetails = new List<SalesInvoiceDetails>();
-        private void addItemToBill(SalesInvoiceDetails salesInvoiceDetails)
+       // List<SalesInvoiceDetails> salesInvoice.SalesDetails = new List<SalesInvoiceDetails>();
+        private async void addItemToBill(SalesInvoiceDetails salesInvoiceDetails)
         {
-       
-          //  var invoiceItem = billDetails.Where(p => p.ItemUnitId == salesInvoiceDetails.ItemUnitId).FirstOrDefault();
+            try
+            {
+                //  var invoiceItem = salesInvoice.SalesDetails.Where(p => p.ItemUnitId == salesInvoiceDetails.ItemUnitId).FirstOrDefault();
 
-           // if (invoiceItem == null)//item doesn't exist in bill
-           // {
-                billDetails.Add(salesInvoiceDetails);
+                // if (invoiceItem == null)//item doesn't exist in bill
+                // {
+                HelpClass.StartAwait(grid_main);
+                salesInvoice.SalesDetails.Add(salesInvoiceDetails);
 
                 if (!forceCancelEdit)
                 {
                     dg_invoiceDetails.IsEnabled = false;
                     RefreshInvoiceDetailsDataGrid();
                 }
-            //}
-            //else // item exist prevoiusly in list
-            //{
-            //    invoiceItem.Qty++;
-            //    invoiceItem.Total = invoiceItem.Qty * invoiceItem.Price;
+                //}
+                //else // item exist prevoiusly in list
+                //{
+                //    invoiceItem.Qty++;
+                //    invoiceItem.Total = invoiceItem.Qty * invoiceItem.Price;
 
-            //}
+                //}
                 refreshValues();
+                if (salesInvoice.SalesDetails.Count == 1)
+                {
+                    salesInvoice = await FillCombo.sales.Save(salesInvoice);
 
+                    this.DataContext = salesInvoice;
+                }
+                HelpClass.EndAwait(grid_main);
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+            }
         }
 
 
@@ -842,43 +855,44 @@ namespace POSCA.View.sales
 
             _TotalPrice = 0;
 
-            foreach (var row in billDetails)
+            foreach (var row in salesInvoice.SalesDetails)
             {
                 _TotalPrice += (decimal) row.Total;
             }
 
             txt_Total.Text = HelpClass.DecTostring(_TotalPrice);
-            txt_Quantity.Text = billDetails.Select(x => x.Qty).Sum().ToString();
+            txt_Quantity.Text = salesInvoice.SalesDetails.Select(x => x.Qty).Sum().ToString();
 
+            salesInvoice.TotalNet = _TotalPrice;
         }
 
         private void Btn_receiptOrders_Click(object sender, RoutedEventArgs e)
         {
 
-            try
-            {
-                HelpClass.StartAwait(grid_main);
-                Window.GetWindow(this).Opacity = 0.2;
-                wd_receiptInv w = new wd_receiptInv();
-                w.invType = "receipt";
-                w.ShowDialog();
-                if (w.isOk)
-                {
-                    receipt = w.receipt;
-                    _ReceiptType = receipt.ReceiptType;
-                    fillReceiptInputs(receipt);
-                }
-                Window.GetWindow(this).Opacity = 1;
+            //try
+            //{
+            //    HelpClass.StartAwait(grid_main);
+            //    Window.GetWindow(this).Opacity = 0.2;
+            //    wd_receiptInv w = new wd_receiptInv();
+            //    w.invType = "receipt";
+            //    w.ShowDialog();
+            //    if (w.isOk)
+            //    {
+            //        receipt = w.receipt;
+            //        _ReceiptType = receipt.ReceiptType;
+            //        fillReceiptInputs(receipt);
+            //    }
+            //    Window.GetWindow(this).Opacity = 1;
 
-                HelpClass.EndAwait(grid_main);
-            }
-            catch (Exception ex)
-            {
+            //    HelpClass.EndAwait(grid_main);
+            //}
+            //catch (Exception ex)
+            //{
 
-                Window.GetWindow(this).Opacity = 1;
-                HelpClass.EndAwait(grid_main);
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
+            //    Window.GetWindow(this).Opacity = 1;
+            //    HelpClass.EndAwait(grid_main);
+            //    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            //}
 
         }
 
@@ -905,10 +919,10 @@ namespace POSCA.View.sales
         private async Task buildSalesInvoiceDetails(SalesInvoice invoice)
         {
             /*
-            billDetails = new List<SalesInvoiceDetails>();
+            salesInvoice.SalesDetails = new List<SalesInvoiceDetails>();
             foreach (var row in invoice.SalesDetails)
             {
-                billDetails.Add(new SalesInvoiceDetails()
+                salesInvoice.SalesDetails.Add(new SalesInvoiceDetails()
                 {
 
                     Balance = row.Balance,
@@ -945,7 +959,7 @@ namespace POSCA.View.sales
         private void buildInvoiceDetails(Receipt invoice)
         {
             /*
-            billDetails = invoice.ReceiptDetails.ToList();
+            salesInvoice.SalesDetails = invoice.ReceiptDetails.ToList();
             if (!forceCancelEdit)
             {
                 dg_invoiceDetails.IsEnabled = false;
@@ -958,33 +972,33 @@ namespace POSCA.View.sales
         private void btn_printInvoice_Click(object sender, RoutedEventArgs e)
         {
             //try
-            {
-                if (sender != null)
-                    HelpClass.StartAwait(grid_main);
+            //{
+            //    if (sender != null)
+            //        HelpClass.StartAwait(grid_main);
 
-                ////////////////
-                Thread t1 = new Thread(async () =>
-                {
-                    string msg = "";
-                    msg = await printInvoice(receipt);
-                    if (msg == "")
-                    {
+            //    ////////////////
+            //    Thread t1 = new Thread(async () =>
+            //    {
+            //        string msg = "";
+            //        msg = await printInvoice(receipt);
+            //        if (msg == "")
+            //        {
 
-                    }
-                    else
-                    {
-                        this.Dispatcher.Invoke(() =>
-                        {
-                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString(msg), animation: ToasterAnimation.FadeIn);
-                        });
-                    }
-                });
-                t1.Start();
-                /////////////////
+            //        }
+            //        else
+            //        {
+            //            this.Dispatcher.Invoke(() =>
+            //            {
+            //                Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString(msg), animation: ToasterAnimation.FadeIn);
+            //            });
+            //        }
+            //    });
+            //    t1.Start();
+            //    /////////////////
 
-                if (sender != null)
-                    HelpClass.EndAwait(grid_main);
-            }
+            //    if (sender != null)
+            //        HelpClass.EndAwait(grid_main);
+            //}
             //catch (Exception ex)
             //{
             //    if (sender != null)
@@ -1049,6 +1063,8 @@ namespace POSCA.View.sales
             {
                 if (e.Key == Key.Return && tb_search.Text != "")
                 {
+                    HelpClass.StartAwait(grid_main);
+
                     var item = await FillCombo.item.GetItemUnitByBarcode(tb_search.Text);
                     if (item != null)
                     {
@@ -1063,15 +1079,19 @@ namespace POSCA.View.sales
                             Total = int.Parse(tb_quantity.Text) * item.SalePrice
                         };
                         addItemToBill(details);
+                        tb_quantity.Text = "1";
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trItemNotFoundError"), animation: ToasterAnimation.FadeIn);
 
                     tb_search.Text = "";
+
+                    HelpClass.EndAwait(grid_main);
                 }
             }
             catch (Exception ex)
             {
+                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
@@ -1158,7 +1178,7 @@ namespace POSCA.View.sales
                 var columnName = e.Column.Header.ToString();
 
                 SalesInvoiceDetails row = e.Row.Item as SalesInvoiceDetails;
-                int index = billDetails.IndexOf(billDetails.Where(p => p.ItemId == row.ItemId).FirstOrDefault());
+                int index = salesInvoice.SalesDetails.IndexOf(salesInvoice.SalesDetails.Where(p => p.ItemId == row.ItemId).FirstOrDefault());
 
                 int maxQty = 0;
                 int minQty = 0;
@@ -1226,17 +1246,17 @@ namespace POSCA.View.sales
                 decimal cost = (mainCost * maxQty) + ((mainCost / (int)row.Factor) * minQty);
                 decimal price = ((int)row.Factor * mainPrice * maxQty) + (mainPrice * minQty);
 
-                billDetails[index].MainCost = mainCost;
-                billDetails[index].MainPrice = mainPrice;
-                billDetails[index].MinQty = minQty;
-                billDetails[index].MaxQty = maxQty;
-                billDetails[index].FreeQty = freeQty;
-                billDetails[index].Cost = cost;
-                billDetails[index].Price = price;
+                salesInvoice.SalesDetails[index].MainCost = mainCost;
+                salesInvoice.SalesDetails[index].MainPrice = mainPrice;
+                salesInvoice.SalesDetails[index].MinQty = minQty;
+                salesInvoice.SalesDetails[index].MaxQty = maxQty;
+                salesInvoice.SalesDetails[index].FreeQty = freeQty;
+                salesInvoice.SalesDetails[index].Cost = cost;
+                salesInvoice.SalesDetails[index].Price = price;
 
                 refreshValues();
 
-                //dg_invoiceDetails.ItemsSource = billDetails;
+                //dg_invoiceDetails.ItemsSource = salesInvoice.SalesDetails;
                 //dg_invoiceDetails.Items.Refresh();
                 if (!forceCancelEdit)
                 {
@@ -1261,7 +1281,7 @@ namespace POSCA.View.sales
             {
                 forceCancelEdit = true;
                 dg_invoiceDetails.CancelEdit();
-                dg_invoiceDetails.ItemsSource = billDetails;
+                dg_invoiceDetails.ItemsSource = salesInvoice.SalesDetails;
                 dg_invoiceDetails.Items.Refresh();
 
                 dg_invoiceDetails.IsEnabled = true;
@@ -1296,6 +1316,7 @@ namespace POSCA.View.sales
                             tb_CustomerId.Text = "";
                             txt_Customer.Text = "";
                             txt_CustomerBalance.Text = "";
+                            salesInvoice.CustomerId = null;
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("CustomerNotContinouse"), animation: ToasterAnimation.FadeIn);
                         }
                         else if(customer.StopOnPOS )
@@ -1303,12 +1324,14 @@ namespace POSCA.View.sales
                             tb_CustomerId.Text = "";
                             txt_Customer.Text = "";
                             txt_CustomerBalance.Text = "";
+                            salesInvoice.CustomerId = null;
                             Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("SeeTheAdministrationAlert"), animation: ToasterAnimation.FadeIn);
                         }
                         else
                         {
                             txt_Customer.Text = customer.Name;
                             txt_CustomerBalance.Text = HelpClass.DecTostring(customer.CurrentPurchses);
+                            salesInvoice.CustomerId = long.Parse(tb_CustomerId.Text);
 
                         }
                     }
@@ -1316,6 +1339,7 @@ namespace POSCA.View.sales
                     {
                         txt_Customer.Text = "";
                         txt_CustomerBalance.Text = "";
+                        salesInvoice.CustomerId = null;
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NumberNotTrue"), animation: ToasterAnimation.FadeIn);
                     }
   
@@ -1454,7 +1478,7 @@ namespace POSCA.View.sales
         {
             try
             {
-                var lastItem = billDetails.LastOrDefault();
+                var lastItem = salesInvoice.SalesDetails.LastOrDefault();
                 if (lastItem != null)
                     addItemToBill(lastItem);
 
@@ -1468,7 +1492,7 @@ namespace POSCA.View.sales
             {
                 var selectedIndex = dg_invoiceDetails.SelectedIndex;
                 selectedIndex++;
-                if(selectedIndex <= billDetails.Count)
+                if(selectedIndex <= salesInvoice.SalesDetails.Count)
                     dg_invoiceDetails.SelectedIndex = selectedIndex;
              
                 Keyboard.Focus(tb_search);
@@ -1483,7 +1507,7 @@ namespace POSCA.View.sales
                 if (selectedIndex > 0)
                 {
                     selectedIndex--;
-                    if (selectedIndex <= billDetails.Count)
+                    if (selectedIndex <= salesInvoice.SalesDetails.Count)
                         dg_invoiceDetails.SelectedIndex = selectedIndex;
                 }
                 Keyboard.Focus(tb_search);
@@ -1497,7 +1521,7 @@ namespace POSCA.View.sales
                 var selectedIndex = dg_invoiceDetails.SelectedIndex;
                 if (selectedIndex > -1)
                 {
-                    billDetails.RemoveAt(selectedIndex);
+                    salesInvoice.SalesDetails.RemoveAt(selectedIndex);
 
                     if (!forceCancelEdit)
                     {
@@ -1506,6 +1530,8 @@ namespace POSCA.View.sales
                     }
                     // calculate new total
                     refreshValues();
+
+
                 }
                 Keyboard.Focus(tb_search);
             }

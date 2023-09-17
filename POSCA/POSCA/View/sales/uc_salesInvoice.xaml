@@ -324,7 +324,7 @@
                             />
                             <TextBlock  x:Name="txt_InvNumber"
                                     Grid.Row="0" Grid.Column="1"
-                            Text="#0651616" 
+                           Text="{Binding InvNumber, Mode=OneWay}" 
                                     HorizontalAlignment="Right"
                             Foreground="{StaticResource textColor}" 
                              FontSize="12"  
@@ -490,19 +490,19 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock   Grid.Column="0"
-         Text="Customer" 
-     x:Name="txt_CustomerTitle"  
-                  Margin="10"
-     Foreground="{StaticResource textColor}" 
-     FontWeight="Bold" FontSize="12" 
-     />
+                     Text="Customer" 
+                 x:Name="txt_CustomerTitle"  
+                              Margin="10"
+                 Foreground="{StaticResource textColor}" 
+                 FontWeight="Bold" FontSize="12" 
+                 />
                         <TextBlock  x:Name="txt_Customer"
-             Grid.Row="0" Grid.Column="1"
-     Text="" 
-             HorizontalAlignment="Right"
-     Foreground="{StaticResource textColor}" 
-      FontSize="12"  
-     Margin="10"/>
+                        Grid.Row="0" Grid.Column="1"
+                    Text="{Binding CustomerName, Mode=OneWay}" 
+                        HorizontalAlignment="Right"
+                        Foreground="{StaticResource textColor}" 
+                        FontSize="12"  
+                        Margin="10"/>
 
                     </Grid>
                     <Grid Grid.Row="1">
@@ -518,12 +518,12 @@
      FontWeight="Bold" FontSize="12" 
      />
                         <TextBlock  x:Name="txt_CustomerBalance"
-             Grid.Row="0" Grid.Column="1"
-     Text="" 
-             HorizontalAlignment="Right"
-     Foreground="{StaticResource textColor}" 
-      FontSize="12"  
-     Margin="10"/>
+                            Grid.Row="0" Grid.Column="1"
+                            Text="{Binding CustomerBalance, Mode=OneWay}" 
+                            HorizontalAlignment="Right"
+                            Foreground="{StaticResource textColor}" 
+                            FontSize="12"  
+                            Margin="10"/>
 
                     </Grid>
 

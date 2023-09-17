@@ -19,8 +19,8 @@ namespace POSCA.Classes.ApiClasses
         public bool IsActive { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
-        public Nullable<long> CreateUserId { get; set; }
-        public Nullable<long> UpdateUserId { get; set; }
+        public Nullable<long> CreateUserId { get; set; } = MainWindow.userLogin.UserId;
+        public Nullable<long> UpdateUserId { get; set; } = MainWindow.userLogin.UserId;
 
         //extra
         public int Sequence { get; set; }
