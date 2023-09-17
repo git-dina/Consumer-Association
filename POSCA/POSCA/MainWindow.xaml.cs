@@ -213,6 +213,10 @@ namespace POSCA
             }
             // return if we collapsed any thing 
             while (isChanged);
+
+            // load window
+            if (btn_salesInvoice.IsVisible)
+                Btn_salesInvoice_Click(btn_salesInvoice, null);
         }
         void timer_Tick(object sender, EventArgs e)
         {
