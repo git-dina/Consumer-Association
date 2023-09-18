@@ -4811,32 +4811,14 @@ Main Documents</value>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
-  <data name="viewDeliveryOrders" xml:space="preserve">
-    <value>عرض طلبات التوصيل</value>
-  </data>
-  <data name="Voucherno" xml:space="preserve">
-    <value>رقم السند</value>
-  </data>
-  <data name="warningTimeForLateReservation" xml:space="preserve">
-    <value>وقت التنبيه للحجز المتأخر</value>
-  </data>
   <data name="warranty" xml:space="preserve">
     <value>الضمان</value>
-  </data>
-  <data name="withDelivery" xml:space="preserve">
-    <value>مع السائق</value>
-  </data>
-  <data name="withDeliveryMan" xml:space="preserve">
-    <value>مع موظف التوصيل</value>
   </data>
   <data name="without" xml:space="preserve">
     <value>without</value>
   </data>
   <data name="writing" xml:space="preserve">
     <value>writing</value>
-  </data>
-  <data name="WrongSerial" xml:space="preserve">
-    <value>سيريال خاطئ</value>
   </data>
   <data name="wrongTime" xml:space="preserve">
     <value>الوقت غير صحيح</value>
@@ -6355,5 +6337,11 @@ Main Documents</value>
   </data>
   <data name="Admin" xml:space="preserve">
     <value>Admin</value>
+  </data>
+  <data name="InvoiceSaved" xml:space="preserve">
+    <value>Invoice Saved</value>
+  </data>
+  <data name="Voucherno" xml:space="preserve">
+    <value>Document Num</value>
   </data>
 </root>

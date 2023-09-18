@@ -3594,9 +3594,6 @@
   <data name="timeStaying" xml:space="preserve">
     <value>وقت البقاء</value>
   </data>
-  <data name="warningTimeForLateReservation" xml:space="preserve">
-    <value>وقت التنبيه للحجز المتأخر</value>
-  </data>
   <data name="trNotes" xml:space="preserve">
     <value>ملاحظات</value>
   </data>
@@ -3695,9 +3692,6 @@
   </data>
   <data name="readyForDelivery" xml:space="preserve">
     <value>جاهز للتوصيل</value>
-  </data>
-  <data name="withDeliveryMan" xml:space="preserve">
-    <value>مع موظف التوصيل</value>
   </data>
   <data name="trSelfServiceDraft" xml:space="preserve">
     <value>مسودة وجبات جاهزة - داخل</value>
@@ -3896,9 +3890,6 @@
   </data>
   <data name="trShippingCompanynohint" xml:space="preserve">
     <value>شركة الشحن</value>
-  </data>
-  <data name="withDelivery" xml:space="preserve">
-    <value>مع السائق</value>
   </data>
   <data name="trProcessNotConfirmed" xml:space="preserve">
     <value>العملية غير مؤكدة</value>
@@ -4734,17 +4725,11 @@
   <data name="vendorInvoiceDetails" xml:space="preserve">
     <value>تفاصيل فاتورة المورد</value>
   </data>
-  <data name="Voucherno" xml:space="preserve">
-    <value>رقم السند</value>
-  </data>
   <data name="warranty" xml:space="preserve">
     <value>الضمان</value>
   </data>
   <data name="writing" xml:space="preserve">
     <value>كتابة</value>
-  </data>
-  <data name="WrongSerial" xml:space="preserve">
-    <value>سيريال خاطئ</value>
   </data>
   <data name="yourPasswordHasBeenChange" xml:space="preserve">
     <value>تم تغيير كلمة مرورك</value>
@@ -5704,9 +5689,6 @@
   <data name="trMinQtyMoreFactorError" xml:space="preserve">
     <value>كمية أقل شد لا يمكن أن تكون مساوية أو أكبر من الشد</value>
   </data>
-  <data name="VouchernoHint" xml:space="preserve">
-    <value>رقم السند...</value>
-  </data>
   <data name="ReceiptType" xml:space="preserve">
     <value>نوع الاستلام</value>
   </data>
@@ -6579,5 +6561,14 @@
   </data>
   <data name="Admin" xml:space="preserve">
     <value>مدير النظام</value>
+  </data>
+  <data name="InvoiceSaved" xml:space="preserve">
+    <value>تم حفظ الفاتورة</value>
+  </data>
+  <data name="Voucherno" xml:space="preserve">
+    <value>رقم السند</value>
+  </data>
+  <data name="VouchernoHint" xml:space="preserve">
+    <value>رقم السند...</value>
   </data>
 </root>

@@ -2437,6 +2437,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Saved.
+        /// </summary>
+        internal static string InvoiceSaved {
+            get {
+                return ResourceManager.GetString("InvoiceSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice Classes.
         /// </summary>
         internal static string invoicesClasses {
@@ -18540,16 +18549,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to عرض طلبات التوصيل.
-        /// </summary>
-        internal static string viewDeliveryOrders {
-            get {
-                return ResourceManager.GetString("viewDeliveryOrders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to رقم السند.
+        ///   Looks up a localized string similar to Document Num.
         /// </summary>
         internal static string Voucherno {
             get {
@@ -18572,15 +18572,6 @@ namespace POSCA {
         internal static string waitng {
             get {
                 return ResourceManager.GetString("waitng", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to وقت التنبيه للحجز المتأخر.
-        /// </summary>
-        internal static string warningTimeForLateReservation {
-            get {
-                return ResourceManager.GetString("warningTimeForLateReservation", resourceCulture);
             }
         }
         
@@ -18635,24 +18626,6 @@ namespace POSCA {
         internal static string WidowerAndSupports {
             get {
                 return ResourceManager.GetString("WidowerAndSupports", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مع السائق.
-        /// </summary>
-        internal static string withDelivery {
-            get {
-                return ResourceManager.GetString("withDelivery", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to مع موظف التوصيل.
-        /// </summary>
-        internal static string withDeliveryMan {
-            get {
-                return ResourceManager.GetString("withDeliveryMan", resourceCulture);
             }
         }
         
@@ -18716,15 +18689,6 @@ namespace POSCA {
         internal static string writing {
             get {
                 return ResourceManager.GetString("writing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to سيريال خاطئ.
-        /// </summary>
-        internal static string WrongSerial {
-            get {
-                return ResourceManager.GetString("WrongSerial", resourceCulture);
             }
         }
         

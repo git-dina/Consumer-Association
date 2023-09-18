@@ -91,6 +91,25 @@ namespace POSCA.Classes.ApiClasses
             }
             return result;
         }
+        
+        public async Task<int> DeleteInvoice(long invoiceId, long userId)
+        {
+            var result =0;
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("itemId", invoiceId.ToString());
+            parameters.Add("userId", userId.ToString());
+            string method = "SalesInvoice/Delete";
+
+            IEnumerable<Claim> claims = await APIResult.getList(method, parameters);
+            foreach (Claim c in claims)
+            {
+                if (c.Type == "scopes")
+                {
+                    result = JsonConvert.DeserializeObject<int>(c.Value);
+                }
+            }
+            return result;
+        }
         #endregion
     }
 

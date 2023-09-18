@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace POSCA.View.sales
 {
@@ -58,16 +59,15 @@ namespace POSCA.View.sales
             }
         }
 
-        string searchText = "";
         public static List<string> requiredControlList;
-        //private Receipt receipt = new Receipt();
         private SalesInvoice salesInvoice = new SalesInvoice();
-        private string _ReceiptType = "salesInvoices";
+        private static DispatcherTimer timer;
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             MainWindow.mainWindow.KeyDown -= UserControl_KeyDown;
             MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
             Instance = null;
+            timer.Stop();
             GC.Collect();
         }
         private async void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -88,38 +88,8 @@ namespace POSCA.View.sales
                 }
                 translate();
 
-                /*
-                #region loading
-                loadingList = new List<keyValueBool>();
-                bool isDone = true;
+                setTimer();
 
-                loadingList.Add(new keyValueBool { key = "loading_RefrishSuppliers", value = false });
-                loadingList.Add(new keyValueBool { key = "loading_RefrishLocations", value = false });
-
-                loading_RefrishSuppliers();
-                loading_RefrishLocations();
-
-                do
-                {
-                    isDone = true;
-                    foreach (var item in loadingList)
-                    {
-                        if (item.value == false)
-                        {
-                            isDone = false;
-                            break;
-                        }
-                    }
-                    if (!isDone)
-                    {
-                        await Task.Delay(0500);
-                    }
-                }
-                while (!isDone);
-                #endregion
-                */
-
-                //await Search();
                 await Clear();
                 Keyboard.Focus(tb_search);
                 HelpClass.EndAwait(grid_main);
@@ -245,7 +215,66 @@ namespace POSCA.View.sales
         */
         #endregion
 
-        #region Add - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
+        #region timer to refresh notifications
+        private void setTimer()
+        {
+            timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromMinutes(1); 
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+        async void timer_Tick(object sendert, EventArgs et)
+        {
+            try
+            {
+
+                saveInvoice();
+            }
+            catch (Exception ex)
+            {
+                if (sendert != null)
+                    HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+        #endregion
+        #region Save - Update - Delete - Search - Tgl - Clear - DG_SelectionChanged - refresh
+        private async Task saveInvoice()
+        {
+            if (salesInvoice.SalesDetails.Count > 0)
+            {
+                salesInvoice = await FillCombo.sales.Save(salesInvoice);
+
+                this.DataContext = salesInvoice;
+
+                Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("InvoiceSaved"), animation: ToasterAnimation.FadeIn);
+            }
+        }
+
+        private async Task DeleteInvoice()
+        {
+            try
+            {
+                HelpClass.StartAwait(grid_main);
+                var res = await FillCombo.sales.DeleteInvoice(salesInvoice.InvoiceId, MainWindow.userLogin.UserId);
+
+                if (res != 0)
+                {
+
+                    Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
+                    await Clear();
+                }
+                else
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
+
+                HelpClass.EndAwait(grid_main);
+
+            }
+            catch
+            {
+                HelpClass.EndAwait(grid_main);
+
+            }
+        }
         private void ControlsEditable()
         {
             /*
@@ -833,11 +862,8 @@ namespace POSCA.View.sales
                 //}
                 refreshValues();
                 if (salesInvoice.SalesDetails.Count == 1)
-                {
-                    salesInvoice = await FillCombo.sales.Save(salesInvoice);
-
-                    this.DataContext = salesInvoice;
-                }
+                   await saveInvoice();
+                
                 HelpClass.EndAwait(grid_main);
             }
             catch
@@ -1131,36 +1157,8 @@ namespace POSCA.View.sales
 
         private async void Btn_deleteInvoice_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                /*
-                #region
-                Window.GetWindow(this).Opacity = 0.2;
-                wd_acceptCancelPopup w = new wd_acceptCancelPopup();
-                w.contentText = AppSettings.resourcemanager.GetString("trMessageBoxDelete");
-
-                w.ShowDialog();
-                Window.GetWindow(this).Opacity = 1;
-                #endregion
-                if (w.isOk)
-                {
-                    var res = await receipt.deleteReceiptInv(receipt.ReceiptId, MainWindow.userLogin.UserId);
-
-                    if (res != 0)
-                    {
-
-                        Toaster.ShowSuccess(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopDelete"), animation: ToasterAnimation.FadeIn);
-                        await Clear();
-                    }
-                    else
-                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trPopError"), animation: ToasterAnimation.FadeIn);
-                }
-                */
-            }
-            catch
-            {
-
-            }
+            await DeleteInvoice();
+            
         }
 
         private async void dg_invoiceDetails_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -1361,7 +1359,7 @@ namespace POSCA.View.sales
             }
         }
 
-        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        private async void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
             #region Ctrl + Alt +Shift + F8
             if (
@@ -1372,6 +1370,7 @@ namespace POSCA.View.sales
                 )
             {
                 MessageBox.Show("Ctrl + Alt +Shift + F8");
+                await DeleteInvoice();
             }
             #endregion
             #region Oem1 + F10
