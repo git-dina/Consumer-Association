@@ -6353,4 +6353,7 @@ Main Documents</value>
   <data name="trTotalTax" xml:space="preserve">
     <value>إجمالي الضريبة</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
 </root>

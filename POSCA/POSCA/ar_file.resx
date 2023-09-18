@@ -6577,4 +6577,7 @@
   <data name="Nothing" xml:space="preserve">
     <value>لا يوجد</value>
   </data>
+  <data name="Admin" xml:space="preserve">
+    <value>مدير النظام</value>
+  </data>
 </root>

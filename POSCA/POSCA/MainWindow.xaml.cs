@@ -109,11 +109,15 @@ namespace POSCA
                 await FillCombo.RefreshCompanySettings();
 
                 txt_userName.Text = userLogin.UserName;
-                if (AppSettings.lang == "ar")
-                    txt_userJob.Text = userLogin.userRole.NameAr;
+                if (userLogin.RoleId != null)
+                {
+                    if (AppSettings.lang == "ar")
+                        txt_userJob.Text = userLogin.userRole.NameAr;
+                    else
+                        txt_userJob.Text = userLogin.userRole.NameEn;
+                }
                 else
-                    txt_userJob.Text = userLogin.userRole.NameEn;
-
+                    txt_userJob.Text = AppSettings.resourcemanager.GetString("Admin");
                 #region Permision
                 permission();
                 #endregion
