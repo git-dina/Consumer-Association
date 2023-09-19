@@ -74,6 +74,10 @@ namespace POSCA.View.windows
 
                 await fillPaymentsTypes();
                 HelpClass.EndAwait(grid_main);
+
+
+                // in last
+                await SetIsFocus();
             }
             catch (Exception ex)
             {
@@ -83,7 +87,20 @@ namespace POSCA.View.windows
             }
 
         }
-
+        async Task SetIsFocus()
+        {
+            await Task.Delay(0050);
+            if (dg_payTypes.HasItems)
+            {
+                DataGridRow row = (DataGridRow)dg_payTypes.ItemContainerGenerator.ContainerFromIndex(0);
+                if (row != null)
+                {
+                   
+                    FocusManager.SetIsFocusScope(row, true);
+                    FocusManager.SetFocusedElement(row, row);
+                }
+            }
+        }
 
         private void translate()
         {
@@ -114,7 +131,7 @@ namespace POSCA.View.windows
             dg_payTypes.SelectedItem = item;
             dg_payTypes.ScrollIntoView(item);
             var row = (DataGridRow)dg_payTypes.ItemContainerGenerator.ContainerFromIndex(0);
-            row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            //row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
 
 
         }
