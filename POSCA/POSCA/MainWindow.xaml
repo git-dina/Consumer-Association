@@ -91,7 +91,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel x:Name="stp_userName" VerticalAlignment="Center" Orientation="Vertical" 
                             Grid.Column="0" Margin="10,5">
-                    <TextBlock x:Name="txt_userName"  Text="" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource MainColor}" HorizontalAlignment="Center" />
+                    <TextBlock x:Name="txt_userName"  Text="" FontSize="14" FontWeight="SemiBold" Foreground="{StaticResource MainColor}" HorizontalAlignment="Left" />
                     <TextBlock x:Name="txt_userJob"  Text=""   FontSize="12" FontWeight="Light" Foreground="{StaticResource MainColor}" HorizontalAlignment="Left" />
                 </StackPanel>
                 
