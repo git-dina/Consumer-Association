@@ -6571,4 +6571,7 @@
   <data name="VouchernoHint" xml:space="preserve">
     <value>رقم السند...</value>
   </data>
+  <data name="ZeroAmountAlert" xml:space="preserve">
+    <value>الكمية لا يمكن أن تكون صفر</value>
+  </data>
 </root>

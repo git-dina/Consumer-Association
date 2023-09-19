@@ -1369,7 +1369,6 @@ namespace POSCA.View.sales
                 && e.KeyboardDevice.IsKeyDown(Key.F8)
                 )
             {
-                MessageBox.Show("Ctrl + Alt +Shift + F8");
                 await DeleteInvoice();
             }
             #endregion
@@ -1568,7 +1567,14 @@ namespace POSCA.View.sales
             {
                 Window.GetWindow(this).Visibility = Visibility.Collapsed;
                 wd_payTypes w = new wd_payTypes();
+                if (salesInvoice.Payments == null)
+                    salesInvoice.Payments = new List<SalesPayment>();
+                w.payments = salesInvoice.Payments.ToList();
                 w.ShowDialog();
+                if(w.isOk)
+                {
+                    salesInvoice.Payments = w.payments.ToList();
+                }
                 Keyboard.Focus(tb_search);
                 Window.GetWindow(this).Visibility = Visibility.Visible;
             }

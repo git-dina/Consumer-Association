@@ -1,4 +1,5 @@
-﻿using POSCA.Classes;
+﻿using netoaster;
+using POSCA.Classes;
 using POSCA.Classes.ApiClasses;
 using System;
 using System.Collections.Generic;
@@ -14,17 +15,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 
 namespace POSCA.View.windows
 {
     /// <summary>
-    /// Interaction logic for wd_payTypes.xaml
+    /// Interaction logic for wd_payAmount.xaml
     /// </summary>
-    public partial class wd_payTypes : Window
+    public partial class wd_payAmount : Window
     {
 
-        public wd_payTypes()
+        public wd_payAmount()
         {
             try
             {
@@ -34,28 +34,25 @@ namespace POSCA.View.windows
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
 
-
-
         private void Btn_colse_Click(object sender, RoutedEventArgs e)
         {
             isOk = false;
             this.Close();
         }
 
+        public SalesPayment payment { get; set; }
         public bool isOk { get; set; }
-        public List<SalesPayment> payments { get; set; }
+        public static List<string> requiredControlList;
 
-
-         private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
 
             try
             {
-
                 MainWindow.mainWindow.KeyUp += UserControl_KeyUp;
+
                 HelpClass.StartAwait(grid_main);
-
-
+                requiredControlList = new List<string> { "amount", };
 
                 #region translate
 
@@ -71,17 +68,12 @@ namespace POSCA.View.windows
                 }
 
                 translate();
+
                 #endregion
 
-                await fillPaymentsTypes();
-
-                fillPayments();
+                this.DataContext = payment;
                 HelpClass.EndAwait(grid_main);
-
-
-
-                // in last
-                await SetIsFocus();
+                Keyboard.Focus(tb_amount);
             }
             catch (Exception ex)
             {
@@ -91,59 +83,17 @@ namespace POSCA.View.windows
             }
 
         }
-        async Task SetIsFocus()
-        {
-            await Task.Delay(0050);
-            if (dg_payTypes.HasItems)
-            {
-                DataGridRow row = (DataGridRow)dg_payTypes.ItemContainerGenerator.ContainerFromIndex(0);
-                if (row != null)
-                {
-                   
-                    FocusManager.SetIsFocusScope(row, true);
-                    FocusManager.SetFocusedElement(row, row);
-                }
-            }
-        }
+
 
         private void translate()
         {
-            txt_title.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
-            txt_balanceTitle.Text = AppSettings.resourcemanager.GetString("trBalance");
-            txt_paidTitle.Text = AppSettings.resourcemanager.GetString("paid");
-            txt_valueTitle.Text = AppSettings.resourcemanager.GetString("trValue");
-            txt_paymentTypesTitle.Text = AppSettings.resourcemanager.GetString("trPaymentMethods");
-            txt_paid1Titles.Text = AppSettings.resourcemanager.GetString("paid"); 
+            txt_title.Text = payment.PaymentTypeName;
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_amount, AppSettings.resourcemanager.GetString("trAmountHint"));
 
-            dg_payTypes.Columns[0].Header = AppSettings.resourcemanager.GetString("trPaymentType"); 
-
-            dg_paid.Columns[0].Header = AppSettings.resourcemanager.GetString("SeuenceAbbrevation");
-            dg_paid.Columns[1].Header = AppSettings.resourcemanager.GetString("trAmount");
-            dg_paid.Columns[2].Header = AppSettings.resourcemanager.GetString("trPaymentType");
-            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
-        }
-
-        private async Task fillPaymentsTypes()
-        {
-            if (FillCombo.paymentTypeList == null)
-                await FillCombo.RefreshPaymentTypes();
-
-            dg_payTypes.ItemsSource = FillCombo.paymentTypeList;
-            dg_payTypes.SelectedIndex = 0;
-
-            object item = dg_payTypes.Items[0];
-            dg_payTypes.SelectedItem = item;
-            dg_payTypes.ScrollIntoView(item);
-           // var row = (DataGridRow)dg_payTypes.ItemContainerGenerator.ContainerFromIndex(0);
-            //row.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
-
+            btn_save.Content = AppSettings.resourcemanager.GetString("trOK");
 
         }
-        private void fillPayments()
-        {
-            dg_paid.ItemsSource = payments;
-            dg_paid.Items.Refresh();
-        }
+
         private void HandleKeyPress(object sender, KeyEventArgs e)
         {
             try
@@ -156,30 +106,31 @@ namespace POSCA.View.windows
             catch (Exception ex)
             { HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name); }
         }
-        public static List<string> requiredControlList;
-        #region events
 
 
-
-        private void Btn_save_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             try
             {
-
-             
+                e.Cancel = true;
+                MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
+                this.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
             {
-
-                HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
 
-        #endregion
-
-        #region validate - clearValidate - textChange - lostFocus - . . . . 
-
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch { }
+        }
+        #region events
         string input;
         decimal _decimal = 0;
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -258,89 +209,35 @@ namespace POSCA.View.windows
         }
 
         #endregion
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            try
-            {
-                MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
-                //if (timer != null)
-                //    timer.Stop();
-                e.Cancel = true;
-                this.Visibility = Visibility.Hidden;
-            }
-            catch (Exception ex)
-            {
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-
-        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            try
-            {
-                DragMove();
-            }
-            catch { }
-        }
-
-        private void dg_payTypes_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void Btn_save_Click(object sender, RoutedEventArgs e)
         {
             try
             {
 
-                // if is return type
                 HelpClass.StartAwait(grid_main);
-                Window.GetWindow(this).Opacity = 0.0;
-                wd_getInvNumber w = new wd_getInvNumber();
-                w.ShowDialog();
-                if (w.isOk)
+                if (HelpClass.validate(requiredControlList, this))
                 {
-                   
-                }
-                Window.GetWindow(this).Opacity = 1;
+                    if (decimal.Parse(tb_amount.Text) != 0)
+                    {
+                        payment.Amount = decimal.Parse(tb_amount.Text);
 
+                        isOk = true;
+                        this.Close();
+                    }
+                    else
+                        Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("ZeroAmountAlert"), animation: ToasterAnimation.FadeIn);
+                }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
                 HelpClass.EndAwait(grid_main);
+                Keyboard.Focus(tb_amount);
 
             }
             catch (Exception ex)
             {
-                HelpClass.EndAwait(grid_main);
 
-                HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-        }
-        private async void dg_payTypes_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            try
-            {
-                if (e.Key == Key.Enter)
-                {
-                    HelpClass.StartAwait(grid_main);
-                    var paymentType = (PaymentType)dg_payTypes.SelectedItem;
-                    var payment = payments.FirstOrDefault(x => x.PaymentTypeId == paymentType.PaymentTypeId);
-                    if (payment == null)
-                    {
-                        payment = new SalesPayment();
-                        payment.PaymentTypeId = paymentType.PaymentTypeId;
-                    }
-                    payment.PaymentTypeName = paymentType.PaymentTypeName;
-                    Window.GetWindow(this).Opacity = 0.0;
-                    wd_payAmount w = new wd_payAmount();
-                    w.payment =(SalesPayment) payment.Clone();
-                    w.ShowDialog();
-                    if (w.isOk)
-                    {
-                        payment = w.payment;
-                    }
-                    Window.GetWindow(this).Opacity = 1;
-                    await SetIsFocus();
-
-                    HelpClass.EndAwait(grid_main);
-
-                }
-            }
-            catch (Exception ex)
-            {
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
@@ -356,6 +253,13 @@ namespace POSCA.View.windows
                 }
                 else if (e.Key == Key.Return)
                     Btn_save_Click(null, null);
+                else if (e.Key == Key.Decimal)
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) * 100).ToString();
+                    Keyboard.Focus(tb_amount);
+
+                }
 
             }
             catch

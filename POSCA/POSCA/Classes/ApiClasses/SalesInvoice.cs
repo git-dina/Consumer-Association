@@ -113,7 +113,7 @@ namespace POSCA.Classes.ApiClasses
         #endregion
     }
 
-    public class SalesPayment
+    public class SalesPayment : ICloneable
     {
         #region Attributes
         public long PaymentId { get; set; }
@@ -126,7 +126,15 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<long> UpdateUserId { get; set; } = MainWindow.userLogin.UserId;
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
+
+        public string PaymentTypeName { get; set; }
+
         #endregion
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 
     public class PaymentType

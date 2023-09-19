@@ -394,6 +394,9 @@
     <Compile Include="View\windows\wd_customerDocument.xaml.cs">
       <DependentUpon>wd_customerDocument.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\windows\wd_payAmount.xaml.cs">
+      <DependentUpon>wd_payAmount.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\windows\wd_getInvNumber.xaml.cs">
       <DependentUpon>wd_getInvNumber.xaml</DependentUpon>
     </Compile>
@@ -651,6 +654,10 @@
     <Page Include="View\windows\wd_customerDocument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\windows\wd_payAmount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\windows\wd_getInvNumber.xaml">
       <SubType>Designer</SubType>

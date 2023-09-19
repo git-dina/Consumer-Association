@@ -203,14 +203,15 @@
                                 <Border Margin="5,5,5,5"   Grid.Row="1" CornerRadius="10" x:Name="brd_roundDataGridPayTypes" BorderThickness="0" 
                             Background="White"/>
                                 <DataGrid x:Name="dg_payTypes" 
-                            Margin="10" Grid.Row="1" Focusable="true"
-                                          MouseDoubleClick="dg_payTypes_MouseDoubleClick"
+                                    Margin="10" Grid.Row="1" Focusable="true"
+                                    MouseDoubleClick="dg_payTypes_MouseDoubleClick"
+                                    PreviewKeyDown="dg_payTypes_PreviewKeyDown"
                                    CanUserAddRows="False" IsReadOnly="False" 
                                    CanUserDeleteRows="False"
-                        Background="White"
+                                    Background="White"
                                       AutoGenerateColumns="False" 
-                        ColumnWidth="SizeToHeader"    
-                        AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
+                                    ColumnWidth="SizeToHeader"    
+                                    AlternatingRowBackground="#f3f3f3"  AlternationCount="2">
                                     <DataGrid.OpacityMask>
                                         <VisualBrush Visual="{Binding ElementName=brd_roundDataGridPayTypes}"/>
                                     </DataGrid.OpacityMask>

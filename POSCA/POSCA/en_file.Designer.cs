@@ -12851,7 +12851,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to موافق.
+        ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string trOK {
             get {
@@ -18716,6 +18716,15 @@ namespace POSCA {
         internal static string yourPasswordHasBeenChange {
             get {
                 return ResourceManager.GetString("yourPasswordHasBeenChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount can not be zero.
+        /// </summary>
+        internal static string ZeroAmountAlert {
+            get {
+                return ResourceManager.GetString("ZeroAmountAlert", resourceCulture);
             }
         }
     }

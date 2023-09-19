@@ -2969,7 +2969,7 @@ Main Documents</value>
     <value>داخلي</value>
   </data>
   <data name="trOK" xml:space="preserve">
-    <value>موافق</value>
+    <value>OK</value>
   </data>
   <data name="trOldPassword" xml:space="preserve">
     <value>كلمة المرور القديمة</value>
@@ -6343,5 +6343,8 @@ Main Documents</value>
   </data>
   <data name="Voucherno" xml:space="preserve">
     <value>Document Num</value>
+  </data>
+  <data name="ZeroAmountAlert" xml:space="preserve">
+    <value>Amount can not be zero</value>
   </data>
 </root>
