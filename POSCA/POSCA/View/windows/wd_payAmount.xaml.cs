@@ -260,6 +260,12 @@ namespace POSCA.View.windows
                     Keyboard.Focus(tb_amount);
 
                 }
+                else if (e.Key == Key.Multiply)
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) * 1000).ToString();
+                    Keyboard.Focus(tb_amount);
+                }
 
             }
             catch
