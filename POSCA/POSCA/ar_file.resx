@@ -6574,4 +6574,16 @@
   <data name="ZeroAmountAlert" xml:space="preserve">
     <value>الكمية لا يمكن أن تكون صفر</value>
   </data>
+  <data name="EnterReceiptNum" xml:space="preserve">
+    <value>ادخل رقم الإيصال</value>
+  </data>
+  <data name="NotCashAmountAlert" xml:space="preserve">
+    <value>لا يمكن أن تكون الغير نقدي أكبر من قيمة الفاتورة</value>
+  </data>
+  <data name="ReceiptNumberHint" xml:space="preserve">
+    <value>رقم الإيصال...</value>
+  </data>
+  <data name="ReceiptNumberNotEnteredAlert" xml:space="preserve">
+    <value>تم الغاء عملية الدفع لعدم ادخال رقم الإيصال</value>
+  </data>
 </root>

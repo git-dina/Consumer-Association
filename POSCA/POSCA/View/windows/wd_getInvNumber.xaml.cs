@@ -1,4 +1,5 @@
-﻿using POSCA.Classes;
+﻿using netoaster;
+using POSCA.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,6 +40,8 @@ namespace POSCA.View.windows
         }
 
         public bool isOk { get; set; }
+        public string ReceiptNum { get; set; }
+
         public static List<string> requiredControlList;
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
@@ -68,6 +71,8 @@ namespace POSCA.View.windows
                 #endregion
 
                 HelpClass.EndAwait(grid_main);
+                Keyboard.Focus(tb_invoiceNumber);
+
             }
             catch (Exception ex)
             {
@@ -81,10 +86,11 @@ namespace POSCA.View.windows
 
         private void translate()
         {
-            //txt_title.Text = AppSettings.resourcemanager.GetString("ExtraInformation");
+            txt_title.Text = AppSettings.resourcemanager.GetString("EnterReceiptNum");
+            MaterialDesignThemes.Wpf.HintAssist.SetHint(tb_invoiceNumber, AppSettings.resourcemanager.GetString("ReceiptNumberHint"));
 
-          
-            btn_save.Content = AppSettings.resourcemanager.GetString("trSave");
+
+            btn_save.Content = AppSettings.resourcemanager.GetString("trOK");
 
         }
 
@@ -208,19 +214,44 @@ namespace POSCA.View.windows
             try
             {
 
-                HelpClass.StartAwait(grid_main);
-
-               
-
-                isOk = true;
-                this.Close();
+                if (HelpClass.validate(requiredControlList, this))
+                {
+                        
+                    ReceiptNum = tb_invoiceNumber.Text;
+                    isOk = true;
+                    this.Close();                              
+                  
+                }
+                else
+                {
+                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("saveNotDoneEmptyFields"), animation: ToasterAnimation.FadeIn);
+                }
                 HelpClass.EndAwait(grid_main);
+                Keyboard.Focus(tb_invoiceNumber);
             }
             catch (Exception ex)
             {
 
                 HelpClass.EndAwait(grid_main);
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.Key == Key.Escape)
+                {
+                    Btn_colse_Click(null, null);
+                }
+                else if (e.Key == Key.Return)
+                    Btn_save_Click(null, null);
+                
+            }
+            catch
+            {
+
             }
         }
     }

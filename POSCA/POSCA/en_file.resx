@@ -6347,4 +6347,16 @@ Main Documents</value>
   <data name="ZeroAmountAlert" xml:space="preserve">
     <value>Amount can not be zero</value>
   </data>
+  <data name="EnterReceiptNum" xml:space="preserve">
+    <value>Enter Receipt Number</value>
+  </data>
+  <data name="NotCashAmountAlert" xml:space="preserve">
+    <value>Uncash amount can't be greater than total amount</value>
+  </data>
+  <data name="ReceiptNumberHint" xml:space="preserve">
+    <value>Receipt Number...</value>
+  </data>
+  <data name="ReceiptNumberNotEnteredAlert" xml:space="preserve">
+    <value>Transaction canceled because Receipt number not entered</value>
+  </data>
 </root>

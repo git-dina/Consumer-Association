@@ -220,13 +220,45 @@ namespace POSCA.View.windows
                 {
                     if (decimal.Parse(tb_amount.Text) != 0)
                     {
-                        payment.Amount = decimal.Parse(tb_amount.Text);
-                        if(payment.Amount > Remain)
+                        if (payment.PaymentTypeId == 1 || decimal.Parse(tb_amount.Text) <= Remain)
                         {
-                            Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trTheRemine")+" "+ (payment.Amount - Remain).ToString(), animation: ToasterAnimation.FadeIn);
+                            payment.Amount = decimal.Parse(tb_amount.Text);
+                            if (payment.Amount > Remain)
+                            {
+                                Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trTheRemine") + " " + (payment.Amount - Remain).ToString(), animation: ToasterAnimation.FadeIn);
+                            }
+                            if (payment.PaymentTypeId == 4) //return
+                            {
+                                Window.GetWindow(this).Opacity = 0.0;
+                                wd_getInvNumber w = new wd_getInvNumber();
+                                w.ShowDialog();
+                                if (w.isOk)
+                                {
+                                    payment.ReceiptNum = w.ReceiptNum;
+                                    isOk = true;
+                                    this.Close();
+                                }
+                                else
+                                {
+                                    Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("ReceiptNumberNotEnteredAlert"), animation: ToasterAnimation.FadeIn);
+
+                                    isOk = false;
+                                    this.Close();
+                                }
+                                Window.GetWindow(this).Opacity = 1;
+                            }
+                            else
+                            {
+                                isOk = true;
+                                this.Close();
+                            }
                         }
-                        isOk = true;
-                        this.Close();
+                        else
+                        {
+                            Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("NotCashAmountAlert") , animation: ToasterAnimation.FadeIn);
+                            isOk = false;
+                            this.Close();
+                        }
                     }
                     else
                         Toaster.ShowWarning(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("ZeroAmountAlert"), animation: ToasterAnimation.FadeIn);

@@ -1816,6 +1816,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter Receipt Number.
+        /// </summary>
+        internal static string EnterReceiptNum {
+            get {
+                return ResourceManager.GetString("EnterReceiptNum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Received.
         /// </summary>
         internal static string EntierReceived {
@@ -3428,6 +3437,15 @@ namespace POSCA {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uncash amount can&apos;t be greater than total amount.
+        /// </summary>
+        internal static string NotCashAmountAlert {
+            get {
+                return ResourceManager.GetString("NotCashAmountAlert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Completed.
         /// </summary>
         internal static string notCompleted {
@@ -4549,6 +4567,24 @@ namespace POSCA {
         internal static string ReceiptFreeVegetablesTitle {
             get {
                 return ResourceManager.GetString("ReceiptFreeVegetablesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receipt Number....
+        /// </summary>
+        internal static string ReceiptNumberHint {
+            get {
+                return ResourceManager.GetString("ReceiptNumberHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction canceled because Receipt number not entered.
+        /// </summary>
+        internal static string ReceiptNumberNotEnteredAlert {
+            get {
+                return ResourceManager.GetString("ReceiptNumberNotEnteredAlert", resourceCulture);
             }
         }
         
