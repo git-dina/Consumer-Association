@@ -18,7 +18,7 @@ namespace POSCA.Classes.ApiClasses
 
         private string _InvNumber;
         public string InvNumber { get; set; }
-        public Nullable<decimal> TotalNet { get; set; }
+        public decimal TotalNet { get; set; }
         public Nullable<long> CustomerId { get; set; }
         public decimal CashReturn { get; set; }
         public string InvStatus { get; set; } = "draft"; //draft - paid
@@ -35,6 +35,9 @@ namespace POSCA.Classes.ApiClasses
         public List<SalesInvoiceDetails> SalesDetails { get; set; }
         public List<SalesPayment> Payments { get; set; }
         public Customer Customer { get; set; }
+
+        public decimal Remain { get; set; }
+
         #endregion
 
         #region Methods
@@ -128,6 +131,7 @@ namespace POSCA.Classes.ApiClasses
         public Nullable<System.DateTime> UpdateDate { get; set; }
 
         public string PaymentTypeName { get; set; }
+        public int Index { get; set; }
 
         #endregion
 

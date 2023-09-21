@@ -4364,7 +4364,7 @@ Main Documents</value>
     <value>لا يمكن ارسال طلب فارغ, يرجى حفظ الطلب ثم ارساله</value>
   </data>
   <data name="trTheRemine" xml:space="preserve">
-    <value>الباقي</value>
+    <value>The Remain:</value>
   </data>
   <data name="trTheRest" xml:space="preserve">
     <value>الباقي</value>

@@ -2659,7 +2659,7 @@
     <value>اختر بطاقة ائتمان</value>
   </data>
   <data name="trTheRemine" xml:space="preserve">
-    <value>الباقي</value>
+    <value>الباقي:</value>
   </data>
   <data name="trCost" xml:space="preserve">
     <value>التكلفة</value>

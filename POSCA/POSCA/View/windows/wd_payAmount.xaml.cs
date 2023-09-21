@@ -41,6 +41,7 @@ namespace POSCA.View.windows
         }
 
         public SalesPayment payment { get; set; }
+        public decimal Remain { get; set; }
         public bool isOk { get; set; }
         public static List<string> requiredControlList;
 
@@ -71,7 +72,7 @@ namespace POSCA.View.windows
 
                 #endregion
 
-                this.DataContext = payment;
+                tb_amount.Text = Remain.ToString();
                 HelpClass.EndAwait(grid_main);
                 Keyboard.Focus(tb_amount);
             }
@@ -220,7 +221,10 @@ namespace POSCA.View.windows
                     if (decimal.Parse(tb_amount.Text) != 0)
                     {
                         payment.Amount = decimal.Parse(tb_amount.Text);
-
+                        if(payment.Amount > Remain)
+                        {
+                            Toaster.ShowInfo(Window.GetWindow(this), message: AppSettings.resourcemanager.GetString("trTheRemine")+" "+ (payment.Amount - Remain).ToString(), animation: ToasterAnimation.FadeIn);
+                        }
                         isOk = true;
                         this.Close();
                     }
@@ -272,6 +276,19 @@ namespace POSCA.View.windows
             {
 
             }
+        }
+
+        private void tb_amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                ValidateEmpty_TextChange(sender, e);
+            }
+            catch
+            {
+
+            }
+
         }
     }
 }

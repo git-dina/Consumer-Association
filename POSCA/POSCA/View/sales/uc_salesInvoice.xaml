@@ -50,7 +50,7 @@
                                          Padding="10,0,5,0"    BorderThickness="0" 
                                          materialDesign:HintAssist.Hint="Enter Here To Start Search ...." 
                                          Foreground="{StaticResource textColor}"
-                                  KeyDown="tb_search_KeyDown"
+                                  KeyDown="tb_search_KeyDown" Tag="int" PreviewTextInput="Number_PreviewTextInput"
                                   Height="40"   Margin="0" 
                               VerticalAlignment="Center"
                                          materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}" 

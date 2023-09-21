@@ -17153,7 +17153,7 @@ namespace POSCA {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to الباقي.
+        ///   Looks up a localized string similar to The Remain:.
         /// </summary>
         internal static string trTheRemine {
             get {

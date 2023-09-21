@@ -44,7 +44,10 @@ namespace POSCA.View.windows
 
         public bool isOk { get; set; }
         public List<SalesPayment> payments { get; set; }
+        public decimal TotalNet { get; set; }
+        public decimal CashReturn { get; set; }
 
+        decimal Remain = 0;
 
          private async void Window_Loaded(object sender, RoutedEventArgs e)
         {//load
@@ -72,7 +75,8 @@ namespace POSCA.View.windows
 
                 translate();
                 #endregion
-
+                setValues();
+                
                 await fillPaymentsTypes();
 
                 fillPayments();
@@ -90,6 +94,14 @@ namespace POSCA.View.windows
                 HelpClass.ExceptionMessage(ex, this, this.GetType().FullName, System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
 
+        }
+        private void setValues()
+        {
+            txt_value.Text = HelpClass.DecTostring( TotalNet);
+            decimal paid = payments.Select(x => x.Amount).Sum();
+            Remain = TotalNet - paid;
+            txt_balance.Text = HelpClass.DecTostring(Remain);
+            txt_paid.Text = HelpClass.DecTostring(paid);
         }
         async Task SetIsFocus()
         {
@@ -327,10 +339,25 @@ namespace POSCA.View.windows
                     Window.GetWindow(this).Opacity = 0.0;
                     wd_payAmount w = new wd_payAmount();
                     w.payment =(SalesPayment) payment.Clone();
+                    w.Remain = Remain;
                     w.ShowDialog();
                     if (w.isOk)
                     {
-                        payment = w.payment;
+                        CashReturn = w.payment.Amount - Remain;
+                        w.payment.Amount = w.payment.Amount - CashReturn;
+
+                        payment = payments.FirstOrDefault(x => x.PaymentTypeId == paymentType.PaymentTypeId);
+                        if (payment == null)
+                        {
+                            payment = w.payment;
+                            payment.Index = payments.Count + 1;
+                            payments.Add(payment);
+                        }
+                        else
+                            payment.Amount += w.payment.Amount;
+
+                        setValues();
+                        fillPayments();
                     }
                     Window.GetWindow(this).Opacity = 1;
                     await SetIsFocus();

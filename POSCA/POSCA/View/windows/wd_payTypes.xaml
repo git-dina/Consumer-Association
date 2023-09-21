@@ -283,9 +283,9 @@
                                         </Style>
                                     </DataGrid.Resources>
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn  IsReadOnly="True" Width="*"  Header="PaymentId" Binding="{Binding Path=PaymentId, Mode=OneWay}"/>
+                                        <DataGridTextColumn  IsReadOnly="True" Width="*"  Header="PaymentId" Binding="{Binding Path=Index, Mode=OneWay}"/>
                                         <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Amount" Binding="{Binding Path=Amount, Mode=TwoWay,  Converter={StaticResource accuracyConverter }}"/>
-                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentType, Mode=OneWay}"/>
+                                        <DataGridTextColumn IsReadOnly="True" Width="*"  Header="PaymentType" Binding="{Binding Path=PaymentTypeName, Mode=OneWay}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>

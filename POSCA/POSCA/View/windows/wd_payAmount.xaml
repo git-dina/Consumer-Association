@@ -4,13 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POSCA.View.windows"
-        mc:Ignorable="d"  KeyDown="HandleKeyPress"
+        mc:Ignorable="d" 
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          WindowStyle="None" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize" Margin="0"
          Height="150" Width="300"  Background="Transparent" AllowsTransparency="True" MouseDown="Window_MouseDown"
         Loaded="Window_Loaded" Closing="Window_Closing" 
-         KeyUp="UserControl_KeyUp">
+         KeyDown="UserControl_KeyUp">
     <Grid Grid.Column="1" Grid.Row="1"    x:Name="grid_main">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -62,7 +62,7 @@
                                  BorderBrush="AliceBlue"  PreviewTextInput="Number_PreviewTextInput"
                                 materialDesign:TextFieldAssist.CharacterCounterStyle="{Binding}"
                                 Height="40"   Margin="0"  PreviewKeyDown="Spaces_PreviewKeyDown"
-                                LostFocus="validateEmpty_LostFocus" TextChanged="ValidateEmpty_TextChange"/>
+                                LostFocus="validateEmpty_LostFocus" TextChanged="tb_amount_TextChanged"/>
                         <Path Fill="#E81123"   Stretch="Fill" Margin="5,5,15,5" x:Name="p_error_amount" 
                               HorizontalAlignment="Right" Visibility="Collapsed"   
                          VerticalAlignment="Center" Width="15"  Height="15"

@@ -1570,10 +1570,14 @@ namespace POSCA.View.sales
                 if (salesInvoice.Payments == null)
                     salesInvoice.Payments = new List<SalesPayment>();
                 w.payments = salesInvoice.Payments.ToList();
+                w.TotalNet = salesInvoice.TotalNet;
+
+
                 w.ShowDialog();
                 if(w.isOk)
                 {
                     salesInvoice.Payments = w.payments.ToList();
+                    salesInvoice.CashReturn = w.CashReturn;
                 }
                 Keyboard.Focus(tb_search);
                 Window.GetWindow(this).Visibility = Visibility.Visible;
