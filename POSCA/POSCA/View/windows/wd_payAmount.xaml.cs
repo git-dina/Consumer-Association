@@ -50,7 +50,7 @@ namespace POSCA.View.windows
 
             try
             {
-                MainWindow.mainWindow.KeyUp += UserControl_KeyUp;
+                MainWindow.mainWindow.KeyUp += UserControl_KeyDown;
 
                 HelpClass.StartAwait(grid_main);
                 requiredControlList = new List<string> { "amount", };
@@ -114,7 +114,7 @@ namespace POSCA.View.windows
             try
             {
                 e.Cancel = true;
-                MainWindow.mainWindow.KeyUp -= UserControl_KeyUp;
+                MainWindow.mainWindow.KeyDown -= UserControl_KeyDown;
                 this.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
@@ -279,7 +279,7 @@ namespace POSCA.View.windows
             }
         }
 
-        private void UserControl_KeyUp(object sender, KeyEventArgs e)
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
@@ -293,6 +293,8 @@ namespace POSCA.View.windows
                 {
                     if (tb_amount.Text != "")
                         tb_amount.Text = (decimal.Parse(tb_amount.Text) * 100).ToString();
+                    else
+                        tb_amount.Text = "100";
                     Keyboard.Focus(tb_amount);
 
                 }
@@ -300,8 +302,54 @@ namespace POSCA.View.windows
                 {
                     if (tb_amount.Text != "")
                         tb_amount.Text = (decimal.Parse(tb_amount.Text) * 1000).ToString();
+                    else
+                        tb_amount.Text = "1000";
                     Keyboard.Focus(tb_amount);
                 }
+                #region F11
+                else if (e.Key == Key.F11)
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) + 5).ToString();
+                    else
+                        tb_amount.Text = "5";
+                    Keyboard.Focus(tb_amount);
+                }
+                #endregion
+                #region F12 = add 10
+                else if (e.Key == Key.F12)
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) + 10).ToString();
+                    else
+                        tb_amount.Text = "10";
+                    Keyboard.Focus(tb_amount);
+                }
+                #endregion
+                #region Home = add 15
+                else if (e.Key == Key.F12)
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) + 15).ToString();
+                    else
+                        tb_amount.Text = "15";
+                    Keyboard.Focus(tb_amount);
+                }
+                #endregion
+                #region Oem1 + F10 = add 20
+                if (
+                    e.KeyboardDevice.IsKeyDown(Key.Oem1)
+                    && e.KeyboardDevice.IsKeyDown(Key.F10)
+                    )
+                {
+                    if (tb_amount.Text != "")
+                        tb_amount.Text = (decimal.Parse(tb_amount.Text) + 20).ToString();
+                    else
+                        tb_amount.Text = "20";
+                    Keyboard.Focus(tb_amount);
+                }
+
+                #endregion
 
             }
             catch

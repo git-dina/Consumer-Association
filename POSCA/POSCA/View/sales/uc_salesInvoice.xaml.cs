@@ -1372,16 +1372,7 @@ namespace POSCA.View.sales
                 await DeleteInvoice();
             }
             #endregion
-            #region Oem1 + F10
-            if (
-                e.KeyboardDevice.IsKeyDown(Key.Oem1)
-                && e.KeyboardDevice.IsKeyDown(Key.F10)
-                )
-            {
-                MessageBox.Show("Oem1 + F10");
-            }
-
-            #endregion
+           
             #region Ctrl + Shift + F2
             if (
                (e.KeyboardDevice.IsKeyDown(Key.LeftCtrl) || e.KeyboardDevice.IsKeyDown(Key.RightCtrl))
